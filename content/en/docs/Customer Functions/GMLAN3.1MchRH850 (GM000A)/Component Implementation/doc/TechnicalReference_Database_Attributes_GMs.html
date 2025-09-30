@@ -1,0 +1,1058 @@
+---
+title: TechnicalReference_Database_Attributes_GMs
+linkTitle: TechnicalReference_Database_Attributes_GMs
+weight: 46
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-1_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>Database Attributes&#160;<br/></b>Technical&#160;Reference&#160;<br/>
+&#160;<br/>
+GMLAN 3.1&#160;<br/>Version&#160;2.02.01&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>Authors&#160;</b><br/>
+Frank&#160;Triem<b>&#160;</b><br/>
+<b>Versions:&#160;</b><br/>
+2.02.01&#160;<br/>
+<b>Status:&#160;</b><br/>
+Released<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-2_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-2_2.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>1&#160;&#160;Document&#160;Information&#160;</b><br/>
+<b>1.1&#160;</b><br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Frank&#160;Triem&#160;<br/>
+2007-06-06&#160;<br/>
+1.0&#160;<br/>
+Creation&#160;of&#160;document&#160;based on&#160;“Database&#160;<br/>Attributes&#160;GMLAN&#160;V3.0”.&#160;<br/>
+Frank&#160;Triem&#160;<br/>
+2007-06-25&#160;<br/>
+1.1&#160;<br/>
+Database Attribute&#160;<br/>GenMsgMandatoryToSupervise&#160;corrected&#160;<br/>
+Frank&#160;Triem&#160;<br/>
+2008-01-23&#160;<br/>
+2.0&#160;<br/>
+Update for&#160;configuration tool&#160;GENy&#160;<br/>
+Frank&#160;Triem&#160;<br/>
+2008-02-06&#160;<br/>
+2.1&#160;<br/>
+Database attributes&#160;added&#160;<br/>-&#160;Baudrate&#160;<br/>-&#160;SamplePointMin&#160;<br/>-&#160;SamplePointMax&#160;<br/>-&#160;SyncJumpWidthMin&#160;<br/>-&#160;SyncJumpWidthMax&#160;<br/>
+Frank&#160;Triem&#160;<br/>
+2012-10-23&#160;<br/>
+2.2&#160;<br/>
+Database Attribute&#160;NodeSuprvStabilityTime&#160;<br/>added&#160;in chapter<a href="TechnicalReference_Database_Attributes_GMs.html#8">&#160;3.2&#160;</a><br/>
+Frank&#160;Triem&#160;<br/>
+2013-01-28&#160;<br/>
+2.02.01&#160;<br/>
+ESCAN00064577:&#160;Update GMLAN&#160;version&#160;<br/>from&#160;GMLAN&#160;3.0&#160;to&#160;GMLAN&#160;3.1&#160;<br/>
+Table&#160;1-1&#160;&#160;&#160;History&#160;of&#160;the&#160;Document&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Please note&#160;<br/></b>We&#160;have configured&#160;the&#160;programs&#160;in&#160;accordance&#160;with your&#160;specifications&#160;in the&#160;<br/>
+&#160;<br/>
+questionnaire.&#160;Whereas&#160;the programs&#160;do&#160;support&#160;other&#160;configurations&#160;than&#160;the&#160;one&#160;<br/>specified in your&#160;questionnaire,&#160;Vector’s&#160;release&#160;of&#160;the programs&#160;delivered to&#160;your&#160;<br/>company&#160;is&#160;expressly&#160;restricted&#160;to&#160;the configuration you have specified in&#160;the&#160;<br/>questionnaire.&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+2&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-3_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#2"><b>1</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#2"><b>Document&#160;Information&#160;.................................................................................................&#160;2</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#2">1.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#2">History&#160;...............................................................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#5"><b>2</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#5"><b>Introduction...................................................................................................................&#160;5</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#6"><b>3</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#6"><b>Attribute Definitions&#160;for&#160;GMLAN&#160;V3.0 Databases&#160;.......................................................&#160;6</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#6">3.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#6">Network&#160;Attributes&#160;..............................................................................................&#160;6&#160;<br/></a><a href="TechnicalReference_Database_Attributes_GMs.html#7">3.1.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Network&#160;Attributes&#160;for&#160;Node Communication&#160;Active Message&#160;............&#160;7&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">3.1.2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Network&#160;Attributes&#160;for&#160;Virtual&#160;Networks&#160;..............................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">3.1.3&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">Network&#160;Attributes&#160;for&#160;Bit&#160;Timing&#160;Register&#160;setup&#160;.................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">3.2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">Node Attributes&#160;..................................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#9">3.3&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#9">Message&#160;Attributes&#160;............................................................................................&#160;9&#160;<br/></a><a href="TechnicalReference_Database_Attributes_GMs.html#10">3.3.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#10">Attribute Definitions&#160;for&#160;Diagnostics&#160;..................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">3.4&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">Signal&#160;Attributes&#160;...............................................................................................&#160;11&#160;<br/>3.4.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">VN-Assignment&#160;of&#160;Signals................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">3.4.2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">Signal&#160;Transmit&#160;Model&#160;Attributes&#160;......................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#12">3.4.3&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#12">Signal&#160;Supervision Attributes&#160;............................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#13">3.4.4&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#13">Signal&#160;Attributes&#160;...............................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14"><b>4</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14"><b>Attribute Settings&#160;in&#160;Terms of&#160;GM&#160;Concepts&#160;............................................................&#160;14</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14">4.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14">Signal&#160;Transmit&#160;Model&#160;.....................................................................................&#160;14&#160;<br/>4.1.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14">Message Attributes&#160;..........................................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#15">4.1.2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#15">Signal&#160;Attributes&#160;...............................................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">4.2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">Signal&#160;Supervision&#160;...........................................................................................&#160;16&#160;<br/>4.2.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">Signal&#160;Attributes&#160;...............................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#17"><b>5</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#17"><b>Database&#160;Attributes&#160;for&#160;CANoe Models&#160;....................................................................&#160;17</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#18"><b>6</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#18"><b>Database&#160;Attributes not&#160;evaluated&#160;by&#160;GENy&#160;.............................................................&#160;18</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#19">6.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#19">Signal&#160;Transmit&#160;Model&#160;Attributes&#160;......................................................................&#160;19&#160;<br/></a><a href="TechnicalReference_Database_Attributes_GMs.html#20">6.1.1&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#20">Node Mapped Rx-Signal&#160;Default&#160;Value&#160;Attributes&#160;............................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#21"><b>7</b>&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#21"><b>Contact&#160;........................................................................................................................&#160;21</b>&#160;</a><br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+3&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-4_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>Tables&#160;</b><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#2">Table&#160;&#160;1-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#2">History&#160;of&#160;the Document&#160;.............................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Table&#160;&#160;3-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Network&#160;Attributes&#160;......................................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Table&#160;&#160;3-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Network&#160;Attributes&#160;for&#160;Node Communication&#160;Active Message&#160;.....................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Table&#160;&#160;3-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#7">Network&#160;Attributes&#160;for&#160;Virtual&#160;Networks&#160;.......................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">Table&#160;&#160;3-4&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">Network&#160;Attributes&#160;for&#160;Bit&#160;Timing&#160;Register&#160;setup&#160;.........................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">Table&#160;&#160;3-6&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#8">Node Attributes&#160;...........................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#9">Table&#160;&#160;3-7&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#9">Message Attributes&#160;.....................................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#10">Table&#160;&#160;3-8&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#10">Attribute Definitions&#160;for&#160;Diagnostics&#160;..........................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">Table&#160;&#160;3-9&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#11">VN-Assignment&#160;of&#160;Signals&#160;........................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#12">Table&#160;&#160;3-10&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#12">Signal&#160;Supervision Attributes&#160;....................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#13">Table&#160;&#160;3-11&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#13">Signal&#160;Attributes&#160;........................................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14">Table&#160;&#160;4-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#14">Message&#160;Attributes&#160;of&#160;Transmit&#160;Model&#160;......................................................&#160;14&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#15">Table&#160;&#160;4-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#15">Signal&#160;Attributes&#160;of&#160;Transmit&#160;Model&#160;...........................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">Table&#160;&#160;4-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">Signal&#160;Attributes&#160;for&#160;Supervision&#160;...............................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">Table&#160;&#160;4-4&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#16">Signal&#160;Attributes&#160;for&#160;Failsoft&#160;Mechanism&#160;...................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#17">Table&#160;&#160;5-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#17">Database&#160;Attributes&#160;for&#160;CANoe Models&#160;.....................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#19">Table&#160;&#160;6-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#19">Network&#160;attributes&#160;not&#160;evaluated by&#160;GENy&#160;...............................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#19">Table&#160;&#160;6-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#19">Signal&#160;Transmit&#160;Model&#160;attributes&#160;not&#160;evaluated by&#160;GENy&#160;.........................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#20">Table&#160;&#160;6-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_Database_Attributes_GMs.html#20">Rx-Signal&#160;Default&#160;attributes&#160;not&#160;evaluated by&#160;GENy&#160;.................................&#160;20&#160;</a><br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+4&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-5_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-5_2.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>2&#160;&#160;Introduction&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;database&#160;attributes&#160;that&#160;are used&#160;by&#160;the configuration&#160;and&#160;<br/>generation&#160;tool&#160;GENy&#160;for&#160;the configuration&#160;of&#160;the&#160;GMLAN&#160;Handler.&#160;In&#160;chapter<a href="TechnicalReference_Database_Attributes_GMs.html#6">&#160;3&#160;</a>all&#160;possible&#160;<br/>attributes&#160;are listed&#160;along&#160;with a&#160;description&#160;of&#160;how&#160;the&#160;attributes&#160;should&#160;be&#160;set&#160;for&#160;use&#160;with&#160;<br/>GMLAN.&#160;<br/>
+A&#160;list&#160;of&#160;database&#160;base attributes&#160;that&#160;can&#160;be&#160;found in&#160;the GM&#160;databases,&#160;which are&#160;not&#160;<br/>used by&#160;GENy,&#160;can be&#160;found in chapter<a href="TechnicalReference_Database_Attributes_GMs.html#18">&#160;6.</a>&#160;Please&#160;note that&#160;this&#160;is&#160;not&#160;a complete list&#160;of&#160;all&#160;<br/>available database&#160;attributes.&#160;<br/>
+&#160;<br/>&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>This&#160;document&#160;is&#160;valid for&#160;GMLAN&#160;3.1 and&#160;Nm_Gmlan_Gm&#160;version 4.02.00&#160;and higher.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+5&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-6_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3&#160;&#160;Attribute&#160;Definitions&#160;for&#160;GMLAN&#160;3.1&#160;Databases&#160;</b><br/>
+<b>3.1&#160;</b><br/>
+<b>Network&#160;Attributes&#160;</b><br/>
+On the network&#160;level&#160;the&#160;following&#160;attributes&#160;are&#160;evaluated&#160;by&#160;GENy:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Manufacturer&#160;<br/>
+String&#160;<br/>
+This&#160;is&#160;a&#160;fixed value and&#160;must&#160;be&#160;set&#160;to&#160;“<b>GM</b>”&#160;<br/>
+Default:&#160;“<b>GM</b>”&#160;<br/>
+NmType&#160;<br/>
+String&#160;<br/>
+Must&#160;be set&#160;to&#160;“<b>GMLAN</b>”&#160;to&#160;define the GMLAN&#160;<br/>network&#160;management.&#160;<br/>
+Default:&#160;<br/>
+“<b>GMLAN</b>”&#160;<br/>
+NmBaseAddress&#160;<br/>
+Hexadecimal&#160;&#160;Defines&#160;the&#160;base&#160;address&#160;for&#160;the VNMF.&#160;This&#160;<br/>
+value is&#160;usually&#160;set&#160;to 0x620 to&#160;declare&#160;a&#160;range of&#160;<br/>0x620-0x63F in the CAN-identifier&#160;range&#160;for&#160;the&#160;<br/>VNMF.&#160;<br/>
+NmMessageCount&#160;<br/>
+Integer&#160;<br/>
+This&#160;attribute&#160;defines&#160;the&#160;maximum&#160;number&#160;of&#160;<br/>nodes&#160;on&#160;the network.&#160;This&#160;attribute&#160;is&#160;used&#160;in&#160;<br/>combination with NmBaseAddress&#160;and&#160;spans&#160;a&#160;<br/>range&#160;of&#160;CAN-identifier&#160;within the 11-bit&#160;range for&#160;<br/>the VNMF.&#160;The&#160;value must&#160;be&#160;given as&#160;2N&#160;(e.g.&#160;<br/>16 or&#160;32).&#160;<br/>
+NetworkType&#160;<br/>
+String&#160;<br/>
+Defines&#160;the&#160;type of&#160;the CAN-network.&#160;The&#160;<br/>following&#160;Network&#160;Types&#160;are known:&#160;<br/>Possible values:&#160;&#160;&#160;<br/>“Powertrain”,&#160;“Bodybus”,&#160;“Infotainment”&#160;<br/>
+GENy&#160;uses&#160;this&#160;attribute&#160;in order&#160;to&#160;configure&#160;the&#160;<br/>baud rate.&#160;<br/>
+VersionNumber&#160;<br/>
+BCD-coded&#160;<br/>
+This&#160;attribute&#160;can be&#160;used&#160;for&#160;versioning&#160;<br/>
+Integer&#160;<br/>
+purposes.&#160;The value shall&#160;be a BCD-coded&#160;<br/>format.&#160;Thus,&#160;the number&#160;100&#160;is&#160;treated&#160;as&#160;<br/>Version 1.00,&#160;or&#160;the&#160;value 245 is&#160;handled&#160;as&#160;<br/>V2.45.&#160;This&#160;attribute&#160;definition&#160;is&#160;stored&#160;in&#160;ROM&#160;in&#160;<br/>two&#160;8-bit&#160;constant&#160;values&#160;that&#160;can&#160;be accessed&#160;<br/>globally.&#160;Mainly&#160;used to&#160;retrieve the DB-version&#160;<br/>number&#160;by&#160;diagnostics.&#160;<br/>
+The&#160;names&#160;of&#160;the global&#160;variables&#160;are:&#160;<br/>
+&#160;&#160;<i>kDataDictMainVersion</i>,&#160;&#160;<br/>
+&#160;&#160;<i>kDataDictSubVersion</i>.&#160;<br/>
+BusOffRecoveryTime&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;node&#160;recovery&#160;time&#160;after&#160;a&#160;BusOff&#160;<br/>event.&#160;<br/>
+BusWakeUpDelay&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;time between a High-Level&#160;Voltage&#160;<br/>Wakeup&#160;(HLVW)&#160;and&#160;the&#160;activation&#160;of&#160;Initially-<br/>Active&#160;VNs.&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+6&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-7_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+This&#160;parameter&#160;is&#160;also used as&#160;a&#160;delay&#160;time&#160;<br/>between&#160;the Activation of&#160;shared-local&#160;input&#160;VNs&#160;<br/>and the&#160;actual&#160;activation&#160;inside the ECU.&#160;<br/>
+Table&#160;3-1&#160;&#160;&#160;Network&#160;Attributes&#160;<br/>
+<b>3.1.1&#160;</b><br/>
+<b>Network&#160;Attributes for&#160;Node Communication&#160;Active Message&#160;</b><br/>
+On the network&#160;level&#160;the&#160;following&#160;attributes&#160;are&#160;defined&#160;for&#160;the Node&#160;Communication&#160;<br/>Active (NCA)&#160;Message:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+NodeStatusMsgID&#160;<br/>
+Hexadecimal&#160;&#160;Declares&#160;the&#160;CAN-identifier&#160;for&#160;the&#160;Node-<br/>
+Communication-Active&#160;(NCA)&#160;message.&#160;This&#160;is&#160;a&#160;<br/>message&#160;transmitted&#160;by&#160;a node when using&#160;<br/>Parameter-IDs&#160;on&#160;the network.&#160;The node&#160;<br/>transmits&#160;the message with&#160;a&#160;pre-defined&#160;cycle&#160;<br/>time,&#160;whenever&#160;at&#160;least&#160;one Virtual&#160;Network&#160;gets&#160;<br/>active.&#160;&#160;<br/>
+Note that&#160;the&#160;last&#160;8&#160;bits&#160;of&#160;this&#160;parameter&#160;must&#160;be&#160;<br/>0.&#160;<br/>
+See also:&#160;NodeStatusMsgCycleTime&#160;&#160;and&#160;<br/>NodeStatusMsgTimeoutTime,&#160;&#160;<br/>
+(Default:&#160;0x13FFFE00)&#160;<br/>
+NodeStatusMessageCycleTime&#160;&#160;Integer&#160;<br/>
+Defines&#160;the&#160;periodic&#160;rate&#160;for&#160;the&#160;NCA&#160;message.&#160;<br/>
+Default:&#160;1200&#160;<br/>Unit:&#160;ms&#160;<br/>
+NodeStatusMsgTimeoutTime&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;minimum&#160;time a node&#160;must&#160;receive at&#160;<br/>least&#160;one message&#160;from&#160;a&#160;node for&#160;a&#160;specific&#160;<br/>source address.&#160;If&#160;at&#160;least&#160;one&#160;virtual&#160;network&#160;is&#160;<br/>active,&#160;but&#160;the&#160;node&#160;receives&#160;no messages&#160;<br/>(including&#160;NCAs)&#160;within&#160;this&#160;time;&#160;all NCA-<br/>supervised messages&#160;and signals&#160;are&#160;handled by&#160;<br/>supervision failure.&#160;<br/>
+Default:&#160;3000&#160;<br/>Unit:&#160;ms&#160;<br/>
+Table&#160;3-2&#160;&#160;&#160;Network&#160;Attributes&#160;for&#160;Node Communication&#160;Active Message&#160;<br/>
+<b>3.1.2&#160;</b><br/>
+<b>Network&#160;Attributes for&#160;Virtual&#160;Networks&#160;</b><br/>
+On the network&#160;level&#160;the&#160;following&#160;attributes&#160;are&#160;defined&#160;for&#160;the Virtual&#160;Networks:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+VN_&lt;&lt;vn-name&gt;&gt;&#160;<br/>
+Integer&#160;<br/>
+Declares&#160;the&#160;Virtual&#160;Network&#160;with the&#160;name&#160;&lt;&lt;vn-<br/>
+Range:&#160;<br/>
+name&gt;&gt;&#160;(placeholder-name).&#160;The&#160;integer&#160;value&#160;<br/>
+0..55&#160;<br/>
+must&#160;be a&#160;contiguous&#160;and zero based&#160;number.&#160;<br/>
+VNInitAct&lt;&lt;vn-name&gt;&gt;&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;whether&#160;a&#160;Virtual&#160;Network&#160;is&#160;declared as&#160;<br/>
+No&#160;<br/>
+‘Initially&#160;Active’.&#160;<br/>
+Yes&#160;<br/>
+Default:&#160;No&#160;<br/>
+Table&#160;3-3&#160;&#160;&#160;Network&#160;Attributes&#160;for&#160;Virtual&#160;Networks&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+7&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-8_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3.1.3&#160;</b><br/>
+<b>Network&#160;Attributes&#160;for&#160;Bit&#160;Timing Register&#160;setup&#160;</b><br/>
+On the network&#160;level&#160;the&#160;following&#160;attributes&#160;are&#160;defined&#160;for&#160;Bit&#160;Timing&#160;Register (BTR)&#160;<br/>setup.&#160;All&#160;five database attributes&#160;have to&#160;be&#160;defined in conjunction&#160;for&#160;GENy.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Baudrate&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;baud&#160;rate&#160;for&#160;the&#160;respective network.&#160;<br/>
+SamplePointMin&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;minimum&#160;sample point&#160;in [%]&#160;for&#160;the&#160;respective&#160;<br/>network.&#160;<br/>
+SamplePointMax&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;maximum&#160;sample point&#160;in [%]&#160;for&#160;the&#160;respective&#160;<br/>network.&#160;<br/>
+SyncJumpWidthMin&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;minimum&#160;synchronous&#160;jump width&#160;for&#160;the&#160;respective&#160;<br/>network.&#160;<br/>
+SyncJumpWidthMax&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;maximum&#160;synchronous&#160;jump width&#160;for&#160;the&#160;<br/>respective network.&#160;<br/>
+Table&#160;3-4&#160;&#160;&#160;Network&#160;Attributes&#160;for&#160;Bit&#160;Timing&#160;Register&#160;setup&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Node&#160;Attributes&#160;</b><br/>
+On node&#160;level&#160;the&#160;following&#160;attributes&#160;are&#160;evaluated by&#160;GENy:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+ILUsed&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;whether&#160;the Interaction&#160;Layer&#160;of&#160;the&#160;<br/>
+No&#160;<br/>
+GMLAN-Handler&#160;shall&#160;be used or&#160;not.&#160;<br/>
+Yes&#160;<br/>
+If&#160;the&#160;attribute&#160;is&#160;not&#160;set,&#160;the IL-Option&#160;page&#160;will&#160;<br/>not&#160;appear&#160;in&#160;GENy.&#160;<br/>
+Default:&#160;“Yes”&#160;<br/>
+NmNode&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;whether&#160;the Network&#160;Management&#160;of&#160;the&#160;<br/>
+No&#160;<br/>
+GMLAN-Handler&#160;shall&#160;be used or&#160;not.&#160;<br/>
+Yes&#160;<br/>
+If&#160;the&#160;attribute&#160;is&#160;not&#160;set,&#160;the&#160;GMLAN-Option&#160;page&#160;<br/>will&#160;not&#160;appear&#160;in&#160;GENy.&#160;<br/>
+Default:&#160;“Yes”&#160;<br/>
+VNECU&lt;&lt;vn-name&gt;&gt;&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;the&#160;VN-Type for&#160;a&#160;specific&#160;Node&#160;for&#160;the&#160;<br/>
+None&#160;<br/>
+specific VN&#160;<br/>
+Activator&#160;<br/>Remoted&#160;<br/>Activator_Remoted&#160;<br/>Shared Local&#160;<br/>
+NodeSuprvStabilityTime&#160;&#160;Integer:&#160;<br/>
+This&#160;attribute&#160;defines&#160;a delay&#160;time&#160;in&#160;ms&#160;between&#160;<br/>activation of&#160;a&#160;VN&#160;and&#160;start&#160;of&#160;supervision of&#160;the&#160;<br/>
+0..65535&#160;<br/>
+corresponding signals.&#160;<br/>The&#160;supervision stability&#160;time is&#160;used&#160;to avoid&#160;<br/>'Loss&#160;of&#160;Communication'&#160;DTCs&#160;due&#160;to&#160;transient&#160;<br/>conditions&#160;after&#160;VN&#160;activation.&#160;<br/>
+Default:&#160;“5000”&#160;<br/>
+Table&#160;3-5&#160;&#160;&#160;Node Attributes&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+8&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-9_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3.3&#160;</b><br/>
+<b>Message Attributes&#160;</b><br/>
+On message level&#160;the&#160;following&#160;message attributes&#160;are&#160;evaluated&#160;by&#160;GENy:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenMsgSendType&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;the&#160;send&#160;type of&#160;a message.&#160;It&#160;could&#160;either&#160;<br/>
+spontanX&#160;&#160;be defined as&#160;periodic&#160;or&#160;non-periodic.&#160;<br/>cyclicX&#160;<br/>
+Periodic&#160;includes&#160;both&#160;strict&#160;periodic&#160;and periodic&#160;<br/>with event.&#160;Non-periodic&#160;is&#160;strictly&#160;event-based.&#160;<br/>
+cyclicX&#160;=&#160;periodic&#160;<br/>
+spontanX&#160;=&#160;non-periodic&#160;<br/>
+GenMsgCycleTime&#160;<br/>
+Integer&#160;<br/>
+If&#160;the&#160;message is&#160;defined&#160;as&#160;periodic,&#160;this&#160;attribute&#160;<br/>defines&#160;the&#160;periodic&#160;time.&#160;<br/>
+Unit:&#160;ms&#160;<br/>
+GenMsgDelayTime&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;minimum&#160;update time&#160;of&#160;a message.&#160;<br/>The&#160;value is&#160;given in units&#160;of&#160;ms.&#160;The&#160;minimum&#160;<br/>update&#160;time is&#160;mostly&#160;used&#160;for&#160;mixed send types,&#160;<br/>namely&#160;periodic&#160;and event&#160;send&#160;types.&#160;<br/>
+Unit:&#160;ms&#160;<br/>
+GenMsgStartDelayTime&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;start&#160;time&#160;after&#160;VN&#160;Activation when&#160;<br/>processing&#160;of&#160;message&#160;events&#160;is&#160;started&#160;(i.e.&#160;the&#160;<br/>cyclic&#160;transmission of&#160;the&#160;messages&#160;is&#160;started).&#160;<br/>
+Unit:&#160;ms&#160;<br/>
+GenMsgMandatoryToSupervision&#160;&#160;Enum:&#160;<br/>
+Defines&#160;the&#160;default&#160;setting after&#160;Power-up before&#160;<br/>
+No&#160;<br/>
+the Source&#160;Learning&#160;procedure the functional&#160;<br/>
+Yes&#160;<br/>
+messages&#160;with extended IDs&#160;has&#160;been&#160;started.&#160;The&#160;<br/>source address&#160;of&#160;a&#160;message&#160;is&#160;either&#160;initialized&#160;to&#160;<br/>FF (Yes)&#160;or&#160;FE&#160;(No).&#160;Different&#160;indications&#160;to&#160;the&#160;<br/>application are&#160;given if&#160;a&#160;timeout&#160;occur&#160;for&#160;non-<br/>learned messages.&#160;<br/>
+GenMsgILSupport&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;whether&#160;a&#160;message&#160;shall&#160;be handled by&#160;the&#160;<br/>
+No&#160;<br/>
+Interaction Layer.&#160;<br/>
+Yes&#160;<br/>
+Default:&#160;“Yes”&#160;<br/>
+Prio&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;the&#160;priority&#160;of&#160;the&#160;functional&#160;messages&#160;in&#160;an&#160;<br/>
+Range:&#160;<br/>
+GM&#160;database.&#160;These are&#160;the&#160;first&#160;three bits&#160;of&#160;the&#160;<br/>
+0..7&#160;<br/>
+Extended CAN&#160;ID.&#160;<br/>The&#160;priority&#160;is&#160;added&#160;to&#160;the CAN&#160;Identifier,&#160;which&#160;<br/>can be&#160;found in&#160;the&#160;database,&#160;within&#160;GENy&#160;in order&#160;<br/>to&#160;build&#160;the&#160;Transmit&#160;CAN-identifier&#160;as&#160;defined&#160;for&#160;<br/>GMLAN&#160;with&#160;Extended CAN-Ids.&#160;<br/>
+NmMessage&#160;<br/>
+Enum:&#160;<br/>
+Declares&#160;a&#160;message&#160;as&#160;a Network&#160;Management&#160;<br/>
+No&#160;<br/>
+message.&#160;The attribute&#160;must&#160;be&#160;set&#160;to&#160;‘Yes’&#160;for&#160;all&#160;<br/>
+Yes&#160;<br/>
+Virtual&#160;Network&#160;Management&#160;Frames&#160;(VNMF&#160;<br/>messages).&#160;<br/>
+TpTxIndex&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;application&#160;TP&#160;messages.&#160;<br/>
+Table&#160;3-6&#160;&#160;&#160;Message Attributes&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+9&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-10_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3.3.1&#160;</b><br/>
+<b>Attribute&#160;Definitions&#160;for&#160;Diagnostics&#160;</b><br/>
+The&#160;following&#160;message attributes&#160;need&#160;to be defined to assign CAN-messages&#160;for&#160;the&#160;<br/>Diagnostic&#160;communication:&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+DiagState&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;the&#160;AllNodeMessage&#160;request&#160;message&#160;<br/>
+No&#160;<br/>
+wit&#160;the&#160;CAN-ID&#160;0x101 as&#160;the&#160;functional&#160;<br/>
+Yes&#160;<br/>
+diagnostic&#160;request&#160;message.&#160;<br/>
+This&#160;attribute&#160;causes&#160;the&#160;GENy&#160;to reduce&#160;the&#160;<br/>DLC&#160;check&#160;to a&#160;1-byte&#160;value&#160;in order&#160;to&#160;let&#160;<br/>messages&#160;shorter&#160;than 8&#160;bytes&#160;also&#160;pass&#160;the&#160;<br/>DLC-check.&#160;<br/>
+It&#160;also forces&#160;the&#160;Generation&#160;Tool&#160;to&#160;generate&#160;a&#160;<br/>specific&#160;function call&#160;inside the&#160;GMLAN-handler.&#160;<br/>
+DiagRequest&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;the&#160;physical&#160;request&#160;message&#160;from&#160;the&#160;<br/>
+No&#160;<br/>
+tester&#160;to the&#160;node&#160;for&#160;the&#160;diagnostic&#160;<br/>
+Yes&#160;<br/>
+communication.&#160;Together&#160;with the definition&#160;of&#160;<br/>DiagResponse,&#160;GENy&#160;assigns&#160;a connection&#160;<br/>within the&#160;Transport&#160;Layer.&#160;<br/>
+<b>Note</b>&#160;that&#160;GENy&#160;can only&#160;manage&#160;one&#160;pair&#160;of&#160;<br/>diagnostic&#160;connection.&#160;Thus,&#160;only&#160;one&#160;message&#160;<br/>can be defined&#160;for&#160;DiagRequest&#160;for&#160;one node.&#160;<br/>
+DiagResponse&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;the&#160;physical&#160;response message&#160;from&#160;the&#160;<br/>
+No&#160;<br/>
+node to&#160;the&#160;tester&#160;for&#160;the&#160;diagnostic&#160;<br/>
+Yes&#160;<br/>
+communication.&#160;Together&#160;with the definition&#160;of&#160;<br/>DiagRequest,&#160;GENy&#160;assigns&#160;a connection within&#160;<br/>the Transport&#160;Layer.&#160;&#160;<br/>
+<b>Note</b>&#160;that&#160;GENy&#160;can only&#160;manage&#160;one&#160;pair&#160;of&#160;<br/>connection.&#160;Thus,&#160;only&#160;one message&#160;can&#160;be&#160;<br/>defined&#160;for&#160;DiagRequest&#160;for&#160;one node.&#160;<br/>
+TpApplType&#160;<br/>
+String&#160;<br/>
+Defines&#160;the&#160;UUDT&#160;message&#160;of&#160;a&#160;node.&#160;It&#160;has&#160;to&#160;<br/>be set&#160;to&#160;“DiagUUDTResponse”&#160;for&#160;all&#160;diagnostic&#160;<br/>UUDT&#160;response&#160;messages.&#160;<br/>
+This&#160;attribute&#160;causes&#160;GENy&#160;to generate&#160;separate&#160;<br/>naming independent&#160;macros&#160;used by&#160;CANdesc.&#160;<br/>
+It&#160;will&#160;also generate&#160;tables&#160;that&#160;can potentially&#160;<br/>used by&#160;Multiple Identity&#160;Modules&#160;(MIMs).&#160;<br/>
+Table&#160;3-7&#160;&#160;&#160;Attribute Definitions&#160;for&#160;Diagnostics&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+10&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-11_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3.4&#160;</b><br/>
+<b>Signal&#160;Attributes&#160;</b><br/>
+On Signal&#160;level&#160;there are&#160;four&#160;concepts&#160;that&#160;need&#160;to&#160;be&#160;defined:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Assignments&#160;of&#160;signals&#160;to VNs&#160;<br/>
+<b>&gt;&#160;&#160;</b>Definition&#160;of&#160;signal transmit&#160;models&#160;<br/>
+<b>&gt;&#160;&#160;</b>Definition&#160;of&#160;signal&#160;supervision methods&#160;<br/>
+<b>&gt;&#160;&#160;</b>Define&#160;default&#160;values&#160;for&#160;signal&#160;attributes&#160;(valid-failed,&#160;supervision&#160;failed,&#160;VDA/Mask&#160;<br/>
+signal&#160;failed,&#160;start-up default&#160;value)&#160;<br/>
+<b>3.4.1&#160;</b><br/>
+<b>VN-Assignment&#160;of&#160;Signals&#160;</b><br/>
+VN&#160;assignments&#160;of&#160;&#160;signals&#160;are signal-dependent&#160;and&#160;therefore&#160;&#160;defined at&#160;signal&#160;level.&#160;<br/>Every&#160;signal&#160;can be&#160;assigned to&#160;any&#160;or&#160;all&#160;VNs.&#160;Signal&#160;VN&#160;assignments&#160;are defined&#160;<br/>through&#160;the use of&#160;VN-specific&#160;attributes&#160;one&#160;per&#160;VN&#160;per&#160;signal.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+VNSig&lt;VnName&gt;&#160;<br/>
+Enum:&#160;<br/>
+Declares&#160;if&#160;a signal&#160;is&#160;assigned&#160;to a&#160;VN&#160;or&#160;not&#160;<br/>
+No&#160;<br/>Yes&#160;<br/>
+Table&#160;3-8&#160;&#160;&#160;VN-Assignment&#160;of&#160;Signals&#160;<br/>
+<b>3.4.2&#160;</b><br/>
+<b>Signal&#160;Transmit&#160;Model&#160;Attributes&#160;</b><br/>
+Event-based&#160;signal&#160;transmit&#160;criteria&#160;are&#160;defined&#160;at&#160;the&#160;signal&#160;level.&#160;Periodic&#160;transmit&#160;<br/>criteria&#160;are&#160;defined at&#160;the message level&#160;and do&#160;not&#160;appear&#160;here.&#160;Refer&#160;to chapter<a href="TechnicalReference_Database_Attributes_GMs.html#14">&#160;4.1.1&#160;<br/>“Message&#160;Attributes”</a>.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenSigSendOnInit&#160;<br/>
+Enum:&#160;<br/>
+Defines&#160;whether&#160;a&#160;signal&#160;(and&#160;the&#160;message)&#160;<br/>
+NotInitialized&#160;<br/>
+should be transmitted upon:&#160;<br/>
+Application&#160;<br/>
+<b>&gt;&#160;&#160;</b>Reception or&#160;transmission of&#160;an&#160;I-VNMF that&#160;<br/>
+Handler&#160;<br/>
+initializes&#160;at&#160;least&#160;one VN&#160;that&#160;is&#160;associated&#160;to&#160;<br/>the VN&#160;<br/>
+<b>&gt;&#160;&#160;</b>Start&#160;of&#160;a&#160;Shared&#160;Local&#160;VN,&#160;which the&#160;<br/>
+message&#160;is associated&#160;to&#160;<br/>
+<b>&gt;&#160;&#160;</b>All&#160;Initial&#160;Messages&#160;that&#160;are associated&#160;to any&#160;<br/>
+Initially&#160;Active VN&#160;are transmitted upon&#160;<br/>reception of&#160;a HLVW.&#160;<br/>
+.&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+11&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-12_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-12_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-12_3.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3.4.3&#160;</b><br/>
+<b>Signal&#160;Supervision&#160;Attributes&#160;</b><br/>
+Signal&#160;supervision attributes&#160;are node-dependent&#160;and&#160;therefore&#160;&#160;defined at&#160;the Node-Rx-<br/>Signal&#160;relation&#160;instead&#160;on the signal&#160;itself.&#160;A&#160;signal&#160;can have different&#160;supervision criteria&#160;in&#160;<br/>different&#160;messages&#160;and&#160;different&#160;nodes.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Attribute&#160;&#160;Attribute&#160;Type&#160;&#160;Description&#160;<br/>Class&#160;</b><br/>
+GenSigTimeoutTime&#160;<br/>
+Signal&#160;<br/>
+Integer&#160;<br/>
+The&#160;attribute&#160;defines&#160;the&#160;timeout&#160;time&#160;for&#160;<br/>self-supervision or&#160;supervised-by-presence.&#160;<br/>If&#160;the&#160;corresponding&#160;message&#160;doesn’t&#160;come&#160;<br/>in within this&#160;time,&#160;supervision failure&#160;<br/>indication is&#160;done on&#160;this&#160;message.&#160;<br/>
+GenSigTimeoutMsg&#160;<br/>
+Signal&#160;<br/>
+Hex&#160;<br/>
+This&#160;value defines&#160;the&#160;CAN-identifier&#160;that&#160;is&#160;<br/>used&#160;for&#160;supervision.&#160;For&#160;self-supervised&#160;<br/>messages,&#160;this&#160;is&#160;the&#160;CAN-identifier&#160;of&#160;the&#160;<br/>same message.&#160;This&#160;attribute directs&#160;to&#160;the&#160;<br/>message&#160;used&#160;for&#160;supervision-by-presence.&#160;<br/>
+GenSigSuprvResp&#160;<br/>
+Node-<br/>
+Enum:&#160;<br/>
+Defines&#160;the&#160;strategy&#160;concerning substitution&#160;<br/>
+Mapped&#160;<br/>
+None&#160;<br/>
+and notification in case&#160;the signal&#160;<br/>
+Rx&#160;Signal&#160;&#160;Notify&#160;<br/>
+supervision has&#160;failed.&#160;<br/>
+Substitute&#160;<br/>
+<b>&gt;&#160;&#160;</b>Notify:&#160;<br/>
+NotifySubstitute&#160;&#160;<br/>
+A&#160;timeout&#160;flag is&#160;automatically&#160;configured&#160;<br/>for&#160;the&#160;signal.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Substitute:&#160;<br/>
+The&#160;timeout&#160;default&#160;value defined by&#160;<br/>‘GenSigSuprvRespSubValue’&#160;is&#160;<br/>automatically&#160;configured&#160;for&#160;the&#160;signal.&#160;<br/>
+<b>&gt;&#160;&#160;</b>NotifySubstitute:&#160;<br/>
+Both&#160;a&#160;timeout&#160;flag&#160;and&#160;timeout&#160;default&#160;<br/>value&#160;are&#160;configured&#160;automatically&#160;for&#160;the&#160;<br/>signal.&#160;<br/>
+&#160;<br/>
+GenSigSuprvRespSubValue&#160;&#160;Node-<br/>
+Integer&#160;<br/>
+Timeout&#160;substitution&#160;value for&#160;failsoft&#160;<br/>
+Mapped&#160;<br/>
+mechanism.&#160;It&#160;is&#160;automatically&#160;set&#160;in case&#160;<br/>
+Rx&#160;Signal&#160;<br/>
+‘GenSigSuprvResp’&#160;is&#160;defined&#160;as&#160;<br/>‘Substitute’&#160;or&#160;‘NotifySubstitute’.&#160;<br/>
+Table&#160;3-9&#160;&#160;&#160;Signal&#160;Supervision Attributes&#160;<br/>
+&#160;<br/>
+<b>Info&#160;</b><br/>
+<b>Note</b>:&#160;Validity&#160;signals&#160;are&#160;identified by&#160;the&#160;Capital-V&#160;at&#160;the&#160;end of&#160;its&#160;signal&#160;short&#160;name.&#160;<br/>
+&#160;<br/>
+The&#160;Validity&#160;signal&#160;must&#160;have the same base&#160;name as&#160;the&#160;signal&#160;it&#160;is&#160;assigned&#160;to.&#160;<br/>
+&#160;<br/>
+<b>Example&#160;</b><br/>
+Signal&#160;name:&#160;&#160;&#160;SysPwrMode&#160;<br/>
+&#160;<br/>
+Validity&#160;signal:&#160;&#160;SysPwrModeV&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+12&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-13_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>3.4.4&#160;</b><br/>
+<b>Signal&#160;Attributes&#160;</b><br/>
+The following&#160;signal&#160;attribute&#160;&#160;is&#160;&#160;used in order&#160;to&#160;define the&#160;default/initial&#160;behavior&#160;of&#160;<br/>signals.&#160;These&#160;values&#160;are&#160;defined&#160;on&#160;signal&#160;level&#160;and&#160;are the&#160;same&#160;&#160;for&#160;all&#160;nodes&#160;that&#160;<br/>transmit&#160;the signal.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenSigStartValue&#160;<br/>
+Integer&#160;<br/>
+Default&#160;value&#160;for&#160;a&#160;signal&#160;used by&#160;the&#160;GMLAN-<br/>Handler&#160;to&#160;initialize the&#160;transmit&#160;value during&#160;<br/>Power-Up&#160;initialization.&#160;<br/>
+Table&#160;3-10&#160;&#160;&#160;Signal&#160;Attributes&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+13&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-14_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>4&#160;&#160;Attribute&#160;Settings&#160;in&#160;Terms&#160;of&#160;GM&#160;Concepts&#160;</b><br/>
+Understanding&#160;the&#160;attributes&#160;and&#160;how&#160;they&#160;affect&#160;GENy&#160;&#160;and&#160;the&#160;configuration of&#160;GMLAN&#160;<br/>can lead&#160;to&#160;a&#160;simple&#160;mapping&#160;of&#160;attribute&#160;values&#160;to&#160;GM-specific&#160;concepts&#160;on&#160;transmit&#160;<br/>models&#160;and signal&#160;supervision.&#160;&#160;<br/>Below&#160;is&#160;an&#160;outline&#160;of&#160;how&#160;GM&#160;transmit&#160;model&#160;and signal&#160;supervision concepts&#160;can&#160;drive&#160;<br/>the settings&#160;for&#160;the&#160;attributes&#160;involved.&#160;<br/>
+<b>4.1&#160;</b><br/>
+<b>Signal&#160;Transmit&#160;Model&#160;</b><br/>
+<b>4.1.1&#160;</b><br/>
+<b>Message&#160;Attributes&#160;</b><br/>
+As&#160;signals&#160;can&#160;only&#160;be transmitted&#160;as&#160;part&#160;of&#160;a&#160;message,&#160;all&#160;signals&#160;in a message&#160;will&#160;<br/>share the same transmission behavior.&#160;The&#160;message transmit&#160;model&#160;must&#160;therefore be set&#160;<br/>correctly&#160;to ensure&#160;all&#160;signals&#160;contained&#160;in&#160;the&#160;message&#160;can&#160;be&#160;transmitted&#160;according&#160;to&#160;<br/>their&#160;signal-specific&#160;requirements.&#160;Signal&#160;attributes&#160;define&#160;&#160;event-based&#160;transmit&#160;criteria,&#160;<br/>but&#160;not&#160;periodic&#160;transmit&#160;criteria.&#160;Periodic&#160;transmit&#160;criteria&#160;must&#160;be&#160;defined at&#160;the&#160;message&#160;<br/>level.&#160;Any&#160;message containing&#160;a signal&#160;that&#160;must&#160;be&#160;transmitted&#160;periodically,&#160;regardless&#160;of&#160;<br/>value,&#160;must&#160;be marked&#160;as&#160;periodic.&#160;Signal&#160;attributes&#160;do not&#160;contain this&#160;information.&#160;Signal&#160;<br/>transmission&#160;requirements&#160;must&#160;be&#160;considered by&#160;the serial&#160;data&#160;engineer&#160;and&#160;used&#160;to&#160;<br/>determine&#160;if&#160;a&#160;message must&#160;be&#160;transmitted&#160;periodically.&#160;Periodic&#160;messages&#160;allow&#160;for&#160;<br/>event-based transmission in&#160;addition to the regularly&#160;scheduled cyclic&#160;transmissions.&#160;<br/>
+For&#160;periodic&#160;messages,&#160;a cycle time&#160;must&#160;be&#160;defined.&#160;The cycle time must&#160;be equal&#160;to the&#160;<br/>shortest&#160;transmit&#160;cycle time of&#160;all&#160;signals&#160;contained in the&#160;message.&#160;For&#160;signals&#160;with both&#160;<br/>slow&#160;and&#160;fast&#160;cycle&#160;times,&#160;only&#160;the slow&#160;cycle&#160;time should be considered.&#160;&#160;<br/>
+For&#160;periodic&#160;messages,&#160;a&#160;minimum&#160;update (or&#160;delay)&#160;time&#160;must&#160;be&#160;defined.&#160;The&#160;minimum&#160;<br/>update time is&#160;the least&#160;amount&#160;of&#160;time that&#160;must&#160;elapse between&#160;&#160;transmissions of&#160;the&#160;<br/>message.&#160;The&#160;minimum&#160;update&#160;time&#160;must&#160;be equal&#160;to the longest&#160;minimum&#160;update time&#160;of&#160;<br/>all&#160;signals&#160;contained in&#160;the&#160;message.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Value for&#160;Transmit&#160;Model&#160;</b><br/>
+<b>Strictly&#160;Event&#160;Driven&#160;&#160;Periodic&#160;</b><br/>
+<b>Periodic&#160;w/Event&#160;</b><br/>
+GenMsgSendType&#160;<br/>
+spontanX&#160;<br/>
+cyclicX&#160;<br/>
+cyclicX&#160;<br/>
+GenMsgCycleTime&#160;<br/>
+N/A&#160;<br/>
+cycle&#160;time&#160;in&#160;ms&#160;<br/>
+cycle&#160;time&#160;in&#160;ms&#160;<br/>
+GenMsgDelayTime&#160;<br/>
+minimum&#160;delay&#160;time&#160;in&#160;&#160;N/A&#160;<br/>
+minimum&#160;delay&#160;time&#160;in&#160;ms&#160;<br/>
+ms&#160;<br/>
+Table&#160;4-1&#160;&#160;&#160;Message&#160;Attributes&#160;of&#160;Transmit&#160;Model&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+14&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-15_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>4.1.2&#160;</b><br/>
+<b>Signal&#160;Attributes&#160;</b><br/>
+Event-based&#160;transmit&#160;criteria are defined&#160;at&#160;the signal&#160;&#160;level.&#160;Every&#160;signal&#160;has&#160;its&#160;own&#160;<br/>event-based transmit&#160;criteria.&#160;The&#160;signal&#160;type&#160;determines&#160;the&#160;valid and&#160;possible&#160;event-<br/>based transmit&#160;criteria.&#160;Signal&#160;type is&#160;defined&#160;by&#160;the SignalType&#160;attribute.&#160;<br/>
+Attributes&#160;displayed in&#160;<i>italic</i>&#160;font&#160;aren’t&#160;used any&#160;more.&#160;They&#160;are&#160;listed for&#160;documentation&#160;<br/>purpose only.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Value for&#160;Transmit&#160;Model&#160;(by&#160;Signal&#160;Type)&#160;</b><br/>
+<b>SignalType&#160;=&#160;ENM&#160;</b><br/>
+&#160;<br/>
+Any&#160;<br/>
+None&#160;<br/>
+GenSigSendType&#160;<br/>
+OnAnyChange&#160;<br/>
+NoSigSendType&#160;<br/>
+<b>SignalType&#160;=&#160;BLN&#160;</b><br/>
+&#160;<br/>
+Send on&#160;0-1&#160;<br/>
+Send on&#160;1-0&#160;<br/>
+Send&#160;on&#160;Any&#160;Change&#160;<br/>
+None&#160;<br/>
+GenSigSendType&#160;<br/>
+OnChangeIfActive&#160;<br/>
+OnChangeIfActive&#160;<br/>
+OnAnyChange&#160;<br/>
+NoSigSendType&#160;<br/>
+GenSigInactiveValue&#160;<br/>
+0&#160;<br/>
+1&#160;<br/>
+N/A&#160;<br/>
+N/A&#160;<br/>
+<b>SignalType&#160;=&#160;UNM&#160;</b><br/>
+&#160;<br/>
+Send on&#160;<br/>
+On Delta&#160;&amp;&#160;<br/>
+On Delta &amp;&#160;<br/>
+On Delta,&#160;Top &amp;&#160;<br/>
+None&#160;<br/>
+Delta&#160;<br/>
+Top&#160;<br/>
+Bottom&#160;<br/>
+Bottom&#160;<br/>
+GenSigSendType&#160;<br/>
+OnDelta&#160;<br/>
+OnDelta&#160;<br/>
+OnDelta&#160;<br/>
+OnDelta&#160;<br/>
+NoSigSend&#160;<br/>
+Type&#160;<br/>
+GenSigDeltaValue&#160;<br/>
+delta&#160;<br/>
+delta value&#160;<br/>
+delta value&#160;<br/>
+delta value&#160;<br/>
+N/A&#160;<br/>
+value&#160;<br/>
+GenSigSendTopBottom&#160;<br/>
+None&#160;<br/>
+SendOnTop&#160;<br/>
+SendOnBottom&#160;<br/>
+SendOnTopBotto<br/>
+N/A&#160;<br/>
+m&#160;<br/>
+Table&#160;4-2&#160;&#160;&#160;Signal&#160;Attributes&#160;of&#160;Transmit&#160;Model&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+15&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-16_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Signal&#160;Supervision&#160;</b><br/>
+<b>4.2.1&#160;</b><br/>
+<b>Signal&#160;Attributes&#160;</b><br/>
+Signal&#160;supervision is&#160;defined&#160;at&#160;the signal&#160;level.&#160; Every&#160;signal&#160;has&#160;its&#160;own supervision&#160;<br/>criteria.&#160;There&#160;are two concepts&#160;that&#160;define&#160;signal&#160;supervision criteria.&#160;One concept&#160;is&#160;the&#160;<br/>signal&#160;supervision method&#160;and&#160;the other&#160;is&#160;the response&#160;triggered by&#160;a supervision failure.&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Value for&#160;Supervision&#160;Method&#160;</b><br/>
+<b>Unsuper</b><br/>
+<b>Source&#160;</b><br/>
+<b>Self&#160;</b><br/>
+<b>Supervised&#160;By&#160;</b><br/>
+<b>Supervised&#160;</b><br/>
+<b>vised&#160;</b><br/>
+<b>Learning&#160;</b><br/>
+<b>Supervised&#160;</b><br/>
+<b>Presence&#160;</b><br/>
+<b>By&#160;Value&#160;</b><br/>
+<b>(direct)&#160;</b><br/>
+<b>(indirect)&#160;</b><br/>
+NodeStatusMsgTime<br/>
+0&#160;<br/>
+&gt; 0&#160;<br/>
+N/A&#160;<br/>
+N/A&#160;<br/>
+N/A&#160;<br/>
+outTime&#160;<br/>
+GenSigTimeoutTime&#160;<br/>
+0&#160;<br/>
+0&#160;<br/>
+time&#160;in&#160;ms&#160;<br/>
+time&#160;in ms&#160;<br/>
+N/A&#160;<br/>
+GenSigTimeoutMsg&#160;<br/>
+0&#160;<br/>
+0&#160;<br/>
+hex&#160;CAN-ID&#160;of&#160;<br/>
+hex&#160;CAN-ID&#160;of&#160;<br/>
+N/A&#160;<br/>
+message &#160;<br/>
+message that&#160;<br/>
+containing this&#160;&#160;shall&#160;be used&#160;for&#160;<br/>
+signal&#160;<br/>
+supervision&#160;<br/>
+Table&#160;4-3&#160;&#160;&#160;Signal&#160;Attributes&#160;for&#160;Supervision&#160;<br/>
+<b>Name&#160;</b><br/>
+<b>Value for&#160;Supervision Failure&#160;Response Type&#160;</b><br/>
+<b>None&#160;</b><br/>
+<b>Notify&#160;</b><br/>
+<b>Substitute&#160;</b><br/>
+<b>Notify&#160;&amp;&#160;Substitute&#160;</b><br/>
+<b>Application&#160;</b><br/>
+<b>Value&#160;</b><br/>
+GenSigSuprvResp&#160;<br/>
+None&#160;<br/>
+Notify&#160;<br/>
+Substitute&#160;<br/>
+NotifySubstitute&#160;<br/>
+GenSigSuprvRespSubValue&#160;<br/>
+N/A&#160;<br/>
+N/A&#160;<br/>
+raw&#160;bus&#160;value&#160;<br/>
+raw&#160;bus&#160;value&#160;<br/>
+Table&#160;4-4&#160;&#160;&#160;Signal&#160;Attributes&#160;for&#160;Failsoft&#160;Mechanism&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+16&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-17_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>5&#160;&#160;Database&#160;Attributes&#160;for&#160;CANoe&#160;Models&#160;</b><br/>
+The&#160;following&#160;database attributes&#160;are&#160;used&#160;for&#160;the configuration&#160;of&#160;CANoe&#160;models.&#160;They&#160;<br/>are not&#160;used&#160;by&#160;the configuration tools&#160;for&#160;the&#160;GMLAN&#160;Handler:&#160;<br/>&#160;<br/>
+<b>Attribute Name&#160;</b><br/>
+<b>Attribute&#160;</b><br/>
+<b>Attribute&#160;&#160;Description&#160;</b><br/>
+<b>Class&#160;</b><br/>
+<b>Type&#160;</b><br/>
+NodeLayerModules<a href="TechnicalReference_Database_Attributes_GMs.html#17">1</a>&#160;&#160;Node&#160;<br/>
+String&#160;<br/>
+This&#160;attribute&#160;is&#160;used&#160;by&#160;CANoe to load&#160;<br/>NodeLayer&#160;DLLs.&#160;These&#160;DLLs&#160;are&#160;used&#160;to&#160;<br/>provide an advanced interface&#160;to&#160;CAPL&#160;and&#160;<br/>extended&#160;functionality&#160;of&#160;a specific&#160;node.&#160;<br/>
+Typically,&#160;the value “GMLAN02.DLL”&#160;is&#160;<br/>provided.&#160;This&#160;DLL&#160;extends&#160;CANoe to&#160;provide&#160;<br/>GMLAN-specific&#160;functionalities.&#160;Another&#160;<br/>attribute value is&#160;“osek_tp.dll”.&#160;This&#160;DLL&#160;<br/>provides&#160;&#160;<br/>
+Table&#160;5-1&#160;&#160;&#160;Database&#160;Attributes&#160;for&#160;CANoe Models&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160;&#160;<br/>
+1&#160;This&#160;attribute&#160;is&#160;not&#160;used&#160;for&#160;the configuration&#160;of&#160;the&#160;GMLAN-Handler.&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+17&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-18_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>6&#160;&#160;Database&#160;Attributes&#160;not&#160;evaluated&#160;by&#160;GENy&#160;</b><br/>
+This&#160;chapter&#160;contains&#160;database&#160;attributes,&#160;which are&#160;defined&#160;in GM’s&#160;network&#160;databases&#160;<br/>but&#160;are&#160;not&#160;evaluated&#160;by&#160;the configuration&#160;and&#160;generation&#160;tool&#160;GENy&#160;for&#160;configuration&#160;of&#160;<br/>the&#160;GMLAN-Handler.&#160;<br/>&#160;<br/>
+<b>Attribute Name&#160;</b><br/>
+<b>Attribute&#160;</b><br/>
+<b>Attribute Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+<b>Class&#160;</b><br/>
+UseGMParameterIDs&#160;<br/>
+Network&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;if&#160;the network&#160;uses&#160;the&#160;<br/>GMLAN&#160;parameter&#160;ID’s&#160;in the&#160;<br/>29-bit&#160;architecture.&#160;<br/>
+1:&#160;Network&#160;uses&#160;Parameter-Ids&#160;<br/>(29-Bit)&#160;<br/>
+0:&#160;Network&#160;uses&#160;no parameter-<br/>ID’s&#160;(11-Bit)&#160;<br/>
+SourceID&#160;<br/>
+Node&#160;<br/>
+Hexadecimal&#160;<br/>
+The&#160;Source&#160;address&#160;of&#160;a&#160;node is&#160;<br/>given as&#160;an&#160;attribute&#160;inside the&#160;<br/>database.&#160;There&#160;are&#160;two&#160;<br/>possibilities&#160;to use&#160;this&#160;attribute:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Instead&#160;of&#160;initialization of&#160;the&#160;<br/>
+Source Address&#160;by&#160;the&#160;<br/>application,&#160;the&#160;handler&#160;could&#160;<br/>do this&#160;in&#160;the&#160;function&#160;IlInit().&#160;<br/>This&#160;would&#160;imply,&#160;that&#160;the&#160;<br/>value is&#160;always&#160;fixed (MIM-<br/>modules&#160;will&#160;be handled&#160;<br/>correctly depending&#160;on&#160;the&#160;<br/>pre-selection&#160;of&#160;the&#160;<br/>application,&#160;which instant&#160;<br/>should run).&#160;<br/>
+<b>&gt;&#160;&#160;</b>The&#160;transmit&#160;messages&#160;<br/>
+inside the handler&#160;will&#160;already&#160;<br/>be pre-set&#160;with&#160;the Source&#160;<br/>Address&#160;given in this&#160;<br/>attribute.&#160;<br/>This&#160;would avoid the runtime&#160;<br/>effort&#160;of&#160;the driver&#160;to&#160;add&#160;the&#160;<br/>source address&#160;every&#160;time a&#160;<br/>message must&#160;be&#160;<br/>transmitted.&#160;The&#160;dynamic&#160;<br/>setting&#160;will&#160;only&#160;be required&#160;<br/>for&#160;MIM’s.&#160;<br/>
+GenSigVBitResp&#160;<br/>
+Node-<br/>
+Enum:&#160;<br/>
+Identifies&#160;that&#160;a&#160;validity&#160;signal is&#160;<br/>
+Mapped&#160;<br/>
+No&#160;<br/>
+used&#160;for&#160;signal&#160;integrity.&#160;<br/>
+Rx&#160;Signal&#160;<br/>
+Yes&#160;<br/>
+GenSigVDAFailResp&#160;<br/>
+Node-<br/>
+Enum:&#160;<br/>
+Identifies&#160;that&#160;a&#160;VDA&#160;signal&#160;is&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+18&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-19_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+Mapped&#160;<br/>
+No&#160;<br/>
+used&#160;for&#160;signal&#160;integrity.&#160;<br/>
+Rx&#160;Signal&#160;<br/>
+Yes&#160;<br/>
+Table&#160;6-1&#160;&#160;&#160;Network&#160;attributes&#160;not&#160;evaluated&#160;by&#160;GENy&#160;<br/>
+&#160;<br/>
+<b>6.1&#160;</b><br/>
+<b>Signal&#160;Transmit&#160;Model&#160;Attributes&#160;</b><br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+SignalType&#160;<br/>
+String&#160;<br/>
+Defines&#160;the&#160;type of&#160;the signal:&#160;<br/>
+“ENM”&#160;:&#160;Enumeration&#160;<br/>“BLN”&#160;:&#160;Boolean&#160;<br/>“UNM”&#160;:&#160;Unsigned&#160;Numeric&#160;<br/>
+GenSigSendType&#160;<br/>
+Enum:&#160;&#160;<br/>
+Defines&#160;the&#160;transmit&#160;criteria&#160;for&#160;a&#160;signal&#160;<br/>
+0 &#160;not&#160;used&#160;&#160;&#160;<br/>
+ENM:&#160;&#160;<br/>
+1 &#160;not&#160;used&#160;&#160;&#160;<br/>
+NoSigSendType&#160;or&#160;OnAnyChange&#160;<br/>
+2 &#160;not&#160;used&#160;&#160;&#160;<br/>
+UNM:&#160;<br/>
+3 &#160;not&#160;used&#160;&#160;&#160;<br/>
+NoSigSendType&#160;or&#160;OnDelta&#160;<br/>
+4 &#160;not&#160;used&#160;&#160;&#160;<br/>5 &#160;not&#160;used&#160;&#160;&#160;<br/>
+BLN:&#160;<br/>
+6 &#160;not&#160;used&#160;&#160;&#160;<br/>
+NoSigSendType or&#160;OnChangeIfActive&#160;or&#160;<br/>
+7 &#160;NoSigSendType&#160;<br/>
+OnANyChange&#160;<br/>
+8 &#160;not&#160;used&#160;&#160;&#160;<br/>9 &#160;not&#160;used&#160;&#160;&#160;<br/>10 OnAnyChange&#160;<br/>11 OnChangeIfActive&#160;<br/>12 OnDelta&#160;<br/>
+GenSigInactiveValue&#160;<br/>
+Integer&#160;<br/>
+Defines&#160;if&#160;a&#160;signal&#160;shall&#160;be transmitted&#160;if&#160;<br/>changed&#160;(SigSendType =&#160;OnChangeIfActive). It&#160;<br/>is&#160;not&#160;send if&#160;it&#160;reaches&#160;the inactive value.&#160;<br/>Used to&#160;define the send type&#160;0-to-1&#160;OR&#160;1-to-0.&#160;<br/>GenSigInactiveValue is&#160;defined as&#160;a&#160;raw&#160;value&#160;<br/>(for&#160;signals&#160;of&#160;type Boolean only&#160;raw&#160;values&#160;are&#160;<br/>used at&#160;all).&#160;<br/>
+GenSigSendTopBottom&#160;&#160;Enum:&#160;&#160;<br/>
+Defines&#160;whether&#160;a&#160;signal&#160;of&#160;type&#160;UNM&#160;needs&#160;to&#160;<br/>
+None&#160;&#160;<br/>
+be sent&#160;if&#160;the&#160;physical&#160;value reaches&#160;one or&#160;all&#160;<br/>
+SendOnTop&#160;<br/>
+of&#160;its&#160;limits.&#160;<br/>
+SendOnBottom&#160;<br/>
+The&#160;limits&#160;for&#160;Top&#160;and Bottom&#160;are defined in&#160;the&#160;<br/>
+SendOnTopBottom&#160;<br/>
+Min and Max&#160;values&#160;of&#160;the database.&#160;<br/>
+GenSigDeltaValue&#160;<br/>
+Integer&#160;<br/>
+This&#160;is&#160;used with SigSendType “OnDelta”.&#160;If&#160;the&#160;<br/>most&#160;recent&#160;value exceeds&#160;the&#160;value of&#160;Delta&#160;<br/>compared&#160;to&#160;the last&#160;value sent&#160;via CAN,&#160;the&#160;<br/>signal&#160;is&#160;transmitted again.&#160;<br/>
+Table&#160;6-2&#160;&#160;&#160;Signal&#160;Transmit&#160;Model&#160;attributes&#160;not&#160;evaluated by&#160;GENy&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+19&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-20_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>6.1.1&#160;</b><br/>
+<b>Node&#160;Mapped Rx-Signal Default&#160;Value&#160;Attributes&#160;</b><br/>
+<b>Name&#160;</b><br/>
+<b>Type&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenSigRxStartValue&#160;<br/>
+String&#160;<br/>
+Value receivers&#160;set&#160;signal&#160;to at&#160;power&#160;up.&#160;<br/>Used for&#160;documentation&#160;and&#160;UEF-Export.&#160;<br/>
+Table&#160;6-3&#160;&#160;&#160;Rx-Signal&#160;Default&#160;attributes&#160;not&#160;evaluated by&#160;GENy&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+20&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_Database_Attributes_GM-21_1.png"/><br/>
+Technical&#160;Reference&#160;Database Attributes&#160;&#160;<br/>
+&#160;<br/>
+<b>7&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our&#160;website for&#160;more&#160;information on&#160;<br/>&#160;<br/>&gt;&#160; &#160;News&#160;<br/>&gt;&#160; &#160;Products&#160;<br/>&gt;&#160; &#160;Demo software&#160;<br/>&gt;&#160; &#160;Support&#160;<br/>&gt;&#160; &#160;Training&#160;data&#160;<br/>&gt;&#160; &#160;Addresses&#160;<br/>&#160;<br/><b>www.vector-informatik.com&#160;</b><br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.02.01&#160;<br/>
+21&#160;/&#160;21&#160;<br/>
+Based on&#160;template&#160;version&#160;2.8&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#2">1 Document Information</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#2">1.1 History</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#5">2 Introduction</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#6">3 Attribute Definitions for GMLAN 3.1 Databases</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#6">3.1 Network Attributes</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#7">3.1.1 Network Attributes for Node Communication Active Message</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#7">3.1.2 Network Attributes for Virtual Networks</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#8">3.1.3 Network Attributes for Bit Timing Register setup</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#8">3.2 Node Attributes</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#9">3.3 Message Attributes</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#10">3.3.1 Attribute Definitions for Diagnostics</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#11">3.4 Signal Attributes</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#11">3.4.1 VN-Assignment of Signals</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#11">3.4.2 Signal Transmit Model Attributes</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#12">3.4.3 Signal Supervision Attributes</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#13">3.4.4 Signal Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#14">4 Attribute Settings in Terms of GM Concepts</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#14">4.1 Signal Transmit Model</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#14">4.1.1 Message Attributes</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#15">4.1.2 Signal Attributes</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#16">4.2 Signal Supervision</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#16">4.2.1 Signal Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#17">5 Database Attributes for CANoe Models</a></li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#18">6 Database Attributes not evaluated by GENy</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#19">6.1 Signal Transmit Model Attributes</a>
+<ul>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#20">6.1.1 Node Mapped Rx-Signal Default Value Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_Database_Attributes_GMs.html#21">7 Contact</a></li>
+</ul>
+<hr/>
+</body>
+</html>

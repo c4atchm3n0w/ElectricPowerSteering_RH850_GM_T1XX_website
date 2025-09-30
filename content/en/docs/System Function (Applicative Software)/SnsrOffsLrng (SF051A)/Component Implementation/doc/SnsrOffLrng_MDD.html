@@ -1,0 +1,939 @@
+---
+title: SnsrOffLrng_MDD
+linkTitle: SnsrOffLrng_MDD
+weight: 2
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>Sensor Offset Learning</strong></p>
+<p><strong>Dec 7, 2016</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Shruthi Raghavan,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA<br />
+<u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 47%" />
+<col style="width: 25%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>Selva Sengottaiyan</td>
+<td>07-Feb-2016</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Updated as per FDD v 1.2.0</td>
+<td>Krishna Anne</td>
+<td>07-Mar-2016</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Updated graphical representation</td>
+<td>Nick Saxton</td>
+<td>17-Aug-2016</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Updated design limitations for FDD v1.5.0</td>
+<td>Shruthi Raghavan</td>
+<td>7-Dec-2016</td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<p><u>Table of Contents</u><a href="#introduction">1 Introduction <span>6</span></a></p>
+<p><a href="#snsroffslrng-high-level-description">2 SnsrOffsLrng &amp; High-Level Description <span>7</span></a></p>
+<p><a href="#design-details-of-software-module">3 Design details of software module <span>8</span></a></p>
+<p><a href="#graphical-representation-of-snsroffslrng">3.1 Graphical representation of SnsrOffsLrng <span>9</span></a></p>
+<p><a href="#constant-data-dictionary">4 Constant Data Dictionary <span>11</span></a></p>
+<p><a href="#program-fixed-constants">4.1 Program (fixed) Constants <span>11</span></a></p>
+<p><a href="#embedded-constants">4.1.1 Embedded Constants <span>11</span></a></p>
+<p><a href="#software-component-implementation">5 Software Component Implementation <span>12</span></a></p>
+<p><a href="#sub-module-functions">5.1 Sub-Module Functions <span>12</span></a></p>
+<p><a href="#init-snsroffslrnginit1">5.1.1 Init: SnsrOffsLrngInit1 <span>12</span></a></p>
+<p><a href="#design-rationale">5.1.1.1 Design Rationale <span>12</span></a></p>
+<p><a href="#module-outputs">5.1.1.2 Module Outputs <span>12</span></a></p>
+<p><a href="#per-snsroffslrngper1">5.1.2 Per: SnsrOffsLrngPer1 <span>12</span></a></p>
+<p><a href="#design-rationale-1">5.1.2.1 Design Rationale <span>12</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies">5.1.2.2 Store Module Inputs to Local copies <span>12</span></a></p>
+<p><a href="#processing-of-function">5.1.2.3 (Processing of function)……… <span>12</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">5.1.2.4 Store Local copy of outputs into Module Outputs <span>12</span></a></p>
+<p><a href="#per-snsroffslrngper2">5.1.1 Per: SnsrOffsLrngPer2 <span>12</span></a></p>
+<p><a href="#design-rationale-2">5.1.1.1 Design Rationale <span>12</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-1">5.1.1.2 Store Module Inputs to Local copies <span>12</span></a></p>
+<p><a href="#processing-of-function-1">5.1.1.3 (Processing of function)……… <span>12</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-1">5.1.1.4 Store Local copy of outputs into Module Outputs <span>12</span></a></p>
+<p><a href="#server-runables">5.2 Server Runables <span>13</span></a></p>
+<p><a href="#snsroffslrng_rsthwtq">5.2.1 SnsrOffsLrng_RstHwTq <span>13</span></a></p>
+<p><a href="#design-rationale-3">5.2.1.1 Design Rationale <span>13</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-2">5.2.1.2 Store Module Inputs to Local copies <span>13</span></a></p>
+<p><a href="#processing-of-function-2">5.2.1.3 (Processing of function)……… <span>13</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-2">5.2.1.4 Store Local copy of outputs into Module Outputs <span>13</span></a></p>
+<p><a href="#snsroffslrng_rstyawandag">5.2.2 SnsrOffsLrng_RstYawAndAg <span>13</span></a></p>
+<p><a href="#design-rationale-4">5.2.2.1 Design Rationale <span>13</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-3">5.2.2.2 Store Module Inputs to Local copies <span>13</span></a></p>
+<p><a href="#processing-of-function-3">5.2.2.3 (Processing of function)……… <span>13</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-3">5.2.2.4 Store Local copy of outputs into Module Outputs <span>13</span></a></p>
+<p><a href="#snsroffslrng_sethwagoffs">5.2.3 SnsrOffsLrng_SetHwAgOffs <span>13</span></a></p>
+<p><a href="#design-rationale-5">5.2.3.1 Design Rationale <span>13</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-4">5.2.3.2 Store Module Inputs to Local copies <span>13</span></a></p>
+<p><a href="#processing-of-function-4">5.2.3.3 (Processing of function)……… <span>13</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-4">5.2.3.4 Store Local copy of outputs into Module Outputs <span>13</span></a></p>
+<p><a href="#snsroffslrng_gethwagoffs">5.2.4 SnsrOffsLrng_GetHwAgOffs <span>14</span></a></p>
+<p><a href="#design-rationale-6">5.2.4.1 Design Rationale <span>14</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-5">5.2.4.2 Store Module Inputs to Local copies <span>14</span></a></p>
+<p><a href="#processing-of-function-5">5.2.4.3 (Processing of function)……… <span>14</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-5">5.2.4.4 Store Local copy of outputs into Module Outputs <span>14</span></a></p>
+<p><a href="#snsroffslrng_sethwtqoffs">5.2.5 SnsrOffsLrng_SetHwTqOffs <span>14</span></a></p>
+<p><a href="#design-rationale-7">5.2.5.1 Design Rationale <span>14</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-6">5.2.5.2 Store Module Inputs to Local copies <span>14</span></a></p>
+<p><a href="#processing-of-function-6">5.2.5.3 (Processing of function)……… <span>14</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-6">5.2.5.4 Store Local copy of outputs into Module Outputs <span>14</span></a></p>
+<p><a href="#snsroffslrng_gethwtqoffs">5.2.6 SnsrOffsLrng_GetHwTqOffs <span>14</span></a></p>
+<p><a href="#design-rationale-8">5.2.6.1 Design Rationale <span>14</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-7">5.2.6.2 Store Module Inputs to Local copies <span>14</span></a></p>
+<p><a href="#processing-of-function-7">5.2.6.3 (Processing of function)……… <span>14</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-7">5.2.6.4 Store Local copy of outputs into Module Outputs <span>14</span></a></p>
+<p><a href="#snsroffslrng_setyawrateoffs">5.2.7 SnsrOffsLrng_SetYawRateOffs <span>15</span></a></p>
+<p><a href="#design-rationale-9">5.2.7.1 Design Rationale <span>15</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-8">5.2.7.2 Store Module Inputs to Local copies <span>15</span></a></p>
+<p><a href="#processing-of-function-8">5.2.7.3 (Processing of function)……… <span>15</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-8">5.2.7.4 Store Local copy of outputs into Module Outputs <span>15</span></a></p>
+<p><a href="#snsroffslrng_getyawrateoffs">5.2.8 SnsrOffsLrng_GetYawRateOffs <span>15</span></a></p>
+<p><a href="#design-rationale-10">5.2.8.1 Design Rationale <span>15</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-9">5.2.8.2 Store Module Inputs to Local copies <span>15</span></a></p>
+<p><a href="#processing-of-function-9">5.2.8.3 (Processing of function)……… <span>15</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-9">5.2.8.4 Store Local copy of outputs into Module Outputs <span>15</span></a></p>
+<p><a href="#module-internal-local-functions">5.3 Module Internal (Local) Functions <span>15</span></a></p>
+<p><a href="#_Toc445196931">5.3.1 Module Internal (Local) Functions <span>15</span></a></p>
+<p><a href="#known-limitations-with-design">6 Known Limitations with Design <span>19</span></a></p>
+<p><a href="#unit-test-consideration">7 UNIT TEST CONSIDERATION <span>20</span></a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms <span>21</span></a></p>
+<p><a href="#glossary">Appendix B Glossary <span>22</span></a></p>
+<p><a href="#references">Appendix C References <span>23</span></a></p>
+<h1 id="introduction">Introduction</h1>
+<p>Refer the Design Subproject.</p>
+<h1 id="snsroffslrng-high-level-description">SnsrOffsLrng &amp; High-Level Description</h1>
+<p>Refer the Design Subproject.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-snsroffslrng">Graphical representation of SnsrOffsLrng</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.PNG" style="width:4.76108in;height:8.92833in" /></p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HWTQOFFSHILIM_HWNWTMTR_F32</td>
+<td>Single precision float</td>
+<td>HwNwtMtr</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>HWTQOFFSLOLIM_HWNWTMTR_F32</td>
+<td>Single precision float</td>
+<td>HwNwtMtr</td>
+<td>-4</td>
+</tr>
+<tr class="odd">
+<td>VEHYAWRATEOFFSHILIM_VEHDEGPERSEC_F32</td>
+<td>Single precision float</td>
+<td>VehDegPerSec</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>VEHYAWRATEOFFSLOLIM_VEHDEGPERSEC_F32</td>
+<td>Single precision float</td>
+<td>VehDegPerSec</td>
+<td>-20</td>
+</tr>
+<tr class="odd">
+<td>HWAGOFFSHILIM_HWDEG_F32</td>
+<td>Single precision float</td>
+<td>HwDeg</td>
+<td>-30</td>
+</tr>
+<tr class="even">
+<td>HWAGOFFSLOLIM_HWDEG_F32</td>
+<td>Single precision float</td>
+<td>HwDeg</td>
+<td>-30</td>
+</tr>
+<tr class="odd">
+<td>MTRXSIZE_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h3 id="init-snsroffslrnginit1">Init: SnsrOffsLrngInit1</h3>
+<h2 id="design-rationale">Design Rationale</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="module-outputs">Module Outputs</h2>
+<p><em>Refer the Design.</em></p>
+<h3 class="unnumbered" id="section"></h3>
+<h3 id="per-snsroffslrngper1">Per: SnsrOffsLrngPer1</h3>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="processing-of-function"> (Processing of function)………</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer the Design.</em></p>
+<h3 id="per-snsroffslrngper2">Per: SnsrOffsLrngPer2</h3>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="processing-of-function-1"> (Processing of function)………</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer the Design.</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<h3 id="snsroffslrng_rsthwtq">SnsrOffsLrng_RstHwTq</h3>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-2">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-2"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-2">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_rstyawandag">SnsrOffsLrng_RstYawAndAg</h3>
+<h2 id="design-rationale-4">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-3">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-3"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-3">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_sethwagoffs">SnsrOffsLrng_SetHwAgOffs</h3>
+<h2 id="design-rationale-5">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-4">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-4"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-4">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_gethwagoffs">SnsrOffsLrng_GetHwAgOffs</h3>
+<h2 id="design-rationale-6">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-5">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-5"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-5">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_sethwtqoffs">SnsrOffsLrng_SetHwTqOffs</h3>
+<h2 id="design-rationale-7">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-6">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-6"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-6">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_gethwtqoffs">SnsrOffsLrng_GetHwTqOffs</h3>
+<h2 id="design-rationale-8">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-7">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-7"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-7">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_setyawrateoffs">SnsrOffsLrng_SetYawRateOffs</h3>
+<h2 id="design-rationale-9">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-8">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-8"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-8">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h3 id="snsroffslrng_getyawrateoffs">SnsrOffsLrng_GetYawRateOffs</h3>
+<h2 id="design-rationale-10">Design Rationale</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-module-inputs-to-local-copies-9">Store Module Inputs to Local copies</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="processing-of-function-9"> (Processing of function)………</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-9">Store Local copy of outputs into Module Outputs</h2>
+<blockquote>
+<p><em>Refer the Design.</em></p>
+</blockquote>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h3 id="module-internal-local-functions-1">Module Internal (Local) Functions</h3>
+<h5 id="calculate-learnhwag">Calculate <strong>LearnHwAg</strong></h5>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LearnHwAg</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwAgLrngLrngCdnVld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HwAgLrngEna_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>SysTqFild_HwNm_T_f32</td>
+<td>float32</td>
+<td>-8.8</td>
+<td>8.8</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HandwheelPosition_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td>1440</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-soachierarchymanager">Calculate <strong>SOaCHierarchyManager</strong></h5>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>SOaCHierarchyManager</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>*EnableYOC_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*HwAgLrngEna_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*HwAgLrngRst_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-1">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-perform_tqinpdetn">Calculate <strong>Perform_TqInpDetn</strong></h5>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 43%" />
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>Perform_TqInpDetn</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-2">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-enablelearning">Calculate <strong>EnableLearning</strong></h5>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td><strong>EnableLearning</strong></td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>HwTqLrngEna_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-3">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-calculatekvector">Calculate CalculateKVector</h5>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 43%" />
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td><h5 id="calculatekvector" class="unnumbered">CalculateKVector</h5></td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>TqMdlXAry_HwRadpS_T_f32[3]</td>
+<td>float32</td>
+<td>-42</td>
+<td>42</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>KVect_Uls_T_f32[3]</td>
+<td>float32</td>
+<td>-42</td>
+<td>42</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-4">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-enablepreprocessing">Calculate <strong>EnablePreProcessing</strong></h5>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td><strong>EnablePreProcessing</strong></td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTqPreproc_dB_T_f32</td>
+<td>float32</td>
+<td>-100</td>
+<td>30</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SampleCntrLim_Cnt_T_u16</td>
+<td>Uint16</td>
+<td>1</td>
+<td>65535</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>TqInpPrsntVld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>TqInpPrsnt_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-5">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-updatecovariancematrix">Calculate <strong>UpdateCovarianceMatrix</strong></h5>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 43%" />
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>UpdateCovarianceMatrix</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>TqMdlXAry_HwRadpS_T_f32[3]</td>
+<td>float32</td>
+<td>-42</td>
+<td>42</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>KVect_Uls_T_f32[3]</td>
+<td>float32</td>
+<td>-42</td>
+<td>42</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-6">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<p>TblSize_Cnt_T_u16 is size of the single dimension of TqMdlAryKVect_Uls_T_f32.</p>
+<h5 id="calculate-updatehwtqoffs">Calculate <strong>UpdateHwTqOffs</strong></h5>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td><strong>UpdateHwTqOffs</strong></td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTqEstimnVld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HwTqDriftEstimnOnCentr_HwNm_T_f32</td>
+<td>float32</td>
+<td>-10</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-7">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h5 id="calculate-updatesamplecnt">Calculate <strong>UpdateSampleCnt</strong></h5>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td><strong>UpdateSampleCnt</strong></td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+<td>UTP Tol.</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwAgMeasd_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td>1440</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-8">Description</h4>
+<p>No flowchart added. For Unit test FDD should provide the information needed regarding function processing</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>The display variable dSnsrOffsLrngSysTqFild and PIM SysTqCdngFil structure have wrong ranges defined in the datadict.m file. The actual range according to developer is [-366, 366]. However, since the given range is larger and includes the correct range and because these variables are not affecting the downstream operations in a way that will fail the PIL, this is not changed in the interest of time (changing this would mean rerunning the robustness test and there wasn’t enough time for that before release).</p>
+<p>The name of the NVM structure type SnsrLrndOffsRec2 is changed without any change to the name or datatype of the corresponding elements. The only difference between SnsrLrndOffsRec1 and SnsrLrndOffsRec2 is the ranges of the elements within the structure.</p>
+<p>Since this is not the agreed process for EA4, the implementation deviates from FDD and uses the original structure in order to avoid a change to StdDef to only add a redundant datatype. For the next FDD revision we need to make a decision on whether to go back to SnsrLrndOffsRec1 in the FDD or change the StdDef and add SnsrLrndOffsRec2 type in it. Either way, once the new tool is officially rolled out for use, such deviations of type will be caught in the Polyspace as an error (necessitating manual fixes to work around such issues).</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>The display variable dSnsrOffsLrngSysTqFild and PIM SysTqCdngFil structure have wrong ranges defined in the datadict.m file. The actual range according to developer is [-366, 366]. However, since the given range is larger and includes the correct range and because these variables are not affecting the downstream operations in a way that will fail the PIL, this is not changed in the interest of time (changing this would mean rerunning the robustness test and there wasn’t enough time for that before release).</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.01</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>SF051A_SnsrOffsLrng_Design</td>
+<td>See the synergy sub-project version included.</td>
+</tr>
+</tbody>
+</table>

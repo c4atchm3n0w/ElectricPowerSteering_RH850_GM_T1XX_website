@@ -1,0 +1,781 @@
+---
+title: IssueReport_CBD1400346s
+linkTitle: IssueReport_CBD1400346s
+weight: 34
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-1_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>License Number</b><br/>
+<b>Customer</b><br/>
+CBD1400346<br/>
+Nexteer Automotive Corporation<br/>Package: GMLAN 3.1<br/>Micro: R7F701308<br/>Compiler: GHS 2013.5.5<br/>
+<b>Maintenance Expiry Date</b><br/>
+2014-08-01<br/>
+<b>SIP Delivery Date</b><br/>
+<b>SIP Version</b><br/>
+2014-07-03<br/>
+01.01.24<br/>
+<b>SLP</b><br/>
+<b>Delivery Number</b><br/>
+GMLAN 3.1<br/>
+D00<br/>
+<b>Report Creation Date</b><br/>
+2014-07-11<br/>
+<b>Contact</b><br/>
+In case of questions or the need for an update of the basic software delivery, please contact&#160;<br/><a href="mailto:GMSupport@us.vector.com">GMSupport@us.vector.com</a>&#160;or your Vector contact person.<br/>
+<b>Table of Contents<br/>1.</b><br/>
+<a href="IssueReport_CBD1400346s.html#2"><b>Introduction</b></a><br/>
+<a href="IssueReport_CBD1400346s.html#2"><b>1.1 Resolving Issues</b></a><br/>
+<a href="IssueReport_CBD1400346s.html#2"><b>1.2 Issue Classification</b></a><br/>
+<b>2.</b><br/>
+<a href="IssueReport_CBD1400346s.html#3"><b>New Issues</b></a><br/>
+<a href="IssueReport_CBD1400346s.html#4"><b>2.1 Runtime Issues without Workaround:</b></a>&#160;<b>2</b><br/>
+<a href="IssueReport_CBD1400346s.html#6"><b>2.2 Runtime Issues with Workaround:</b></a>&#160;<b>6</b><br/>
+<a href="IssueReport_CBD1400346s.html#13"><b>2.3 Apparent Issues:</b></a>&#160;<b>15</b><br/>
+<a href="IssueReport_CBD1400346s.html#29"><b>2.4 Compiler Warnings:</b></a>&#160;<b>10</b><br/>
+<b>3.</b><br/>
+<a href="IssueReport_CBD1400346s.html#40"><b>New Issues for Information:</b></a>&#160;<b>0</b><br/>
+<b>4.</b><br/>
+<a href="IssueReport_CBD1400346s.html#41"><b>Report Legend</b></a><br/>
+<b>5.</b><br/>
+<a href="IssueReport_CBD1400346s.html#42"><b>Quality Management Contact</b></a><br/>
+1<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-2_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>1. Introduction</b><br/>
+<b>1.1 Resolving Issues</b><br/>
+Reported issues are not necessarily fixed automatically by the next update delivery. If some of the&#160;<br/>reported&#160;issues shall be fixed, please contact Vector to establish an agreement about issues that&#160;<br/>shall&#160;be fixed in upcoming deliveries. Please note that Vector may fix additional issues without&#160;<br/>explicit&#160;request.<br/>
+<b>1.2 Issue Classification</b><br/>
+This Issue Report provides issues that have been detected since the last report. The issues have&#160;<br/>been&#160;classified to facilitate the assessment of their impact:<br/>
+The chapter 'New Issues' lists issues that have been detected since the last report and which could&#160;<br/>not&#160;be excluded based on the use-case defined in the questionnaire. The issues are classified as&#160;<br/>follows:<br/>
+•<br/>
+<b>Runtime Issues without Workaround:</b>&#160;Runtime issues without a workaround require an&#160;<br/>update&#160;of the basic software delivery in case the issue affects the ECU overall functionality.&#160;<br/>The&#160;effect of an issue to the ECU functionality has to be analyzed by the customer as the basic&#160;<br/>software&#160;usage and its configuration is not known by Vector. The risk of change has also to be&#160;<br/>taken&#160;into account.<br/>
+•<br/>
+<b>Runtime Issues with Workaround:</b>&#160;It is not recommended to update a delivery due to a&#160;<br/>runtime&#160;issue with a documented workaround. The effect of an issue to the ECU functionality&#160;<br/>has&#160;to be analyzed by the customer as the basic software usage and its configuration is not&#160;<br/>known&#160;by Vector. The risk of change has also to be taken into account.<br/>
+•<br/>
+<b>Compiler Warnings:</b>&#160;As a service we report the known compiler warnings. The occurrence of&#160;<br/>a&#160;compiler warning may depend on the used configuration and compiler settings.<br/>
+•<br/>
+<b>Apparent Issues:</b>&#160;Apparent issues are detected immediately when using the basic software.&#160;<br/>If&#160;an issue does not show up while working with the basic software the ECU project is not&#160;<br/>affected&#160;by the issue. Apparent issues may or may not have workarounds.<br/>
+The chapter 'New Issues for Information' lists issues that are not relevant for the use case that&#160;<br/>has&#160;been documented in the questionnaire provided to Vector. The issues may, however, be&#160;<br/>relevant&#160;for other use cases. Additionally, issues that have been accepted or are tolerated by the&#160;<br/>OEM&#160;(as defined in the questionnaire) are reported here.<br/>
+2<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-3_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2. New Issues</b><br/>
+3<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-4_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.1 Runtime Issues without Workaround<br/></b>The lists contain issues that have been detected since the last report and which could not be&#160;<br/>excluded&#160;based on the use-cases defined in the questionnaire (see chapter ‘New Issues for&#160;<br/>Information’).<br/>
+4<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-5_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00074189</b><br/>
+<b>Service 0x2C: A PID declined by the application via&#160;<br/>pre-handler is skipped for the DPID definition</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+6.06.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+&#160;<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>During the definition of a DPID with service 0x2C, when the application declines a PID in its pre-<br/>handler&#160;(by setting a NRC) a positive response is sent instead of a negative response with NRC&#160;<br/>0x31.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During runtime.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Protocol == KWP<br/>AND<br/>Service 0x2C is used<br/>AND<br/>Pre-Handler for PIDs are used<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+5<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-6_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00076278</b><br/>
+<b>StateOn flag return value may be incorrect</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Il_Vector_Gm@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+&#160;<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The value reported by the StateOn flag (IlGet&lt;signal&gt;RxStateOn) may be incorrect.<br/>
+- It may return true (non-zero) even though no relevant VN is active<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The issue is observed at runtime, but it is caused by an incorrectly generated macro. If the macro&#160;<br/>is&#160;generated incorrectly, the runtime behavior is consistent and reproducible (it occurs each and&#160;<br/>every&#160;time).<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>In MultiChannel Configurations with State On Flags.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>2.2 Runtime Issues with Workaround</b><br/>
+It is not recommended to update a delivery due to a runtime issue with a documented&#160;<br/>workaround.&#160;The effect of an issue to the ECU functionality has to be analyzed by the customer as&#160;<br/>the&#160;basic software usage and its configuration is not known by Vector. Thereby the risk of change&#160;<br/>has&#160;also to be taken into account.&#160;<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400346s.html#7">ESCAN00027894</a><br/>
+Memory is overwritten when initializing the CANBedded Stack<br/>Nm_Gmlan_Gm@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#8">ESCAN00045854</a><br/>
+An incorrect timeout is issued for Flow Control and Consecutive Frame timing&#160;<br/>supervision.<br/>Tp_Iso15765@GenTool_Geny<br/>
+<a href="IssueReport_CBD1400346s.html#9">ESCAN00067827</a><br/>
+Rh850Rscan only: CAN communication shows undefined behavior<br/>DrvCan__baseRi14Hll@GenTool_Geny<br/>
+<a href="IssueReport_CBD1400346s.html#10">ESCAN00068912</a><br/>
+Positive response to service $A5 03 not suppressed<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#11">ESCAN00073999</a><br/>
+Signal handler names have wrong names after deletion of some signals of a&#160;<br/>DID<br/>Diag_CanDesc__coreBase@GenTool_Geny_CANdesc<br/>
+<a href="IssueReport_CBD1400346s.html#12">ESCAN00076096</a><br/>
+Periodic response of a DPID requested with service $AA return wrong data<br/>Diag_CanDesc__coreBase@Implementation<br/>
+6<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-7_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00027894</b><br/>
+<b>Memory is overwritten when initializing the&#160;<br/>CANBedded&#160;Stack</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Nm_Gmlan_Gm@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.30.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Memory is overwritten when initializing the CANBedded Stack.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The issue occurs always and immediately if CclInitPowerOn or IlInitPowerOn is called with the&#160;<br/>configuration&#160;mentioned below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Any configuration, where the number of Nm Channels differs from the number of Can Channels.<br/>
+Hint: The generated define in kCanNumberOfChannels in can_cfg.h differs from&#160;<br/>kNmNumberOfChannels&#160;generated to nm_cfg.h<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Do not call IlInitPowerOn in the application. Instead, call IlInit for each channel which uses the&#160;<br/>Interaction&#160;Layer.<br/>
+Note for GM ECUs: If the Interaction Layer is not used on the first channel in GENy (channel index&#160;<br/>0),&#160;the application must additionally call CanInitPowerOn before IlInit.<br/>
+Example:<br/>The ECU has three CAN channels, where the Interaction Layer is only used on the first two.<br/>
+IlInit(0); /* Initialize the IL on CAN channel 0 */<br/>IlInit(1); /* Initialize the IL on CAN channel 1 */<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+7<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-8_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00045854</b><br/>
+<b>An incorrect timeout is issued for Flow Control and&#160;<br/>Consecutive&#160;Frame timing supervision.</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Tp_Iso15765@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>An incorrect timeout is issued for Flow Control (TX) and Consecutive Frame (RX) timing&#160;<br/>supervision&#160;in case of large timeouts.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During runtime at transmission and/or reception of multi frames.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This can only appear if channel specific timing is activated (#if defined&#160;<br/>TP_CHANNEL_SPECIFIC_TIMING)<br/>AND&#160;<br/>the configured timeout values are greater than 255 &#34;ticks&#34;.<br/>Please note that the number of &#34;ticks&#34; is calculated by dividing the configured timeout value by&#160;<br/>the&#160;configured periodic cycle time of the TP.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Use smaller timeouts or increase the call-cycle of the TP task functions.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+8<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-9_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00067827</b><br/>
+<b>Rh850Rscan only: CAN communication shows&#160;<br/>undefined&#160;behavior</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+DrvCan__baseRi14Hll@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+2.06.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>CAN communication shows undefined behavior<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Anytime during runtime (init, rx, tx, ..)<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Only for platform Rh850 with Rscan cell<br/>All configurations that use any of the physical channels CAN5, CAN6 or CAN7<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Do not use physical channels CAN5, CAN6 or CAN7.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+9<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-10_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00068912</b><br/>
+<b>Positive response to service $A5 03 not suppressed</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+6.12.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The positive response to service $A5 03 is not suppressed.&#160;<br/>AND possibly<br/>The following compiler warning occurs:<br/>&#160;static void DescOemEnableProgrammingMode(DescMsgContext *pMsgContext)<br/>&#160;^<br/>&#34;desc.c&#34;, Warning[Pe177]:&#160;<br/>&#160;function &#34;DescOemEnableProgrammingMode&#34; was declared but never referenced<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At runtime/compile time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Configurations created in an older delivery affected by ESCAN00061312:<br/>&#34;Not possible to support negative responses while suppressing positive response for service $A5&#160;<br/>03&#34;<br/>AND<br/>The 'Reload all description files' button on the 'Diag_CanDesc_Kwp' page in GENy has NOT been&#160;<br/>pressed&#160;at least once since moving from the older delivery.<br/>
+Hint:<br/>-------------------------------------------------------------------<br/>This issue has been analyzed thoroughly and will not be fixed due to the following reasons:<br/>a) In GENy there is no reasonable possibility to detect that an old configuration has been loaded&#160;<br/>which&#160;would require a reload of the CDD.<br/>b) The issue only occurs in a migration scenario with an old GENy configuration from a previous&#160;<br/>delivery&#160;and a new delivery using that configuration.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Press the 'Reload all description files' button on the 'Diag_CanDesc_Kwp' page in GENy and then&#160;<br/>save&#160;the configuration. This process only needs to be done once.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+10<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-11_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00073999</b><br/>
+<b>Signal handler names have wrong names after&#160;<br/>deletion&#160;of some signals of a DID</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@GenTool_Geny_CANdesc<br/>
+<i><b>First affected version:</b></i><br/>
+6.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>After reloading a modified CDD-file, where signals of a DID were deleted, the signal handler the&#160;<br/>DID&#160;have the names of the deleted signals.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>After deleting some signals within a signal list of a DID in CANdela-Studio and reloading the&#160;<br/>modified&#160;CDD-File<br/>within GENy.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Signal handlers are used<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Empty the field &#34;CANdela document name&#34; and click &#34;Reload all description files&#34;. The&#160;<br/>configuration&#160;is now empty and no old names are stored. Afterwards import the CDD file again.<br/>
+OR<br/>
+For the affected signals change the Signal Handler Type to &#34;Direct Access&#34; and back to &#34;Signal&#160;<br/>Handler&#34;&#160;again<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+11<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-12_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00076096</b><br/>
+<b>Periodic response of a DPID requested with service&#160;<br/>$AA&#160;return wrong data</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+4.02.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The periodic response for a DPID requested with service $AA contains wrong data<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During runtime when the following situation occurs:<br/>- One or more DPIDs are requested with service $AA in a specific rate<br/>- For one DPID the data of it's source PIDs is currently read from the application<br/>- During the read out process the reporting of all DPIDs is stopped<br/>- Before the reading is finished the reporting of a DPID is requested again<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Service $AA is used&#160;<br/>AND<br/>((Service $2C is used) OR (The source PIDs of a DPID are asynchronous))<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Use the High-Performance Mode in CANdesc. The utilization is described in the TechnicalReference&#160;<br/>in&#160;the API description of &#34;DescMayCallStateTaskAgain&#34;.<br/>
+In case at least one source PID used for DPIDs is asynchronous (that means the application can't&#160;<br/>always&#160;provide the data for the PID in the first function call to the application), change the&#160;<br/>application&#160;so the data is always available on the first call of the application function (make the&#160;<br/>PID&#160;synchronous).<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+12<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-13_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.3 Apparent Issues</b><br/>
+Apparent issues are detected immediately when using the basic software. If an issue does not&#160;<br/>show&#160;up while working with the basic software the ECU project is not affected by the issue.&#160;<br/>Apparent&#160;issues may or may not have workarounds.&#160;<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400346s.html#14">ESCAN00049589</a><br/>
+Compile error: direct signal access feature in CANdesc does not consider far&#160;<br/>memory&#160;pointers<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#15">ESCAN00055957</a><br/>
+appdesc.c missing line feed (LF) after carraige return (CR) on some lines<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#16">ESCAN00069542</a><br/>
+Missing description that initially active VNs are no more activated upon power&#160;<br/>on<br/>Nm_Gmlan_Gm@Doc_TechRef<br/>
+<a href="IssueReport_CBD1400346s.html#17">ESCAN00069732</a><br/>
+Objects are not handled by interrupt or polling as configured in the Individual&#160;<br/>Polling&#160;view<br/>DrvCan__baseRi15@GenTool_Geny<br/>
+<a href="IssueReport_CBD1400346s.html#18">ESCAN00069876</a><br/>
+Incorrect Description for Calibration Attribute nmMaxApplShutDownDenyCnt<br/>CBD_TechRef_GmlanCalibration@Doc_TechRef<br/>
+<a href="IssueReport_CBD1400346s.html#19">ESCAN00070445</a><br/>
+The P2 timings can be changed in the tool GUI but the new values have no&#160;<br/>effect&#160;on CANdesc code generation<br/>Diag_CanDesc__coreBase@GenTool_Geny_CANdesc<br/>
+<a href="IssueReport_CBD1400346s.html#20">ESCAN00070517</a><br/>
+Compiler error: missing constant kDescStateSessionDefault<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#21">ESCAN00071069</a><br/>
+The description of service 0x12 is out-dated<br/>Diag_CanDesc_Oem@Doc_TechRef_Kwp_Gm<br/>
+<a href="IssueReport_CBD1400346s.html#22">ESCAN00071131</a><br/>
+Wrong API name &#34;DescApplSendSpontaneousResponse&#34; in Technical Reference<br/>Diag_CanDesc__coreBase@Doc_TechRef<br/>
+<a href="IssueReport_CBD1400346s.html#23">ESCAN00073848</a><br/>
+Tester present timeout occurs too early after a 0x28 request<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#24">ESCAN00074878</a><br/>
+a2l error: The parameter SAMPLE_RATE is always 0<br/>Cp_XcpOnCan@GenTool_Geny<br/>
+<a href="IssueReport_CBD1400346s.html#25">ESCAN00075459</a><br/>
+TpRxGetAssignedDestination returns wrong destination<br/>Tp_Iso15765@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#26">ESCAN00076138</a><br/>
+GENy does not respond when importing CDD files<br/>Diag_Geny_coreBase@GenTool_Geny<br/>
+<a href="IssueReport_CBD1400346s.html#27">ESCAN00076840</a><br/>
+Missing pre-conditions in the API description of&#160;<br/>DescApplSendSpontaneousResponse<br/>Diag_CanDesc__coreBase@Doc_TechRef<br/>
+<a href="IssueReport_CBD1400346s.html#28">ESCAN00076879</a><br/>
+Comment for Messages wrong - Generated code is not affected<br/>DrvCan__base@GenTool_Geny<br/>
+13<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-14_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00049589</b><br/>
+<b>Compile error: direct signal access feature in&#160;<br/>CANdesc&#160;does not consider far memory pointers</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compile error for mismatching pointer type assignment.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At compile time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>- CANdesc<br/>AND<br/>- Direct signal access to RAM/ROM objects is used.<br/>AND<br/>- FAR memory<br/>
+Some services such as the UDS ones 0x22/0x2A and 0x2E, can be processed on signal level. If&#160;<br/>they&#160;are processed on signal level it is possible to choose &#34;Direct Access&#34; as Signal&#160;<br/>Handler Type. In this case, CANdesc reads or writes the value of signal direct of/to a variable.&#160;<br/>(The&#160;name of the variable is configured in the cdd file or GENy.) If this variable<br/>is located in FAR memory a Compiler/Linker warning or error will occur.&#160;<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Avoid direct signal access to such objects and implement the main-handler within the application&#160;<br/>code.&#160;(Choose &#34;Signal Handler&#34; for the Signal Handler Type and copy the<br/>data that is located in the FAR memory in the application callback for this signal.)<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+14<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-15_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00055957</b><br/>
+<b>appdesc.c missing line feed (LF) after carraige&#160;<br/>return&#160;(CR) on some lines</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+5.07.26<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The appdesc.c file is missing the line feed (LF) character at the end of certain lines. It should&#160;<br/>follow&#160;the carraige return (CR) character. This will cause compilers and debuggers to display the&#160;<br/>incorrect&#160;line of source code. Additionally, some IDEs will complain that the line feed character is&#160;<br/>missing.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At generation time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>All configurations.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+15<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-16_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00069542</b><br/>
+<b>Missing description that initially active VNs are no&#160;<br/>more&#160;activated upon power on</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Nm_Gmlan_Gm@Doc_TechRef<br/>
+<i><b>First affected version:</b></i><br/>
+2.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Chapters 3.3 &#34;VN Concept&#34; and 4.2 &#34;Normal Operation&#34; states that initially active VNs are&#160;<br/>activated&#160;upon power on.<br/>
+This is not correct. Since implementation version 4.02.00 initially active VNs are only activated&#160;<br/>upon&#160;reception or transmission of a HLVW message.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When reading the technical reference.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>In configurations with initially active VNs.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+16<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-17_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00069732</b><br/>
+<b>Objects are not handled by interrupt or polling as&#160;<br/>configured&#160;in the Individual Polling view</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+DrvCan__baseRi15@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+1.05.01<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Not all configured BasicCAN objects are visible in the Individual Polling view of GENy.<br/>AND<br/>Any objects are not handled by interrupt or polling as configured in the Individual Polling view.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always after adding a further CAN channel while configuring and then anytime during runtime.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Individual Polling is enabled<br/>AND<br/>Multiple BasicCAN is enabled<br/>AND<br/>more than one BasicCAN object is configured<br/>AND<br/>more than one CAN channel is configured<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>API Extensions:<br/>-------------------------------------------------------------------<br/>No extension of the API.<br/>
+API Changes:<br/>-------------------------------------------------------------------<br/>No modification of the API.<br/>
+Module handling changes:<br/>-------------------------------------------------------------------<br/>No modification of the module handling.<br/>
+For a detailed description of the API and the handling of the module refer to the Technical&#160;<br/>Reference.<br/>
+17<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-18_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00069876</b><br/>
+<b>Incorrect Description for Calibration Attribute&#160;<br/>nmMaxApplShutDownDenyCnt</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+CBD_TechRef_GmlanCalibration@Doc_TechRef<br/>
+<i><b>First affected version:</b></i><br/>
+2.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The description in chapter 6.7 for calibration attribute nmMaxApplShutDownDenyCnt suggests&#160;<br/>that&#160;this attribute can be modified in the GENy GUI, but the selection doesn't exist. The&#160;<br/>documentation&#160;will be updated to remove this suggestion.<br/>
+nmMaxApplShutDownDenyCnt can be modified in the generated handler calibrations file gmlcal.c.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>All<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+18<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-19_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00070445</b><br/>
+<b>The P2 timings can be changed in the tool GUI but&#160;<br/>the&#160;new values have no effect on CANdesc code&#160;<br/>generation</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@GenTool_Geny_CANdesc<br/>
+<i><b>First affected version:</b></i><br/>
+6.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The user is able to modify the default P2 timings in the GENtool GUI, but the new values are not&#160;<br/>used&#160;during the CANdesc code generation. As a result the default P2 timings are only applicable.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At CANdesc configuration resp. code generation time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Any KWP2000 configuration that shall use P2 timings other than the default ones.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The P2/P2* timings are set automatically according to the GM specification to the values of 75 ms/<br/>5000&#160;ms. Usually, there should be no need to change the P2/P2* timings in GENy to a different&#160;<br/>value.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+19<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-20_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00070517</b><br/>
+<b>Compiler error: missing constant&#160;<br/>kDescStateSessionDefault</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.05<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compile error for missing constant kDescStateSessionDefault<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At compile time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>CANdesc Full is used<br/>AND<br/>In the used CDD the name of the default session state is different from &#34;Default&#34;.<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Rename the default session state in the CDD to &#34;Default&#34;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+20<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-21_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00071069</b><br/>
+<b>The description of service 0x12 is out-dated</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc_Oem@Doc_TechRef_Kwp_Gm<br/>
+<i><b>First affected version:</b></i><br/>
+3.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The description of service 0x12 doesn't consider the changes made with CANdesc 6.<br/>Only one application callback on SID level is generated instead of two, for each sub-function.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Any.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>6.2 Service ReadFailureRecordData ($12)<br/>CANdesc generates only one function callback (main-handler) for all service $12 requests and&#160;<br/>does&#160;not offer any special support for this service. Therefore all dispatching and validation steps&#160;<br/>(e.g.&#160;dispatching on sub-function level, check the request length or validate the PID parameter if&#160;<br/>applicable),&#160;as well as the assembly of the response message (including the sub-function byte)&#160;<br/>have&#160;to be performed by the application.<br/>
+6.2.1 Service ReadFailureRecordIdentifiers ($12 $01)<br/>Depending on the report type requested (PID or DPID) the application must place one of the&#160;<br/>following&#160;values into the first data byte of the response message:<br/>
+&#160;0x00 - for report by PID<br/>&#160;0x01 - for report by DPID<br/>
+&#160;<br/>&#160;Note<br/>The ECU can support either reports by PID or DPID, but not both.<br/>&#160;<br/>6.2.2 Service ReadFailureRecordParameters ($12 $02)<br/>CANdesc does not automatically include the PID parameter in the response message for service&#160;<br/>$12&#160;$02. The application must perform this task.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+21<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-22_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00071131</b><br/>
+<b>Wrong API name&#160;<br/>&#34;DescApplSendSpontaneousResponse&#34;&#160;in Technical&#160;<br/>Reference</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Doc_TechRef<br/>
+<i><b>First affected version:</b></i><br/>
+3.05.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Wrong API name in Technical Reference:<br/>
+DescApplSendSpontaneousResponse is stated in the Technical Reference but the correct name is&#160;<br/>DescSendApplSpontaneousResponse<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+22<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-23_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00073848</b><br/>
+<b>Tester present timeout occurs too early after a&#160;<br/>0x28&#160;request</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+5.05.04<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The positive response $60 after a tester present timeout is sent too early (&lt;5000 ms).<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>- Send service 0x28 (DisableNormalCommunication) request<br/>- Do not send a valid TesterPresent request<br/>- Wait for the tester present timeout to occur (&gt;5000 ms)<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>DiagProtocol == KWP<br/>AND<br/>Service 0x28 DisableNormalCommunication is active<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>1.) Increase the tester present timeout slightly by creating a UserConfig.cfg-file with the following&#160;<br/>content:<br/>
+----------------<br/>#ifdef kDescS1TimerTicks<br/># undef kDescS1TimerTicks<br/># define kDescS1TimerTicks 503<br/>#endif<br/>----------------<br/>
+2.) Load the UserConfig.cfg-file into GENy&#160;<br/>
+3.) Generate the source files<br/>
+After these steps, the tester present timeout should be between the required timespan 5000 ms&#160;<br/>to&#160;5100 ms.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+23<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-24_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00074878</b><br/>
+<b>a2l error: The parameter SAMPLE_RATE is always 0</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Cp_XcpOnCan@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+1.07.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+1.08.03<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The parameter SAMPLE_RATE in the generated CanXcp.a2l file is generated with a fixed value of 0&#160;<br/>and&#160;does not reflect the parameter as configured in the bus timing configuration.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always and immediately<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>all configurations<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>The file CanXcp.a2l is only used ECU externally for the XCP Master and can be patched manually.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+24<br/>
+<hr/>
+<a name=25></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-25_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00075459</b><br/>
+<b>TpRxGetAssignedDestination returns wrong&#160;<br/>destination</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Tp_Iso15765@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+2.73.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>TpRxGetAssignedDestination returns kTpRequestDiagPhysical, although the current connection is&#160;<br/>functional.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During reception of a functional request with normal fixed, extended or mixed29 addressing<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>- multiple addressing AND<br/>- application precopy callback must be enabled (TP_USE_APPL_PRECOPY == kTpOn)<br/>- fast Precopy is disabled<br/>- new ApplTpCheckTA API is used (introduced in TP version 2.73.00)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The upper layer which implements the CheckTA / ApplPrecopy callback have to store the&#160;<br/>information&#160;if the reception is functional or physical.<br/>This information have to be used by the code which want to use TpRxGetAssignedDestination().<br/>
+&#160;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+25<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-26_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00076138</b><br/>
+<b>GENy does not respond when importing CDD files</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Geny_coreBase@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+6.12.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>GENy shows 'busy icon' and will not respond for a long time<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always when importing a CDD file<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>All with periodic DIDs, delay increases with number of periodic DIDs<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The tool is not crashing, so an unreasonable amount of patience can help.<br/>Larger CDD files can take more than a day to load, so this workaround is not possible for all use-<br/>cases.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+26<br/>
+<hr/>
+<a name=27></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-27_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00076840</b><br/>
+<b>Missing pre-conditions in the API description of&#160;<br/>DescApplSendSpontaneousResponse</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Doc_TechRef<br/>
+<i><b>First affected version:</b></i><br/>
+3.05.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Only service 0x86 is listed as pre-condition in the description of the API&#160;<br/>DescApplSendSpontaneousResponse.<br/>However there are additional conditions for that API.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When Service 0x86 is not supported or the feature to send a spontaneous response is disabled in&#160;<br/>GENy<br/>AND<br/>FBL behavior according to HIS is supported by CANdesc<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Additional pre-conditions:<br/>The API is also available for specific OEMs in case FBL behavior according to HIS is required&#160;<br/>(please&#160;refer to chapter 11.8).<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+27<br/>
+<hr/>
+<a name=28></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-28_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00076879</b><br/>
+<b>Comment for Messages wrong - Generated code is&#160;<br/>not&#160;affected</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+DrvCan__base@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The comment if a message is a BasicCan or a FullCan message is wrong in certain cases<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During configuration time<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>- A message is sent and received ( RX and TX message ) AND<br/>- FullCan Flag configured for Rx OR Tx message<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+28<br/>
+<hr/>
+<a name=29></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-29_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.4 Compiler Warnings&#160;</b><br/>
+As a service we also provide the known compiler warnings. The occurrence of a compiler warning&#160;<br/>may&#160;depend on the used basic software configuration and compiler settings.<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400346s.html#30">ESCAN00027751</a><br/>
+Compiler warning for cast to smaller type for &#34;failedByteMask&#34;<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#31">ESCAN00029697</a><br/>
+Compiler warning for useless assignment on API DescPmClientCheckPid<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#32">ESCAN00031035</a><br/>
+Compiler Warning: variable &#34;timer&#34; in &#34;DescRdpiDeletePid&#34; is possibly&#160;<br/>uninitialized<br/>Diag_CanDesc__coreBase@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#33">ESCAN00032552</a><br/>
+Compiler warning statement not reached in Internal Assertion<br/>DrvCan__coreHll@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#34">ESCAN00044044</a><br/>
+Compiler Warning: condition is always false<br/>Cp_Xcp@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#35">ESCAN00047283</a><br/>
+IL flags are declared without the &#34;volatile&#34; keyword.<br/>Il_Vector@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#36">ESCAN00058378</a><br/>
+Compiler warning: narrowing or signed-to-unsigned type conversion found<br/>Diag_CanDescGgdaExt_Gm@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#37">ESCAN00059701</a><br/>
+Compiler warning: condition is always true&#34; in the IlTxTimerTask,&#160;<br/>IlTxStateTask&#160;and IlTxRepetitionsAreActive<br/>Il_Vector@Implementation<br/>
+<a href="IssueReport_CBD1400346s.html#38">ESCAN00066833</a><br/>
+Compiler warning: Redefined macro name when compiling a main GENy&#160;<br/>project&#160;with a sub-project<br/>GenTool_GenyDriverBase@GenTool_Geny<br/>
+<a href="IssueReport_CBD1400346s.html#39">ESCAN00067350</a><br/>
+Compiler warning: Redefined macro name when compiling a main GENy&#160;<br/>project&#160;with a sub-project<br/>GenTool_GenyVcfgNameDecorator@GenTool_Geny<br/>
+29<br/>
+<hr/>
+<a name=30></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-30_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00027751</b><br/>
+<b>Compiler warning for cast to smaller type for&#160;<br/>&#34;failedByteMask&#34;</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warning message for the assignment:<br/>
+*failedByteMask = (vuint8)(0x02 &lt;&lt; *failedByteMask);<br/>
+But there is no real danger of losing information by casting down to a smaller type since the code&#160;<br/>generator&#160;does not allow more than 7 (seven) sub-service bytes in the request message. So&#160;<br/>skipping&#160;the SID (bit 0) does not lead to losing the MSB and the value of the failedByteMask&#160;<br/>cannot&#160;be greater than six.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At compile time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>-CANdesc/CANdescBasic<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Ignore the warning<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>This ESCAN will not be resolved, since the fix might require more resources on the ECU. The code&#160;<br/>generator&#160;assures that there will be no overflow on the shift operation.<br/>
+30<br/>
+<hr/>
+<a name=31></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-31_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00029697</b><br/>
+<b>Compiler warning for useless assignment on API&#160;<br/>DescPmClientCheckPid</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+4.02.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The compiler generates a warning message for useless assignment (a = a;) .<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At compile time.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>- CANdesc<br/>_AND_<br/>- Service 0x22 is supported with multiple DIDs in single request.<br/>_AND_<br/>- Service 0x2C is not supported.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Ignore this warning since it is only because of an useless assignment.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue will not be corrected, since the solution will require more ROM resources.<br/>
+31<br/>
+<hr/>
+<a name=32></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-32_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00031035</b><br/>
+<b>Compiler Warning: variable &#34;timer&#34; in&#160;<br/>&#34;DescRdpiDeletePid&#34;&#160;is possibly uninitialized</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDesc__coreBase@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+5.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The compiler produces the warning &#34;variable 'timer' is possibly uninitialized&#34; when compiling&#160;<br/>desc.c.&#160;<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At compile time<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If service 0xAA supported and at least one periodic transmission mode is supported (i.e. not only&#160;<br/>&#34;send&#160;one response&#34; is supported).<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>This warning is incorrect and can be safely ignored.<br/>
+32<br/>
+<hr/>
+<a name=33></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-33_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00032552</b><br/>
+<b>Compiler warning statement not reached in&#160;<br/>Internal&#160;Assertion</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+DrvCan__coreHll@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+2.06.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warning &#34;statement not reached&#34; may occur in the following line:<br/>&#160;assertInternal( ((kCanNumberOfTxObjects + CanTxQueuePadBits[kCanNumberOfChannels-1])&#160;<br/>&lt;=&#160;65536u), kCanAllChannels, kErrorTxQueueTooManyHandle)&#160;<br/>or<br/>&#160;assertInternal( ((kCanNumberOfTxObjects + CanTxQueuePadBits[kCanNumberOfChannels-1])&#160;<br/>&lt;=&#160;256u), kCanAllChannels, kErrorTxQueueTooManyHandle)<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At compile time<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>In the following circumstances:<br/>- transmit queue (C_ENABLE_TRANSMIT_QUEUE is defined)&#160;<br/>AND<br/>- assertion check (C_ENABLE_INTERNAL_CHECK is defined)<br/>AND<br/>- multi channel (C_MULTIPLE_RECEIVE_CHANNEL is defined)<br/>AND<br/>- the CAN driver supports the Bit Queue algorithm. (DRVCAN__HLLTXQUEUEBIT_VERSION is&#160;<br/>defined&#160;in can_def.h and NOT in can_drv.c)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>This warning can be ignored since there is no danger for the software normal functioning.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+33<br/>
+<hr/>
+<a name=34></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-34_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00044044</b><br/>
+<b>Compiler Warning: condition is always false</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Cp_Xcp@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.26.02<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiling file: ../../BSW/Xcp/xcpProf.c<br/>0 errors, 5 warnings<br/>ctc W549: [&#34;../../BSW/Xcp/xcpProf.c&#34; 2518/22] condition is always false<br/>ctc W549: [&#34;../../BSW/Xcp/xcpProf.c&#34; 2522/22] condition is always false<br/>ctc W549: [&#34;../../BSW/Xcp/xcpProf.c&#34; 2526/22] condition is always false<br/>ctc W549: [&#34;../../BSW/Xcp/xcpProf.c&#34; 2659/22] condition is always false<br/>ctc W549: [&#34;../../BSW/Xcp/xcpProf.c&#34; 2663/22] condition is always false<br/>0 errors, 5 warnings<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens when XCP_DISABLE_WRITE_PROTECTION and XCP_DISABLE_WRITE_EEPROM are&#160;<br/>defined.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>see above<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Enable<br/>XCP_DISABLE_WRITE_PROTECTION or XCP_DISABLE_WRITE_EEPROM<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+34<br/>
+<hr/>
+<a name=35></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-35_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00047283</b><br/>
+<b>IL flags are declared without the &#34;volatile&#34; keyword.</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Il_Vector@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.10.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>IL flags (Indication, FirstValue, Confirmation, Timeout) are declared without the &#34;volatile&#34;&#160;<br/>keyword.&#160;Read and Write access to IL flags has no effect due to a Read-Modify-Write problematic.<br/>
+e.g.<br/>FlagA and FlagB are in the same byte and set on interrupt level<br/>
+this sequence is executed on task level:<br/>disable int;&#160;<br/>clear FlagA; /*1*/<br/>enable int;<br/>... /*3*/<br/>disable int;<br/>clear FlagB; /*2*/<br/>enable int;<br/>
+The compiler might optimize this sequence and the flag read and write ALWAYS fails:<br/>
+read the byte at 1), modify the local copy and write the byte at 2)<br/>if the byte is written on interrupt level at 3), the data is lost.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At runtime (This Problem has been found by a review and has never been detected in a ECU)<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>- This issue highly depends on the used compiler and compiler options.<br/>- Preemptive IL flag access is used (e.g. interrupt system)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Review the optimization configuration of your compiler.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+35<br/>
+<hr/>
+<a name=36></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-36_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00058378</b><br/>
+<b>Compiler warning: narrowing or signed-to-unsigned&#160;<br/>type&#160;conversion found</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_CanDescGgdaExt_Gm@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The following compiler warning occurs:<br/>
+warning (dcc:1643): narrowing or signed-to-unsigned type conversion found: unsigned int to&#160;<br/>unsigned&#160;short<br/>
+This warning occurs for the following code in GgdaRdiRxTask:<br/>
+&#160;/* send the DTC number and the FTB */<br/>&#160;vuint16 DTCNr = ((vuint16) ggdaContexts[context].uudtPrimBuffer[1] &lt;&lt; 8)<br/>&#160;| (vuint16) ggdaContexts[context].uudtPrimBuffer[2];<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Configurations which use service $A9.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The warning can be safely ignored.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+36<br/>
+<hr/>
+<a name=37></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-37_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00059701</b><br/>
+<b>Compiler warning: condition is always true&#34; in the&#160;<br/>IlTxTimerTask,&#160;IlTxStateTask and&#160;<br/>IlTxRepetitionsAreActive</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Il_Vector@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+2.42.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warns for &#34;condition is always true&#34; in the IlTxTimerTask, IlTxStateTask and&#160;<br/>IlTxRepetitionsAreActive&#160;API. This may happen depending on the configuration.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>IlTxTimerTask, IlTxStateTask: Any configuration with exactly one tx message.<br/>IlTxRepetitionsAreActive: Any configuration with exactly one tx message and the API is&#160;<br/>configured.&#160;(IL_ENABLE_SYS_TX_REPETITIONS_ARE_ACTIVE_FCT must be defined)<br/>
+Hint:<br/>-------------------------------------------------------------------<br/>The compiler warning is known and has been analyzed thoroughly for its impact on the code.&#160;<br/>Nevertheless&#160;it will not be fixed due to the rare configuration. The code uses a while loop with a&#160;<br/>counter&#160;and can probably replaced by a for loop, but other compilers or codeanalysers may warn&#160;<br/>about&#160;a useless loop. The code exists for about 15 Years and will not be changed.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+37<br/>
+<hr/>
+<a name=38></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-38_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00066833</b><br/>
+<b>Compiler warning: Redefined macro name when&#160;<br/>compiling&#160;a main GENy project with a sub-project</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+GenTool_GenyDriverBase@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+2.10.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler generates warning on the following macro redefinitions:<br/>
+v_cfg_1.h(180) : CC78K0R warning W0816: Redefined macro name&#160;<br/>'V_ATOMIC_BIT_ACCESS_IN_BITFIELD'<br/>v_cfg_1.h(181) : CC78K0R warning W0816: Redefined macro name&#160;<br/>'V_ATOMIC_VARIABLE_ACCESS'<br/>v_cfg_1.h(196) : CC78K0R warning W0816: Redefined macro name 'kComNumberOfNodes'<br/>v_cfg_1.h(197) : CC78K0R warning W0816: Redefined macro name 'ComSetCurrentECU'<br/>v_cfg_1.h(198) : CC78K0R warning W0816: Redefined macro name 'comMultipleECUCurrent'<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When two GENy projects are compiled together (e.g. CAN, LIN), one is setup as &#34;main project&#34;&#160;<br/>and&#160;the other is setup as &#34;sub-project&#34;<br/>&#160;<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+38<br/>
+<hr/>
+<a name=39></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-39_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00067350</b><br/>
+<b>Compiler warning: Redefined macro name when&#160;<br/>compiling&#160;a main GENy project with a sub-project</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+GenTool_GenyVcfgNameDecorator@GenTool_Geny<br/>
+<i><b>First affected version:</b></i><br/>
+2.19.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+2.26.01, 2.27.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler generates warning on the following macro redefinitions:<br/>
+v_cfg_1.h(180) : CC78K0R warning W0816: Redefined macro name&#160;<br/>'V_ATOMIC_BIT_ACCESS_IN_BITFIELD'<br/>v_cfg_1.h(181) : CC78K0R warning W0816: Redefined macro name&#160;<br/>'V_ATOMIC_VARIABLE_ACCESS'<br/>v_cfg_1.h(196) : CC78K0R warning W0816: Redefined macro name 'kComNumberOfNodes'<br/>v_cfg_1.h(197) : CC78K0R warning W0816: Redefined macro name 'ComSetCurrentECU'<br/>v_cfg_1.h(198) : CC78K0R warning W0816: Redefined macro name 'comMultipleECUCurrent'<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When two GENy projects are compiled together (e.g. CAN, LIN), one is setup as &#34;main project&#34;&#160;<br/>and&#160;the other is setup as &#34;sub-project&#34;<br/>&#160;<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+&#160;<br/>
+39<br/>
+<hr/>
+<a name=40></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-40_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>3. New Issues for Information</b><br/>
+Issues which should not have an effect on the usage of the license as the issues are relevant for&#160;<br/>use&#160;cases other than those defined in the questionnaire. The list contains issues that have been&#160;<br/>detected&#160;since the last report.<br/>
+Issues listed in this section are not relevant for the use case that has been documented in the&#160;<br/>questionnaire&#160;provided to Vector. However, the issues may be relevant for other use cases. &#160;Also&#160;<br/>issues&#160;that have been accepted or are tolerated by the OEM (as defined in the questionnaire) are&#160;<br/>reported&#160;here.&#160;<br/>
+No issue to be reported.<br/>
+40<br/>
+<hr/>
+<a name=41></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-41_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-41_2.png"/><br/>
+<b>Issue Report</b><br/>
+<b>4. Report Legend</b><br/>
+41<br/>
+<hr/>
+<a name=42></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/IssueReport_CBD1400346-42_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>5. Quality Management Contact</b><br/>
+Diemo Krüger&#160;<br/>PES Quality Management Engineer &#160;<br/>Productline Embedded Software (PES) &#160;<br/>&#160;<br/>Vector Informatik GmbH &#160;<br/>Ingersheimer Str. 24 &#160;<br/>D-70499 Stuttgart &#160;<br/>&#160;<br/>Phone: +49 711 80670-3477&#160;<br/>Fax: +49 711 80670-399 &#160;<br/>eMail: diemo.krueger@vector.com<br/>
+42<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="IssueReport_CBD1400346s.html#5">ESCAN00074189 (Service 0x2C: A PID declined by the application via pre-handler is skipped for the DPID definition)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#6">ESCAN00076278 (StateOn flag return value may be incorrect)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#7">ESCAN00027894 (Memory is overwritten when initializing the CANBedded Stack)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#8">ESCAN00045854 (An incorrect timeout is issued for Flow Control and Consecutive Frame timing supervision.)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#9">ESCAN00067827 (Rh850Rscan only: CAN communication shows undefined behavior)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#10">ESCAN00068912 (Positive response to service $A5 03 not suppressed)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#11">ESCAN00073999 (Signal handler names have wrong names after deletion of some signals of a DID)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#12">ESCAN00076096 (Periodic response of a DPID requested with service $AA return wrong data)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#14">ESCAN00049589 (Compile error: direct signal access feature in CANdesc does not consider far memory pointers)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#15">ESCAN00055957 (appdesc.c missing line feed (LF) after carraige return (CR) on some lines)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#16">ESCAN00069542 (Missing description that initially active VNs are no more activated upon power on)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#17">ESCAN00069732 (Objects are not handled by interrupt or polling as configured in the Individual Polling view)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#18">ESCAN00069876 (Incorrect Description for Calibration Attribute nmMaxApplShutDownDenyCnt)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#19">ESCAN00070445 (The P2 timings can be changed in the tool GUI but the new values have no effect on CANdesc code generation)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#20">ESCAN00070517 (Compiler error: missing constant kDescStateSessionDefault)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#21">ESCAN00071069 (The description of service 0x12 is out-dated)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#22">ESCAN00071131 (Wrong API name &#34;DescApplSendSpontaneousResponse&#34; in Technical Reference)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#23">ESCAN00073848 (Tester present timeout occurs too early after a 0x28 request)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#24">ESCAN00074878 (a2l error: The parameter SAMPLE_RATE is always 0)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#25">ESCAN00075459 (TpRxGetAssignedDestination returns wrong destination)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#26">ESCAN00076138 (GENy does not respond when importing CDD files)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#27">ESCAN00076840 (Missing pre-conditions in the API description of DescApplSendSpontaneousResponse)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#28">ESCAN00076879 (Comment for Messages wrong - Generated code is not affected)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#30">ESCAN00027751 (Compiler warning for cast to smaller type for &#34;failedByteMask&#34;)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#31">ESCAN00029697 (Compiler warning for useless assignment on API DescPmClientCheckPid)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#32">ESCAN00031035 (Compiler Warning: variable &#34;timer&#34; in &#34;DescRdpiDeletePid&#34; is possibly uninitialized)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#33">ESCAN00032552 (Compiler warning statement not reached in Internal Assertion)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#34">ESCAN00044044 (Compiler Warning: condition is always false)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#35">ESCAN00047283 (IL flags are declared without the &#34;volatile&#34; keyword.)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#36">ESCAN00058378 (Compiler warning: narrowing or signed-to-unsigned type conversion found)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#37">ESCAN00059701 (Compiler warning: condition is always true&#34; in the IlTxTimerTask, IlTxStateTask and IlTxRepetitionsAreActive)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#38">ESCAN00066833 (Compiler warning: Redefined macro name when compiling a main GENy project with a sub-project)</a></li>
+<li><a href="IssueReport_CBD1400346s.html#39">ESCAN00067350 (Compiler warning: Redefined macro name when compiling a main GENy project with a sub-project)</a></li>
+</ul>
+<hr/>
+</body>
+</html>

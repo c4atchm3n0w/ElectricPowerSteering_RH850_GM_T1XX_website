@@ -1,0 +1,147 @@
+---
+title: ES100A_SysStMod
+linkTitle: ES100A_SysStMod
+weight: 2
+---
+
+<p><strong>System States and Modes</strong></p>
+<p><strong>FDD #ES100A</strong></p>
+<p><a href="#high-level-description">1. High Level Description 3</a></p>
+<p><a href="#derived-requirements">2. Derived Requirements 3</a></p>
+<p><a href="#sub-function-data-flow">3. Sub-Function Data Flow 3</a></p>
+<p><a href="#design-rationale">4. Design Rationale 3</a></p>
+<p><a href="#sub-functions">5. Sub-Functions 3</a></p>
+<p><a href="#hardware-related-design">5.1.1. Hardware Related Design 3</a></p>
+<p><a href="#software-related-design">5.1.2. Software Related Design 3</a></p>
+<p><a href="#timing-execution-constraints">6. Timing / Execution Constraints 4</a></p>
+<p><a href="#rationale-comments">6.1. Rationale / Comments 4</a></p>
+<p><a href="#rates-and-state-execution">6.2. Rates and State Execution 4</a></p>
+<p><a href="#serial-communications-interfaces">7. Serial Communications Interfaces 4</a></p>
+<p><a href="#revision-record-change-approval">8. Revision Record &amp; Change Approval 5</a></p>
+<h1 id="high-level-description">High Level Description</h1>
+<p>This function controls the primary system state machine for the application. New states are computed based on current state and the inputs to the function.</p>
+<p>Four states are identified – OFF, WARM INIT, DISABLE and ENABLE.</p>
+<h1 id="derived-requirements">Derived Requirements</h1>
+<p>All requirements are contained in the ES100A_SysStMod DOORs module. All requirements are derived.</p>
+<h1 id="sub-function-data-flow"> Sub-Function Data Flow</h1>
+<p>Refer to the accompanying Simulink Model in the Functional Design Package.</p>
+<h1 id="design-rationale">Design Rationale</h1>
+<ol type="1">
+<li><p>The design was decided to take a lookup table based approach to allow for future flexibility should it be required. Changes might only require constant changes rather than a redesign.</p></li>
+<li><p>Transition Vector was developed to cover all current states – see the “Vector Analysis” spreadsheet included in the functional design package.</p></li>
+<li><p>Inputs for the following place certain requirements on the owning function:</p>
+<ol type="a">
+<li><p><strong>SysStReqDi:</strong> Required to indicate TRUE if the state output control function has ramped assist to zero due to the Diagnostic input or the normal operational input. Things like start/stop are excluded from this to prevent transition to disable using that function (for improved start up times).</p></li>
+<li><p><strong>SysStFltOutpReqDi:</strong> Required to indicate TRUE if the diagnostic manager is responsible for removing output and has completed the ramp out (which could be a step in rapid shutdown mode).</p></li>
+</ol></li>
+</ol>
+<p>Graphical model of the state machine implementation</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.wmf" /></p>
+<h1 id="sub-functions">Sub-Functions</h1>
+<p>Refer to the accompanying Simulink Model in the Functional Design Package.</p>
+<p>Requirements are linked between DOORs FR Document ES100A_SysStMod and the Simulink Model.</p>
+<h3 id="hardware-related-design">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design">Software Related Design</h3>
+<p>Refer to the accompanying Simulink Model in the Functional Design Package.</p>
+<h1 id="timing-execution-constraints">Timing / Execution Constraints</h1>
+<h2 id="rationale-comments">Rationale / Comments</h2>
+<p>The states and modes function shall be run at the end of the main control loop (2ms). This is to reduce lag in shutdown, requiring all inputs to the state machine to be computed in the same loop prior to executing the function.</p>
+<h2 id="rates-and-state-execution">Rates and State Execution</h2>
+<p>In general, the system state columns should be filled in as “Execute” or “Do Not Execute”</p>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 12%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sub-Function Name</strong></td>
+<td><strong>Rate (ms)</strong></td>
+<td><strong>Cold Init</strong></td>
+<td><strong>WARM INIT</strong></td>
+<td><strong>ENABLE</strong></td>
+<td><strong>DISABLE</strong></td>
+<td><strong>OFF</strong></td>
+</tr>
+<tr class="even">
+<td>Refer to the *.m file in the Functional Design Package.</td>
+<td>See m file</td>
+<td>Do Not Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="serial-communications-interfaces">Serial Communications Interfaces</h1>
+<p>Nexteer Manufacturing Services will be used to read out the SysStMod output (SysSt)</p>
+<h1 id="revision-record-change-approval">Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 58%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>01.00.00</td>
+<td>24FE15</td>
+<td>EA4_144</td>
+<td>MK</td>
+<td>Initial Release</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>

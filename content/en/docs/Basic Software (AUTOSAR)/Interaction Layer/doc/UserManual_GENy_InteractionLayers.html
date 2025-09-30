@@ -1,0 +1,1837 @@
+---
+title: UserManual_GENy_InteractionLayers
+linkTitle: UserManual_GENy_InteractionLayers
+weight: 13
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Interaction&#160;Layer&#160;</b><br/>
+<b>with&#160;GENy&#160;</b><br/>
+User&#160;Manual&#160;<br/>
+(Your&#160;First&#160;Steps)&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Version&#160;1.03.01&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Vector&#160;Informatik&#160;GmbH,&#160;Ingerheimer&#160;Str.&#160;24,&#160;70499&#160;Stuttgart&#160;<br/>
+Tel.&#160;0711/80670-0,&#160;Fax&#160;0711/80670-399,&#160;Email&#160;can@vector-informatik.de&#160;<br/>
+Internet&#160;http:\\www.vector-informatik.de&#160;<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-2_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-2_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+1&#160;/&#160;35&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Authors:&#160;</b><br/>
+Klaus&#160;Emmert&#160;<br/>
+<b>Version:&#160;</b><br/>
+1.03.01&#160;<br/>
+<b>Status:&#160;</b><br/>
+released&#160;(in&#160;preparation/completed/inspected/released)&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-3_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+2&#160;/&#160;35&#160;<br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Klaus&#160;Emmert&#160;<br/>
+2004-04-29&#160;<br/>
+1.00&#160;<br/>
+Converted&#160;from&#160;Version&#160;0.8&#160;to&#160;<br/>new&#160;User&#160;Manual&#160;Layout.&#160;&#160;<br/>
+Klaus&#160;Emmert&#160;<br/>
+2004-05-17&#160;<br/>
+1.1&#160;<br/>
+Usage&#160;of&#160;vstdlib&#160;added&#160;(started&#160;with&#160;<br/>IL&#160;version&#160;1.83)&#160;<br/>
+Klaus&#160;Emmert&#160;<br/>
+2005-06-24&#160;<br/>
+1.02&#160;<br/>
+GENy&#160;added&#160;as&#160;new&#160;<br/>Configuration&#160;Tool.&#160;<br/>
+Gunnar&#160;Meiss&#160;<br/>
+2007-05-16&#160;<br/>
+1.03&#160;<br/>
+ESCAN00020395&#160;<br/>
+Gunnar&#160;Meiss&#160;<br/>
+2007-07-12&#160;<br/>
+1.03.01&#160;<br/>
+ESCAN00021408&#160;Update&#160;<br/>Contents&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-4_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-4_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+3&#160;/&#160;35&#160;<br/>
+<b>Motivation&#160;For&#160;This&#160;Work&#160;</b><br/>
+What&#160;is&#160;a&#160;signal?&#160;&#160;<br/>
+A&#160;Signal&#160;is&#160;an&#160;abstract&#160;container&#160;for&#160;information.&#160;It&#160;can&#160;hold&#160;physical&#160;values,&#160;states&#160;<br/>or&#160;&#160;commandos.&#160;&#160;Signals&#160;&#160;can&#160;&#160;concern&#160;&#160;the&#160;&#160;complete&#160;&#160;vehicle&#160;&#160;or&#160;&#160;only&#160;&#160;some&#160;&#160;control&#160;<br/>units.&#160;&#160;<br/>
+Using&#160;the&#160;Interaction&#160;Layer&#160;you&#160;do&#160;not&#160;have&#160;to&#160;take&#160;care&#160;about&#160;the&#160;transmission&#160;or&#160;<br/>reception&#160;of&#160;signal&#160;or&#160;the&#160;data&#160;consistency.&#160;If&#160;you&#160;need&#160;the&#160;content&#160;of&#160;a&#160;signal,&#160;just&#160;<br/>read&#160;it,&#160;if&#160;a&#160;value&#160;changed,&#160;just&#160;write&#160;it.&#160;All&#160;the&#160;rest&#160;is&#160;done&#160;by&#160;the&#160;Interaction&#160;Layer.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>WARNING&#160;</b><br/>
+<b>All&#160;&#160;application&#160;&#160;code&#160;&#160;in&#160;&#160;any&#160;&#160;of&#160;&#160;the&#160;&#160;Vector&#160;&#160;User&#160;&#160;Manuals&#160;&#160;is&#160;&#160;for&#160;&#160;training&#160;<br/>purposes&#160;only.&#160;They&#160;are&#160;slightly&#160;tested&#160;and&#160;designed&#160;to&#160;understand&#160;the&#160;basic&#160;<br/>idea&#160;of&#160;using&#160;a&#160;certain&#160;component&#160;or&#160;a&#160;set&#160;of&#160;components.&#160;</b><br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-5_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+4&#160;/&#160;35&#160;<br/>
+<b>Contents</b>&#160;<br/>
+<b>1</b>&#160;<br/>
+<b>Welcome&#160;to&#160;the&#160;Interaction&#160;Layer&#160;User&#160;Manual.............................................&#160;7</b>&#160;<br/>
+1.1&#160;<br/>
+Beginners&#160;with&#160;the&#160;Interaction&#160;Layer&#160;start&#160;here?&#160;................................&#160;7&#160;<br/>
+1.2&#160;<br/>
+For&#160;Advanced&#160;Users&#160;..........................................................................&#160;7&#160;<br/>
+1.3&#160;<br/>
+Special&#160;topics&#160;....................................................................................&#160;7&#160;<br/>
+1.4&#160;<br/>
+Additional&#160;Documents&#160;dealing&#160;with&#160;the&#160;Interaction&#160;Layer&#160;...................&#160;7&#160;<br/>
+<b>2</b>&#160;<br/>
+<b>About&#160;This&#160;Document&#160;.....................................................................................&#160;8</b>&#160;<br/>
+2.1&#160;<br/>
+How&#160;This&#160;Documentation&#160;Is&#160;Set-Up&#160;...................................................&#160;8&#160;<br/>
+2.2&#160;<br/>
+Legend&#160;and&#160;Explanation&#160;of&#160;Symbols..................................................&#160;9&#160;<br/>
+<b>3</b>&#160;<br/>
+<b>Interaction&#160;Layer&#160;–&#160;An&#160;Overall&#160;View&#160;.............................................................&#160;10</b>&#160;<br/>
+3.1&#160;<br/>
+Transmission&#160;problems....................................................................&#160;10&#160;<br/>
+3.1.1&#160;<br/>
+What&#160;is&#160;left&#160;to&#160;do&#160;for&#160;transmission&#160;....................................................&#160;10&#160;<br/>
+3.2&#160;<br/>
+Reception&#160;problems.........................................................................&#160;11&#160;<br/>
+3.2.1&#160;<br/>
+What&#160;is&#160;left&#160;to&#160;do&#160;for&#160;Reception&#160;........................................................&#160;11&#160;<br/>
+3.3&#160;<br/>
+Tools&#160;And&#160;Files................................................................................&#160;11&#160;<br/>
+3.3.1&#160;<br/>
+The&#160;data&#160;base&#160;file&#160;(DBC&#160;file)............................................................&#160;11&#160;<br/>
+3.3.2&#160;<br/>
+Configuration&#160;Tool&#160;...........................................................................&#160;12&#160;<br/>
+3.3.3&#160;<br/>
+Generation&#160;Process&#160;with&#160;CANbedded&#160;Software&#160;Component&#160;...........&#160;12&#160;<br/>
+3.4&#160;<br/>
+What&#160;Is&#160;the&#160;Vector&#160;Interaction&#160;Layer................................................&#160;14&#160;<br/>
+3.5&#160;<br/>
+What&#160;The&#160;Interaction&#160;Layer&#160;Does&#160;....................................................&#160;14&#160;<br/>
+<b>4</b>&#160;<br/>
+<b>This&#160;Component&#160;–&#160;A&#160;More&#160;Detailed&#160;View.....................................................&#160;15</b>&#160;<br/>
+4.1&#160;<br/>
+Files&#160;to&#160;form&#160;the&#160;Interaction&#160;Layer....................................................&#160;15&#160;<br/>
+4.1.1&#160;<br/>
+Fix&#160;files&#160;that&#160;form&#160;the&#160;Interaction&#160;Layer&#160;............................................&#160;15&#160;<br/>
+4.1.2&#160;<br/>
+Generated&#160;files&#160;that&#160;must&#160;not&#160;be&#160;changed,&#160;too.................................&#160;15&#160;<br/>
+4.1.2.1&#160;<br/>
+Configuration&#160;Tool&#160;GENy&#160;.................................................................&#160;15&#160;<br/>
+4.1.3&#160;<br/>
+Configurable&#160;files.............................................................................&#160;15&#160;<br/>
+4.1.4&#160;<br/>
+il.c....................................................................................................&#160;15&#160;<br/>
+4.1.5&#160;<br/>
+il_def.&#160;h............................................................................................&#160;15&#160;<br/>
+4.1.6&#160;<br/>
+Il_par.c.............................................................................................&#160;15&#160;<br/>
+4.1.7&#160;<br/>
+il_par.h.............................................................................................&#160;15&#160;<br/>
+4.1.8&#160;<br/>
+il_cfg.h&#160;.............................................................................................&#160;16&#160;<br/>
+4.1.9&#160;<br/>
+il_inc.h&#160;.............................................................................................&#160;16&#160;<br/>
+4.1.9.1&#160;<br/>
+Vstdlib.c&#160;/&#160;vstdlib.h&#160;...........................................................................&#160;16&#160;<br/>
+4.1.10&#160;<br/>
+Includes&#160;when&#160;using&#160;GENy..............................................................&#160;16&#160;<br/>
+4.2&#160;<br/>
+Handling&#160;of&#160;the&#160;Interaction&#160;Layer&#160;.....................................................&#160;16&#160;<br/>
+<b>5</b>&#160;<br/>
+<b>A&#160;Basically&#160;Running&#160;Interaction&#160;Layer&#160;In&#160;7&#160;Steps&#160;.......................................&#160;18</b>&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-6_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+5&#160;/&#160;35&#160;<br/>
+5.1&#160;<br/>
+STEP&#160;1&#160;&#160;Unpack&#160;the&#160;delivery&#160;...........................................................&#160;19&#160;<br/>
+5.2&#160;<br/>
+STEP&#160;2&#160;&#160;Configuration&#160;Tool&#160;and&#160;DBC&#160;File&#160;.......................................&#160;20&#160;<br/>
+5.2.1&#160;<br/>
+Working&#160;with&#160;the&#160;Configuration&#160;Tool&#160;GENy......................................&#160;21&#160;<br/>
+5.2.1.1&#160;<br/>
+Project&#160;Setup&#160;in&#160;GENy.....................................................................&#160;21&#160;<br/>
+5.2.1.2&#160;<br/>
+Interaction&#160;Layer&#160;Settings&#160;in&#160;GENy&#160;..................................................&#160;21&#160;<br/>
+5.3&#160;<br/>
+STEP&#160;3&#160;&#160;Generate&#160;Files...................................................................&#160;23&#160;<br/>
+5.4&#160;<br/>
+STEP&#160;4&#160;&#160;Add&#160;Files&#160;to&#160;Your&#160;Application.............................................&#160;24&#160;<br/>
+5.4.1&#160;<br/>
+Using&#160;GENy.....................................................................................&#160;24&#160;<br/>
+5.5&#160;<br/>
+STEP&#160;5&#160;Adaptations&#160;For&#160;Your&#160;Application&#160;.......................................&#160;25&#160;<br/>
+5.6&#160;<br/>
+STEP&#160;6&#160;Compile&#160;And&#160;Link&#160;...............................................................&#160;28&#160;<br/>
+5.7&#160;<br/>
+STEP&#160;7&#160;Test&#160;the&#160;Software&#160;Component&#160;............................................&#160;28&#160;<br/>
+5.7.1&#160;<br/>
+Built-up&#160;of&#160;the&#160;test&#160;environment&#160;.......................................................&#160;28&#160;<br/>
+5.7.2&#160;<br/>
+Test&#160;of&#160;Interaction&#160;Layer&#160;..................................................................&#160;29&#160;<br/>
+<b>6</b>&#160;<br/>
+<b>Further&#160;Information&#160;.......................................................................................&#160;31</b>&#160;<br/>
+6.1&#160;<br/>
+States&#160;of&#160;the&#160;Interaction&#160;Layer&#160;.........................................................&#160;31&#160;<br/>
+6.2&#160;<br/>
+Debugging&#160;of&#160;Interaction&#160;Layer&#160;........................................................&#160;31&#160;<br/>
+6.3&#160;<br/>
+Where&#160;to&#160;get&#160;the&#160;generated&#160;names&#160;for&#160;the&#160;macros&#160;and&#160;<br/>functions&#160;..........................................................................................&#160;32&#160;<br/>
+6.4&#160;<br/>
+Usage&#160;of&#160;flags&#160;and&#160;functions............................................................&#160;32&#160;<br/>
+6.5&#160;<br/>
+Data&#160;Consistency&#160;............................................................................&#160;33&#160;<br/>
+<b>7</b>&#160;<br/>
+<b>Index.................................................................................................................&#160;1</b>&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-7_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+6&#160;/&#160;35&#160;<br/>
+<b>Illustrations&#160;<br/></b>Figure&#160;3-1&#160;<br/>
+Transmission&#160;Problems&#160;............................................................................&#160;10&#160;<br/>
+Figure&#160;3-2&#160;<br/>
+Reception&#160;Problems&#160;.................................................................................&#160;11&#160;<br/>
+Figure&#160;3-3&#160;<br/>
+Generation&#160;Process&#160;For&#160;Vector&#160;CANbedded&#160;Software&#160;Components&#160;........&#160;13&#160;<br/>
+Figure&#160;3-4&#160;<br/>
+Overview&#160;CAN&#160;Driver,&#160;Interaction&#160;Layer&#160;and&#160;Application&#160;..........................&#160;14&#160;<br/>
+Figure&#160;4-1&#160;<br/>
+Including&#160;Vector&#160;Interaction&#160;Layer&#160;............................................................&#160;16&#160;<br/>
+Figure&#160;5-1&#160;<br/>
+Generation&#160;Information.............................................................................&#160;23&#160;<br/>
+Figure&#160;5-2&#160;<br/>
+The&#160;test&#160;environment................................................................................&#160;28&#160;<br/>
+Figure&#160;5-3&#160;<br/>
+How&#160;to&#160;get&#160;an&#160;data&#160;base&#160;into&#160;CANoe........................................................&#160;29&#160;<br/>
+Figure&#160;5-4&#160;<br/>
+Configure&#160;menu&#160;and&#160;Real&#160;adjustment.......................................................&#160;29&#160;<br/>
+Figure&#160;5-5&#160;<br/>
+A&#160;trace&#160;of&#160;the&#160;example&#160;application&#160;with&#160;timeout&#160;occurring.........................&#160;29&#160;<br/>
+Figure&#160;5-6&#160;<br/>
+Insert&#160;a&#160;generator&#160;block&#160;to&#160;send&#160;the&#160;message&#160;201&#160;all&#160;10ms&#160;.....................&#160;30&#160;<br/>
+Figure&#160;5-7&#160;<br/>
+A&#160;trace&#160;without&#160;timeout&#160;.............................................................................&#160;30&#160;<br/>
+Figure&#160;6-1&#160;<br/>
+The&#160;State&#160;machine&#160;of&#160;the&#160;Interaction&#160;Layer&#160;..............................................&#160;31&#160;<br/>
+Figure&#160;6-2&#160;<br/>
+Debug&#160;options&#160;for&#160;Interaction&#160;Layer..........................................................&#160;31&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-8_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+7&#160;/&#160;35&#160;<br/>
+<b>1&#160;&#160;Welcome&#160;to&#160;the&#160;Interaction&#160;Layer&#160;User&#160;Manual&#160;</b><br/>
+<b>1.1&#160;</b><br/>
+<b>Beginners&#160;with&#160;the&#160;Interaction&#160;Layer&#160;start&#160;here?&#160;&#160;</b><br/>
+You&#160;need&#160;some&#160;information&#160;about&#160;this&#160;document?&#160;&#160;&#160;<br/>
+Chapter&#160;2&#160;<br/>
+What&#160;is&#160;the&#160;Interaction&#160;Layer?&#160;<br/>
+Chapter&#160;3.4&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>1.2&#160;</b><br/>
+<b>For&#160;Advanced&#160;Users&#160;&#160;</b><br/>
+Start&#160;reading&#160;here.&#160;<br/>
+Chapter&#160;4&#160;<br/>
+7&#160;Steps&#160;for&#160;Interaction&#160;Layer&#160;integration.&#160;<br/>
+Chapter&#160;5&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;&#160;&#160;<br/>
+<b>1.3&#160;</b><br/>
+<b>Special&#160;topics&#160;&#160;</b><br/>
+States&#160;of&#160;the&#160;Interaction&#160;Layer&#160;<br/>
+Chapter&#160;6.1&#160;<br/>
+Generated&#160;Names&#160;for&#160;macros&#160;and&#160;functions&#160;?&#160;&#160;<br/>
+Chapter&#160;6.3&#160;<br/>
+Flags&#160;and&#160;Functions&#160;&#160;<br/>
+Chapter&#160;0&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>1.4&#160;</b><br/>
+<b>Additional&#160;Documents&#160;dealing&#160;with&#160;the&#160;Interaction&#160;Layer&#160;</b><br/>
+TechnicalReference_InteractionLayer&#160;<br/>
+OEM-specific&#160;Documentation&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-9_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+8&#160;/&#160;35&#160;<br/>
+<b>2&#160;&#160;About&#160;This&#160;Document&#160;</b><br/>
+This&#160;&#160;document&#160;&#160;gives&#160;&#160;you&#160;&#160;an&#160;&#160;understanding&#160;&#160;of&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer.&#160;&#160;You&#160;&#160;will&#160;<br/>receive&#160;&#160;general&#160;&#160;information,&#160;&#160;a&#160;&#160;step-by-step&#160;&#160;tutorial&#160;&#160;to&#160;&#160;get&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;<br/>running&#160;and&#160;to&#160;use&#160;its&#160;functionalities.&#160;<br/>
+<b>2.1&#160;</b><br/>
+<b>How&#160;This&#160;Documentation&#160;Is&#160;Set-Up&#160;</b><br/>
+<b>Chapter&#160;</b><br/>
+<b>Content&#160;</b><br/>
+<b>Chapter&#160;1&#160;</b><br/>
+The&#160;welcome&#160;page&#160;&#160;is&#160;to&#160;navigate&#160;in&#160;the&#160;document.&#160;The&#160;main&#160;parts&#160;of&#160;the&#160;&#160;document&#160;<br/>can&#160;be&#160;accessed&#160;from&#160;here&#160;via&#160;hyperlinks.<b>&#160;</b><br/>
+<b>Chapter&#160;2</b>&#160;<br/>
+It&#160;&#160;contains&#160;&#160;some&#160;&#160;formal&#160;&#160;information&#160;&#160;about&#160;&#160;this&#160;&#160;document,&#160;&#160;an&#160;&#160;explanation&#160;&#160;of&#160;&#160;legends&#160;<br/>and&#160;symbols.&#160;<br/>
+<b>Chapter&#160;3</b>&#160;<br/>
+In&#160;this&#160;chapter&#160;you&#160;get&#160;a&#160;brief&#160;introduction&#160;in&#160;this&#160;Interaction&#160;Layer&#160;and&#160;its&#160;tasks.&#160;<br/>
+<b>Chapter&#160;4</b>&#160;<br/>
+Here&#160;you&#160;find&#160;some&#160;more&#160;insight&#160;in&#160;the&#160;Interaction&#160;Layer.&#160;<br/>
+<b>Chapter&#160;5</b>&#160;<br/>
+Here&#160;&#160;are&#160;&#160;the&#160;&#160;7&#160;&#160;Steps&#160;&#160;for&#160;&#160;you&#160;&#160;to&#160;&#160;integrate&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer,&#160;&#160;how&#160;&#160;to&#160;&#160;do&#160;&#160;the&#160;<br/>necessary&#160;settings&#160;in&#160;the&#160;Configuration&#160;Tool&#160;and&#160;how&#160;to&#160;connect&#160;the&#160;Interaction&#160;Layer&#160;<br/>with&#160;your&#160;application.&#160;<br/>
+<b>Chapter&#160;6</b>&#160;<br/>
+This&#160;chapter&#160;provides&#160;you&#160;with&#160;some&#160;further&#160;information.&#160;<br/>
+<b>Chapter&#160;7</b>&#160;<br/>
+In&#160;this&#160;last&#160;chapter&#160;there&#160;is&#160;a&#160;list&#160;of&#160;experiences&#160;with&#160;the&#160;Interaction&#160;Layer.&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_7.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_8.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_9.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_10.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_11.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_12.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_13.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_14.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_15.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_16.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_17.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_18.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_19.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_20.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_21.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_22.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_23.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_24.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_25.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_26.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_27.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_28.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_29.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_30.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_31.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_32.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_33.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_34.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_35.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_36.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_37.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_38.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_39.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_40.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_41.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_42.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_43.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_44.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_45.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_46.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_47.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_48.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_49.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_50.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_51.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_52.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_53.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_54.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_55.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_56.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_57.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_58.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_59.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_60.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_61.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_62.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_63.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_64.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_65.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_66.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_67.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_68.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_69.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_70.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_71.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_72.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_73.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_74.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_75.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_76.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_77.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_78.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_79.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_80.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_81.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_82.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_83.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_84.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_85.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_86.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_87.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_88.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_89.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_90.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_91.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_92.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_93.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_94.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_95.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_96.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_97.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_98.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_99.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_100.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_101.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_102.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_103.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_104.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_105.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_106.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_107.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_108.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_109.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_110.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_111.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_112.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_113.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_114.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_115.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_116.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_117.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_118.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_119.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_120.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_121.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_122.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_123.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_124.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_125.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_126.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_127.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_128.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_129.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_130.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_131.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_132.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_133.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_134.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_135.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_136.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_137.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_138.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_139.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_140.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_141.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_142.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_143.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_144.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_145.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_146.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_147.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_148.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_149.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_150.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_151.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_152.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_153.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_154.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_155.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_156.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_157.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_158.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_159.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_160.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_161.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_162.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_163.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_164.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_165.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_166.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_167.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_168.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_169.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_170.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_171.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_172.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_173.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_174.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_175.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_176.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_177.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_178.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_179.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_180.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_181.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_182.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_183.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_184.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_185.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_186.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_187.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_188.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_189.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_190.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_191.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_192.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_193.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_194.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_195.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_196.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_197.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_198.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_199.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_200.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_201.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_202.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_203.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_204.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_205.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_206.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_207.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_208.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_209.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_210.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_211.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_212.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_213.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_214.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_215.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_216.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_217.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_218.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_219.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_220.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_221.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_222.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_223.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_224.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_225.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_226.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_227.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_228.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_229.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_230.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_231.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_232.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_233.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_234.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_235.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_236.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_237.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_238.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_239.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_240.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_241.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_242.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_243.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_244.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_245.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_246.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_247.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_248.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_249.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_250.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_251.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_252.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_253.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_254.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_255.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_256.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_257.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_258.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_259.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_260.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_261.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_262.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_263.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_264.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_265.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_266.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_267.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_268.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_269.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_270.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_271.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_272.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_273.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_274.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_275.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_276.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_277.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_278.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_279.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_280.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_281.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_282.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_283.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_284.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_285.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_286.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_287.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_288.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_289.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_290.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_291.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_292.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_293.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_294.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_295.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_296.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_297.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_298.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_299.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_300.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_301.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_302.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_303.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_304.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_305.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_306.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_307.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_308.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_309.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_310.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_311.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_312.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_313.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_314.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_315.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_316.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_317.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_318.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_319.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_320.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_321.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_322.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_323.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_324.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_325.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_326.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_327.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_328.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_329.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_330.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_331.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_332.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_333.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_334.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_335.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_336.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_337.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_338.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_339.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_340.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_341.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_342.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_343.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_344.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_345.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_346.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_347.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_348.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_349.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_350.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_351.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_352.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_353.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_354.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_355.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_356.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_357.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_358.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_359.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_360.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_361.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_362.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_363.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_364.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_365.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_366.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_367.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_368.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_369.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_370.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_371.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_372.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_373.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_374.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_375.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_376.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_377.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_378.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_379.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_380.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_381.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_382.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_383.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_384.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_385.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_386.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_387.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_388.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_389.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_390.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_391.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_392.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_393.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_394.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_395.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_396.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_397.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_398.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_399.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_400.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_401.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_402.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_403.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_404.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_405.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_406.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_407.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_408.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_409.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_410.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_411.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_412.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_413.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_414.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_415.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_416.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_417.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_418.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_419.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_420.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_421.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_422.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_423.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_424.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_425.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_426.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_427.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_428.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_429.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_430.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_431.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_432.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_433.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_434.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_435.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_436.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_437.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_438.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_439.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_440.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_441.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_442.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_443.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_444.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_445.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_446.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_447.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_448.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_449.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_450.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_451.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-10_452.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+9&#160;/&#160;35&#160;<br/>
+<b>2.2&#160;</b><br/>
+<b>Legend&#160;and&#160;Explanation&#160;of&#160;Symbols&#160;</b><br/>
+You&#160;&#160;find&#160;&#160;these&#160;&#160;symbols&#160;&#160;at&#160;&#160;the&#160;&#160;right&#160;&#160;side&#160;&#160;of&#160;&#160;the&#160;&#160;document.&#160;&#160;They&#160;&#160;indicate&#160;&#160;special&#160;<br/>areas&#160;in&#160;the&#160;text.&#160;Here&#160;is&#160;a&#160;list&#160;of&#160;their&#160;meaning.&#160;<br/>
+These&#160;areas&#160;<br/>to&#160;the&#160;right&#160;of&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Meaning&#160;</b><br/>
+the&#160;text&#160;<br/>contain&#160;brief&#160;<br/>items&#160;of&#160;<br/>information&#160;<br/>
+The&#160;building&#160;bricks&#160;mark&#160;examples.&#160;<br/>
+that&#160;will&#160;<br/>
+&#160;<br/>
+facilitate&#160;your&#160;<br/>search&#160;for&#160;<br/>
+Comm&#160;&#160;<br/>
+ents&#160;<br/>
+You&#160;will&#160;find&#160;key&#160;words&#160;and&#160;information&#160;in&#160;short&#160;sentences&#160;in&#160;the&#160;margin.&#160;This&#160;will&#160;<br/>
+and&#160;<br/>
+specific&#160;<br/>
+explanation<br/>s&#160;<br/>
+greatly&#160;simplify&#160;your&#160;search&#160;for&#160;topics.&#160;<br/>
+topics.&#160;<br/>
+The&#160;footprints&#160;will&#160;lead&#160;you&#160;through&#160;the&#160;steps&#160;until&#160;you&#160;can&#160;use&#160;the&#160;described&#160;<br/>Interaction&#160;Layer.&#160;<br/>
+&#160;<br/>
+There&#160;is&#160;something&#160;you&#160;should&#160;take&#160;care&#160;about.&#160;<br/>
+&#160;<br/>
+Useful&#160;and&#160;additional&#160;information&#160;is&#160;displayed&#160;in&#160;areas&#160;with&#160;this&#160;symbol.&#160;<br/>
+&#160;<br/>
+This&#160;file&#160;you&#160;are&#160;allowed&#160;to&#160;edit&#160;on&#160;demand.&#160;<br/>
+&#160;<br/>
+This&#160;file&#160;you&#160;must&#160;not&#160;edit&#160;at&#160;all.&#160;&#160;<br/>
+&#160;<br/>
+This&#160;indicates&#160;an&#160;area&#160;dealing&#160;with&#160;frequently&#160;asked&#160;questions&#160;(FAQ).&#160;<br/>
+&#160;<br/>
+&#160;&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-11_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-11_2.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-11_3.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-11_4.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+10&#160;/&#160;35&#160;<br/>
+<b>3&#160;&#160;Interaction&#160;Layer&#160;–&#160;An&#160;Overall&#160;View&#160;</b><br/>
+One&#160;&#160;of&#160;&#160;the&#160;&#160;important&#160;&#160;tasks&#160;&#160;in&#160;&#160;programming&#160;&#160;ECUs&#160;&#160;for&#160;&#160;modern&#160;&#160;vehicles&#160;&#160;is&#160;&#160;the&#160;<br/>handling&#160;&#160;of&#160;&#160;timers&#160;&#160;for&#160;&#160;actions&#160;&#160;like&#160;&#160;sending&#160;&#160;messages&#160;&#160;or&#160;&#160;monitoring&#160;&#160;incoming&#160;<br/>messages.&#160;&#160;In&#160;&#160;some&#160;&#160;cases&#160;&#160;this&#160;&#160;can&#160;&#160;become&#160;&#160;quite&#160;&#160;complex&#160;&#160;and&#160;&#160;could&#160;&#160;be&#160;&#160;a&#160;&#160;lot&#160;&#160;of&#160;<br/>programming&#160;work&#160;to&#160;do.&#160;&#160;<br/>
+&#160;&#160;&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Transmission&#160;problems&#160;</b><br/>
+&#160;<br/>
+ABS<br/>
+<b>What</b><br/>
+<b>When</b><br/>
+<b>How&#160;</b><br/>
+<b>Often</b><br/>
+<b>Timeout</b><br/>
+<b>&amp;&#160;Defaults</b><br/>
+<b>Notification</b><br/>
+<b>Data&#160;consistency</b><br/>
+Dashboard<br/>
+The&#160;names&#160;of&#160;the&#160;<br/>
+&#160;<br/>
+macros&#160;are&#160;<br/>derived&#160;from&#160;the&#160;<br/>signal&#160;names&#160;in&#160;<br/>
+Figure&#160;3-1&#160;&#160;Transmission&#160;Problems&#160;<br/>
+the&#160;database&#160;with&#160;<br/>a&#160;pre-&#160;and&#160;a&#160;<br/>postfix.&#160;You&#160;can&#160;<br/>
+&#160;<br/>
+change&#160;the&#160;<br/>default&#160;pre-&#160;and&#160;<br/>
+The&#160;picture&#160;above&#160;mentions&#160;things&#160;to&#160;remember&#160;when&#160;transmitting&#160;data.&#160;You&#160;surely&#160;<br/>
+suffixes&#160;in&#160;the&#160;<br/>Configuration&#160;<br/>
+know&#160;these&#160;kinds&#160;of&#160;problems.&#160;<br/>
+Tool.&#160;<br/>
+The&#160;Interaction&#160;Layer&#160;handles&#160;the&#160;classic&#160;problems&#160;with&#160;transmission&#160;and&#160;reception&#160;<br/>for&#160;you.&#160;The&#160;information&#160;which&#160;signal&#160;or&#160;message&#160;should&#160;be&#160;sent&#160;in&#160;which&#160;timing,&#160;<br/>which&#160;&#160;signal&#160;&#160;triggers&#160;&#160;a&#160;&#160;timeout&#160;&#160;flag&#160;&#160;when&#160;&#160;it&#160;&#160;is&#160;&#160;not&#160;&#160;received&#160;&#160;any&#160;&#160;more&#160;&#160;and&#160;&#160;further&#160;<br/>information&#160;&#160;is&#160;&#160;stored&#160;&#160;in&#160;&#160;the&#160;&#160;data&#160;&#160;base&#160;&#160;(DBC&#160;&#160;file,&#160;&#160;use&#160;&#160;CANdb++&#160;&#160;for&#160;&#160;editing&#160;&#160;DBC&#160;<br/>data)&#160;and&#160;realized&#160;by&#160;the&#160;Interaction&#160;Layer.&#160;<br/>
+&#160;<br/>
+Signal&#160;access&#160;<br/>can&#160;be&#160;a&#160;macros&#160;<br/>
+<b>3.1.1&#160;&#160;What&#160;is&#160;left&#160;to&#160;do&#160;for&#160;transmission&#160;</b><br/>
+or&#160;a&#160;function.&#160;This&#160;<br/>depends&#160;on&#160;the&#160;<br/>
+Regarding&#160;the&#160;transmission,&#160;you&#160;just&#160;have&#160;to&#160;fill&#160;the&#160;signal&#160;memory&#160;locations&#160;(use&#160;<br/>
+signal&#160;length,&#160;its&#160;<br/>
+generated&#160;signal/message&#160;access&#160;macros&#160;or&#160;functions)&#160;with&#160;the&#160;current&#160;values,&#160;the&#160;<br/>
+location&#160;in&#160;the&#160;<br/>message&#160;and&#160;the&#160;<br/>
+transmission&#160;itself&#160;is&#160;done&#160;by&#160;the&#160;Interaction&#160;Layer.&#160;&#160;&#160;<br/>
+transmission&#160;<br/>mode.&#160;&#160;<br/>
+As&#160;you&#160;access&#160;the&#160;signals&#160;via&#160;macros&#160;or&#160;functions,&#160;the&#160;data&#160;consistency&#160;is&#160;granted.&#160;&#160;<br/>
+The&#160;Configuraion&#160;<br/>Tool&#160;always&#160;<br/>
+The&#160;Interaction&#160;Layer&#160;notifies&#160;the&#160;application&#160;in&#160;case&#160;of&#160;important&#160;events,&#160;such&#160;as&#160;a&#160;<br/>
+generated&#160;the&#160;<br/>
+successful&#160;&#160;transmission&#160;&#160;of&#160;&#160;a&#160;&#160;signal&#160;&#160;(confirmation)&#160;&#160;or&#160;&#160;a&#160;&#160;timeout&#160;&#160;when&#160;&#160;a&#160;&#160;signal&#160;&#160;has&#160;<br/>
+best&#160;way&#160;to&#160;<br/>access&#160;a&#160;signal.&#160;&#160;&#160;<br/>
+not&#160;been&#160;received.&#160;&#160;&#160;<br/>
+<b>Caution&#160;<br/></b>Signal&#160;access&#160;macros&#160;or&#160;functions&#160;are&#160;always&#160;<b>unsigned&#160;integer</b>&#160;values&#160;!!!&#160;<br/>&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-12_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-12_2.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-12_3.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-12_4.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+11&#160;/&#160;35&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Reception&#160;problems&#160;</b><br/>
+&#160;<br/>
+<b>New&#160;Data?</b><br/>
+ABS<br/>
+<b>Notification</b><br/>
+<b>Timeout</b><br/>
+<b>&amp;&#160;Defaults</b><br/>
+<b>Data&#160;</b><br/>
+<b>Consistency</b><br/>
+Dashboard&#160;&#160;<br/>
+Figure&#160;3-2&#160;&#160;Reception&#160;Problems&#160;<br/>
+&#160;<br/>
+The&#160;names&#160;of&#160;the&#160;<br/>
+The&#160;&#160;picture&#160;&#160;above&#160;&#160;mentions&#160;&#160;things&#160;&#160;to&#160;&#160;remember&#160;&#160;when&#160;&#160;receiving&#160;&#160;data.&#160;&#160;You&#160;&#160;surely&#160;<br/>
+macros&#160;are&#160;<br/>
+know&#160;these&#160;kinds&#160;of&#160;problems.&#160;<br/>
+derived&#160;from&#160;the&#160;<br/>signal&#160;names&#160;in&#160;<br/>the&#160;database&#160;with&#160;<br/>
+&#160;<br/>
+a&#160;pre-&#160;and&#160;a&#160;<br/>suffix.&#160;You&#160;can&#160;<br/>change&#160;the&#160;<br/>
+<b>3.2.1&#160;&#160;What&#160;is&#160;left&#160;to&#160;do&#160;for&#160;Reception&#160;</b><br/>
+default&#160;pre-&#160;and&#160;<br/>suffixes&#160;in&#160;the&#160;<br/>
+Access&#160;the&#160;received&#160;data&#160;via&#160;the&#160;generated&#160;macros&#160;or&#160;functions&#160;any&#160;time&#160;you&#160;need&#160;<br/>
+Configuration&#160;<br/>Tool&#160;&#160;tab&#160;Names.&#160;<br/>
+the&#160;information.&#160;The&#160;macros&#160;and&#160;functions&#160;guarantee&#160;the&#160;data&#160;consistency.&#160;&#160;<br/>
+Events&#160;are&#160;signaled&#160;to&#160;the&#160;application&#160;via&#160;flags&#160;(polling)&#160;or&#160;functions.&#160;<br/>
+You&#160;&#160;may&#160;&#160;react&#160;&#160;on&#160;&#160;the&#160;&#160;indications&#160;&#160;for&#160;&#160;reception,&#160;&#160;changed&#160;&#160;values&#160;&#160;or&#160;&#160;timeout.&#160;&#160;This&#160;<br/>depends&#160;on&#160;the&#160;demands&#160;of&#160;your&#160;application.&#160;<br/>
+The&#160;Interaction&#160;Layer&#160;will&#160;free&#160;you&#160;from&#160;handling&#160;the&#160;data&#160;transmission&#160;and&#160;reception&#160;<br/>as&#160;&#160;far&#160;&#160;as&#160;&#160;possible.&#160;&#160;This&#160;&#160;job&#160;&#160;is&#160;&#160;shifted&#160;&#160;to&#160;&#160;the&#160;&#160;data&#160;&#160;base&#160;&#160;engineer&#160;&#160;who&#160;&#160;develops&#160;&#160;the&#160;<br/>DBC&#160;file.&#160;<br/>
+&#160;<br/>
+<b>Caution&#160;<br/></b>Signal&#160;access&#160;macros&#160;are&#160;always&#160;<b>unsigned&#160;integer</b>&#160;values!&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>3.3&#160;</b><br/>
+<b>Tools&#160;And&#160;Files&#160;</b><br/>
+There&#160;is&#160;the&#160;same&#160;<br/>DBC-file&#160;per&#160;bus&#160;<br/>system&#160;(high&#160;<br/>
+<b>3.3.1&#160;&#160;The&#160;data&#160;base&#160;file&#160;(DBC&#160;file)&#160;</b><br/>
+speed,&#160;low&#160;<br/>speed,&#160;etc)&#160;for&#160;all&#160;<br/>suppliers&#160;to&#160;<br/>
+The&#160;DBC&#160;file&#160;normally&#160;is&#160;designed&#160;by&#160;the&#160;vehicle&#160;manufacturer&#160;and&#160;distributed&#160;to&#160;all&#160;<br/>
+guarantee&#160;a&#160;<br/>
+suppliers&#160;that&#160;develop&#160;an&#160;ECU.&#160;&#160;&#160;<br/>
+common&#160;basis&#160;for&#160;<br/>development.&#160;<br/>
+For&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;it&#160;&#160;contains&#160;&#160;attributes&#160;&#160;and&#160;&#160;the&#160;&#160;information&#160;&#160;about&#160;&#160;the&#160;<br/>transmission&#160;&#160;modes&#160;&#160;of&#160;&#160;the&#160;&#160;signals&#160;&#160;(and&#160;&#160;messages)&#160;&#160;and&#160;&#160;e.g.&#160;&#160;the&#160;&#160;cycle&#160;&#160;times.&#160;&#160;It&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-13_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+12&#160;/&#160;35&#160;<br/>
+contains&#160;&#160;all&#160;&#160;information&#160;&#160;that&#160;&#160;is&#160;&#160;necessary&#160;&#160;for&#160;&#160;transmitting&#160;&#160;and&#160;&#160;receiving&#160;&#160;signals,&#160;<br/>which&#160;signal&#160;should&#160;be&#160;time&#160;monitored&#160;etc.&#160;<br/>
+Every&#160;&#160;supplier&#160;&#160;uses&#160;&#160;the&#160;&#160;SAME&#160;&#160;DBC&#160;&#160;file&#160;&#160;for&#160;&#160;one&#160;&#160;type&#160;&#160;of&#160;&#160;vehicle&#160;&#160;to&#160;&#160;guarantee&#160;&#160;a&#160;<br/>common&#160;basis&#160;for&#160;development.&#160;&#160;<br/>
+&#160;<br/>
+<b>3.3.2&#160;&#160;Configuration&#160;Tool&#160;</b><br/>
+The&#160;&#160;Configuration&#160;&#160;Tool&#160;&#160;is&#160;&#160;a&#160;&#160;PC-Tool.&#160;&#160;It&#160;&#160;is&#160;&#160;used&#160;&#160;to&#160;&#160;configure&#160;&#160;the&#160;&#160;CANbedded&#160;<br/>components&#160;to&#160;the&#160;application’s&#160;needs.&#160;The&#160;Configuration&#160;Tool&#160;generates&#160;files&#160;that&#160;<br/>you&#160;have&#160;to&#160;include&#160;in&#160;your&#160;application.&#160;&#160;<br/>
+For&#160;the&#160;Vector&#160;Interaction&#160;Layer&#160;many&#160;of&#160;the&#160;settings&#160;are&#160;done&#160;in&#160;the&#160;DBC&#160;file&#160;(see&#160;<br/>above)&#160;&#160;and&#160;&#160;many&#160;&#160;setting&#160;&#160;can&#160;&#160;be&#160;&#160;done&#160;&#160;in&#160;&#160;the&#160;&#160;Configuration&#160;&#160;Tool.&#160;&#160;For&#160;&#160;each&#160;&#160;signal&#160;<br/>flags,&#160;&#160;default&#160;&#160;values,&#160;&#160;access&#160;&#160;macros&#160;&#160;or&#160;&#160;functions&#160;&#160;and&#160;&#160;callback&#160;&#160;functions&#160;&#160;can&#160;&#160;be&#160;<br/>switched&#160;to&#160;on&#160;or&#160;off&#160;separately.&#160;&#160;<br/>
+&#160;&#160;&#160;<br/>
+<b>3.3.3&#160;&#160;Generation&#160;Process&#160;with&#160;CANbedded&#160;Software&#160;Component&#160;</b><br/>
+The&#160;Configuration&#160;Tool&#160;generates&#160;files&#160;that&#160;contain&#160;the&#160;configuration&#160;and&#160;the&#160;signal&#160;<br/>interface&#160;of&#160;the&#160;CANbedded&#160;Software&#160;Components.&#160;In&#160;connection&#160;with&#160;the&#160;source&#160;<br/>code&#160;&#160;of&#160;&#160;each&#160;&#160;component,&#160;&#160;CANbedded&#160;&#160;can&#160;&#160;be&#160;&#160;compiled&#160;&#160;and&#160;&#160;linked&#160;&#160;(see&#160;&#160;Figure&#160;<br/>3-3).&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-14_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+13&#160;/&#160;35&#160;<br/>
+&#160;<br/>
+CANdela&#160;<br/>
+Network<br/>
+The&#160;standard&#160;<br/>
+Database<br/>
+Database<br/>
+generation&#160;<br/>process&#160;for&#160;<br/>Vectors&#160;Software&#160;<br/>Components.&#160;<br/>
+Application<br/>
+Configuration&#160;Tool<br/>
+Specific<br/>
+Data<br/>
+Generation<br/>
+Configuration<br/>
+Signal<br/>
+Interface<br/>
+Header<br/>
+Includes<br/>
+CANbedded<br/>
+CANdesc<br/>
+Software<br/>
+Application<br/>
+Parameters<br/>
+Source<br/>
+Components<br/>
+Compiler,&#160;Linker<br/>
+Executable<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;3-3&#160;&#160;Generation&#160;Process&#160;For&#160;Vector&#160;CANbedded&#160;Software&#160;Components&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-15_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+14&#160;/&#160;35&#160;<br/>
+<b>3.4&#160;</b><br/>
+<b>What&#160;Is&#160;the&#160;Vector&#160;Interaction&#160;Layer&#160;</b><br/>
+<i>os&#160;</i>CAN<br/>
+Application<br/>
+Interaction&#160;<br/>Layer<br/>
+CAN&#160;Driver<br/>
+CAN&#160;Controller<br/>
+Transceiver<br/>
+CAN&#160;Bus<br/>
+&#160;<br/>
+Figure&#160;3-4&#160;&#160;Overview&#160;CAN&#160;Driver,&#160;Interaction&#160;Layer&#160;and&#160;Application&#160;<br/>
+&#160;<br/>
+As&#160;&#160;you&#160;&#160;see&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;is&#160;&#160;a&#160;&#160;higher&#160;&#160;layer&#160;&#160;than&#160;&#160;the&#160;&#160;CAN&#160;&#160;Driver&#160;&#160;and&#160;&#160;uses&#160;<br/>the&#160;services&#160;of&#160;the&#160;physical&#160;layer&#160;for&#160;transmission&#160;and&#160;reception.&#160;&#160;<br/>
+<b>3.5&#160;</b><br/>
+<b>What&#160;The&#160;Interaction&#160;Layer&#160;Does&#160;</b><br/>
+The&#160;Vector&#160;Interaction&#160;Layer&#160;is&#160;responsible&#160;for&#160;transmission&#160;and&#160;reception&#160;of&#160;CAN&#160;<br/>messages&#160;&#160;according&#160;&#160;their&#160;&#160;transmission&#160;&#160;modes,&#160;&#160;timeout&#160;&#160;monitoring&#160;&#160;and&#160;&#160;setting&#160;&#160;of&#160;<br/>default&#160;values.&#160;It&#160;provides&#160;a&#160;signal&#160;interface&#160;to&#160;the&#160;application.&#160;<br/>
+Therefore&#160;&#160;the&#160;&#160;programming&#160;&#160;effort&#160;&#160;for&#160;&#160;transmission&#160;&#160;and&#160;&#160;reception&#160;&#160;of&#160;&#160;signals&#160;&#160;is&#160;<br/>reduced&#160;on&#160;some&#160;settings&#160;on&#160;the&#160;DBC&#160;and&#160;in&#160;the&#160;Configuration&#160;Tool&#160;and&#160;the&#160;basic&#160;<br/>implementation&#160;of&#160;the&#160;Vector&#160;Interaction&#160;Layer&#160;Component.&#160;&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-16_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-16_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-16_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-16_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-16_5.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+15&#160;/&#160;35&#160;<br/>
+<b>4&#160;&#160;This&#160;Component&#160;–&#160;A&#160;More&#160;Detailed&#160;View&#160;</b><br/>
+<b>4.1&#160;</b><br/>
+<b>Files&#160;to&#160;form&#160;the&#160;Interaction&#160;Layer&#160;</b><br/>
+The&#160;Interaction&#160;Layer&#160;consists&#160;of&#160;3&#160;sorts&#160;of&#160;files.&#160;&#160;&#160;<br/>
+<b>4.1.1&#160;&#160;Fix&#160;files&#160;that&#160;form&#160;the&#160;Interaction&#160;Layer&#160;</b><br/>
+&#160;&#160;il.c&#160;<br/>
+&#160;&#160;il_def.h&#160;<br/>
+<b>4.1.2&#160;&#160;Generated&#160;files&#160;that&#160;must&#160;not&#160;be&#160;changed,&#160;too&#160;</b><br/>
+<b>4.1.2.1&#160;</b><br/>
+<b>Configuration&#160;Tool&#160;GENy&#160;</b><br/>
+&#160;&#160;Il_par.c&#160;<br/>
+&#160;&#160;Il_par.h&#160;<br/>
+&#160;&#160;Il_cfg.h&#160;<br/>
+&#160;<br/>
+<b>4.1.3&#160;&#160;Configurable&#160;files&#160;</b><br/>
+&#160;&#160;il_inc.h&#160;or&#160;&#160;<b>_</b>il_inc.h&#160;(the&#160;underscore&#160;means,&#160;this&#160;file&#160;has&#160;to&#160;be&#160;adapted&#160;by&#160;you)&#160;<br/>
+<b>4.1.4&#160;&#160;il.c&#160;&#160;</b><br/>
+This&#160;file&#160;contains&#160;the&#160;code&#160;for&#160;the&#160;Interaction&#160;Layer.&#160;&#160;<br/>
+You&#160;must&#160;not&#160;change&#160;this&#160;file&#160;at&#160;all.&#160;&#160;&#160;<br/>
+<b>4.1.5&#160;&#160;il_def.&#160;h&#160;&#160;</b><br/>
+The&#160;file&#160;il_def.h&#160;is&#160;the&#160;header&#160;file&#160;of&#160;the&#160;Interaction&#160;Layer.&#160;&#160;<br/>
+You&#160;must&#160;not&#160;change&#160;this&#160;file&#160;at&#160;all.&#160;&#160;<br/>
+<b>4.1.6&#160;&#160;Il_par.c&#160;</b><br/>
+Generated&#160;file&#160;for&#160;the&#160;Interaction&#160;Layer&#160;parameters.&#160;<br/>
+You&#160;must&#160;not&#160;change&#160;this&#160;file&#160;at&#160;all.&#160;&#160;&#160;<br/>
+<b>4.1.7&#160;&#160;il_par.h&#160;&#160;</b><br/>
+Generated&#160;header&#160;for&#160;the&#160;Interaction&#160;Layer&#160;parameters.&#160;<br/>
+You&#160;must&#160;not&#160;change&#160;this&#160;file&#160;at&#160;all.&#160;&#160;&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_3.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_5.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-17_7.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+16&#160;/&#160;35&#160;<br/>
+<b>4.1.8&#160;&#160;il_cfg.h&#160;&#160;</b><br/>
+This&#160;&#160;is&#160;&#160;the&#160;&#160;configuration&#160;&#160;file&#160;&#160;of&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer.&#160;&#160;It&#160;&#160;contains&#160;&#160;the&#160;&#160;configuration&#160;<br/>switches&#160;according&#160;to&#160;your&#160;selections&#160;in&#160;the&#160;Configuration&#160;Tool.&#160;&#160;<br/>
+Do&#160;not&#160;change&#160;this&#160;file.&#160;&#160;You&#160;will&#160;loose&#160;the&#160;changes&#160;after&#160;the&#160;next&#160;generation&#160;process.&#160;&#160;<br/>
+<b>4.1.9&#160;&#160;il_inc.h&#160;&#160;</b><br/>
+INC&#160;&#160;stands&#160;&#160;for&#160;&#160;include.&#160;&#160;Here&#160;&#160;you&#160;&#160;can&#160;&#160;add&#160;&#160;includes&#160;&#160;you&#160;&#160;need.&#160;&#160;&#160;&#160;Use&#160;&#160;the&#160;&#160;delivered&#160;<br/>standard&#160;&#160;il_inc.h&#160;&#160;for&#160;&#160;this&#160;&#160;first&#160;&#160;attempt&#160;&#160;and&#160;&#160;look&#160;&#160;at&#160;&#160;the&#160;&#160;default&#160;&#160;includes&#160;&#160;as&#160;&#160;an&#160;<br/>example.&#160;&#160;<br/>
+It&#160;is&#160;very&#160;important&#160;that&#160;you&#160;do&#160;NOT&#160;change&#160;the&#160;including&#160;order&#160;given&#160;in&#160;this&#160;header.&#160;<br/>
+&#160;<br/>
+Include&#160;&#160;this&#160;file&#160;&#160;(as&#160;&#160;you&#160;&#160;did&#160;&#160;it&#160;&#160;with&#160;&#160;can_inc.h)&#160;&#160;in&#160;&#160;every&#160;&#160;c&#160;&#160;file&#160;&#160;where&#160;&#160;you&#160;&#160;need&#160;&#160;CAN&#160;<br/>functionality.&#160;Il_inc.h&#160;“replaces”&#160;can_inc.h&#160;if&#160;you&#160;use&#160;the&#160;Interaction&#160;Layer.&#160;<br/>
+&#160;<br/>
+<b>4.1.9.1&#160;</b><br/>
+<b>Vstdlib.c&#160;/&#160;vstdlib.h&#160;</b><br/>
+You&#160;have&#160;to&#160;include&#160;the&#160;Vector&#160;standard&#160;library&#160;beginning&#160;with&#160;version&#160;1.83&#160;of&#160;the&#160;<br/>Interaction&#160;Layer.&#160;&#160;<br/>
+<b>4.1.10&#160;Includes&#160;when&#160;using&#160;GENy&#160;</b><br/>
+To&#160;&#160;use&#160;&#160;the&#160;&#160;Vector&#160;&#160;Interaction&#160;&#160;Layer,&#160;&#160;only&#160;&#160;the&#160;&#160;file&#160;&#160;il_inc.h&#160;&#160;must&#160;&#160;be&#160;&#160;included&#160;&#160;in&#160;&#160;all&#160;<br/>application&#160;components&#160;that&#160;want&#160;to&#160;use&#160;Interaction&#160;Layer&#160;functionality.&#160;<br/>
+Application.c<br/>
+il_inc.h<br/>
+Normally&#160;the&#160;<br/>Interrupts&#160;are&#160;<br/>
+&#160;<br/>
+disabled&#160;after&#160;<br/>reset,&#160;but&#160;this&#160;is&#160;<br/>
+Figure&#160;4-1&#160;&#160;Including&#160;Vector&#160;Interaction&#160;Layer&#160;<br/>
+not&#160;granted&#160;for&#160;<br/>any&#160;hardware&#160;<br/>platform.&#160;&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Handling&#160;of&#160;the&#160;Interaction&#160;Layer&#160;</b><br/>
+Make&#160;sure&#160;the&#160;<br/>interrupts&#160;are&#160;<br/>
+The&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;has&#160;&#160;to&#160;&#160;be&#160;&#160;added&#160;&#160;to&#160;&#160;the&#160;&#160;application&#160;&#160;and&#160;&#160;initialized&#160;&#160;<b>directly</b>&#160;<br/>
+disabled.&#160;&#160;<br/>
+after&#160;the&#160;initialization&#160;of&#160;the&#160;CAN&#160;Driver.&#160;Take&#160;care&#160;that&#160;the&#160;interrupts&#160;are&#160;disabled&#160;<br/>
+DO&#160;<b>NOT</b>&#160;USE&#160;<br/>THE&#160;FUNCTION&#160;<br/>CanInteruptDisable&#160;<br/>here.&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-18_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-18_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+17&#160;/&#160;35&#160;<br/>
+while&#160;&#160;initialization&#160;&#160;of&#160;&#160;the&#160;&#160;components.&#160;&#160;Additionally&#160;&#160;the&#160;&#160;functions&#160;&#160;IlRxTask()&#160;&#160;and&#160;<br/>IlTxTask()&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;&#160;called&#160;&#160;cyclically&#160;&#160;within&#160;&#160;the&#160;&#160;cycle&#160;&#160;time&#160;&#160;adjusted&#160;&#160;in&#160;&#160;the&#160;<br/>Configuration&#160;Tool&#160;(IL&#160;options/Timings&#160;IL&#160;Vector&#160;Channel&#160;X).&#160;<br/>
+It&#160;is&#160;very&#160;important&#160;for&#160;the&#160;correct&#160;function&#160;of&#160;the&#160;Interaction&#160;Layer&#160;that&#160;the&#160;timing&#160;you&#160;<br/>entered&#160;in&#160;the&#160;Configuration&#160;Tool&#160;and&#160;the&#160;cycle&#160;you&#160;call&#160;the&#160;IlRxTask()&#160;and&#160;IlTxTask()&#160;<br/>are&#160;the&#160;same.&#160;This&#160;is&#160;the&#160;basis&#160;for&#160;the&#160;timing&#160;of&#160;the&#160;Vector&#160;Interaction&#160;Layer.&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-19_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+18&#160;/&#160;35&#160;<br/>
+<b>5&#160;&#160;A&#160;Basically&#160;Running&#160;Interaction&#160;Layer&#160;In&#160;7&#160;Steps&#160;</b><br/>
+<b>STEP&#160;1&#160;:</b>&#160;&#160;&#160;<b>UNPACK&#160;THE&#160;DELIVERY</b>&#160;&#160;<br/>
+Follow&#160;&#160;the&#160;&#160;install&#160;&#160;shield&#160;&#160;wizard&#160;&#160;to&#160;&#160;unpack&#160;&#160;the&#160;&#160;CANbedded&#160;&#160;Software&#160;&#160;Components&#160;&#160;and&#160;<br/>the&#160;Configuration&#160;Tool.&#160;<br/>
+<b>STEP&#160;2:&#160;&#160;&#160;CONFIGURATION&#160;TOOL&#160;AND&#160;DBC&#160;FILE&#160;&#160;</b><br/>
+Read-in&#160;the&#160;DBC&#160;file&#160;in&#160;the&#160;Configuration&#160;Tool&#160;and&#160;make&#160;the&#160;configuration&#160;settings&#160;for&#160;<br/>the&#160;CANbedded&#160;Software&#160;Components.&#160;<br/>
+<b>STEP&#160;3:</b>&#160;&#160;<b>GENERATE&#160;FILES&#160;&#160;</b><br/>
+Generate&#160;the&#160;files&#160;in&#160;the&#160;appropriate&#160;folders.&#160;<br/>
+<b>STEP&#160;4:&#160;&#160;&#160;ADD&#160;FILES&#160;TO&#160;YOUR&#160;APPLICATION&#160;</b><br/>
+Add&#160;the&#160;CANbedded&#160;C&#160;and&#160;H&#160;files&#160;to&#160;your&#160;project&#160;or&#160;makefile.&#160;<br/>
+<b>STEP&#160;5:&#160;&#160;&#160;ADAPTATIONS&#160;FOR&#160;YOUR&#160;APPLICATION&#160;</b><br/>
+Now&#160;&#160;your&#160;&#160;application&#160;&#160;files&#160;&#160;must&#160;&#160;be&#160;&#160;modified&#160;&#160;to&#160;&#160;use&#160;&#160;the&#160;&#160;CANbedded&#160;&#160;Software&#160;<br/>Components&#160;(includes,&#160;cyclic&#160;calls,&#160;initialization)&#160;and&#160;do&#160;the&#160;call&#160;back&#160;functions.&#160;<br/>
+<b>STEP&#160;6:&#160;&#160;&#160;COMPILE&#160;AND&#160;LINK&#160;</b><br/>
+Compile&#160;&#160;and&#160;&#160;link&#160;&#160;the&#160;&#160;complete&#160;&#160;project&#160;&#160;and&#160;&#160;download&#160;&#160;it&#160;&#160;to&#160;&#160;your&#160;&#160;test&#160;&#160;hardware&#160;&#160;or&#160;<br/>development&#160;environment.&#160;<br/>
+<b>STEP&#160;7:&#160;&#160;&#160;TEST&#160;THE&#160;SOFTWARE&#160;COMPONENT&#160;</b><br/>
+Test&#160;the&#160;software&#160;via&#160;a&#160;suitable&#160;test&#160;environment.&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-20_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-20_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+19&#160;/&#160;35&#160;<br/>
+<b>5.1&#160;</b><br/>
+<b>STEP&#160;1&#160;&#160;Unpack&#160;the&#160;delivery&#160;&#160;</b><br/>
+The&#160;&#160;delivery&#160;&#160;of&#160;&#160;CANbedded&#160;&#160;Software&#160;&#160;Components&#160;&#160;normally&#160;&#160;comprises&#160;&#160;the&#160;<br/>Configuration&#160;Tool&#160;and&#160;the&#160;source&#160;code&#160;of&#160;the&#160;software&#160;components.&#160;&#160;<br/>
+You&#160;only&#160;have&#160;to&#160;start&#160;the&#160;&#160;<br/>
+<b>Setup.exe&#160;&#160;</b><br/>
+The&#160;Configuration&#160;<br/>Tool&#160;generates&#160;<br/>files&#160;for&#160;&#160;your&#160;<br/>
+and&#160;to&#160;follow&#160;the&#160;install&#160;shield&#160;wizard.&#160;<br/>
+application.&#160;It&#160;is&#160;<br/>the&#160;connection&#160;<br/>between&#160;your&#160;<br/>hardware&#160;and&#160;<br/>
+We&#160;recommend&#160;creating&#160;a&#160;shortcut&#160;to&#160;the&#160;Configuration&#160;Tool.&#160;&#160;<br/>
+settings,&#160;the&#160;<br/>requirements&#160;of&#160;<br/>your&#160;vehicle&#160;<br/>
+&#160;<br/>
+manufacturer&#160;and&#160;<br/>the&#160;other&#160;ECUs,&#160;<br/>your&#160;ECU&#160;has&#160;to&#160;<br/>
+&#160;<br/>
+communicate&#160;<br/>with.&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-21_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-21_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+20&#160;/&#160;35&#160;<br/>
+<b>5.2&#160;</b><br/>
+<b>STEP&#160;2&#160;&#160;Configuration&#160;Tool&#160;and&#160;DBC&#160;File&#160;</b><br/>
+We&#160;recommend&#160;for&#160;the&#160;integration&#160;of&#160;the&#160;Vector&#160;Interaction&#160;Layer&#160;to&#160;have&#160;a&#160;already&#160;<br/>running&#160;&#160;application&#160;&#160;with&#160;&#160;already&#160;&#160;working&#160;&#160;bus&#160;&#160;communication&#160;&#160;(CAN&#160;&#160;Driver&#160;&#160;is&#160;<br/>integrated&#160;and&#160;running).&#160;&#160;<br/>
+Normally&#160;the&#160;adjustments&#160;in&#160;the&#160;DBC&#160;file&#160;are&#160;done&#160;by&#160;the&#160;data&#160;base&#160;engineer.&#160;To&#160;<br/>be&#160;able&#160;to&#160;use&#160;the&#160;Interaction&#160;Layer&#160;the&#160;data&#160;base&#160;attributes&#160;and&#160;the&#160;corresponding&#160;<br/>
+You&#160;can&#160;safe&#160;<br/>
+timings&#160;have&#160;to&#160;be&#160;set&#160;properly.&#160;&#160;&#160;<br/>
+much&#160;time&#160;when&#160;<br/>you&#160;start&#160;changes&#160;<br/>after&#160;verifying&#160;the&#160;<br/>functionality&#160;of&#160;<br/>
+For&#160;&#160;the&#160;&#160;following&#160;&#160;steps&#160;&#160;we&#160;&#160;used&#160;&#160;a&#160;&#160;very&#160;&#160;simple&#160;&#160;DBC&#160;&#160;file&#160;&#160;with&#160;&#160;only&#160;&#160;one&#160;&#160;receive&#160;<br/>
+the&#160;hardware&#160;and&#160;<br/>software&#160;you&#160;use&#160;<br/>
+message&#160;and&#160;two&#160;transmit&#160;messages.&#160;&#160;<br/>
+as&#160;basis&#160;for&#160;<br/>changes.&#160;<br/>
+&#160;<br/>
+For&#160;more&#160;<br/>information&#160;about&#160;<br/>how&#160;to&#160;starup&#160;<br/>with&#160;GENy&#160;refer&#160;<br/>to&#160;the&#160;GENy&#160;<br/>online&#160;help.&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_7.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_8.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_9.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_10.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_11.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_12.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_13.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_14.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_15.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_16.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_17.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_18.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_19.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_20.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_21.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_22.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_23.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_24.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_25.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_26.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_27.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_28.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_29.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_30.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_31.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_32.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_33.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_34.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_35.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_36.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_37.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_38.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_39.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_40.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_41.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_42.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_43.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_44.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_45.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_46.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_47.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_48.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_49.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_50.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_51.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_52.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_53.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_54.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_55.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_56.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_57.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_58.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_59.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_60.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_61.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_62.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_63.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_64.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_65.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_66.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_67.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_68.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_69.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_70.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_71.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_72.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_73.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_74.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_75.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_76.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_77.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_78.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_79.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_80.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_81.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_82.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_83.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_84.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_85.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_86.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_87.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_88.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_89.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_90.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_91.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_92.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_93.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_94.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_95.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_96.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_97.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_98.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_99.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-22_100.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+21&#160;/&#160;35&#160;<br/>
+<b>5.2.1&#160;&#160;Working&#160;with&#160;the&#160;Configuration&#160;Tool&#160;GENy&#160;</b><br/>
+Open&#160;the&#160;Configuration&#160;Tool&#160;GENy,&#160;&#160;<br/>
+<b>5.2.1.1&#160;</b><br/>
+<b>Project&#160;Setup&#160;in&#160;GENy&#160;</b><br/>
+&#160;create&#160;a&#160;new&#160;configuration&#160;and&#160;fill-out&#160;the&#160;<b>Setup&#160;Dialog</b>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;&#160;Pre-configuration&#160;file&#160;<br/>
+&#160;&#160;Microcontroller&#160;<br/>
+&#160;&#160;Derivative&#160;<br/>
+&#160;&#160;Compiler&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Select&#160;&#160;the&#160;&#160;bus&#160;&#160;system&#160;&#160;(here&#160;&#160;CAN)&#160;&#160;and&#160;&#160;fill-out&#160;&#160;the&#160;&#160;<b>Channel&#160;&#160;Setup&#160;<br/></b>window&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Browse&#160;&#160;for&#160;&#160;your&#160;&#160;<b>Database&#160;&#160;</b>file&#160;<br/>and&#160;&#160;select&#160;&#160;your&#160;&#160;ECU&#160;&#160;out&#160;&#160;of&#160;&#160;the&#160;<br/>
+&#160;<br/>
+<b>Database&#160;Nodes</b>&#160;list.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Select&#160;the&#160;<b>Software&#160;Components</b>&#160;Hw_xxx&#160;(in&#160;<br/>this&#160;&#160;example&#160;&#160;it&#160;&#160;is&#160;&#160;the&#160;&#160;HC12),&#160;&#160;the&#160;&#160;CAN&#160;&#160;Driver&#160;<br/>(DrvCan_Hw12MscanIdx)&#160;&#160;and&#160;&#160;with&#160;&#160;Il_Vector&#160;<br/>the&#160;Interaction&#160;Layer.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Set&#160;<br/>
+the&#160;<br/>
+<b>Generation&#160;</b><br/>
+<b>Paths&#160;</b><br/>
+(&lt;Shift&gt;&#160;+&lt;F7&gt;)&#160;correctly.&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>5.2.1.2&#160;</b><br/>
+<b>Interaction&#160;Layer&#160;Settings&#160;in&#160;GENy&#160;</b><br/>
+For&#160;this&#160;example&#160;we&#160;want&#160;to&#160;monitor&#160;the&#160;reception&#160;of&#160;the&#160;Signal_2.&#160;If&#160;this&#160;signal&#160;is&#160;<br/>not&#160;&#160;received&#160;&#160;over&#160;&#160;an&#160;adjustable&#160;&#160;(in&#160;&#160;the&#160;&#160;DBC&#160;&#160;file&#160;&#160;–&#160;&#160;use&#160;&#160;CANdb++&#160;&#160;editor)&#160;&#160;period&#160;&#160;of&#160;<br/>time,&#160;a&#160;timeout&#160;occurs.&#160;&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-23_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-23_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+22&#160;/&#160;35&#160;<br/>
+There&#160;are&#160;two&#160;ways&#160;your&#160;application&#160;can&#160;be&#160;notified&#160;of&#160;a&#160;timeout,&#160;&#160;<br/>
+&#160;&#160;via&#160;a&#160;<b>flag</b>&#160;or&#160;<br/>
+&#160;&#160;a&#160;<b>function</b>.&#160;&#160;<br/>
+In&#160;this&#160;example&#160;we&#160;use&#160;a&#160;function&#160;for&#160;notification.&#160;&#160;<br/>
+Open&#160;&#160;the&#160;&#160;<b>Configuration&#160;&#160;Options</b>&#160;&#160;for&#160;&#160;<b>Signal_2</b>&#160;&#160;via&#160;&#160;clicking&#160;&#160;Signal_2&#160;&#160;in&#160;&#160;the&#160;<br/>navigation&#160;view.&#160;Add&#160;a&#160;timeout&#160;function&#160;by&#160;clicking&#160;the&#160;&#160;<b>Add</b>&#160;button&#160;and&#160;entering&#160;a&#160;<br/>name&#160;or&#160;working&#160;with&#160;the&#160;default&#160;as&#160;shown.&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;5-1&#160;Activate&#160;the&#160;Timeout&#160;Monitoring&#160;of&#160;Signal_2&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-24_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-24_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-24_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-24_4.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+23&#160;/&#160;35&#160;<br/>
+<b>5.3&#160;</b><br/>
+<b>STEP&#160;3&#160;&#160;Generate&#160;Files&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+Click&#160;on&#160;the&#160;button&#160;<br/>
+&#160;to&#160;start&#160;the&#160;generation&#160;process&#160;for&#160;GENy.&#160;<br/>
+&#160;<br/>
+Figure&#160;5-1&#160;&#160;Generation&#160;Information&#160;<br/>
+The&#160;results&#160;of&#160;the&#160;Generation&#160;Process&#160;are&#160;shown&#160;in&#160;the&#160;two&#160;views&#160;at&#160;the&#160;bottom&#160;of&#160;<br/>GENy.&#160;&#160;<br/>
+<b>Generated&#160;Files&#160;<br/></b>This&#160;is&#160;a&#160;list&#160;with&#160;all&#160;file&#160;that&#160;GENy&#160;has&#160;generated&#160;and&#160;the&#160;folder&#160;information.&#160;&#160;<br/>
+<b>Messages&#160;<br/></b>Here&#160;&#160;the&#160;&#160;information&#160;&#160;that&#160;&#160;occurs&#160;&#160;during&#160;&#160;the&#160;&#160;generation&#160;&#160;process.&#160;&#160;Take&#160;&#160;care&#160;&#160;of&#160;&#160;this&#160;<br/>information&#160;&#160;after&#160;&#160;any&#160;&#160;generation&#160;&#160;process.&#160;&#160;Important&#160;&#160;generation&#160;&#160;error&#160;&#160;information&#160;<br/>could&#160;be&#160;displayed&#160;there&#160;as&#160;you&#160;see&#160;in&#160;the&#160;example&#160;above.&#160;<br/>
+&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=25></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-25_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-25_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-25_3.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+24&#160;/&#160;35&#160;<br/>
+<b>5.4&#160;</b><br/>
+<b>STEP&#160;4&#160;&#160;Add&#160;Files&#160;to&#160;Your&#160;Application&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+<b>5.4.1&#160;&#160;Using&#160;GENy&#160;</b><br/>
+Copy&#160;the&#160;core&#160;files&#160;for&#160;the&#160;Interaction&#160;Layer&#160;out&#160;of&#160;the&#160;delivery&#160;in&#160;the&#160;directory&#160;you&#160;<br/>reserved&#160;for.&#160;<br/>
+Add&#160;those&#160;new&#160;files&#160;together&#160;with&#160;the&#160;generated&#160;ones&#160;(see&#160;Figure&#160;5-1)&#160;to&#160;the&#160;file&#160;list&#160;<br/>of&#160;you&#160;compiler&#160;or&#160;makefile.&#160;&#160;<br/>
+If&#160;you&#160;want&#160;to&#160;apply&#160;changes&#160;you&#160;have&#160;done&#160;in&#160;the&#160;Configuration&#160;Tool,&#160;you&#160;must&#160;start&#160;<br/>the&#160;generation&#160;process&#160;again.&#160;&#160;Remember&#160;compiling&#160;afterwards.&#160;&#160;<br/>
+&#160;<br/>
+Starting&#160;&#160;with&#160;&#160;IL&#160;&#160;implementation&#160;&#160;<b>version&#160;&#160;1.83</b>&#160;&#160;the&#160;&#160;IL&#160;&#160;uses&#160;&#160;the&#160;&#160;Vector&#160;&#160;standard&#160;&#160;library&#160;<br/><b>vstdlib</b>&#160;&#160;for&#160;&#160;memory&#160;&#160;copy&#160;&#160;and&#160;&#160;clear&#160;&#160;routines&#160;&#160;to&#160;&#160;avoid&#160;&#160;calls&#160;&#160;to&#160;&#160;the&#160;&#160;C&#160;&#160;standard&#160;&#160;library.&#160;<br/>Therefore&#160;&#160;it&#160;&#160;is&#160;&#160;required&#160;&#160;in&#160;&#160;that&#160;&#160;case&#160;&#160;to&#160;&#160;<b>link</b>&#160;&#160;the&#160;&#160;file&#160;&#160;<b>vstdlib.c</b>&#160;&#160;to&#160;&#160;the&#160;&#160;project.&#160;&#160;The&#160;<br/>v_def.h&#160;includes&#160;the&#160;corresponding&#160;header.&#160;<br/>
+&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-26_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-26_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-26_3.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+25&#160;/&#160;35&#160;<br/>
+<b>5.5&#160;</b><br/>
+<b>STEP&#160;5&#160;Adaptations&#160;For&#160;Your&#160;Application&#160;</b><br/>
+<b>Using&#160;CANgen&#160;and&#160;GENy&#160;<br/></b>To&#160;&#160;be&#160;&#160;able&#160;&#160;to&#160;&#160;compile&#160;&#160;and&#160;&#160;link,&#160;&#160;you&#160;&#160;have&#160;&#160;to&#160;&#160;do&#160;&#160;a&#160;&#160;few&#160;&#160;further&#160;&#160;adaptations&#160;&#160;in&#160;&#160;your&#160;<br/>application.&#160;<br/>
+This&#160;&#160;is&#160;&#160;the&#160;&#160;example&#160;&#160;you&#160;&#160;know&#160;&#160;from&#160;&#160;the&#160;&#160;CAN&#160;&#160;Driver.&#160;&#160;For&#160;&#160;a&#160;&#160;first&#160;&#160;test,&#160;&#160;this&#160;&#160;simple&#160;<br/>application&#160;&#160;without&#160;&#160;any&#160;&#160;function&#160;&#160;except&#160;&#160;for&#160;&#160;calling&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;Tasks&#160;<br/>IlRxTask()&#160;and&#160;IlTxTask()&#160;cyclically,&#160;is&#160;enough.&#160;&#160;<br/>
+In&#160;&#160;the&#160;&#160;following&#160;&#160;example&#160;&#160;application&#160;&#160;only&#160;&#160;the&#160;&#160;modifications&#160;&#160;are&#160;&#160;explained&#160;&#160;and&#160;<br/>emphasized.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Example&#160;for&#160;HC12:&#160;<br/>&#160;<br/></b>/*&#160;Includes*********************************************************/&#160;<br/>
+<b>#include&#160;&#34;can_inc.&#160;h&#34;&#160;</b><br/>
+<b>#include&#160;&#34;yourecu.&#160;h&#34;&#160;</b><br/>
+<b>#inlcude”il_inc.h”;&#160;&#160;&#160;&#160;/*&#160;&#160;with&#160;&#160;this&#160;&#160;include,&#160;&#160;the&#160;&#160;other&#160;&#160;two&#160;&#160;will&#160;&#160;be&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;included&#160;too.*/&#160;</b><br/>
+&#160;<br/>
+unsigned&#160;char&#160;timerelapsed;&#160;<br/>
+/*the&#160;&#160;function&#160;&#160;IlRxTask()&#160;&#160;and&#160;&#160;IlTxTask()&#160;<br/>must&#160;not&#160;be&#160;called&#160;in&#160;interrupt&#160;context.&#160;&#160;So&#160;<br/>this&#160;&#160;flag&#160;&#160;is&#160;&#160;used&#160;&#160;as&#160;&#160;an&#160;&#160;indicator,&#160;&#160;that&#160;&#160;a&#160;<br/>timer&#160;&#160;interrupt&#160;&#160;occurred&#160;&#160;and&#160;&#160;is&#160;&#160;polled&#160;&#160;in&#160;<br/>the&#160;application.&#160;*/<b>&#160;</b><br/>
+&#160;<br/>
+/*Function&#160;prototypes&#160;**********************************************/&#160;<br/>
+void&#160;enableInterrupts(&#160;void&#160;);&#160;<br/>
+void&#160;hardwareInit(&#160;void&#160;);&#160;<br/>&#160;<br/>/*Main&#160;Function&#160;****************************************************/&#160;<br/>void&#160;main(void)&#160;<br/>{&#160;<br/>/*make&#160;&#160;sure&#160;&#160;that&#160;&#160;the&#160;&#160;interrupts&#160;&#160;are&#160;&#160;disabled&#160;&#160;or&#160;&#160;disable&#160;&#160;interrupts&#160;<br/>here.*/&#160;<br/>&#160;&#160;hardwareInit();&#160;<br/>
+<b>It&#160;is&#160;forbidden&#160;to&#160;<br/>use&#160;any&#160;CAN&#160;</b><br/>
+&#160;<br/>
+<b>functionality&#160;</b><br/>
+&#160;&#160;CanInitPowerOn();&#160;&#160;<br/>
+<b>before&#160;</b><br/>
+<b>&#160;&#160;IlInitPowerOn();&#160;</b><br/>
+<b>/*To&#160;use&#160;the&#160;Interaction&#160;Layer&#160;you&#160;have&#160;</b><br/>
+<b>CanInitPowerOn&#160;<br/>!!!</b>&#160;<br/>
+<b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;to&#160;do&#160;the&#160;initialization&#160;first.&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;For&#160;the&#160;case&#160;your&#160;module&#160;does&#160;not&#160;know&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;this&#160;function,&#160;use&#160;IlInit();&#160;*/&#160;<br/></b>&#160;<br/>
+timerelapsed&#160;=&#160;0;&#160;&#160;/*&#160;timerelapsed&#160;=&#160;0x00&#160;no&#160;interrupt&#160;occurred&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;timerelapsed&#160;=&#160;0xff&#160;&#160;&#160;&#160;interrupt&#160;occurred<b>&#160;<br/>&#160;&#160;</b>&#160;<br/>&#160;&#160;enableInterrupts();<b>&#160;<br/>&#160;&#160;IlRxStart();&#160;<br/>&#160;&#160;IlTxStart();</b>&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=27></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-27_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+26&#160;/&#160;35&#160;<br/>
+&#160;<br/>&#160;&#160;for(;;)&#160;<br/>&#160;&#160;{&#160;&#160;&#160;&#160;&#160;<br/>&#160;&#160;&#160;&#160;<b>/*&#160;call&#160;of&#160;IlRxTask()&#160;and&#160;IlTxTask()&#160;if&#160;timerelapsed&#160;=&#160;0xff*/&#160;<br/>&#160;&#160;&#160;&#160;if(&#160;timerelapsed&#160;==&#160;0xff)&#160;<br/>&#160;&#160;&#160;&#160;{&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;timerelapsed&#160;=&#160;0;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/*clear&#160;the&#160;flag&#160;to&#160;call&#160;NmTask()&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;only&#160;once&#160;after&#160;a&#160;timer&#160;interrupt*/&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IlRxTask();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/*cyclic&#160;call&#160;for&#160;interaction&#160;layer*/&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IlTxTask();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br/>&#160;&#160;&#160;&#160;}&#160;<br/></b>&#160;&#160;}&#160;&#160;<br/>}&#160;<br/>&#160;<br/>void&#160;ApplCanBusOff(&#160;void&#160;)&#160;<br/>{&#160;<br/>&#160;&#160;;&#160;<br/>}&#160;<br/>&#160;<br/>void&#160;ApplCanWakeUp(&#160;void&#160;)&#160;<br/>{&#160;<br/>&#160;&#160;/*Call-Back&#160;&#160;function&#160;&#160;at&#160;&#160;the&#160;&#160;transition&#160;&#160;from&#160;&#160;SleepMode&#160;&#160;to&#160;&#160;sleep&#160;&#160;<br/>&#160;&#160;&#160;&#160;indication&#160;recommended*/&#160;<br/>}&#160;<br/>&#160;<br/>void&#160;enableInterrupts(&#160;void&#160;)&#160;<br/>{&#160;<br/>&#160;&#160;CLI();&#160;<br/>}&#160;<br/>&#160;<br/>&#160;<br/><b>/*This&#160;&#160;is&#160;&#160;the&#160;&#160;function&#160;&#160;called&#160;&#160;in&#160;&#160;case&#160;&#160;of&#160;&#160;a&#160;&#160;timeout&#160;&#160;of&#160;&#160;the&#160;message_2&#160;&#160;that&#160;<br/>should&#160;be&#160;received&#160;cyclically*/&#160;<br/>&#160;<br/>void&#160;ApplSignal_2SigTimeout(&#160;void&#160;)&#160;<br/>{&#160;<br/>&#160;&#160;&#160;<br/>&#160;&#160;IlPutTxMissingSignal(0x3d);&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/*Trigger&#160;&#160;to&#160;&#160;send&#160;&#160;this&#160;&#160;message&#160;&#160;in&#160;&#160;case&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;of&#160;&#160;a&#160;&#160;timeout.&#160;&#160;Both&#160;&#160;names&#160;&#160;are&#160;&#160;defined&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;in&#160;the&#160;YourECU.h.*/&#160;<br/>}&#160;<br/>&#160;<br/></b>void&#160;hardwareInit(&#160;void&#160;)&#160;<br/>{&#160;<br/>&#160;&#160;/*&#160;<br/>&#160;&#160;Do&#160;your&#160;hardware&#160;specific&#160;initializations&#160;here.&#160;&#160;<br/>&#160;&#160;Remember&#160;your&#160;TRANSCEIVER&#160;<br/>&#160;&#160;*/&#160;<br/>}&#160;<br/>&#160;<br/>@interrupt&#160;void&#160;irq_dummy0(void)&#160;<br/>{&#160;<br/>&#160;&#160;for(&#160;;;&#160;);&#160;&#160;<br/>
+&#160;&#160;/*all&#160;<br/>
+other&#160;<br/>
+interrupts&#160;<br/>
+except&#160;<br/>
+the&#160;<br/>
+CAN&#160;&#160;<br/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Interrupts&#160;are&#160;routed&#160;to&#160;this&#160;function.*/&#160;<br/>}&#160;<br/>&#160;<br/><b>/*This&#160;&#160;is&#160;&#160;the&#160;&#160;interrupt&#160;&#160;function&#160;&#160;of&#160;&#160;the&#160;&#160;timer&#160;&#160;interrupt.&#160;&#160;&#160;&#160;The&#160;&#160;timer&#160;&#160;will&#160;<br/>be&#160;&#160;reset&#160;&#160;and&#160;&#160;the&#160;&#160;timerelapsed&#160;&#160;indicates&#160;&#160;the&#160;&#160;occurrence&#160;&#160;of&#160;&#160;an&#160;&#160;interrupt&#160;<br/>for&#160;the&#160;application&#160;(see&#160;code&#160;above).&#160;*/&#160;</b><br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=28></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-28_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-28_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+27&#160;/&#160;35&#160;<br/>
+<b>&#160;<br/>@interrupt&#160;void&#160;irq_timer0(void)&#160;<br/>{&#160;<br/>&#160;&#160;/*reload&#160;timer*/&#160;<br/>&#160;&#160;timerelapsed&#160;=&#160;0xff;&#160;<br/>}&#160;<br/></b>&#160;<br/>
+&#160;<br/>
+You&#160;also&#160;have&#160;to&#160;do&#160;modifications&#160;in&#160;the&#160;interrupt&#160;vector&#160;table.&#160;The&#160;occurrence&#160;of&#160;a&#160;<br/>timer&#160;&#160;interrupt&#160;&#160;has&#160;&#160;to&#160;&#160;lead&#160;&#160;to&#160;&#160;the&#160;&#160;timer&#160;&#160;interrupt&#160;&#160;function.&#160;&#160;In&#160;&#160;this&#160;&#160;example&#160;&#160;you&#160;&#160;see&#160;<br/>that&#160;the&#160;vector&#160;for&#160;the&#160;timer0&#160;interrupt&#160;is&#160;added&#160;<br/>
+.&#160;<br/>
+<b>Example&#160;for&#160;HC12:&#160;<br/></b>&#160;<br/>const&#160;functptr&#160;vectab[]&#160;=&#160;{&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;@0xFFC4&#160;start&#160;address&#160;of&#160;table&#160;<br/>&#160;&#160;&#160;&#160;<b>CanTxInterrupt,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;$FFC4&#160;&#160;&#160;&#160;CAN&#160;transmit&#160;<br/>&#160;&#160;&#160;&#160;CanRxInterrupt,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;$FFC6&#160;&#160;&#160;&#160;CAN&#160;receive&#160;<br/>&#160;&#160;&#160;&#160;CanErrorInterrupt,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;$FFC8&#160;&#160;&#160;&#160;CAN&#160;error</b>&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;reserved&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;<br/>&#160;&#160;&#160;&#160;<b>CanWakeUpInterrupt,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;$FFD0&#160;CAN&#160;wake-up&#160;<br/></b>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//ATD&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//SCI&#160;2&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//SPI&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//SPI&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Pulse&#160;acc&#160;input&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Pulse&#160;acc&#160;overf&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;overf&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;7&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;6&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;5&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;4&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;3&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;2&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;1&#160;<br/>&#160;&#160;&#160;&#160;<b>irq_timer0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Timer&#160;channel&#160;0&#160;<br/></b>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//Real&#160;time&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//IRQ&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//XIRQ&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//SWI&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//illegal&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//cop&#160;fail&#160;<br/>&#160;&#160;&#160;&#160;irq_dummy0,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//clock&#160;fail&#160;<br/>&#160;&#160;&#160;&#160;<b>_stext</b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<b>//RESET</b>&#160;<br/>&#160;&#160;&#160;&#160;};&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=29></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-29_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-29_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-29_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-29_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-29_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-29_6.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+28&#160;/&#160;35&#160;<br/>
+<b>5.6&#160;</b><br/>
+<b>STEP&#160;6&#160;Compile&#160;And&#160;Link&#160;</b><br/>
+Now&#160;start&#160;your&#160;compiler&#160;by&#160;calling&#160;the&#160;<b>makefile</b>&#160;or&#160;just&#160;clicking&#160;the&#160;start&#160;button,&#160;this&#160;<br/>depends&#160;on&#160;your&#160;development&#160;tool&#160;chain.&#160;&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>5.7&#160;</b><br/>
+<b>STEP&#160;7&#160;Test&#160;the&#160;Software&#160;Component&#160;</b><br/>
+You&#160;&#160;remember&#160;&#160;the&#160;&#160;testing&#160;&#160;method&#160;&#160;from&#160;&#160;the&#160;&#160;CAN&#160;&#160;Driver?&#160;&#160;To&#160;&#160;test&#160;&#160;the&#160;&#160;Interaction&#160;<br/>Layer&#160;we&#160;use&#160;the&#160;same&#160;test&#160;environment&#160;with&#160;a&#160;few&#160;modifications.&#160;<br/>
+<b>5.7.1&#160;&#160;Built-up&#160;of&#160;the&#160;test&#160;environment&#160;</b><br/>
+&#160;<br/>
+Figure&#160;5-2&#160;&#160;The&#160;test&#160;environment&#160;<br/>
+&#160;<br/>
+The&#160;network&#160;will&#160;consist&#160;of&#160;2&#160;nodes,&#160;a&#160;real&#160;one&#160;(YourECU)&#160;and&#160;the&#160;simulated&#160;one,&#160;<br/>the&#160;TestNode&#160;(as&#160;named&#160;in&#160;the&#160;data&#160;base).&#160;&#160;&#160;<br/>
+Open&#160;your&#160;CANoe&#160;or&#160;CANalyzer.&#160;&#160;<br/>
+The&#160;next&#160;step&#160;is&#160;to&#160;<b>Associate</b>&#160;a&#160;new&#160;<b>database</b>,&#160;the&#160;same&#160;data&#160;base&#160;(DBC&#160;file)&#160;<br/>you&#160;use&#160;for&#160;your&#160;application.&#160;&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=30></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-30_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-30_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-30_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-30_4.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+29&#160;/&#160;35&#160;<br/>
+&#160;<br/>
+Figure&#160;5-3&#160;&#160;How&#160;to&#160;get&#160;an&#160;data&#160;base&#160;into&#160;CANoe&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;5-4&#160;&#160;Configure&#160;menu&#160;and&#160;Real&#160;adjustment&#160;<br/>
+Make&#160;sure&#160;that&#160;the&#160;CANoe&#160;mode&#160;is&#160;switched&#160;to&#160;REAL&#160;and&#160;you&#160;have&#160;chosen&#160;the&#160;same&#160;<br/>baud&#160;rate&#160;as&#160;in&#160;your&#160;real&#160;node&#160;YourECU.&#160;&#160;<br/>
+<b>5.7.2&#160;&#160;Test&#160;of&#160;Interaction&#160;Layer&#160;</b><br/>
+Now&#160;&#160;start&#160;&#160;your&#160;&#160;Application&#160;&#160;on&#160;&#160;the&#160;&#160;hardware&#160;&#160;platform&#160;&#160;and&#160;&#160;the&#160;&#160;CANoe/CANalyzer.&#160;&#160;<br/>Now&#160;&#160;you&#160;&#160;should&#160;&#160;see&#160;&#160;the&#160;&#160;cyclic&#160;&#160;message&#160;&#160;sent&#160;&#160;via&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer,&#160;&#160;the&#160;<br/>Message_1.&#160;&#160;Additionally&#160;&#160;you&#160;&#160;see&#160;&#160;the&#160;&#160;Timeout_Message,&#160;&#160;because&#160;&#160;the&#160;&#160;cyclic&#160;<br/>message&#160;from&#160;CANoe&#160;is&#160;not&#160;being&#160;sent.&#160;<br/>
+&#160;<br/>
+Figure&#160;5-5&#160;&#160;A&#160;trace&#160;of&#160;the&#160;example&#160;application&#160;with&#160;timeout&#160;occurring&#160;&#160;<br/>
+<b>!!!&#160;CONGRATULATIONS&#160;!!!&#160;</b><br/>
+The&#160;Interaction&#160;Layer&#160;is&#160;basically&#160;working.&#160;<br/>
+Now&#160;&#160;try&#160;&#160;to&#160;&#160;prevent&#160;&#160;the&#160;&#160;timeout&#160;&#160;from&#160;&#160;occurring.&#160;&#160;Insert&#160;&#160;a&#160;&#160;generator&#160;&#160;block&#160;&#160;and&#160;&#160;send&#160;<br/>the&#160;message&#160;with&#160;the&#160;ID&#160;201&#160;(Message_2)&#160;e.g.&#160;in&#160;a&#160;cycle&#160;of&#160;e.g.&#160;10ms.&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=31></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-31_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-31_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-31_3.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+30&#160;/&#160;35&#160;<br/>
+&#160;<br/>
+Figure&#160;5-6&#160;&#160;Insert&#160;a&#160;generator&#160;block&#160;to&#160;send&#160;the&#160;message&#160;201&#160;all&#160;10ms&#160;<br/>
+Restart&#160;&#160;the&#160;&#160;application&#160;&#160;and&#160;&#160;CANoe&#160;&#160;and&#160;&#160;the&#160;&#160;Timeout_Message&#160;&#160;will&#160;&#160;not&#160;&#160;occur&#160;<br/>anymore.&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;5-7&#160;&#160;A&#160;trace&#160;without&#160;timeout&#160;<br/>
+This&#160;is&#160;working,&#160;too?&#160;You&#160;have&#160;implemented&#160;the&#160;Interaction&#160;Layer&#160;correctly&#160;for&#160;the&#160;<br/>first&#160;time.&#160;Now&#160;you&#160;can&#160;go&#160;on.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Back&#160;to&#160;9&#160;Steps&#160;overview&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=32></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-32_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-32_2.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+31&#160;/&#160;35&#160;<br/>
+<b>6&#160;&#160;Further&#160;Information&#160;&#160;</b><br/>
+Now&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;is&#160;&#160;basically&#160;&#160;working.&#160;&#160;To&#160;&#160;get&#160;&#160;a&#160;&#160;deeper&#160;&#160;understanding&#160;&#160;of&#160;<br/>this&#160;&#160;module&#160;&#160;continue&#160;&#160;with&#160;&#160;this&#160;&#160;chapter.&#160;&#160;A&#160;&#160;very&#160;&#160;detailed&#160;&#160;description&#160;&#160;of&#160;&#160;the&#160;&#160;API&#160;&#160;you&#160;<br/>find&#160;in&#160;the&#160;Technical&#160;Reference&#160;of&#160;the&#160;Interaction&#160;Layer.&#160;<br/>
+<b>6.1&#160;</b><br/>
+<b>States&#160;of&#160;the&#160;Interaction&#160;Layer&#160;</b><br/>
+The&#160;&#160;following&#160;&#160;figure&#160;&#160;shows&#160;&#160;the&#160;&#160;state&#160;&#160;machine&#160;&#160;of&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer.&#160;&#160;There&#160;&#160;are&#160;<br/>two&#160;identical&#160;state&#160;machines,&#160;one&#160;for&#160;transmission&#160;(<b>Tx</b>)&#160;and&#160;one&#160;for&#160;reception&#160;(<b>Rx</b>).&#160;&#160;<br/>
+void&#160;<b>IlRx</b>Start(&#160;void&#160;);<br/>
+<b>IlRx</b><br/>
+void&#160;<b>Il</b>Init(&#160;void&#160;);<br/>
+void&#160;<b>Il</b><br/>
+Stop(&#160;void&#160;);<br/>
+&#160;void&#160;<b>Il</b>Init(&#160;void&#160;);<br/>
+<br/>
+<br/>
+void&#160;<b>IlRx</b>Wait(&#160;void&#160;);<br/>
+void&#160;<b>IlTx</b>Start(&#160;void&#160;);<br/>
+<br/>
+<br/>
+void&#160;<b>IlTx</b>Stop(&#160;void&#160;);<br/>
+void&#160;<b>IlTx</b>Wait(&#160;void&#160;);<br/>
+void&#160;<b>IlRx</b>Release(&#160;void&#160;);<br/>
+void&#160;<b>IlTx</b>Release(&#160;void&#160;);<br/>
+<b>running</b><br/>
+<br/>
+<br/>
+Wait<br/>
+Stop<br/>
+PowerOn<br/>
+<br/>
+<br/>
+Release<br/>
+Start<br/>
+<br/>
+<b>waiting</b><br/>
+<b>suspended</b><br/>
+Init<br/>
+<b>d</b><br/>
+I<br/>
+uninit<br/>
+<br/>
+Stop<br/>
+&#160;<br/>
+Figure&#160;6-1&#160;&#160;The&#160;State&#160;machine&#160;of&#160;the&#160;Interaction&#160;Layer&#160;<br/>
+Use&#160;&#160;the&#160;&#160;functions&#160;&#160;to&#160;&#160;switch&#160;&#160;the&#160;&#160;states&#160;&#160;of&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;to&#160;&#160;your&#160;&#160;demands.&#160;<br/>This&#160;&#160;becomes&#160;&#160;very&#160;&#160;important&#160;&#160;using&#160;&#160;the&#160;&#160;Interaction&#160;&#160;Layer&#160;&#160;together&#160;&#160;with&#160;&#160;a&#160;&#160;Network&#160;<br/>Management.&#160;&#160;<br/>
+<b>6.2&#160;</b><br/>
+<b>Debugging&#160;of&#160;Interaction&#160;Layer&#160;</b><br/>
+Using&#160;the&#160;Interaction&#160;Layer&#160;you&#160;can&#160;select&#160;two&#160;main&#160;debug&#160;options.&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;6-2&#160;&#160;Debug&#160;options&#160;for&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+The&#160;argument&#160;check&#160;for&#160;the&#160;IL&#160;functions&#160;is&#160;used&#160;to&#160;check&#160;the&#160;arguments&#160;passed&#160;to&#160;<br/>functions&#160;of&#160;the&#160;Interaction&#160;Layer.&#160;If&#160;an&#160;error&#160;was&#160;detected,&#160;the&#160;return&#160;value&#160;of&#160;the&#160;<br/>functions&#160;&#160;will&#160;&#160;contain&#160;&#160;an&#160;&#160;error&#160;&#160;code.&#160;&#160;More&#160;&#160;about&#160;&#160;this&#160;&#160;feature&#160;&#160;see&#160;&#160;the&#160;&#160;Technical&#160;<br/>Reference&#160;Interaction&#160;Layer.&#160;<br/>
+The&#160;assertions&#160;you&#160;should&#160;use&#160;only&#160;during&#160;the&#160;development&#160;process.&#160;&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=33></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-33_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+32&#160;/&#160;35&#160;<br/>
+All&#160;assertions&#160;branch&#160;to&#160;the&#160;function&#160;&#160;<br/>
+<b>void&#160;ApplIlFatalError(&#160;ErrorCode&#160;);&#160;</b><br/>
+where&#160;you&#160;can&#160;analyse&#160;the&#160;cause&#160;of&#160;the&#160;assertion.&#160;<br/>
+&#160;<br/>
+<b>6.3&#160;</b><br/>
+<b>Where&#160;to&#160;get&#160;the&#160;generated&#160;names&#160;for&#160;the&#160;macros&#160;and&#160;functions&#160;</b><br/>
+To&#160;avoid&#160;errors&#160;<br/>occurring&#160;from&#160;<br/>false&#160;writing&#160;a&#160;<br/>
+You&#160;know&#160;the&#160;situation,&#160;the&#160;files&#160;are&#160;generated&#160;and&#160;now&#160;you&#160;start&#160;to&#160;develop&#160;your&#160;<br/>
+recommend&#160;to&#160;<br/>copy&#160;and&#160;paste&#160;<br/>
+application.&#160;What&#160;is&#160;the&#160;name&#160;of&#160;the&#160;generated&#160;macros&#160;for&#160;the&#160;indication&#160;function?&#160;<br/>
+the&#160;name&#160;from&#160;<br/>
+What&#160;is&#160;the&#160;correct&#160;writing&#160;of&#160;the&#160;callback&#160;function?&#160;You&#160;know&#160;the&#160;signal&#160;name&#160;and&#160;<br/>
+the&#160;file&#160;<br/>YourECU.h&#160;and&#160;<br/>
+your&#160;pre-&#160;and&#160;postfixes&#160;but:&#160;<br/>
+ilpar.h.&#160;<br/>
+&#160;<br/>
+<b>Using&#160;GENy&#160;<br/></b>all&#160;this&#160;information&#160;you&#160;get&#160;out&#160;of&#160;the&#160;generated&#160;file:&#160;&#160;<br/>
+<b>ilpar.h.&#160;</b><br/>
+&#160;<br/>
+<b>6.4&#160;</b><br/>
+<b>Usage&#160;of&#160;flags&#160;and&#160;functions&#160;</b><br/>
+The&#160;Interaction&#160;Layer&#160;is&#160;signal&#160;oriented.&#160;So&#160;all&#160;flags&#160;and&#160;functions&#160;notify&#160;events&#160;that&#160;<br/>have&#160;&#160;to&#160;&#160;do&#160;&#160;with&#160;&#160;signals.&#160;&#160;There&#160;&#160;are&#160;&#160;flags&#160;&#160;and&#160;&#160;functions&#160;&#160;for&#160;&#160;reception&#160;&#160;and&#160;<br/>transmission.&#160;See&#160;first&#160;all&#160;flags&#160;and&#160;functions&#160;concerning&#160;the&#160;reception&#160;of&#160;data.&#160;<br/>
+<b>Indication&#160;Flag&#160;</b><br/>
+Indicates&#160;the&#160;reception&#160;of&#160;a&#160;signal&#160;<br/>
+<b>Indication&#160;Function&#160;</b><br/>
+<b>FirstValue&#160;Flag&#160;</b><br/>
+Can&#160;be&#160;used&#160;to&#160;indicate&#160;the&#160;reception&#160;of&#160;the&#160;signal&#160;since&#160;the&#160;last&#160;<br/>reset&#160;of&#160;this&#160;flag&#160;or&#160;of&#160;the&#160;Interaction&#160;Layer&#160;<br/>
+<b>DataChanged&#160;Flag&#160;</b><br/>
+Indicates&#160;a&#160;changed&#160;signal&#160;<br/>
+<b>Timeout&#160;Flag&#160;</b><br/>
+Indicates&#160;a&#160;missing&#160;reception&#160;of&#160;a&#160;signal&#160;for&#160;the&#160;adjusted&#160;time.&#160;<br/>
+<b>Timeout&#160;Function&#160;</b><br/>
+&#160;<br/>
+to&#160;confirm&#160;the&#160;transmission&#160;there&#160;is&#160;one&#160;flag&#160;and&#160;one&#160;function.&#160;&#160;<br/>
+Shows&#160;that&#160;the&#160;message&#160;containing&#160;the&#160;signal&#160;has&#160;been&#160;<br/>
+<b>Confirmation&#160;Flag&#160;</b><br/>
+acknowledged&#160;by&#160;another&#160;node.&#160;&#160;<br/>
+<b>Confirmation&#160;Function&#160;</b><br/>
+This&#160;acknowledge&#160;is&#160;sent&#160;when&#160;at&#160;least&#160;one&#160;ECU&#160;has&#160;receive&#160;the&#160;<br/>message.&#160;The&#160;acknowledge&#160;triggers&#160;a&#160;transmit&#160;interrupt.&#160;Within&#160;<br/>this&#160;interrupt&#160;the&#160;flag&#160;is&#160;set&#160;and&#160;the&#160;confirmation&#160;function&#160;is&#160;called.&#160;&#160;<br/>
+&#160;<br/>
+You&#160;can&#160;use&#160;only&#160;<br/>the&#160;flag,&#160;only&#160;the&#160;<br/>
+The&#160;confirmation&#160;guarantees&#160;that&#160;the&#160;message&#160;containing&#160;the&#160;regarded&#160;signal&#160;has&#160;<br/>
+function&#160;or&#160;both&#160;<br/>combined.&#160;This&#160;is&#160;<br/>
+been&#160;sent.&#160;&#160;<br/>
+up&#160;to&#160;your&#160;<br/>application.&#160;<br/>
+<b>&#160;</b><br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=34></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-34_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+33&#160;/&#160;35&#160;<br/>
+<b>6.5&#160;</b><br/>
+<b>Data&#160;Consistency&#160;</b><br/>
+A&#160;&#160;very&#160;&#160;important&#160;&#160;part&#160;&#160;is&#160;&#160;the&#160;&#160;knowledge&#160;&#160;about&#160;&#160;data&#160;&#160;consistency&#160;&#160;and&#160;&#160;the&#160;&#160;situations&#160;<br/>you&#160;have&#160;to&#160;take&#160;care&#160;for&#160;it.&#160;&#160;<br/>
+Refer&#160;to&#160;the&#160;chapter&#160;dealing&#160;with&#160;the&#160;data&#160;consistency&#160;in&#160;the&#160;Technical&#160;Reference&#160;<br/>of&#160;the&#160;Interaction&#160;Layer.&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+<a name=35></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Il/doc/UserManual_GENy_InteractionLayer-35_1.png"/><br/>
+User&#160;Manual&#160;&#160;Interaction&#160;Layer&#160;<br/>
+&#160;<br/>
+1&#160;/&#160;35&#160;<br/>
+<b>7&#160;&#160;Index&#160;</b><br/>
+Bootloader&#160;....................................................&#160;9&#160;<br/>
+il_inc.h&#160;.........................................................&#160;16&#160;<br/>
+clock............................................................&#160;27&#160;<br/>
+Il_inc.h&#160;.........................................................&#160;15&#160;<br/>
+compile........................................................&#160;25&#160;<br/>
+ilpar.c...........................................................&#160;15&#160;<br/>
+Compile.......................................................&#160;28&#160;<br/>
+IlRxTask&#160;................................................&#160;17,&#160;26&#160;<br/>
+confirmation&#160;................................................&#160;10&#160;<br/>
+IlTxTask.................................................&#160;17,&#160;26&#160;<br/>
+dbc-file&#160;........................................................&#160;11&#160;<br/>
+Include.........................................................&#160;16&#160;<br/>
+Example&#160;................................................&#160;25,&#160;27&#160;<br/>
+link&#160;...............................................................&#160;25&#160;<br/>
+generation&#160;process&#160;...............................&#160;16,&#160;24&#160;<br/>
+Link..............................................................&#160;28&#160;<br/>
+Generation&#160;Process&#160;....................................&#160;12&#160;<br/>
+makefile&#160;.......................................................&#160;28&#160;<br/>
+Generation&#160;Tool&#160;..........................................&#160;16&#160;<br/>
+Motivation&#160;......................................................&#160;3&#160;<br/>
+il.c................................................................&#160;15&#160;<br/>
+reception&#160;...................&#160;3,&#160;10,&#160;11,&#160;14,&#160;21,&#160;31,&#160;32&#160;<br/>
+Il.c&#160;...............................................................&#160;15&#160;<br/>
+Reception&#160;..............................................&#160;11,&#160;32&#160;<br/>
+il_cfg.h.........................................................&#160;16&#160;<br/>
+Test&#160;.............................................................&#160;28&#160;<br/>
+il_def.&#160;h&#160;.......................................................&#160;15&#160;<br/>
+transmission&#160;....................&#160;3,&#160;10,&#160;11,&#160;14,&#160;31,&#160;32&#160;<br/>
+il_def.h&#160;........................................................&#160;15&#160;<br/>
+vstdlib&#160;..........................................................&#160;24&#160;<br/>
+&#160;<br/>
+2007,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+&#160;<br/>
+Version:&#160;1.03.01&#160;<br/>
+&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;1.8&#160;<br/>
+<hr/>
+</body>
+</html>

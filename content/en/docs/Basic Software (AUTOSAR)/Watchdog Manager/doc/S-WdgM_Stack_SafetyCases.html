@@ -1,0 +1,572 @@
+---
+title: S-WdgM_Stack_SafetyCases
+linkTitle: S-WdgM_Stack_SafetyCases
+weight: 13
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/><b>&#160;</b><br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+&#160;<br/>
+<b>Safe Watchdog Manager Stack</b>&#160;<br/>Safety Case&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Author:&#160;</b><br/>
+TTTech&#160;<br/>
+<b>Reviewer(s):&#160;</b><br/>
+VLE&#160;<br/>
+<b>Reference:&#160;</b><br/>
+D-SAFEX-IN-70-001&#160;<br/>
+<b>Security:&#160;</b><br/>
+Confidential&#160;<br/>
+<b>Version:&#160;</b><br/>
+1.1.0<b>&#160;</b><br/>
+<b>Date:&#160;</b><br/>
+14.08.2014<b>&#160;</b><br/>
+<b>Status:&#160;</b><br/>
+Released&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>TTTech&#160;Automotive&#160;GmbH&#160;&#160;</b><br/>
+Schoenbrunner&#160;Str.&#160;7,&#160;A-1040&#160;Vienna,&#160;Austria,&#160;Tel.&#160;+&#160;43&#160;1&#160;585&#160;34&#160;34-0,&#160;Fax&#160;+43&#160;1&#160;585&#160;34&#160;34-90,&#160;office@tttech-automotive.com&#160;<br/>
+No&#160;part&#160;of&#160;the&#160;document&#160;may be&#160;reproduced&#160;or&#160;transmitted&#160;in&#160;any form&#160;or&#160;by any means,&#160;electronic or&#160;mechanical,&#160;for&#160;any purpose,&#160;without&#160;the&#160;written&#160;permission&#160;of&#160;TTTech&#160;<br/>Automotive.&#160;Company or&#160;product&#160;names&#160;mentioned&#160;in&#160;this document&#160;may be&#160;trademarks or&#160;registered&#160;trademarks of&#160;their&#160;respective&#160;companies.&#160;TTTech&#160;Automotive&#160;undertakes&#160;no&#160;<br/>further&#160;obligation&#160;in&#160;relation&#160;to&#160;this document.&#160;<br/>Copyright&#160;©&#160;2010,&#160;TTTech&#160;Automotive&#160;GmbH. All&#160;rights&#160;reserved.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Subject&#160;to&#160;changes and&#160;corrections<b>&#160;</b><br/>
+&#160;<br/>
+<hr/>
+<a name=2></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;2&#160;<br/>
+<b>&#160;</b><br/>
+<b>Revision Chart&#160;<br/></b>A&#160;revision&#160;is&#160;a new&#160;edition&#160;of&#160;the&#160;document&#160;and affects&#160;all&#160;sections&#160;of&#160;this&#160;document.&#160;<br/>&#160;<br/>
+Version&#160;&#160;<br/>
+Date&#160;<br/>
+Responsible Person&#160;<br/>
+Modification&#160;<br/>
+0.1.0&#160;<br/>
+2012-07-02&#160;<br/>
+PPU&#160;<br/>
+Creation&#160;<br/>
+0.2.0&#160;<br/>
+2012-07-19&#160;<br/>
+PPU&#160;<br/>
+Corrected&#160;ISO/DIS&#160;-&gt;&#160;ISO&#160;<br/>
+0.3.0&#160;<br/>
+2012-09-27&#160;<br/>
+PPU&#160;<br/>
+Added&#160;S-WdgM&#160;Stack&#160;chapter&#160;<br/>
+0.4.0&#160;<br/>
+2012-10-01&#160;<br/>
+PPU&#160;<br/>
+Versions of&#160;artefacts&#160;updated&#160;<br/>
+1.0.0&#160;<br/>
+2012-10-01&#160;<br/>
+PPU&#160;<br/>
+Version of&#160;this&#160;document&#160;updated&#160;<br/>
+1.0.1&#160;<br/>
+2012-10-03&#160;<br/>
+PPU&#160;<br/>
+Document&#160;split&#160;to&#160;three&#160;module dependent&#160;<br/>documents:&#160;S-WdgM,&#160;S-WdgIf,&#160;S-Wdg&#160;<br/>Content&#160;against&#160;1.0.0&#160;not&#160;changed&#160;<br/>
+1.0.2&#160;<br/>
+2012-10-04&#160;<br/>
+PPU&#160;<br/>
+In&#160;the&#160;chapter&#160;2&#160;the&#160;RAD&#160;reference&#160;removed&#160;<br/>and&#160;the&#160;provided ISO&#160;lifecycles&#160;added.&#160;<br/>
+1.0.3&#160;<br/>
+2012-11-16&#160;<br/>
+PPU&#160;<br/>
+Version of&#160;the&#160;documents&#160;updated.&#160;<br/>
+1.0.4&#160;<br/>
+2012-11-19&#160;<br/>
+PPU&#160;<br/>
+Version of&#160;the&#160;documents&#160;updated.&#160;<br/>
+1.0.5&#160;<br/>
+2012-11-19&#160;<br/>
+PPU&#160;<br/>
+Version of&#160;the&#160;documents&#160;updated.&#160;<br/>
+1.0.80&#160;<br/>
+2014-03-03&#160;<br/>
+PPU&#160;<br/>
+Based on&#160;ver.&#160;1.0.4,&#160;the&#160;Verifier&#160;versions&#160;<br/>updated&#160;only.&#160;<br/>
+1.1.0&#160;<br/>
+2014-08-14&#160;<br/>
+PPU&#160;<br/>
+Versions of&#160;artefacts&#160;updated&#160;for&#160;release&#160;<br/>1.26.1&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=3></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;3&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4"><b>1</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4"><b>Purpose&#160;of&#160;this Document&#160;....................................................................................................&#160;4</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4"><b>2</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4"><b>Assumptions on S-WdgM&#160;Stack as&#160;SEooC&#160;.........................................................................&#160;4</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4">2.1&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4">Assumptions&#160;on&#160;scope.....................................................................................................&#160;4&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4"><b>3</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#4"><b>Software&#160;Safety&#160;Lifecycles&#160;...................................................................................................&#160;4</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#5"><b>4</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#5"><b>Software&#160;Safety&#160;Lifecycle&#160;Documentation...........................................................................&#160;5</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#6">4.1&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#6">Safe&#160;Watchdog Manager&#160;Stack&#160;.......................................................................................&#160;6&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#6">4.1.1&#160;&#160;Software&#160;Project&#160;Plan&#160;(SPP)&#160;........................................................................................&#160;6&#160;<br/>4.1.2&#160;&#160;Functional&#160;Safety&#160;Concept&#160;(FSC)&#160;................................................................................&#160;6&#160;<br/>4.1.3&#160;&#160;Technical&#160;Safety&#160;Requirements&#160;(TSR)&#160;.........................................................................&#160;6&#160;<br/></a><a href="S-WdgM_Stack_SafetyCases.html#7">4.1.4&#160;&#160;System&#160;Design&#160;(SD)&#160;....................................................................................................&#160;7&#160;<br/>4.1.5&#160;&#160;Software&#160;Requirements&#160;Document&#160;(SRD)&#160;...................................................................&#160;7&#160;<br/>4.1.6&#160;&#160;Software&#160;Architecture Document&#160;(SAD)&#160;.......................................................................&#160;7&#160;<br/>4.1.7&#160;&#160;Integration&#160;Test&#160;Specification (ITS)&#160;..............................................................................&#160;7&#160;<br/></a><a href="S-WdgM_Stack_SafetyCases.html#8">4.1.8&#160;&#160;Integration&#160;Test&#160;Report&#160;(ITR)&#160;.......................................................................................&#160;8&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#8">4.2&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#8">Safe&#160;Watchdog Manager&#160;.................................................................................................&#160;8&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#8">4.2.1&#160;&#160;Software&#160;Requirements&#160;Document&#160;(SRD)&#160;...................................................................&#160;8&#160;<br/>4.2.2&#160;&#160;Unit&#160;Design&#160;Document&#160;(UDD)&#160;......................................................................................&#160;8&#160;<br/></a><a href="S-WdgM_Stack_SafetyCases.html#9">4.2.3&#160;&#160;Source Code&#160;................................................................................................................&#160;9&#160;<br/>4.2.4&#160;&#160;Unit&#160;Test&#160;Specification&#160;(UTS)&#160;.......................................................................................&#160;9&#160;<br/>4.2.5&#160;&#160;Unit&#160;Test&#160;Report&#160;(UTR)&#160;................................................................................................&#160;9&#160;<br/>4.2.6&#160;&#160;Safety&#160;Manual&#160;(SM)&#160;.....................................................................................................&#160;9&#160;<br/></a><a href="S-WdgM_Stack_SafetyCases.html#10">4.2.7&#160;&#160;Safe&#160;Watchdog Manager&#160;Verifier&#160;...............................................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#10">4.2.7.1&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#10">Software&#160;Requirements&#160;Document&#160;(SRD)&#160;..........................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#10">4.2.7.2&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#10">Source Code&#160;......................................................................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#10">4.2.7.3&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#10">Unit&#160;Test&#160;Specification&#160;(UTS)&#160;.............................................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11">4.2.7.4&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11">Unit&#160;Test&#160;Report&#160;(UTR)&#160;......................................................................................&#160;11&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11"><b>5</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11"><b>Summary&#160;..............................................................................................................................&#160;11</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11"><b>6</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11"><b>Abbreviations and&#160;Glossary&#160;...............................................................................................&#160;11</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11"><b>7</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11"><b>References&#160;...........................................................................................................................&#160;11</b>&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11">7.1&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#11">Documents&#160;Available on&#160;Request&#160;..................................................................................&#160;11&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#12">7.2&#160;</a><br/>
+<a href="S-WdgM_Stack_SafetyCases.html#12">Other&#160;Documents&#160;..........................................................................................................&#160;12&#160;</a><br/>
+<b>&#160;</b><br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=4></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;4&#160;<br/>
+<b>1&#160;</b><br/>
+<b>Purpose&#160;of this&#160;Document&#160;</b><br/>
+This&#160;document&#160;represents&#160;the&#160;safety&#160;case&#160;for&#160;the&#160;<b>Safe&#160;Watchdog&#160;Manager&#160;Stack</b>.&#160;In detail&#160;it&#160;<br/>covers&#160;following&#160;areas:&#160;&#160;<br/>
+&#160;&#160;<b>Safe&#160;Watchdog&#160;Manager&#160;Stack&#160;</b>(the&#160;common&#160;parts)<b>&#160;</b><br/>
+&#160;&#160;<b>Safe&#160;Watchdog&#160;Manager&#160;</b><br/>
+&#160;<br/>The&#160;other&#160;units&#160;of&#160;the&#160;<b>Safe Watchdog&#160;Manager&#160;Stack</b>&#160;–&#160;the&#160;<b>Safe&#160;Watchdog Interface</b>&#160;and&#160;the&#160;<br/><b>Safe&#160;Watchdog Driver</b>&#160;have separate&#160;safety&#160;case documents.&#160;<br/>&#160;<br/>The&#160;safety&#160;case&#160;references all&#160;relevant&#160;documents&#160;to&#160;provide&#160;evidence&#160;that&#160;the&#160;software&#160;units&#160;<br/>have&#160;been&#160;developed&#160;according&#160;to&#160;requirements&#160;of&#160;ISO26262:2011&#160;(see&#160;[ISO])&#160;for&#160;an&#160;ASIL&#160;D&#160;<br/>SEooC&#160;software&#160;component.&#160;<br/>&#160;<br/>The&#160;creation&#160;of&#160;the&#160;proof&#160;of&#160;due diligence&#160;document&#160;for&#160;the&#160;whole&#160;watchdog safety&#160;concept&#160;is&#160;the&#160;<br/>responsibility&#160;of&#160;the&#160;integrator&#160;of&#160;the&#160;<b>Safe&#160;Watchdog&#160;Manager&#160;Stack&#160;(S-WdgM&#160;Stack)&#160;</b>and is not&#160;<br/>part&#160;of&#160;this&#160;safety&#160;case&#160;document.&#160;<br/>&#160;&#160;<br/>
+<b>2&#160;</b><br/>
+<b>Assumptions&#160;on S-WdgM&#160;Stack&#160;as&#160;SEooC&#160;</b><br/>
+<b>2.1&#160;</b><br/>
+<b>Assumptions on scope&#160;</b><br/>
+According&#160;to&#160;ISO&#160;26262:2011-10,&#160;clause 9.2.4.2,&#160;Step&#160;1a,&#160;the&#160;following&#160;assumptions&#160;on&#160;scope of&#160;<br/>the&#160;software&#160;component&#160;as an&#160;SEooC&#160;were&#160;made:&#160;<br/>
+&#160;&#160;<b>S-WdgM&#160;Stack</b>&#160;is&#160;integrated&#160;into&#160;an&#160;AUTOSAR&#160;4&#160;or&#160;compatible&#160;software&#160;architecture&#160;<br/>
+&#160;&#160;<b>S-WdgM&#160;Stack</b>&#160;must&#160;not&#160;unintentionally&#160;interfere&#160;with other&#160;software&#160;components&#160;<br/>
+&#160;&#160;<b>S-WdgM&#160;Stack</b>&#160;expects&#160;that&#160;the&#160;executing&#160;hardware&#160;is&#160;working&#160;correctly&#160;&#160;<br/>
+&#160;<br/>
+<b>3&#160;</b><br/>
+<b>Software&#160;Safety&#160;Lifecycles&#160;</b><br/>
+The&#160;software&#160;units&#160;represent&#160;SEooC&#160;units&#160;according&#160;to&#160;ISO26262.&#160;The&#160;following&#160;software&#160;safety&#160;<br/>lifecycles were&#160;executed&#160;as part&#160;of&#160;the&#160;development&#160;process&#160;of&#160;the&#160;software&#160;units:&#160;&#160;<br/>&#160;<br/>Concept&#160;phases:&#160;<br/>
+&#160;&#160;3-7 Hazard&#160;analysis&#160;and&#160;risk&#160;assessment&#160;*)&#160;<br/>
+&#160;&#160;3-8 Functional&#160;Safety&#160;Concept&#160;*)&#160;<br/>
+&#160;<br/>
+Product&#160;development&#160;at&#160;the&#160;system&#160;level:&#160;<br/>
+&#160;&#160;4-6&#160;Technical&#160;Safety&#160;Concept&#160;*)&#160;<br/>
+&#160;&#160;4-7 System&#160;Design *)&#160;<br/>
+&#160;<br/>
+Product&#160;development&#160;at&#160;the&#160;software&#160;level:&#160;<br/>
+&#160;&#160;6-5:&#160;Initiation&#160;of&#160;product&#160;development&#160;at&#160;the&#160;software&#160;level&#160;*)&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=5></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;5&#160;<br/>
+&#160;&#160;6-8:&#160;Software&#160;unit&#160;design&#160;and implementation&#160;*)&#160;<br/>
+&#160;&#160;6-9:&#160;Software&#160;unit&#160;testing&#160;*)&#160;<br/>
+&#160;<br/>
+Supporting&#160;processes:&#160;<br/>
+&#160;&#160;8-7 Configuration&#160;management&#160;<br/>
+&#160;&#160;8-8 Change&#160;management&#160;<br/>
+&#160;<br/>*)&#160;As&#160;far&#160;as&#160;related&#160;to&#160;the&#160;<b>S-WdgM&#160;Stack</b>&#160;as&#160;SEooC&#160;<br/>&#160;<br/>Part&#160;6-6&#160;deals&#160;with&#160;safety&#160;requirements,&#160;which are always&#160;defined&#160;on&#160;system&#160;level.&#160;For&#160;the&#160;<br/>development&#160;of&#160;the&#160;SEooC,&#160;we have made assumptions&#160;on&#160;the&#160;safety&#160;requirements,&#160;which are&#160;<br/>described in&#160;the&#160;corresponding&#160;SEooC&#160;safety&#160;manuals.&#160;The&#160;system&#160;integrator&#160;must&#160;verify&#160;that&#160;the&#160;<br/>SEooC&#160;fits&#160;to&#160;the&#160;actual&#160;system&#160;safety&#160;requirements.&#160;<br/>&#160;<br/>The&#160;other&#160;software&#160;safety&#160;lifecycle phases&#160;described by&#160;ISO26262&#160;have to be&#160;executed&#160;by&#160;the&#160;<br/>system&#160;integrator.&#160;<br/>&#160;<br/>
+<b>4&#160;</b><br/>
+<b>Software&#160;Safety&#160;Lifecycle&#160;Documentation&#160;</b><br/>
+The&#160;following&#160;subsections&#160;list&#160;the&#160;software&#160;safety&#160;lifecycle&#160;artifacts&#160;of&#160;the&#160;software&#160;units:&#160;<br/>
+&#160;&#160;Safety&#160;manuals&#160;as&#160;.pdf&#160;files with references&#160;to&#160;the&#160;MKS&#160;repository,&#160;<br/>&#160;&#160;Source code&#160;delivered&#160;to&#160;customer&#160;as&#160;pointer&#160;to&#160;the&#160;code location,&#160;<br/>&#160;&#160;Requirement,&#160;design&#160;documentation,&#160;and&#160;test&#160;specification&#160;as&#160;references&#160;to the&#160;respective&#160;<br/>
+documents&#160;in&#160;the&#160;MKS&#160;repository.&#160;They&#160;are&#160;identified&#160;by&#160;MKS&#160;document&#160;id&#160;the&#160;document&#160;<br/>version number&#160;and&#160;the&#160;document&#160;label.&#160;<br/>
+&#160;&#160;Test&#160;results&#160;as&#160;.doc&#160;or&#160;.pdf&#160;files&#160;<br/>
+&#160;<br/>&#160;<br/>The&#160;customer&#160;delivery&#160;contains&#160;<br/>
+&#160;&#160;User&#160;manuals&#160;<br/>
+&#160;&#160;Safety&#160;manuals&#160;and&#160;<br/>
+&#160;&#160;Source code&#160;<br/>
+&#160;<br/>All&#160;other&#160;artifacts&#160;can&#160;be&#160;audited&#160;by&#160;the&#160;customer&#160;on&#160;request&#160;–&#160;either&#160;on-site in&#160;TTTech&#160;Vienna&#160;<br/>development&#160;location,&#160;or&#160;via teleconference&#160;(e.g.&#160;Webex).&#160;<br/>&#160;<br/>The&#160;verification&#160;and&#160;confirmation&#160;measures&#160;as&#160;required&#160;by&#160;ISO26262:2011&#160;has&#160;been&#160;executed&#160;as&#160;<br/>described in&#160;the&#160;Software Project&#160;Plan&#160;(SPP).&#160;&#160;<br/>&#160;<br/>The&#160;evidence&#160;for&#160;the&#160;execution&#160;of&#160;all&#160;verification and&#160;confirmation&#160;measures&#160;as&#160;required&#160;by&#160;<br/>ISO26262&#160;are&#160;version-controlled&#160;in&#160;the&#160;following&#160;directory:&#160;<br/><a href="http://tttechsvn.vie.at.tttech.ttt/trunk/projects/certification/sqa/s-wdgm/evidence">http://tttechsvn.vie.at.tttech.ttt/trunk/projects/certification/sqa/s-wdgm/evidence&#160;<br/></a>&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=6></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;6&#160;<br/>
+The&#160;conformity&#160;of&#160;the&#160;development&#160;processes&#160;of&#160;the&#160;<b>S-WdgM&#160;Stack</b>&#160;with&#160;ISO&#160;26262:2011&#160;<br/>has been&#160;assessed&#160;in&#160;a&#160;process&#160;audit&#160;[AUDIT_S-WdgM].&#160;<br/>&#160;<br/>&#160;<br/>
+<b>4.1&#160;</b><br/>
+<b>Safe&#160;Watchdog&#160;Manager&#160;Stack&#160;</b><br/>
+This&#160;chapter&#160;contains&#160;common&#160;documents&#160;related to&#160;all&#160;three&#160;units&#160;<br/>
+&#160;&#160;Safe&#160;Watchdog Manager&#160;<br/>
+&#160;&#160;Safe&#160;Watchdog Interface&#160;<br/>
+&#160;&#160;Safe&#160;Watchdog Driver&#160;<br/>
+<b>4.1.1&#160;&#160;Software&#160;Project&#160;Plan&#160;(SPP)&#160;</b><br/>
+The&#160;SPP&#160;contains&#160;all&#160;planning&#160;activities&#160;for&#160;all&#160;software&#160;units.&#160;It&#160;also&#160;represents&#160;the&#160;“Safety&#160;Plan”&#160;<br/>as required&#160;by&#160;ISO26262.&#160;Chapter&#160;VI&#160;of&#160;the&#160;SPP&#160;also contains&#160;the&#160;software&#160;tool&#160;qualification&#160;plan&#160;<br/>and software&#160;tool&#160;qualification report&#160;as&#160;required&#160;by&#160;ISO26262&#160;-&#160;8&#160;clause&#160;11.&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;Software&#160;Project&#160;Plan&#160;<br/>
+Document&#160;Version&#160;<br/>
+0.7.0&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-P-70-001&#160;<br/>
+Location&#160;<br/>
+http://tttechsvn.vie.at.tttech.ttt/trunk/projects/customers/SafeExe-<br/>ASIL/03_planning&amp;risk-management/S-WdgM_SPP_V_0_7_0.doc&#160;<br/>
+<b>4.1.2&#160;&#160;Functional&#160;Safety&#160;Concept&#160;(FSC)&#160;</b><br/>
+This&#160;document&#160;reflects&#160;the&#160;functional&#160;safety&#160;concept&#160;according&#160;to&#160;ISO26262&#160;3-8&#160;Functional&#160;Safety&#160;<br/>Concept.&#160;&#160;<br/>It&#160;is&#160;the&#160;top-level&#160;document&#160;for&#160;the&#160;Safe&#160;Watchdog Manager&#160;Stack&#160;and&#160;therefore&#160;also includes&#160;<br/>assumptions&#160;on&#160;the&#160;ISO&#160;26262:2011&#160;work&#160;product&#160;3-7 Hazard&#160;analysis&#160;and risk&#160;assessment&#160;in&#160;the&#160;<br/>scope of&#160;this&#160;SEooC.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;Functional&#160;Safety&#160;Concept&#160;<br/>
+Document&#160;Version&#160;<br/>
+0.2.0&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-S-70-006&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;262558&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+<b>4.1.3&#160;&#160;Technical&#160;Safety&#160;Requirements&#160;(TSR)&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;technical&#160;safety&#160;requirements&#160;that&#160;are&#160;assumed&#160;for&#160;a&#160;system&#160;using&#160;<br/>the&#160;Safe&#160;Watchdog Manager&#160;Stack.&#160;The&#160;technical&#160;safety&#160;requirements&#160;are&#160;relevant&#160;for&#160;the&#160;system&#160;<br/>integrator.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;-&#160;Technical&#160;Safety&#160;Requirements&#160;<br/>
+Document&#160;Version&#160;<br/>
+0.2.0&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-S-70-021&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;262750&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=7></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;7&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+<b>4.1.4&#160;&#160;System&#160;Design (SD)&#160;</b><br/>
+This&#160;document&#160;reflects&#160;the&#160;system&#160;design document&#160;according&#160;to&#160;ISO&#160;26262:2011&#160;[ISO]&#160;4-7&#160;<br/>System&#160;Design&#160;for&#160;the&#160;system&#160;using&#160;the&#160;Safe&#160;Watchdog&#160;Manager&#160;Stack.&#160;It&#160;is&#160;based&#160;on&#160;the&#160;<br/>technical&#160;safety&#160;requirements&#160;document&#160;[TSR]&#160;of&#160;the&#160;ISO&#160;26262:2011&#160;[ISO]&#160;work&#160;product&#160;4-6&#160;<br/>Technical&#160;Safety&#160;Requirements&#160;in&#160;the&#160;scope of&#160;this&#160;SEooC.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;-&#160;System&#160;Design&#160;Specification&#160;<br/>
+Document&#160;Version&#160;<br/>
+0.2.0&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-D-70-007&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;263048&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+<b>4.1.5&#160;&#160;Software&#160;Requirements&#160;Document&#160;(SRD)&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;software&#160;requirements&#160;for&#160;Safe&#160;Watchdog&#160;Manager&#160;Stack.&#160;The&#160;SRD&#160;<br/>represents&#160;the&#160;software&#160;unit&#160;high-level&#160;requirements&#160;as&#160;required&#160;by&#160;ISO&#160;26262:2011&#160;–&#160;6,&#160;clause 6.&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;-&#160;Software&#160;Requirements&#160;Document&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.5&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-D-70-024&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;264112&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+&#160;<br/>
+<b>4.1.6&#160;&#160;Software&#160;Architecture&#160;Document&#160;(SAD)&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;software&#160;architecture of&#160;the&#160;Safe&#160;Watchdog&#160;Manager&#160;Stack.&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;-&#160;Software&#160;Architecture&#160;Document&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.2&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-S-70-016&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;266056&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+<b>4.1.7&#160;&#160;Integration Test&#160;Specification&#160;(ITS)&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;Integration&#160;Test,&#160;that&#160;verifies&#160;the&#160;Watchdog Manager,&#160;Watchdog&#160;<br/>Interface&#160;and&#160;Watchdog&#160;Driver&#160;which are&#160;compatible with other&#160;AUTOSAR&#160;components&#160;and shows&#160;<br/>the&#160;expected&#160;behaviour&#160;at&#160;runtime.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Stack&#160;-&#160;Integration&#160;Test&#160;Specification&#160;<br/>
+Document&#160;Version&#160;<br/>
+2.1.2&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-V-01-001&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;61036&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1 &#160;&#160;&#160;*1)&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=8></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;8&#160;<br/>
+<b>4.1.8&#160;&#160;Integration Test&#160;Report&#160;(ITR)&#160;</b><br/>
+This&#160;document&#160;contains&#160;a detailed&#160;integration&#160;test&#160;report&#160;of&#160;the&#160;Safe&#160;Watchdog&#160;Manager&#160;Stack&#160;<br/>according&#160;to&#160;the&#160;requirements&#160;of&#160;ISO&#160;26262:2011&#160;<br/>&#160;<br/>Document&#160;&#160;Safe&#160;Watchdog Manager&#160;Stack&#160;-&#160;Integration&#160;Test&#160;Report&#160;<br/>Title&#160;<br/>Document&#160;&#160;2.0.21&#160;<br/>Version&#160;<br/>Document&#160;&#160;D-SAFEX-V-01-002&#160;<br/>Number&#160;<br/>Location&#160;<br/>
+MKS&#160;ID&#160;280966&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;&#160;&#160;*1)&#160;<br/>
+Location&#160;<br/>
+<a href="file://fileserver.vie.at.tttech.ttt/sw-development/software-releases/external/TTX/2014/safe_execution_V1_26_0_2014_05_27/">\\fileserver.vie.at.tttech.ttt\sw-development\software-</a><br/>
+PDF&#160;<br/>
+<a href="file://fileserver.vie.at.tttech.ttt/sw-development/software-releases/external/TTX/2014/safe_execution_V1_26_0_2014_05_27/">releases\external\TTX\2014\safe_execution_V1_26_0_2014_05_27\&#160;<br/></a>_internal_documents\integration_test\safe_execution_integration_test_report_v1_26_0.pdf&#160;<br/>
+&#160; &#160;&#160;*1)&#160;&#160;The&#160;S-WdgM&#160;and&#160;S-WdgIf&#160;Integration&#160;test&#160;was&#160;executed&#160;on&#160;the&#160;V850PJ4&#160;platform&#160;(evaluation&#160;board)&#160;in&#160;the&#160;1.26.0&#160;<br/>TTTech&#160;Release.&#160;The&#160;S-Wdg&#160;driver&#160;integration&#160;test&#160;was&#160;executed&#160;on&#160;the&#160;R7F701353&#160;customer&#160;platform&#160;with&#160;the&#160;<br/>TLE4473&#160;watchdog&#160;at&#160;the&#160;1.25.0&#160;TTTech&#160;Release.&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Safe&#160;Watchdog&#160;Manager&#160;</b><br/>
+This&#160;chapter&#160;contains documents&#160;related&#160;to Safe&#160;Watchdog Manager&#160;module.&#160;<br/>
+<b>4.2.1&#160;&#160;Software&#160;Requirements&#160;Document&#160;(SRD)&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;software&#160;requirements&#160;for&#160;Safe&#160;Watchdog&#160;Manager.&#160;The&#160;SRD&#160;<br/>represents&#160;the&#160;software&#160;unit&#160;high-level&#160;requirements&#160;as&#160;required&#160;by&#160;ISO&#160;26262:2011&#160;–&#160;6,&#160;clause 6.&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Software&#160;Requirements&#160;Document&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.10&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-S-70-004&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;53448&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+&#160;<br/>
+<b>4.2.2&#160;&#160;Unit&#160;Design Document&#160;(UDD)&#160;</b><br/>
+The&#160;UDD&#160;represents&#160;the&#160;software&#160;unit&#160;design specification&#160;as&#160;required&#160;by&#160;ISO&#160;26262:2011&#160;–&#160;6,&#160;<br/>clause 8.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Unit&#160;Design Document&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.6&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-D-70-002&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;53535&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=9></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;9&#160;<br/>
+<b>4.2.3&#160;&#160;Source&#160;Code&#160;</b><br/>
+The&#160;source&#160;code&#160;of&#160;the&#160;software&#160;unit&#160;is&#160;written&#160;in&#160;the&#160;C&#160;programming&#160;language.&#160;<br/>Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Source&#160;Code&#160;<br/>
+Version&#160;<br/>
+3.3.2&#160;<br/>
+Location&#160;<br/>
+http://tttechsvn.vie.at.tttech.ttt/trunk/SW/msp-watchdog-mgr&#160;<br/>
+&#160;<br/>&#160;<br/>The&#160;HIS&#160;metrics&#160;and&#160;the&#160;MISRA&#160;rule check&#160;are&#160;performed&#160;with the&#160;tool&#160;QA-C.&#160;<br/>The&#160;HIS&#160;metrics&#160;report&#160;can&#160;be&#160;found&#160;in&#160;the&#160;files&#160;<br/><a href="http://tttechsvn.vie.at.tttech.ttt/trunk/projects/customers/SafeExe-ASIL/04_technical-documents/HIS_MISRA_checks/Release_1_26_0">http://tttechsvn.vie.at.tttech.ttt/trunk/projects/customers/SafeExe-ASIL/04_technical-<br/>documents/HIS_MISRA_checks/Release_1_26_0.&#160;</a>&#160;<br/>All&#160;HIS&#160;metrics&#160;violations&#160;are&#160;justified&#160;in&#160;the&#160;respective source&#160;files.&#160;<br/>&#160;<br/>The&#160;results&#160;of&#160;the&#160;MISRA-check&#160;can&#160;be&#160;found&#160;in&#160;the&#160;folders&#160;<br/>http://tttechsvn.vie.at.tttech.ttt/trunk/projects/customers/SafeExe-ASIL/04_technical-<br/>documents/HIS_MISRA_checks/Release_1_26_0&#160;<br/>All&#160;violations are&#160;justified.&#160;The&#160;justifications&#160;are&#160;provided as&#160;comments&#160;in&#160;the&#160;respective source&#160;<br/>files.&#160;<br/>
+<b>4.2.4&#160;&#160;Unit&#160;Test&#160;Specification (UTS)&#160;</b><br/>
+The&#160;UTS&#160;contains&#160;a detailed&#160;test&#160;specification&#160;of&#160;the&#160;software&#160;unit&#160;according to&#160;the&#160;requirements&#160;of&#160;<br/>ISO&#160;26262:2011&#160;–&#160;6,&#160;clause 9&#160;.&#160;The&#160;UTS&#160;demonstrates 100%&#160;requirements&#160;coverage.&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Unit&#160;Test&#160;Specification&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.22&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-V-70-001&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;61477&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+<b>4.2.5&#160;&#160;Unit&#160;Test&#160;Report&#160;(UTR)&#160;</b><br/>
+The&#160;UTR&#160;contains&#160;a detailed&#160;unit&#160;test&#160;report&#160;according&#160;to&#160;the&#160;requirements&#160;of&#160;ISO&#160;26262:2011&#160;–&#160;6,&#160;<br/>clauses 8&#160;and&#160;9.&#160;The&#160;UTR&#160;shows&#160;that&#160;all&#160;tests&#160;and review&#160;procedures specified&#160;in the&#160;UTS&#160;passed&#160;<br/>and that&#160;100%&#160;MC/DC&#160;coverage is&#160;achieved.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Unit&#160;Test&#160;Report&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.4&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-V-70-005&#160;<br/>
+Location&#160;<br/>
+http://tttechsvn.vie.at.tttech.ttt/trunk/projects/customers/SafeExe-<br/>ASIL/04_technical-documents/Reviews/S-WdgM/UTR/S-WdgM-<br/>Stack_UTR_WdgM_D-SAFEX-V-70-005_V_1&#160;0&#160;4.pdf&#160;<br/>
+&#160;<br/>
+<b>4.2.6&#160;&#160;Safety&#160;Manual&#160;(SM)&#160;</b><br/>
+The&#160;Safety&#160;Manual&#160;(SM)&#160;contains&#160;the&#160;requirements&#160;for&#160;the&#160;integrator&#160;of&#160;the&#160;software&#160;unit.&#160;All&#160;<br/>requirements&#160;described&#160;in this&#160;document&#160;must&#160;be&#160;followed.&#160;In specific,&#160;the&#160;SM&#160;describes&#160;for&#160;which&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=10></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;10&#160;<br/>
+configuration&#160;(configuration&#160;parameters,&#160;used&#160;hardware,&#160;compiler&#160;and linker&#160;settings)&#160;the&#160;software&#160;<br/>unit&#160;has&#160;been&#160;tested&#160;according&#160;to&#160;ISO&#160;26262:2011&#160;requirements.&#160;Moreover,&#160;the&#160;SM&#160;describes&#160;<br/>which SW&#160;safety&#160;lifecycle requirements&#160;and&#160;recommendations&#160;of&#160;ISO&#160;26262:2011&#160;were&#160;not&#160;<br/>executed&#160;during&#160;the&#160;development&#160;of&#160;the&#160;software&#160;unit.&#160;These&#160;requirements&#160;and&#160;recommendations&#160;<br/>have to be&#160;considered&#160;by&#160;the&#160;integrator&#160;of&#160;the&#160;software&#160;unit.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Safety&#160;Manual&#160;<br/>
+Document&#160;Version&#160;<br/>
+2.3.28&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-S-70-001&#160;<br/>
+Locations&#160;<br/>
+MKS&#160;ID&#160;228403&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+<b>4.2.7&#160;&#160;Safe&#160;Watchdog&#160;Manager&#160;Verifier&#160;</b><br/>
+<b>4.2.7.1&#160;</b><br/>
+<b>Software Requirements Document&#160;(SRD)&#160;</b><br/>
+This&#160;document&#160;lists&#160;the&#160;requirements&#160;to be&#160;fulfilled&#160;by&#160;the&#160;Safe&#160;Watchdog&#160;Manager&#160;Configuration&#160;<br/>Verifier.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Verifier&#160;Software&#160;Requirements&#160;Document&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.2&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-S-70-007&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;239129&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+&#160;<br/>
+<b>4.2.7.2&#160;</b><br/>
+<b>Source Code&#160;</b><br/>
+The&#160;verifier&#160;source&#160;code&#160;is&#160;written&#160;in&#160;the&#160;C&#160;programming&#160;language.&#160;It&#160;is&#160;delivered&#160;as a&#160;.dll&#160;file.&#160;<br/>&#160;<br/>Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Verifier&#160;Source&#160;Code&#160;<br/>
+Version&#160;<br/>
+1.2.11&#160;<br/>
+Location&#160;<br/>
+http://tttechsvn.vie.at.tttech.ttt/trunk/SW/msp-watchdog-mgr-config/src/C&#160;<br/>
+&#160;<br/>&#160;<br/>
+<b>4.2.7.3&#160;</b><br/>
+<b>Unit&#160;Test&#160;Specification&#160;(UTS)&#160;</b><br/>
+The&#160;UTS&#160;contains&#160;a detailed&#160;test&#160;specification&#160;of&#160;the&#160;software&#160;unit&#160;according to&#160;the&#160;requirements&#160;of&#160;<br/>ISO&#160;26262:2011&#160;–&#160;6,&#160;clause 9.&#160;&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Verifier&#160;Unit&#160;Test&#160;Specification&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.3&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-V-70-009&#160;<br/>
+Location&#160;<br/>
+MKS&#160;ID&#160;313571&#160;<br/>
+Label&#160;<br/>
+Release_1_26_1&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=11></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;11&#160;<br/>
+<b>4.2.7.4&#160;</b><br/>
+<b>Unit&#160;Test&#160;Report&#160;(UTR)&#160;</b><br/>
+The&#160;UTR&#160;contains&#160;a detailed&#160;unit&#160;test&#160;report&#160;according&#160;to&#160;the&#160;requirements&#160;of&#160;ISO&#160;26262:2011&#160;–&#160;6,&#160;<br/>clauses 8&#160;and&#160;9.&#160;The&#160;UTR&#160;shows&#160;that&#160;all&#160;tests&#160;and review&#160;procedures specified&#160;in the&#160;UTS&#160;passed.&#160;<br/>&#160;<br/>Document&#160;Title&#160;<br/>
+Safe&#160;Watchdog Manager&#160;Verifier&#160;Unit&#160;Test&#160;Report&#160;<br/>
+Document&#160;Version&#160;<br/>
+1.0.1&#160;<br/>
+Document&#160;Number&#160;<br/>
+D-SAFEX-V-70-010&#160;<br/>
+Location&#160;<br/>
+http://tttechsvn.vie.at.tttech.ttt/trunk/projects/customers/SafeExe-<br/>ASIL/04_technical-documents/Unit_Test_Reports/S-WdgM-<br/>Stack_UTR_WdgMVerifier_D-SAFEX-V-70-010_V_1.0.1.doc&#160;<br/>
+<b>5&#160;</b><br/>
+<b>Summary&#160;</b><br/>
+The&#160;evidence&#160;in sections&#160;<br/>
+&#160;&#160;“Assumptions&#160;on&#160;S-WdgM&#160;Stack&#160;as&#160;SEooC”,&#160;<br/>
+&#160;&#160;“Software&#160;Safety&#160;Lifecycles”&#160;<br/>
+&#160;&#160;“Software&#160;Safety&#160;Lifecycle Documentation”&#160;<br/>
+and&#160;the&#160;assessment&#160;reports&#160;[AUDIT_S-WdgM]&#160;shows&#160;that&#160;the&#160;S-WdgM&#160;Stack&#160;has&#160;been&#160;developed&#160;<br/>as a&#160;SEooC&#160;component&#160;according&#160;to&#160;ISO26262:2011 and can&#160;be&#160;used&#160;for&#160;up&#160;to&#160;ASIL D.&#160;<br/>&#160;<br/>It&#160;is&#160;safe&#160;to integrate&#160;the&#160;SW&#160;unit&#160;into&#160;safety-related&#160;systems&#160;developed&#160;according&#160;to&#160;ISO&#160;<br/>26262:2011,&#160;if&#160;the&#160;requirements&#160;that&#160;are&#160;described in&#160;the&#160;Safety&#160;Manual&#160;(SM)&#160;are&#160;fulfilled&#160;by&#160;the&#160;<br/>system&#160;integrator.&#160;<br/>
+<b>6&#160;</b><br/>
+<b>Abbreviations&#160;and&#160;Glossary&#160;</b><br/>
+<b>Acronym&#160;/&#160;Term&#160;</b><br/>
+<b>Meaning&#160;</b><br/>
+API&#160;<br/>
+Application Programmer&#160;Interface&#160;<br/>
+ASIL&#160;<br/>
+Automotive Safety&#160;Integrity&#160;Level&#160;<br/>
+HIS&#160;<br/>
+Herstellerinitiative Software&#160;<br/>
+HW&#160;<br/>
+Hardware&#160;<br/>
+ISO&#160;<br/>
+International&#160;Standard&#160;<br/>
+MC/DC&#160;<br/>
+Modified&#160;Condition/Decision&#160;Coverage&#160;<br/>
+MISRA&#160;<br/>
+Motor&#160;Industry&#160;Software&#160;Reliability&#160;Association&#160;<br/>
+MKS&#160;<br/>
+MKS&#160;Integrity&#160;software&#160;tool&#160;made by&#160;MKS&#160;Software&#160;Inc.&#160;<br/>
+SEooC&#160;<br/>
+Safety&#160;Element&#160;out&#160;of&#160;Context&#160;according&#160;to&#160;ISO&#160;26262:2011-10&#160;<br/>
+SM&#160;<br/>
+Safety&#160;Manual&#160;<br/>
+SW&#160;<br/>
+Software&#160;<br/>
+<b>7&#160;</b><br/>
+<b>References&#160;</b><br/>
+<b>7.1&#160;</b><br/>
+<b>Documents&#160;Available on Request&#160;</b><br/>
+The&#160;following&#160;documents&#160;are&#160;not&#160;part&#160;of&#160;the&#160;customer&#160;delivery.&#160;The&#160;documents&#160;can&#160;be&#160;made&#160;<br/>available in&#160;video conferences (e.g.,&#160;WebEx)&#160;or&#160;in on-site&#160;audits&#160;at&#160;the&#160;development&#160;center&#160;of&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+<a name=12></a>&#160;<br/>&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+Document&#160;Name:&#160;Safety&#160;Case&#160;<br/>
+Ref.:&#160;D-SAFEX-IN-70-001&#160;<br/>
+Page&#160;12&#160;<br/>
+TTTech&#160;in Vienna.&#160;If&#160;necessary,&#160;please&#160;contact&#160;the&#160;TTTech&#160;Automotive Support&#160;at&#160;<br/>support@tttech-automotive.com.&#160;<br/>&#160;<br/>[AUDIT_S-WdgM]&#160;&#160;<br/>
+TÜV&#160;NORD&#160;–&#160;Institut&#160;für&#160;Fahrzeugtechnik&#160;&amp;&#160;Mobilität,&#160;&#160;<br/>
+&#160;<br/>
+<b>&#160;<br/>A/&#160;<br/>Report&#160;on&#160;the&#160;Functional&#160;Safety&#160;Audit&#160;for&#160;TTTech’s&#160;Safe&#160;Watchdog&#160;<br/>Manager&#160;Stack&#160;(ISO&#160;26262 /&#160;ASIL D)&#160;</b><br/>
+1.&#160;&#160;Report-No:&#160;8109170322-B01,&#160;Version&#160;1.0,&#160;2012-07-18&#160;<br/>2.&#160;&#160;Report-No:&#160;8109170322-B02,&#160;Version&#160;1.0&#160;&#160;2012-12-20&#160;<br/>
+&#160;<br/><b>B/&#160;<br/>Functional&#160;Safety&#160;Assessment&#160;Report&#160;of&#160;“Safe&#160;Watchdog&#160;Manager&#160;<br/>Stack” conformity&#160;against&#160;ISO26262,&#160;ASIL D.&#160;<br/></b>Report-No:&#160;8109170322-B04,&#160;Version&#160;1.0&#160;2013-02-25&#160;<br/>
+[COMPL]&#160;<br/>
+TTTech&#160;Computertechnik&#160;AG,&#160;ISO_DIS_26262_Compliance.xls,&#160;D-INT-CL-<br/>70-001&#160;<br/>
+&#160;<br/>&#160;<br/>
+<b>7.2&#160;</b><br/>
+<b>Other&#160;Documents&#160;</b><br/>
+[ISO]&#160;<br/>
+International&#160;Organization&#160;for&#160;Standardization,&#160;International&#160;Standard&#160;<br/>ISO26262&#160;Road vehicles&#160;–&#160;Functional&#160;safety&#160;(all&#160;parts),&#160;2011&#160;<br/>
+&#160;<br/>
+&#160;<b>Last&#160;Change:</b>&#160;14.08.2014&#160;<br/>
+<b>Author:</b>&#160;TTTech&#160;<br/>
+<b>Version:&#160;1.1.0&#160;</b><br/>
+<b>©&#160;TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+<hr/>
+</body>
+</html>

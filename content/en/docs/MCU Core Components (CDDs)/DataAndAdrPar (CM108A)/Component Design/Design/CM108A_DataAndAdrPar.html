@@ -1,0 +1,329 @@
+---
+title: CM108A_DataAndAdrPar
+linkTitle: CM108A_DataAndAdrPar
+weight: 2
+---
+
+<p><strong>Data And Address Parity RH850</strong></p>
+<p><strong>(DataAndAdrPar)</strong></p>
+<p><strong>FDD #CM108A</strong></p>
+<p><a href="#high-level-description">1. High Level Description 3</a></p>
+<p><a href="#sub-function-in-this-document">2. Sub-Function In This Document 3</a></p>
+<p><a href="#critical-registers">3. Critical Registers 3</a></p>
+<p><a href="#sub-functions">4. Sub-functions 3</a></p>
+<p><a href="#sub-function-dataandadrparinit1">4.1. Sub-Function: DataAndAdrParInit1 3</a></p>
+<p><a href="#ntcs">4.1.1. NTCs 4</a></p>
+<p><a href="#san-linkage">4.1.2. SAN Linkage 4</a></p>
+<p><a href="#description">4.1.3. Description 4</a></p>
+<p><a href="#rationale">4.1.4. Rationale 4</a></p>
+<p><a href="#implementation">4.1.5. Implementation 6</a></p>
+<p><a href="#reference">4.1.6. Reference 8</a></p>
+<p><a href="#verification-method">4.1.7. Verification Method 14</a></p>
+<p><a href="#sub-function-dataandadrparinit2">4.2. Sub-Function: DataAndAdrParInit2 15</a></p>
+<p><a href="#description-1">4.2.1. Description 15</a></p>
+<p><a href="#revision-record-change-approval">5. Revision Record &amp; Change Approval 15</a></p>
+<h1 id="high-level-description">High Level Description</h1>
+<p>This document covers the functions which address protection of data and address buses. Data bus protection consists of the detection of errors in conveying data between peripheral devices and bus masters per HWUM table 31.56. Address bus protection consists of the detection of errors in conveying addresses to the code flash only. The default power-up values enable this detection and notification to the ECM so no action is needed for this function. This function is mentioned here because there is a SAN requirement to verify the detection and notification status which will be satisfied by an init (one time only) check of the relevant registers as critical registers.</p>
+<p>Renesas Document References:</p>
+<p>Hardware User’s Manual (HWUM) version 1.10 dated Feb 2016</p>
+<p>Safety Application Note (SAN) R01AN2118EJ0120 Rev. 1.20 Release December 1, 2015</p>
+<p>Data parity self-test (SAN-P1x-1802) Feb 16, 2016</p>
+<h1 id="sub-function-in-this-document">Sub-Function In This Document</h1>
+<p>Below is a linked list of all sub-functions owned by this document.</p>
+<table>
+<colgroup>
+<col style="width: 73%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sub-Function Name</strong></td>
+<td><strong>Link</strong></td>
+</tr>
+<tr class="even">
+<td>DataAndAdrParInit1</td>
+<td><a href="#sub-function-dataandadrparinit1">4.1</a></td>
+</tr>
+<tr class="odd">
+<td>DataAndAdrParInit2</td>
+<td><a href="#sub-function-dataandadrparinit2">4.2</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="critical-registers">Critical Registers</h1>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Register</strong></td>
+<td><p><strong>Register No.</strong></p>
+<p><strong>(regID, selID)</strong></p></td>
+<td><strong>Access Permission</strong></td>
+<td><strong>Init/Periodic Verification</strong></td>
+<td><strong>Masking</strong></td>
+<td><strong>Expected Value</strong></td>
+<td><p><strong>Protn Score From</strong></p>
+<p><strong>Eval Sheet</strong></p></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="sub-functions">Sub-functions</h1>
+<h2 id="sub-function-dataandadrparinit1">Sub-Function: DataAndAdrParInit1</h2>
+<p>Return to sub-function list link: <u>Sub-Function In This Document</u></p>
+<h3 id="ntcs">NTCs</h3>
+<p>N/A</p>
+<h3 id="san-linkage">SAN Linkage</h3>
+<p>SAN version 1.20</p>
+<p>Para 29.1</p>
+<p>The LBIST checks all error signal paths from the modules to the ECM that are themselves targeted by the LBIST except the error signal paths from the DMA compare unit, the PBG3A, and <strong>from OR-gate for data parity</strong>.</p>
+<h3 id="description">Description</h3>
+<p>This function verifies that the signal path from the data parity OR gate to the ECM is functional. Since the SAN section describing the LBIST coverage mentions this function as one which is not checked, it is chosen to implement this test.</p>
+<p>There has been no requirement identified to perform a startup test on the address parity unit so none has been created.</p>
+<h3 id="rationale">Rationale</h3>
+<p>This function tests the signal path which the LBIST misses according to the SAN. Per the SAN, only one of the data parity sources is tested and both read and write to the tested peripheral are checked. See HWUM table 31.6 for a list of the data parity sources which can be used. This design arbitrarily uses the CHBB0 group (CSIG group B) to perform the test.</p>
+<p>By convention, all ‘once per power cycle’ tests are always entered and each calls a function (ChkForStrtUpTest) which determines whether the test should perform its test or trivially return.</p>
+<p>The design deviates slightly from the SAN flowchart:</p>
+<p>The SAN flowchart does not address the impact of this error’s drive to the SYSERR function. Because of this, the SEGCONT register must have a bit cleared during testing to prevent SYSERR exceptions and one bit in the SEGFLAG register must have one cleared after testing because the testing set it. Similarly, the driving of the ERROROUT pin must be masked off from the error signals which will occur during the test. These registers (SEGCONT and ECMEMK0) must be restored before the test returns.</p>
+<p>The SAN flowchart of figure 18.4-3 shows two undefined “Wait” operations. Renesas provided additional information and a modified flowchart which explains that this test may repeatedly sample the ECM register field (ECMMESSTR0 bit 28) and that the appearance of the value one in that bit indicates the test has succeeded but, failing to observe that value after injecting an error, the sampling must continue until either that one is observed or at least one sample is taken after the requisite amount of time has passed. This time is different for reads and writes and also has different values for different peripheral groups. Renesas provided a table of latencies where the values for any peripheral to be used in this data parity test can be found, but they recommend using the worst case write and read times over all peripherals regardless of which one is chosen to be tested. Their table’s read and write values are to be multiplied by four and used for the corresponding flowchart wait times.</p>
+<p>One option offered was to follow the Renesas recommendation except in the area of the backup loop termination condition. The backup condition chosen is to use a large number of loop iterations, with 1000 thought to be sufficient to guarantee more sampling time than the Renesas table demands. When this count is exhausted without seeing the error bit appear in the ECM register the test will be judged to have failed.</p>
+<p>These are all functionally equivalent as long as care is taken to provide for a means for the logic to exit in the case of a hardware failure. The main difference between them is the amount of time in the normal and fail paths and these are not very large in this case.</p>
+<p>Another area where the design deviates from the SAN flowchart is the area where the writing of the test mode occurs. Renesas has evaluated the design and advised that writing 10B to APDPTMC.APDPTMC may occur using the same write used to write the test mode control bits contrary to the two step write illustrated in the SAN flowchart.</p>
+<p>Another area where the design deviates from the SAN flowchart is that after inducing each write error, the specific error detection bit is cleared by writing one to the corresponding clear register, delaying (via syncm) and verifying the clear. Only a simple clear is mentioned in the SAN flowchart. Rev 1.10 is the first version of the Hardware User’s Manual which states this requirement for this syncm.</p>
+<p>Conducting the test</p>
+<p>After preventing the normally terminal consequences of data parity errors, an error is inserted using the processor’s test facilities. It is verified that the error signal propagated to the ECM unit from a read and a write operation before clearing the record of the ECM error before restoring the error detection circuitry to its operational configuration.</p>
+<p>NOTE: This code writes to and reads from SEG registers SEGCONT and SEGFLAG. These are protected by IPG (guard) bits. The current settings elsewhere in CM107A allow reading but cause writing to be a guard violation. To avoid this, this startup test must run before the IPG is initialized by CM107A.</p>
+<p>Meaning of the second parameter of the calls to the function SetMcuDiagcIdnData:</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>2<sup>nd</sup> param. Bit #</td>
+<td>Failure cause</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>VCIF set before testing began</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>ECM bit 28 set before testing began</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Fail report bit did not reach ECM BIT28 during peripheral read</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Fail report bit did not reach ECM BIT28 during peripheral write</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Fail report bit did not reach error status register during peripheral write</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Failure to clear error status</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Test Mode Control reg. did not verify</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation">Implementation</h3>
+<p>static const uint32_t BIT28 = 1 &lt;&lt; 28;</p>
+<p>//after inducing an error that should show up in ECMMESSTR0 bit28</p>
+<p>//call this… will spin until the error appears or timeout, then return true if it is set (test pass)</p>
+<p>static boolean waitForECMBit28 ( void)</p>
+<p>{</p>
+<p>boolean returnValue;</p>
+<p>loop, sampling ECMMESSTR0 until BIT28 is set or 1000 samples have been taken</p>
+<p>or time has elapsed (see text)</p>
+<p>if 1000 samples were taken or timed out without seeing ECMMESSTR0.BIT28</p>
+<p>{</p>
+<p>returnValue = false; //value for a fail</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>returnValue = true; // backupCount was not zero so the bit was there</p>
+<p>}</p>
+<p>return returnValue;</p>
+<p>}</p>
+<p>static void WriteTmc(uint32_t value, uint32_t* errorCode) //implicitly, we need to verify</p>
+<p>{</p>
+<p>APDPTMC_CHBB0 = value;</p>
+<p>if ( (value &amp; 15) != APDPTMC_CHBB0) //upper bits always read as zero</p>
+<p>* errorCode |= 1UL&lt;&lt;6;</p>
+<p>}</p>
+<p>// This code requires Supervisor mode!!!</p>
+<p>void DataAndAdrParInit1 (void )</p>
+<p>{</p>
+<p>uint32_t vcif = SEGFLAG.VCIF; //sample the volatile register</p>
+<p>uint32_t ecmBit28 = (ECMMESSTR0 &amp; BIT28) &gt;&gt;28; //sample the volatile register</p>
+<p>uint32_t errorCode = (ecmBit28 &lt;&lt;1) + vcif;</p>
+<p>Boolean ExecStrtUpTest;</p>
+<p>ChkForStrtUpTest ( &amp;ExecStrtUpTest);</p>
+<p>if (ExecStrtUpTest &amp;&amp; ( 0 == errorCode) )</p>
+<p>{</p>
+<p>uint8_t bucket; //test data is read to or written from here</p>
+<p>uint32_t ECMEMK0SAV = ECMEMK0;</p>
+<p>uint16_t SEGCONTSAV = SEGCONT;</p>
+<p>// set BIT28 to prevent (mask off) test induced data parity error</p>
+<p>// from getting to the errorout pin</p>
+<p>WrProtdRegEcm_u32 ( ECMEMK0SAV | BIT28, ECMEMK0 ); //this function verifies</p>
+<p>// prevent SYSERR when the test induces errors</p>
+<p>// the following line requires Supervisor mode!!!!</p>
+<p>SEGCONT.VCIE = 0; // turn off syserr response to VCIE things</p>
+<p>WriteTmc ( 0x400FUL, &amp;errorCode); // the “4” is an enable key</p>
+<p>// “F” injects errors in all four byte lanes</p>
+<p>if (0 == errorCode)</p>
+<p>{</p>
+<p>bucket = CSIG0BCTL0; // read from a reg in the module, this injects an error</p>
+<p>if (waitForECMBit28())</p>
+<p>{ // parity error was detected so the test is passing so far</p>
+<p>WrProtdRegEcm_u32 (BIT28, &amp;ECMESSTC0 ); //clear the ecm error bit</p>
+<p>WriteTmc ( 0x400FUL, &amp;errorCode); // the “4” is an enable key, “F” selects all four byte lanes</p>
+<p>if (0 == errorCode)</p>
+<p>{</p>
+<p>CSIG0BCTL0 = bucket; //write to inject error</p>
+<p>if ( ! waitForECMBit28())</p>
+<p>{ // error status was not detected, fail</p>
+<p>errorCode |= 1UL&lt;&lt;3; //pass an error code for write</p>
+<p>}</p>
+<p>if (0 == APDPERRST_CHBB0 )</p>
+<p>{ // ECM error status was not detected, fail</p>
+<p>errorCode |= 1UL&lt;&lt;4; //pass an error code for write</p>
+<p>}</p>
+<p>WrProtdRegEcm_u32 (BIT28, ECMESSTC0); //clear the ecm error bit</p>
+<p>APDPERRSTC_CHBB0 = 1; // clear the error status near the source</p>
+<p>asm( "syncm" ); // delay to let the test mode propagate</p>
+<p>if ( 1 == APDPERRST_CHBB0) // see if the error status bit cleared</p>
+<p>errorCode |= 1UL&lt;&lt;5; //it did not clear, pass an error code</p>
+<p>} // if (0 == errorCode)</p>
+<p>} //end of successful read test</p>
+<p>else</p>
+<p>{</p>
+<p>errorCode |= 1UL&lt;&lt;2; //pass an error code for read</p>
+<p>}</p>
+<p>} // if (0 == errorCode)</p>
+<p>//turn off test mode</p>
+<p>WriteTmc ( 0x4000UL, &amp;errorCode); // the “0” is an enable key, “0” selects zero byte lanes errored</p>
+<p>// restore normal operation of ECM Resets, interrupts when subsequent code causes an error.</p>
+<p>SEGFLAG.VCIF = 0; // clear VCIF, this gets set despite VCIE being 0</p>
+<p>SEGCONT = SEGCONTSAV; // restore syserr response to VCIE things per entry value</p>
+<p>//check that this test didn’t generate CF or DF etc errors</p>
+<p>// maybe they will just happen when SEGCONT.VCIE was set to one above</p>
+<p>// 0x400 3800 checks for PBG error (bit 26) or</p>
+<p>// (DTSRAM, DF, CF ) 2bit ECC errors or CF address parity bits 15, 16, 17</p>
+<p>//if ( ECMMESSTR0 &amp; 0x403 8000 ) // optional, delete if these failures are not worth the effort</p>
+<p>// DoSyserr(); // optional, delete if these failures are not worth the effort</p>
+<p>// restore ECMEMK0 to allow PBG error to get to the ERROROUT pin (unmask) per entry value</p>
+<p>WrProtdRegEcm_u32 ( ECMEMK0SAV, &amp;ECMEMK0); //this function verifies</p>
+<p>if (0 &lt; errorCode)</p>
+<p>SetMcuDiagcIdnData ( McuDiagc1.MCUDIAGC_PRPHLBUSDATAPARSTRTUPFLT<em>,</em></p>
+<p>errorCode);</p>
+<p>}</p>
+<p>else if (ExecStrtUpTest)</p>
+<p>{</p>
+<p>SetMcuDiagcIdnData ( McuDiagc1.MCUDIAGC_PRPHLBUSDATAPARSTRTUPFLT<em>,</em></p>
+<p>errorCode);</p>
+<p>}</p>
+<p>}</p>
+<h3 id="reference">Reference</h3>
+<p>This flowchart is from SAN ver 1.20:</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.wmf" style="width:6.03611in;height:4.57292in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.wmf" style="width:5.98889in;height:8.22361in" /><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.wmf" style="width:5.99028in;height:3.71319in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.wmf" style="width:5.99514in;height:5.23056in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.wmf" style="width:5.99167in;height:3.86528in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image6.wmf" style="width:6.49583in;height:7.51667in" /></p>
+<h3 id="verification-method">Verification Method</h3>
+<p>N/A</p>
+<h2 id="sub-function-dataandadrparinit2">Sub-Function: DataAndAdrParInit2</h2>
+<p>Return to sub-function list link: Sub-Function In This Document</p>
+<h3 id="description-1"> Description</h3>
+<p>This is a null sub-function. </p>
+<p>NOTE: Register values which have been established by bootloader or by reset:</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 32%" />
+<col style="width: 30%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Register name</td>
+<td>value</td>
+<td>Set by</td>
+</tr>
+<tr class="even">
+<td>CFERRINT_PE1</td>
+<td>7</td>
+<td>FBL</td>
+</tr>
+<tr class="odd">
+<td>CFAPCTL</td>
+<td>0</td>
+<td>Reset</td>
+</tr>
+</tbody>
+</table>
+<h1 id="revision-record-change-approval">Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>01.00.00</td>
+<td>03/14/2016</td>
+<td>EA4#2762</td>
+<td>EC</td>
+<td>Initial Release</td>
+</tr>
+<tr class="odd">
+<td>01.00.01</td>
+<td>03/15/2016</td>
+<td>EA4#2762</td>
+<td>EC</td>
+<td>Add mfile function name, correct para. indices and convert list to variable table</td>
+</tr>
+<tr class="even">
+<td>01.01.00</td>
+<td>03/29/2016</td>
+<td>EA4#5007</td>
+<td>EC</td>
+<td>Remove some syncms</td>
+</tr>
+</tbody>
+</table>

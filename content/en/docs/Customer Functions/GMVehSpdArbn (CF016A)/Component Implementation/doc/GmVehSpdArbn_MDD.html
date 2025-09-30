@@ -1,0 +1,517 @@
+---
+title: GmVehSpdArbn_MDD
+linkTitle: GmVehSpdArbn_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>GmVehSpdArbn</strong></p>
+<p><strong>March 15, 2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Nick Saxton,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA<br />
+<u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 21%" />
+<col style="width: 13%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>Initial Version</td>
+<td>N. Saxton</td>
+<td>1.0</td>
+<td>03-Sep-2015</td>
+</tr>
+<tr class="odd">
+<td>Updated graphical representation</td>
+<td>N. Saxton</td>
+<td>2.0</td>
+<td>12-Nov-2015</td>
+</tr>
+<tr class="even">
+<td>Added Init function to sub-module functions and Updated graphical representation for addition of timer functions</td>
+<td>N. Saxton</td>
+<td>3.0</td>
+<td>15-Mar-2016</td>
+</tr>
+</tbody>
+</table>
+<p><strong><u>Table of Contents</u></strong></p>
+<p><a href="#gmvehspdarbn-high-level-description">1 GmVehSpdArbn High-Level Description <span>5</span></a></p>
+<p><a href="#design-details-of-software-module">2 Design details of software module <span>6</span></a></p>
+<p><a href="#graphical-representation-of-gmvehspdarbn">2.1 Graphical representation of GmVehSpdArbn <span>6</span></a></p>
+<p><a href="#data-flow-diagram">2.2 Data Flow Diagram <span>6</span></a></p>
+<p><a href="#component-level-dfd">2.2.1 Component level DFD <span>6</span></a></p>
+<p><a href="#function-level-dfd">2.2.2 Function level DFD <span>6</span></a></p>
+<p><a href="#constant-data-dictionary">3 Constant Data Dictionary <span>7</span></a></p>
+<p><a href="#program-fixed-constants">3.1 Program (fixed) Constants <span>7</span></a></p>
+<p><a href="#embedded-constants">3.1.1 Embedded Constants <span>7</span></a></p>
+<p><a href="#software-component-implementation">4 Software Component Implementation <span>8</span></a></p>
+<p><a href="#sub-module-functions">4.1 Sub-Module Functions <span>8</span></a></p>
+<p><a href="#per-gmvehspdarbnper1">4.1.1 Per: GmVehSpdArbnPer1 <span>8</span></a></p>
+<p><a href="#design-rationale">4.1.1.1 Design Rationale <span>8</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies">4.1.1.2 Store Module Inputs to Local copies <span>8</span></a></p>
+<p><a href="#processing-of-function">4.1.1.3 (Processing of function)……… <span>8</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">4.1.1.4 Store Local copy of outputs into Module Outputs <span>8</span></a></p>
+<p><a href="#init-gmvehspdarbninit1">4.1.2 Init: GmVehSpdArbnInit1 <span>8</span></a></p>
+<p><a href="#design-rationale-1">4.1.2.1 Design Rationale <span>8</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies-1">4.1.2.2 Store Module Inputs to Local copies <span>8</span></a></p>
+<p><a href="#_Toc445817951">4.1.2.3 (Processing of function)……… <span>8</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-1">4.1.2.4 Store Local copy of outputs into Module Outputs <span>8</span></a></p>
+<p><a href="#server-runables">4.2 Server Runables <span>8</span></a></p>
+<p><a href="#interrupt-functions">4.3 Interrupt Functions <span>8</span></a></p>
+<p><a href="#module-internal-local-functions">4.4 Module Internal (Local) Functions <span>8</span></a></p>
+<p><a href="#local-function-1">4.4.1 Local Function #1 <span>8</span></a></p>
+<p><a href="#design-rationale-2">4.4.1.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing">4.4.1.2 Processing <span>9</span></a></p>
+<p><a href="#local-function-2">4.4.2 Local Function #2 <span>9</span></a></p>
+<p><a href="#design-rationale-3">4.4.2.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing-1">4.4.2.2 Processing <span>9</span></a></p>
+<p><a href="#local-function-3">4.4.3 Local Function #3 <span>9</span></a></p>
+<p><a href="#design-rationale-4">4.4.3.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing-2">4.4.3.2 Processing <span>9</span></a></p>
+<p><a href="#local-function-4">4.4.4 Local Function #4 <span>9</span></a></p>
+<p><a href="#design-rationale-5">4.4.4.1 Design Rationale <span>10</span></a></p>
+<p><a href="#processing-3">4.4.4.2 Processing <span>10</span></a></p>
+<p><a href="#local-function-5">4.4.5 Local Function #5 <span>10</span></a></p>
+<p><a href="#design-rationale-6">4.4.5.1 Design Rationale <span>10</span></a></p>
+<p><a href="#processing-4">4.4.5.2 Processing <span>10</span></a></p>
+<p><a href="#global-functionmacro-definitions">4.5 GLOBAL Function/Macro Definitions <span>10</span></a></p>
+<p><a href="#known-limitations-with-design">5 Known Limitations with Design <span>11</span></a></p>
+<p><a href="#unit-test-consideration">6 UNIT TEST CONSIDERATION <span>12</span></a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms <span>13</span></a></p>
+<p><a href="#glossary">Appendix B Glossary <span>14</span></a></p>
+<p><a href="#references">Appendix C References <span>15</span></a></p>
+<h1 id="gmvehspdarbn-high-level-description">GmVehSpdArbn High-Level Description</h1>
+<p><em>This GM specific function determines how EPS shall calculate Secure Vehicle Speed, Non-Secure Vehicle Speed, and how to arbitrate between those signals in addition to a serial communication supplied vehicle speed signal.</em></p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-gmvehspdarbn">Graphical representation of GmVehSpdArbn</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.PNG" style="width:4.61842in;height:4.6278in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p>Simulink model being created for component in near future</p>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<p>Refer DataDict.m file.</p>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<p>The sub-module functions are grouped based on similar functionality that needs to be executed in a given “State” of the system (refer States and Modes). For a given module, the MDD will identify the type and number of sub-modules required. The sub-module types are described below.</p>
+<h2 id="per-gmvehspdarbnper1">Per: GmVehSpdArbnPer1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>Simulink model being created for component in near future</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<h2 id="processing-of-function"> (Processing of function)………</h2>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<h2 id="init-gmvehspdarbninit1">Init: GmVehSpdArbnInit1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p>Simulink model being created for component in near future</p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<h2 id="processing-of-function-1"> (Processing of function)………</h2>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<h2 id="server-runables">Server Runables </h2>
+<p>None</p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p>None</p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-function-1">Local Function #1</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>DetVld</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VldSig1_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VldSig2_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>StuckSig1_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>StuckSig2_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>OverallVld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p>Created to reduce static path count and avoid repeated code.</p>
+<h2 id="processing">Processing</h2>
+<p>This function checks to see if at least one of the input valid signals is FALSE (invalid) or input stuck signals is TRUE (stuck) , returning an overall validity (OverallVld) of FALSE (invalid) if so, and TRUE (valid) otherwise.</p>
+<h2 id="local-function-2">Local Function #2</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>DetInvld</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VldSig1_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VldSig2_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VldSig3_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VldSig4_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>OverallInvld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p>Created to reduce static path count and avoid repeated code.</p>
+<h2 id="processing-1">Processing</h2>
+<p>This function checks to see if all of the input signals (VldSig1 – 4) are FALSE (invalid), returning an overall invalidity (OverallInvld) of TRUE (invalid) if so, and FALSE (valid) otherwise.</p>
+<h2 id="local-function-3">Local Function #3</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>UpdtAvg</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VldSig_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VelSig_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*AvgSum_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>2044.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*AvgCnt_Cnt_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>4.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-4">Design Rationale</h2>
+<p>Created to reduce static path count and avoid repeated code</p>
+<p>* AvgSum and AvgCnt are outputs of this function</p>
+<h2 id="processing-2">Processing</h2>
+<p>This function adds the velocity signal input (VelSig) to the average sum (AvgSum) and increments the average count (AvgCnt) if the input signal is valid (VldSig).</p>
+<h2 id="local-function-4">Local Function #4</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CondMax</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VldSig_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VelSig1_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VelSig2_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*MaxVel_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-5">Design Rationale</h2>
+<p>Created to reduce static path count and avoid repeated code.</p>
+<p>* MaxVel_Kph_T_f32 is an output of this function</p>
+<h2 id="processing-3">Processing</h2>
+<p>This function sets max velocity (MaxVel) to the maximum of the previous value of max velocity, velocity signal 1 (VelSig1), and velocity signal 2 (VelSig2) given that the valid signal condition (VldSig) is TRUE (valid).</p>
+<h2 id="local-function-5">Local Function #5</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CondMin</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VldSig_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VelSig1_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VelSig2_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*MinVel_Kph_T_f32</td>
+<td>Float32</td>
+<td>0.0</td>
+<td>511.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-6">Design Rationale</h2>
+<p>Created to reduce static path count and avoid repeated code.</p>
+<p>* MinVel_Kph_T_f32 is an output of this function</p>
+<h2 id="processing-4">Processing</h2>
+<p>This function sets minimum velocity (MinVel) to the minimum of the previous value of minimum velocity, velocity signal 1 (VelSig1), and velocity signal 2 (VelSig2), given that VldSig is TRUE.</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>Simulink model being created for component in near future</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>Simulink model being created for component in near future</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>EA4 <a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>01.00.00</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>CF016A_GmVehSpdArbn_Design</td>
+<td>See Synergy subproject version</td>
+</tr>
+</tbody>
+</table>

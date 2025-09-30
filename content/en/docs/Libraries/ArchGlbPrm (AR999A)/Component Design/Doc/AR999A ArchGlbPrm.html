@@ -1,0 +1,111 @@
+---
+title: AR999A ArchGlbPrm
+linkTitle: AR999A ArchGlbPrm
+weight: 2
+---
+
+<p><strong>Functional Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>Architecture Global Parameters</strong></p>
+<p><strong>VERSION: 1.0</strong></p>
+<p><strong>DATE: 05-Mar-2015</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong><br />
+</strong></p>
+<p><strong>Revision History</strong></p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 32%" />
+<col style="width: 22%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Version</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Section Modified</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1.0</td>
+<td>Initial Version</td>
+<td>Kathleen Creager</td>
+<td>All</td>
+<td>05-Mar-2015</td>
+</tr>
+</tbody>
+</table>
+<p><strong><u><br />
+Table of Contents</u></strong></p>
+<p><a href="#abbrevations-and-acronyms">1 Abbrevations And Acronyms <span>4</span></a></p>
+<p><a href="#references">2 References <span>5</span></a></p>
+<p><a href="#purpose">3 Purpose <span>6</span></a></p>
+<p><a href="#_Toc413332673">4 ArchGlbPrm Design <span>7</span></a></p>
+<p><a href="#constants">4.1 constants <span>7</span></a></p>
+<p><a href="#float32-constant-specification">4.1.1 float32 Constant specification <span>7</span></a></p>
+<h1 id="abbrevations-and-acronyms">Abbrevations And Acronyms</h1>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Abbreviation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h1 id="references">References</h1>
+<p>This section lists the title &amp; version of all the documents that are referred for development of this document</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 59%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sr. No.</th>
+<th>Title</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="purpose">Purpose</h1>
+<p>The purpose of this document is to describe the design of the Architecture Global Parameters component including the selection criteria for items to be included in the component and the method used for specifying the values of the items.</p>
+<h1 id="archglbprm-design">ArchGlbPrm Design</h1>
+<h2 id="constants">constants</h2>
+<p>The ArchGlbPrm component contains global constants that are either “mathematical” (e.g. the value of pi) or software-oriented (e.g. the value to be used as the zero threshold for float32 comparisons) in nature. The constants are defined in AR999A_ArchGlbPrm_DataDict.m and implemented as #define statements in “ArchGlbPrm.h”.</p>
+<h2 id="float32-constant-specification">float32 Constant specification</h2>
+<p>For each float32 constant, the number of digits was chosen based on the smallest number of digits needed to give the same float32 representation as the value calculated by Excel. Rationale: this gives the most accurate representation possible for float32, while not containing a misleading number of digits beyond the resolution actually possible with float32.</p>
+<p>Example procedure for determining the number of digits to use:</p>
+<p>Enter the desired constant in Excel as a formula, e.g. “=PI()/2”</p>
+<p>Copy the cell and paste as value into another cell</p>
+<p>Select the new cell and copy the displayed value to the clipboard</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.png" style="width:3.07905in;height:2.03605in" /></p>
+<p>Paste this value in a IEEE floating point conversion tool; record the single precision floating point representation (in hex), both rounded and unrounded.</p>
+<p>Val = the pasted Excel value</p>
+<p>X = number of digits in Val</p>
+<p>Y = X</p>
+<p>Do:</p>
+<p>Y = Y - 1</p>
+<p>Val1 = Val rounded to Y digits</p>
+<p>While ((rounded single float representation of Val == rounded single float representation of Val1) AND<br />
+(unrounded single float representation of Val == unrounded single float representation of Val1))</p>
+<p>Val2 = Val rounded to Y + 1 digits</p>
+<p>Use Val2 as the constant value in the .h and .m files</p>

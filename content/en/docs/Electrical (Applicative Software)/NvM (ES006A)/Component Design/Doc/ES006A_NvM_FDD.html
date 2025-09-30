@@ -1,0 +1,2096 @@
+---
+title: ES006A_NvM_FDD
+linkTitle: ES006A_NvM_FDD
+weight: 13
+---
+
+<p><strong>Non Volatile RAM Manager And</strong></p>
+<p><strong>Non Volatile RAM Manager Proxy</strong></p>
+<p><strong>FDD #ES-006A</strong></p>
+<p><strong>Contents</strong></p>
+<p><a href="#high-level-description">1. High Level Description <span>4</span></a></p>
+<p><a href="#derived-requirements">2. Derived Requirements <span>4</span></a></p>
+<p><a href="#sub-function-data-flow">3. Sub-Function Data Flow <span>4</span></a></p>
+<p><a href="#design-rationale">4. Design Rationale <span>5</span></a></p>
+<p><a href="#components">5. Components <span>6</span></a></p>
+<p><a href="#nvm-non-volatile-memory-autosar-bsw">5.1. NvM: Non Volatile Memory (AUTOSAR BSW) <span>6</span></a></p>
+<p><a href="#bsw-configuration">5.1.1. BSW Configuration <span>6</span></a></p>
+<p><a href="#nvmcommon">5.1.1.1. NvMCommon <span>6</span></a></p>
+<p><a href="#periodic-functions">5.1.2. Periodic Functions <span>7</span></a></p>
+<p><a href="#nvm_mainfunction">5.1.2.1. NvM_MainFunction <span>7</span></a></p>
+<p><a href="#function-definition">5.1.2.1.1. Function Definition <span>7</span></a></p>
+<p><a href="#service-sub-functions">5.1.3. Service Sub-Functions <span>8</span></a></p>
+<p><a href="#api-configuration-class-1">5.1.3.1. API Configuration Class 1 <span>9</span></a></p>
+<p><a href="#sub-function-nvm_init">5.1.3.1.1. Sub-Function: NvM_Init <span>9</span></a></p>
+<p><a href="#sub-function-nvm_readall">5.1.3.1.2. Sub-Function: NvM_ReadAll <span>10</span></a></p>
+<p><a href="#sub-function-nvm_writeall">5.1.3.1.3. Sub-Function: NvM_WriteAll <span>11</span></a></p>
+<p><a href="#sub-function-nvm_geterrorstatus">5.1.3.1.4. Sub-Function: NvM_GetErrorStatus <span>12</span></a></p>
+<p><a href="#sub-function-nvm_setramblockstatus">5.1.3.1.5. Sub-Function: NvM_SetRamBlockStatus <span>13</span></a></p>
+<p><a href="#sub-function-nvm_cancelwriteall">5.1.3.1.6. Sub-Function: NvM_CancelWriteAll <span>14</span></a></p>
+<p><a href="#api-configuration-class-2">5.1.3.2. API Configuration Class 2 <span>15</span></a></p>
+<p><a href="#sub-function-nvm_setdataindex">5.1.3.2.1. Sub-Function: NvM_SetDataIndex <span>15</span></a></p>
+<p><a href="#sub-function-nvm_getdataindex">5.1.3.2.2. Sub-Function: NvM_GetDataIndex <span>16</span></a></p>
+<p><a href="#sub-function-nvm_readblock">5.1.3.2.3. Sub-Function: NvM_ReadBlock <span>17</span></a></p>
+<p><a href="#sub-function-nvm_writeblock">5.1.3.2.4. Sub-Function: NvM_WriteBlock <span>18</span></a></p>
+<p><a href="#sub-function-nvm_restoreblockdefaults">5.1.3.2.5. Sub-Function: NvM_RestoreBlockDefaults <span>19</span></a></p>
+<p><a href="#sub-function-nvm_canceljobs">5.1.3.2.6. Sub-Function: NvM_CancelJobs <span>20</span></a></p>
+<p><a href="#api-configuration-class-3">5.1.3.3. API Configuration Class 3 <span>21</span></a></p>
+<p><a href="#sub-function-nvm_setblockprotection">5.1.3.3.1. Sub-Function: NvM_SetBlockProtection <span>21</span></a></p>
+<p><a href="#sub-function-nvm_erasenvblock">5.1.3.3.2. Sub-Function: NvM_EraseNvBlock <span>22</span></a></p>
+<p><a href="#sub-function-nvm_invalidatenvblock">5.1.3.3.3. Sub-Function: NvM_InvalidateNvBlock <span>23</span></a></p>
+<p><a href="#type-definitions">5.1.4. Type Definitions <span>24</span></a></p>
+<p><a href="#std_returntype">5.1.4.1. Std_ReturnType <span>24</span></a></p>
+<p><a href="#nvm_requestresulttype">5.1.4.2. NvM_RequestResultType <span>24</span></a></p>
+<p><a href="#nvm_blockidtype">5.1.4.3. NvM_BlockIdType <span>25</span></a></p>
+<p><a href="#nvm_proxy-non-volatile-memory-proxy-nexteer-cdd">5.2. NvM_Proxy: Non Volatile Memory Proxy (Nexteer CDD) <span>26</span></a></p>
+<p><a href="#design-rationale-1">5.2.1. Design Rationale <span>26</span></a></p>
+<p><a href="#sub-functions">5.2.2. Sub-Functions <span>26</span></a></p>
+<p><a href="#sub-function-nvmproxy_init">5.2.2.1. Sub-Function: NvMProxy_Init <span>26</span></a></p>
+<p><a href="#hardware-related-design-15">5.2.2.1.1. Hardware Related Design <span>26</span></a></p>
+<p><a href="#software-related-design-15">5.2.2.1.2. Software Related Design <span>26</span></a></p>
+<p><a href="#timing-execution-constraints">6. Timing / Execution Constraints <span>27</span></a></p>
+<p><a href="#rationale-comments">6.1. Rationale / Comments <span>27</span></a></p>
+<p><a href="#rates-and-state-execution-nvm">6.2. Rates and State Execution: NvM <span>27</span></a></p>
+<p><a href="#rates-and-state-execution-nvmproxy">6.3. Rates and State Execution: NvMProxy <span>28</span></a></p>
+<p><a href="#serial-communications-interfaces">7. Serial Communications Interfaces <span>28</span></a></p>
+<p><a href="#additional-information">8. Additional Information <span>29</span></a></p>
+<p><a href="#nvm-block-definition-considerations">8.1. NvM block definition Considerations <span>29</span></a></p>
+<p><a href="#scenario-1">8.1.1. Scenario 1 <span>29</span></a></p>
+<p><a href="#scenario-2">8.1.2. Scenario 2 <span>29</span></a></p>
+<p><a href="#software-component-design-considerations">8.2. Software Component Design Considerations <span>30</span></a></p>
+<p><a href="#api-port-selection">8.2.1. API Port Selection <span>30</span></a></p>
+<p><a href="#revision-record-change-approval">9. Revision Record &amp; Change Approval <span>31</span></a></p>
+<h1 id="high-level-description"><br />
+High Level Description</h1>
+<p>This design document describes the functionality, API, and the configuration of the AUTOSAR basic software (BSW) module NVRAM Manager (NvM) and the NvM Proxy (NvMProxy).</p>
+<p>The NvM provides services to ensure the data storage and maintenance of NV (non-volatile) data. The NvM module is able to administrate the NV data for an EEPROM and/or a Flash EEPROM Emulation (FEE) device.</p>
+<p>The NvMProxy provides an interface for software components outside of the application of the NvM to communicate with the NvM component.</p>
+<h1 id="derived-requirements">Derived Requirements</h1>
+<p>None</p>
+<h1 id="sub-function-data-flow"> Sub-Function Data Flow</h1>
+<p>None</p>
+<h1 id="design-rationale"><br />
+Design Rationale</h1>
+<p>The NvM and NvMProxy components are integrated below the application layer in the basic software layer of the AUTOSAR model.</p>
+<p>NvMProxy was designed so that all software components can send their NvM requests to the proxy interface, which will communicate the request to the NvM and report the results back to the calling component. This simplifies the design of software components by only requiring one interface for defining NvM needs and providing the needed functionality to switch the OS context in the event the calling application is different than the application NvM is integrated.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.emf" /></p>
+<h1 id="components"><br />
+Components</h1>
+<p>The following sections describe the NvM and NvM proxy components.</p>
+<h2 id="nvm-non-volatile-memory-autosar-bsw">NvM: Non Volatile Memory (AUTOSAR BSW)</h2>
+<h3 id="bsw-configuration">BSW Configuration</h3>
+<h4 id="nvmcommon">NvMCommon</h4>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 33%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Configuration Parameter</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>API Configuration Class</td>
+<td>MVM_API_CONFIG_CLASS_3</td>
+<td>Class 3 shall be used to provide all API options to software components. This is to prevent rework of existing components if use cases change and require API functions that may not have been available during component development under a different API class.</td>
+</tr>
+<tr class="even">
+<td>Compiled Configuration Id</td>
+<td>1</td>
+<td>Version of the NV memory layout, always shall start at 1 and be revised if the memory layout changes</td>
+</tr>
+<tr class="odd">
+<td>Crc Number of Bytes</td>
+<td>64</td>
+<td>Dummy value, not used.</td>
+</tr>
+<tr class="even">
+<td>Dataset Selection Bits</td>
+<td>1</td>
+<td><p>Shall be set to 1 if the only block types are “native” and “redundant.” If a dataset is required, then the number needs to be set satisfy the following equation:</p>
+<p><em>2^(Selection Bits) &gt;= max(dataset)</em></p>
+<p>For example, if the largest dataset for all configured blocks was 30, the selection bits are required to be set to 5.<br />
+2^5 = 32 &gt;= 30</p></td>
+</tr>
+<tr class="odd">
+<td>Development Error Detection</td>
+<td>FALSE</td>
+<td>Only should be true for early development. Shall not be used in production level software</td>
+</tr>
+<tr class="even">
+<td>Drivers Mode Switch</td>
+<td>True</td>
+<td>Disables processing of background sector switching from startup and shutdown events.</td>
+</tr>
+<tr class="odd">
+<td>Dynamic Configuration Handling</td>
+<td>True</td>
+<td>Allows for adapting new FEE layouts over existing layouts. See section 5.1.3.2.2 for details on the impact of this setting.</td>
+</tr>
+<tr class="even">
+<td>Job Prioritization</td>
+<td>False</td>
+<td>No requirement for prioritization of any blocks</td>
+</tr>
+<tr class="odd">
+<td>Maximum Number of Write Retries</td>
+<td>3</td>
+<td>Default setting</td>
+</tr>
+<tr class="even">
+<td>Multi Block Callback</td>
+<td>NvMProxy_MultiBlkCallBack</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Multi block Job Status Information</td>
+<td>False</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Polling Mode</td>
+<td>True</td>
+<td>Enabled to provide the application the ability to poll the status of the asynchronous request.</td>
+</tr>
+<tr class="odd">
+<td>Repeat Mirror Operations</td>
+<td>0</td>
+<td>Default setting</td>
+</tr>
+<tr class="even">
+<td>SetRamBlockStatus API</td>
+<td>True</td>
+<td>Applications shall use SetRamBlockStatus API to indicate their RAM shadows have updated.</td>
+</tr>
+<tr class="odd">
+<td>Size Of Immediate Status Information</td>
+<td>N/A</td>
+<td>Not used</td>
+</tr>
+<tr class="even">
+<td>Size Of Standard Job Queue</td>
+<td>8</td>
+<td>Default setting</td>
+</tr>
+<tr class="odd">
+<td>Version Information API</td>
+<td>False</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="periodic-functions">Periodic Functions</h3>
+<h4 id="nvm_mainfunction">NvM_MainFunction</h4>
+<p>This function has to be called cyclically. It is the entry point for the NvM component. In this function processing of all asynchronous jobs are handled (read/write/erase/invalidate/CRC calculation).</p>
+<h5 id="function-definition">Function Definition</h5>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>void NvM_MainFunction ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="service-sub-functions"><br />
+Service Sub-Functions</h3>
+<p>The value of the API configuration class determines which API server ports are available to the system. The image below shows the breakdown of the functionality for each API Configuration Class.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.emf" /></p>
+<p>In the following sub sections, the APIs are defined for application software components (SWCs) and BSW components. The application function definition shall be used for components that sit above the RTE layer in the AUTOSAR model. The RTE generator will absorb some of the dynamic arguments, such as BlockId, and create a macro with the proper definition for the software component. Complex device drivers and other BSWs that sit below the RTE layer shall use the CDD function definition.</p>
+<h4 class="unnumbered" id="section"><br />
+</h4>
+<h4 id="api-configuration-class-1">API Configuration Class 1</h4>
+<p>The following sections contain a description of the functions provided by the AUTOSAR NvM basic software component with API Configuration Class 1 configured.</p>
+<h5 id="sub-function-nvm_init">Sub-Function: NvM_Init</h5>
+<h6 id="hardware-related-design">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Synchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Shall only be called from ECU state manager or equivalent function.</td>
+</tr>
+</tbody>
+</table>
+<p>Before the NvM component can be used, it has to be initialized. Depending on the program the NvM is integrated, the BSWs from lower levels shall be initialized prior to the NvM. The table below is an example of this strategy for Fee and Ea use cases for initialize modules from the low level components up to the NvM.</p>
+<table>
+<colgroup>
+<col style="width: 70%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Fee</th>
+<th>Ea</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low level driver</td>
+<td>Fls</td>
+<td>SPI/EEP</td>
+</tr>
+<tr class="even">
+<td>Device Abstraction</td>
+<td>FEE</td>
+<td>EA</td>
+</tr>
+<tr class="odd">
+<td>Non-Volatile Manager</td>
+<td colspan="2">NvM</td>
+</tr>
+</tbody>
+</table>
+<p>The NvM AUTOSAR component compliant with ASIL-D standards, NvM_Init shall be called as a trusted function. This will allow the NvM_Init function access to all the permanent RAM shadows defined in software, regardless of their ASIL rating. This reduces the RAM and throughput during start up to move data from application to another.</p>
+<p class="heading" id="application-function-definition">Application Function Definition</p>
+<p>None</p>
+<p class="heading" id="cdd-function-definition">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>void NvM_Init ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_readall"><br />
+Sub-Function: NvM_ReadAll</h5>
+<h6 id="hardware-related-design-1">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-1">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Shall only be called from ECU state manager or equivalent function.</td>
+</tr>
+</tbody>
+</table>
+<p>This function shall only be called after NvM_Init has been executed. The request loads all the RAM blocks that have the option NVM_SELECT_BLOCK_FOR_READALL selected.</p>
+<p>Note: Non-permanent blocks and data set blocks are skipped during execution of this function and must be loaded manually by calling NvM_ReadBlock().</p>
+<p>During the execution of NvM_ReadAll(), the value in the <em>configuration ID</em> (block 1) is compared with the compiled ID version in the NvM settings. With the <em>Dynamic Configuration Handling</em> option set to True, any NvM blocks with the option <em>Resistant to Changed Software</em> enabled will be processed and loaded into RAM as if the configuration IDs matched. If the option <em>Resistant to Changed Software</em> is not enabled, the blocks will be treated is if they were invalid or blank.</p>
+<p class="heading" id="application-function-definition-1">Application Function Definition</p>
+<p>None</p>
+<p class="heading" id="cdd-function-definition-1">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>void NvM_ReadAll ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_writeall"><br />
+Sub-Function: NvM_WriteAll</h5>
+<h6 id="hardware-related-design-2">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-2">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Shall only be called from ECU state manager or equivalent function.</td>
+</tr>
+</tbody>
+</table>
+<p>Request to write all blocks with RAM data that has been changed and have the option NVM_SELECT_BLOCK_FOR_WRITEALL selected.</p>
+<p>Note: Non-permanent blocks and data set blocks are skipped during execution of this function and must be written manually by calling NvM_WriteBlock().</p>
+<p class="heading" id="application-function-definition-2">Application Function Definition</p>
+<p>None</p>
+<p class="heading" id="cdd-function-definition-2">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>void NvM_WriteAll ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_geterrorstatus"><br />
+Sub-Function: NvM_GetErrorStatus</h5>
+<h6 id="hardware-related-design-3">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-3">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Synchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>The request reads the block dependent status/error information and writes it to the given address. The status/error information was set by a former or current asynchronous request. This API can also be requested with the block id 0 (multi block). The multi block status/error information are only set by NvM_ReadAll() and NvM_WriteAll() requests.</p>
+<p class="heading" id="application-function-definition-3">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_GetErrorStatus (uint8* RequestResultPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>RequestResultPtr – Pointer were the result shall be written. See section 5.1.4.2 for details on return values.</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-3">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_GetErrorStatus ( NvMBlockIdType BlockId, uint8* RequestResultPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>RequestResultPtr – Pointer were the result shall be written. See section 5.1.4.2 for details on return values.</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 class="unnumbered" id="section-1"></h5>
+<h5 id="sub-function-nvm_setramblockstatus"><br />
+Sub-Function: NvM_SetRamBlockStatus</h5>
+<h6 id="hardware-related-design-4">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-4">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td><p>Synchronous (If <em>NVM_CALC_RAM_BLOCK_CRC</em> is False)</p>
+<p>Asynchronous (If <em>NVM_CALC_RAM_BLOCK_CRC</em> is True)</p></td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>The request sets a block’s status to valid/changed and also to unchanged. Setting a block to valid/changed will mark it for writing during NvM_WriteAll(). If a block has the CRC option NVM_CALC_RAM_BLOCK_CRC set to True, the CRC calculation of the RAM is initialed as a background task.</p>
+<p class="heading" id="application-function-definition-4">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_SetRamBlockStatus (Boolean BlockChanged )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td><p>BlockChanged – TRUE: Validates the RAM block and marks it as changed.</p>
+<p>FALSE: Mark the block as unchanged</p></td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-4">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_SetRamBlockStatus ( NvMBlockIdType BlockId, Boolean BlockChanged )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td><p>BlockChanged – TRUE: Validates the RAM block and marks it as changed.</p>
+<p>FALSE: Mark the block as unchanged</p></td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_cancelwriteall"><br />
+Sub-Function: NvM_CancelWriteAll</h5>
+<h6 id="hardware-related-design-5">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-5">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Shall only be called from ECU state manager or equivalent function.</td>
+</tr>
+</tbody>
+</table>
+<p>Request to cancel a running NvM_WriteAll() request.</p>
+<p class="heading" id="application-function-definition-5">Application Function Definition</p>
+<p>None</p>
+<p class="heading" id="cdd-function-definition-5">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>void NvM_CancelWriteAll ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 class="unnumbered" id="section-2"></h3>
+<h4 id="api-configuration-class-2"><br />
+API Configuration Class 2</h4>
+<p>The following sections contain a description of the functions provided by the AUTOSAR NvM basic software component with API Configuration Class 2 configured.</p>
+<h5 id="sub-function-nvm_setdataindex">Sub-Function: NvM_SetDataIndex</h5>
+<h6 id="hardware-related-design-6">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-6">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Synchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>The request sets the specified index to associate a dataset NV block (with or without ROM blocks) with its corresponding RAM block. The DataIndex needs to have a valid value before read, write, erase or invalidate requests are initiated.</p>
+<p>If the dataset block has a set of ROM defaults, the function is used to select the appropriate ROM set (prior to NvM_ReadBlock()).</p>
+<p class="heading" id="application-function-definition-6">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_SetDataIndex (uint8 DataIndex )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>DataIndex – Index position of a block in the NV block Dataset type</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-6">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_SetDataIndex ( NvMBlockIdType BlockId, uint8 DataIndex )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>DataIndex – Index position of a block in the NV block Dataset type</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p><mark><br />
+</mark></p>
+<h5 id="sub-function-nvm_getdataindex">Sub-Function: NvM_GetDataIndex</h5>
+<h6 id="hardware-related-design-7">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-7">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Synchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>The request passes the current DataIndex of the specified dataset block.</p>
+<p class="heading" id="application-function-definition-7">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_GetDataIndex (uint8* DataIndexPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>DataIndexPtr – Address where the current DataIndex shall be written to</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-7">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_GetDataIndex ( NvMBlockIdType BlockId, uint8* DataIndexPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>DataIndexPtr – Address where the current DataIndex shall be written to</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_readblock">Sub-Function: NvM_ReadBlock</h5>
+<h6 id="hardware-related-design-8">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-8">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>Request to copy the data of the NV block to its corresponding RAM block. This function queues the read request and returns the acceptance result synchronously.</p>
+<p class="heading" id="application-function-definition-8">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_ReadBlock (uint8* NvM_DstPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>NvM_DstPtr – Pointer where the data of a non-permanent RAM block shall be written to. If the block is permanent NULL_PTR shall be passed.</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-8">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_ReadBlock ( NvMBlockIdType BlockId, uint8* NvM_DstPtr)</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>NvM_DstPtr – Pointer where the data of a non-permanent RAM block shall be written to. If the block is permanent NULL_PTR shall be passed.</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_writeblock">Sub-Function: NvM_WriteBlock</h5>
+<h6 id="hardware-related-design-9">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-9">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>Request for copying data from the RAM block to its corresponding NV block. This function queues the write request and returns the acceptance result synchronously.</p>
+<p>If the block has a CRC, the RAM block CRC will be recalculated before the data and the CRC are written to the NV memory, even if the service NvM_SetRamBlockStatus() was called before and the configuration was set that within this service, the CRC calculation should be done.</p>
+<p>If writing the data to NV memory fails, the NVM will retry writing. The number of write retries is a configuration option.</p>
+<p class="heading" id="application-function-definition-9">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_WriteBlock (const uint8* NvM_SrcPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>NvM_SrcPtr – Pointer where the data of a non-permanent RAM block shall be read from. If the block is permanent, NULL_PTR shall be passed.</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-9">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_WriteBlock ( NvMBlockIdType BlockId, const uint8* NvM_SrcPtr)</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>NvM_SrcPtr – Pointer where the data of a non-permanent RAM block shall be read from. If the block is permanent, NULL_PTR shall be passed.</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_restoreblockdefaults">Sub-Function: NvM_RestoreBlockDefaults</h5>
+<h6 id="hardware-related-design-10">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-10">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>Request to copy the ROM block default data to its corresponding RAM block. The selected block needs either ROM defaults or an initialization callback. This function queues the restore request and returns the acceptance results synchronously.</p>
+<p class="heading" id="application-function-definition-10">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_RestoreBlockDefaults (uint8* NvM_DstPtr )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>NvM_DstPtr – Pointer where the data of a non-permanent RAM block shall be written to. If the block is permanent, NULL_PTR shall be passed.</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-10">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_RestoreBlockDefaults ( NvMBlockIdType BlockId, uint8* NvM_DstPtr)</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>NvM_DstPtr – Pointer where the data of a non-permanent RAM block shall be written to. If the block is permanent, NULL_PTR shall be passed.</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_canceljobs">Sub-Function: NvM_CancelJobs</h5>
+<h6 id="hardware-related-design-11">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-11">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>Request to cancel pending job for a NV block.</p>
+<p class="heading" id="application-function-definition-11">Application Function Definition</p>
+<p>None</p>
+<p class="heading" id="cdd-function-definition-11">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_CancelJobs ( NvMBlockIdType BlockId )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h4 id="api-configuration-class-3">API Configuration Class 3</h4>
+<p>The following sections contain a description of the functions provided by the AUTOSAR NvM basic software component with API Configuration Class 3 configured.</p>
+<h5 id="sub-function-nvm_setblockprotection">Sub-Function: NvM_SetBlockProtection</h5>
+<h6 id="hardware-related-design-12">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-12">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Synchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>The request sets the write protection for the NV block. Any further write, erase, and invalidate requests to the NVRAM block is rejected synchronously if the NV block-write protection is set. The data area of the RAM block remains writeable in any case.</p>
+<p class="heading" id="application-function-definition-12">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_SetBlockProtection ( Boolean ProtectionEnabled )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>ProtectionEnabled – True: Enable protection. False: Disable protection</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-12">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_ SetBlockProtection ( NvMBlockIdType BlockId, Boolean ProtectionEnabled )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>ProtectionEnabled – True: Enable protection. False: Disable protection</td>
+</tr>
+<tr class="odd">
+<td>Return Code</td>
+</tr>
+<tr class="even">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_erasenvblock">Sub-Function: NvM_EraseNvBlock</h5>
+<h6 id="hardware-related-design-13">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-13">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>Request to erase the specified NV block. This function queues the erase request and returns the acceptance result synchronously. The NvM can notify the application by callback when the service is finished. This function performs the same action as NvM_InvalidateNvBlock for FEE.</p>
+<p class="heading" id="application-function-definition-13">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_EraseNvBlock ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-13">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_EraseNvBlock ( NvMBlockIdType BlockId )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="sub-function-nvm_invalidatenvblock">Sub-Function: NvM_InvalidateNvBlock</h5>
+<h6 id="hardware-related-design-14">Hardware Related Design</h6>
+<p>None</p>
+<h6 id="software-related-design-14">Software Related Design</h6>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Asynchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Application</td>
+</tr>
+</tbody>
+</table>
+<p>Request to invalidate the specified NV block. This function queues the erase request and returns the acceptance result synchronously. The NvM can notify the application by callback when the service is finished.</p>
+<p class="heading" id="application-function-definition-14">Application Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType Rte_Call_&lt;SWCSvcPortName&gt;_InvalidateNvBlock ( void )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="cdd-function-definition-14">CDD Function Definition</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Std_ReturnType NvM_InvalidateNvBlock ( NvMBlockIdType BlockId )</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+</tr>
+<tr class="odd">
+<td>BlockId – The block identifier</td>
+</tr>
+<tr class="even">
+<td>Return Code</td>
+</tr>
+<tr class="odd">
+<td>Std_ReturnType – See section 5.1.4.1 definition of this return type</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-definitions">Type Definitions</h3>
+<p>The following section outlines the data types used by the NvM component.</p>
+<h4 id="std_returntype">Std_ReturnType</h4>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 51%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>C-Type</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>uint8</td>
+<td>Standard return type for functions</td>
+<td><p>NVM_REQ_OK (0)</p>
+<p><em>The last request has been accepted</em></p></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><p>NVM_REQ_NOT_OK (1)</p>
+<p><em>The last request has not been accepted</em></p></td>
+</tr>
+</tbody>
+</table>
+<h4 id="nvm_requestresulttype">NvM_RequestResultType</h4>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 51%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>C-Type</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="7">uint8</td>
+<td rowspan="7">An asynchronous API service can have the following results or status that can be polled by NvM_GetErrorStatus</td>
+<td><p>NVM_REQ_OK (0)</p>
+<p><em>The last request has finished successfully.</em></p></td>
+</tr>
+<tr class="even">
+<td><p>NVM_REQ_NOT_OK (1)</p>
+<p><em>The last request has finished unsuccessfully</em></p></td>
+</tr>
+<tr class="odd">
+<td><p>NVM_REQ_PENDING (2)</p>
+<p><em>The last request is currently being processed</em></p></td>
+</tr>
+<tr class="even">
+<td><p>NVM_REQ_INTEGRITY_FAILED (3)</p>
+<p><em>A NV block with data corruption caused by a CRC mismatch or FEE or EA components reported an inconsistency</em></p></td>
+</tr>
+<tr class="odd">
+<td><p>NVM_REQ_BLOCK_SKIPPED (4)</p>
+<p><em>The block was skipped during a multi-block request (ReadAll or WriteAll requests)</em></p></td>
+</tr>
+<tr class="even">
+<td><p>NVM_REQ_NV_INVALIDATED (5)</p>
+<p><em>The block is marked as invalid</em></p></td>
+</tr>
+<tr class="odd">
+<td>NVM_REQ_CANCELLED (6)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nvm_blockidtype">NvM_BlockIdType</h4>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 51%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>C-Type</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>uint16</td>
+<td><p>It is the type of a block handle that is used by the application in order to access a NVM block. There are two reserved IDs:</p>
+<ul>
+<li><p>Block ID 0 for multi block requests (Block ID 0 is only allowed for API NvM_GetErrorStatus())</p></li>
+<li><p>Block ID 1 for the configuration Id block.</p></li>
+</ul>
+<p>The block handles are created as defines in an ascending define list.</p></td>
+<td><p>0..(2^(16 - <em>Dataset Selection Bits</em>) – 1)</p>
+<p><em>Dataset Selection Bits</em> is the maximum number of bits that are needed in order to store the maximum dataset value as is configured by the software integration team.</p>
+<p>Following the example from section 5.1.1.1 where <em>Dataset Selection Bits</em> was equal to 5, the max number of block handles would be 2^(16-5)-1=2047</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="nvm_proxy-non-volatile-memory-proxy-nexteer-cdd">NvM_Proxy: Non Volatile Memory Proxy (Nexteer CDD)</h2>
+<h3 id="design-rationale-1">Design Rationale</h3>
+<p>The NvM_Proxy provides and interface to the NvM for all software components. The interface shall consist of the API modules defined in the previous sections for the AUTOSAR NvM component with the prefix of NvMProxy instead of NvM.</p>
+<p>If the calling component is in the same ASIL application as the NvM, the proxy shall just forward the request on directly. If the component is not in the same ASIL application as the NvM, the proxy shall call a nontrusted function to switch the OS context to the application of the NvM and then call the desired function.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.emf" /></p>
+<p>The NvMProxy component shall also be responsible for settings NTC 0x06, 0x07, 0x08 and 0x0A when a block that is invalid by not being written or when the CRC check fails if one is applied to the block. This check shall be done during the initialization routine of the NvMProxy component.</p>
+<p>NvMProxy shall also store all RAM status flags during shutdown to RAM, so they can be restored during a quick ignition cycle. The restoration shall take place if the NvM_WriteAll is completed, canceled or killed by the BswM.</p>
+<h3 id="sub-functions">Sub-Functions</h3>
+<h4 id="sub-function-nvmproxy_init">Sub-Function: NvMProxy_Init</h4>
+<h5 id="hardware-related-design-15">Hardware Related Design</h5>
+<p>None</p>
+<h5 id="software-related-design-15">Software Related Design</h5>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Function Particularities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Request Type</td>
+<td>Synchronous</td>
+</tr>
+<tr class="even">
+<td>Re-entrant</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Expected Caller Context</td>
+<td>Shall only be called from ECU state manager or equivalent function.</td>
+</tr>
+</tbody>
+</table>
+<p>Before the NvMProxy component can be used, it has to be initialized. This call also must be performed after the NvM_ReadAll() has finished executing to properly diagnose all NvM blocks for any data corruption.</p>
+<h1 id="timing-execution-constraints">Timing / Execution Constraints</h1>
+<h2 id="rationale-comments">Rationale / Comments</h2>
+<h2 id="rates-and-state-execution-nvm">Rates and State Execution: NvM</h2>
+<p>In the following table, functions marked with 0ms run rate are function calls that can be called from the states indicated by “Execute.”</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 11%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sub-Function Name</strong></th>
+<th><strong>Rate (ms)</strong></th>
+<th><strong>Cold Init</strong></th>
+<th><strong>Warm Init</strong></th>
+<th><strong>Operate</strong></th>
+<th><strong>Disable</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NvM_Init</td>
+<td>0</td>
+<td>Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_MainFunction</td>
+<td>10</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_ReadAll</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_WriteAll</td>
+<td>0</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_GetErrorStatus</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_SetRamBlockStatus</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_CancelWriteAll</td>
+<td>0</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_SetDataIndex</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_GetDataIndex</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_ReadBlock</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_WriteBlock</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_RestoreBlockDefaults</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_CancelJobs</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_SetBlockProtection</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvM_EraseNvBlock</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvM_InvalidateNvBlock</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td colspan="6"><p><em>* Execution is allowed, but only after NvM_Init() has completed.</em></p>
+<p><em>** Execution is allowed, but only after NvM_ReadAll() has completed.</em></p></td>
+</tr>
+</tbody>
+</table>
+<h2 class="unnumbered" id="section-3"></h2>
+<h2 id="rates-and-state-execution-nvmproxy">Rates and State Execution: NvMProxy</h2>
+<p>In the following table, functions marked with 0ms run rate are function calls that can be called from the states indicated by “Execute.”</p>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 12%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sub-Function Name</strong></th>
+<th><strong>Rate (ms)</strong></th>
+<th><strong>Cold Init</strong></th>
+<th><strong>Warm Init</strong></th>
+<th><strong>Operate</strong></th>
+<th><strong>Disable</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NvMProxy_Init</td>
+<td>0</td>
+<td>Execute**</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+</tr>
+<tr class="even">
+<td>NvMProxy_GetErrorStatus</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvMProxy_SetRamBlockStatus</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvMProxy_CancelWriteAll</td>
+<td>0</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvMProxy_SetDataIndex</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvMProxy_GetDataIndex</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvMProxy_ReadBlock</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvMProxy_WriteBlock</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvMProxy_RestoreBlockDefaults</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvMProxy_CancelJobs</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvMProxy_SetBlockProtection</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td>NvMProxy_EraseNvBlock</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="odd">
+<td>NvMProxy_InvalidateNvBlock</td>
+<td>0</td>
+<td>Execute*</td>
+<td>Execute</td>
+<td>Execute</td>
+<td>Execute</td>
+</tr>
+<tr class="even">
+<td colspan="6"><p><em>* Execution is allowed, but only after NvMProxy_Init() has completed.</em></p>
+<p><em>** Execution is allowed, but only after NvM_ReadAll() has completed.</em></p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="serial-communications-interfaces">Serial Communications Interfaces</h1>
+<p>None</p>
+<h1 id="additional-information">Additional Information</h1>
+<h2 id="nvm-block-definition-considerations">NvM block definition Considerations</h2>
+<p>NvM block can be made from a single value to multiple values grouped as one element. It is up to the function designer to determine how their NvM blocks should be structured, but the following considerations should be considered when defining an NvM block.</p>
+<h3 id="scenario-1">Scenario 1</h3>
+<p>Consider a design with 3 PIMs defined for storage in NvM. If the PIMs were defined in the m-files as separate entries, the software component developer would create three separate NvM blocks for those pieces of data as shown below.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.emf" /></p>
+<p>This would mean that each PIM, is independent of the other PIMs, however, it is a waste of FEE memory if the data does not truly need to be independent. Instead the three values should be grouped into a structure so the NvM block created looks like below.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.emf" /></p>
+<p>This provides the designer with the same design (three separate variables) but the data is grouped together to make one CRC to cover all three values and only requires one instance of the FEE header saving FEE space.</p>
+<h3 id="scenario-2">Scenario 2</h3>
+<p>Consider a design with 3 PIMs, 2 of the PIMs are written during manufacturing and the other PIM is learned during function execution and saved at shutdown. In this case, it would make sense to group the PIMs by functionality.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image6.emf" /></p>
+<p>This saves FEE space by grouping like content, but also protects the data that is written during manufacturing from being discarded in case the data that is written during shutdown encountered a power loss or other type of data corruption. Only the learned data would be considered invalid and the other block would be valid.</p>
+<h2 id="software-component-design-considerations">Software Component Design Considerations</h2>
+<h3 id="api-port-selection">API Port Selection</h3>
+<p>The NvM component will generate different API ports depending on the configuration required a given block. It shall be up to the developer of the software component to configure the service port with the correct API during development to ensure a proper match with the integration project.</p>
+<p>Based on the settings in section 5.1.1, the API port will begin with “NvMService_AC3_SRBS”. This is because the API class is level 3 (AC3) and the set ram block status API is enable (SRBS).</p>
+<p>The following table is for all API access except for NvM_ SetBlockProtection.</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 9%" />
+<col style="width: 18%" />
+<col style="width: 12%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4">Configuration Matrix</th>
+<th rowspan="3">Suffix</th>
+<th rowspan="3">Port Name to Use in SWC</th>
+</tr>
+<tr class="odd">
+<th colspan="3">Block Type</th>
+<th rowspan="2">ROM Default</th>
+</tr>
+<tr class="header">
+<th>Native</th>
+<th>Redundant</th>
+<th>Dataset</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N/A</td>
+<td>NvMService_AC3_SRBS</td>
+</tr>
+<tr class="even">
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>_Defs</td>
+<td>NvMService_AC3_SRBS_Defs</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N/A</td>
+<td>NvMService_AC3_SRBS</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>_Defs</td>
+<td>NvMService_AC3_SRBS_Defs</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>_DS</td>
+<td>NvMService_AC3_SRBS_DS</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>_DS_Defs</td>
+<td>NvMService_AC3_SRBS_DS_Defs</td>
+</tr>
+</tbody>
+</table>
+<p>The following table is only for API to NvM_ SetBlockProtection.</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 9%" />
+<col style="width: 18%" />
+<col style="width: 12%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4">Configuration Matrix</th>
+<th rowspan="3">Suffix</th>
+<th rowspan="3">Port Name to Use in SWC</th>
+</tr>
+<tr class="odd">
+<th colspan="3">Block Type</th>
+<th rowspan="2">ROM Default</th>
+</tr>
+<tr class="header">
+<th>Native</th>
+<th>Redundant</th>
+<th>Dataset</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td rowspan="6">N/A</td>
+<td rowspan="6">NvMAdministration</td>
+</tr>
+<tr class="even">
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<h1 id="revision-record-change-approval"><br />
+Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 57%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>01.00.00</td>
+<td>01Sep15</td>
+<td>EA4#471</td>
+<td>KJS</td>
+<td>Initial Release</td>
+</tr>
+<tr class="odd">
+<td>02.00.00</td>
+<td>01Oct16</td>
+<td>EA4#7778</td>
+<td>KJS</td>
+<td>Updates for quick ignition cycle handling</td>
+</tr>
+</tbody>
+</table>

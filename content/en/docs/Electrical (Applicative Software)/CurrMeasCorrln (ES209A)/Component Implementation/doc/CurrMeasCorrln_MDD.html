@@ -1,0 +1,446 @@
+---
+title: CurrMeasCorrln_MDD
+linkTitle: CurrMeasCorrln_MDD
+weight: 4
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>Current Measurement Correlation</strong></p>
+<p><strong>September 6, 2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Nick Saxton,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong><u>Saginaw, MI, USAChange</u></strong> History</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>Initial Version</td>
+<td>Selva</td>
+<td>1.0</td>
+<td>09- Apr-2015</td>
+</tr>
+<tr class="odd">
+<td>Updated for v2.1.0 of Design</td>
+<td>Selva</td>
+<td>2.0</td>
+<td>21 –Sep 2015</td>
+</tr>
+<tr class="even">
+<td>Updated graphical representation</td>
+<td>Nick S.</td>
+<td>3.0</td>
+<td>13-Apr-2016</td>
+</tr>
+<tr class="odd">
+<td>Updated graphical representation with added fault injection port</td>
+<td>Nick S.</td>
+<td>4.0</td>
+<td>06-Sep-2016</td>
+</tr>
+</tbody>
+</table>
+<p><u>Table of Contents</u></p>
+<p><a href="#introduction">1 Introduction 4</a></p>
+<p><a href="#purpose">1.1 Purpose 4</a></p>
+<p><a href="#scope">1.2 Scope 4</a></p>
+<p><a href="#current-measurement-correlation-high-level-description">2 Current Measurement Correlation &amp; High-Level Description 5</a></p>
+<p><a href="#design-details-of-software-module">3 Design details of software module 6</a></p>
+<p><a href="#graphical-representation-of-current-measurement-correlation">3.1 Graphical representation of Current Measurement Correlation 6</a></p>
+<p><a href="#data-flow-diagram">3.2 Data Flow Diagram 6</a></p>
+<p><a href="#component-level-dfd">3.2.1 Component level DFD 6</a></p>
+<p><a href="#function-level-dfd">3.2.2 Function level DFD 6</a></p>
+<p><a href="#constant-data-dictionary">4 Constant Data Dictionary 7</a></p>
+<p><a href="#program-fixed-constants">4.1 Program (fixed) Constants 7</a></p>
+<p><a href="#embedded-constants">4.1.1 Embedded Constants 7</a></p>
+<p><a href="#local">4.1.1.1 Local 7</a></p>
+<p><a href="#software-component-implementation">5 Software Component Implementation 8</a></p>
+<p><a href="#sub-module-functions">5.1 Sub-Module Functions 8</a></p>
+<p><a href="#initialization-functions">5.1.1 Initialization Functions 8</a></p>
+<p><a href="#init">5.1.1.1 INIT 8</a></p>
+<p><a href="#design-rationale">5.1.1.2 Design Rationale 8</a></p>
+<p><a href="#store-module-inputs-to-local-copies">5.1.1.3 Store Module Inputs to Local copies 8</a></p>
+<p><a href="#processing-of-function">5.1.1.4 (Processing of function)……… 8</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">5.1.1.5 Store Local copy of outputs into Module Outputs 8</a></p>
+<p><a href="#periodic-functions">5.1.2 PERIODIC FUNCTIONS 8</a></p>
+<p><a href="#per-currmeascorrlnper1">5.1.2.1 Per: CurrMeasCorrlnPer1 8</a></p>
+<p><a href="#design-rationale-1">5.1.2.2 Design Rationale 8</a></p>
+<p><a href="#store-module-inputs-to-local-copies-1">5.1.2.3 Store Module Inputs to Local copies 8</a></p>
+<p><a href="#processing-of-function-1">5.1.2.4 (Processing of function)……… 8</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-1">5.1.2.5 Store Local copy of outputs into Module Outputs 8</a></p>
+<p><a href="#server-runables">5.2 Server Runables 8</a></p>
+<p><a href="#interrupt-functions">5.3 Interrupt Functions 8</a></p>
+<p><a href="#module-internal-local-functions">5.4 Module Internal (Local) Functions 9</a></p>
+<p><a href="#local-functionmacro-definitions">5.5 Local Function/Macro Definitions 9</a></p>
+<p><a href="#local-function-1-sigavlcheck">5.5.1 Local Function #1 SigAvlCheck 9</a></p>
+<p><a href="#description">5.5.1.1 Description 9</a></p>
+<p><a href="#local-function-1-currmeascorrlnchk">5.5.2 Local Function #1 CurrMeasCorrlnChk 9</a></p>
+<p><a href="#description-1">5.5.2.1 Description 9</a></p>
+<p><a href="#global-functionmacro-definitions">5.6 GLOBAL Function/Macro Definitions 9</a></p>
+<p><a href="#known-limitations-with-design">6 Known Limitations with Design 11</a></p>
+<p><a href="#unit-test-consideration">7 UNIT TEST CONSIDERATION 12</a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms 13</a></p>
+<p><a href="#glossary">Appendix B Glossary 14</a></p>
+<p><a href="#references">Appendix C References 16</a></p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="purpose">Purpose</h2>
+<p>None</p>
+<h2 id="scope">Scope</h2>
+<ul>
+<li><p>None</p></li>
+</ul>
+<h1 id="current-measurement-correlation-high-level-description">Current Measurement Correlation &amp; High-Level Description</h1>
+<p>Current Measurement Correlation determines number of independent current measurement channels available and also correlation status of those channels.</p>
+<p>Refer the Design for high level Description</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<p><em>None</em></p>
+<h2 id="graphical-representation-of-current-measurement-correlation">Graphical representation of Current Measurement Correlation</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:4.88542in;height:4.71875in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<p>None</p>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<p>None</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h2 id="local">Local</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 59%" />
+<col style="width: 18%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Constant Name</td>
+<td>Units</td>
+<td>Value</td>
+</tr>
+<tr class="even">
+<td>CORRLNSTSABC_CNT_U08</td>
+<td>Cnt</td>
+<td>0x07</td>
+</tr>
+<tr class="odd">
+<td>CORRLNSTSDEF_CNT_U08</td>
+<td>Cnt</td>
+<td>0x38</td>
+</tr>
+<tr class="even">
+<td>MAXVALSIGSTALL_CNT_U08</td>
+<td>Cnt</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td>CURRMOTSUMLOLIM_AMP_F32</td>
+<td>Amp</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td>CURRMOTSUMHILIM_AMP_F32</td>
+<td>Amp</td>
+<td>600.0</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h2 id="initialization-functions">Initialization Functions</h2>
+<h2 id="init">INIT</h2>
+<p>None</p>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>None</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p>None</p>
+<h2 id="processing-of-function"> (Processing of function)………</h2>
+<p>None</p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p>None</p>
+<h2 id="periodic-functions">PERIODIC FUNCTIONS </h2>
+<p><em>(Note: For multiple periodic functions, insert new headers at the “Header 2” level – subset of “ Periodic Functions” and follow the same sub-section design shown below). If none required, place the text “None”)&gt;</em></p>
+<h2 id="per-currmeascorrlnper1">Per: CurrMeasCorrlnPer1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="processing-of-function-1">(Processing of function)………</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<p><em>None</em></p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p><em>None</em></p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-functionmacro-definitions">Local Function/Macro Definitions</h2>
+<h2 id="local-function-1-sigavlcheck">Local Function #1 SigAvlCheck</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 43%" />
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>SigAvlCheck</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>CurrMeasSigQlfr_T_enum</td>
+<td>SigQlfr1</td>
+<td>SIGQLFR_NORES</td>
+<td>SIGQLFR_FAILD</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>CurrMeasSigRollgCntr_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>PrevCurrMeasSigRollgCntr_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>CurrMeasSigStall_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>SignalAvailable_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>Refer FDD.</p>
+<h2 id="local-function-1-currmeascorrlnchk">Local Function #1 CurrMeasCorrlnChk</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CurrMeasCorrlnChk</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>MotCurrCorrdSig1_Amp_T_f32</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCurrCorrdSig2_Amp_T_f32</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCurrCorrdSig3_Amp_T_f32</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>CurrMeasCorrlnNtcFailStep</td>
+<td>uint16</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>CurrMeasCorrlnNtcPassStep</td>
+<td>uint16</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NtcNr_T_enum</td>
+<td>NtcNr1</td>
+<td>0x4D</td>
+<td>0x4E</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*CurrMeasLongTermCorrlnStsVldSig1_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*CurrMotSum_Amp_T_f32</td>
+<td>float32</td>
+<td>0.0</td>
+<td>600.0</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>CurrMeasImdtCorrlnStsVldSig1_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-1">Description</h2>
+<p>Refer FDD.</p>
+<p>In FDD, there are two sub functions CorrlnChkABC and CorrlnChkDEF but the both functions are functionally same other than the NTCs. Hence the software merges these functions in single function with NTC as parameter.</p>
+<p>*CurrMeasLongTermCorrlnStsVldSig1_Cnt_T_logl and *CurrMotSum_Amp_T_f32 are outputs of this function.</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>None</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>FDD - ES209A Current Measurement Correlation</td>
+<td>See synergy subversion</td>
+</tr>
+</tbody>
+</table>

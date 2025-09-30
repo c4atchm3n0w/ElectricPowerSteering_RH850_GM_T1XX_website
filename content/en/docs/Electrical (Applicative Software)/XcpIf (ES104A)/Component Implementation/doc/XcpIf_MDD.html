@@ -1,0 +1,1033 @@
+---
+title: XcpIf_MDD
+linkTitle: XcpIf_MDD
+weight: 4
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>XCP Interface (XcpIf)</strong></p>
+<p><strong>VERSION: 2.0</strong></p>
+<p><strong>DATE: 29-Aug-2016</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Kevin Smith</strong></p>
+<p><strong>EPS Software,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong><br />
+Location:</strong> The official version of this document is stored in the Nexteer Configuration Management System.</p>
+<p><strong>Revision History</strong></p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 10%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sl. No.</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Approved By</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>K. Smith</td>
+<td>1.0</td>
+<td>16-Jun-15</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Updates for anomaly EA4#6672</td>
+<td>K. Smith</td>
+<td>2.0</td>
+<td>29-Aug-16</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong><u><br />
+Table of Contents</u></strong></p>
+<p><a href="#abbrevations-and-acronyms">1 Abbrevations And Acronyms <span>5</span></a></p>
+<p><a href="#references">2 References <span>6</span></a></p>
+<p><a href="#xcp-interface-high-level-description">3 XCP Interface &amp; High-Level Description <span>7</span></a></p>
+<p><a href="#design-details-of-software-module">4 Design details of software module <span>8</span></a></p>
+<p><a href="#graphical-representation-of-xcp-interface">4.1 Graphical representation of XCP Interface <span>8</span></a></p>
+<p><a href="#data-flow-diagram">4.2 Data Flow Diagram <span>8</span></a></p>
+<p><a href="#module-level-dfd">4.2.1 Module level DFD <span>8</span></a></p>
+<p><a href="#sub-module-level-dfd">4.2.2 Sub-Module level DFD <span>8</span></a></p>
+<p><a href="#component-flow-diagram">4.3 COMPONENT FLOW DIAGRAM <span>8</span></a></p>
+<p><a href="#variable-data-dictionary">5 Variable Data Dictionary <span>9</span></a></p>
+<p><a href="#user-defined-typedef-definitiondeclaration">5.1 User defined typedef definition/declaration <span>9</span></a></p>
+<p><a href="#variable-definition-for-enumerated-types">5.2 Variable definition for enumerated types <span>9</span></a></p>
+<p><a href="#constant-data-dictionary">6 Constant Data Dictionary <span>10</span></a></p>
+<p><a href="#programfixed-constants">6.1 Program(fixed) Constants <span>10</span></a></p>
+<p><a href="#embedded-constants">6.1.1 Embedded Constants <span>10</span></a></p>
+<p><a href="#local">6.1.1.1 Local <span>10</span></a></p>
+<p><a href="#global">6.1.1.2 Global <span>10</span></a></p>
+<p><a href="#module-specific-lookup-tables-constants">6.1.2 Module specific Lookup Tables Constants <span>10</span></a></p>
+<p><a href="#software-module-implementation">7 Software Module Implementation <span>11</span></a></p>
+<p><a href="#sub-module-functions">7.1 Sub-Module Functions <span>11</span></a></p>
+<p><a href="#initialization-functions">7.2 Initialization Functions <span>11</span></a></p>
+<p><a href="#periodic-functions">7.3 PERIODIC FUNCTIONS <span>11</span></a></p>
+<p><a href="#xcp2msdaq">7.3.1 Xcp2msDaq <span>11</span></a></p>
+<p><a href="#design-rationale">7.3.1.1 Design Rationale <span>11</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies">7.3.1.2 Store Module Inputs to Local copies <span>11</span></a></p>
+<p><a href="#processing-of-function">7.3.1.3 (Processing of function)……… <span>11</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">7.3.1.4 Store Local copy of outputs into Module Outputs <span>11</span></a></p>
+<p><a href="#non-periodic-functions">7.4 Non PERIODIC FUNCTIONS <span>11</span></a></p>
+<p><a href="#interrupt-functions">7.5 Interrupt Functions <span>11</span></a></p>
+<p><a href="#serial-communication-functions">7.6 Serial Communication Functions <span>11</span></a></p>
+<p><a href="#local-functionmacro-definitions">7.7 Local Function/Macro Definitions <span>11</span></a></p>
+<p><a href="#_Toc422301834">7.8 GLObAL Function/Macro Definitions <span>11</span></a></p>
+<p><a href="#applxcpgettimestamp">7.8.1 ApplXcpGetTimestamp <span>11</span></a></p>
+<p><a href="#description">7.8.1.1 Description <span>12</span></a></p>
+<p><a href="#applxcpgetpointer">7.8.2 ApplXcpGetPointer <span>12</span></a></p>
+<p><a href="#description-1">7.8.2.1 Description <span>12</span></a></p>
+<p><a href="#_Toc422301839">7.8.3 ApplXcpCalibrationWrite <span>12</span></a></p>
+<p><a href="#description-2">7.8.3.1 Description <span>12</span></a></p>
+<p><a href="#_Toc422301841">7.8.4 ApplXcpWrCmn <span>13</span></a></p>
+<p><a href="#description-3">7.8.4.1 Description <span>13</span></a></p>
+<p><a href="#applxcpcalibrationread">7.8.5 ApplXcpCalibrationRead <span>13</span></a></p>
+<p><a href="#description-4">7.8.5.1 Description <span>13</span></a></p>
+<p><a href="#applxcpcheckwriteaccess">7.9 TRANSIENT FUNCTIONS <span>13</span></a></p>
+<p><a href="#unit-test-considerations">8 Unit Test Considerations <span>14</span></a></p>
+<p><a href="#known-limitations-with-design">9 Known Limitations With Design <span>15</span></a></p>
+<p><a href="#appendix">10 Appendix <span>16</span></a></p>
+<h1 id="abbrevations-and-acronyms">Abbrevations And Acronyms</h1>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Abbreviation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DFD</td>
+<td>Design functional diagram</td>
+</tr>
+<tr class="even">
+<td>MDD</td>
+<td>Module design Document</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>&lt;ADD more to the table if applicable&gt;</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="references">References</h1>
+<p>This section lists the title &amp; version of all the documents that are referred for development of this document</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 65%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sr. No.</th>
+<th>Title</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt;1&gt;</td>
+<td>&lt;MDD Guidelines&gt;</td>
+<td>4.0.0</td>
+</tr>
+<tr class="even">
+<td>&lt;2&gt;</td>
+<td>&lt;Software Naming Conventions&gt;</td>
+<td>4.0.0</td>
+</tr>
+<tr class="odd">
+<td>&lt;3&gt;</td>
+<td>&lt;Coding standards&gt;</td>
+<td>4.0.0</td>
+</tr>
+<tr class="even">
+<td>&lt;4&gt;</td>
+<td>&lt;FDD &gt;</td>
+<td>Not available</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>&lt;Add if more available&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="xcp-interface-high-level-description">XCP Interface &amp; High-Level Description</h1>
+<p>XCP Interface provides multiple functions that allow XCP end users and tools to interface with software components contained in the application.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-xcp-interface">Graphical representation of XCP Interface</h2>
+<p><em>None</em></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p><em>None</em></p>
+<h2 id="module-level-dfd">Module level DFD</h2>
+<p><em>None</em></p>
+<h2 id="sub-module-level-dfd">Sub-Module level DFD</h2>
+<p><em>None</em></p>
+<h2 id="component-flow-diagram">COMPONENT FLOW DIAGRAM</h2>
+<p><em>None</em></p>
+<h1 id="variable-data-dictionary">Variable Data Dictionary</h1>
+<h2 id="user-defined-typedef-definitiondeclaration">User defined typedef definition/declaration </h2>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 31%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Typedef Name</th>
+<th>Element Name</th>
+<th>User Defined Type</th>
+<th><p>Legal Range</p>
+<p>(min)</p></th>
+<th><p>Legal Range</p>
+<p>(max)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="variable-definition-for-enumerated-types">Variable definition for enumerated types</h2>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 40%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Enum Name</th>
+<th>Element Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="programfixed-constants">Program(fixed) Constants</h2>
+<h2 id="embedded-constants">Embedded Constants</h2>
+<h2 id="local">Local</h2>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="global">Global</h2>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>XcpEventChannel_2ms_DAQ_2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="module-specific-lookup-tables-constants">Module specific Lookup Tables Constants</h2>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 20%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Value</th>
+<th>Software Segment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-module-implementation">Software Module Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<p><em>None</em></p>
+<h2 id="initialization-functions">Initialization Functions</h2>
+<p><em>None</em></p>
+<h2 id="periodic-functions">PERIODIC FUNCTIONS </h2>
+<h2 id="xcp2msdaq">Xcp2msDaq</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p><em>This function is called every 2ms for executing the XcpEvent functions for the 2ms DAQ.</em></p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.emf" /></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>None</em></p>
+<h2 id="non-periodic-functions">Non PERIODIC FUNCTIONS </h2>
+<p><em>None</em></p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p><em>None</em></p>
+<h2 id="serial-communication-functions">Serial Communication Functions</h2>
+<p><em>None</em></p>
+<h2 id="local-functionmacro-definitions">Local Function/Macro Definitions</h2>
+<p>None</p>
+<p><span id="_Toc422301834" class="anchor"></span></p>
+<h2 id="global-functionmacro-definitions">GLObAL Function/Macro Definitions</h2>
+<h2 id="applxcpgettimestamp">ApplXcpGetTimestamp</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 40%" />
+<col style="width: 19%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpGetTimestamp</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>Timestamp_Cnt_T_u32</td>
+<td>XcpDaqTimestampType</td>
+<td>See description</td>
+<td>See description</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>This function returns the timestamp that is based on a reference timer. The range of return values vary depending on the configuration of the Xcp Component. The data type can range from a full range of a uint8 to a uint32 value.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.emf" /></p>
+<h2 id="applxcpgetpointer">ApplXcpGetPointer</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpGetPointer</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr_ext</td>
+<td>vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>addr</td>
+<td>vuint32</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>RtnAddr_Cnt_T_u32</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-1">Description</h2>
+<p>This function takes the extension and address of and returns the physical address of the item.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.emf" /></p>
+<p><span id="_Toc422301839" class="anchor"></span></p>
+<h2 id="applxcpcalibrationwrite">ApplXcpCalibrationWrite</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpCalibrationWrite</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>size</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>data</td>
+<td>BYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-2">Description</h2>
+<p>This function calls the common XCP writing function. For this deisgn, the function call will be translated into a trusted function call.</p>
+<p><span id="_Toc422301841" class="anchor"></span></p>
+<h2 id="applxcpwrcmn">ApplXcpWrCmn</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpWrCmn</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>size</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>data</td>
+<td>BYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-3">Description</h2>
+<p>This function writes the data passed in by the XCP user to the designated address.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.emf" /></p>
+<h2 id="applxcpcalibrationread">ApplXcpCalibrationRead</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpCalibrationRead</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>size</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>data</td>
+<td>BYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-4">Description</h2>
+<p>This function reads the data in the designated address and returns it to the XCP user.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image6.emf" /></p>
+<h2 id="applxcpcheckwriteaccess"><br />
+ApplXcpCheckWriteAccess</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpCheckWriteAccess</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Size_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-5">Description</h2>
+<p>This function checks access for XCP writes. Since the functions in tuning selection management handle the presmissions for writes, this function shall always return a positive response.</p>
+<h2 id="applxcpcheckreadaccess">ApplXcpCheckReadAccess</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpCheckReadAccess</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Size_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-6">Description</h2>
+<p>This function checks access for XCP reads. Since the functions in tuning selection management handle the presmissions for reads, this function shall always return a positive response.</p>
+<h2 id="applxcpcheckdaqaccess">ApplXcpCheckDAQAccess</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpCheckDAQAccess</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>addr</td>
+<td>MTABYTEPTR</td>
+<td>1</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Size_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-7">Description</h2>
+<p>This function checks access for XCP DAQ access. Since all reads are allowed, this function will also always return a positive response.</p>
+<h2 id="applxcpsetcalpage">ApplXcpSetCalPage</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpSetCalPage</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Seg_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Page_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Mod_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>Rtn_Cnt_T_u08</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0x28</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-8">Description</h2>
+<p>This function sets the calibration page access. It directly calls the functions used in tuning selection management.</p>
+<h2 id="applxcpgetcalpage">ApplXcpGetCalPage</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpGetCalPage</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Seg_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Mod_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>Rtn_Cnt_T_u08</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0x28</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-9">Description</h2>
+<p>This function sets the calibration page access. It directly calls the functions used in tuning selection management.</p>
+<h2 id="applxcpcopycalpage">ApplXcpCopyCalPage</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpCopyCalPage</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>SrcSeg_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SrcPage_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>DestSeg_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>DestPage_Cnt_T_u08</td>
+<td>Vuint8</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0x28</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-10">Description</h2>
+<p>This function sets the calibration page access. It directly calls the functions used in tuning selection management.</p>
+<h2 id="applxcpuserservice">ApplXcpUserService</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpUserService</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>pCmd</td>
+<td>BYTEPTR</td>
+<td>0</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0x3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-11">Description</h2>
+<p>This function handles user service requests.</p>
+<h2 id="applxcpopencmdif">ApplXcpOpenCmdIf</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 45%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApplXcpOpenCmdIf</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>pCmd</td>
+<td>BYTEPTR</td>
+<td>0</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>pRes</td>
+<td>BYTEPTR</td>
+<td>0</td>
+<td>4294967295</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>pLength</td>
+<td>BYTEPTR</td>
+<td>0</td>
+<td>4294967295</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>XCP_CMD_OK</td>
+<td>Uint8</td>
+<td>0</td>
+<td>0x3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-12">Description</h2>
+<p>This function handles XCP service requests that are not supported by the driver but defined by the XCP protocol specification.</p>
+<h2 id="nontrusted_ntwraps_rte_call_copycalpagereq_oper">NONTRUSTED_NtWrapS_Rte_Call_CopyCalPageReq_Oper</h2>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 43%" />
+<col style="width: 30%" />
+<col style="width: 5%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>NONTRUSTED_NtWrapS_Rte_Call_CopyCalPageReq_Oper</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>FunctionIndex</td>
+<td>NonTrustedFunctionIndexType</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>FunctionParams</td>
+<td>NonTrustedFunctionParameterRefType</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-13">Description</h2>
+<h2 id="nontrusted_ntwraps_rte_call_setcalpagereq_oper">NONTRUSTED_NtWrapS_Rte_Call_SetCalPageReq_Oper</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 42%" />
+<col style="width: 30%" />
+<col style="width: 5%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>NONTRUSTED_NtWrapS_Rte_Call_SetCalPageReq_Oper</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>FunctionIndex</td>
+<td>NonTrustedFunctionIndexType</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>FunctionParams</td>
+<td>NonTrustedFunctionParameterRefType</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-14">Description</h2>
+<h2 id="transient-functions">TRANSIENT FUNCTIONS </h2>
+<p><em>None</em></p>
+<h1 id="unit-test-considerations">Unit Test Considerations</h1>
+<ul>
+<li><p>The value datatype of XcpDaqTimestampType can be uint8, uint16, or uint32 depending on the configuration of XCP. Unit testing shall test full ranges for all three types to ensure proper functionality.</p></li>
+</ul>
+<h1 id="known-limitations-with-design">Known Limitations With Design</h1>
+<ul>
+<li><p>There are no protections in this design for executing on NULL_PTRs</p></li>
+</ul>
+<h1 id="appendix">Appendix</h1>
+<p><em>None</em></p>

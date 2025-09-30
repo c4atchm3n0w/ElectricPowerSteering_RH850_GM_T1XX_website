@@ -1,0 +1,1412 @@
+---
+title: IssueReport_CBD1400351s
+linkTitle: IssueReport_CBD1400351s
+weight: 299
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-1_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>License Number</b><br/>
+<b>Customer</b><br/>
+CBD1400351<br/>
+Nexteer Automotive Corporation<br/>Package: GM Global A / Flexray - ECU Product&#160;<br/>&#34;Steering&#160;Systems&#34;<br/>
+<b>Maintenance Expiry Date</b><br/>
+2015-09-01<br/>
+<b>SIP Delivery Date</b><br/>
+<b>SIP Version</b><br/>
+2016-09-16<br/>
+16.00.00<br/>
+<b>SLP</b><br/>
+<b>Delivery Number</b><br/>
+GM Global A / Flexray<br/>
+D04<br/>
+<b>Report Creation Date</b><br/>
+2016-09-16<br/>
+<b>Contact</b><br/>
+In case of questions or the need for an update of the basic software delivery, please contact&#160;<br/><a href="mailto:Ralf.Fritz@vector.com">Ralf.Fritz@vector.com</a>&#160;or your Vector contact person.<br/>
+<b>Table of Contents<br/>1.</b><br/>
+<a href="IssueReport_CBD1400351s.html#2"><b>Introduction</b></a><br/>
+<a href="IssueReport_CBD1400351s.html#2"><b>1.1 Resolving Issues</b></a><br/>
+<a href="IssueReport_CBD1400351s.html#2"><b>1.2 Issue Classification</b></a><br/>
+<b>2.</b><br/>
+<a href="IssueReport_CBD1400351s.html#3"><b>New Issues</b></a><br/>
+<a href="IssueReport_CBD1400351s.html#4"><b>2.1 Runtime Issues without Workaround:</b></a>&#160;<b>3</b><br/>
+<a href="IssueReport_CBD1400351s.html#10"><b>2.2 Runtime Issues with Workaround:</b></a>&#160;<b>9</b><br/>
+<a href="IssueReport_CBD1400351s.html#21"><b>2.3 Apparent Issues:</b></a>&#160;<b>40</b><br/>
+<a href="IssueReport_CBD1400351s.html#61"><b>2.4 Not Released Functionality:</b></a>&#160;<b>4</b><br/>
+<a href="IssueReport_CBD1400351s.html#64"><b>2.5 Compiler Warnings:</b></a>&#160;<b>8</b><br/>
+<b>3.</b><br/>
+<a href="IssueReport_CBD1400351s.html#73"><b>New Issues for Information:</b></a>&#160;<b>0</b><br/>
+<b>4.</b><br/>
+<a href="IssueReport_CBD1400351s.html#74"><b>Report Legend</b></a><br/>
+<b>5.</b><br/>
+<a href="IssueReport_CBD1400351s.html#75"><b>Quality Management Contact</b></a><br/>
+1<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-2_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>1. Introduction</b><br/>
+<b>1.1 Resolving Issues</b><br/>
+Reported issues are not necessarily fixed automatically by the next update delivery. If some of the&#160;<br/>reported&#160;issues shall be fixed, please contact Vector to establish an agreement about issues that&#160;<br/>shall&#160;be fixed in upcoming deliveries. Please note that Vector may fix additional issues without&#160;<br/>explicit&#160;request.<br/>
+<b>1.2 Issue Classification</b><br/>
+This Issue Report provides issues that have been detected since the last report. The issues have&#160;<br/>been&#160;classified to facilitate the assessment of their impact:<br/>
+The chapter 'New Issues' lists issues that have been detected since the last report and which could&#160;<br/>not&#160;be excluded based on the use-case defined in the questionnaire. The issues are classified as&#160;<br/>follows:<br/>
+•<br/>
+<b>Runtime Issues without Workaround:</b>&#160;Runtime issues without a workaround require an&#160;<br/>update&#160;of the basic software delivery in case the issue affects the ECU overall functionality.&#160;<br/>The&#160;effect of an issue to the ECU functionality has to be analyzed by the customer as the basic&#160;<br/>software&#160;usage and its configuration is not known by Vector. The risk of change has also to be&#160;<br/>taken&#160;into account.<br/>
+•<br/>
+<b>Runtime Issues with Workaround:</b>&#160;It is not recommended to update a delivery due to a&#160;<br/>runtime&#160;issue with a documented workaround. The effect of an issue to the ECU functionality&#160;<br/>has&#160;to be analyzed by the customer as the basic software usage and its configuration is not&#160;<br/>known&#160;by Vector. The risk of change has also to be taken into account.<br/>
+•<br/>
+<b>Apparent Issues:</b>&#160;Apparent issues are detected immediately when using the basic software.&#160;<br/>If&#160;an issue does not show up while working with the basic software the ECU project is not&#160;<br/>affected&#160;by the issue. Apparent issues may or may not have workarounds.<br/>
+•<br/>
+<b>Not Released Functionality:</b>&#160;Not released functionalities are modules and features that have&#160;<br/>not&#160;yet passed a complete development cycle (they are e.g. not or only partly tested). For&#160;<br/>serial&#160;production projects the integrator has to ensure that all BETA features are disabled as&#160;<br/>indicated.&#160;If a ESCAN affects a complete BSW module, the module must not be used for serial&#160;<br/>production.<br/>
+•<br/>
+<b>Compiler Warnings:</b>&#160;As a service we report the known compiler warnings. The occurrence of&#160;<br/>a&#160;compiler warning may depend on the used configuration and compiler settings.<br/>
+The chapter 'New Issues for Information' lists issues that are not relevant for the use case that&#160;<br/>has&#160;been documented in the questionnaire provided to Vector. The issues may, however, be&#160;<br/>relevant&#160;for other use cases. Additionally, issues that have been accepted or are tolerated by the&#160;<br/>OEM&#160;(as defined in the questionnaire) are reported here.<br/>
+2<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-3_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2. New Issues</b><br/>
+3<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-4_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.1 Runtime Issues without Workaround<br/></b>The lists contain issues that have been detected since the last report and which could not be&#160;<br/>excluded&#160;based on the use-cases defined in the questionnaire (see chapter ‘New Issues for&#160;<br/>Information’).<br/>
+4<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-5_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087476</b><br/>
+<b>Possible data loss due to aborted Flash write access</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfFee@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+6.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.00.82<br/>
+&#160;<br/>
+<i><b>Problem Description:</b></i><br/>
+5<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-6_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087476</b><br/>
+<b>Possible data loss due to aborted Flash write access</b><br/>
+What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Data cannot be read; Fee_Read does not deliver any data.<br/>
+In case of &#34;critical data&#34; (e.g. FBL information, ECU coding parameters) an ECU might be unable&#160;<br/>to&#160;start.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>It happens at power-up, either if FBL is using FEE to determine whether to start FBL or&#160;<br/>Application,&#160;or during Application start-up, typically during/after NvM_ReadAll.<br/>
+The root cause occurred earlier: Generally, if a FLASH programming operation was aborted, e.g.&#160;<br/>due&#160;to an unintended reset (watchdog, power-loss, SW induced reset) or due to a cancellation&#160;<br/>request&#160;(Fls_Cancel), the cells of a FLASH page might not be fully programmed.<br/>Subsequent reads on this page may deliver the written data correctly, however after some time&#160;<br/>passed&#160;(presumable environmental changes also have an effect) the same FLASH page may be&#160;<br/>read&#160;out as empty. This behaviour is caused by an insufficient charging level of the FLASH cells.&#160;<br/>
+This may cause the FEE to detect most recent data as &#34;completely written&#34; initially, but later read&#160;<br/>attempts&#160;result in &#34;incompletely written&#34;.<br/>E.g. during next read FEE may detect a data block as being valid - it can be retrieved; a following&#160;<br/>read&#160;attempt may result in &#34;not found&#34; (reverting to previous instance, if available).<br/>
+If the aborted write was part of a sector switch, i.e. copying data, FEE might detect a data block&#160;<br/>as&#160;already copied.<br/>Finally, after all blocks have been processed, the older sector is deleted; one single block&#160;<br/>instance,&#160;which might be in an unstable state, remains in FLASH.<br/>During next startup this instance might have become unreadable (as described above).<br/>
+It is typically not an issue for frequently written data, as they are rewritten during run-time (at&#160;<br/>latest&#160;during shut-down). Therefore they have additional instances.<br/>
+Finally, not every abort causes data loss: There are only few FLASH write accesses considered&#160;<br/>critical&#160;regarding this issue (In general, there are two critical FLASH pages per configured user&#160;<br/>block,&#160;resulting in a very limited time-frame that must be hit to force this issue).<br/>
+Cancellation:<br/>Cancellation happens in general if Fls_Cancel is called. Usually it is called by FEE&#160;<br/>(Fee_MainFunction),&#160;if Fee_Cancel was called, which, in turn is usually called by NvM.<br/>Calling NvM_WriteBlock, NvM_EraseNvBlock or NvM_InvalidateNvBlock may cause NvM to issue a&#160;<br/>cancel&#160;request to lower layers.<br/>Furthermore, if MICROSAR NvM is used, the shut-down process may be cancelled using a special&#160;<br/>service,&#160;NvM_KillWriteAll.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>It happens in any configuration, however its probability highly depends on write frequency and&#160;<br/>initial&#160;flash usage (defined by block configuration), thus on frequency of sector switch operations&#160;<br/>(per&#160;partition).<br/>Additionally it depends on separation of data, using partitions<br/>
+Cancellation via NvM write(-like) requests occurs if it was configured to use &#34;Job prioritization&#34;&#160;<br/>and&#160;there were blocks configured with priority 0.&#160;<br/>NvM_KillWriteAll requires parameter &#34;/MICROSAR/NvM/NvMCommonVendorParams/<br/>NvMKillWriteAllApi&#34;&#160;to be TRUE.<br/>
+6<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-7_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087476</b><br/>
+<b>Possible data loss due to aborted Flash write access</b><br/>
+This issue is known to occur on Renesas' RV40F flash devices (e.g. RH850F1x).&#160;<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Since the issue generally affects infrequently written data; and because usually such data blocks&#160;<br/>are&#160;most crucial to an ECU, it is highly recommended to use partitions in order to minimize risks.<br/>Gathering (very) infrequently written data in a separate partition minimizes the need to copy&#160;<br/>them&#160;around. Therefore there are much less critical situations.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+7<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-8_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091216</b><br/>
+<b>Fee_ForceSectorSwitch may do more work than&#160;<br/>expected</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfFee@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+8.01.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+&#160;<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Fee_ForceSectorSwitch executes sector formatting three times (erases), resulting in increased&#160;<br/>run-time.<br/>One Sector is being formatted twice. Additionally FEE checks all configured blocks whether they&#160;<br/>need&#160;to be copied. This results in pre-allocation of internal data structures in flash (link-tables for&#160;<br/>blocks&#160;configured as Datasets).<br/>
+This is not directly observable outside FEE; as it does not affect its clients.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>It happens (per partition), if both sectors are INVALID (both headers erased or defective) or if&#160;<br/>&#34;older&#34;&#160;sector is empty (VALID sector header but no other content), which might be the result of&#160;<br/>another&#160;(aborted) sector switch.<br/>Expected behavior in this case: Just erase both sectors.&#160;<br/>
+This behavior has not other effects than increased processing time (which, in practice is still&#160;<br/>shorter&#160;than a sector switch with existing data to be copied) and the cost of one unnecessary&#160;<br/>sector&#160;format.<br/>The described scenario - two INVALID sectors - is also very exceptional; it happens only initially&#160;<br/>with&#160;a brand-new (erased) Flash, or if the Flash is defective again.<br/>
+This issue documents unintended/unwanted internal behavior.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>It happens, if Fee_ForceSectorSwitch API (FeeSpecificFeatures/FeeForceSectorSwitchApi), or&#160;<br/>special&#160;Feature &#34;Data Conversion&#34; (FeeSpecificFeatures/FeeDataConversionApi) was enabled.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround necessary.<br/>&#160;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+8<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-9_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091357</b><br/>
+<b>EcuM detects the wrong Wakeup Source during&#160;<br/>startup&#160;as the reset reason</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+&#160;<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>As a consequence of the wrong detected Wakeup Source as reset reason the wrong channel might&#160;<br/>be&#160;woken up. Depending on the configuration it is also possible that no channel is woken up.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>At startup of the Ecu.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Only in configurations with at least one wakeup source with configured parameter ResetReasonRef&#160;<br/>[EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource/EcuMResetReasonRef]<br/>
+AND<br/>
+The Mcu data type Mcu_ResetType is bigger than uint8 (0xFF), e.g. uint16 or uint32.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+9<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-10_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.2 Runtime Issues with Workaround</b><br/>
+It is not recommended to update a delivery due to a runtime issue with a documented&#160;<br/>workaround.&#160;The effect of an issue to the ECU functionality has to be analyzed by the customer as&#160;<br/>the&#160;basic software usage and its configuration is not known by Vector. Thereby the risk of change&#160;<br/>has&#160;also to be taken into account.&#160;<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400351s.html#11">ESCAN00061207</a><br/>
+DaVinci Configurator 5: Issue Reporting Procedure<br/>GenTool_ConfiguratorCfg5@Application<br/>
+<a href="IssueReport_CBD1400351s.html#12">ESCAN00088171</a><br/>
+FEINT exception during ShutdownOS leads to memory violation<br/>Os_PlatformRh850Gen6@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#13">ESCAN00089164</a><br/>
+The EcuM stays in RUN state even if EcuM_KillAllRunRequests has been called<br/>SysService_Asr4EcuM@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#15">ESCAN00090356</a><br/>
+Generator does not generate all Wakeup Sources defines to&#160;<br/>EcuM_Generated_Types.h<br/>SysService_Asr4EcuM@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#16">ESCAN00091112</a><br/>
+Variant Driver Init Lists are called for every Core, even for Slave Cores<br/>SysService_Asr4EcuM@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#17">ESCAN00091305</a><br/>
+EcuM with fixed state machine causes a Det error in Dem_Init because this&#160;<br/>module&#160;has been initialized two times<br/>SysService_Asr4EcuM@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#18">ESCAN00091611</a><br/>
+Wrong negative response code for ControlDTCSetting<br/>Diag_Asr4Dem@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#19">ESCAN00091755</a><br/>
+PID $01: OBD relevant montioring functions are always completed<br/>Diag_Asr4Dem@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#20">ESCAN00091756</a><br/>
+Random modification of memory<br/>Diag_Asr4Dem@GenTool_GeneratorMsr<br/>
+10<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-11_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00061207</b><br/>
+<b>DaVinci Configurator 5: Issue Reporting Procedure</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+GenTool_ConfiguratorCfg5@Application<br/>
+<i><b>First affected version:</b></i><br/>
+5.00.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>This ticket describes the reporting of DaVinci Configurator 5 issues. This ticket is a general&#160;<br/>information&#160;and not an issue.<br/>
+-----------------------------------------------------------------------------------------------------------------------------------------<br/>
+Issues of the DaVinci Configurator 5 tool are not part of the active issue reporting (i.e. this report).<br/>The DaVinci Configurator 5 issue list can be downloaded from our home page:<br/>
+DaVinci Developer OpenIssue Lists: https://portal.vector.com/web/davinci/shared-folder?<br/>t=c2b431ff-5dae-4a72-83ec-b9c8ca17561c<br/>DaVinci Configurator OpenIssue Lists: https://portal.vector.com/web/davinci/shared-folder?<br/>t=15d156f3-65d3-4b6e-8107-ec44051aebff<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>This is not an issue but only a reference to the tool specific issue reporting.<br/>No changes to the delivery required.<br/>
+11<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-12_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00088171</b><br/>
+<b>FEINT exception during ShutdownOS leads to&#160;<br/>memory&#160;violation</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_PlatformRh850Gen6@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>If ShutdownOS is interrupted by FEINT exception then a memory violation is reported by the OS.<br/>ProtectionHook and ShutdownHook are called with error code = E_OS_PROTECTION_MEMORY =&#160;<br/>0x0E<br/>and global variable osCtrlVars0.ossLastError = osdErrEXMemoryViolation = 0xA501<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During runtime when application calls ShutdownOS<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>SC3 and SC4<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Disable FE level interrupts before calling ShutdownOS.<br/>If ShutdownOS returns to caller then enable FE level interrupts.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+12<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-13_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089164</b><br/>
+<b>The EcuM stays in RUN state even if&#160;<br/>EcuM_KillAllRunRequests&#160;has been called</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The ECU stays in RUN state, even if anyone has called the API EcuM_KillAllRunRequests.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always after EcuM_KillAllRunRequests() has been called and at least one channel is in a state&#160;<br/>unequal&#160;COMM_NO_COM_NO_PENDING_REQUEST.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Only in configurations with ECUM_FIXED_BEHAVIOR is active (EcuM/EcuMGeneral/<br/>EcuMEnableFixBehavior).<br/>&#160;<br/><i><b>Resolution Description:</b></i><br/>
+13<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-14_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089164</b><br/>
+<b>The EcuM stays in RUN state even if&#160;<br/>EcuM_KillAllRunRequests&#160;has been called</b><br/>
+Workaround:<br/>-------------------------------------------------------------------<br/>The following shows a possible workaround to ignore all ComM channel states in case of an active&#160;<br/>KillAllRUNRequests.<br/>
+Hint: EcuM_SetWakeupEvent considers wakeup events even if EcuM_KillAllRUNRequests() was&#160;<br/>called.&#160;This might cause that the EcuM transits from PostRun to Run again, because of a new&#160;<br/>occurred&#160;wakeup event.&#160;<br/>
+The call of the API ComM_GetState() has to be mapped to an application function in case that it is&#160;<br/>called&#160;in context of EcuM.c. This can be done by configure the following header file as a User&#160;<br/>Configuration&#160;file in the EcuM configuration (EcuM/EcuMGeneral/EcuMUserConfigurationFile):<br/>
+- Example Appl_ComM_EcuM.h:<br/>
+#if defined (ECUM_SOURCE)<br/>extern Std_ReturnType Appl_ComM_GetState(const NetworkHandleType Channel,&#160;<br/>ComM_StateType*&#160;State);<br/>
+# define ComM_GetState Appl_ComM_GetState<br/>#endif<br/>
+- Example Appl_ComM_EcuM.c:<br/>
+#include &#34;Std_Types.h&#34;<br/>#include &#34;ComM.h&#34;<br/>
+#define ECUM_PRIVATE_CFG_INCLUDE<br/>#include &#34;EcuM_PrivateCfg.h&#34;<br/>#undef ECUM_PRIVATE_CFG_INCLUDE<br/>
+Std_ReturnType Appl_ComM_GetState(const NetworkHandleType Channel, ComM_StateType*&#160;<br/>State)<br/>{<br/>&#160;Std_ReturnType retVal = E_OK;<br/>&#160;/* Verify that EcuM_KillAllRUNRequests() was not called */<br/>&#160;if ((EcuM_GetKillAllInProgress() &amp; (0x01u)) == 0u)<br/>&#160;{<br/>&#160;retVal = ComM_GetState(Channel, State);<br/>&#160;}<br/>&#160;else<br/>&#160;{<br/>&#160;/* In case of an active KillAllRunRequest, set the virtual ComM State to no communication and no&#160;<br/>request.&#160;*/<br/>&#160;*State = COMM_NO_COM_NO_PENDING_REQUEST;<br/>&#160;}<br/>
+&#160;return retVal;<br/>}<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+14<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-15_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090356</b><br/>
+<b>Generator does not generate all Wakeup Sources&#160;<br/>defines&#160;to EcuM_Generated_Types.h</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Some defines to access a wakeup source bitmask are not generated to EcuM_Generated_Types.h.<br/>
+This might cause that during runtime a wakeup event is not handled as expected.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>In configurations with a wakeup source which has the prefix 'ECUM_WKSOURCE_' and a post fix&#160;<br/>which&#160;also exists as a wakeup source without this prefix.<br/>
+Example:<br/>
+Wakeup Source Name 1: 'ECUM_WKSOURCE_CHANNEL1'<br/>Wakeup Source Name 2: 'CHANNEL1'<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If a Wakeup Source is configured with prefix ECUM_WKSOURCE_&lt;NAME&gt; and another Wakeup&#160;<br/>Source&#160;has only &lt;NAME&gt;<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Prevent Wakeup Sources Names which only difference is the prefix 'ECUM_WKSOURCE_'.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+15<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-16_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091112</b><br/>
+<b>Variant Driver Init Lists are called for every Core,&#160;<br/>even&#160;for Slave Cores</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+4.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Initialization Code which shall only be called on the Master (BSW) Core is executed on every Code.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always during initialization.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>In all variant Multicore Configurations.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The generated driver init functions has to be surrounded by the following if condition:<br/>
+&#160;if(GetCoreID() == ECUM_CORE_ID_BSW)<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+16<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-17_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091305</b><br/>
+<b>EcuM with fixed state machine causes a Det error in&#160;<br/>Dem_Init&#160;because this module has been initialized&#160;<br/>two&#160;times</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>&#160;In some situations the EcuM with fixed state machine calls Dem_Init() two times, this lead to a&#160;<br/>Det&#160;error thrown by the Dem with the message DEM_E_WRONG_CONDITION,<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During runtime of the EcuM API EcuM_StartupTwo().<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>All of the following conditions have to be fulfilled to be affected by this issue:<br/>
+- The Ecum with fixed state machine has to be active (EcuM/EcuMGeneral/<br/>EcuMEnableFixBehavior).<br/>- The include Dem has to be active (EcuM/EcuMFixedGeneral/EcuMIncludeDem).<br/>- At least one wakeup source has to be configured for wakeup validation (EcuM/<br/>EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource/EcuMValidationTimeout).<br/>- At startup the standard wakeup source (ECUM_WKSOURCE_RESET) has to be cleared via the&#160;<br/>API&#160;EcuM_ClearWakeupEvent() to force a wakeup validation after startup and to prevent a&#160;<br/>transition&#160;to RUN state until this wakeup source is validated.<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>In case that the valid wakeup event during initialization (ECUM_WKSOURCE_RESET) is cleared in&#160;<br/>context&#160;of driver init list two or three and a wakeup event for validation is set the Dem_Init call&#160;<br/>has&#160;to be avoided.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+17<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-18_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091611</b><br/>
+<b>Wrong negative response code for&#160;<br/>ControlDTCSetting</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Asr4Dem@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+4.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.00.08, 11.01.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Dcm sends NRC 22 (Conditions not Correct) instead of NRC 31 (RequestOutOfRange)<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When requesting $85 for a different DTC group than 0xFFFFFF (ALL DTCs)<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>/Dcm/DcmConfigSet/DcmDsp/DcmDspControlDTCSetting/<br/>DcmSupportDTCSettingControlOptionRecord&#160;== TRUE<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>There is no real use-case for return code DEM_CONTROL_DTC_SETTING_N_OK, so it can be&#160;<br/>replaced&#160;by DEM_CONTROL_DTC_WRONG_DTCGROUP to get the correct NRC response from Dcm:<br/>
+Since version 5.00.00: Create a user config file for Dem with following content:<br/>#if defined DEM_SOURCE<br/># undef DEM_CONTROL_DTC_SETTING_N_OK<br/># define DEM_CONTROL_DTC_SETTING_N_OK DEM_CONTROL_DTC_WRONG_DTCGROUP<br/>#endif<br/>
+Set the user configuration file for LATE inclusion (configuration parameter DemUserConfigFilePost)<br/>
+Before version 5.00.00, introduce the code above into the include path of Dem.c, e.g. by adding it&#160;<br/>a&#160;user config file to the NvM or Dcm<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+18<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-19_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091755</b><br/>
+<b>PID $01: OBD relevant montioring functions are&#160;<br/>always&#160;completed</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Asr4Dem@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+12.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>No matter whether an emission related montioring function is completed or not, it<br/>will be always reported as completed.&#160;<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always when PID $01 is reuqested.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Dem is licensed for OBD 2<br/>AND<br/>Major Monitors is supported (in Dem_Cfg.h: DEM_CFG_SUPPORT_MAJOR_MONITORS ==&#160;<br/>STD_ON)<br/>AND&#160;<br/>Event Availability is not supported (in Dem_Cfg.h DEM_CFG_SUPPORT_EVENTAVAILABLE ==&#160;<br/>STD_OFF)<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Enable Event Availability support in DaVinci Configurator Pro. (/MICROSAR/Dem/DemGeneral/<br/>DemAvailabilitySupport)<br/>
+19<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-20_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091756</b><br/>
+<b>Random modification of memory</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Asr4Dem@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+6.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+10.00.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Memory corruption due to function argument mismatch.<br/>
+The RTE port interface operation is defined incorrectly:<br/>wrong: Std_ReturnType &lt;&gt;(uint8* data, Dem_EventIdType EventId)<br/>expected: Std_ReturnType &lt;&gt;(Dem_EventIdType EventId, uint8* data)<br/>
+Due to the switched argument position, the event ID is passed in place of the destination pointer,&#160;<br/>leading&#160;to random memory modification.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Depending on configuration of Dem/DemGeneral/DemDataElement/<br/>DemExternalCSDataElementClass/DemDataElementStoreNonVolatile<br/>the issue will trigger when an event is stored in the event memory, or when a diagnostic service&#160;<br/>requests&#160;event data using service 19 04 or 19 06<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Dem/DemGeneral/DemUseRte == TRUE<br/>AND<br/>Dem/DemGeneral/DemDataElement/DemExternalCSDataElementClass/DemDataElementUsePort&#160;<br/>==&#160;TRUE<br/>AND<br/>Dem/DemGeneral/DemDataElement/DemExternalCSDataElementClass/<br/>DemUseEventIdArgumentForCallback&#160;== TRUE<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Set Dem/DemGeneral/DemDataElement/DemExternalCSDataElementClass/<br/>DemDataElementUsePort&#160;== FALSE and provide a wrapper function in Dem/DemGeneral/<br/>DemDataElement/DemExternalCSDataElementClass/DemDataElementReadFnc<br/>The wrapper function can call the application port interface with the correct order of arguments.<br/>
+e.g.<br/>Std_ReturnType ApplWrapper(Dem_EventIdType EventId, uint8* Data)<br/>{<br/>&#160;return Rte_Call_&lt;ApplicationPortInterfaceName&gt;(Data, EventId);<br/>}<br/>
+Please note, the issue correction will change the port interface description as defined in the&#160;<br/>technical&#160;reference. The application SWC interface needs to be adapted accordingly.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+20<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-21_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.3 Apparent Issues</b><br/>
+Apparent issues are detected immediately when using the basic software. If an issue does not&#160;<br/>show&#160;up while working with the basic software the ECU project is not affected by the issue.&#160;<br/>Apparent&#160;issues may or may not have workarounds.&#160;<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400351s.html#23">ESCAN00070350</a><br/>
+Fee does not report FEE_CRITICAL_LEVEL to user-defined Error Callback<br/>If_AsrIfFee@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#24">ESCAN00070637</a><br/>
+Defines for DEM events not generated. This leads to multiple linker errors.<br/>MemService_AsrNvM@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#25">ESCAN00072881</a><br/>
+'Port Access' references the wrong destination<br/>EcuAb_AsrIoHwAb@Description<br/>
+<a href="IssueReport_CBD1400351s.html#26">ESCAN00075523</a><br/>
+NVM's requests to FEE are rejected<br/>MemService_AsrNvM@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#27">ESCAN00075933</a><br/>
+Generator crashes when parsing an OIL file with an include directive with&#160;<br/>nonexistent&#160;absolute path<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#28">ESCAN00076481</a><br/>
+Debugger refuses to read ORTI file<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#29">ESCAN00079399</a><br/>
+Linker error: '&lt;Cdd&gt;_Transmit' : undeclared identifier<br/>Cdd_AsrCddCfg5@Description<br/>
+<a href="IssueReport_CBD1400351s.html#30">ESCAN00079977</a><br/>
+TechnicalReference does not help to solve installation problem<br/>Os_CoreGen6@Doc_TechRef<br/>
+<a href="IssueReport_CBD1400351s.html#31">ESCAN00080172</a><br/>
+Compiler error: missing API SyncScheduleTable, StartScheduleTableSynchron&#160;<br/>and/or SetScheduleTableAsync<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#32">ESCAN00080731</a><br/>
+Fee_ForceSectorSwitch might do nothing<br/>If_AsrIfFee@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#33">ESCAN00080742</a><br/>
+OSTICKDURATION not defined<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#34">ESCAN00082482</a><br/>
+Compiler error: Double definition of osTaskStack...<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#35">ESCAN00084633</a><br/>
+Error message &#34;FEE90500&#34; during generation of FEE<br/>If_AsrIfFee@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#36">ESCAN00084863</a><br/>
+API names of 3rd-party Wdg drivers may not be recognized correctly<br/>If_AsrIfWdTttechSub@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#38">ESCAN00085447</a><br/>
+generator exits unsuccessfully with no error message (on empty peripheral&#160;<br/>region&#160;identifier)<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#39">ESCAN00085663</a><br/>
+Unexpected Windows Error Message in case of wrongly configured Linked&#160;<br/>Resource<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#40">ESCAN00085897</a><br/>
+Generator warning: Calculation of time macro is inaccurate.<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#41">ESCAN00086270</a><br/>
+Generator does not allow usage of multiple hardware timer types<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#41">ESCAN00086809</a><br/>
+Generator Output differs on different PCs<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#42">ESCAN00087912</a><br/>
+Compiler error: Double definition of CC<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#43">ESCAN00087932</a><br/>
+ConsistencyRT00002 reports IllegalStateException: Optional.get() cannot be&#160;<br/>called&#160;on an absent value<br/>Cdd_AsrCddCfg5@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#44">ESCAN00088524</a><br/>
+Compiler error: Undeclared identifier in the initialization structure<br/>CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+21<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-22_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400351s.html#45">ESCAN00088979</a><br/>
+Activation of an auto started task is not performed<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#46">ESCAN00089176</a><br/>
+mssv does not resolve all symbols for checking<br/>Elisa__core@Application<br/>
+<a href="IssueReport_CBD1400351s.html#47">ESCAN00089766</a><br/>
+CDD90025: Error at validator runtime<br/>Cdd_AsrCddCfg5@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#48">ESCAN00089834</a><br/>
+Generator expects a configuration which is not AUTOSAR conform<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#49">ESCAN00089910</a><br/>
+Windows states that the OS generator does not work anymore<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#50">ESCAN00090715</a><br/>
+Compiler error: BswM_Lcfg.c: '&lt;Symbol&gt;' undefined in case of individual&#160;<br/>PostBuild&#160;process<br/>SysService_Asr4BswMCfg5@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#51">ESCAN00090724</a><br/>
+Global Configuration Data is created as Array but should be a structure<br/>SysService_Asr4EcuM@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#52">ESCAN00090803</a><br/>
+Windows states that the OS generator does not work anymore<br/>Os_CoreGen6@Generator<br/>
+<a href="IssueReport_CBD1400351s.html#53">ESCAN00090998</a><br/>
+Configuration tool reports Rte90005 exception because of&#160;<br/>java.lang.IllegalArgumentException<br/>Rte_Asr4@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#54">ESCAN00091041</a><br/>
+Compiler error: syntax error : identifier&#160;<br/>'Dem_Cfg_StorageConditionStateIterType'<br/>Diag_Asr4Dem@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#55">ESCAN00091118</a><br/>
+EcuM causes a Rte Det error (RTE_E_DET_UNINIT) in the shutdown sequence&#160;<br/>while&#160;the Nvm write all is performed<br/>SysService_Asr4EcuM@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#56">ESCAN00091136</a><br/>
+Compiler error: 'Fls_Cancel' undefined; assuming extern returning int<br/>If_AsrIfFee@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#57">ESCAN00091277</a><br/>
+Compiler error: multiple variable declarations for data conversion in task<br/>Rte_Core@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#58">ESCAN00091373</a><br/>
+RTE01064 error in case a BSW module provides core service SWCs with&#160;<br/>mapped&#160;server runnables<br/>Rte_Asr4@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#58">ESCAN00091455</a><br/>
+A RuntimeException &#34;unknown DataTapeRep enumeration&#34; for sint64 is thrown<br/>CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#59">ESCAN00091629</a><br/>
+Use of uninitialized value in case no core with id 0 exists<br/>Rte_Core@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#60">ESCAN00091780</a><br/>
+Compiler error: Pim variable name conflicts with parameter name of server&#160;<br/>runnable&#160;in RteAnalyzer stub<br/>Rte_Core@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#61">ESCAN00091872</a><br/>
+RTE950005 when the configuration contains AR3 modules<br/>Rte_Asr4@GenTool_GeneratorMsr<br/>
+22<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-23_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00070350</b><br/>
+<b>Fee does not report FEE_CRITICAL_LEVEL to user-<br/>defined&#160;Error Callback</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfFee@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+8.00.06<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>FEE never invokes user-defined callback with error code FEE_CRITICAL_LEVEL, to warn about&#160;<br/>reached&#160;FSS threshold.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>It should happen, when FEE detects that Foreground Sector Switch Threshold was reached.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>It should happen, if a user-defined error callback was configured. (Otherwise, nobody would care.)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+23<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-24_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00070637</b><br/>
+<b>Defines for DEM events not generated. This leads to&#160;<br/>multiple&#160;linker errors.</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+MemService_AsrNvM@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+2.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The linker throws errors like the following:<br/>
+&#160;NvM_DemErrWriteProtected from NvM.o<br/>&#160;NvM_DemErrReqFailed from NvM_Act.o<br/>&#160;NvM_DemErrIntegrityFailed from NvM_Act.o<br/>&#160;NvM_DemErrLossOfRedundancy from NvM_Act.o<br/>&#160;NvM_DemErrQueueOverflow from NvM_Queue.o<br/>
+==&gt; The configuration container &#34;NvmDemEventParameterRefs&#34; is mandatory, if DEM events are&#160;<br/>used.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Linking of the project.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If DEM events are used<br/>and<br/>the container &#34;NvmDemEventParameterRefs&#34; is not added manually (per default, this container is&#160;<br/>missing)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Configure DEM and NVM for NVM's errors.<br/>Initially, when setting up a new project, add a container instance &#34;NvmDemEventParameterRefs&#34;&#160;<br/>to&#160;NVM (in DaVinci CFG5 use the &#34;Basic Editor&#34;.<br/>Then, &#34;create&#34; all container's child parameters, except E_VERIFY_FAILED and&#160;<br/>E_WRONG_BLOCK_ID&#160;(NVM does not support the related features, at all)<br/>(As long as they are existing, CFG5 is able to assist users in a basic way).<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+24<br/>
+<hr/>
+<a name=25></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-25_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00072881</b><br/>
+<b>'Port Access' references the wrong destination</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+EcuAb_AsrIoHwAb@Description<br/>
+<i><b>First affected version:</b></i><br/>
+4.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The connection between runnables and assigned port prototypes erroneously references the whole&#160;<br/>port&#160;interface, whereas it should point to a data element inside the very port interface. As a result&#160;<br/>of&#160;this, too many unnecessary consistency checks will be applied&#160;<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always and immediately.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens in all configurations.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Transfer of all data elements within one runnable call.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+25<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-26_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00075523</b><br/>
+<b>NVM's requests to FEE are rejected</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+MemService_AsrNvM@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+5.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>NVM's requests fail (NvM_GetErrorStatus delivers NVM_REQ_NOT_OK) because requests to FEE or&#160;<br/>EA&#160;(via MemIf) are rejected.<br/>Additionally FEE/EA reports a development error to FEE - FEE_EA_BUSY_<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>It happens during run-time. Basically it only depends on:<br/>- Concrete implementation of FEE/EA (AUTOSAR _allows_ to reject requests if component is in&#160;<br/>state&#160;MEMIF_BUSY_INTERNAL, but it was left open to the implementation<br/>- Whether and when the component enters the state &#34;MEMIF_BUSY_INTERNAL&#34;. For an EA it&#160;<br/>could&#160;be unnecessary to use it at all; a FEE should use it when it is performing a &#34;sector switch&#34;,&#160;<br/>decoupled&#160;from serving client's (NVM's) requests. Therefore write requests are necessary in order&#160;<br/>to&#160;fill the NV memory, making &#34;internal operations&#34; necessary at all.<br/>
+Some implementation might enter state MEMIF_BUSY_INTERNAL immediately during execution if&#160;<br/>Fee_Init/Ea_Init. In such cases, this issue would be always observable.&#160;<br/>&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>It may happen with a 3rd party FEE, depending on its implementation of MEMIF_BUSY_INTERNAL&#160;<br/>handling.<br/>In this case it happens in every configuration.<br/>
+Issue won't be fixed:<br/>This issue resulted from an Issue in AUTOSAR: Behavior in case of MEMIF_BUSY_INTERNAL was&#160;<br/>left&#160;open to implementation of FEE - there is no standardized way for NVM to get knowledge about&#160;<br/>the&#160;way implemented in FEE.<br/>See RfC #64962&#160;<br/>There was a decision to keep only one variant: FEE shall _accept_ requests when it is&#160;<br/>BUSY_INTERNAL&#160;(it is responsible for cancellation / abort / suspend of pending internal&#160;<br/>operations).<br/>That's the behavior NVM expects.<br/>However, unfortunately they left exceptions - RfC #70170 was created.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+26<br/>
+<hr/>
+<a name=27></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-27_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00075933</b><br/>
+<b>Generator crashes when parsing an OIL file with an&#160;<br/>include&#160;directive with nonexistent absolute path</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The generate crashes with an exception.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>during parsing the file.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>ALL<br/>
+(identical to ESOS00004007)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>If this happens (rare case), please open the OIL file with an editor and correct the path to the&#160;<br/>correct&#160;include path. The include file should typically be found in the generator path.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+27<br/>
+<hr/>
+<a name=28></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-28_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00076481</b><br/>
+<b>Debugger refuses to read ORTI file</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+6.06.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The debugger is unable to provide information about the currently active task, its priority, the&#160;<br/>currently&#160;running Cat2 ISR, the currently performed OS API service and the last occurred errors&#160;<br/>(we&#160;currently do not know whether the issue is detected at parsing the ORTI file or later).<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always and immediately at debug time when the customer tries to trace the&#160;<br/>currently&#160;active task or ISR.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens only in configurations with ORTI enabled and depends on no further configuration&#160;<br/>details.&#160;This may happen only with a debugger from a certain vendor.<br/>
+(this issue is identical to ESOS00004101)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>On single core systems perform the following substitution manually in the ORTI file:<br/>Replace:<br/>&#160;&#34;osConfigBlock.CcbAddress-&gt;&#34;<br/>By:<br/>&#160;&#34;osCtrlVarsCore0.&#34;<br/>On multicore systems, there is currently no workaround.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described behavior is to be corrected by modification of the code.<br/>
+28<br/>
+<hr/>
+<a name=29></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-29_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00079399</b><br/>
+<b>Linker error: '&lt;Cdd&gt;_Transmit' : undeclared&#160;<br/>identifier</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Cdd_AsrCddCfg5@Description<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Linker error in PduR_Lcfg.c: '&lt;Cdd&gt;_Transmit' : undeclared identifier<br/>
+The Cdd_AsrCddCfg5 is not derived according to the ASR 4.0.3 rules and allows a LOWER-<br/>MULTIPLICITY&#160;of 0 for the CddPduRLowerLayerRxPdu and CddPduRLowerLayerTxPdu instead of&#160;<br/>the&#160;LOWER-MULTIPLICITY of 1.<br/>The generic ASR PduR according to the ASR 4.0.3 Specification has no information to deactivate a&#160;<br/>communication&#160;direction (e.g. a Parameter in the PduRBswModules).<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the linker after compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Rx only Cdd with a CddPduRLowerLayerContribution (just receive pathways exits)<br/>
+The &lt;CddName&gt;.h file contains the following define:&#160;<br/>&lt;CddName&gt;_LOWERLAYERCOMIF_TX is defined to STD_OFF<br/>
+&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Implement the not required '&lt;Cdd&gt;_Transmit' API on your own in a c and h file of your choice&#160;<br/>and&#160;add the header file with a user config file to the PduR configuration that the compiler does not&#160;<br/>throw&#160;a warning.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+29<br/>
+<hr/>
+<a name=30></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-30_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00079977</b><br/>
+<b>TechnicalReference does not help to solve&#160;<br/>installation&#160;problem</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Doc_TechRef<br/>
+<i><b>First affected version:</b></i><br/>
+6.16.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The OS Generator refuses to generate files with the following message:<br/>[Fatal Error: 0021] XML write error: Failed to CreateInstance on an XML DOM<br/>
+Neither the message itself, nor the TechnicalReference help to solve the issue.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens during OS generation.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This issue is configuration independent.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Install MSXML 4.0 Service Pack 3.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+30<br/>
+<hr/>
+<a name=31></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-31_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00080172</b><br/>
+<b>Compiler error: missing API SyncScheduleTable,&#160;<br/>StartScheduleTableSynchron&#160;and/or&#160;<br/>SetScheduleTableAsync</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+8.00.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The compiler/linker issues an error that one or more of the following functions are implicitly&#160;<br/>defined,&#160;do not have a prototype, or cannot be linked:<br/>SyncScheduleTable<br/>StartScheduleTableSynchron<br/>SetScheduleTableAsync<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens if in an OS SC1 or SC3 at least one schedule table is configured with&#160;<br/>OsScheduleTableSyncStrategy&#160;other than NONE.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround necessary. The issue occurs only in cases where a non-supported or non-licensed&#160;<br/>feature&#160;is enabled in the configuration.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+31<br/>
+<hr/>
+<a name=32></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-32_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00080731</b><br/>
+<b>Fee_ForceSectorSwitch might do nothing</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfFee@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+8.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.00.82<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Fee_ForceSectorSwitch processing might do nothing, though it should.<br/>
+Actually there are situations Fee_ForceSectorSwitcht actually does nothing, especially when the&#160;<br/>desired&#160;situation was already achieved: All most recent data instances are located within one&#160;<br/>logical&#160;sector; the other one is empty.<br/>
+However, under circumstances described below, FeeForceSectorSwitch unintentionally does&#160;<br/>nothing.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>It happens during run-time, in ECU; but it only happens, if the newer sector (of a partition)&#160;<br/>already&#160;contains data, which did not have been accessed, so far.<br/>I.e. those data belong to Blocks which did not have been read during start-up (e.h. NvM_ReadAll).<br/>
+In this case, though both logical sectors are in use, FEE does not do anything.<br/>
+This might result in performance penalties, especially after SW (configuration) updates, because&#160;<br/>FEE&#160;remains unable do &#34;fix&#34; some issues (defective chunk-links, or too small link-tables).<br/>
+Since very most data stored in NV memory are intended to be accessed, i.e. to be read, it is&#160;<br/>unlikely&#160;that this issue will actually be noticed at customer side.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>It happens if Fee_ForceSectorSwitch API was enabled.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+32<br/>
+<hr/>
+<a name=33></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-33_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00080742</b><br/>
+<b>OSTICKDURATION not defined</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+8.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compilation error is reported as there has no OSTICKDURATION been defined but used,<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code if the code uses&#160;<br/>OSTICKDURATION.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens independent from the configuration.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Two alternatives:&#160;<br/>1. Use the new macros OSSECONDSPERTICK_&lt;CounterName&gt; instead. These define the time of&#160;<br/>a&#160;counter tick as a floating point value in seconds while OSTCKDURATION defined it as an integer&#160;<br/>value&#160;in nanoseconds.<br/>2. Create define macro OSTICKDURATION manually as an integer value which is equal to the&#160;<br/>return&#160;value of OS_TICKS2NS_&lt;CounterName&gt;(1). Mind that this value depends on the&#160;<br/>configuration&#160;parameter OsCounter/OsSecondsPerTick and needs adaptation after each change of&#160;<br/>that&#160;parameter. The macro OS_TICKS2NS_&lt;CounterName&gt; may be found in the generated file&#160;<br/>tcbpost.h.&#160;Direct usage of OS_TICKS2NS_&lt;CounterName&gt; for the definition of OSTICKDURATION&#160;<br/>could&#160;cause compilation problems of the RTE if the RTE uses OSTICKDURATION in a preprocessor&#160;<br/>condition&#160;where floating point operations are not allowed.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+33<br/>
+<hr/>
+<a name=34></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-34_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00082482</b><br/>
+<b>Compiler error: Double definition of osTaskStack...</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The generator produces to arrays with identical name. The array names both start on&#160;<br/>osTaskStack.&#160;The compiler states an error message as a result of this.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the operating system.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This may happen only if two applications exist with one of them having the same name as the&#160;<br/>other&#160;one but extended by a number.<br/>
+The reason is that task stack names are generated according to the following pattern:<br/>osTaskStack&lt;ApplicationName&gt;&lt;Counter starting with 0&gt;<br/>Now assume one application was named &#34;Appl&#34; and another one &#34;Appl1&#34;.&#160;<br/>The first task stack of the application &#34;Appl1&#34; would get the name &#34;osTaskStackAppl10&#34;.&#160;<br/>The stacks of the application &#34;Appl&#34; would be called: &#34;osTaskStackAppl0&#34;, &#34;osTaskStackAppl1&#34;,&#160;<br/>&#34;osTaskStackAppl2&#34;, ... ,&#160;&#34;osTaskStackAppl9&#34;, &#34;osTaskStackAppl10&#34;!&#160;<br/>So the eleventh stack of the application &#34;Appl&#34; would have identical name as the first stack of the&#160;<br/>application&#160;&#34;Appl1&#34;, which leads to the described issue.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Prevent application names which end on a number.&#160;<br/>
+Mind that this workaround is stricter than necessary. Further suitable workarounds may be found&#160;<br/>by&#160;analysis of the configurations in which this issue occurs.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+34<br/>
+<hr/>
+<a name=35></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-35_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00084633</b><br/>
+<b>Error message &#34;FEE90500&#34; during generation of FEE</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfFee@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+3.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The following errors occurs during generation:<br/>FEE90500 The value 9223372036854775807 with comment (physical sector start address) is not&#160;<br/>in&#160;the range of the specified datatype UINT_32.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During generation of BSW.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If the related DrvFls does not have a FlsSectorList, which can only happen, if the underlying Fls&#160;<br/>defined&#160;FlsSectorList or its child, FlsSector, to be optional (which does not comply to AUTOSAR).<br/>
+Currently it may happen only in conjunction with DrvFls_VttCanoe01Asr.<br/>
+This issue will not be fixed in FEE, because it is caused by a deviation from AUTOSAR in FLS&#160;<br/>implementation.<br/>Additionally it can (even: should be fixed) by a suitable Pre-/Recommended configuration of Fls&#160;<br/>driver.<br/>The error message issued during generation also causes a compile time error (an #error directive&#160;<br/>it&#160;is generated into Fee_Lcfg.c).<br/>This is considered sufficient for rare cases, an Fls implementation deviated from AUTOSAR.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>FEE requires FlsSectorList and descendant FlsSector entries.<br/>Manually create a FlsSectorList, and at least one FlsSector entry, to describe the properties of the&#160;<br/>Flash&#160;area to be used by FEE.<br/>
+Note:<br/>It depends on Fls's implementation, which entries are necessary, and which may be omitted.<br/>Some implementations allow to omit unused sectors (especially Program Flash area(s)), but some&#160;<br/>require&#160;configuring ALL sectors.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+35<br/>
+<hr/>
+<a name=36></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-36_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00084863</b><br/>
+<b>API names of 3rd-party Wdg drivers may not be&#160;<br/>recognized&#160;correctly</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfWdTttechSub@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+3.03.09<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>WdgIf generator issues the following warning during generation from DaVinci Configurator:<br/>
+WDGIF01151 Could not determine platform for watchdog `Wdg_Impl` after searching all BSWMD&#160;<br/>files&#160;in `&lt;SIP&gt;\BSWMD` and all its subdirectories.<br/>&#160;/ActiveEcuC/WdgIf<br/>
+The WdgIf_Lcfg.c file contains default function names in the static constant structure, instead of&#160;<br/>the&#160;actual Wdg__SetMode and Wdg__SetTriggerCondition functions of the driver:<br/>
+static const WdgIf_InterfaceFunctionsType generic_driver_functions =<br/>&#160;{ Wdg_SetMode /* Wdg_SetMode */<br/>&#160;, Wdg_SetTriggerCondition /* Wdg_SetTriggerWindow */<br/>&#160;};<br/>
+As a consequence, the code cannot be compiled correctly.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens if the naming schema of the 3rd-party Wdg public functions does not follow the&#160;<br/>schema&#160;Wdg_&lt;vendorId&gt;_&lt;HW_Name&gt;_&lt;serviceName&gt;<br/>&#160;<br/><i><b>Resolution Description:</b></i><br/>
+36<br/>
+<hr/>
+<a name=37></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-37_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00084863</b><br/>
+<b>API names of 3rd-party Wdg drivers may not be&#160;<br/>recognized&#160;correctly</b><br/>
+Workaround:<br/>-------------------------------------------------------------------<br/>Insert a #define inside of Compiler_Cfg.h to provide renamings of the actual Wdg functions, or&#160;<br/>manually&#160;adapt WdgIf_Lcfg.h after each generation.<br/>
+Alternative workaround using a wrapper (trigger function in the driver is Wdg_Trigger() in the&#160;<br/>example):<br/>
+Insert in the Makefile the following line:<br/>
+CFLAGS_WDGIF_LCFG = --include _Wdg_Wrapper.h<br/>
+and include and compile the following files:<br/>-------------------------------------------------------------------<br/>/* _Wdg_Wrapper.h */<br/>#include &#34;Std_Types.h&#34;<br/>
+extern void Wdg_SetTriggerCondition(uint16);<br/>-------------------------------------------------------------------<br/>/* _Wdg_Wrapper.c */<br/>#include &#34;_Wdg_Wrapper.h&#34;<br/>#include &#34;Wdg.h&#34;<br/>
+void Wdg_SetTriggerCondition(uint16 x)<br/>{<br/>&#160;Wdg_Trigger();&#160;<br/>}<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>
+37<br/>
+<hr/>
+<a name=38></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-38_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00085447</b><br/>
+<b>generator exits unsuccessfully with no error&#160;<br/>message&#160;(on empty peripheral region identifier)</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The generator exits unsuccessfully with no error message. So Windows complains about the&#160;<br/>generator&#160;to not work anymore.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens when start- and/or end-address of a peripheral region have been configured but no&#160;<br/>identifier&#160;yet. This may even happen when the user has not yet finished the configuration as the&#160;<br/>generator&#160;is internally used by the configurator to check the configuration cyclically. The problem&#160;<br/>disappears,&#160;once the identifier of the peripheral region has been set.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens only in configurations with peripheral regions.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Configure the identifier of the peripheral region<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+38<br/>
+<hr/>
+<a name=39></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-39_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00085663</b><br/>
+<b>Unexpected Windows Error Message in case of&#160;<br/>wrongly&#160;configured Linked Resource</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Windows states that the MICROSAR OS generator (gen&lt;PlatformName&gt;.exe) does not work&#160;<br/>anymore.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always and immediately at generation time when the configuration is erroneous as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>The configuration contains a linked resource which has no link to another resource. This is an&#160;<br/>invalid&#160;configuration for linked resources.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Add a link to a valid resource to all resources with type 'LINKED'<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+39<br/>
+<hr/>
+<a name=40></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-40_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00085897</b><br/>
+<b>Generator warning: Calculation of time macro is&#160;<br/>inaccurate.</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+9.01.06<br/>
+<i><b>Fixed in versions:</b></i><br/>
+9.01.08<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The generator states that one or more timing macros have been computed inaccurately. The&#160;<br/>stated&#160;deviation is slightly higher than 1ppm.&#160;<br/>Such a stated deviation is typically no issue of the generator. However, there are some cases&#160;<br/>where&#160;the approximation of timing macros stops with a deviation slightly above 1ppm and a&#160;<br/>better&#160;approximation is possible. the timing macro approximation typically stops when the&#160;<br/>deviation&#160;is below 1ppm. In this case the generator does not generate a warning.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always and immediately at generation time. However, this happens only in rare&#160;<br/>configurations.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens only if the parameter SECONDSPERTICK is set to a rarely ever used value.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround necessary, the small deviation should be acceptable in any case.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+40<br/>
+<hr/>
+<a name=41></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-41_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00086270</b><br/>
+<b>Generator does not allow usage of multiple&#160;<br/>hardware&#160;timer types</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+9.01.06<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Generator reports multiple definitions of the internally added COUNTER attributes.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When more than one hardware timer type is used in the platform generator.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Independent from the configuration.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+<b>ESCAN00086809</b><br/>
+<b>Generator Output differs on different PCs</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Even with same input data (OIL) generated data differs in its content if it is generated on different&#160;<br/>PC&#160;(maybe also on the same?)<br/>In the specific case event masks and arrays oskResCeilingPrio oskResCeilingPrioMask are affected.<br/>
+The full system needs to be compiled again, although the configuration has not changed.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During generation<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Potentially all where multiplicity of a OS configuration element is greater 1.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround necessary as the described behaviour causes no malfunction of the embedded&#160;<br/>code&#160;(only just potential confusion of customer).&#160;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+41<br/>
+<hr/>
+<a name=42></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-42_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087912</b><br/>
+<b>Compiler error: Double definition of CC</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler states an error message as CC has already been defined.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens in configurations where the application code has also defined a macro named CC.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Remove definition of CC from the application.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>Rename the conformance class define from 'CC' to 'osdCC'.<br/>
+42<br/>
+<hr/>
+<a name=43></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-43_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087932</b><br/>
+<b>ConsistencyRT00002 reports IllegalStateException:&#160;<br/>Optional.get()&#160;cannot be called on an absent value</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Cdd_AsrCddCfg5@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+5.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+5.00.01<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The validation result with ID ConsistencyRT00002 is reported in the DaVinci Configurator.<br/>In the validation details contains the following info:<br/>&#160;Exception: java.lang.IllegalStateException: Optional.get() cannot be called on an absent value<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During live-validation of the EcuC model in the DaVinci Configurator<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This issue happens if no related /MICROSAR/PduR/PduRBswModules container(s), referencing the&#160;<br/>Cdd&#160;module(s) is existing<br/>AND<br/>In the Cdd module Rx/Tx Pdus routed via the PduR are configured<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Add the missing /MICROSAR/PduR/PduRBswModules referencing the exsting Cdd module(s)<br/>and restart DaVinci Configurator.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+43<br/>
+<hr/>
+<a name=44></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-44_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00088524</b><br/>
+<b>Compiler error: Undeclared identifier in the&#160;<br/>initialization&#160;structure</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+7.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.01.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler throws an error for an undeclared identifier used in the root initialization structure.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>The configuration contains multiple predefined variants (selectable)<br/>AND<br/>array or struct symbols are generated to the configuration class precompile<br/>AND<br/>isReduceConstantData2Define() returns true<br/>AND<br/>isInterfacesForDeactivatedData() returns true<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>if isInterfacesForDeactivatedData() is user configurable a workaround is available else not.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+44<br/>
+<hr/>
+<a name=45></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-45_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00088979</b><br/>
+<b>Activation of an auto started task is not performed</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+6.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The OS does not perform the activation of a task which has a configured auto start.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always and immediately at OS start.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens only on configurations where an auto start is configured for a task and the&#160;<br/>application&#160;mode is not configured, this task shall be activated in. This is an erroneous&#160;<br/>configuration&#160;which is not detected by the generator.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround needed.&#160;<br/>The configuration has to be corrected.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+45<br/>
+<hr/>
+<a name=46></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-46_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089176</b><br/>
+<b>mssv does not resolve all symbols for checking</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Elisa__core@Application<br/>
+<i><b>First affected version:</b></i><br/>
+1.05.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The function FindConstSymbol provided to checker plugins does not resolve all symbols<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always, if an mssv plugin reads in several *.c files<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Always<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Do not pass several *.c files to mssv plugins if the checks rely on the functions&#160;<br/>FindConstSymbol()&#160;und FindVariablesSymbol()&#160;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+46<br/>
+<hr/>
+<a name=47></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-47_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089766</b><br/>
+<b>CDD90025: Error at validator runtime</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Cdd_AsrCddCfg5@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+3.01.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>An exception is thrown, if multiple CDDs with J1939RmContribution are configured.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During validation.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>In configurations with multiple J1939RmContribution CDDs.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work products.<br/>
+47<br/>
+<hr/>
+<a name=48></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-48_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089834</b><br/>
+<b>Generator expects a configuration which is not&#160;<br/>AUTOSAR&#160;conform</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+6.20.07<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Generator refuses to generate with messages:<br/>Missing value assignment for attribute CC with NO_DEFAULT.<br/>Missing value assignment for attribute SCHEDULE with NO_DEFAULT.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The configuration tool other than Vector Configurator is used to create an AUTOSAR ECUC file.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>The configuration contains AUTO value for CC and/or SCHEDULE.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>As a workaround, the correct settings of the parameters may be used (instead of empty setting&#160;<br/>which&#160;is allowed by the standard)<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+48<br/>
+<hr/>
+<a name=49></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-49_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089910</b><br/>
+<b>Windows states that the OS generator does not&#160;<br/>work&#160;anymore</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The OS generator erroneously stops working with an error but only the error message of Windows&#160;<br/>that&#160;the generator does not work anymore.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happens always and immediately if the configuration is as described below. It happens even&#160;<br/>at&#160;configuration time as part of a cyclic validation.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens only if an expiry point of a schedule table is configured to be cyclic and the cycle&#160;<br/>time&#160;is configured to be zero:&#160;<br/>
+/.../Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableEventSetting/<br/>OsScheduleTableCyclic/TRUE/OsScheduleTableCycleTime = 0<br/>
+(This is an undetected wrong configuration)<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Simply correct the configuration to use a cycle time bigger than zero.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+49<br/>
+<hr/>
+<a name=50></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-50_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090715</b><br/>
+<b>Compiler error: BswM_Lcfg.c: '&lt;Symbol&gt;'&#160;<br/>undefined&#160;in case of individual PostBuild process</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4BswMCfg5@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+2.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The compiler throws the following error:<br/>
+BswM_Lcfg.c: '&lt;Symbol&gt;' undefined, assuming extern returning int<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>In configurations with modules which uses an individual PostBuild process (configured via EcuC/<br/>EcucGeneral/PostbuildLoadable/IndividualPostBuildLoadableModule)<br/>
+AND<br/>
+Module is initialized by the BswM via Auto Configuration: Module Initialization.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Adapt the corresponding init action (e.g. INIT_Action_Can_Init) and remove / adapt the access to&#160;<br/>the&#160;global configuration pointer in the parameter BswMUserCalloutFunction, so that a valid pointer&#160;<br/>is&#160;passed to the modules init function.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+50<br/>
+<hr/>
+<a name=51></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-51_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090724</b><br/>
+<b>Global Configuration Data is created as Array but&#160;<br/>should&#160;be a structure</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+4.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The EcuM_GlobalConfigRoot is generated as an array EcuM_GlobalPcConfig[n] but should be a&#160;<br/>structure&#160;with n elements which can be accessed per variant.<br/>
+This lead to an compiler error like the following:<br/>EcuM_Init_Cfg.c:65:46: error: conflicting type qualifiers for 'EcuM_GlobalConfigRoot'<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always during generation<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Only in PB-S configurations with individual PB modules.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Adaption of the files EcuM_Init_Cfg.h and EcuM_Init_Cfg.c. The adaption of these files is okay&#160;<br/>because&#160;these are template files.<br/>
+Adapt the EcuM_Init_Cfg.h as follows:<br/>...<br/>extern CONST(EcuM_GlobalConfigRootType, ECUM_CONST) EcuM_GlobalConfigRoot;&#160;<br/>...<br/>
+Adapt the EcuM_Init_Cfg.c as follows:<br/>....<br/>CONST(EcuM_GlobalConfigRootType, ECUM_CONST) EcuM_GlobalConfigRoot =<br/>{<br/>&lt;CONTENT&gt;<br/>};<br/>....<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+51<br/>
+<hr/>
+<a name=52></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-52_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090803</b><br/>
+<b>Windows states that the OS generator does not&#160;<br/>work&#160;anymore</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Generator<br/>
+<i><b>First affected version:</b></i><br/>
+6.16.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Windows states that the OS generator does not work anymore<br/>- no output is generated<br/>- no error message will be displayed<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>When working with Autosar XML configurations<br/>This issue cannot occur when working with OIL files<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>If the short name of the choice container &#34;OsIsrUseSpecialFunctionName&#34; is changed (and not&#160;<br/>longer&#160;&#34;OsIsrUseSpecialFunctionName&#34;).<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The choice container must be named &#34;OsIsrUseSpecialFunctionName&#34;<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+52<br/>
+<hr/>
+<a name=53></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-53_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090998</b><br/>
+<b>Configuration tool reports Rte90005 exception&#160;<br/>because&#160;of java.lang.IllegalArgumentException</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Asr4@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+4.08.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The configuration tool reports Rte90005 - Generator (MICROSAR RTE Generator) failure, because&#160;<br/>of&#160;an exception&#160;<br/>- Exception in Rte generator during Generation encountered: java.lang.IllegalArgumentException<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>This happen during generation phase.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This can happen sometimes in configurations that contain RTE errors found in calculation or&#160;<br/>validation&#160;phase.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Solving the reported RTE errors messages.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+53<br/>
+<hr/>
+<a name=54></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-54_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091041</b><br/>
+<b>Compiler error: syntax error : identifier&#160;<br/>'Dem_Cfg_StorageConditionStateIterType'</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Asr4Dem@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+9.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>If no DemStorageConditionGroup are used;<br/>Compiler errors in Dem_Lcfg.h due to missing / undefined type:<br/>syntax error : identifier 'Dem_Cfg_StorageConditionStateIterType'<br/>syntax error : ';'&#160;<br/>
+If Storage condition groups are configured, but none are used:<br/>Compiler errors in Dem.c:<br/>error C2065: 'DEM_CFG_NO_STORAGECONDITIONGROUPTABLEIDXOFEVENTTABLE' : undeclared&#160;<br/>identifier<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>DemStorageConditionSupport == True<br/>AND<br/>Some DemStorageCondition containers are configured<br/>AND<br/>No DemEventParameter/DemEventClass/DemStorageConditionGroupRef are used, so eventually&#160;<br/>the&#160;storage condition support is unused.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Set DemStorageConditionSupport == False<br/>
+OR<br/>
+Create at least one DemStorageConditionGroup<br/>AND Reference at least one DemStorageCondition in that DemStorageConditionGroup<br/>AND Reference at least one DemStorageConditionGroup in a DemEventParameter/DemEventClass/<br/>DemStorageConditionGroupRef<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+54<br/>
+<hr/>
+<a name=55></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-55_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091118</b><br/>
+<b>EcuM causes a Rte Det error (RTE_E_DET_UNINIT)&#160;<br/>in&#160;the shutdown sequence while the Nvm write all&#160;<br/>is&#160;performed</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4EcuM@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>The Rte throws a Det error with the ID RTE_E_DET_UNINIT during the shutdown sequence.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always during the NvM_WriteAll() is performed.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Only in configurations with all the following parameters are set to true:<br/>
+/ActiveEcuC/EcuM/EcuMGeneral/EcuMEnableFixBehavior<br/>/ActiveEcuC/EcuM/EcuMFixedGeneral/EcuMModeSwitchRteAck<br/>/ActiveEcuC/EcuM/EcuMFixedGeneral/EcuMIncludeNvramMgr<br/>/ActiveEcuC/Rte/RteGeneration/RteDevErrorDetect<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The only workaround is to filter this DET message.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+55<br/>
+<hr/>
+<a name=56></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-56_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091136</b><br/>
+<b>Compiler error: 'Fls_Cancel' undefined; assuming&#160;<br/>extern&#160;returning int</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+If_AsrIfFee@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler issues the following error:<br/>
+1&gt; Fee_Processing.c<br/>1&gt;..\..\..\..\external\BSW\Fee\Fee_Processing.c(1818): error C4013: 'Fls_Cancel' undefined;&#160;<br/>assuming&#160;extern returning int<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens in all configurations where Fee is used with FLS Driver and 'Fls_Cancel' API is&#160;<br/>disabled&#160;in FLS.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Enable 'Fls_Cancel' API in FLS Driver.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+56<br/>
+<hr/>
+<a name=57></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-57_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091277</b><br/>
+<b>Compiler error: multiple variable declarations for&#160;<br/>data&#160;conversion in task</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Core@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.12.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+1.13.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>There are multiple data declarations of type&#160;<br/>&lt;dataType&gt; dataSig&lt;dataType&gt;;&#160;<br/>at the beginning of a task.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Implicit read or write accesses are configured for data elements mapped to the system signal with&#160;<br/>data&#160;conversion and the same base type. In addition, the data accesses have to be used by&#160;<br/>multiple&#160;runnables within the same task.<br/>&#160;<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available. Try to modify one of the conditions leading to the error.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+57<br/>
+<hr/>
+<a name=58></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-58_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091373</b><br/>
+<b>RTE01064 error in case a BSW module provides&#160;<br/>core&#160;service SWCs with mapped server runnables</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Asr4@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+4.09.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>RTE generation is incorrectly aborted with an RTE01064 error message.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During generation.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens when the configuration contains multiple service SWCs for the same BSW module.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Do not map the server runnable.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>ESCAN00091455</b><br/>
+<b>A RuntimeException &#34;unknown DataTapeRep&#160;<br/>enumeration&#34;&#160;for sint64 is thrown</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+6.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.03.01<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>A RuntimeException &#34;unknown DataTapeRep enumeration&#34; for sint64 is thrown at generation time.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always and immediately under specific circumstances. See in which configuration does this&#160;<br/>happen.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Any configuration using the EComStackDataTypeRep sint64.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+58<br/>
+<hr/>
+<a name=59></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-59_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091629</b><br/>
+<b>Use of uninitialized value in case no core with id 0&#160;<br/>exists</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Core@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>RTE generator aborts with use of uninitialized value.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During generation.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens when the configuration contains no OsApplication that is assigned to core 0.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Create an OsApplication an assign it to core 0.<br/>Add a task to the OsApplication.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+59<br/>
+<hr/>
+<a name=60></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-60_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091780</b><br/>
+<b>Compiler error: Pim variable name conflicts with&#160;<br/>parameter&#160;name of server runnable in RteAnalyzer&#160;<br/>stub</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Core@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.09.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>RteAnalyzer reports a compilation error.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The error is issued by the compiler during compilation of the code in case the configuration is as&#160;<br/>described&#160;below.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>This happens when the configuration contains a per instance memory with the same name as an&#160;<br/>argument&#160;for a client-/server operation.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Rename the per instance memory.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+60<br/>
+<hr/>
+<a name=61></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-61_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091872</b><br/>
+<b>RTE950005 when the configuration contains AR3&#160;<br/>modules</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Asr4@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+4.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+4.13.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>RTE generation aborts with a class cast exception.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>During generation.<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When the configuration contains BSWMD modules with AR3 schema.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Delete the MODULE-DESCRIPTION-REF for all AR3 modules in the BSWMD.<br/>Ignore the Cfg00028 A module configuration does not reference a bsw implementation messages<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>2.4 Not Released Functionality</b><br/>
+Not released functionalities are modules and features that have not yet passed a complete&#160;<br/>development&#160;cycle (they are e.g. not or only partly tested). For serial production projects the&#160;<br/>integrator&#160;has to ensure that all BETA features are disabled as indicated. If a ESCAN affects a&#160;<br/>complete&#160;BSW module, the module must not be used for serial production.<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400351s.html#62">ESCAN00084471</a><br/>
+BETA version - the BSW module has a feature with BETA state (FEAT-1093)<br/>Rte_Core@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#62">ESCAN00087538</a><br/>
+BETA version - the module is in BETA state<br/>Rte_Analyzer@Application<br/>
+<a href="IssueReport_CBD1400351s.html#63">ESCAN00090630</a><br/>
+BETA version - the BSW module has a feature with BETA state (FEAT-1810)<br/>Diag_Asr4Dem@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#63">ESCAN00091210</a><br/>
+BETA version - the BSW module has a feature with BETA state (FEAT-1726)<br/>Rte_Core@Implementation<br/>
+61<br/>
+<hr/>
+<a name=62></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-62_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00084471</b><br/>
+<b>BETA version - the BSW module has a feature with&#160;<br/>BETA&#160;state (FEAT-1093)</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Core@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.08.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What is the impact of BETA software:<br/>-------------------------------------------------------------------<br/>BETA software&#160;<br/>- must not be used in productive projects as they may result in unpredictable ECU behavior<br/>- may not provide all features intended for the productive project<br/>- is not or only partly tested and not all quality measures have taken place<br/>&#160;<br/>Which functionality is BETA:<br/>-------------------------------------------------------------------<br/>The following feature/function is in BETA state.&#160;<br/>- FEAT-1093: Support of different strategies for writing NV data in Nv Block SWCs<br/>
+To ensure that only productive code is used verify that:<br/>- no cyclic or on data reception triggered runnables in a Nv Block SWC are used<br/>
+&#160;<br/><i><b>Resolution Description:</b></i><br/>
+<b>ESCAN00087538</b><br/>
+<b>BETA version - the module is in BETA state</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Analyzer@Application<br/>
+<i><b>First affected version:</b></i><br/>
+0.05.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What is the impact of BETA software:<br/>-------------------------------------------------------------------<br/>BETA software&#160;<br/>- must not be used in productive projects as they may result in unpredictable ECU behavior<br/>- may not provide all features intended for the productive project<br/>- is not or only partly tested and not all quality measures have taken place<br/>&#160;<br/>Which functionality is BETA:<br/>-------------------------------------------------------------------<br/>The complete module is in BETA state<br/>
+&#160;<br/><i><b>Resolution Description:</b></i><br/>
+62<br/>
+<hr/>
+<a name=63></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-63_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00090630</b><br/>
+<b>BETA version - the BSW module has a feature with&#160;<br/>BETA&#160;state (FEAT-1810)</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Asr4Dem@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+12.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What is the impact of BETA software:<br/>-------------------------------------------------------------------<br/>BETA software&#160;<br/>- must not be used in productive projects as they may result in unpredictable ECU behavior<br/>- may not provide all features intended for the productive project<br/>- is not or only partly tested and not all quality measures have taken place<br/>&#160;<br/>Which functionality is BETA:<br/>-------------------------------------------------------------------<br/>The following feature/function is in BETA state.&#160;<br/>- Adapt DCM and DEM to FCA Requirements<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.&#160;<br/>
+<b>ESCAN00091210</b><br/>
+<b>BETA version - the BSW module has a feature with&#160;<br/>BETA&#160;state (FEAT-1726)</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Core@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.12.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What is the impact of BETA software:<br/>-------------------------------------------------------------------<br/>BETA software&#160;<br/>- must not be used in productive projects as they may result in unpredictable ECU behavior<br/>- may not provide all features intended for the productive project<br/>- is not or only partly tested and not all quality measures have taken place<br/>&#160;<br/>Which functionality is BETA:<br/>-------------------------------------------------------------------<br/>The following feature/function is in BETA state.&#160;<br/>- This feature allows connection between Nv ports and S/R ports&#160;<br/>
+To ensure that only productive code is used verify that:<br/>- no Nv port is connected with a S/R port<br/>
+&#160;<br/><i><b>Resolution Description:</b></i><br/>
+63<br/>
+<hr/>
+<a name=64></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-64_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>2.5 Compiler Warnings&#160;</b><br/>
+As a service we also provide the known compiler warnings. The occurrence of a compiler warning&#160;<br/>may&#160;depend on the used basic software configuration and compiler settings.<br/>
+<b>Index</b><br/>
+<a href="IssueReport_CBD1400351s.html#65">ESCAN00067159</a><br/>
+Compiler warning: cast truncates constant value<br/>MemService_AsrNvM@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#66">ESCAN00074793</a><br/>
+Compiler warning: Condition is always constant<br/>Diag_Asr4Dem@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#67">ESCAN00081825</a><br/>
+Compiler warning: non-portable OS code compiled with --asm_warnings<br/>Os_PlatformRh850Gen6@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#68">ESCAN00087501</a><br/>
+Compiler warning: &#34;signed/unsigned mismatch&#34; due to missing cast in 0:N or&#160;<br/>1:N&#160;indirections<br/>CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#69">ESCAN00088061</a><br/>
+BswM_Lcfg.c: warning: 'function' : conversion from 'const&#160;<br/>BswM_ImmediateUserStartIdxOfModeReqeustMappingType'&#160;to&#160;<br/>'BswM_SizeOfImmediateUserType',&#160;possible loss of data<br/>SysService_Asr4BswMCfg5@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#70">ESCAN00088362</a><br/>
+Compiler warning: &#34;cast truncates constant value&#34; with signed data<br/>CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<a href="IssueReport_CBD1400351s.html#71">ESCAN00089832</a><br/>
+Compiler warning: GHS internal MISRA checker finds violations<br/>Os_CoreGen6@Implementation<br/>
+<a href="IssueReport_CBD1400351s.html#72">ESCAN00091367</a><br/>
+Compiler warning: unreferenced local variable for data conversion in task<br/>Rte_Core@Implementation<br/>
+64<br/>
+<hr/>
+<a name=65></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-65_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00067159</b><br/>
+<b>Compiler warning: cast truncates constant value</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+MemService_AsrNvM@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+3.08.01<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>
+&gt;..\..\bsw\nvm\nvm_crc.c(229) : warning C4310: cast truncates constant value<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>CANoeEmu + VS2008<br/>It depends on definition of uint16_least: Warning occures only if uint16_least is not of type int.<br/>
+&#160;<br/>Hint:<br/>-------------------------------------------------------------------<br/>The compiler warning is known and has been analyzed thoroughly for its impact on the code.&#160;<br/>Nevertheless&#160;it will not be fixed, because the cast confirms and enforces this behavior (i.e. the&#160;<br/>value&#160;SHALL be truncated, if necessary).<br/>Additionally: Why uint16_least is not (unsigned) int? -&gt; this data type fulfills all requirements on&#160;<br/>a&#160;16 bit unsigned value...<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround necessary.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+65<br/>
+<hr/>
+<a name=66></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-66_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00074793</b><br/>
+<b>Compiler warning: Condition is always constant</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Diag_Asr4Dem@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+4.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warning 'Condition is always constant'<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Configurations without DTCs<br/>AND<br/>Precompile configuration<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>The warning can be ignored<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+66<br/>
+<hr/>
+<a name=67></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-67_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00081825</b><br/>
+<b>Compiler warning: non-portable OS code compiled&#160;<br/>with&#160;--asm_warnings</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_PlatformRh850Gen6@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>When compiling the OS files, the compiler issues several warnings when compiling with the option&#160;<br/>--asm_warnings.<br/>The warning is: &#34;warning #1546-D: asm constructs are non-portable&#34;<br/>
+Those warnings can safely be ignored. The OS has non portable code inside and in case of inline&#160;<br/>assembly&#160;the compiler issues warnings if used with --asm_warnings<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>the warnings will be issued when compiling the OS with the compiler option --asm_warnings.<br/>&#160;<br/>Hint:<br/>-------------------------------------------------------------------<br/>The compiler warning is known and has been analyzed thoroughly for its impact on the code.&#160;<br/>Nevertheless&#160;it will not be fixed as the OS is non-portable.<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>It is possible to compile the OS without this option and to compile all other sources / modules&#160;<br/>with&#160;this option.<br/>If OS is compiled with this option, then it is safe to ignore the issued warnings.<br/>
+67<br/>
+<hr/>
+<a name=68></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-68_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00087501</b><br/>
+<b>Compiler warning: &#34;signed/unsigned mismatch&#34;&#160;<br/>due&#160;to missing cast in 0:N or 1:N indirections</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.01.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>&#34;Signed/unsigned mismatch&#34; compiler warning due to missing cast for the subtracted indirection&#160;<br/>length.&#160;<br/>The length macro of a 0:N or 1:N indirection calculates the length through endIndex - startIndex.<br/>This subtraction can be interpreted by the compiler as a signed value without a explicit unsigned&#160;<br/>cast.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>any configuration using 0:N or 1:N Indirections with the length member<br/>AND<br/>the indirection configuration class is PRE-COMPILE<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>Perform a cast in your embedded code.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+68<br/>
+<hr/>
+<a name=69></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-69_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00088061</b><br/>
+<b>BswM_Lcfg.c: warning: 'function' : conversion from&#160;<br/>'const&#160;<br/>BswM_ImmediateUserStartIdxOfModeReqeustMappingType'&#160;<br/>to 'BswM_SizeOfImmediateUserType', possible loss&#160;<br/>of&#160;data</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+SysService_Asr4BswMCfg5@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+7.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>BswM_Lcfg.c: warning: 'function' : conversion from 'const&#160;<br/>BswM_ImmediateUserStartIdxOfModeReqeustMappingType'&#160;to 'BswM_SizeOfImmediateUserType',&#160;<br/>possible&#160;loss of data<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>All<br/>&#160;<br/><i><b>Resolution Description:</b></i><br/>
+69<br/>
+<hr/>
+<a name=70></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-70_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00088362</b><br/>
+<b>Compiler warning: &#34;cast truncates constant value&#34;&#160;<br/>with&#160;signed data</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+CommonAsr_ComStackLib@GenTool_GeneratorMsr<br/>
+<i><b>First affected version:</b></i><br/>
+1.00.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+8.01.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>Compiler warns for &#34;cast truncates constant value&#34; due to cast of subtracted signed data.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>your component generator generates signed data in the configuration class precompile<br/>AND<br/>your component generator implementation returns in isReduceConstantData2Define() true<br/>AND<br/>your component generator implementation returns in getDataDeduplicationStrategy() !=&#160;<br/>EDataDeduplicationStrategy.NONE<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>If the values for isReduceConstantData2Define() and getDataDeduplicationStrategy() are user&#160;<br/>configurable,&#160;you have a workaround else not.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+70<br/>
+<hr/>
+<a name=71></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-71_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00089832</b><br/>
+<b>Compiler warning: GHS internal MISRA checker&#160;<br/>finds&#160;violations</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Os_CoreGen6@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+5.28.80<br/>
+<i><b>Fixed in versions:</b></i><br/>
+6.20.07<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>MISRA 2004 Rule 10.5: bitwise ~ or &lt;&lt; expression must be immediately cast back to underlying&#160;<br/>type,&#160;&#34;unsigned char&#34;<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>Always<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>Configuration independent<br/>&#160;<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available. However, the code works properly and the compiler warnings can&#160;<br/>simply&#160;be ignored.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+71<br/>
+<hr/>
+<a name=72></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-72_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>ESCAN00091367</b><br/>
+<b>Compiler warning: unreferenced local variable for&#160;<br/>data&#160;conversion in task</b><br/>
+<i><b>Component@Subcomponent:</b></i><br/>
+Rte_Core@Implementation<br/>
+<i><b>First affected version:</b></i><br/>
+1.12.00<br/>
+<i><b>Fixed in versions:</b></i><br/>
+1.13.00<br/>
+<i><b>Problem Description:<br/></b></i>What happens (symptoms):<br/>-------------------------------------------------------------------<br/>There are unnecessary data declarations of type&#160;<br/>&lt;dataType&gt; dataSig&lt;dataType&gt;;&#160;<br/>at the beginning of a task.<br/>
+When does this happen:<br/>-------------------------------------------------------------------<br/>The warning is issued by the compiler during compilation of the code in case the configuration is&#160;<br/>as&#160;described below.&#160;<br/>
+In which configuration does this happen:<br/>-------------------------------------------------------------------<br/>When all of the following conditions are fulfilled:<br/>- an P-Port is connected to an internal R-Port and an external P-Port<br/>- the data element of the external P-Port is mapped to a system signal with data conversion<br/>- an implicit read accesses is configured for the R-Port<br/>- a write access is configured for the internal P-Port and it is either not implicit or not mapped to&#160;<br/>the&#160;same task<br/>- there are no other implicit accesses using data conversion with the same basetype in the task on&#160;<br/>which&#160;the runnable with the implicit read access is mapped<br/>&#160;<br/><i><b>Resolution Description:<br/></b></i>Workaround:<br/>-------------------------------------------------------------------<br/>No workaround available. Try to modify one of the conditions leading to this warning.<br/>
+Resolution:<br/>-------------------------------------------------------------------<br/>The described issue is corrected by modification of all affected work-products.<br/>
+&#160;<br/>
+72<br/>
+<hr/>
+<a name=73></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-73_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>3. New Issues for Information</b><br/>
+Issues which should not have an effect on the usage of the license as the issues are relevant for&#160;<br/>use&#160;cases other than those defined in the questionnaire. The list contains issues that have been&#160;<br/>detected&#160;since the last report.<br/>
+Issues listed in this section are not relevant for the use case that has been documented in the&#160;<br/>questionnaire&#160;provided to Vector. However, the issues may be relevant for other use cases. &#160;Also&#160;<br/>issues&#160;that have been accepted or are tolerated by the OEM (as defined in the questionnaire) are&#160;<br/>reported&#160;here.&#160;<br/>
+No issue to be reported.<br/>
+73<br/>
+<hr/>
+<a name=74></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-74_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-74_2.png"/><br/>
+<b>Issue Report</b><br/>
+<b>4. Report Legend</b><br/>
+74<br/>
+<hr/>
+<a name=75></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/DeliveryInformation/IssueReport_CBD1400351-75_1.png"/><br/>
+<b>Issue Report</b><br/>
+<b>5. Quality Management Contact</b><br/>
+Quality Management&#160;<br/>Productline Embedded Software (PES) &#160;<br/>&#160;<br/>Vector Informatik GmbH &#160;<br/>Ingersheimer Str. 24 &#160;<br/>D-70499 Stuttgart &#160;<br/>&#160;<br/>Phone: +49 711 80670-3700<br/>Fax: +49 711 80670-399 &#160;<br/>eMail: QualityPES@vector.com<br/>
+75<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="IssueReport_CBD1400351s.html#5">ESCAN00087476 (Possible data loss due to aborted Flash write access)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#8">ESCAN00091216 (Fee_ForceSectorSwitch may do more work than expected)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#9">ESCAN00091357 (EcuM detects the wrong Wakeup Source during startup as the reset reason)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#11">ESCAN00061207 (DaVinci Configurator 5: Issue Reporting Procedure)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#12">ESCAN00088171 (FEINT exception during ShutdownOS leads to memory violation)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#13">ESCAN00089164 (The EcuM stays in RUN state even if EcuM_KillAllRunRequests has been called)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#15">ESCAN00090356 (Generator does not generate all Wakeup Sources defines to EcuM_Generated_Types.h)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#16">ESCAN00091112 (Variant Driver Init Lists are called for every Core, even for Slave Cores)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#17">ESCAN00091305 (EcuM with fixed state machine causes a Det error in Dem_Init because this module has been initialized two times)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#18">ESCAN00091611 (Wrong negative response code for ControlDTCSetting)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#19">ESCAN00091755 (PID $01: OBD relevant montioring functions are always completed)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#20">ESCAN00091756 (Random modification of memory)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#23">ESCAN00070350 (Fee does not report FEE_CRITICAL_LEVEL to user-defined Error Callback)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#24">ESCAN00070637 (Defines for DEM events not generated. This leads to multiple linker errors.)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#25">ESCAN00072881 ('Port Access' references the wrong destination)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#26">ESCAN00075523 (NVM's requests to FEE are rejected)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#27">ESCAN00075933 (Generator crashes when parsing an OIL file with an include directive with nonexistent absolute path)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#28">ESCAN00076481 (Debugger refuses to read ORTI file)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#29">ESCAN00079399 (Linker error: &#160;'&amp;lt;Cdd&amp;gt;_Transmit' : undeclared identifier)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#30">ESCAN00079977 (TechnicalReference does not help to solve installation problem)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#31">ESCAN00080172 (Compiler error: missing API SyncScheduleTable, StartScheduleTableSynchron and/or SetScheduleTableAsync)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#32">ESCAN00080731 (Fee_ForceSectorSwitch might do nothing)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#33">ESCAN00080742 (OSTICKDURATION not defined)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#34">ESCAN00082482 (Compiler error: Double definition of osTaskStack...)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#35">ESCAN00084633 (Error message &#34;FEE90500&#34; during generation of FEE)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#36">ESCAN00084863 (API names of 3rd-party Wdg drivers may not be recognized correctly)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#38">ESCAN00085447 (generator exits unsuccessfully with no error message (on empty peripheral region identifier))</a></li>
+<li><a href="IssueReport_CBD1400351s.html#39">ESCAN00085663 (Unexpected Windows Error Message in case of wrongly configured Linked Resource)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#40">ESCAN00085897 (Generator warning: Calculation of time macro is inaccurate.)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#41">ESCAN00086270 (Generator does not allow usage of multiple hardware timer types)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#41">ESCAN00086809 (Generator Output differs on different PCs)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#42">ESCAN00087912 (Compiler error: Double definition of CC)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#43">ESCAN00087932 (ConsistencyRT00002 reports IllegalStateException: Optional.get() cannot be called on an absent value)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#44">ESCAN00088524 (Compiler error: Undeclared identifier in the initialization structure)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#45">ESCAN00088979 (Activation of an auto started task is not performed)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#46">ESCAN00089176 (mssv does not resolve all symbols for checking)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#47">ESCAN00089766 (CDD90025: Error at validator runtime)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#48">ESCAN00089834 (Generator expects a configuration which is not AUTOSAR conform)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#49">ESCAN00089910 (Windows states that the OS generator does not work anymore)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#50">ESCAN00090715 (Compiler error: BswM_Lcfg.c: '&amp;lt;Symbol&amp;gt;' undefined in case of individual PostBuild process)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#51">ESCAN00090724 (Global Configuration Data is created as Array but should be a structure)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#52">ESCAN00090803 (Windows states that the OS generator does not work anymore)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#53">ESCAN00090998 (Configuration tool reports Rte90005 exception because of java.lang.IllegalArgumentException)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#54">ESCAN00091041 (Compiler error: syntax error : identifier 'Dem_Cfg_StorageConditionStateIterType')</a></li>
+<li><a href="IssueReport_CBD1400351s.html#55">ESCAN00091118 (EcuM causes a Rte Det error (RTE_E_DET_UNINIT) in the shutdown sequence while the Nvm write all is performed)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#56">ESCAN00091136 (Compiler error: 'Fls_Cancel' undefined; assuming extern returning int)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#57">ESCAN00091277 (Compiler error: multiple variable declarations for data conversion in task)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#58">ESCAN00091373 (RTE01064 error in case a BSW module provides core service SWCs with mapped server runnables)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#58">ESCAN00091455 (A RuntimeException &#34;unknown DataTapeRep enumeration&#34; for sint64 is thrown)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#59">ESCAN00091629 (Use of uninitialized value in case no core with id 0 exists)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#60">ESCAN00091780 (Compiler error: Pim variable name conflicts with parameter name of server runnable in RteAnalyzer stub)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#61">ESCAN00091872 (RTE950005 when the configuration contains AR3 modules)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#62">ESCAN00084471 (BETA version - the BSW module has a feature with BETA state (FEAT-1093))</a></li>
+<li><a href="IssueReport_CBD1400351s.html#62">ESCAN00087538 (BETA version - the module is in BETA state)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#63">ESCAN00090630 (BETA version - the BSW module has a feature with BETA state (FEAT-1810))</a></li>
+<li><a href="IssueReport_CBD1400351s.html#63">ESCAN00091210 (BETA version - the BSW module has a feature with BETA state (FEAT-1726))</a></li>
+<li><a href="IssueReport_CBD1400351s.html#65">ESCAN00067159 (Compiler warning: cast truncates constant value)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#66">ESCAN00074793 (Compiler warning: Condition is always constant)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#67">ESCAN00081825 (Compiler warning: non-portable OS code compiled with --asm_warnings)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#68">ESCAN00087501 (Compiler warning: &#34;signed/unsigned mismatch&#34; due to missing cast in 0:N or 1:N indirections)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#69">ESCAN00088061 (BswM_Lcfg.c: warning: 'function' : conversion from 'const BswM_ImmediateUserStartIdxOfModeReqeustMappingType' to 'BswM_SizeOfImmediateUserType', possible loss of data)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#70">ESCAN00088362 (Compiler warning: &#34;cast truncates constant value&#34; with signed data)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#71">ESCAN00089832 (Compiler warning: GHS internal MISRA checker finds violations)</a></li>
+<li><a href="IssueReport_CBD1400351s.html#72">ESCAN00091367 (Compiler warning: unreferenced local variable for data conversion in task)</a></li>
+</ul>
+<hr/>
+</body>
+</html>

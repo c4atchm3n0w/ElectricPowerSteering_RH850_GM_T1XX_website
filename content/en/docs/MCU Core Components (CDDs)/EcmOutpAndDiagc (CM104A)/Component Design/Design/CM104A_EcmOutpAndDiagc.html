@@ -1,0 +1,778 @@
+---
+title: CM104A_EcmOutpAndDiagc
+linkTitle: CM104A_EcmOutpAndDiagc
+weight: 2
+---
+
+<p><strong>Error Control Module Output</strong></p>
+<p><strong>And</strong></p>
+<p><strong>Diagnostics</strong></p>
+<p><strong>CM104A</strong></p>
+<p><a href="#high-level-description">1. High Level Description 3</a></p>
+<p><a href="#sub-function-in-this-document">2. Sub-Function In This Document 3</a></p>
+<p><a href="#sub-functions">3. Sub-functions 4</a></p>
+<p><a href="#sub-function-errorout-generation">3.1. Sub-Function: ErrorOut Generation 4</a></p>
+<p><a href="#ntcs">3.1.1. NTCs 4</a></p>
+<p><a href="#san-linkage">3.1.2. SAN Linkage 4</a></p>
+<p><a href="#description">3.1.3. Description 4</a></p>
+<p><a href="#rationale">3.1.4. Rationale 6</a></p>
+<p><a href="#implementation">3.1.5. Implementation 6</a></p>
+<p><a href="#verification-method">3.1.6. Verification Method 8</a></p>
+<p><a href="#sub-function-ecm-startup-masterchecker-nerror-output-control-fault">3.2. Sub-Function: ECM Startup Master/Checker nERROR Output Control Fault 8</a></p>
+<p><a href="#ntcs-1">3.2.1. NTCs 8</a></p>
+<p><a href="#san-linkage-1">3.2.2. SAN Linkage 8</a></p>
+<p><a href="#description-1">3.2.3. Description 9</a></p>
+<p><a href="#rationale-1">3.2.4. Rationale 9</a></p>
+<p><a href="#implementation-1">3.2.5. Implementation 9</a></p>
+<p><a href="#verification-method-1">3.2.6. Verification Method 11</a></p>
+<p><a href="#sub-function-ei-interrupt-startup-test">3.3. Sub-Function: EI Interrupt StartUp Test 11</a></p>
+<p><a href="#ntcs-2">3.3.1. NTCs 11</a></p>
+<p><a href="#san-linkage-2">3.3.2. SAN Linkage 11</a></p>
+<p><a href="#description-2">3.3.3. Description 12</a></p>
+<p><a href="#rationale-2">3.3.4. Rationale 17</a></p>
+<p><a href="#implementation-2">3.3.5. Implementation 17</a></p>
+<p><a href="#verification-method-2">3.3.6. Verification Method 19</a></p>
+<p><a href="#sub-function-pseudo-error-injection-startup-test">3.4. Sub-Function: Pseudo Error Injection StartUp Test 19</a></p>
+<p><a href="#ntcs-3">3.4.1. NTCs 19</a></p>
+<p><a href="#san-linkage-3">3.4.2. SAN Linkage 19</a></p>
+<p><a href="#description-3">3.4.3. Description 19</a></p>
+<p><a href="#rationale-3">3.4.4. Rationale 20</a></p>
+<p><a href="#implementation-3">3.4.5. Implementation 20</a></p>
+<p><a href="#verification-method-3">3.4.6. Verification Method 23</a></p>
+<p><a href="#revision-record-change-approval">4. Revision Record &amp; Change Approval 24</a></p>
+<h1 id="high-level-description">High Level Description</h1>
+<p>The ECM incorporates the ECM master/checker error source status register, which can be used to confirm the error status from the error flag. The error flags are only cleared by the ECM error source status clear trigger register, POCRES, CVMRES, or DBRES. In case of other reset sources, the error flags are kept and the reset generation source can be confirmed by reading the ECM master/checker error source status register after reset.</p>
+<p>Pseudo errors can be generated for debug and self-diagnosis. The operation during injection of pseudo errors is identical to that for the occurrence of real errors. All configurations for masking of the ERROROUT output, interrupts, and internal resets (ECMRES) apply in the same way.</p>
+<p>The ECM incorporates a loop-back function of the ERROROUT output that is used to diagnose the path to the ERROROUT pin. The status of the ERROROUT pin is reflected to an internal register and can be confirmed by reading the register.</p>
+<p>Each of the errors associated with ECM are configured to be an EI level Interrupt or FE level Interrupt or they could be configured to cause an Internal Reset or they could pull the ErrorOut Pin to Low.</p>
+<p>This are listed in the excel sheet below:</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.wmf" /></p>
+<h1 id="sub-function-in-this-document">Sub-Function In This Document</h1>
+<p>Below is a linked list of all sub-functions owned by this document.</p>
+<table>
+<colgroup>
+<col style="width: 73%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sub-Function Name</strong></td>
+<td><strong>Link</strong></td>
+</tr>
+<tr class="even">
+<td>ERROROUT Generation</td>
+<td><a href="#sub-function-errorout-generation">3.1</a></td>
+</tr>
+<tr class="odd">
+<td>ECM Startup Master/Checker nERROR Output Control Fault</td>
+<td><a href="#sub-function-ecm-startup-masterchecker-nerror-output-control-fault">3.2</a></td>
+</tr>
+<tr class="even">
+<td>EI Interrupt StartUp Test</td>
+<td>3.3</td>
+</tr>
+<tr class="odd">
+<td>Pseudo Error Injection StartUp Test</td>
+<td>3.4</td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="section"></h1>
+<h1 id="sub-functions">Sub-functions</h1>
+<h2 id="sub-function-errorout-generation">Sub-Function: ErrorOut Generation</h2>
+<p>Return to sub-function list link: Sub-Function In This Document</p>
+<h3 id="ntcs">NTCs</h3>
+<p>N/A</p>
+<h3 id="san-linkage">SAN Linkage</h3>
+<p>N/A</p>
+<h3 id="description">Description</h3>
+<p>This sub-function describes how to drive the ERROROUT pin high or low manually.</p>
+<p>When the MCU is out of reset, the ERROROUT output signal will be asserted low and remain low even if no ECM error sources are active. Software must “manually” set the ERROROUT output to inactive high state at system initialization. This design assumes that the above mentioned functionality is done in the MCU driver MCU_Init () function.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.jpeg" style="width:5.75208in;height:3.76181in" /></p>
+<p>Register Info:</p>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 44%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2">Register</td>
+<td rowspan="2">Use</td>
+<td colspan="2">Register Access</td>
+</tr>
+<tr class="even">
+<td>SV</td>
+<td>UM</td>
+</tr>
+<tr class="odd">
+<td>ECMEMK0 (ECM Error Mask Register 0)</td>
+<td>Used to mask the individual error sources of the ERROROUT output.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMIRCFG0 (ECM Internal Reset Configuration Register 0)</td>
+<td>Used to set the generation of internal resets (ECMRES) in response to internal errors.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMMICFG0 (ECM EI Level Interrupt Configuration Register 0)</td>
+<td>Used to set the generation of the EI level interrupts.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMNMICFG0 (ECM FE Level Interrupt Configuration Register 0)</td>
+<td>Used to set the generation of FE level interrupts.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMESSTC0 (ECM Error Source Status Clear Trigger Register 0)</td>
+<td>Used to clear the individual error source status of the ECM master/checker error source status register 0.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMESSTC1 (ECM Error Source Status Clear Trigger Register 1)</td>
+<td>Used to clear the individual error source status of the ECM master/checker error source status register 1.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMMESET (ECM Master Error Set Trigger Register)</td>
+<td>Used for selecting output of the error signal from the ERROROUT pin. When the ECMMEST bit is set to 1, the ERROROUT pin immediately outputs the error signal.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMCESET (ECM Checker Error Set Trigger Register)</td>
+<td>Used for selecting output of the error signal from the ERROROUT pin. When the ECMCEST bit is set to 1, the ERROROUT pin immediately outputs the error signal.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMMECLR (ECM Master Error Clear Trigger Register)</td>
+<td>Used for setting the error signal from the ERROROUT pin to the inactive level (high level).</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMCECLR (ECM Checker Error Clear Trigger Register)</td>
+<td>Used for setting the error signal from the ERROROUT pin to the inactive level (high level).</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rationale">Rationale</h3>
+<p>Clearing of the ERROROUT output is only possible if all errors not masked by ECMEMK0/1, and the ECMmSSE130 bit in the ECMmESSTR1 register are cleared beforehand.</p>
+<p>Clearing or setting the ERROROUT output via the ECMmECLR and ECMmESET register will set the ECMmSSE029 bit of the ECMmESSTR0 register (ECM compare error) irrelevant to the setting of the error mask and hence has to be cleared.</p>
+<p>If ERROROUT mask is OFF and error is generated, ERROROUT goes low.  If error status flag is cleared ERROROUT still remains low. ERROROUT has to be manual driven to high state again.</p>
+<p>The Master AND the Checker Error Set Trigger registers have to set their ECMmECT bit in order to set the ErrorOut Pin High.</p>
+<p>The Master OR the Checker OR Both the Error Clear Trigger registers have to set their ECMmECT bit in order to set the ErrorOut Pin Low.</p>
+<p><u>Function Arguments:</u></p>
+<blockquote>
+<p>PinSt:</p>
+<p>1: STD_HIGH (ErrorOut = 1)</p>
+<p>0: STD_LOW (ErrorOut = 0)</p>
+<p>TrigReg:</p>
+<p>0x55: TrigReg1.TRIGREG_MST</p>
+<p>0xAA: TrigReg1.TRIGREG_CHKR</p>
+<p>0xFF: TrigReg1.TRIGREG_MSTANDCHKR</p>
+</blockquote>
+<p><u>Register Content Modification:</u></p>
+<p>This function is assumed to be called only once in cold init by this function and at a 2ms periodic rate in warm init state by the Temporal monitor function (ES005A). The design therefore doesn’t include protection for something interrupting this sub-function. It is possible that the code could execute with ECM Compare Error Notification and Interrupts turned Off in Warm Init during Temporal Monitor testing.</p>
+<p>If these registers are tested during run-time for their correct value, it must be ensured that the test cannot interrupt this function.</p>
+<h3 id="implementation">Implementation</h3>
+<h4 id="initialization">Initialization</h4>
+<p>N/A</p>
+<h4 id="event-driven-ctrlerrout">Event Driven (CtrlErrOut)</h4>
+<p><u>Pseudo Code:</u></p>
+<p>CtrlErrOut (PinSt, TrigReg)</p>
+<p>{</p>
+<p>// Save contents of ECMEMK0, EMCIRCFG0, ECMMICFG0 and ECMNMICFG0 to a temp</p>
+<p>// variable in RAM</p>
+<blockquote>
+<p>ECMEMK0_Temp = ECMEMK0;</p>
+<p>ECMMICFG0_Temp = ECMMICFG0;</p>
+<p>ECMNMICFG0_Temp = ECMNMICFG0;</p>
+<p>ECMIRCFG0_Temp = ECMIRCFG0;</p>
+</blockquote>
+<p>// Set the bit 29 of the ECMEMK0 register to “masked”</p>
+<blockquote>
+<p>ECMEMK0_Desired = ECMEMK0 | 0x2000 0000;</p>
+<p>WrProtdRegEcm_u32 (ECMEMK0_Desired, Address of ECMEMK0);</p>
+</blockquote>
+<p>// Set the bit 29 of the ECMMICFG0 register to “prohibited”</p>
+<blockquote>
+<p>ECMMICFG0_Desired = ECMMICFG0 &amp; (~ (0x2000 0000));</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG0_Desired, Address of ECMMICFG0);</p>
+</blockquote>
+<p>// Set the bit 29 of the ECMNMICFG0 register to “prohibited”</p>
+<p>ECMNMICFG0_Desired = ECMNMICFG0 &amp; (~ (0x2000 0000));</p>
+<p>WrProtdRegEcm_u32 (ECMNMICFG0_Desired, Address of ECMNMICFG0);</p>
+<p>// Set the bit 29 of the ECMIRCFG0 register to “prohibited”</p>
+<blockquote>
+<p>ECMIRCFG0_Desired = ECMIRCFG0 &amp; (~ (0x2000 0000));</p>
+<p>WrProtdRegEcm_u32 (ECMIRCFG0_Desired, Address of ECMIRCFG0);</p>
+<p>If (PinSt == STD_LOW)</p>
+<p>{</p>
+<p>If (TrigReg = TrigReg1.TRIGREG_MST)</p>
+<p>{</p>
+<p>//Drive the ERROROUT pin to Low Level</p>
+<p>WrProtdRegEcmm_u08 (0x01, Address of ECMMESET);</p>
+<p>}</p>
+<p>ElseIf (TrigReg = TrigReg1.TRIGREG_CHKR)</p>
+<p>{</p>
+<p>//Drive the ERROROUT pin to Low Level</p>
+<p>WrProtdRegEcmc_u08 (0x01, Address of ECMCESET);</p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<p>//Drive the ERROROUT pin to Low Level</p>
+<p>WrProtdRegEcmm_u08 (0x01, Address of ECMMESET);</p>
+<p>WrProtdRegEcmc_u08 (0x01, Address of ECMCESET);</p>
+<p>}</p>
+</blockquote>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<blockquote>
+<p>// Clear error flags by setting the ECMCLSSE130 bit of the ECMESSTC1 register</p>
+<p>ECMESSTC1_Desired = ECMESSTC1 | 0x4000 0000;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC1_Desired, Address of ECMESSTC1);</p>
+<p>//Drive the ERROROUT pin to High Level</p>
+<p>WrProtdRegEcmm_u08 (0x01, Address of ECMMECLR);</p>
+<p>WrProtdRegEcmc_u08 (0x01, Address of ECMCECLR);</p>
+</blockquote>
+<p>}</p>
+<p>// Clear error flags by setting the ECMCLSSE029 bit of the ECMESSTC0 register</p>
+<p>ECMESSTC0_Desired = 0x2000 0000;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC0_Desired, Address of ECMESSTC0);</p>
+<p>// Restore the contents of the ECMEMK0, EMCIRCFG0, ECMMICFG0 and ECMNMICFG0</p>
+<p>// register</p>
+<p>WrProtdRegEcm_u32 (ECMEMK0_Temp, Address of ECMEMK0);</p>
+<blockquote>
+<p>WrProtdRegEcm_u32 (ECMMICFG0_Temp, Address of ECMMICFG0);</p>
+<p>WrProtdRegEcm_u32 (ECMNMICFG0_Temp, Address of ECMNMICFG0);</p>
+<p>WrProtdRegEcm_u32 (ECMIRCFG0_Temp, Address of ECMIRCFG0);</p>
+</blockquote>
+<p>}</p>
+<h4 id="periodic">Periodic</h4>
+<p>N/A</p>
+<h3 id="verification-method">Verification Method</h3>
+<p>N/A</p>
+<h2 id="sub-function-ecm-startup-masterchecker-nerror-output-control-fault">Sub-Function: ECM Startup Master/Checker nERROR Output Control Fault</h2>
+<p>Return to sub-function list link: Sub-Function In This Document</p>
+<h3 id="ntcs-1">NTCs</h3>
+<p>N/A</p>
+<h3 id="san-linkage-1">SAN Linkage</h3>
+<p><strong>SAN 640:</strong></p>
+<p>The error status registers ECMmESSTR0/1 <strong>shall</strong> be checked and cleared before executing any safety application.</p>
+<p>If there is a mismatch between ECM master and checker an ECM compare error will be set in the ECMmESSTR0/1 register. In that case, the safe state <strong>shall</strong> be entered.</p>
+<p><strong>[SAN-P1x-1605]</strong></p>
+<p>The delay timer <strong>shall</strong> not be used for response on CLMA errors</p>
+<p>The activation of "delay timer" within the ECM <strong>shall</strong> not be configured for the error sources related to CLMA because no proper counting is guaranteed due to clock failures.</p>
+<h3 id="description-1">Description</h3>
+<p>This sub-function is responsible for verifying that the ERROROUT output signal from the ECM is driven Low independently by the ECM Master and ECM Checker.</p>
+<p>Register Info:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 41%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2">Register</td>
+<td rowspan="2">Use</td>
+<td colspan="2">Register Access</td>
+</tr>
+<tr class="even">
+<td>SV</td>
+<td>UM</td>
+</tr>
+<tr class="odd">
+<td>ECMMESSTR1 (ECM Master Error Source Status Register 1)</td>
+<td>Indicates the state of individual internal error sources</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMCESSTR1 (ECM Checker Error Source Status Register 1)</td>
+<td>Indicates the state of individual internal error sources</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rationale-1">Rationale</h3>
+<p>This design assumes that the ERROROUT pin can be set ‘High’ by writing to both the register ECMMECLR and ECMCECLR. If any other error is causing the ErrorOut pin to go low in case of a fault, the pin will remain low despite trying to set it high through the ECMmECLR (m=M/C).</p>
+<p>This design assumes that the ERROROUT pin can be set Low by writing to either the register ECMMESET or ECMCESET.</p>
+<p>This test shall be executed only after ECM has been initialized and the ErrorOut Pin has been manually driven ‘High’. A check is made to see if the ErrorOut is pulled down to ‘Low’ due to any fault. In that scenario, we shall skip all the tests because it is evident that the ErrorOut Pin can be pulled Low because of a fault.</p>
+<p>ECM Start up fault is intended to cover the <strong>SAN 640.</strong></p>
+<h3 id="implementation-1">Implementation</h3>
+<h4 id="initialization-ecmoutpanddiagcinit1">Initialization (EcmOutpAndDiagcInit1)</h4>
+<p>Write the Pseudo code here:</p>
+<p>// Check if ECM Error Status Registers have all the Error Status Bits set as 0</p>
+<p>// ECMmESSTR1 Bit 31 is the loopback bit which is expected to be HIGH after Mcu_Init()</p>
+<p>ChkForStrtUpCnd (Address of ExecStrtUpTest)</p>
+<p>// If ERROROUT output is normal output AND this is a reset where we run start up test</p>
+<p>If ((ECMMSSE131 == 1 AND ECMCSSE131 == 1) AND (ExecStrtUpTest = TRUE))</p>
+<p>{</p>
+<p>// Set ERROROUT output Low by only changing the value in ECMMESET Master Register</p>
+<p>CtrlErrOut (STD_LOW, TrigReg1.TRIGREG_MST);</p>
+<p>If (ECMMSSE131 == 1 OR ECMCSSE131 == 1)</p>
+<p>{</p>
+<blockquote>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_MSTERROUTPCTRLFLT, ECMMESSTR1);</p>
+</blockquote>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<blockquote>
+<p>// Set ERROROUT output High by changing the value in ECMMESET (Master) Register</p>
+<p>CtrlErrOut (STD_HIGH, TrigReg1.TRIGREG_MST);</p>
+<p>If (ECMMSSE131 == 1 AND ECMCSSE131 == 1)</p>
+<p>{</p>
+<p>// Set ERROROUT output Low by only changing the value in ECMCESET Checker</p>
+<p>// Register</p>
+<p>CtrlErrOut (STD_LOW, TrigReg1.TRIGREG_CHKR);</p>
+<p>If (ECMMSSE131 == 1 OR ECMCSSE131 == 1)</p>
+<p>{</p>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_CHKRERROUTPCTRLFLT, ECMMESSTR1);</p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<p>// Set ERROROUT output High by changing the value in ECMCESET</p>
+<p>// (Checker) Register</p>
+<p>CtrlErrOut (STD_HIGH, TrigReg1.TRIGREG_CHKR);</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+<p>}</p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<p>// Do nothing because if there was a fault, it will be handled later in the application</p>
+<p>}</p>
+<h4 id="initialization-ecmoutpanddiagcinit2">Initialization (EcmOutpAndDiagcInit2)</h4>
+<p>This is an empty Initialization function that contains no logic.</p>
+<p>EcmOutpAndDiagcInit2 is an RTE function which is required for memory mapping PIM and Calibration definitions.</p>
+<h4 id="event-driven">Event Driven</h4>
+<p>N/A</p>
+<h4 id="periodic-1">Periodic</h4>
+<p>N/A</p>
+<h3 id="verification-method-1">Verification Method</h3>
+<p>N/A</p>
+<h2 id="sub-function-ei-interrupt-startup-test">Sub-Function: EI Interrupt StartUp Test</h2>
+<p>Return to sub-function list link: Sub-Function In This Document</p>
+<h3 id="ntcs-2">NTCs</h3>
+<p>N/A</p>
+<h3 id="san-linkage-2">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1604]</strong></p>
+<p>If the interrupt generation is configured in ECM as a response to an error notification, an interrupt test at start-up <strong>shall</strong> be executed.</p>
+<h3 id="description-2">Description</h3>
+<p>This sub-function is responsible for verifying that the interrupts generated are propagated from the ECM to the INTC1.</p>
+<p><u>Register Info:</u></p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 41%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2">Register</td>
+<td rowspan="2">Use</td>
+<td colspan="2">Register Access</td>
+</tr>
+<tr class="even">
+<td>SV</td>
+<td>UM</td>
+</tr>
+<tr class="odd">
+<td>ECMEPE1 (ECM Pseudo Error Trigger Register 1)</td>
+<td>The ECM pseudo error trigger register 1 is used to generate a pseudo error for test purposes.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>EIC8 (EI Level Interrupt Control Registers 8)</td>
+<td>These registers are used to set interrupt control conditions for each EI level interrupt source, and one register is provided for each source of this type.</td>
+<td>R/W</td>
+<td>Read Only</td>
+</tr>
+</tbody>
+</table>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.png" style="width:6.5125in;height:9.19028in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.png" style="width:6.69861in;height:7.84861in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.png" style="width:6.69861in;height:7.35833in" /></p>
+<h3 id="rationale-2">Rationale</h3>
+<p>ECM is directly connected to INTC1. This interrupt is from the type “synchronous edge detection” which means the flag will be automatically cleared when the CPU has acknowledged the request. Thus the SW will not be able to check the flag. Hence we disable all EI interrupt, inject error and monitor the pending interrupt flag. If the interrupt flag is set, we can confirm that interrupt has propagated to the INTC1.</p>
+<p>ECM110 is responsible of setting the FACI related fault. This fault happens only on a FACI reset transfer error. It is not possible that we would set this bit when this start up test is running. FACI Reset Transfer Error happens only when we come out of a reset. ECM110 is not set on a Software Reset.</p>
+<p>Similar check is not possible for ECM FE level interrupt because it is not “maskable”. In this case execution of ISR needs to be checked. The microcontroller design does not allow us to return from FE NMI interrupt.</p>
+<p>Since running an FE level interrupt would force a reset, it is undesirable to run this test.</p>
+<p>Errors that are configured as FE interrupts are also configured to set the ERROROUT pin to go low. The controller would hence reach a safe state even if the interrupt was not triggered. The ERROROUT pin has a redundant feature that can be driven low by either Master or the Checker ECM, for which there is a start up test mentioned in section “ECM Startup Master/Checker nERROR Output Control Fault”. Because of this, Nexteer has decided to exclude the ECM FE Interrupt Start Up test.</p>
+<h3 id="implementation-2">Implementation</h3>
+<h4 id="initialization-ecmoutpanddiagcinit3">Initialization (EcmOutpAndDiagcInit3)</h4>
+<p>Write the Pseudo code here:</p>
+<p>ChkForStrtUpTest (Address of ExecStrtUpTest)</p>
+<p>If (ExecStrtUpTest == TRUE &amp; ECMMESSTR0 == 0x0000 0000 &amp; ECMCESSTR0 == 0x0000 0000 &amp; ECMMESSTR1 == 0x0000 0000 &amp; ECMCESSTR1 == 0x0000 0000)</p>
+<p>{</p>
+<blockquote>
+<p>// Global disable all EINT interrupts</p>
+<p>SuspendAllInterrupts();</p>
+<p>ECMMICFG1_Saved = ECMMICFG1;</p>
+<p>// Set the bit ECMMIE110 of the ECMMICFG0 register to enable it as an EI Interrupt</p>
+<p>ECMMICFG1_Desired = ECMMICFG1 | (0x0000 0400);</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG1_Desired, Address of ECMMICFG1);</p>
+<p>// Store the value of EIC8 into a temp var</p>
+<p>MaskState = osGetIMRmEI (8);</p>
+<p>// Enable interrupt processing for ECM EI interrupt; EIC8.EIMK8 = 0</p>
+<p>osClearIMRmEI (8); </p>
+<p>// Generate ECM error using pseudo trigger register for the error source configured for EI interrupt.</p>
+<p>// For the purpose of this test, ECMmSSE110 is chosen to invoke an EI Interrupt</p>
+<p>ECMPE1_Desired = 0x0000 0400;</p>
+<p>WrProtdRegEcm_u32 (ECMPE1_Desired, Address of ECMPE1);</p>
+</blockquote>
+<p>// Ensure the Error is injected before we check for the interrupt flag</p>
+<blockquote>
+<p>__asm ("SYNCM");</p>
+<p>// Read the EIC8 Register</p>
+<p>EIC8_Val = osReadICR16 (addr of EIC8);</p>
+<p>// At this point ECM EI level ISR will NOT be executed but the EIC8.EIRF8 will be set to 1</p>
+<p>If ((EIC8_Val &amp; 0x1000) == 0)</p>
+<p>{</p>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_EIINTRPTSTRTUPFLT, EIC8_Val);</p>
+<p>}</p>
+<p>osClearICRReq (addr of EIC8);</p>
+<p>If (MaskState != 0)</p>
+<p>{</p>
+<p>// Disable interrupt processing for ECM EI interrupt; EIC8.EIMK8 = 0</p>
+<p>osSetIMRmEI (8);</p>
+<p>}</p>
+<p>// Clear the bit ECMMIE110 of the ECMMICFG0 register to disable it as an EI Interrupt</p>
+<p>ECMMICFG1_Desired = ECMMICFG1_Saved;</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG1_Desired, Address of ECMMICFG1);</p>
+<p>// Clear the bit ECMmSSE110 bit of the ECMmESSTR1 register</p>
+<p>ECMESSTC1_Desired = ECMESSTC1 | (0x0000 0400);</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC1_Desired, Address of ECMESSTC1);</p>
+</blockquote>
+<p>ResumeAllInterrupts ();</p>
+<p>}</p>
+<p>Else If ((ECMMSSE110 == 1) OR (ECMCSSE110 == 1))</p>
+<p>{</p>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_ FACIRSTTRFERR, 0);</p>
+<p>}</p>
+<p>Else If (ECMMESSTR0 != 0x0000 0000 OR ECMCESSTR0 != 0x0000 0000 OR ECMMESSTR1 != 0x0000 0000 OR ECMCESSTR1 != 0x0000 0000)</p>
+<p>{</p>
+<p>GetMcuDiagcIdnData (Address of McuDiagcData0);</p>
+<p>If (McuDiagcData0 != McuDiagc1.MCUDIAGC_ECMRST)</p>
+<p>{</p>
+<blockquote>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_ECMSTSSTRTUPFLT, 0);</p>
+</blockquote>
+<p>// The ECM Status Bits get cleared in the MCU Init following this Function</p>
+<p>}</p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<p>// Do Nothing because the reset cause is not one where we run Start up Test</p>
+<p>}</p>
+<h4 id="event-driven-1">Event Driven</h4>
+<p>N/A</p>
+<h4 id="periodic-2">Periodic</h4>
+<p>N/A</p>
+<h3 id="verification-method-2">Verification Method</h3>
+<p>N/A</p>
+<h2 id="sub-function-pseudo-error-injection-startup-test">Sub-Function: Pseudo Error Injection StartUp Test</h2>
+<p>Return to sub-function list link: Sub-Function In This Document</p>
+<h3 id="ntcs-3">NTCs</h3>
+<p>N/A</p>
+<h3 id="san-linkage-3">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1603]</strong></p>
+<p>The Logic of the ECM master/checker and the related compare unit is targeted by LBIST except the ECMmESSTR0/1 registers. Therefore, the proposed pseudo-error test<sup>44</sup> <strong>shall</strong> be executed once at start-up.</p>
+<p>44 In dynamic mode of the ERROROUTZ, it is sufficient to check whether the (injected) error flag are set. Thus, the responses such as ECM reset and interrupts can be kept masked.</p>
+<h3 id="description-3">Description</h3>
+<p>The Logic of the ECM master/checker and the related compare unit is targeted by LBIST except the ECMmESSTR0/1 registers. This startup test is to verify that ECMmESSTR0/1 registers record errors whenever their corresponding error bits are triggered.</p>
+<p>Register Info:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 41%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2">Register</td>
+<td rowspan="2">Use</td>
+<td colspan="2">Register Access</td>
+</tr>
+<tr class="even">
+<td>SV</td>
+<td>UM</td>
+</tr>
+<tr class="odd">
+<td>ECMESSTC0 (ECM Error Source Status Clear Trigger Register 0)</td>
+<td>Used to clear the individual error source status of the ECM master/checker error source status register 0.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMESSTC1 (ECM Error Source Status Clear Trigger Register 1)</td>
+<td>Used to clear the individual error source status of the ECM master/checker error source status register 1.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMEPE0 (ECM Pseudo Error Trigger Register 0)</td>
+<td>The ECM pseudo error trigger register 0 is used to generate a pseudo error for test purposes.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMEPE1 (ECM Pseudo Error Trigger Register 1)</td>
+<td>The ECM pseudo error trigger register 1 is used to generate a pseudo error for test purposes.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMIRCFG0 (ECM Internal Reset Configuration Register 0)</td>
+<td>Used to set the generation of internal resets (ECMRES) in response to internal errors.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMMICFG0 (ECM EI Level Interrupt Configuration Register 0)</td>
+<td>Used to set the generation of the EI level interrupts.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMNMICFG0 (ECM FE Level Interrupt Configuration Register 0)</td>
+<td>Used to set the generation of FE level interrupts.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMIRCFG1 (ECM Internal Reset Configuration Register 1)</td>
+<td>Used to set the generation of internal resets (ECMRES) in response to internal errors.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>ECMMICFG1 (ECM EI Level Interrupt Configuration Register 1)</td>
+<td>Used to set the generation of the EI level interrupts.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>ECMNMICFG1 (ECM FE Level Interrupt Configuration Register 1)</td>
+<td>Used to set the generation of FE level interrupts.</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rationale-3">Rationale</h3>
+<p>This test involves injecting an error into all the available bits of the ECMmESSTR0 and ECMmESSTR1 register. Some these bits could have been configured as an EI level interrupt trigger or FE level Interrupt or an Internal Reset Generation. In order to prevent these bits from triggering an interrupt or reset, all the bits must be masked. The registers that would be used to mask the interrupts will be loaded with their previous value after the test is complete to ensure the system behaves as we expect it to have been configured.</p>
+<p>This test also assumes the following:</p>
+<p>1) ERROROUT pin is in inactive state, i.e. high</p>
+<p>2) All ECM error status flags for all error sources are cleared</p>
+<p>In case either of the 2 mentioned conditions above are not met, the test will not be executed.</p>
+<p>This test assumes that the non-dynamic behavior of the error signal (ERROROUT) is being used.</p>
+<p>When out of an ECM Reset, the BRAMDAT0 is loaded with ECMRESET value and cannot be over written. This value is then checked in the Reset Cause and the ECM Bits are checked if it's a Lockstep Error and the NTC is logged.</p>
+<p>The MCU_Init() clears the ECM Status Register Bits if the RESF bits have a Non-Zero value. But the RESF Bits are cleared by the bootloader. Hence the ECM Status Register Bits are never cleared by the MCU_Init().</p>
+<p>On a Power On Reset, if no errors are observed, the ECM Bits are all seen to be 0. If any of the safety critical (EI or FE Level Interrupt Configured) ECM Bits are set after the MCU_Init(), an exception is recorded and a Pre-OS Exception is logged. However, there is a small window between EcmOutpAndDiagcInit3 and MCU_Init() where an ECM flag can be set and go unnoticed. It is to capture this scenario, a check for ECM Bit is placed in the Else condition of EcmOutpAndDiagcInit4 and set as ECM Start up fault.</p>
+<h3 id="implementation-3">Implementation</h3>
+<h4 id="initialization-ecmoutpanddiagcinit4">Initialization (EcmOutpAndDiagcInit4)</h4>
+<p><u>Pseudo code:</u></p>
+<p>ChkForStrtUpCnd (Address of ExecStrtUpTest)</p>
+<p>If (ExecStrtUpTest == TRUE)</p>
+<p>{</p>
+<blockquote>
+<p>If (ECMMESSTR0 = 0x0000 0000 AND ECMCESSTR0 = 0x0000 0000 AND ECMMESSTR1 = 0x8000 0000 AND ECMCESSTR1 = 0x8000 0000)</p>
+<p>{</p>
+<p>ECMMICFG0_Temp = ECMMICFG0;</p>
+<p>ECMNMICFG0_Temp = ECMNMICFG0;</p>
+<p>ECMIRCFG0_Temp = ECMIRCFG0;</p>
+<p>ECMMICFG1_Temp = ECMMICFG1;</p>
+<p>ECMNMICFG1_Temp = ECMNMICFG1;</p>
+<p>ECMIRCFG1_Temp = ECMIRCFG1;</p>
+<p>// Set the ALL bits of the ECMMICFG0 to be configured as EI Interrupt generation disabled</p>
+<p>ECMMICFG0_Desired = ECMMICFG0 &amp; (~ (0xFDFF DFF3));</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG0_Desired, Address of ECMMICFG0);</p>
+<p>// Set the ALL bits of the ECMNMICFG0 to be configured as FE Interrupt generation disabled</p>
+<p>ECMNMICFG0_Desired = ECMNMICFG0 &amp; (~ (0xFDFF DFF3));</p>
+<p>WrProtdRegEcm_u32 (ECMNMICFG0_Desired, Address of ECMNMICFG0);</p>
+<p>// Set the ALL bits of the ECMIRCFG0 to be configured as internal reset (ECMRES) generation disabled</p>
+<p>ECMIRCFG0_Desired = ECMIRCFG0 &amp; (~ (0xFDFF DFF3));</p>
+<p>WrProtdRegEcm_u32 (ECMIRCFG0_Desired, Address of ECMIRCFG0);</p>
+<p>// Set the ALL bits of the ECMMICFG1 to be configured as EI Interrupt generation disabled</p>
+<p>ECMMICFG1_Desired = ECMMICFG1 &amp; (~ (0x0000 07F7));</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG1_Desired, Address of ECMMICFG1);</p>
+<p>// Set the ALL bits of the ECMNMICFG1 to be configured as FE Interrupt generation disabled</p>
+<p>ECMNMICFG1_Desired = ECMNMICFG1 &amp; (~ (0x0000 07F7));</p>
+<p>WrProtdRegEcm_u32 (ECMNMICFG1_Desired, Address of ECMNMICFG1);</p>
+<p>// Set the ALL bits of the ECMIRCFG1 to be configured as internal reset (ECMRES) generation disabled</p>
+<p>ECMIRCFG1_Desired = ECMIRCFG1 &amp; (~ (0x2000 07F7));</p>
+<p>WrProtdRegEcm_u32 (ECMIRCFG1_Desired, Address of ECMIRCFG1);</p>
+<p>// Inject all errors by setting the corresponding bit in ECMPEn</p>
+<p>ECMPE0_Desired = 0xFDFF DFF3;</p>
+<p>WrProtdRegEcm_u32 (ECMPE0_Desired, Address of ECMPE0);</p>
+<p>ECMPE1_Desired = 0x2000 07F7;</p>
+<p>WrProtdRegEcm_u32 (ECMPE1_Desired, Address of ECMPE1);</p>
+<p>// Check ERROROUT output state</p>
+<p>If (ECMMSSE131 == 0)</p>
+<p>{</p>
+<p>// Set the ERROROUT pin to inactive state, HIGH</p>
+<p>CtrlErrOut (HIGH, TrigReg1.TRIGREG_MSTANDCHKR)</p>
+<p>// Clear all errors by setting the corresponding bit in ECMESSTCn</p>
+<p>ECMESSTC0_Desired = 0xFDFF DFF3;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC0_Desired, Address of ECMESSTC0);</p>
+<p>ECMESSTC1_Desired = 0x6000 07F7;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC1_Desired, Address of ECMESSTC1);</p>
+<p>If (ECMMESSTR0 != 0x0000 0000 AND ECMMESSTR1 != 0x8000 0000)</p>
+<p>{</p>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_ECMPSDOERRINJFLT, 1);</p>
+<p>}</p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_ ECMPSDOERRINJFLT, 2);</p>
+<p>}</p>
+<p>// Write back the initial values of ECMMICFG0, ECMNMICFG0 and ECMIRCFG0</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG0_Temp, Address of ECMMICFG0);</p>
+<p>WrProtdRegEcm_u32 (ECMNMICFG0_Temp, Address of ECMNMICFG0);</p>
+<p>WrProtdRegEcm_u32 (ECMIRCFG0_Temp, Address of ECMIRCFG0);</p>
+<p>// Write back the initial values of ECMMICFG1, ECMNMICFG1 and ECMIRCFG1</p>
+<p>WrProtdRegEcm_u32 (ECMMICFG1_Temp, Address of ECMMICFG1);</p>
+<p>WrProtdRegEcm_u32 (ECMNMICFG1_Temp, Address of ECMNMICFG1);</p>
+<p>WrProtdRegEcm_u32 (ECMIRCFG1_Temp, Address of ECMIRCFG1);</p>
+</blockquote>
+<p>}</p>
+<blockquote>
+<p>Else</p>
+<p>{</p>
+<p>// Bit was set during the window where the EcmOutpAndDiagcInit3 ends and the MCU_Init() configuration is complete</p>
+<p>SetMcuDiagcIdnData (McuDiagc1.MCUDIAGC_ECMSTSSTRTUPFLT, 0);</p>
+<p>}</p>
+</blockquote>
+<p>}</p>
+<h4 id="event-driven-2">Event Driven</h4>
+<p>N/A</p>
+<h4 id="periodic-3">Periodic</h4>
+<p>N/A</p>
+<h3 id="verification-method-3">Verification Method</h3>
+<p>N/A</p>
+<h1 id="revision-record-change-approval">Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>01.00.00</td>
+<td>10/20/2015</td>
+<td>EA4#1736</td>
+<td>SK</td>
+<td>Initial Release</td>
+</tr>
+<tr class="odd">
+<td>02.00.00</td>
+<td>01/22/2016</td>
+<td>EA4#3418</td>
+<td>SK</td>
+<td>Configuration updated for ECM and SAN requirements added in section 3.2</td>
+</tr>
+<tr class="even">
+<td>02.01.00</td>
+<td>02/02/2016</td>
+<td>EA4#3635</td>
+<td>SK</td>
+<td>EI Interrupt enabled for for ECM Bit: ADC Parity, Added EI Interrupt Start Up Test and Pseudo Error Injection Start Up Test, Added function “ChkForStrtUpTest” for startup check of a function.</td>
+</tr>
+<tr class="odd">
+<td>02.01.01</td>
+<td>02/12/2016</td>
+<td>EA4#3635</td>
+<td>SK</td>
+<td>Typing Error in EcmOutpAndDiagcInit4 Pseudo Code</td>
+</tr>
+<tr class="even">
+<td>02.02.00</td>
+<td>03/17/2016</td>
+<td>EA4#4520</td>
+<td>SK</td>
+<td>Changed the DTS Double RAM Error to be configured to a SYSERR</td>
+</tr>
+<tr class="odd">
+<td>03.00.00</td>
+<td>03/29/2016</td>
+<td>EA4#4866</td>
+<td>GM</td>
+<td><p>Added ChkForStrtUpCnd in EcmOutpAndDiagcInit1</p>
+<p>Added McuDiagc1.MCUDIAGC_ FACIRSTTRFERR</p>
+<p>Updated ECM configuration table</p></td>
+</tr>
+<tr class="even">
+<td>03.01.00</td>
+<td>04/04/2016</td>
+<td>EA4#5192</td>
+<td>GM</td>
+<td><p>All Peripheral functions RAM ECC Single Bit Error (Soft Fault) no longer an EI interrupt</p>
+<p>Added condition to IF statement in section 3.2.5.1 ExecStrtUpTest = TRUE</p></td>
+</tr>
+<tr class="odd">
+<td>03.02.00</td>
+<td>04/18/2016</td>
+<td>EA4#</td>
+<td>SK</td>
+<td>ECM Error Source 4 and 5 interchanged in the spreadsheet</td>
+</tr>
+<tr class="even">
+<td>03.03.00</td>
+<td>06/14/2016</td>
+<td>EA4#6364</td>
+<td>SK</td>
+<td>FACI check moved to Init3</td>
+</tr>
+<tr class="odd">
+<td>04.00.00</td>
+<td>07/25/2016</td>
+<td>EA4#6648</td>
+<td>SK</td>
+<td><p>ECM Config Change:</p>
+<p>SPI Double Bit – EI Interrupt to No Interrupt</p>
+<p>Code Flash Single Bit – SYSERR to EI Interrupt</p>
+<p>Added logic in Init4 for MCUDIAGC_ECMSTSSTRTUPFLT</p></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>

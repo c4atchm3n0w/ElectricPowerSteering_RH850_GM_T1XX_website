@@ -1,0 +1,449 @@
+---
+title: EcuTMeas_MDD
+linkTitle: EcuTMeas_MDD
+weight: 4
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong> <strong>ECU Temperature Measurement</strong></p>
+<p><strong>VERSION:</strong> <strong>2.0</strong></p>
+<p><strong>DATE:</strong> <strong>21-MAR-2016</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Krishna Anne,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Revision History</strong></p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 43%" />
+<col style="width: 19%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sl. No.</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>SB</td>
+<td>1.0</td>
+<td>23-Mar-2015</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>ADC Hooks are added as input</td>
+<td>KK</td>
+<td>2.0</td>
+<td>21-Mar-2016</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Table of Contents</p>
+<p><a href="#abbrevations-and-acronyms">1 Abbrevations And Acronyms 5</a></p>
+<p><a href="#references">2 References 6</a></p>
+<p><a href="#ecutmeas-high-level-description">3 Ecutmeas &amp; High-Level Description 7</a></p>
+<p><a href="#design-details-of-software-module">4 Design details of software module 8</a></p>
+<p><a href="#graphical-representation-of-ecutmeas">4.1 Graphical representation of Ecutmeas 8</a></p>
+<p><a href="#data-flow-diagram">4.2 Data Flow Diagram 8</a></p>
+<p><a href="#module-level-dfd">4.2.1 Module level DFD 8</a></p>
+<p><a href="#sub-module-level-dfd">4.2.2 Sub-Module level DFD 8</a></p>
+<p><a href="#component-flow-diagram">4.3 COMPONENT FLOW DIAGRAM 8</a></p>
+<p><a href="#__RefHeading___Toc446340958">5 Constant Data Dictionary 9</a></p>
+<p><a href="#section-5">5.1.1.1 9</a></p>
+<p><a href="#module-specific-lookup-tables-constants">5.1.2 Module specific Lookup Tables Constants 9</a></p>
+<p><a href="#software-module-implementation">6 Software Module Implementation 10</a></p>
+<p><a href="#sub-module-functions">6.1 Sub-Module Functions 10</a></p>
+<p><a href="#initialization-functions">6.1.1 Initialization Functions 10</a></p>
+<p><a href="#init-ecutmeasinit1">6.1.1.1 INIT: EcuTMeasINIT1 10</a></p>
+<p><a href="#design-rationale">6.1.1.2 Design Rationale 10</a></p>
+<p><a href="#store-module-inputs-to-local-copies">6.1.1.3 Store Module Inputs to Local copies 10</a></p>
+<p><a href="#processing-of-function">6.1.1.4 (Processing of function)……… 10</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">6.1.1.5 Store Local copy of outputs into Module Outputs 10</a></p>
+<p><a href="#periodic-functions">6.1.2 PERIODIC FUNCTIONS 10</a></p>
+<p><a href="#per-ecutmeasper1">6.1.2.1 Per: EcuTMeasPer1 10</a></p>
+<p><a href="#design-rationale-1">6.1.2.2 Design Rationale 10</a></p>
+<p><a href="#store-module-inputs-to-local-copies-1">6.1.2.3 Store Module Inputs to Local copies 10</a></p>
+<p><a href="#processing-of-function-1">6.1.2.4 (Processing of function)……… 10</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-1">6.1.2.5 Store Local copy of outputs into Module Outputs 10</a></p>
+<p><a href="#interrupt-functions">6.2 Interrupt Functions 10</a></p>
+<p><a href="#serial-communication-functions">6.3 Serial Communication Functions 11</a></p>
+<p><a href="#local-functionmacro-definitions">6.4 Local Function/Macro Definitions 11</a></p>
+<p><a href="#global-functionmacro-definitions">6.5 GLObAL Function/Macro Definitions 11</a></p>
+<p><a href="#transient-functions">6.6 TRANSIENT FUNCTIONS 11</a></p>
+<p><a href="#known-limitations-with-design">7 Known Limitations With Design 12</a></p>
+<p><a href="#unit-test-consideration">8 UNIT TEST CONSIDERATION 13</a></p>
+<p><a href="#appendix">9 Appendix 14</a></p>
+<h1 id="abbrevations-and-acronyms">Abbrevations And Acronyms</h1>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Abbreviation</td>
+<td>Description</td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Design functional diagram</td>
+</tr>
+<tr class="odd">
+<td>MDD</td>
+<td>Module design Document</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="references">References</h1>
+<p>This section lists the title &amp; version of all the documents that are referred for development of this document</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 65%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Sr. No.</td>
+<td>Title</td>
+<td>Version</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>MDD Guidelines</td>
+<td>Process 3.06.00</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Software Naming Conventions</td>
+<td>Process 3.06.00</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Coding standards</td>
+<td>Process 3.06.00</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>FDD - ES210A Ecu Temperature Measurement</td>
+<td>(See project group sub-version in synergy)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="ecutmeas-high-level-description">Ecutmeas &amp; High-Level Description</h1>
+<p>Measures and diagnoses thermistor on ECU.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-ecutmeas">Graphical representation of Ecutmeas</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:3.69861in;height:3.47847in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<h2 id="module-level-dfd">Module level DFD</h2>
+<p>N/A</p>
+<h2 id="sub-module-level-dfd">Sub-Module level DFD</h2>
+<p>N/A</p>
+<h2 id="component-flow-diagram">COMPONENT FLOW DIAGRAM</h2>
+<p>N/A</p>
+<h1 id="section"></h1>
+<h2 id="section-1"></h2>
+<h1 id="section-2"></h1>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 31%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="variable-definition-for-enumerated-types">Variable definition for enumerated types</h2>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 40%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li><p><span id="__RefHeading___Toc446340958" class="anchor"></span>Constant Data Dictionary</p></li>
+</ol>
+<h2 id="section-3"></h2>
+<h2 id="section-4"></h2>
+<h2 id="section-5"></h2>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Constant Name</td>
+<td>Resolution</td>
+<td>Units</td>
+<td>Value</td>
+</tr>
+<tr class="even">
+<td>Refer FDD</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-6"></h2>
+<h2 id="section-7"></h2>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="module-specific-lookup-tables-constants">Module specific Lookup Tables Constants</h2>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 20%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Constant Name</td>
+<td>Resolution</td>
+<td>Value</td>
+<td>Software Segment</td>
+</tr>
+<tr class="even">
+<td>NA</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-module-implementation">Software Module Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<p>None</p>
+<h2 id="initialization-functions">Initialization Functions</h2>
+<h2 id="init-ecutmeasinit1">INIT: EcuTMeasINIT1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>Per FDD author intent is to use standard Nexteer FilLp functions</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p>Refer to FDD</p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p>Refer to FDD</p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p>Refer to FDD</p>
+<h2 id="periodic-functions">PERIODIC FUNCTIONS </h2>
+<p>(Note: For multiple periodic functions, insert new headers at the “Header 2” level – subset of “7.1.2 Periodic Functions” and follow the same sub-section design shown below). If none required, place the text “None”)</p>
+<h2 id="per-ecutmeasper1">Per: EcuTMeasPer1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p>Per FDD author intent is to use standard Nexteer FilLp functions</p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<p>Refer to FDD</p>
+<h2 id="processing-of-function-1">(Processing of function)………</h2>
+<p>Refer to FDD</p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<p>Refer to FDD</p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p>None</p>
+<h2 id="serial-communication-functions">Serial Communication Functions</h2>
+<p>None</p>
+<h2 id="local-functionmacro-definitions">Local Function/Macro Definitions</h2>
+<p>Local Function #1</p>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>None</p>
+<h2 id="global-functionmacro-definitions">GLObAL Function/Macro Definitions</h2>
+<h2 id="global-function-1">GLObAL Function #1</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-8"></h2>
+<h2 id="na">N/A</h2>
+<h2 id="transient-functions">TRANSIENT FUNCTIONS </h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations With Design</h1>
+<p>None</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<ol type="1">
+<li><p>The Per Instance Memory in .m file EcuTMeasFilStVarPrev given as float32 type, represents the State variable of the filter FilSt, element of the struct FilLpRec1</p>
+<ol type="a">
+<li><p>Range of Rte_Pim_EcuTMeasFilStVarPrev.FilSt is the range given in the .m file</p></li>
+</ol></li>
+<li><p>the equation to calculate filter gain is:</p></li>
+</ol>
+<p>FilGain = 1 - exp(-2PI * FrqPole * TiStep)</p>
+<ol type="a">
+<li><p>FrqPole is Rte_Prm_EcuTMeasFilTau_Val</p></li>
+<li><p>TiStep is 100ms</p></li>
+<li><p>Range of Rte_Pim_EcuTMeasFilStVarPrev.FilGain is calculated using the range of Rte_Prm_EcuTMeasFilTau_Val</p></li>
+</ol>
+<ol start="3" type="1">
+<li><p>The equation to calculate the filter output is:</p></li>
+</ol>
+<p>Outp = ((Inp - FilSt) * FilGain) + FilSt</p>
+<h1 id="appendix">Appendix</h1>
+<p><em>None</em></p>

@@ -1,0 +1,285 @@
+---
+title: AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs
+linkTitle: AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs
+weight: 5
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img class="yflip" src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-1_1.png"/><br/>
+&#160;<br/>
+<b>FEE&#160;alignments&#160;to&#160;reduce&#160;data&#160;loss&#160;through ECC&#160;</b><br/>
+<b>Version&#160;1.0&#160;</b><br/>
+<b>2014-08-06&#160;</b><br/>
+<b>Application Note&#160;AN-ISC-8-1161&#160;</b><br/>
+&#160;<br/>&#160;<br/>&#160;<br/>Author(s)&#160;<br/>
+Goß,&#160;Michael&#160;<br/>
+Restrictions&#160;<br/>
+Customer&#160;confidential&#160;-&#160;Vector&#160;decides&#160;<br/>
+Abstract&#160;<br/>
+Alignments&#160;and ECC&#160;handling&#160;of&#160;flash&#160;devices&#160;have&#160;to be&#160;considered&#160;with&#160;the&#160;MICROSAR&#160;FEE&#160;<br/>
+configuration&#160;<br/>
+&#160;<br/><i><b>Table&#160;of Contents&#160;</b></i><br/>
+&#160;<br/><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#1">1.0&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#1">Overview&#160;..........................................................................................................................................................&#160;1&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#1">2.0&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#1">Hardware&#160;Alignment&#160;Problem&#160;..........................................................................................................................&#160;1&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">3.0&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">FEE&#160;Alignment&#160;Configuration&#160;..........................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">3.1&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">FEE&#160;Write&#160;Alignment&#160;.....................................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">3.2&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">FEE&#160;Address&#160;Alignment&#160;................................................................................................................................&#160;4&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#5">3.3&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#5">Recommendation for&#160;FEE&#160;Alignment&#160;Configuration&#160;.....................................................................................&#160;5&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">4.0&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">List&#160;of&#160;Affected Platforms&#160;.................................................................................................................................&#160;6&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">5.0&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">Additional&#160;Resources&#160;.......................................................................................................................................&#160;6&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">6.0&#160;</a><br/>
+<a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">Contacts&#160;...........................................................................................................................................................&#160;6&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+<b>1.0&#160;&#160;Overview&#160;<br/></b>This&#160;application&#160;note&#160;addresses&#160;a hardware&#160;dependent&#160;topic&#160;of&#160;microcontrollers&#160;which&#160;may&#160;lead&#160;to a&#160;corruption of&#160;<br/>
+data&#160;entities&#160;in&#160;the&#160;flash memory.&#160;This&#160;document&#160;describes&#160;alignment&#160;attributes&#160;and ECC&#160;(Error&#160;Correction Code)&#160;<br/>
+error&#160;handling&#160;of&#160;the flash&#160;memory&#160;hardware and how&#160;the&#160;MICROSAR&#160;Flash EEPROM&#160;Emulation (FEE)&#160;has&#160;to be&#160;<br/>
+configured in order&#160;to&#160;avoid&#160;problems.&#160;<br/>In section&#160;2&#160;the&#160;problem&#160;is&#160;illustrated&#160;on the&#160;basis&#160;of&#160;a&#160;particular&#160;microcontroller&#160;family,&#160;which is&#160;affected by&#160;this&#160;<br/>
+behavior.&#160;<br/>Section&#160;3&#160;describes&#160;the&#160;MICROSAR&#160;FEE&#160;alignment&#160;characteristics&#160;and&#160;points&#160;out&#160;configuration details,&#160;which have&#160;<br/>
+to be&#160;taken into account.&#160;<br/>In section&#160;4&#160;microcontroller&#160;families&#160;are listed which are&#160;known&#160;to&#160;show&#160;the described&#160;behavior.&#160;<br/>
+<b>2.0&#160;&#160;Hardware&#160;Alignment&#160;Problem&#160;<br/></b>The following&#160;hardware dependent&#160;problem&#160;is&#160;illustrated on basis&#160;of&#160;Freescale&#160;MPC560xB&#160;(Bolero)&#160;microcontroller&#160;<br/>
+family.&#160;Generally&#160;the characteristics&#160;of&#160;every&#160;microcontroller&#160;should&#160;be examined&#160;to the effect&#160;that&#160;the described&#160;<br/>
+problem&#160;is&#160;prevented.&#160;<br/>In&#160;some microcontrollers,&#160;for&#160;instance in Freescale’s&#160;MPC560xB&#160;family,&#160;the&#160;hardware specific&#160;write alignment&#160;<br/>
+differs&#160;from&#160;the read&#160;alignment.&#160;Particularly&#160;this&#160;can&#160;cause an&#160;issue&#160;if&#160;the read alignment&#160;is&#160;greater&#160;than the&#160;write&#160;<br/>
+alignment.&#160;In this&#160;case&#160;the&#160;treatment&#160;of&#160;ECC&#160;(Error&#160;Correction&#160;Code)&#160;errors&#160;by&#160;the&#160;microcontroller&#160;can result&#160;in&#160;<br/>
+corruption of&#160;data&#160;entities.&#160;<br/>By&#160;way&#160;of&#160;illustration&#160;and for&#160;further&#160;considerations&#160;the&#160;alignment&#160;properties&#160;of&#160;MPC560xB&#160;family&#160;are depicted&#160;in&#160;<br/>
+the following&#160;table:&#160;<br/>
+Write&#160;alignment&#160;<br/>
+8&#160;byte&#160;(64&#160;Bit)&#160;<br/>
+Read&#160;alignment&#160;<br/>
+16&#160;byte&#160;(128&#160;Bit)&#160;<br/>
+Table 1&#160;–&#160;Write&#160;and&#160;read&#160;alignment&#160;of&#160;MPC560xB&#160;microcontrollers&#160;<br/>
+<b>&#160;1&#160;&#160;</b><br/>
+<i>Copyright&#160;©&#160;2014&#160;-&#160;Vector&#160;Informatik&#160;GmbH&#160;</i><br/>
+<b>Contact Information: &#160; www.vector.com&#160; &#160;or&#160;+49-711-80 670-0&#160;</b><br/>
+<hr/>
+<a name=2></a><img class="yflip" src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-2_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-2_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+FEE&#160;alignments&#160;to reduce&#160;data&#160;loss&#160;through&#160;ECC&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>In figure&#160;1 the addressing schemes&#160;of&#160;this&#160;hardware&#160;is&#160;described&#160;in&#160;accordance&#160;with read-&#160;or write-accesses&#160;to the&#160;<br/>
+flash&#160;memory.&#160;<br/>
+&#160;<br/>
+Figure 1&#160;–&#160;Memory&#160;addressing&#160;<br/>&#160;<br/>For&#160;further&#160;considerations:&#160;The smallest&#160;writable&#160;unit&#160;in this&#160;flash is&#160;called a&#160;page&#160;with&#160;a size&#160;of&#160;8&#160;byte.&#160;<br/>The handling of&#160;programming&#160;(write)&#160;accesses&#160;differs&#160;from&#160;read accesses&#160;due&#160;to&#160;the&#160;alignment&#160;sizes.&#160;On the&#160;one&#160;<br/>
+hand,&#160;programming&#160;the flash memory&#160;is&#160;possible&#160;with&#160;a page size&#160;of&#160;8&#160;byte&#160;(64&#160;Bit)&#160;and therefore the&#160;write&#160;<br/>
+addresses&#160;have&#160;to&#160;be aligned to&#160;8&#160;byte&#160;boundaries.&#160;On the&#160;other&#160;hand reading from&#160;the flash memory&#160;is&#160;hardware&#160;<br/>
+specifically&#160;aligned to&#160;16&#160;byte&#160;boundaries.&#160;In consequence,&#160;the data&#160;being&#160;read from&#160;the flash&#160;memory&#160;contains&#160;<br/>
+two pages&#160;of&#160;written data.&#160;It&#160;is&#160;required&#160;by&#160;AUTOSAR&#160;to provide memory&#160;abstraction and non-aligned memory&#160;<br/>
+access.&#160;Nevertheless&#160;when&#160;performing read&#160;jobs,&#160;this&#160;flash memory&#160;controller&#160;always&#160;accesses&#160;16&#160;byte-sized&#160;<br/>
+address&#160;spaces&#160;due to internal&#160;constraints.&#160;Therefore&#160;even if&#160;only&#160;one&#160;byte&#160;is&#160;requested&#160;by&#160;the&#160;application,&#160;the&#160;<br/>
+flash memory&#160;controller&#160;accesses&#160;16&#160;bytes&#160;of&#160;data.&#160;As&#160;a consequence misaligned&#160;read accesses&#160;to&#160;hardware&#160;may&#160;<br/>
+be accomplished&#160;by&#160;several&#160;16&#160;byte&#160;reads.&#160;The requested data&#160;then is&#160;extracted from&#160;the received packages&#160;and&#160;<br/>
+assembled correctly&#160;before&#160;passing&#160;it&#160;to the upper&#160;layer.&#160;<br/>For&#160;each&#160;written&#160;page (8&#160;byte)&#160;one&#160;ECC&#160;is&#160;calculated&#160;to add some redundancy&#160;to&#160;a&#160;data set,&#160;which&#160;can&#160;be&#160;used&#160;to&#160;<br/>
+check&#160;its&#160;consistency,&#160;and to recover&#160;data determined to be corrupted.&#160;The ECC&#160;implemented&#160;within the flash&#160;<br/>
+memory&#160;module&#160;will&#160;correct&#160;single bit&#160;failures&#160;and&#160;detect&#160;double&#160;bit&#160;failures.&#160;Correction&#160;of&#160;single bit&#160;errors&#160;takes&#160;<br/>
+place&#160;within&#160;the&#160;flash memory&#160;controller&#160;whereas&#160;the flash cell&#160;content&#160;remains&#160;unchanged.&#160;Depending on&#160;the&#160;<br/>
+used platform,&#160;e.g.&#160;MPC560xB,&#160;ECC&#160;error&#160;handling varies.&#160;For&#160;further&#160;considerations&#160;the&#160;ECC&#160;error&#160;handling&#160;is&#160;<br/>
+evaluated&#160;with regard to the microcontroller&#160;family&#160;MPC560xB.&#160;&#160;<br/>If&#160;an uncorrectable&#160;ECC&#160;error&#160;occurs,&#160;an error&#160;response is&#160;signaled&#160;and&#160;the requested access&#160;is&#160;terminated&#160;with&#160;<br/>
+an error.&#160;This&#160;implies&#160;that&#160;an ECC&#160;error&#160;in one page&#160;results&#160;in&#160;an&#160;erroneous&#160;read&#160;operation&#160;which actually&#160;<br/>
+accesses&#160;two&#160;pages&#160;of&#160;written data.&#160;Hence&#160;reading&#160;from&#160;an address&#160;aligned to the&#160;16&#160;byte&#160;boundary&#160;fails&#160;if&#160;just&#160;<br/>
+one page&#160;therein&#160;contains&#160;an uncorrectable&#160;ECC&#160;error.&#160;As&#160;a result&#160;the second&#160;potentially&#160;error-free&#160;page&#160;within this&#160;<br/>
+read boundary&#160;will&#160;be&#160;treated as&#160;corrupted&#160;thereby&#160;as&#160;well.&#160;<br/>The reason for&#160;an uncorrectable ECC&#160;error&#160;in a&#160;flash page&#160;is&#160;for&#160;example an aborted&#160;programming access&#160;due to&#160;a&#160;<br/>
+reset.&#160;Figure 2&#160;illustrates&#160;how&#160;one ECC&#160;error&#160;affects&#160;read&#160;operations.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>2<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1161<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=3></a><img class="yflip" src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-3_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-3_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-3_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+FEE&#160;alignments&#160;to reduce&#160;data&#160;loss&#160;through&#160;ECC&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure 2&#160;–&#160;ECC&#160;error&#160;affects&#160;read operation&#160;<br/>&#160;<br/>Figure&#160;2 depicts&#160;that&#160;one&#160;ECC&#160;error&#160;within a&#160;16&#160;byte&#160;address&#160;boundary&#160;leads&#160;to an unsuccessful&#160;reading.&#160;If&#160;one&#160;<br/>
+ECC&#160;error&#160;is&#160;received&#160;during read&#160;access,&#160;the flash memory&#160;controller&#160;does&#160;not&#160;update&#160;the read&#160;buffer.&#160;Thus&#160;<br/>
+reading from&#160;this&#160;address&#160;fails&#160;even&#160;if&#160;one of&#160;the two&#160;pages&#160;is&#160;consistent.&#160;&#160;<br/>This&#160;means&#160;the occurrence&#160;of&#160;one uncorrectable&#160;ECC&#160;error&#160;in a&#160;page&#160;treats&#160;the neighboring&#160;page&#160;within the&#160;16&#160;<br/>
+byte&#160;address&#160;boundary&#160;also as&#160;corrupted.&#160;This&#160;situation is&#160;particularly&#160;problematic&#160;if&#160;the start&#160;addresses&#160;of&#160;two&#160;<br/>
+neighboring&#160;data blocks&#160;are&#160;not&#160;aligned&#160;to&#160;16&#160;byte&#160;address&#160;boundaries,&#160;as&#160;shown in&#160;figure 3.&#160;<br/>
+&#160;<br/>
+Figure 3&#160;–&#160;Two&#160;data blocks&#160;not&#160;aligned to&#160;16&#160;Byte&#160;(128-bit)&#160;address&#160;boundaries&#160;<br/>&#160;<br/>As&#160;depicted&#160;in figure&#160;3,&#160;an&#160;ECC&#160;error&#160;in&#160;one&#160;data block&#160;may&#160;result&#160;in&#160;the corruption of&#160;another&#160;data block.&#160;Either&#160;<br/>
+the first&#160;page of&#160;data block&#160;2&#160;(left&#160;diagram)&#160;or&#160;the last&#160;page&#160;of&#160;data&#160;block&#160;1&#160;(right&#160;diagram)&#160;cannot&#160;be read&#160;in case&#160;<br/>
+of&#160;an ECC&#160;error&#160;in the other&#160;block.&#160;Usually&#160;the first&#160;and the&#160;last&#160;pages&#160;of&#160;a data block&#160;contain&#160;information&#160;(e.g.&#160;<br/>
+block&#160;id,&#160;block&#160;length)&#160;which is&#160;used for&#160;management&#160;purposes.&#160;If&#160;these&#160;pages&#160;cannot&#160;be&#160;read&#160;the&#160;entire&#160;data&#160;<br/>
+block&#160;may&#160;be&#160;corrupted.&#160;&#160;<br/>An application using the&#160;MICROSAR&#160;FEE&#160;with&#160;such insufficient&#160;alignment&#160;settings&#160;may&#160;run&#160;in data consistency&#160;<br/>
+issues&#160;as&#160;described&#160;in the following&#160;example:&#160;<br/>A&#160;(simplified)&#160;configuration&#160;contains&#160;one block&#160;with multiple&#160;instances.&#160;After&#160;writing&#160;this&#160;block&#160;several&#160;times,&#160;the&#160;<br/>
+programming access&#160;is&#160;aborted due to&#160;a reset&#160;while&#160;writing&#160;the&#160;first&#160;page&#160;of&#160;the&#160;block.&#160;In consequence the&#160;block&#160;<br/>
+with&#160;latest&#160;data&#160;was&#160;not&#160;written successfully&#160;and&#160;an&#160;uncorrectable&#160;ECC&#160;error&#160;occurs.&#160;Generally,&#160;when reading&#160;data&#160;<br/>
+of&#160;a specific&#160;block&#160;from&#160;flash memory, the&#160;MICROSAR&#160;FEE&#160;returns&#160;the content&#160;of&#160;the&#160;last&#160;written data.&#160;In&#160;case the&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>3<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1161<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=4></a><img class="yflip" src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-4_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-4_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+FEE&#160;alignments&#160;to reduce&#160;data&#160;loss&#160;through&#160;ECC&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>last&#160;written instance is&#160;corrupt,&#160;e.g.&#160;due&#160;to a write&#160;abort&#160;(reset),&#160;the&#160;MICROSAR&#160;FEE&#160;returns&#160;the second latest&#160;<br/>
+data.&#160;In&#160;this&#160;scenario the&#160;uncorrectable ECC&#160;error&#160;in the latest&#160;instance corrupts&#160;the second latest&#160;instance and&#160;<br/>
+thus&#160;the&#160;MICROSAR&#160;FEE&#160;returns&#160;the data of&#160;the third&#160;latest&#160;instance&#160;to the application.&#160;Thus&#160;it&#160;cannot&#160;be&#160;assured&#160;<br/>
+that&#160;the returned data&#160;is&#160;up-to-date.&#160;<br/>A&#160;worst&#160;case scenario&#160;would&#160;be&#160;a completely&#160;corrupted flash image caused by&#160;an&#160;uncorrectable&#160;ECC&#160;error&#160;at&#160;<br/>
+particular&#160;positions.&#160;As&#160;a&#160;result,&#160;neither&#160;read nor&#160;write&#160;accesses&#160;to the flash memory&#160;would be possible.&#160;<br/>Regarding&#160;the impact&#160;of&#160;this&#160;behavior&#160;on&#160;an&#160;application,&#160;if&#160;reading&#160;data&#160;from&#160;the flash memory&#160;the&#160;following results&#160;<br/>
+are possible:&#160;<br/>
+•&#160;&#160;Successful&#160;reading,&#160;no&#160;ECC&#160;error&#160;occurred,&#160;last&#160;written data is&#160;returned to&#160;the&#160;application&#160;<br/>
+•&#160;&#160;Successful&#160;reading,&#160;ECC&#160;error&#160;occurred,&#160;outdated data is&#160;returned&#160;to the application&#160;<br/>
+•&#160;&#160;Unsuccessful&#160;reading,&#160;ECC&#160;error&#160;occurred,&#160;no data&#160;is&#160;returned to&#160;the&#160;application&#160;<br/>
+<b>3.0&#160;&#160;FEE&#160;Alignment&#160;Configuration&#160;<br/></b>The&#160;MICROSAR&#160;FEE&#160;(Flash EEPROM Emulation)&#160;implementation&#160;is&#160;capable&#160;of&#160;addressing&#160;this&#160;hardware&#160;behavior&#160;<br/>
+by&#160;providing&#160;two&#160;different&#160;alignment&#160;settings.&#160;It&#160;is&#160;distinguished between:&#160;<br/>
+•&#160;&#160;Write Alignment&#160;<br/>
+•&#160;&#160;Address&#160;Alignment&#160;<br/>
+Following&#160;sections&#160;describe&#160;both&#160;FEE&#160;alignments’&#160;purposes.&#160;&#160;<br/>
+<b>3.1&#160;&#160;FEE&#160;Write&#160;Alignment&#160;<br/></b>The write alignment&#160;is&#160;used&#160;for&#160;all&#160;write requests&#160;the FEE&#160;issues&#160;to&#160;the flash.&#160;Both&#160;flash addresses&#160;and job&#160;lengths&#160;<br/>
+are always&#160;integer&#160;multiples&#160;of&#160;this&#160;value.&#160;Normally&#160;this&#160;value corresponds&#160;to&#160;the&#160;page&#160;size of&#160;the&#160;underlying&#160;flash&#160;<br/>
+device and&#160;describes&#160;the smallest&#160;writeable unit&#160;of&#160;the&#160;flash hardware.&#160;Regarding&#160;to the microcontroller&#160;family&#160;<br/>
+MPC560xB&#160;programming accesses&#160;to the flash are aligned&#160;to&#160;8&#160;byte&#160;(64&#160;bit)&#160;address&#160;boundaries.&#160;&#160;<br/>
+<b>3.2&#160;&#160;FEE&#160;Address&#160;Alignment&#160;<br/></b>The address&#160;alignment&#160;influences&#160;the&#160;way&#160;FEE&#160;stores&#160;data&#160;entities&#160;in flash memory.&#160;Single&#160;entities,&#160;e.g.&#160;FEE&#160;<br/>
+sector&#160;header,&#160;will&#160;start&#160;at&#160;addresses&#160;that&#160;are an integer&#160;multiple&#160;of&#160;FEE&#160;address&#160;alignment.&#160;In&#160;this&#160;way&#160;data&#160;<br/>
+entities&#160;cannot&#160;influence&#160;other&#160;entities&#160;which are&#160;already&#160;stored in flash memory,&#160;especially&#160;if&#160;programming&#160;<br/>
+accesses get&#160;aborted&#160;(i.e.&#160;ECC&#160;error),&#160;e.g.&#160;due to a&#160;reset.&#160;<br/>In figure&#160;4&#160;different&#160;settings&#160;of&#160;address&#160;alignments&#160;are depicted&#160;in&#160;order&#160;to&#160;show&#160;the effect&#160;of&#160;this&#160;configuration&#160;<br/>
+parameter.&#160;<br/>
+&#160;<br/>
+Figure 4&#160;–&#160;Effect&#160;of&#160;different&#160;FEE&#160;Address&#160;Alignment&#160;configurations&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>4<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1161<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=5></a><img class="yflip" src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-5_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-5_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+FEE&#160;alignments&#160;to reduce&#160;data&#160;loss&#160;through&#160;ECC&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>Left&#160;diagram&#160;of&#160;figure 4 shows&#160;that&#160;the start&#160;address&#160;of&#160;each data&#160;block&#160;is&#160;aligned to&#160;an&#160;8&#160;byte&#160;(64&#160;bit)&#160;boundary.&#160;<br/>
+Whereas&#160;the right&#160;diagram&#160;pictures&#160;a configuration in&#160;which&#160;the start&#160;address&#160;of&#160;each data block&#160;is&#160;aligned to&#160;a&#160;16&#160;<br/>
+byte&#160;(128&#160;bit)&#160;boundary.&#160;<br/>If&#160;performing read accesses&#160;to the flash memory,&#160;these configurations&#160;make a difference as&#160;soon as&#160;ECC&#160;errors&#160;<br/>
+are considered.&#160;As&#160;illustrated in figure&#160;3 an ECC&#160;error&#160;in one&#160;page corrupts&#160;the neighboring page&#160;due to&#160;the&#160;<br/>
+hardware&#160;dependent&#160;size of&#160;read alignment.&#160;<br/>Figure&#160;5 points&#160;out&#160;that&#160;different&#160;data&#160;blocks&#160;have no&#160;influence&#160;on each other,&#160;if&#160;the address&#160;alignment&#160;setting&#160;<br/>
+corresponds&#160;to&#160;the&#160;hardware dependent&#160;read&#160;alignment.&#160;&#160;<br/>
+&#160;<br/>
+Figure 5&#160;–&#160;ECC&#160;errors&#160;do&#160;not&#160;affect&#160;integrity&#160;of&#160;neighboring data&#160;blocks&#160;<br/>&#160;<br/>In&#160;figure&#160;5 two&#160;different&#160;situations&#160;are shown.&#160;On the one&#160;hand&#160;(left&#160;diagram)&#160;an ECC&#160;error&#160;in the last&#160;page of&#160;data&#160;<br/>
+block&#160;1 occurred.&#160;Reading from&#160;this&#160;address&#160;will&#160;fail&#160;but&#160;the&#160;other&#160;data block&#160;is&#160;not&#160;affected&#160;by this.&#160;On the&#160;other&#160;<br/>
+hand&#160;(right&#160;diagram)&#160;an ECC&#160;error&#160;in&#160;the first&#160;page&#160;of&#160;data block&#160;2 will&#160;not&#160;impair&#160;the integrity&#160;of&#160;data block&#160;1.&#160;<br/>It&#160;is&#160;shown that&#160;an appropriate configuration&#160;of&#160;FEE&#160;address&#160;alignment&#160;ensures&#160;that&#160;data blocks&#160;do not&#160;corrupt&#160;<br/>
+each other&#160;due to ECC&#160;errors.&#160;The start&#160;address&#160;of&#160;each data entity&#160;is&#160;aligned&#160;in&#160;a&#160;way&#160;that&#160;read&#160;requests&#160;always&#160;<br/>
+access&#160;only&#160;one block&#160;at&#160;a&#160;time.&#160;<br/>
+<b>3.3&#160;&#160;Recommendation for&#160;FEE&#160;Alignment&#160;Configuration&#160;<br/></b>As&#160;required by&#160;AUTOSAR,&#160;the&#160;MICROSAR&#160;FEE&#160;implementation&#160;is&#160;hardware&#160;independent.&#160;Still&#160;the&#160;MICROSAR&#160;<br/>
+FEE&#160;provides&#160;a configurable&#160;write&#160;alignment&#160;and&#160;address&#160;alignment&#160;in&#160;order&#160;to address&#160;hardware dependent&#160;<br/>
+characteristics.&#160;As&#160;it&#160;is&#160;illustrated using&#160;the&#160;example of&#160;MPC560xB&#160;platform,&#160;buffer&#160;sizes&#160;and alignments&#160;<br/>
+constraints&#160;of&#160;read operations&#160;may&#160;differ&#160;from&#160;programming&#160;operations.&#160;In order&#160;to&#160;configure&#160;MICROSAR&#160;FEE&#160;<br/>
+appropriately,&#160;it&#160;is&#160;recommended&#160;to&#160;check&#160;the&#160;hardware&#160;manual&#160;of&#160;the flash&#160;device for&#160;relevant&#160;data.&#160;Often this&#160;<br/>
+information does&#160;not&#160;come out&#160;of&#160;manuals&#160;clearly.&#160;In&#160;case of&#160;ambiguity&#160;it&#160;is&#160;recommended&#160;to contact&#160;the&#160;<br/>
+semiconductor&#160;manufacturer.&#160;<br/>
+•&#160;&#160;<b>Configuring&#160;FEE&#160;write&#160;alignment:</b>&#160;<br/>
+The value of&#160;FEE&#160;write&#160;alignment&#160;should&#160;be set&#160;to&#160;the&#160;page&#160;size of&#160;the&#160;flash device&#160;in&#160;bytes.&#160;Note that&#160;FEE&#160;<br/>
+does&#160;not&#160;support&#160;write alignments&#160;smaller&#160;than&#160;8&#160;bytes&#160;due to&#160;internal&#160;reasons.&#160;<br/>
+•&#160;&#160;<b>Configuring&#160;FEE&#160;address&#160;alignment:</b>&#160;<br/>
+The value of&#160;the FEE&#160;address&#160;alignment&#160;should be&#160;set&#160;to&#160;the read&#160;alignment&#160;of&#160;the&#160;flash device&#160;in&#160;bytes.&#160;<br/>
+Thus&#160;the start&#160;address&#160;of&#160;each data block&#160;is&#160;aligned in&#160;a&#160;way&#160;that&#160;ECC&#160;errors&#160;in one block&#160;do not&#160;corrupt&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>5<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1161<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name=6></a><img class="yflip" src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Fee/doc/AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECC-6_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+FEE&#160;alignments&#160;to reduce&#160;data&#160;loss&#160;through&#160;ECC&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+other&#160;blocks.&#160;Needless&#160;to say,&#160;FEE&#160;address&#160;alignment&#160;must&#160;not&#160;be configured smaller&#160;than FEE&#160;write&#160;<br/>
+alignment.&#160;<br/>
+&#160;<br/>
+<b>4.0&#160;&#160;List of&#160;Affected&#160;Platforms&#160;<br/></b>The following&#160;list&#160;makes&#160;no&#160;claims&#160;of&#160;being&#160;complete.&#160;Only platforms&#160;are listed&#160;which are&#160;known to&#160;be&#160;affected.&#160;In&#160;<br/>
+order&#160;to&#160;evaluate&#160;the&#160;problem&#160;regarding a specific&#160;non-listed platform,&#160;it&#160;is&#160;necessary&#160;to&#160;check&#160;the&#160;hardware&#160;<br/>
+manual&#160;of&#160;the flash memory&#160;device for&#160;write/read&#160;alignments&#160;and ECC&#160;error&#160;handling.&#160;To remove ambiguity&#160;it&#160;may&#160;<br/>
+also be useful&#160;to check&#160;with&#160;the&#160;semiconductor&#160;manufacturer.&#160;<br/>List&#160;of&#160;affected microcontroller&#160;families:&#160;<br/>
+•&#160;&#160;Freescale Bolero MPC560xB/C&#160;<br/>
+•&#160;&#160;Freescale Pictus&#160;MPC560xP&#160;<br/>
+•&#160;&#160;Freescale&#160;Spectrum&#160;MPC560xS&#160;<br/>
+•&#160;&#160;Freescale&#160;Komodo MPC567xK&#160;<br/>
+•&#160;&#160;Freescale Monaco MPC563xM&#160;<br/>
+&#160;<br/>
+<b>5.0&#160;&#160;Additional&#160;Resources&#160;<br/></b>For&#160;additional&#160;information and how&#160;the&#160;relevant&#160;data&#160;for&#160;configuration&#160;is&#160;extracted&#160;from&#160;HW&#160;manuals&#160;see reference&#160;<br/>
+manual&#160;of&#160;Freescale&#160;MPC5604BCRM&#160;microcontroller&#160;as&#160;an example:&#160;<br/>In chapter&#160;27.4.1&#160;Module structure&#160;it&#160;is&#160;described&#160;how&#160;the flash memory&#160;is&#160;addressable for&#160;program&#160;(write)&#160;and&#160;<br/>
+read&#160;accesses.&#160;<br/>The chapter&#160;27.8.7 Flash error&#160;response operation&#160;summarizes&#160;the&#160;ECC&#160;error&#160;handling&#160;of&#160;this&#160;specific&#160;flash&#160;<br/>
+hardware.&#160;<br/>&#160;<br/>VECTOR&#160;APPLICATION NOTE&#160;<br/>
+<b>AN-ISC-2-1100</b>&#160;ECC&#160;Error&#160;Handling&#160;on&#160;MPC55XX&#160;<br/>
+&#160;<br/>
+<b>6.0&#160;&#160;Contacts&#160;<br/></b>For&#160;a&#160;full&#160;list&#160;with&#160;all&#160;Vector&#160;locations&#160;and addresses&#160;worldwide,&#160;please visit<a href="http://vector.com/contact/">&#160;http://vector.com/contact/.</a>&#160;<br/>&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>6<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-ISC-8-1161<b>&#160;</b></i><br/>
+&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#1">1.0 Overview</a></li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#1">2.0 Hardware Alignment Problem</a></li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">3.0 FEE Alignment Configuration</a>
+<ul>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">3.1 FEE Write Alignment</a></li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#4">3.2 FEE Address Alignment</a></li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#5">3.3 Recommendation for FEE Alignment Configuration</a></li>
+</ul>
+</li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">4.0 List of Affected Platforms</a></li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">5.0 Additional Resources</a></li>
+<li><a href="AN-ISC-8-1161_FEE_alignments_to_reduce_data_loss_through_ECCs.html#6">6.0 Contacts</a></li>
+</ul>
+<hr/>
+</body>
+</html>

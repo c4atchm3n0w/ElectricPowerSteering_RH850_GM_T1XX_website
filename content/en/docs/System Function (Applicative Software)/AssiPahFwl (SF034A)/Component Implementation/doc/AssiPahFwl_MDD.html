@@ -1,0 +1,616 @@
+---
+title: AssiPahFwl_MDD
+linkTitle: AssiPahFwl_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>AssiPahFwl</strong></p>
+<p><strong>Feb 05, 2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Sarika Natu,</strong></p>
+<p><strong>KPIT Technologies,</strong></p>
+<p><strong>India</strong></p>
+<p><strong><br />
+<u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Description</strong></th>
+<th><strong>Author</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Date</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Initial Version</td>
+<td>Sarika Natu(KPIT Technologies)</td>
+<td>1.0</td>
+<td>05-Feb-2016</td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<p><strong><u>Table of Contents</u></strong></p>
+<p><a href="#assipahfwl-high-level-description">1 AssiPahFwl &amp; High-Level Description <span>5</span></a></p>
+<p><a href="#design-details-of-software-module">2 Design details of software module <span>6</span></a></p>
+<p><a href="#graphical-representation-of-assipahfwl">2.1 Graphical representation of AssiPahFwl <span>6</span></a></p>
+<p><a href="#data-flow-diagram">2.2 Data Flow Diagram <span>6</span></a></p>
+<p><a href="#component-level-dfd">2.2.1 Component level DFD <span>6</span></a></p>
+<p><a href="#function-level-dfd">2.2.2 Function level DFD <span>6</span></a></p>
+<p><a href="#constant-data-dictionary">3 Constant Data Dictionary <span>7</span></a></p>
+<p><a href="#program-fixed-constants">3.1 Program (fixed) Constants <span>7</span></a></p>
+<p><a href="#embedded-constants">3.1.1 Embedded Constants <span>7</span></a></p>
+<p><a href="#software-component-implementation">4 Software Component Implementation <span>8</span></a></p>
+<p><a href="#sub-module-functions">4.1 Sub-Module Functions <span>8</span></a></p>
+<p><a href="#init-assipahfwl_init1">4.1.1 Init: AssiPahFwl_Init1 <span>8</span></a></p>
+<p><a href="#design-rationale">4.1.1.1 Design Rationale <span>8</span></a></p>
+<p><a href="#module-outputs">4.1.1.2 Module Outputs <span>8</span></a></p>
+<p><a href="#per-assipahfwl_per1">4.1.2 Per: AssiPahFwl_Per1 <span>8</span></a></p>
+<p><a href="#design-rationale-1">4.1.2.1 Design Rationale <span>8</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies">4.1.2.2 Store Module Inputs to Local copies <span>8</span></a></p>
+<p><a href="#processing-of-function">4.1.2.3 (Processing of function)……… <span>8</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">4.1.2.4 Store Local copy of outputs into Module Outputs <span>8</span></a></p>
+<p><a href="#server-runnables">4.2 Server Runables <span>8</span></a></p>
+<p><a href="#interrupt-functions">4.3 Interrupt Functions <span>8</span></a></p>
+<p><a href="#module-internal-local-functions">4.4 Module Internal (Local) Functions <span>8</span></a></p>
+<p><a href="#local-function-1">4.4.1 Local Function #1 <span>8</span></a></p>
+<p><a href="#design-rationale-2">4.4.1.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing">4.4.1.2 Processing <span>9</span></a></p>
+<p><a href="#local-function-2">4.4.2 Local Function #2 <span>9</span></a></p>
+<p><a href="#design-rationale-3">4.4.2.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing-1">4.4.2.2 Processing <span>9</span></a></p>
+<p><a href="#local-function-3">4.4.3 Local Function #3 <span>9</span></a></p>
+<p><a href="#design-rationale-4">4.4.3.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing-2">4.4.3.2 Processing <span>10</span></a></p>
+<p><a href="#local-function-4">4.4.4 Local Function #4 <span>10</span></a></p>
+<p><a href="#design-rationale-5">4.4.4.1 Design Rationale <span>10</span></a></p>
+<p><a href="#processing-3">4.4.4.2 Processing <span>10</span></a></p>
+<p><a href="#local-function-5">4.4.5 Local Function #5 <span>10</span></a></p>
+<p><a href="#design-rationale-6">4.4.5.1 Design Rationale <span>10</span></a></p>
+<p><a href="#processing-4">4.4.5.2 Processing <span>10</span></a></p>
+<p><a href="#global-functionmacro-definitions">4.5 GLOBAL Function/Macro Definitions <span>11</span></a></p>
+<p><a href="#known-limitations-with-design">5 Known Limitations with Design <span>12</span></a></p>
+<p><a href="#unit-test-consideration">6 UNIT TEST CONSIDERATION <span>13</span></a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms <span>14</span></a></p>
+<p><a href="#glossary">Appendix B Glossary <span>15</span></a></p>
+<p><a href="#references">Appendix C References <span>16</span></a></p>
+<h1 id="assipahfwl-high-level-description">AssiPahFwl &amp; High-Level Description</h1>
+<p>Refer FDD</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-assipahfwl">Graphical representation of AssiPahFwl</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.png" style="width:3.47917in;height:5.02083in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p>Refer FDD</p>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<p>Refer FDD</p>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<p>Refer FDD</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NODEBSTEP_CNT_U16</td>
+<td>NA</td>
+<td>NA</td>
+<td>65535U</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h2 id="init-assipahfwl_init1">Init: AssiPahFwl_Init1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="module-outputs">Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="per-assipahfwl_per1">Per: AssiPahFwl_Per1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p>Refer FDD</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="server-runnables">Server Runnables </h2>
+<p>None</p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p>None</p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-function-1">Local Function #1</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>Dynamic_Assi_Boundary</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VehSpd_Kph_T_u9p7</td>
+<td>Uint16</td>
+<td>0</td>
+<td>511</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-10.0</td>
+<td>10.0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LoFrqInp_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*LowrBndLpFil_MotNwtMtr_T_f32</td>
+<td>Float32*</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*UpprBndLpFil_MotNwtMtr_T_f32</td>
+<td>Float32*</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>HiFrqAssiLimd_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p>LowrBndLpFil_MotNwtMtr_T_f32 and UpprBndLpFil_MotNwtMtr_T_f32 will be updated in this function.</p>
+<h2 id="processing">Processing</h2>
+<p>Refer to the subsystems 'Determine HiFreqAsst Boundaries' and 'Low pass filter boundaries' in FDD.</p>
+<h2 id="local-function-2">Local Function #2</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>Base_Assi_Boundary</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTrq_HwNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-20.0</td>
+<td>20.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpd_Kph_T_u9p7</td>
+<td>Uint16</td>
+<td>0</td>
+<td>511</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>AssiCmdBas_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-8.8</td>
+<td>8.8</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BasAssiLowrBnd_MotNwtMtr_T_f32</td>
+<td>float32*</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>BasAssiUpprBnd_MotNwtMtr_T_f32</td>
+<td>float32*</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>BasAssiLimd_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p>BasAssiLowrBnd_MotNwtMtr_T_f32 and BasAssiUpprBnd_MotNwtMtr_T_f32 will be updated in this function</p>
+<h2 id="processing-1">Processing</h2>
+<p>Refer the subsystem ‘Determine_BaseAsst_Boundaries’ implementation in FDD.</p>
+<h2 id="local-function-3">Local Function #3</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>Det_Boundary_Lim</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>AssiCmdBas_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-8.8</td>
+<td>8.8</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BasAssiUpprBnd_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>BasAssiLowrBnd_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LowrBndLpFil_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>UpprBndLpFil_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LoFrqInp_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HiFrqOverBnd_MotNwtMtr_T_Logl</td>
+<td>Boolean*</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BasAssiOverBnd_MotNwtMtr_T_Logl</td>
+<td>Boolean*</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>AssiFwlFailSts_Cnt_T_Logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-4">Design Rationale</h2>
+<p>HiFrqOverBnd_MotNwtMtr_T_Logl and BasAssiOverBnd_MotNwtMtr_T_Logl will be updated in this function.</p>
+<h2 id="processing-2">Processing</h2>
+<p>Refer to the section ‘Check both command paths for reaching boundary limits, if so begin de bounce counters’ in FDD.</p>
+<h2 id="local-function-4">Local Function #4</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>Assist_Recovery_Cond</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>AssiCmdBas_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-8.8</td>
+<td>8.8</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>DftAssi_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-8.8</td>
+<td>8.8</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>AssiFwlFailSts_Cnt_T_Logl</td>
+<td>Boolean</td>
+<td>FASLE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SumInp_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-17.6</td>
+<td>17.6</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>BasAssiLimd_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HiFrqInp_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HiFrqAssiLimd_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-16</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BasAssiOverBnd_MotNwtMtr_T_Logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HiFrqOverBnd_MotNwtMtr_T_Logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*AssiPahLimrActv_Uls_T_f32</td>
+<td>Float32</td>
+<td>FASLE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>CombdAssiDft_MotNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-8.8</td>
+<td>8.8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-5">Design Rationale</h2>
+<p>AssiPahLimrActv_Uls_T_f32 will be updated in this function</p>
+<h2 id="processing-3">Processing</h2>
+<p>Refer to the section ‘Check Input commands vs. Fwl Output command for Assist Recovery Conditions’ in FDD.</p>
+<h2 id="local-function-5">Local Function #5</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>Set_Faults</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HiFrqOverBnd_MotNwtMtr_T_Logl</td>
+<td>Boolean</td>
+<td>FASLE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BasAssiOverBnd_MotNwtMtr_T_Logl</td>
+<td>Boolean</td>
+<td>FASLE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-6">Design Rationale</h2>
+<p>None</p>
+<h2 id="processing-4">Processing</h2>
+<p>Refer ‘Set_Faults’ subsystem in FDD.</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+</tbody>
+</table>

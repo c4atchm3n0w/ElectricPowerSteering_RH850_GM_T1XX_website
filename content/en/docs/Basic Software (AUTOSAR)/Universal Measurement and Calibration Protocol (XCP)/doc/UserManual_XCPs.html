@@ -1,0 +1,873 @@
+---
+title: UserManual_XCPs
+linkTitle: UserManual_XCPs
+weight: 13
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>XCP - Universal&#160;</b><br/>
+<b>Measurement and&#160;</b><br/>
+<b>Calibration Protocol&#160;</b><br/>
+User Manual&#160;<br/>
+(Your First Steps)&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Version 1.0.2&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Vector Informatik GmbH, Ingerheimer Str. 24, 70499 Stuttgart&#160;<br/>
+Tel. 0711/80670-0, Fax 0711/80670-399, Email can@vector.com&#160;<br/>
+Internet http:\\www.vector.com&#160;<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-2_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-2_2.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+1&#160;/&#160;&#160;27<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>Authors:&#160;&#160;</b>Klaus Emmert&#160;<br/>
+<b>Version:&#160;</b><br/>
+1.0.2&#160;<br/>
+<b>Status:&#160;</b><br/>
+Released&#160;(in preparation/completed/inspected/released)&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-3_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+2&#160;/&#160;&#160;27<br/>
+<b>Motivation For This Work&#160;</b><br/>
+The motivation for using the XCP Software&#160;Component is very simple. XCP is the&#160;<br/>component&#160;that helps you to look in the ECU, to display values&#160;or set them. And&#160;<br/>that is all working just&#160;via the underlying bus system as CAN, Ethernet, …you do&#160;<br/>not need any development environment.&#160;<br/>Together with CANape you have a great choice of how the data could be&#160;<br/>displayed.&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>WARNING&#160;</b><br/>
+<b>All application code in any&#160;of the Vector User Manuals are for training&#160;<br/>purposes only.&#160;They are slightly&#160;tested and designed to understand the basic&#160;<br/>idea of using a certain component or a set of components.&#160;</b><br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-4_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+3&#160;/&#160;&#160;27<br/>
+<b>Contents</b>&#160;<br/>
+<a href="UserManual_XCPs.html#7"><b>1</b>&#160;&#160;<b>Welcome to the XCP&#160;User Manual&#160;...............................................................&#160;6</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#7">1.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#7">Beginners with XCP start here ?&#160;.....................................................&#160;6</a>&#160;<br/>
+<a href="UserManual_XCPs.html#7">1.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#7">For Advanced Users&#160;.......................................................................&#160;6</a>&#160;<br/>
+<a href="UserManual_XCPs.html#7">1.3&#160;</a><br/>
+<a href="UserManual_XCPs.html#7">Special topics&#160;..................................................................................&#160;6</a>&#160;<br/>
+<a href="UserManual_XCPs.html#7">1.4&#160;</a><br/>
+<a href="UserManual_XCPs.html#7">Documents this one refers to….......................................................&#160;6</a>&#160;<br/>
+<a href="UserManual_XCPs.html#8"><b>2</b>&#160;&#160;<b>About This Document&#160;...................................................................................&#160;7</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#8">2.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#8">How This Documentation Is Set-Up&#160;................................................&#160;7</a>&#160;<br/>
+<a href="UserManual_XCPs.html#8">2.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#8">Legend and&#160;Explanation of Symbols...............................................&#160;7</a>&#160;<br/>
+<a href="UserManual_XCPs.html#9"><b>3</b>&#160;&#160;<b>XCP Software Component – An Overall View.............................................&#160;8</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#9">3.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#9">What Is XCP....................................................................................&#160;8</a>&#160;<br/>
+<a href="UserManual_XCPs.html#9">3.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#9">What Is the&#160;XCP Component&#160;..........................................................&#160;8</a>&#160;<br/>
+<a href="UserManual_XCPs.html#9">3.3&#160;</a><br/>
+<a href="UserManual_XCPs.html#9">Tools And Files – The Generation Tool&#160;..........................................&#160;8</a>&#160;<br/>
+<a href="UserManual_XCPs.html#10">3.4&#160;</a><br/>
+<a href="UserManual_XCPs.html#10">What The Component Does............................................................&#160;9</a>&#160;<br/>
+<a href="UserManual_XCPs.html#12"><b>4</b>&#160;&#160;<b>XCP – A&#160;More Detailed View.......................................................................&#160;11</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#12">4.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#12">Basic Mechanism of the XCP........................................................&#160;11</a>&#160;<br/>
+<a href="UserManual_XCPs.html#12">4.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#12">Measurement Modes&#160;....................................................................&#160;11</a>&#160;<br/>
+<a href="UserManual_XCPs.html#12">4.2.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#12">Using XCP In Polling Mode...........................................................&#160;11</a>&#160;<br/>
+<a href="UserManual_XCPs.html#13">4.2.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#13">Using XCP&#160;For Data Acquisition&#160;/ Event&#160;.......................................&#160;12</a>&#160;<br/>
+<a href="UserManual_XCPs.html#14"><b>5</b>&#160;&#160;<b>XCP IN 8 STEPS...........................................................................................&#160;13</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#15">5.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#15">STEP 1 &#160;Installation Of&#160;The Tool...................................................&#160;14</a>&#160;<br/>
+<a href="UserManual_XCPs.html#15">5.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#15">STEP 2 &#160;Extract CANbedded Software Components&#160;...................&#160;14</a>&#160;<br/>
+<a href="UserManual_XCPs.html#16">5.3&#160;</a><br/>
+<a href="UserManual_XCPs.html#16">STEP 3 &#160;Configuration&#160;With The Generation Tool (GENy)&#160;...........&#160;15</a>&#160;<br/>
+<a href="UserManual_XCPs.html#17">5.4&#160;</a><br/>
+<a href="UserManual_XCPs.html#17">STEP 4 &#160;Generate Files&#160;................................................................&#160;16</a>&#160;<br/>
+<a href="UserManual_XCPs.html#18">5.5&#160;</a><br/>
+<a href="UserManual_XCPs.html#18">STEP 5 Add&#160;CANbedded To Your Project....................................&#160;17</a>&#160;<br/>
+<a href="UserManual_XCPs.html#19">5.6&#160;</a><br/>
+<a href="UserManual_XCPs.html#19">STEP 6 Adapt Your Application Files............................................&#160;18</a>&#160;<br/>
+<a href="UserManual_XCPs.html#19">5.6.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#19">Including, Initialization And Cyclic Calls&#160;........................................&#160;18</a>&#160;<br/>
+<a href="UserManual_XCPs.html#19">5.6.2&#160;</a><br/>
+<a href="UserManual_XCPs.html#19">Connect your application to the XCP&#160;............................................&#160;18</a>&#160;<br/>
+<a href="UserManual_XCPs.html#20">5.7&#160;</a><br/>
+<a href="UserManual_XCPs.html#20">STEP 7 Compile And Link Your Project........................................&#160;19</a>&#160;<br/>
+<a href="UserManual_XCPs.html#21">5.8&#160;</a><br/>
+<a href="UserManual_XCPs.html#21">STEP 8 Test It Via CANape&#160;..........................................................&#160;20</a>&#160;<br/>
+<a href="UserManual_XCPs.html#23"><b>6</b>&#160;&#160;<b>Further Information&#160;.....................................................................................&#160;22</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#23">6.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#23">Settings For&#160;Using The&#160;Data Acquisition Mode / Events&#160;..............&#160;22</a>&#160;<br/>
+<a href="UserManual_XCPs.html#26"><b>7</b>&#160;&#160;<b>List Of Experiences.....................................................................................&#160;25</b></a>&#160;<br/>
+<a href="UserManual_XCPs.html#26">7.1&#160;</a><br/>
+<a href="UserManual_XCPs.html#26">Topic 1&#160;..........................................................................................&#160;25</a>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-5_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+4&#160;/&#160;&#160;27<br/>
+<a href="UserManual_XCPs.html#27"><b>8</b>&#160;&#160;<b>Index&#160;...............................................................................................................&#160;1</b></a>&#160;<br/>
+&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-6_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+5&#160;/&#160;&#160;27<br/>
+<b>Illustrations</b>&#160;<br/><a href="UserManual_XCPs.html#9">Figure 3-1&#160;&#160;CANbedded&#160;Software Components Together With The XCP&#160;</a><br/>
+<a href="UserManual_XCPs.html#9">Component...................................................................................................&#160;8&#160;</a><br/>
+<a href="UserManual_XCPs.html#10">Figure 3-2&#160;&#160;Generation Process For&#160;Vector CANbedded Software Components&#160;..........&#160;9&#160;<br/></a><a href="UserManual_XCPs.html#12">Figure 4-1&#160;&#160;Visualization Of Data Using CANape.........................................................&#160;11&#160;<br/></a><a href="UserManual_XCPs.html#13">Figure 4-2&#160;&#160;XCP Polling Mode Using Two Messages...................................................&#160;12&#160;<br/>Figure 4-3&#160;&#160;XCP Event&#160;Mode........................................................................................&#160;12&#160;<br/></a><a href="UserManual_XCPs.html#14">Figure 5-1&#160;&#160;8 Steps to CANdesc...................................................................................&#160;13&#160;<br/></a><a href="UserManual_XCPs.html#16">Figure 5-2&#160;&#160;Configuration In The Generation Tool For Basic&#160;XCP Usage....................&#160;15&#160;<br/></a><a href="UserManual_XCPs.html#21">Figure 5-3&#160;&#160;Set Driver Configuration&#160;In CANape&#160;..........................................................&#160;20&#160;<br/>Figure 5-4&#160;&#160;XCP Driver&#160;Settings&#160;...................................................................................&#160;20&#160;<br/></a><a href="UserManual_XCPs.html#22">Figure 5-5&#160;&#160;Settings For&#160;XCP On&#160;CAN&#160;.........................................................................&#160;21&#160;<br/>Figure 5-6&#160;&#160;ECU Is Online&#160;............................................................................................&#160;21&#160;<br/></a><a href="UserManual_XCPs.html#23">Figure 6-1&#160;&#160;Components / XCP&#160;....................................................................................&#160;22&#160;<br/>Figure 6-2&#160;&#160;Components / XCP&#160;....................................................................................&#160;22&#160;<br/></a><a href="UserManual_XCPs.html#24">Figure 6-3&#160;&#160;Components / XCP&#160;....................................................................................&#160;23&#160;<br/></a><a href="UserManual_XCPs.html#25">Figure 6-4&#160;&#160;Edit Measurement List In CANape.............................................................&#160;24&#160;<br/></a>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-7_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+6&#160;/&#160;&#160;27<br/>
+<b>1&#160;&#160;Welcome to the XCP&#160;User Manual&#160;</b><br/>
+<b>1.1&#160;&#160;Beginners with XCP start here ? &#160;</b><br/>
+Chapter 2<br/>
+You need s<a href="UserManual_XCPs.html#8">ome&#160;information</a>&#160;about&#160;this document? &#160;&#160;<br/>
+Chapter 2<br/>
+Chapter 3.1&#160;<br/>
+<a href="UserManual_XCPs.html#9">What is&#160;XCP</a>?&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>1.2&#160;&#160;For Advanced Users &#160;</b><br/>
+Chapter&#160;<b>4</b>&#160;<br/>
+<a href="UserManual_XCPs.html#12">Start reading&#160;here</a>.&#160;<br/>
+Chapter 5&#160;<br/>
+<a href="UserManual_XCPs.html#14">8 Steps</a>&#160;for Flash Bootloader integration.&#160;<br/>&#160;<br/>&#160;<br/>&#160;&#160;&#160;<br/>
+<b>1.3&#160;&#160;Special topics &#160;</b><br/>
+Chapter 6.1&#160;<br/>
+<a href="UserManual_XCPs.html#23">Working with Data Acquisition Lists (DAQ</a>) &#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>1.4&#160;&#160;Documents this one refers to…&#160;<br/></b>&#160;CANape Manual&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-8_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-8_2.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-8_3.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+7&#160;/&#160;&#160;27<br/>
+<b>2&#160;&#160;About This Document&#160;</b><br/>
+This document gives you an understanding&#160;of the Universal Measurement And&#160;<br/>Calibration Protocol. You will receive general information, a step-by-step tutorial to&#160;<br/>get the XCP running and further information to&#160;use the amount of functionality that&#160;<br/>XCP offers.&#160;<br/>
+<b>2.1&#160;</b><br/>
+<b>How&#160;This&#160;Documentation Is Set-Up&#160;</b><br/>
+<b>Chapter&#160;</b><br/>
+<b>Content&#160;</b><br/>
+<b>Chapter 1&#160;</b><br/>
+The welcome&#160;page is&#160;to navigate in the&#160;document. The main parts of the document&#160;<br/>can be accessed from&#160;here via hyperlinks<b>&#160;</b><br/>
+<b>Chapter 2</b>&#160;<br/>
+It contains&#160;some formal information about this document, an explanation of legends&#160;<br/>and symbols.&#160;<br/>
+<b>Chapter 3</b>&#160;<br/>
+In this chapter you get a brief introduction into the XCP and the Software&#160;Component.<br/>
+<b>Chapter 4</b>&#160;<br/>
+Here you find&#160;some more insight in the XCP Software Component.&#160;<br/>
+<b>Chapter 5</b>&#160;<br/>
+Here are the&#160;8 steps for you to integrate the XCP Software&#160;Component and how to&#160;<br/>connect these settings with&#160;your application.&#160;<br/>
+<b>Chapter 6</b>&#160;<br/>
+This&#160;chapter&#160;provides&#160;you&#160;with some further information and a&#160;deeper insight in&#160;the&#160;<br/>XCP Software Component.&#160;<br/>
+<b>Chapter 7</b>&#160;<br/>
+In this&#160;last&#160;chapter there is&#160;a list of experiences&#160;with XCP.&#160;<br/>
+&#160;<br/>
+<b>2.2&#160;</b><br/>
+<b>Legend and Explanation of Symbols&#160;</b><br/>
+You find these symbols at the right side of&#160;the document. Use this&#160;helpful feature to&#160;<br/>find fast the topics, you need information about.&#160;<br/>
+These areas&#160;<br/>to&#160;the&#160;right of&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Meaning&#160;</b><br/>
+the text&#160;<br/>contain brief&#160;<br/>items of&#160;<br/>
+&#160;<br/>
+Follow the eye and you will&#160;be led to an example.&#160;<br/>
+information&#160;<br/>that will&#160;<br/>
+&#160;<br/>
+Comments&#160;<br/>
+facilitate&#160;your&#160;<br/>
+and&#160;<br/>
+You will find key words and information in&#160;short sentences in the margin. &#160;This&#160;will&#160;<br/>
+explanation<br/>
+search for&#160;<br/>
+s&#160;<br/>
+greatly simplify your search&#160;for topics.&#160;<br/>
+specific&#160;<br/>topics.&#160;<br/>
+&#160;<br/>
+The footprints will lead you&#160;through the&#160;steps until you can use the XCP Software&#160;<br/>Component.&#160;<br/>
+&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-9_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-9_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-9_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-9_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-9_5.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+8&#160;/&#160;&#160;27<br/>
+<b>3&#160;&#160;XCP&#160;Software Component&#160;–&#160;An Overall View&#160;</b><br/>
+<b>3.1&#160;&#160;What Is XCP&#160;<br/></b>The XCP Calibration Protocol was standardized by&#160;the European ASAM&#160;working&#160;<br/>committee for standardization of interfaces&#160;used in calibration and measurement&#160;<br/>data acquisition. XCP is a higher&#160;level&#160;protocol used for communication between a&#160;<br/>
+CANape is a&#160;PC&#160;<br/>tool of&#160;Vector&#160;<br/>
+measurement and calibration system&#160;(e.g. CANape) and an ECU.&#160;<br/>
+Informatik&#160;GmbH&#160;<br/>designed&#160;for&#160;<br/>measurement&#160;<br/>
+CANape is a PC tool&#160;of Vector Informatik GmbH&#160;designed for&#160;measurement and&#160;<br/>
+and calibration.&#160;&#160;<br/>
+calibration.&#160;To use CANape e.g. for&#160;CAN&#160;you need a PC card like CANcardXL&#160;to connect&#160;<br/>
+To use&#160;CANape&#160;<br/>
+you ECU to your PC (CANape) via&#160;CAN.&#160;<br/>
+for CAN&#160;you need&#160;<br/>a PC&#160;card&#160;like&#160;<br/>CANcardXL for&#160;<br/>
+XCP is a further development of the established CCP (CAN Calibration Protocol)&#160;<br/>
+the CAN&#160;<br/>
+using different media like CAN, Ethernet&#160;(TCP/IP, UDP/IP), USB, SCI. The future&#160;<br/>
+connection&#160;<br/>
+trends will be FlexRay,&#160;TTCAN, Firewire.&#160;<br/>
+<b>3.2&#160;&#160;What Is the XCP Component&#160;<br/></b>XCP is a CANbedded Software&#160;Component delivered as source&#160;code (.c, .h) and&#160;<br/>can be parameterized via&#160;the Generation Tool. &#160;<br/>
+<i>os</i>CAN<br/>
+<b>Application</b><br/>
+Diagnostics&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br/>
+Universal<br/>
+Layer<br/>
+Measure-<br/>
+Network<br/>
+Interaction Layer<br/>
+ment<br/>
+<br/>
+Manage<br/>
+And&#160;<br/>
+Communication<br/>
+ment<br/>
+Calibration&#160;<br/>
+<b>Gener</b><br/>
+<b>ne&#160;ation&#160;Tool</b><br/>
+Control&#160;<br/>
+Protocol<br/>
+Layer<br/>
+Transport Protocol<br/>
+CAN Driver<br/>
+CAN Controller<br/>
+Transceiver<br/>
+<b>CAN Bus</b><br/>
+&#160;<br/>
+Figure 3-1&#160;&#160;CANbedded Software Components Together With&#160;The XCP Component&#160;<br/>
+<b>3.3&#160;&#160;Tools And Files – The Generation Tool&#160;<br/></b>The Generation Tool is a PC Tool. It generates configuration files and signal&#160;<br/>interface files for the CANbedded Software Components. The Generation Tool&#160;<br/>needs the DBC file to generate the files.&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-10_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-10_2.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+9&#160;/&#160;&#160;27<br/>
+The DBC file normally is designed by the vehicle manufacturer and distributed to all&#160;<br/>suppliers that develop an ECU. &#160;<br/>In connection with the source code of&#160;each component and your application,&#160;<br/><a href="UserManual_XCPs.html#10">CANbedded can be compiled and linked (see&#160;Figure 3-2).&#160;</a><br/>
+&#160;<br/>
+The standard&#160;<br/>generation&#160;<br/>process for&#160;<br/>Vectors Software&#160;<br/>Components.&#160;<br/>
+CANdesc is&#160;a&#160;<br/>completely&#160;<br/>generated&#160;<br/>Software&#160;<br/>Component.&#160;<br/>
+&#160;<br/>
+Figure 3-2&#160;&#160;Generation Process For Vector CANbedded Software Components&#160;<br/>
+<b>3.4&#160;&#160;What The Component Does&#160;</b><br/>
+<b>Basic Feature Of XCP&#160;<br/></b>&#160;&#160;Automatic Detection of&#160;ASAM MC2 Description &#160;&#160;<br/>
+&#160;&#160;Automatic Detection of Device&#160;Parameters (Plug&amp;Play) &#160;&#160;<br/>
+&#160;&#160;Read/Write Access to Device Memory&#160;<br/>
+&#160;&#160;Checksum Calculation of Memory Areas&#160;<br/>
+&#160;&#160;Access Protection (Seed&amp;Key)&#160;<br/>
+&#160;&#160;Emulation Memory Page Switching&#160;<br/>
+&#160;&#160;Synchronous, Time-Triggered and Event-Triggered Measurement Data&#160;<br/>
+Acquisition&#160;<br/>
+&#160;&#160;Flash and EEProm Programming&#160;<br/>
+<b>Advanced Features Of XCP&#160;<br/></b>&#160;&#160;Block Transfer Mode For&#160;Upload, Download And Flashing Similar To ISO-TP&#160;<br/>
+&#160;&#160;Acquiring Measurement Data with Time&#160;Stamp and Time Synchronization&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-11_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+10&#160;/ 27<br/>
+&#160;&#160;Downloading Flash Programming Routines&#160;<br/>
+&#160;&#160;Dynamic DAQ Lists &#160;<br/>
+&#160;&#160;Cold Start Measuring (Start&#160;Measurement at Power-On)&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-12_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-12_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-12_3.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+11&#160;/ 27<br/>
+<b>4&#160;&#160;XCP&#160;–&#160;A&#160;More Detailed View&#160;</b><br/>
+You use XCP to “look” into an ECU, to read out any memory location you want to&#160;<br/>using only&#160;the underlying bus system. There is no development&#160;environment or&#160;<br/>emulator necessary. Together&#160;with e.g. CANape you can&#160;visualize this&#160;data in&#160;<br/>many ways. See some examples in the figure below.&#160;<br/>
+The XCP&#160;<br/>Software&#160;<br/>
+&#160;<br/>
+Component is&#160;<br/>independent of&#160;all&#160;<br/>
+Figure 4-1&#160;&#160;Visualization Of Data Using CANape&#160;<br/>
+other&#160;<br/>CANbedded&#160;<br/>
+To get this benefit you need to include&#160;the XCP Software Component in your&#160;<br/>
+Software&#160;<br/>Components&#160;<br/>
+project. As you see in the&#160;<a href="UserManual_XCPs.html#9">Figure 3-1 you only need a Dr</a>iver (in this specific&#160;<br/>
+except for&#160;the&#160;<br/>
+example it is the CAN Driver) to get XCP running. &#160;<br/>
+driver.&#160;<br/>
+<b>4.1&#160;&#160;Basic Mechanism of the XCP&#160;<br/></b>Basically XCP uses&#160;only two messages, a Master and a Slave message. The&#160;<br/>master message is sent from CANape to&#160;the ECU, the slave message from the&#160;<br/>ECU to CANape. Via these two messages all communication for XCP between&#160;<br/>CANape and the ECU is handled.&#160;<br/>
+<b>4.2&#160;&#160;Measurement Modes&#160;<br/></b>There are mainly two different measurement modes, the polling mode and an event&#160;<br/>triggered mode (also called Data&#160;Acquisition Mode). The main difference between&#160;<br/>both is the bus load.&#160;<br/>
+<b>4.2.1&#160;&#160;Using XCP In Polling Mode&#160;<br/></b>The Polling Mode is the easiest way to use the XCP&#160;Driver and needs no further&#160;<br/>adaptation in your application except for the initialization of the XCP Software&#160;<br/>Component.&#160;<br/>The mechanism is very simple. CANape requests information via a request&#160;<br/>message (Master Id). The Precopy Function for this message (more about precopy&#160;<br/>mechanism&#160;see UserManual_CANDriver) calls the function XcpCommand to&#160;<br/>interpret the content of the XCP message.&#160;Then XCP initiates the transmission of&#160;<br/>the response message (Slave ID) containing the requested values.&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-13_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+12&#160;/ 27<br/>
+XCP Polling Mode<br/>
+&#160;Receive&#160;Message&#160;(Master ID)&#160;ECU<br/>
+<b>CANape</b><br/>
+Transmit&#160;Message&#160;(Slave&#160;Id)<br/>
+&#160;<br/>
+Figure 4-2&#160;&#160;XCP Polling Mode Using Two Messages&#160;<br/>
+As you see there are two messages necessary to get the values updated.&#160;<br/>
+<b>4.2.2&#160;&#160;Using XCP For Data Acquisition / Event&#160;<br/></b>Another way to get&#160;information from&#160;the ECU is to let&#160;the ECU send this&#160;<br/>information on its own. This is the&#160;Data Acquisition mechanism (Event).&#160;<br/>In the Generation Tool you can set the different timings you want to get the data&#160;<br/>updated. The application has to call the functions&#160;<b>XcpEvent(channel)</b>&#160;with the&#160;<br/>same call cycle as you did the&#160;setting in t<a href="UserManual_XCPs.html#23">he Generation Tool.&#160;More about&#160;setting the&#160;<br/>events…</a>&#160;<br/>
+The&#160;DAQ&#160;list&#160;in&#160;<br/>
+In CANape you can assign this&#160;call cycle to&#160;a set of signals. This&#160;signal list (DAQ&#160;<br/>
+the ECU&#160;needs&#160;<br/>RAM memory.&#160;&#160;<br/>
+list) is sent to the ECU and&#160;triggers the cyclic sending of&#160;all signals of the list. &#160;<br/>
+You can&#160;define&#160;<br/>the amount&#160;of&#160;<br/>
+XCP Event Mode<br/>
+memory&#160;that&#160;<br/>should&#160;be&#160;<br/>reserved for&#160;this&#160;<br/>
+<br/>
+list&#160;in&#160;the&#160;<br/>Generation Tool.&#160;<br/>
+Receive&#160;Message&#160;( Event&#160;List )&#160;(Master ID)<br/>
+ECU<br/>
+<b>CANape</b><br/>
+Transmit Message(&#160;List&#160;Values)&#160;&#160;(Slave&#160;ID)<br/>
+&#160;<br/>
+Figure 4-3&#160;&#160;XCP Event Mode&#160;&#160;<br/>
+In this case the Receive Message is&#160;only necessary to initiate the DAQ&#160;<br/>mechanism. Once initiated there is only&#160;one message necessary to get the values&#160;<br/>updated.&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-14_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+13&#160;/ 27<br/>
+<b>5&#160;&#160;XCP&#160;IN 8 STEPS&#160;</b><br/>
+<b>STEP 1 :</b>&#160;&#160;&#160;<a href="UserManual_XCPs.html#15"><b>INSTALLATION OF TOOL</b>&#160;&#160;</a><br/>
+Install the PC Generation Tool by&#160;following the online instructions.&#160;<br/>
+<b>STEP 2: &#160;</b><br/>
+<a href="UserManual_XCPs.html#1"><b>CANBEDDED SOFTWARE&#160;COMPONENTS&#160;&#160;<br/></b></a>Extract the&#160;C&#160;and&#160;H files from your&#160;CANbedded Software&#160;Component delivery into&#160;your&#160;<br/>application software structure.&#160;<br/>
+<b>STEP 3:</b>&#160;<br/>
+<a href="UserManual_XCPs.html#1"><b>CONFIGURATION WITH&#160;GENERATION&#160;TOOL</b></a><b>&#160;&#160;<br/></b>Do the&#160;settings in&#160;the&#160;Generation&#160;Tool,&#160;especially the&#160;settings for&#160;XCP are described in&#160;<br/>detail.&#160;<br/>
+<b>STEP 4: &#160;</b><br/>
+<a href="UserManual_XCPs.html#1"><b>GENERATE FILES</b></a><b>&#160;<br/></b>Generate the&#160;files in the appropriate folders.&#160;<br/>
+<b>STEP 5: &#160;</b><br/>
+<a href="UserManual_XCPs.html#1"><b>ADD CANBEDDED TO YOUR&#160;PROJECT</b></a><b>&#160;<br/></b>Add the CANbedded C and H files to&#160;your project or makefile. &#160;<br/>
+<b>STEP 6: &#160;</b><br/>
+<a href="UserManual_XCPs.html#1"><b>ADAPT YOUR&#160;APPLICATION FILES&#160;<br/></b></a>Now your&#160;application files&#160;must be&#160;modified&#160;to&#160;use the&#160;CANbedded&#160;Software&#160;<br/>Components&#160;(includes, cyclic calls, initialization) and do the call back functions.&#160;<br/>
+<b>STEP 7: &#160;</b><br/>
+<a href="UserManual_XCPs.html#1"><b>COMPILE AND LINK YOUR PROJECT&#160;<br/></b></a>Compile and&#160;link the complete project and download it to your test hardware or&#160;<br/>development environment.&#160;<br/>
+<b>STEP 8: &#160;</b><br/>
+<a href="UserManual_XCPs.html#1"><b>TEST IT VIA&#160;CANAPE&#160;<br/></b></a>Via a appropriate Tester&#160;send&#160;diagnostic&#160;request messages and verify&#160;the&#160;response&#160;<br/>messages.&#160;<br/>
+&#160;<br/>
+<b>Application Project&#160;</b><br/>
+5&#160;Makefile /&#160;Development Environment<br/>
+6<br/>
+<br/>
+<br/>
+<b>.</b>C&#160;.h&#160;Application Software<br/>
+2<br/>
+<br/>
+<br/>
+.C&#160;.h&#160;CANbedded Software Components<br/>
+<b>DBC</b><br/>
+4<br/>
+See the steps&#160;<br/>
+<b>ECU</b><br/>
+3<br/>
+Generate<br/>
+<br/>
+<br/>
+.C&#160;.h<br/>
+again in&#160;a&#160;more&#160;<br/>
+<b>database&#160;</b><br/>
+<br/>
+<b>CANbedded Software&#160;Component&#160;<br/>Configuration</b><br/>
+visual&#160;way.&#160;&#160;<br/>
+1&#160;<b>Generation Tool</b><br/>
+Compile<br/>Link<br/>
+7<br/>
+<br/>
+<b>.</b>exe<br/>
+<b>.</b><br/>
+8&#160;<br/>
+<b>CANape</b><br/>
+&#160;<br/>
+&#160;<br/>
+Figure 5-1&#160;&#160;8 Steps to CANdesc&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-15_7.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+14&#160;/ 27<br/>
+<b>5.1&#160;&#160;STEP 1 &#160;Installation Of The Tool &#160;<br/></b>The Generation Tool is delivered together with the CANbedded Software&#160;<br/>Components. &#160;<br/>
+Install&#160;the PC&#160;<br/>Tool.&#160;<br/>
+Extract the files to an appropriate folder&#160;and follow the installation instructions.&#160;<br/>
+Generation Tool<br/>
+<b>Included with&#160;CANbedded&#160;</b><br/>
+<br/>
+<b>Software&#160;Component&#160;Delivery</b><br/>
+&#160;<br/>
+&#160;<br/>
+<a href="UserManual_XCPs.html#14">Back</a>&#160;to 8 Steps overview&#160;<br/>&#160;<br/>&#160;<br/>
+<b>5.2&#160;&#160;STEP 2 &#160;Extract CANbedded Software Components&#160;<br/></b>The amount of CANbedded Components in&#160;your delivery depends&#160;on your project.&#160;<br/>Copy all C and H files&#160;that are necessary&#160;for the components into&#160;your application&#160;<br/>project folder. &#160;<br/>
+To use XCP&#160;it is only necessary to have a&#160;Driver.&#160;In this case we use CAN as bus protocol,&#160;<br/>so we need a CAN Driver.&#160;<br/>
+<b>Refer to the corresponding UserManuals&#160;(e.g. CANDriver UserManual) to get&#160;<br/>further information about the files of&#160;the different Software Components.&#160;<br/></b>&#160;<br/>&#160;<br/>
+<a href="UserManual_XCPs.html#14">Back</a>&#160;to 8 Steps overview&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-16_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-16_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-16_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-16_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-16_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-16_6.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+15&#160;/ 27<br/>
+<b>5.3&#160;&#160;STEP 3 &#160;Configuration With&#160;The Generation Tool (GENy)&#160;<br/></b>To use XCP we only&#160;need&#160;the CAN Driver and the XCP Software Component.&#160;<br/>Switch these components on via Component Selection window.&#160;<br/>It is very easy to get XCP running and you only have to do a few settings&#160;in the&#160;<br/>Generation Tool. &#160;<br/>The following settings only allow the&#160;<b>polling mode of the XCP</b>. &#160;<br/>Select XCP in the components’ list. &#160;<br/>
+&#160;<br/>
+Figure 5-2&#160;&#160;Configuration In&#160;The Generation&#160;Tool&#160;For Basic XCP Usage&#160;<br/>
+Make sure that at least these three&#160;settings are done. The&#160;Transport Layer on CAN&#160;<br/>setting must be checked and the two Ids selected. Use the pull down menu to find&#160;<br/>the appropriate messages.&#160;<br/>Additionally&#160;make sure that the following settings are done correctly:&#160;<br/>
+&#160;&#160;Baud rate&#160;<br/>
+&#160;&#160;Acceptance filters&#160;<br/>
+&#160;&#160;Register Settings for the CAN Controller&#160;<br/>
+&#160;&#160;Path for the generated files&#160;<br/>
+&#160;<br/>&#160;<br/>
+<a href="UserManual_XCPs.html#14">Back</a>&#160;to 8 Steps overview&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-17_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-17_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-17_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-17_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-17_5.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+16&#160;/ 27<br/>
+<b>5.4&#160;&#160;STEP 4 &#160;Generate Files&#160;</b><br/>
+If you have done the setting in the previous step, hit the&#160;<b>[Generate System]</b>&#160;<br/>
+&#160;<br/>
+button.&#160;<br/>These are the fix files that form the xcp:&#160;<br/>
+<b>XcpProf.c&#160;</b><br/>
+<b>XcpProf.h&#160;<br/></b>&#160;<br/>The follwoing XCP files are generated:&#160;<br/>
+<b>Xcp_cfg.h&#160;</b><br/>
+<b>Xcp_par.h&#160;</b><br/>
+<b>Xcp_par.c&#160;<br/></b>&#160;<br/>These files&#160;are the specific&#160;adaptation to the CAN bus and must therefore only&#160;<br/>used if the protocol is CAN.&#160;<br/>
+<b>Xcp_can.c&#160;</b><br/>
+<b>Xcp_can.h&#160;<br/></b>&#160;<br/>
+In the window Generated Files you&#160;can check the file that the Generation&#160;Tool generates&#160;<br/>and the path where these files are generated in.&#160;<br/>
+&#160;<br/>&#160;<br/>
+<a href="UserManual_XCPs.html#14">Back</a>&#160;to 8 Steps overview&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-18_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-18_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-18_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-18_4.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+17&#160;/ 27<br/>
+<b>5.5&#160;&#160;STEP 5 Add CANbedded To Your Project&#160;<br/></b>What to do in this step depends&#160;on your&#160;development environment. Perhaps you&#160;<br/>work with a makefile?&#160;<br/>Regardless&#160;this you have to add the files of CANbedded to your&#160;project. These are&#160;<br/><a href="UserManual_XCPs.html#15">the files of chapter&#160;5.2 and the generated ones to the previous step. &#160;</a><br/>
+Always make sure that&#160;the path you generate the files&#160;in&#160;and the path your compiler is&#160;<br/>working on&#160;are the same!&#160;<br/>
+&#160;<br/>At this point in time you&#160;are not able to compile and&#160;link the project. The files&#160;<br/>should be complete but there are several adaptations for you to do in your&#160;<br/>application.&#160;&#160;<br/>&#160;<br/>Go on with the next step.&#160;<br/>&#160;<br/>&#160;<br/>
+<a href="UserManual_XCPs.html#14">Back</a>&#160;to 8 Steps overview.&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-19_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-19_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-19_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-19_4.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+18&#160;/ 27<br/>
+<b>5.6&#160;&#160;STEP 6 Adapt Your Application Files&#160;<br/></b>Now all files for XCP are included in your project and we can go on to do the&#160;<br/>necessary adaptations in your application files.&#160;<br/>These adaptations can be split in two categories: &#160;<br/>
+Include, initialize&#160;<br/>
+&#160;&#160;Include, initialize and do the cyclic calls for the CANbedded Software&#160;<br/>
+and call the&#160;<br/>components&#160;<br/>
+Components.&#160;<br/>
+cyclically. &#160;<br/>
+&#160;Then&#160;connect&#160;<br/>
+&#160;&#160;Connect XCP to your application.&#160;<br/>
+CANdesc with&#160;<br/>your application.&#160;<br/>
+<b>5.6.1&#160;&#160;Including, Initialization And Cyclic Calls&#160;<br/></b>As for all other CANbedded&#160;Components the XCP must&#160;be&#160;included and initialized.&#160;<br/>To use XCP and its API you have to include the file XcpProf.h.<b>&#160;</b><br/>
+<b>Include</b>&#160;<b>XcpProf.h;&#160;</b><br/>
+<b>&#160;</b><br/>
+To initialize&#160;XCP use this function&#160;call:&#160;<br/>
+<b>XcpInit( );&#160;/*Interrupts must be disabled*/&#160;</b><br/>
+&#160;<br/>
+Make sure that XcpInit is called&#160;after the call of&#160;CanInitPowerOn. &#160;<br/>
+Normally the components are initialized from bottom up according to the layer model (see&#160;<br/><a href="UserManual_XCPs.html#9">Figure 3-1).&#160;</a>Always do these initializations with disabled interrupts.&#160;<br/>
+This is the correct order&#160;of initialization if you use CAN Driver&#160;and XCP:&#160;&#160;<br/>
+<b>CanInitPowerOn();&#160;<br/>XcpInit();&#160;<br/></b>&#160;<br/>
+<b>5.6.2&#160;&#160;Connect your application to the XCP&#160;<br/></b>There is nothing more to do for the usage of XCP Software Component if you only&#160;<br/><a href="UserManual_XCPs.html#12">want to use the polling mode (see&#160;4.2.1). &#160;<br/></a>For the Data&#160;Acquisition Mode (see&#160;<a href="UserManual_XCPs.html#13">4.2.2) there are a few&#160;</a>additional settings&#160;to be&#160;<br/><a href="UserManual_XCPs.html#23">done.&#160;more…</a>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-20_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-20_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-20_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-20_4.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+19&#160;/ 27<br/>
+<b>5.7&#160;&#160;STEP 7 Compile And Link Your Project&#160;<br/></b>Now we have all includes, all initializations, the components do have the cyclic&#160;<br/>calls of their task functions and all call-back functions are provided and&#160;<br/>programmed.&#160;<br/>Start the compiler or makefile and get&#160;the project compiled and linked. &#160;<br/>Is it ok? No errors? &#160;<br/>&#160;<br/>Gratulations, that’s it. &#160;<br/>&#160;<br/>Go on to the next step and do the testing.&#160;<br/>&#160;<br/>
+<a href="UserManual_XCPs.html#14">Back</a>&#160;to 8 Steps overview.&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-21_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-21_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-21_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-21_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-21_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-21_6.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+20&#160;/ 27<br/>
+<b>5.8&#160;&#160;STEP 8 Test It Via CANape&#160;<br/></b>You arrived at this step, so you are able&#160;to compile and link. Do you already have&#160;<br/>downloaded the code to your target platform?&#160;<br/>Working with XCP most of the time you&#160;will spend doing the settings in CANape.&#160;&#160;<br/>Start CANape.&#160;<br/>
+&#160;<br/>
+Figure 5-3&#160;&#160;Set Driver Configuration In CANape&#160;<br/>
+Via Tools/Driver configuration in&#160;CANape you get to&#160;the window below.&#160;<br/>&#160;<br/>
+2<br/>
+1<br/>
+&#160;<br/>
+Figure 5-4&#160;&#160;XCP Driver Settings&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-22_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-22_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-22_3.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+21&#160;/ 27<br/>
+Before testing the connection you have to do the&#160;<b>[Configuration …]</b>&#160;for&#160;the CAN&#160;<br/>(n). There you have to set the two messages to communicate with&#160;the ECU. &#160;<br/><a href="UserManual_XCPs.html#13">CAN_ID_MASTER and CAN_ID_SLAVE as shown in the&#160;Figure 4-2.&#160;<br/></a>&#160;<br/>
+&#160;<br/>
+Figure 5-5&#160;&#160;Settings For XCP On CAN&#160;<br/>
+A very important setting is the baud rate. Use&#160;<b>[Change]</b>&#160;to adapt&#160;this value to your&#160;<br/>needs.&#160;<br/>
+Now it is the time to test the connection (o). &#160;<br/>
+&#160;<br/>
+Figure 5-6&#160;&#160;ECU Is Online&#160;<br/>
+The communication between CANape and your&#160;ECU is now working correctly. The&#160;<br/>next step would be to select&#160;the variables&#160;or memory&#160;locations&#160;you want to get&#160;<br/>shown in CANape. How to do&#160;this is explained in details in the Manual of the&#160;<br/>CANape.&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-23_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-23_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-23_3.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+22&#160;/ 27<br/>
+<b>6&#160;&#160;Further Information &#160;</b><br/>
+<b>6.1&#160;&#160;Settings For Using The Data Acquisition Mode / Events&#160;<br/></b><a href="UserManual_XCPs.html#12">As mentioned in&#160;4.2 and&#160;</a><a href="UserManual_XCPs.html#13">4.2.2 there is anot</a>her mode besides&#160;the&#160;simple to handle&#160;<br/>polling mode – the Data Acquisition Mode&#160;with the benefit of less bus load as&#160;<br/>already described. &#160;<br/>To realize this mode you have to do additional settings in the Generation Tool and&#160;<br/>in your application. This can be divided into 3 steps:&#160;<br/>n&#160;&#160;Switch on Synchronous Data Acquisition and DAQ generation info and the&#160;<br/>
+Event Info&#160;<br/>
+&#160;<br/>
+Figure 6-1&#160;&#160;Components / XCP&#160;<br/>
+&#160;&#160;&#160;Define Events in the Generation Tool (Name, Cycle)&#160;<br/>
+&#160;<br/>
+Figure 6-2&#160;&#160;Components / XCP&#160;<br/>
+The first event with the No. 0 is predefined.&#160;To add further events use the Allocate&#160;<br/>Items pull down menu and check the next Item. &#160;<br/>
+Make sure that you check the next&#160;unused item. E.g. Item 1, Item 3&#160;and Item 4&#160;is&#160;<b>not</b>&#160;<br/><b>allowed</b>, because Item 2 is omitted.&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-24_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-24_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-24_3.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+23&#160;/ 27<br/>
+&#160;<br/>
+Figure 6-3&#160;&#160;Components / XCP&#160;<br/>
+For each Event (numbering starting with 0) you should&#160;define the Name and the&#160;<br/>Cycle [ms]. &#160;<br/>
+Try to make this name&#160;expressive.&#160;This name&#160;will occur in the CANape list. It is much&#160;<br/>easier for you if the name contains e.g. the cycle.&#160;<br/>
+&#160;<br/>Remember to generate the files before compiling again !&#160;<br/>&#160;<br/>
+&#160;&#160;&#160;For each event call XcpEvent(x), x= 0, 1, …, n.&#160;<br/>
+Now open your application file and add the calls of&#160;the function XcpEvent(x). For&#160;<br/>each event&#160;you need one call of XcpEvent(x). The x is the No. of the event as it is&#160;<br/>defined in the Generation Tool. &#160;<br/>Make sure that you call the XcpEvent(x) function in the correct cycle time. In the&#160;<br/>example we need 2 calls. XcpEvent(<b>0</b>) after any&#160;<b>10</b>ms&#160;and XcpEvent(<b>1</b>) after any&#160;<br/><b>20</b>ms.&#160;<br/>Now compile and link&#160;you project and transfer&#160;it to your target&#160;platform and start&#160;<br/>your application.&#160;<br/>&#160;<br/>
+&#160;&#160;&#160;Assemble your DAQ lists in CANape&#160;<br/>
+Open CANape and start it and stop it. We need&#160;this to transfer the DAQ information&#160;<br/>from the ECU to CANape. &#160;<br/>Now open Edit Measurement List via this button on the right&#160;side. You see all&#160;<br/><a href="UserManual_XCPs.html#25">selected signals in this window (Figure 6-4). In the pu</a>ll down menu of the&#160;<br/>Measuring mode you now find the two&#160;events My10msEvent and My20msEvent. &#160;<br/>Assign these Events to any signal you&#160;want. The signals will be added to the DAQ&#160;<br/>list and transferred any 10ms&#160;or 20ms to&#160;CANape without any further polling&#160;<br/>message.&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=25></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-25_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-25_2.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+24&#160;/ 27<br/>
+&#160;<br/>
+Figure 6-4&#160;&#160;Edit&#160;Measurement List In CANape&#160;<br/>
+&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-26_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+25&#160;/ 27<br/>
+<b>7 &#160;</b><br/>
+<b>List Of Experiences&#160;</b><br/>
+A list of experiences and problems encountered will be placed here soon, which&#160;<br/>will help you to conduct focused troubleshooting.&#160;<br/>&#160;&#160;<br/>
+<b>7.1&#160;</b><br/>
+<b>Topic 1&#160;</b><br/>
+&#160;<br/>
+<b>Q:&#160;</b><br/>
+&#160;<br/>
+<b>A:&#160;</b><br/>
+&#160;&#160;&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name=27></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Xcp/doc/UserManual_XCP-27_1.png"/><br/>
+User Manual &#160;XCP - Universal Measurement and Calibration Protocol&#160;<br/>
+&#160;<br/>
+1&#160;/&#160;&#160;27<br/>
+<b>8&#160;&#160;Index&#160;</b><br/>
+8 STEPS.................................................13&#160;<br/>
+Initialization&#160;............................................&#160;18&#160;<br/>
+Advanced Features&#160;..................................9&#160;<br/>
+makefile..................................................&#160;17&#160;<br/>
+application&#160;..............................................18&#160;<br/>
+Measurement&#160;Modes&#160;.............................&#160;11&#160;<br/>
+Basic&#160;Feature&#160;...........................................9&#160;<br/>
+Motivation.................................................&#160;2&#160;<br/>
+CAN&#160;..........................................................8&#160;<br/>
+Polling Mode&#160;..........................................&#160;11&#160;<br/>
+CANape&#160;........................................8, 11, 23&#160;<br/>
+SCI&#160;...........................................................&#160;8&#160;<br/>
+CanInitPowerOn&#160;.....................................18&#160;<br/>
+STEP 1 &#160;Installation Of The Tool&#160;...........&#160;14&#160;<br/>
+CCP&#160;..........................................................8&#160;<br/>
+STEP 2 &#160;Extract CANbedded Software&#160;<br/>
+Components&#160;......................................&#160;14&#160;<br/>
+compiler&#160;..................................................17&#160;<br/>
+STEP 3 &#160;Configuration With&#160;Generation&#160;<br/>
+Data Acquisition......................................12&#160;<br/>
+Tool (GENy).......................................&#160;15&#160;<br/>
+Data Acquisition Mode&#160;...........................22&#160;<br/>
+STEP 4 &#160;Generate Files.........................&#160;16&#160;<br/>
+dbc-file&#160;......................................................9&#160;<br/>
+STEP 5 Add CANbedded&#160;To Your Project<br/>
+<b>DescInitPowerOn</b>..................................18&#160;<br/>
+...........................................................&#160;17&#160;<br/>
+development environment&#160;......................17&#160;<br/>
+STEP 6 Adapt Your Application Files&#160;....&#160;18&#160;<br/>
+Ethernet&#160;....................................................8&#160;<br/>
+STEP 7 Compile And Link&#160;Your Project&#160;19&#160;<br/>
+Event&#160;................................................12, 22&#160;<br/>
+STEP 8 Test&#160;It Via CANape...................&#160;20&#160;<br/>
+Firewire.....................................................8&#160;<br/>
+TTCAN&#160;.....................................................&#160;8&#160;<br/>
+FlexRay&#160;....................................................8&#160;<br/>
+Universal Measurement And Calibration&#160;<br/>
+Protocol XCP&#160;.......................................&#160;7&#160;<br/>
+Further Information.................................22&#160;<br/>
+USB..........................................................&#160;8&#160;<br/>
+Generation&#160;Tool........................................8&#160;<br/>
+XCP..........................................................&#160;8&#160;<br/>
+Including, Initialization And Cyclic&#160;Calls&#160;.18&#160;<br/>&#160;<br/>
+©2011, Vector Informatik GmbH &#160;<br/>
+&#160;<br/>
+Version:&#160;<br/>
+1.0.2&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="UserManual_XCPs.html#7">1 Welcome to the XCP User Manual</a>
+<ul>
+<li><a href="UserManual_XCPs.html#7">Beginners with XCP start here ?&#160;</a></li>
+<li><a href="UserManual_XCPs.html#7">1.2 For Advanced Users&#160;</a></li>
+<li><a href="UserManual_XCPs.html#7">Special topics&#160;</a></li>
+<li><a href="UserManual_XCPs.html#7">1.4 Documents this one refers to…</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#8">2 About This Document</a>
+<ul>
+<li><a href="UserManual_XCPs.html#8">2.1 How This Documentation Is Set-Up</a></li>
+<li><a href="UserManual_XCPs.html#8">2.2 Legend and Explanation of Symbols</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#9">3 XCP Software Component – An Overall View</a>
+<ul>
+<li><a href="UserManual_XCPs.html#9">3.1 What Is XCP</a></li>
+<li><a href="UserManual_XCPs.html#9">3.2 What Is the XCP Component</a></li>
+<li><a href="UserManual_XCPs.html#9">3.3 Tools And Files – The Generation Tool</a></li>
+<li><a href="UserManual_XCPs.html#10">3.4 What The Component Does</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#12">4 XCP – A More Detailed View</a>
+<ul>
+<li><a href="UserManual_XCPs.html#12">4.1 Basic Mechanism of the XCP</a></li>
+<li><a href="UserManual_XCPs.html#12">4.2 Measurement Modes</a>
+<ul>
+<li><a href="UserManual_XCPs.html#12">4.2.1 Using XCP In Polling Mode</a></li>
+<li><a href="UserManual_XCPs.html#13">4.2.2 Using XCP For Data Acquisition / Event</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#14">5 XCP IN 8 STEPS</a>
+<ul>
+<li><a href="UserManual_XCPs.html#15">STEP 1 &#160;Installation Of The Tool&#160;</a></li>
+<li><a href="UserManual_XCPs.html#15">STEP 2 &#160;Extract CANbedded Software Components</a></li>
+<li><a href="UserManual_XCPs.html#16">STEP 3 &#160;Configuration With The Generation Tool (GENy)</a></li>
+<li><a href="UserManual_XCPs.html#17">STEP 4 &#160;Generate Files</a></li>
+<li><a href="UserManual_XCPs.html#18">STEP 5 Add CANbedded To Your Project</a></li>
+<li><a href="UserManual_XCPs.html#19">STEP 6 Adapt Your Application Files</a>
+<ul>
+<li><a href="UserManual_XCPs.html#19">5.6.1 Including, Initialization And Cyclic Calls</a></li>
+<li><a href="UserManual_XCPs.html#19">5.6.2 Connect your application to the XCP</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#20">STEP 7 Compile And Link Your Project</a></li>
+<li><a href="UserManual_XCPs.html#21">STEP 8 Test It Via CANape</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#23">6 Further Information&#160;</a>
+<ul>
+<li><a href="UserManual_XCPs.html#23">6.1 Settings For Using The Data Acquisition Mode / Events</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#26">7 &#160;List Of Experiences</a>
+<ul>
+<li><a href="UserManual_XCPs.html#26">7.1 Topic 1</a></li>
+</ul>
+</li>
+<li><a href="UserManual_XCPs.html#27">8 Index</a></li>
+</ul>
+<hr/>
+</body>
+</html>

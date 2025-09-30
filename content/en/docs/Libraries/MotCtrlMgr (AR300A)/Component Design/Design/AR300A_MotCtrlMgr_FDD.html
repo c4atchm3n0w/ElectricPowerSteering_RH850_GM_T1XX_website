@@ -1,0 +1,354 @@
+---
+title: AR300A_MotCtrlMgr_FDD
+linkTitle: AR300A_MotCtrlMgr_FDD
+weight: 2
+---
+
+<p><strong>Motor Control Manager</strong></p>
+<p><strong>FDD #AR300A</strong></p>
+<p>.</p>
+<p>1. High Level Description 4</p>
+<p>2. Derived Requirements 4</p>
+<p>3. Function I/O 5</p>
+<p>3.1. Data Ownership 5</p>
+<p>3.2. Input Description 5</p>
+<p>3.3. Output Description 6</p>
+<p>3.4. Sub-Function Data Flow 7</p>
+<p>4. Design Rationale and Assumptions 8</p>
+<p>5. Sub-Functions 8</p>
+<p>5.1. Sub-Function: MotCtrlMgrPer1 – Motor Control To 2ms RTE interface 8</p>
+<p>5.1.1. Hardware Related Design 8</p>
+<p>5.1.2. Software Related Design 9</p>
+<p>5.1.3. Sub Function Calibrations 9</p>
+<p>5.1.4. Signal Availability 9</p>
+<p>5.2. Sub-Function: MotCtrlMgrPer2 –2ms RTE to Motor Control interface 9</p>
+<p>5.2.1. Hardware Related Design 9</p>
+<p>5.2.2. Software Related Design 9</p>
+<p>5.2.3. Sub Function Calibrations 10</p>
+<p>5.2.4. Signal Availability 10</p>
+<p>5.3. Sub-Function: MotCtrlMgrIrq: Motor Control Interrupt Service Routine 10</p>
+<p>5.3.1. Hardware Related Design 10</p>
+<p>5.3.2. Software Related Design 10</p>
+<p>5.3.3. Sub Function Calibrations 10</p>
+<p>5.3.4. Signal Availability 10</p>
+<p>5.4. Sub-Function: Definition of Motor Control Data 10</p>
+<p>5.4.1. Hardware Related Design 10</p>
+<p>5.4.2. Software Related Design 10</p>
+<p>5.4.3. Sub Function Calibrations 11</p>
+<p>5.4.4. Signal Availability 11</p>
+<p>5.5. Sub-Function: Non-RTE Enumeration Definitions 12</p>
+<p>5.5.1. Hardware Related Design 12</p>
+<p>5.5.2. Software Related Design 12</p>
+<p>5.5.3. Sub Function Calibrations 12</p>
+<p>5.5.4. Signal Availability 12</p>
+<p>5.6. Sub-Function: Motor Control Data Access Macros 12</p>
+<p>5.6.1. Hardware Related Design 12</p>
+<p>5.6.2. Software Related Design 12</p>
+<p>5.6.3. Sub Function Calibrations 12</p>
+<p>5.6.4. Signal Availability 13</p>
+<p>5.7. Sub-Function: Motor Control Data Signal Mapping 13</p>
+<p>5.7.1. Hardware Related Design 13</p>
+<p>5.7.2. Software Related Design 13</p>
+<p>5.7.3. Sub Function Calibrations 13</p>
+<p>5.7.4. Signal Availability 13</p>
+<p>6. Timing / Execution Constraints 13</p>
+<p>6.1. Rationale / Comments 13</p>
+<p>6.2. Rates and State Execution 14</p>
+<p>7. Serial Communications Interfaces 14</p>
+<p>8. Additional Information 14</p>
+<p>9. Revision Record &amp; Change Approval 15</p>
+<h1 id="high-level-description"><br />
+High Level Description</h1>
+<p>The Motor Control Manager component is responsible for three major tasks:</p>
+<ol type="1">
+<li><p>Defining and owning the Motor Control Interrupt routine</p></li>
+<li><p>Defining and owning all Motor Control related global signals that are not handled by the RTE including providing interfaces for component access to these signals</p></li>
+<li><p>Providing a standardized interface between the Motor Control related global signals and the RTE signals</p></li>
+</ol>
+<h1 id="derived-requirements">Derived Requirements</h1>
+<p>None</p>
+<h1 id="function-io"><br />
+Function I/O</h1>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.emf" /></p>
+<h2 id="data-ownership">Data Ownership</h2>
+<p>The following table shows the data that the MotCtrlMgr is expected to define and own. Please note that only a subset of this data is explicitly used as I/O for the MotCtrlMgr subfunctions.</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MotCtrlMgr_MotCtrlToTwoMilliSec_Rec</td>
+<td>Structure containing all of the signals that are written by motor control scheduled runnables that are required to be read by 2ms RTE scheduled runnables. This structure is the structure that the Motor Control Runnables write to. The list of signals contained in this structure can change from program to program based on program dataflow requirements.</td>
+</tr>
+<tr class="even">
+<td>MotCtrlMgr_TwoMilliSecFromMotCtrl_Rec</td>
+<td>Structure containing all of the signals that are written by motor control scheduled runnables that are required to be read by 2ms RTE scheduled runnables. This structure is the structure that the 2ms RTE scheduled runnables read from. The list of signals contained in this structure can change from program to program based on program dataflow requirements.</td>
+</tr>
+<tr class="odd">
+<td>MotCtrlMgr_TwoMilliSecToMotCtrl_Rec</td>
+<td>Structure containing all of the signals that are written by 2ms RTE scheduled runnables that are required to be read by motor control scheduled runnables. This structure is the structure that the 2ms RTE scheduled runnables write to. The list of signals contained in this structure can change from program to program based on program dataflow requirements.</td>
+</tr>
+<tr class="even">
+<td>MotCtrlMgr_MotCtrlFromTwoMilliSec_Rec</td>
+<td>Structure containing all of the signals that are written by 2ms RTE scheduled runnables that are required to be read by motor control scheduled runnables. This structure is the structure that the Motor Control Runnables read from. The list of signals contained in this structure can change from program to program based on program dataflow requirements.</td>
+</tr>
+<tr class="odd">
+<td>MotCtrlMgr_MotCtrlInt_Rec</td>
+<td>Structure containing all of the signals that read and written only by motor control scheduled runnables (i.e. no interface with RTE scheduled runnables required). The list of signals contained in this structure can change from program to program based on program dataflow requirements.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="input-description">Input Description</h2>
+<p>The following inputs are used by this FDD. Source FDD, range, resolution are located in the FDD data dictionary.</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Input Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MotCtrlMgr_TwoMilliSecFromMotCtrl_Rec</td>
+<td>See description above</td>
+</tr>
+<tr class="even">
+<td><em>&lt;Signal1&gt;…&lt;Signal#&gt;</em></td>
+<td>All RTE signals coming from the 2ms RTE scheduled runnables that are required to be read by motor control scheduled runnables. The list of signals can change from program to program based on program dataflow requirements.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-description">Output Description</h2>
+<p>The following outputs are generated by this FDD. Source FDD, range, resolution are located in the FDD data dictionary.</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MotCtrlMgr_TwoMilliSecToMotCtrl_Rec</td>
+<td>See description above</td>
+</tr>
+<tr class="even">
+<td><em>&lt;SignalA&gt;…&lt;SignalX&gt;</em></td>
+<td>All RTE signals being read by 2ms RTE scheduled runnables that are written by motor control scheduled runnables. The list of signals can change from program to program based on program dataflow requirements.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sub-function-data-flow"><br />
+Sub-Function Data Flow</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.emf" /></p>
+<h1 id="design-rationale-and-assumptions"><br />
+Design Rationale and Assumptions</h1>
+<p>The Motor Control Manager component is intended to provide a flexible design that will allow a consistent definition of all of the Motor Control related global signals, the Motor Control interrupt routine, and the interface between the Motor Control global signals and the RTE. The design is also partially influenced on the knowledge of how the DMA, ADC, and TSG3 hardware peripherals will be used for electrical architecture 4. The following assumptions were considered in the design, and further details on some of these items can be found later in this document:</p>
+<ul>
+<li><p>The ADC0 will be used primarily for Motor Control ADC reads and the ADC1 will be used for 2ms ADC reads. The 2ms ADC reads will require explicit transfer from the Motor Control time domain to the 2ms time domain.</p></li>
+<li><p>The DMA will be transferring ADC results from ADC result registers into RAM and therefore the ADC result RAM signals must be packed together in proper order. Additionally, all ADC results registers will be transferred, not just those that are used in a program.</p></li>
+<li><p>The DMA will be transferring TSG3 PWM signals from RAM to TSG3 registers and therefore must be packed together in proper order. The signals names and ordering are as follows:</p>
+<ul>
+<li><p>MotCtrlTSG3<em>n</em>DCMP0E, MotCtrlTSG3<em>n</em>CMP0E, MotCtrlTSG3<em>n</em>CMP12E</p></li>
+<li><p>MotCtrlTSG3<em>n</em>CMPWE, MotCtrlTSG3<em>n</em>CMPVE, MotCtrlTSG3<em>n</em>CMPUE</p></li>
+</ul></li>
+<li><p>All signals being transferred between the Motor Control and 2ms time domains will be done through the DMA and will require definition of signals for both time domains. This is why these signals are all packed together in a structure. Additionally, it is assumed that the DMA will be using 128 bit transfers for this data, and memory alignment and size of the structure are designed accordingly.</p></li>
+<li><p>It is assumed that the RAM data structures that the DMA will be writing to will need to be placed in an isolated RAM location in memory and will therefore need special provisions to allow specific placement of this data in memory. It is also assumed the DMA will not have any specific restrictions on memory that it can read from.</p></li>
+<li><p>Signals owned by the Motor Control Manager are not required to be defined as a structure. Enumerations, however, will be supported, but only for underlying datatypes of uint8, uint16, uint32.</p></li>
+<li><p>The current design assumes only a 2ms interface to RTE is required</p></li>
+</ul>
+<h1 id="sub-functions">Sub-Functions</h1>
+<h2 id="sub-function-motctrlmgrper1-motor-control-to-2ms-rte-interface">Sub-Function: MotCtrlMgrPer1 – Motor Control To 2ms RTE interface</h2>
+<h3 id="hardware-related-design">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design">Software Related Design</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.emf" /></p>
+<h3 id="sub-function-calibrations">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability">Signal Availability</h3>
+<p>None</p>
+<h2 id="sub-function-motctrlmgrper2-2ms-rte-to-motor-control-interface">Sub-Function: MotCtrlMgrPer2 –2ms RTE to Motor Control interface</h2>
+<h3 id="hardware-related-design-1">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design-1">Software Related Design</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.emf" /></p>
+<h3 id="sub-function-calibrations-1">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability-1">Signal Availability</h3>
+<p>None</p>
+<h2 id="sub-function-motctrlmgrirq-motor-control-interrupt-service-routine">Sub-Function: MotCtrlMgrIrq: Motor Control Interrupt Service Routine</h2>
+<h3 id="hardware-related-design-2">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design-2">Software Related Design</h3>
+<p>The motor control interrupt routine needs to be configurable to allow flexibility in the runnable list that it contains as well as the order in which the runnables are called. Additionally, it will contain a loop counter that will toggle between 0 and 1 every motor control loop. Any runnables that need to be scheduled at a rate of MotorControlx2 will only run when the counter is equal to 1, whereas runnables that need to be scheduled at a rate of MotorControl will run regardless of the counter value. The counter should be initialized to 1 and will toggle after all runnables are executed.</p>
+<h3 id="sub-function-calibrations-2">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability-2">Signal Availability</h3>
+<p>None</p>
+<h2 id="sub-function-definition-of-motor-control-data">Sub-Function: Definition of Motor Control Data</h2>
+<h3 id="hardware-related-design-3">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design-3">Software Related Design</h3>
+<p>This sub-function defines the details of how the process for defining the motor control related signals contained in the Data Ownership section above. There are some high level details that hold true for all signals as follows:</p>
+<ul>
+<li><p>Structures are used to implement the different data categories to group all of the data together</p></li>
+<li><p>All structure elements are defined to pack the data into a structure in the most efficient manner. This involves grouping all of the same size datatypes together in the structure as well as grouping the different size groups in descending order of size (i.e. 32bit-&gt;16bit-&gt;8bit).</p></li>
+<li><p>All structures are aligned to start at an address that is evenly divisible by 16 to allow for 128bit DMA transfers. Additionally, all structures will contain some pad bytes at the end of the structure to make the structure size (in bytes) evenly divisible by 16.</p></li>
+<li><p>The following properties are needed to define the structure details:</p>
+<ul>
+<li><p>Signal Name (without “MotCtrl” prefix if applicable)</p></li>
+<li><p>Underlying signal datatype (float32, uint32, sint32, uint16, sint16, uint8, sint8, boolean)</p>
+<ul>
+<li><p>If signal is enumerated the enumeration name is also needed</p></li>
+</ul></li>
+<li><p>Initial Value of each signal</p></li>
+<li><p>Size (for array handling)</p></li>
+<li><p>Signal usage for each Motor Control related signal:</p>
+<ul>
+<li><p>Signal read in a 2ms (or higher) function</p></li>
+<li><p>Signal written in a 2ms (or higher) function</p></li>
+<li><p>Signal read in Motor Control function</p></li>
+<li><p>Signal written in a Motor Control function</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="motctrlmgr_motctrltotwomillisec_rec">MotCtrlMgr_MotCtrlToTwoMilliSec_Rec</h4>
+<p>If the motor control signal is written in a Motor Control function and read in a 2ms function, it would need to be placed in this structure. All signals in this structure should be prepended with “MotCtrl” given that this structure is accessed by Motor Control functions.</p>
+<p>This structure should contain ADC1 result data as well given that it needs to be read by 2ms functions. This result data needs to be aligned at an address that is evenly divisible by 16 to allow for 128bit DMA transfers.</p>
+<h4 id="motctrlmgr_twomillisecfrommotctrl_rec">MotCtrlMgr_TwoMilliSecFromMotCtrl_Rec</h4>
+<p>This structure is an exact duplicate of MotCtrlMgr_MotCtrlToTwoMilliSec_Rec except “MotCtrl” is not prepended to each signal because this structure is accessed by 2ms functions.</p>
+<h4 id="motctrlmgr_twomillisectomotctrl_rec">MotCtrlMgr_TwoMilliSecToMotCtrl_Rec</h4>
+<p>If the motor control signal is written in a 2ms function and read in a Motor Control function, it would need to be placed in this structure.</p>
+<h4 id="motctrlmgr_motctrlfromtwomillisec_rec">MotCtrlMgr_MotCtrlFromTwoMilliSec_Rec</h4>
+<p>This structure is an exact duplicate of MotCtrlMgr_TwoMilliSecToMotCtrl_Rec except “MotCtrl” is prepended to each signal because this structure is accessed by Motor Control functions.</p>
+<h4 id="motctrlmgr_motctrlint_rec">MotCtrlMgr_MotCtrlInt_Rec</h4>
+<p>If the motor control signal is written in a Motor Control function and is not read in a 2ms function, it would need to be placed in this structure.</p>
+<p>This structure should contain ADC0 result data as well given that it needs to be read by Motor Control functions. This result data needs to be aligned at an address that is evenly divisible by 16 to allow for 128bit DMA transfers.</p>
+<p>This structure should also contain TSG3 data as described in the above Design Assumptions section. This data must also be ensured to be aligned at an address that is evenly divisible by 4 to allow 32bit DMA transfers.</p>
+<h3 id="sub-function-calibrations-3">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability-3">Signal Availability</h3>
+<p>None</p>
+<h2 id="sub-function-non-rte-enumeration-definitions">Sub-Function: Non-RTE Enumeration Definitions</h2>
+<h3 id="hardware-related-design-4">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design-4">Software Related Design</h3>
+<p>Since certain signals that reside outside of the RTE may be required to be defined as enumerations, it is possible that there will not be visibility to the RTE defined enumerations. To resolve this, the Motor Control Manager will also allow definition of enumeration types and enumeration element names and values. This will need to be configurable on an as-needed basis. The following information is needed for this definition:</p>
+<ul>
+<li><p>Enumeration Name</p></li>
+<li><p>Underlying Enumeration Datatype (assumed uint8, uin16, and uint32 possibilities)</p></li>
+<li><p>Enumeration Element Names and Values</p></li>
+</ul>
+<h3 id="sub-function-calibrations-4">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability-4">Signal Availability</h3>
+<p>None</p>
+<h2 id="sub-function-motor-control-data-access-macros">Sub-Function: Motor Control Data Access Macros</h2>
+<h3 id="hardware-related-design-5">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design-5">Software Related Design</h3>
+<p>To abstract the underlying structure definition for each Motor Control signal, the Motor Control Manager will define access macros for external software modules to use when accessing from Motor Control functions. These will either be accessing elements of MotCtrlMgr_MotCtrlInt_Rec, MotCtrlMgr_MotCtrlToTwoMilliSec_Rec, or MotCtrlMgr_MotCtrlFromTwoMilliSec_Rec depending on the signal access needs. The macros will be defined with the format:</p>
+<p>MOTCTRLMGR_&lt;<em>SignalIdentifier</em>&gt;</p>
+<p>Please note &lt;<em>SignalIdentifier</em>&gt; should always include the “MotCtrl” prefix since all signals accessed in Motor Control functions require this.</p>
+<h3 id="sub-function-calibrations-5">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability-5">Signal Availability</h3>
+<p>None</p>
+<h2 id="sub-function-motor-control-data-signal-mapping">Sub-Function: Motor Control Data Signal Mapping</h2>
+<h3 id="hardware-related-design-6">Hardware Related Design</h3>
+<p>None</p>
+<h3 id="software-related-design-6">Software Related Design</h3>
+<p>In order to resolve the fact that names for inputs and outputs will not always align, the motor control manager must take into account this when creating the Motor Control Data Access Macros (see corresponding Sub-Function in this document). The strategy adopted is that the access macros for inputs that connect to outputs of differing names will “map” to the data access macros for the outputs.</p>
+<p>For example:</p>
+<blockquote>
+<p>Input Name: <em>MotCtrlSignalA</em></p>
+<p>Output Name: <em>MotCtrlSignal1</em></p>
+<p>MOTCTRLMGR_&lt;<em>MotCtrlSignalA</em>&gt; access macro would “map” to MOTCTRLMGR_&lt;<em>MotCtrlSignal1</em>&gt; access macro and therefore ultimately be accessing the underlying structure element for <em>MotCtrlSignal1.</em> There would not be a separate structure element for <em>MotCtrlSignalA.</em></p>
+</blockquote>
+<p>Please note that for any given output, there could be multiple corresponding input signal names that it could “map” to.</p>
+<h3 id="sub-function-calibrations-6">Sub Function Calibrations</h3>
+<p>None</p>
+<h3 id="signal-availability-6">Signal Availability</h3>
+<p>None</p>
+<h1 id="timing-execution-constraints">Timing / Execution Constraints</h1>
+<h2 id="rationale-comments">Rationale / Comments</h2>
+<p>MotCtrlMgrPer1 should execute near the start of the 2ms loop before any other functions that need data that is output by runnables running at the Motor Control rate. The DMA transfer that is populating MotCtrlMgr_TwoMilliSecFromMotCtrl_Rec shall run before MotCtrlMgrPer1 and ideally enough other functionality runs in-between these two events that the transfer can complete with minimal wait time in MotCtrlMgrPer1 (since this function is waiting for DMA transfer completion).</p>
+<p>MotCtrlMgrPer2 should execute as the final function of the forward path to allow minimal lag on computation of new PWM commands in the Motor Control loop.</p>
+<h2 id="rates-and-state-execution">Rates and State Execution</h2>
+<table>
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sub-Function Name</strong></th>
+<th><strong>Rate (ms)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MotCtrlMgrPer1</td>
+<td>2 (all system states)</td>
+</tr>
+<tr class="even">
+<td>MotCtrlMgrPer2</td>
+<td>2 (all system states)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="serial-communications-interfaces">Serial Communications Interfaces</h1>
+<p>None</p>
+<h1 id="additional-information">Additional Information</h1>
+<h1 id="revision-record-change-approval"><br />
+Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 65%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>04/22/15</td>
+<td>EA4#510</td>
+<td>Initial Version</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>01/21/16</td>
+<td>EA4#3424</td>
+<td>Added signal mapping subfunction</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>

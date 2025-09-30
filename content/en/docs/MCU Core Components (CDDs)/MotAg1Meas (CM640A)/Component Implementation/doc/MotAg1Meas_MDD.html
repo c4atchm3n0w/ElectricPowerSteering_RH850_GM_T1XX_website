@@ -1,0 +1,380 @@
+---
+title: MotAg1Meas_MDD
+linkTitle: MotAg1Meas_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>Motor Angle 1 Measurement</strong></p>
+<p><strong>Dec 08, 2015</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Software Group,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong><u>Saginaw, MI, USAChange</u></strong> History</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 31%" />
+<col style="width: 31%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sl. No.</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>Rijvi Ahmed</td>
+<td>1.0</td>
+<td>13-July-2015</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Updated for FDD rev. 02.01.00</td>
+<td>Rijvi Ahmed</td>
+<td>2.0</td>
+<td>06-Oct-2015</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Updated per FDD rev. 02.03.00</td>
+<td>Rijvi Ahmed</td>
+<td>3.0</td>
+<td>08-Dec-2015</td>
+</tr>
+</tbody>
+</table>
+<p><u>Table of Contents</u></p>
+<p><a href="#motag1meas-high-level-description">1 MotAg1Meas &amp; High-Level Description 5</a></p>
+<p><a href="#design-details-of-software-module">2 Design details of software module 6</a></p>
+<p><a href="#graphical-representation-of-cdd_motag1meas">2.1.1.1 Graphical representation of CDD_MotAg1Meas 6</a></p>
+<p><a href="#data-flow-diagram">2.1.1.2 Data Flow Diagram 6</a></p>
+<p><a href="#component-level-dfd">2.1.2 Component level DFD 6</a></p>
+<p><a href="#function-level-dfd">2.1.3 Function level DFD 6</a></p>
+<p><a href="#constant-data-dictionary">3 Constant Data Dictionary 7</a></p>
+<p><a href="#program-fixed-constants">3.1.1.1 Program (fixed) Constants 7</a></p>
+<p><a href="#embedded-constants">3.1.2 Embedded Constants 7</a></p>
+<p><a href="#software-component-implementation">4 Software Component Implementation 8</a></p>
+<p><a href="#sub-module-functions">4.1.1 Sub-Module Functions 8</a></p>
+<p><a href="#init-motag1measinit1">4.1.1.1 Init: MotAg1MeasInit1 8</a></p>
+<p><a href="#per-motag1measper1">4.1.1.2 Per: MotAg1MeasPer1 8</a></p>
+<p><a href="#per-motag1measper2">4.1.1.3 Per: MotAg1MeasPer2 9</a></p>
+<p><a href="#interrupt-service-routines">4.1.2 Interrupt Service Routines 9</a></p>
+<p><a href="#server-runnable-functions">4.1.3 Server Runnable Functions 9</a></p>
+<p><a href="#motag1measmotag1coefftblread">4.1.3.1 MotAg1MeasMotAg1CoeffTblRead 9</a></p>
+<p><a href="#design-rationale-3">4.1.3.1.1 Design Rationale 9</a></p>
+<p><a href="#store-module-inputs-to-local-copies-2">4.1.3.1.2 Store Module Inputs to Local copies 9</a></p>
+<p><a href="#processing-of-function-2">4.1.3.1.3 (Processing of function)……… 9</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-2">4.1.3.1.4 Store Local copy of outputs into Module Outputs 9</a></p>
+<p><a href="#motag1measmotag1coefftblwr">4.1.3.2 MotAg1MeasMotAg1CoeffTblWr 9</a></p>
+<p><a href="#design-rationale-4">4.1.3.2.1 Design Rationale 9</a></p>
+<p><a href="#store-module-inputs-to-local-copies-3">4.1.3.2.2 Store Module Inputs to Local copies 9</a></p>
+<p><a href="#processing-of-function-3">4.1.3.2.3 (Processing of function)……… 10</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-3">4.1.3.2.4 Store Local copy of outputs into Module Outputs 10</a></p>
+<p><a href="#module-internal-local-functions">4.1.4 Module Internal (Local) Functions 10</a></p>
+<p><a href="#local-function-1">4.1.5 Local Function #1 10</a></p>
+<p><a href="#design-rationale-5">4.1.5.1 Design Rationale 10</a></p>
+<p><a href="#transition-functions">4.1.6 Transition Functions 10</a></p>
+<p><a href="#known-limitations-with-design">5 Known Limitations with Design 11</a></p>
+<p><a href="#unit-test-consideration">6 UNIT TEST CONSIDERATION 12</a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms 13</a></p>
+<p><a href="#glossary">Appendix B Glossary 14</a></p>
+<p><a href="#references">Appendix C References 15</a></p>
+<h1 id="motag1meas-high-level-description">MotAg1Meas &amp; High-Level Description</h1>
+<p>The CDD_MotAg1Meas component is the complex driver for the motor angle 1 measurement subsystem. This function initializes the registers for CSIH3 SPI channel for communicating with the motor angle 1 measurement sensor board. The SPI transmission is triggered periodically by DMA component. This function receives the RAW sensor data at 62.5uS rate. The component contains two source files, both described in this MDD: CDD_MotAg1Meas.c contains the RTE runnables and services; CDD_MotAg1Meas_MotCtrl.c contains the motor control runnable.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<p><em>See FDD.</em></p>
+<h2 id="graphical-representation-of-cdd_motag1meas">Graphical representation of CDD_MotAg1Meas</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.png" style="width:3.55in;height:1.74167in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p>See FDD.</p>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<p>See FDD.</p>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<p>See FDD.</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Constant Name</td>
+<td>Resolution</td>
+<td>Units</td>
+<td>Value</td>
+</tr>
+<tr class="even">
+<td>ARYIDXRAWERRREG_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0u</td>
+</tr>
+<tr class="odd">
+<td>ARYIDXRAWTURNCNTRREG_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>1u</td>
+</tr>
+<tr class="even">
+<td>ARYIDXRAWAGREG_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>2u</td>
+</tr>
+<tr class="odd">
+<td>SIXTEENBITMAXVAL_CNT_U16</td>
+<td>1</td>
+<td>Cnt</td>
+<td>65535U</td>
+</tr>
+<tr class="even">
+<td>MOTAGRAWRESHILIM_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>67108863U</td>
+</tr>
+</tbody>
+</table>
+<p><strong>* Also see see FDD – CM640A_MotAg1Meas_DataDict.m file</strong></p>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<p>&lt;The detailed design of the function is provided in the FDD. The detail design shall only be added to the MDD when it is not provided in the FDD or the FDD is not adequate and clarification is needed.&gt;</p>
+<h3 id="sub-module-functions">Sub-Module Functions</h3>
+<h2 id="init-motag1measinit1">Init: MotAg1MeasInit1</h2>
+<h5 id="design-rationale"><strong>Design Rationale</strong></h5>
+<p>All register initialization that is allowed at the register level (see Register/Field coloumn of the CM640A_MotAg1Meas_RegisterConfiguration.xlsm spreadsheet in the FDD) is done at the register level to save execution time as compared to the read/modify/writes that would be needed to initialize at the field level. Field level initialization done only where required by the spreadsheet.</p>
+<h5 id="module-outputs"><strong>Module Outputs</strong></h5>
+<p>See FDD: MotAg1MeasInit1 model block.</p>
+<h5 id="module-internal"><strong>Module Internal</strong> </h5>
+<p>See FDD: MotAg1MeasInit1 model block for Per Instance Memory.</p>
+<h2 id="per-motag1measper1">Per: MotAg1MeasPer1</h2>
+<h5 id="design-rationale-1">Design Rationale</h5>
+<blockquote>
+<p>For run time efficiency in the motor control loop the <strong>Compensate MechMtrPos</strong> block is implemented in a optimized way in the code by letting a uint16 variable be overflown.</p>
+</blockquote>
+<h5 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h5>
+<blockquote>
+<p>See FDD: MotAg1MeasPer1 model block.</p>
+</blockquote>
+<h5 id="processing-of-function">(Processing of function)………</h5>
+<blockquote>
+<p>See FDD: MotAg1MeasPer1 model block.</p>
+</blockquote>
+<h5 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h5>
+<blockquote>
+<p>See FDD: MotAg1MeasPer1 model block</p>
+</blockquote>
+<h2 id="per-motag1measper2">Per: MotAg1MeasPer2</h2>
+<h5 id="design-rationale-2">Design Rationale</h5>
+<blockquote>
+<p>None</p>
+</blockquote>
+<h5 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h5>
+<blockquote>
+<p>See FDD: MotAg1MeasPer2 model block.</p>
+</blockquote>
+<h5 id="processing-of-function-1">(Processing of function)………</h5>
+<blockquote>
+<p>See FDD: MotAg1MeasPer2 model block.</p>
+</blockquote>
+<h5 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h5>
+<blockquote>
+<p>See FDD: MotAg1MeasPer2 model block</p>
+</blockquote>
+<h3 id="interrupt-service-routines">Interrupt Service Routines</h3>
+<p>None</p>
+<h3 id="server-runnable-functions">Server Runnable Functions</h3>
+<h2 id="motag1measmotag1coefftblread">MotAg1MeasMotAg1CoeffTblRead</h2>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="store-module-inputs-to-local-copies-2">Store Module Inputs to Local copies</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-2">(Processing of function)………</h2>
+<p><em>See</em> MotAg1MeasMotAg1CoeffTblRead<em>block in the FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-2">Store Local copy of outputs into Module Outputs</h2>
+<p><em>None</em></p>
+<h2 id="motag1measmotag1coefftblwr">MotAg1MeasMotAg1CoeffTblWr</h2>
+<h2 id="design-rationale-4">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="store-module-inputs-to-local-copies-3">Store Module Inputs to Local copies</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-3">(Processing of function)………</h2>
+<p><em>See</em> MotAg1MeasMotAg1CoeffTblWr<em>block in the FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-3">Store Local copy of outputs into Module Outputs</h2>
+<p><em>See</em> MotAg1MeasMotAg1CoeffTblWr<em>block in the FDD</em></p>
+<h3 id="module-internal-local-functions">Module Internal (Local) Functions</h3>
+<h2 id="local-function-1"> Local Function #1</h2>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CalcCorrnTbl</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>None</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-5">Design Rationale</h2>
+<p>See “Calculate Correction Table” block in the Simulink model of the design.</p>
+<h3 id="transition-functions">Transition Functions</h3>
+<p>None.</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<blockquote>
+<p>None.</p>
+</blockquote>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>Following variables are used as rolling counters, so the overflow of these variables is intentional.</p>
+<p>Rte_Pim_MotAg1ErrParFltCntPrev</p>
+<p>Rte_Pim_MotAg1VltgFltCntPrev</p>
+<p>Rte_Pim_MotAg1ParFltCntPrev</p>
+<p>Rte_Pim_MotAg1MeclRollgCntrPrev</p>
+<p>There is an unreachable code in the SinCos_f32() function, because the input of this function is always positive. This is ok as the SinCos_f32() is a library function.</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DFD</td>
+<td>Design functional diagram</td>
+</tr>
+<tr class="even">
+<td>MDD</td>
+<td>Module design Document</td>
+</tr>
+<tr class="odd">
+<td>FDD</td>
+<td>Functional Design Document</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.0</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>FDD: CM640A_MotAg1Meas_Design</td>
+<td>See Synergy subproject version</td>
+</tr>
+</tbody>
+</table>

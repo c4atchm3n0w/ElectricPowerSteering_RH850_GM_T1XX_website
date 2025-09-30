@@ -1,0 +1,704 @@
+---
+title: ES400A_TunSelnMngt_FDD
+linkTitle: ES400A_TunSelnMngt_FDD
+weight: 3
+---
+
+<p><strong>Tuning Selection Management</strong></p>
+<p><strong>FDD #ES-400A</strong></p>
+<p><a href="#high-level-description">1. High Level Description <span>4</span></a></p>
+<p><a href="#derived-requirements">2. Derived Requirements <span>4</span></a></p>
+<p><a href="#sub-function-data-flow">3. Sub-Function Data Flow <span>4</span></a></p>
+<p><a href="#design-rationale">4. Design Rationale <span>5</span></a></p>
+<p><a href="#design-overview">4.1. Design Overview <span>5</span></a></p>
+<p><a href="#flash-calibration-table">4.2. Flash Calibration Table <span>5</span></a></p>
+<p><a href="#ram-calibration-table">4.3. RAM Calibration Table <span>6</span></a></p>
+<p><a href="#calibration-components">4.4. Calibration Components <span>6</span></a></p>
+<p><a href="#flash-memory-location">4.4.1. Flash Memory Location <span>6</span></a></p>
+<p><a href="#calibration-usage">4.4.2. Calibration Usage <span>7</span></a></p>
+<p><a href="#calibration-indexing">4.4.3. Calibration Indexing <span>7</span></a></p>
+<p><a href="#online-calibration-grouping">4.4.4. Online Calibration Grouping <span>7</span></a></p>
+<p><a href="#changing-calibration-indexes">4.5. Changing Calibration Indexes <span>7</span></a></p>
+<p><a href="#copying-calibrations-to-ram-for-online-calibration">4.6. Copying Calibrations to RAM for Online Calibration <span>9</span></a></p>
+<p><a href="#sub-functions">5. Sub-Functions <span>11</span></a></p>
+<p><a href="#initialization-tunselnmngtinit1">5.1.1. Initialization (TunSelnMngtInit1) <span>11</span></a></p>
+<p><a href="#design-rationale-1">5.1.1.1. Design Rationale <span>11</span></a></p>
+<p><a href="#inputs">5.1.1.2. Inputs <span>11</span></a></p>
+<p><a href="#_Toc448583750">5.1.1.3. Operation <span>11</span></a></p>
+<p><a href="#outputs">5.1.1.4. Outputs <span>12</span></a></p>
+<p><a href="#periodic-tunselnmngtper1">5.1.2. Periodic (TunSelnMngtPer1) <span>13</span></a></p>
+<p><a href="#design-rationale-2">5.1.2.1. Design Rationale <span>13</span></a></p>
+<p><a href="#inputs-1">5.1.2.2. Inputs <span>13</span></a></p>
+<p><a href="#operation">5.1.2.3. Operation <span>13</span></a></p>
+<p><a href="#outputs-1">5.1.2.4. Outputs <span>14</span></a></p>
+<p><a href="#sub-function-copycalpagereq">5.1.3. Sub-Function: CopyCalPageReq <span>15</span></a></p>
+<p><a href="#design-rationale-3">5.1.3.1. Design Rationale <span>15</span></a></p>
+<p><a href="#inputs-2">5.1.3.2. Inputs <span>15</span></a></p>
+<p><a href="#operation-1">5.1.3.3. Operation <span>15</span></a></p>
+<p><a href="#outputs-2">5.1.3.4. Outputs <span>15</span></a></p>
+<p><a href="#sub-function-getcalpagereq">5.1.4. Sub-Function: GetCalPageReq <span>16</span></a></p>
+<p><a href="#design-rationale-4">5.1.4.1. Design Rationale <span>16</span></a></p>
+<p><a href="#inputs-3">5.1.4.2. Inputs <span>16</span></a></p>
+<p><a href="#operation-2">5.1.4.3. Operation <span>16</span></a></p>
+<p><a href="#outputs-3">5.1.4.4. Outputs <span>16</span></a></p>
+<p><a href="#sub-function-getseginforeq">5.1.5. Sub-Function: GetSegInfoReq <span>17</span></a></p>
+<p><a href="#design-rationale-5">5.1.5.1. Design Rationale <span>17</span></a></p>
+<p><a href="#inputs-4">5.1.5.2. Inputs <span>17</span></a></p>
+<p><a href="#operation-3">5.1.5.3. Operation <span>17</span></a></p>
+<p><a href="#mode-decision">5.1.5.3.1. Mode Decision <span>17</span></a></p>
+<p><a href="#segmodadrinfo">5.1.5.3.2. SegModAdrInfo <span>17</span></a></p>
+<p><a href="#operation-4">5.1.5.3.2.1. Operation <span>17</span></a></p>
+<p><a href="#segmodstdinfo">5.1.5.3.3. SegModStdInfo <span>18</span></a></p>
+<p><a href="#operation-5">5.1.5.3.3.1. Operation <span>18</span></a></p>
+<p><a href="#segmodadrmpg">5.1.5.3.4. SegModAdrMpg <span>18</span></a></p>
+<p><a href="#operation-6">5.1.5.3.4.1. Operation <span>18</span></a></p>
+<p><a href="#outputs-4">5.1.5.4. Outputs <span>18</span></a></p>
+<p><a href="#sub-function-onlinetunramadrmpg">5.1.6. Sub-Function: OnlineTunRamAdrMpg <span>19</span></a></p>
+<p><a href="#design-rationale-6">5.1.6.1. Design Rationale <span>19</span></a></p>
+<p><a href="#inputs-5">5.1.6.2. Inputs <span>19</span></a></p>
+<p><a href="#operation-7">5.1.6.3. Operation <span>19</span></a></p>
+<p><a href="#outputs-5">5.1.6.4. Outputs <span>19</span></a></p>
+<p><a href="#sub-function-setcalpagereq">5.1.7. Sub-Function: SetCalPageReq <span>20</span></a></p>
+<p><a href="#design-rationale-7">5.1.7.1. Design Rationale <span>20</span></a></p>
+<p><a href="#inputs-6">5.1.7.2. Inputs <span>20</span></a></p>
+<p><a href="#operation-8">5.1.7.3. Operation <span>20</span></a></p>
+<p><a href="#outputs-6">5.1.7.4. Outputs <span>20</span></a></p>
+<p><a href="#sub-function-idxchgmngt">5.1.8. Sub-Function: IdxChgMngt <span>21</span></a></p>
+<p><a href="#design-rationale-8">5.1.8.1. Design Rationale <span>21</span></a></p>
+<p><a href="#inputs-7">5.1.8.2. Inputs <span>21</span></a></p>
+<p><a href="#operation-9">5.1.8.3. Operation <span>21</span></a></p>
+<p><a href="#outputs-7">5.1.8.4. Outputs <span>22</span></a></p>
+<p><a href="#sub-function-memcopy32bit-and-memcopy8bit">5.1.9. Sub-Function: MemCopy32Bit and MemCopy8Bit <span>23</span></a></p>
+<p><a href="#design-rationale-9">5.1.9.1. Design Rationale <span>23</span></a></p>
+<p><a href="#inputs-8">5.1.9.2. Inputs <span>23</span></a></p>
+<p><a href="#operation-10">5.1.9.3. Operation <span>23</span></a></p>
+<p><a href="#outputs-8">5.1.9.4. Outputs <span>23</span></a></p>
+<p><a href="#sub-function-swtcalidx">5.1.10. Sub-Function: SwtCalIdx <span>24</span></a></p>
+<p><a href="#design-rationale-10">5.1.10.1. Design Rationale <span>24</span></a></p>
+<p><a href="#inputs-9">5.1.10.2. Inputs <span>24</span></a></p>
+<p><a href="#operation-11">5.1.10.3. Operation <span>24</span></a></p>
+<p><a href="#outputs-9">5.1.10.4. Outputs <span>24</span></a></p>
+<p><a href="#timing-execution-constraints">6. Timing / Execution Constraints <span>25</span></a></p>
+<p><a href="#rationale-comments">6.1. Rationale / Comments <span>25</span></a></p>
+<p><a href="#rates-and-state-execution">6.2. Rates and State Execution <span>25</span></a></p>
+<p><a href="#serial-communications-interfaces">7. Serial Communications Interfaces <span>25</span></a></p>
+<p><a href="#additional-information">8. Additional Information <span>25</span></a></p>
+<p><a href="#revision-record-change-approval">9. Revision Record &amp; Change Approval <span>26</span></a></p>
+<h1 id="high-level-description"><br />
+High Level Description</h1>
+<p>This document describes the design of the tuning selection management software component.</p>
+<h1 id="derived-requirements">Derived Requirements</h1>
+<p>None</p>
+<h1 id="sub-function-data-flow"> Sub-Function Data Flow</h1>
+<p>The following table describes the data flow in and out of this module.</p>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Input</td>
+<td>DesIninIdx</td>
+</tr>
+<tr class="even">
+<td>Input</td>
+<td>DesRtIdx</td>
+</tr>
+<tr class="odd">
+<td>Output</td>
+<td>ActvGroup</td>
+</tr>
+<tr class="even">
+<td>Output</td>
+<td>ActvIninIdx</td>
+</tr>
+<tr class="odd">
+<td>Output</td>
+<td>ActvRtIdx</td>
+</tr>
+<tr class="even">
+<td>Client</td>
+<td>Calc32BitCrc_u32</td>
+</tr>
+<tr class="odd">
+<td>Client</td>
+<td>RtCalChgReq</td>
+</tr>
+<tr class="even">
+<td>Client</td>
+<td>SetNtcSts</td>
+</tr>
+<tr class="odd">
+<td>Server</td>
+<td>CopyCalPageReq</td>
+</tr>
+<tr class="even">
+<td>Server</td>
+<td>GetCalPageReq</td>
+</tr>
+<tr class="odd">
+<td>Server</td>
+<td>GetSegInfoReq</td>
+</tr>
+<tr class="even">
+<td>Server</td>
+<td>OnlineTunRamAdrMpg</td>
+</tr>
+<tr class="odd">
+<td>Server</td>
+<td>SetCalPageReq</td>
+</tr>
+</tbody>
+</table>
+<h1 id="design-rationale">Design Rationale</h1>
+<h2 id="design-overview">Design Overview</h2>
+<p>Tuning selection management creates two copies of the RTE generated calibration table. This table contains pointers to all the calibration software components integrated for a given software application. The component manages the pointers to provide the ability for initialization and runtime calibration changes based on inputs provided by outside applications. These inputs can be, but are not limited to, NvM values, serial communication inputs, or inputs from other software components. This component also manages a RAM buffer for online calibration over XCP.</p>
+<p>The following sub sections will show an example of how this component operates.</p>
+<h2 id="flash-calibration-table">Flash Calibration Table</h2>
+<p>The flash table is generated by the RTE and uses the double pointer method defined by AUTOSAR for accessing calibrations. This provides a base pointer at the start of the flash table, and allows software to index into the calibration tables by an array index instead of knowing the direct names of the calibration structures. When the calibration source ports are connected to the receiver port within another software module, a linkage is generated by the RTE through the base pointer with the software components generated header file. An overview of this configuration is shown in the image below.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.emf" /></p>
+<h2 id="ram-calibration-table">RAM Calibration Table</h2>
+<p>Tuning Selection Management creates two copies of the flash memory calibration table. Along with each copy a CRC is maintained over each of the copies memory to ensure that the values are correct and were not modified by an outside source.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:0.46181in;height:0.38403in" alt="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8YIbYhy2hduj9cSWrZkv7mND-ccWNCfDswcfH9v448yscJB4t" />It is important to note that the cross functional team needs to ensure that the flash calibrations generated by the RTE can be used independently of the EPS system variants, such as but not limited to, motor sizing and C-factor. In the event of a RAM failure or CRC error, the default fault response is to go back using the flash calibration table and the default response is to remove assist immediately. If it can be ensured that the flash defaults are safe to drive for all program variants, the NTC can be reduced to an informative fault to and keep assist active. However, this needs to have all cross functional teams ensure that all criteria are met to make that change.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.emf" /></p>
+<h2 id="calibration-components">Calibration Components</h2>
+<p>The RTE generated table of pointers point to structures of calibrations that are represented by calibration components. These components do not have any run-time actions (such as initialization or periodic functions) and only provide source ports for the calibrations. Based on the configuration provided by the program team, the description of these components is generated by an outside tool. The names of these calibration components are created based on the following sections. An example of a calibration component name is as follows:</p>
+<p>CalRegn01Inin00GroupA</p>
+<p>&lt;Flash Memory Location&gt;&lt;Calibration Usage&gt;&lt;Calibration Indexing&gt;&lt;Online Calibration Grouping&gt;</p>
+<h3 id="flash-memory-location">Flash Memory Location</h3>
+<p>The flash memory location describes where the calibration is located in flash memory from Nexteer calibration memory regions to customer locations. The region is identified by the prefix “CalRegnXX”, where XX represents the region number. These regions are generic in name, but are defined by the cross-functional team to identify which locations these calibrations are located. For example, CalRegn00 could represent Nexteer calibrations and CalRegn01 could represent customer calibrations.</p>
+<h3 id="calibration-usage">Calibration Usage</h3>
+<p>The usage part of the name identifies of it is an initialization (Inin), a runtime (Rt) calibration, or a common calibration (Cmn). Common calibrations are common among all initialization and runtime calibrations. Initialization calibrations are selected at start up and cannot be changed during operation. Runtime calibrations are selected at startup and can be changed during operation. These indexes can be changed according to the rules that govern those indexes described in the section 4.5.</p>
+<h3 id="calibration-indexing">Calibration Indexing</h3>
+<p>The calibration indexing describes that index of the desired initialization and runtime ports a given calibration component belongs. The initialization and runtime indexes are designed to be independent of each other to give systems engineering more flexibility in defining calibrations that need to change at start up or during operation.</p>
+<h3 id="online-calibration-grouping">Online Calibration Grouping</h3>
+<p>The online calibration grouping defines the segment for XCP access. This section of the name is optional and if no grouping is defined then the calibration contained with that calibration component are not allowed to be tuned by XCP.</p>
+<h2 id="changing-calibration-indexes">Changing Calibration Indexes</h2>
+<p>During initialization or during runtime, the application may require an index to be changed. Calibrations marked as initialization calibrations can only be changed during initialization and will remain the same values for the rest of the ignition cycle. Runtime calibrations can change at initialization and during runtime operations.</p>
+<p>Below is an example of calibrations in the RAM table. The calibration components highlighted in yellow represent the current active components. In this example, the desired run-time and initialization indexes are both zero (0). It is also important to note that only one of the RAM tables is active at any given time by the ECU. This allows tuning selection management the ability to modify the table contents of the unused table and update the base pointer to point to the unused table once all the changes are in place and the checksum is recalculated.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.emf" /></p>
+<p>If we assume that the desired runtime index changes from a zero (0) to one (1), tuning selection management will update unused index to reflect the changes as highlighted in red below.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.emf" /></p>
+<p>Once all the changes are completed, the base pointer will be updated to point to ram memory index 1 and index 0 will become the ‘scratchpad’ for any further updates.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image6.emf" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:0.46181in;height:0.38403in" alt="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8YIbYhy2hduj9cSWrZkv7mND-ccWNCfDswcfH9v448yscJB4t" />It is important to note that the references made by the software components do not change the index they are configured to look in to. In the example above if we assume Cal Port 1 is part of the calibration components CalRegnXXRtXXGroupA, the pointer will also point to the same index. As a result, tuning selection management will need to modify the pointer to point from CalRegn01Rt00GroupA to CalRegn01Rt01GroupA to allow the software component to read the new value of the calibration.</p>
+<h2 id="copying-calibrations-to-ram-for-online-calibration">Copying Calibrations to RAM for Online Calibration</h2>
+<p>When a segment is enabled for online calibration, the software will move the active indexes within the requested group into the XCP RAM buffer. In the example previously provided, if we assume index zero (0) was active for both initialization and runtime calibrations the memory layout would look as follows. Note that CalRegn01Rt01GroupA is not in RAM, because it is not the active index.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image7.emf" /></p>
+<p>XCP can provide the following access during online calibration. This design requires that two pages exists, Flash and RAM. By default, ECU and XCP access both read from Flash and XCP services will need to be executed to change the access to RAM. These services are not covered in this document. For clarification, ECU access simply means where the software components are looking for their calibration values. XCP access simple means where XCP will perform actions, such as read and write.</p>
+<table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ECU Access</th>
+<th>XCP Access</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flash</td>
+<td>Flash</td>
+</tr>
+<tr class="even">
+<td>Flash</td>
+<td>RAM</td>
+</tr>
+<tr class="odd">
+<td>RAM</td>
+<td>Flash</td>
+</tr>
+<tr class="even">
+<td>RAM</td>
+<td>RAM</td>
+</tr>
+</tbody>
+</table>
+<p>When the ECU is given access to the RAM buffer for software component access, the pointers will change to point to the RAM image instead of the flash table. This will allow the user to modify the calibration values during operation of the ECU.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image8.emf" /></p>
+<h1 id="sub-functions">Sub-Functions</h1>
+<h3 id="initialization-tunselnmngtinit1">Initialization (TunSelnMngtInit1)</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: ES400A_48, ES400A_50, ES400A_51</strong></em></p>
+<h4 id="design-rationale-1">Design Rationale</h4>
+<p>The tuning select management RAM shall be initialized according to the following pseudo code.</p>
+<h4 id="inputs">Inputs</h4>
+<p>None</p>
+<h4 id="implementation">Implementation</h4>
+<p>Read DesIninIdx Port</p>
+<p>Read DesRtIdx Port</p>
+<p>Set all PIMs to default values (0).</p>
+<p>Set Page access to Flash for XCP and ECU access</p>
+<p>Copy flash table into both MngtRamTbl indexes with MemCopy32Bit</p>
+<p>Calculate CRC32Bit over the Flash table, and update both CRC values for the MngtRamTbl with calculated result</p>
+<p>IF DesIninIdx not equal to PIM value:</p>
+<p>IninIdxFound = IdxChngMngt</p>
+<p>IF (IninIdxFound equal TRUE):</p>
+<p>Set NTC 1F6, parameter 0 to passed</p>
+<p>Update PIM value</p>
+<p>Write ActiveIninIdx Port value with DesIninIdx</p>
+<p>ELSE:</p>
+<p>Set NTC 1F6, parameter 1</p>
+<p>ELSE:</p>
+<p>Set NTC 1F6, parameter 0 to passed</p>
+<p>Write ActiveIninIdx Port value with DesIninIdx</p>
+<p>ENDIF</p>
+<p>IF DesRtIdx not equal to PIM value:</p>
+<p>RtIdxFound = IdxChngMngt</p>
+<p>IF (RtIdxFound equal TRUE):</p>
+<p>Set NTC 1F7, parameter 0 to passed</p>
+<p>Update PIM value</p>
+<p>Write ActiveRtIdx Port value with DesRtIdx</p>
+<p>ELSE:</p>
+<p>Set NTC 1F7, parameter 1</p>
+<p>ELSE:</p>
+<p>Set NTC 1F7, parameter 0 to passed</p>
+<p>Write ActiveRtIdx Port value with DesRtIdx</p>
+<p>ENDIF</p>
+<p>IF IninIdxFound equals TRUE OR RtIdxFound equals TRUE:</p>
+<p>SwtCalIdx()</p>
+<p>ENDIF</p>
+<h4 id="outputs">Outputs</h4>
+<p>None</p>
+<h3 id="periodic-tunselnmngtper1">Periodic (TunSelnMngtPer1)</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: ES400A_18, ES400A_51, ES400A_69</strong></em></p>
+<h4 id="design-rationale-2">Design Rationale</h4>
+<p>This function queues the request to move calibrations from flash to the RAM buffer for online calibration activities during the next periodic run of tuning selection management. It shall also capture the active initialization and runtime calibration indexes and the selected group (or segment).</p>
+<h4 id="inputs-1">Inputs</h4>
+<p>None</p>
+<h4 id="operation">Operation</h4>
+<p>Read DesRtIdx Port</p>
+<p>Calculate CRC32Bit over active MngtRamTbl</p>
+<p>IF CalcCRC not equal to MngtRamTblCRC:</p>
+<p>Set NTC 1F8, parameter 1</p>
+<p>ELSE:</p>
+<p>Set NTC 1F8 to pass</p>
+<p>CrcFlt equals FALSE</p>
+<p>Call RtCalChgReq_Oper</p>
+<p>ENDIF</p>
+<p>IF Cal Copy Status equals Pending:</p>
+<p>FOREACH Online calibration component:</p>
+<p>IF Online calibration Componet Group Equals Active Group:</p>
+<p>Move cal values into RAM buffer with MemCopy8Bit</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+<p>Set Cal Copy Status to Complete</p>
+<p>ENDIF</p>
+<p>IF ( (CrcFalt equals FALSE) <strong>AND (</strong>RtCalChgReq_Oper equals OK) <strong>AND</strong></p>
+<p><strong>(</strong> Previous Runtime Index does not equal Desired Runtime Index <strong>OR</strong></p>
+<p>ActiveGroup Page Acccess modified <strong>OR</strong></p>
+<p>Cal Copy Status to Complete)):</p>
+<p>RtIdxFound = IdxChgMngt()</p>
+<p>IF RtIdxFound equals FALSE:</p>
+<p>Set NTC 1F7, parameter 1</p>
+<p>ELSE:</p>
+<p>SwtCalIdx()</p>
+<p>Set NTC 1F7, parameter 0 to passed</p>
+<p>Write ActvRtIdx port to Desired Runtime Index</p>
+<p>ENDIF<br />
+ELSE:</p>
+<p>/* CRC fault, set back to flash table */</p>
+<p>Rte pointer equals Flash Address</p>
+<p>ENDIF</p>
+<p>Write ActvGroup port to Current Active Group</p>
+<p>Write CalCopySts Port with Cal Copy Status</p>
+<h4 id="outputs-1">Outputs</h4>
+<p>None</p>
+<h3 id="sub-function-copycalpagereq">Sub-Function: CopyCalPageReq</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: ES400A_85</strong></em></p>
+<h4 id="design-rationale-3">Design Rationale</h4>
+<p>This function queues the request to move calibrations from flash to the RAM buffer for online calibration activities during the next periodic run of tuning selection management. It shall also capture the active initialization and runtime calibration indexes and the selected group (or segment).</p>
+<h4 id="inputs-2">Inputs</h4>
+<p>IN: Seg_Arg – Segment (or online calibration group) to be copied into RAM.</p>
+<h4 id="operation-1">Operation</h4>
+<p>IF Seg_Arg is less than MaxNumberOfSegements:</p>
+<p>Write Seg_Arg to PIM</p>
+<p>Write Active Initialization Index to PIM</p>
+<p>Write Active Runtime Index to PIM</p>
+<p>Set Copy Status to Pending</p>
+<p>Return OK</p>
+<p>ELSE:</p>
+<p>Return NOT_OK</p>
+<p>ENDIF</p>
+<h4 id="outputs-2">Outputs</h4>
+<p>Return: OK or NOT_OK</p>
+<h3 id="sub-function-getcalpagereq">Sub-Function: GetCalPageReq</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: ES400A_80</strong></em></p>
+<h4 id="design-rationale-4">Design Rationale</h4>
+<p>This function returns the page of the requested access mode for a requested segment.</p>
+<h4 id="inputs-3">Inputs</h4>
+<p>IN: Seg_Arg – Requested segment for searching.</p>
+<p>IN: Mod_Arg – Mode to search each page for.</p>
+<p>IN/OUT: Page_Arg – Page the requested access mode was found</p>
+<p>IN/OUT: Rtn_Arg – Return value of the function.</p>
+<h4 id="operation-2">Operation</h4>
+<p>IF Mod_Arg is non-zero and a value of XCP, ECU, or XCP &amp; ECU access:</p>
+<p>IF Seg_Arg is less than MaxNumberOfSegements:</p>
+<p>LOOP Each page of for the requested segment until match is found:</p>
+<p>IF Mod_Arg equals Page Access of page in segment:</p>
+<p>Page_Arg equals LoopIndex</p>
+<p>Rtn_Arg = XCP_CMD_OK</p>
+<p>ELSE:</p>
+<p>Rtn_Arg = PAGE_MODE_NOT_VALID</p>
+<p>ENDIF</p>
+<p>ENDLOOP</p>
+<p>ELSE:</p>
+<p>Rtn_Arg = SEGMENT_NOT_VALID</p>
+<p>ENDIF</p>
+<p>ELSE:</p>
+<p>Rtn_Arg = PAGE_MODE_NOT_VALID</p>
+<p>ENDIF</p>
+<h4 id="outputs-3">Outputs</h4>
+<p>None</p>
+<h3 id="sub-function-getseginforeq">Sub-Function: GetSegInfoReq</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: ES400A_84</strong></em></p>
+<h4 id="design-rationale-5">Design Rationale</h4>
+<p>This function returns information of the requested segment.</p>
+<h4 id="inputs-4">Inputs</h4>
+<p>IN: Mod_Arg – Requested mode based on the XCP protocol specification (Get Segment Address Info, Get Segment Standard Info, Get Segment Address Mapping)</p>
+<p>IN: Seg_Arg – Segment to perform the operation on.</p>
+<p>IN: SegInfo_Arg – Sub function option for the commands</p>
+<p>IN: MpgIdx_Arg – Mapping Index mode (only used if Get Segment Address Mapping mode is used)</p>
+<p>IN/OUT: Resp_Arg – Buffer for the command response</p>
+<p>IN/OUT: RespLen_Arg – Length of the command response</p>
+<p>IN/OUT: Rtn_Arg – Return value of the function.</p>
+<h4 id="operation-3">Operation</h4>
+<h5 id="mode-decision">Mode Decision</h5>
+<p>IF Seg_Arg is less than MaxNumberOfSegements:</p>
+<p>If Mod_Arg equals Get Segment Address Info:</p>
+<p>Rtn_Arg = SegModAdrInfo(Seg_Arg, SegInfo_Arg, Resp_Arg,</p>
+<blockquote>
+<p>RespLen_Arg)</p>
+</blockquote>
+<p>ELSE IF Mod_Arg equals Get Segment Standard Info:</p>
+<p>Rtn_Arg = SegModStdInfo(Seg_Arg, Resp_Arg, RespLen_Arg)</p>
+<p>ELSE IF Mod_Arg equals Get Segment Address Mapping:</p>
+<p>Rtn_Arg = SegModAdrMpg(Seg_Arg, SegInfo_Arg, MpdIdx_Arg,</p>
+<blockquote>
+<p>Resp_Arg, RespLen_Arg)</p>
+</blockquote>
+<p>ELSE:</p>
+<p>Rtn_Arg = OUT_OF_RANGE</p>
+<p>ENDIF</p>
+<p>ELSE:</p>
+<p>Rtn_Arg = SEGMENT_NOT_VALID</p>
+<p>ENDIF</p>
+<h5 id="segmodadrinfo">SegModAdrInfo</h5>
+<h6 id="operation-4">Operation</h6>
+<p>Rtn_Arg = CMD_OK</p>
+<p>IF SegInfo_Arg equals Segment Address:</p>
+<p>ReturnData = Starting Address of XCP RAM buffer location</p>
+<p>ELSE IF SegInfo_Arg equals Segment Length:</p>
+<p>ReturnData = Number of bytes of the entire segment</p>
+<p>ELSE:</p>
+<p>Rtn_Arg = OUT_OF_RANGE</p>
+<p>ENDIF</p>
+<p>IF Rtn_Arg equals CMD_OK:</p>
+<p>Populate Resp_Arg with ReturnData per the XCP protocol specification</p>
+<p>Resp_Arg = 8</p>
+<p>ENDIF</p>
+<h5 id="segmodstdinfo">SegModStdInfo</h5>
+<h6 id="operation-5">Operation</h6>
+<p>Set Counter to 0</p>
+<p>FOREACH calibration component:</p>
+<p>IF Seg_Arg equals the calibration component grouping:</p>
+<p>Increment Counter</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+<p>Populate Resp_Arg with the counted values in Counter per the XCP protocol specification</p>
+<p>Resp_Arg = 6</p>
+<h5 id="segmodadrmpg">SegModAdrMpg</h5>
+<h6 id="operation-6">Operation</h6>
+<p>Since calibration components may not be adjacent within the flash generated table, the following for loop shall create a smaller array containing the indexes of each calibration component within the selected segment. Also note that MpgIdxInfo_Arg is the same as SegInfo_Arg. However, per the XCP specification the values have different meanings in the different subfunctions.</p>
+<p>Set Counter to 0</p>
+<p>FOREACH calibration component:</p>
+<p>IF Seg_Arg equals the calibration component grouping:</p>
+<p>Write Loop Index into SubArray</p>
+<p>Increment ArrayIndex</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+<p>IF MpgIdx_Arg is less than Items in SubArray:</p>
+<p>Rtn_Arg = CMD_OK</p>
+<p>IF MpgIdxInfo_Arg equals Source Address:</p>
+<p>ReturnData equals the selected cal component flash address</p>
+<p>ELSE IF MpgIdxInfo_Arg equals Destination Address:</p>
+<p>ReturnData equals the selected cal component RAM address</p>
+<p>ELSE IF MpgIdxInfo_Arg equals Length:</p>
+<p>ReturnData equals the selected cal components length</p>
+<p>Populate Resp_Arg with the ReturnData per the XCP protocol specification</p>
+<p>Resp_Arg = 8</p>
+<h4 id="outputs-4">Outputs</h4>
+<p>None</p>
+<h3 id="sub-function-onlinetunramadrmpg">Sub-Function: OnlineTunRamAdrMpg</h3>
+<h4 id="design-rationale-6">Design Rationale</h4>
+<p>This function translates a flash address to a RAM address for an active group that is in RAM. This function is for eTool and CANoe to use the flash values to modify and read tuning that is located in RAM.</p>
+<p>Note, &lt;&lt;RAM range&gt;&gt; must be configurable. By default the range should only between that of the tuning select RAM buffer and reject writes everywhere else. However, a build option should be included to open the full RAM range for internal testing.</p>
+<h4 id="inputs-5">Inputs</h4>
+<p>IN: ReqAdr_Arg – Requested segment for searching.</p>
+<p>IN/OUT: CorrdAdr_Arg – Mode to set the page.</p>
+<p>IN: ReqTyp_Arg – Read or Write request</p>
+<h4 id="operation-7">Operation</h4>
+<p>Rtn = NOT_OK</p>
+<p>IF ReqAdr_Arg &lt;= MAX_FLASH_ADDRESS:</p>
+<p>IF XCP Access on RAM page:</p>
+<blockquote>
+<p>FOREACH Online Calibration Component:</p>
+<p>IF (ReqAdr_Arg &lt; FlashTableBaseAdr + FlashTableSize <strong>AND</strong></p>
+<p>Active Group equals OnlineCalibrationGroup)</p>
+<p>AdrOffs equals ReqAdr_Arg – FlashTableBaseAdr</p>
+<p>CorrdAdr_Arg equals OnlineCalibrationGroupRAMAddress</p>
+<p>+ AdrOffs</p>
+<p>Rtn = OK</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+</blockquote>
+<p>ELSE:</p>
+<p>IF ReqTyp_Arg equals Read:</p>
+<p>CorrdAdr_Arg = ReqAdr_Arg</p>
+<p>Rtn = OK</p>
+<p>ENDIF</p>
+<p>ENDIF</p>
+<p>ELSE:</p>
+<p>IF ReqTyp_Arg equals Write:</p>
+<p>IF ReqAdr_Arg within &lt;&lt;RAM range&gt;&gt;:</p>
+<p>CorrdAdr_Arg = ReqAdr_Arg</p>
+<p>Rtn = OK</p>
+<p>ENDIF</p>
+<p>ENDIF</p>
+<p>ENDIF</p>
+<h4 id="outputs-5">Outputs</h4>
+<p>Rtn</p>
+<h3 id="sub-function-setcalpagereq">Sub-Function: SetCalPageReq</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: ES400A_86</strong></em></p>
+<h4 id="design-rationale-7">Design Rationale</h4>
+<p>This function sets the page to the requested access mode for a requested segment.</p>
+<h4 id="inputs-6">Inputs</h4>
+<p>IN: Seg_Arg – Requested segment for searching.</p>
+<p>IN: Mod_Arg – Mode to set the page.</p>
+<p>IN/OUT: Page_Arg – Page the requested access mode was found</p>
+<h4 id="operation-8">Operation</h4>
+<p>IF (Mod_Arg is non-zero and a value of XCP, ECU, or XCP &amp; ECU access <strong>AND</strong></p>
+<p>Seg_Arg is less than MaxNumberOfSegments <strong>AND</strong></p>
+<p>Page_Arg is less than MaxNumberOfPages <strong>AND</strong></p>
+<p>Seg_Arg is equal to the Active Group):</p>
+<p>FOREACH page in the segment:</p>
+<p>IF Page_Arg equals LoopIndex:</p>
+<p>Logic OR In Page Access (sets only the page access)</p>
+<p>ELSE:</p>
+<p>Logic AND to clear Page Access (keeps other access same)</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+<p>ENDIF</p>
+<h4 id="outputs-6">Outputs</h4>
+<p>None</p>
+<h3 id="sub-function-idxchgmngt">Sub-Function: IdxChgMngt</h3>
+<h4 id="design-rationale-8">Design Rationale</h4>
+<p>Index change management moves calibration indexes to match the desired runtime and initialization values.</p>
+<h4 id="inputs-7">Inputs</h4>
+<p>IN/OUT: SeldIdx_Arg – Selected runtime / initialization index</p>
+<p>IN/OUT: GendCalTblSize_Arg – Size of the calibration component</p>
+<p>IN: GendCalTbl_Arg – Pointer to the calibration data</p>
+<h4 id="operation-9">Operation</h4>
+<p>Set Swt to unused index in the management RAM table (MngtRamTbl)</p>
+<p>Calculate CRC32Bit on unused index of MngtRamTbl</p>
+<p>IF CalcCRC does not equal CRC in MngtRamTbl:</p>
+<p>Set NTC 1F8 with parameter 2</p>
+<p>ELSE:</p>
+<p>IF ( Calibration copy from Flash to RAM has completed <strong>AND</strong></p>
+<p>Page Access has been modified <strong>AND</strong></p>
+<p>Page Access for the RAM Page is active):</p>
+<p>FOREACH Calibration Component:</p>
+<p>If Active Group matches Calibration Component Group</p>
+<p>MemCopy32Bit(MngtRamTbl for Cal Component Address,</p>
+<p>XCP RAM buffer Address, 1)</p>
+<p>END IF</p>
+<p>ENDFOREACH</p>
+<p>ELSE:</p>
+<p>/* Restore entire table to flash defaults */</p>
+<p>MemCopy32Bit(MngtRamTbl, Flash Address, TblSize)</p>
+<p>FOREACH Initialization Cal Component:</p>
+<p>IF Active Initialization PIM value equals Cal Component:</p>
+<p>MemCopy32Bit(MngtRamTbl for Cal Component, Flash</p>
+<p>Address, 1)</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+<p>ENDIF</p>
+<p>IndexFound equals FALSE</p>
+<p>FOREACH Entry in GendCalTbl_Arg:</p>
+<p>IF GendCalTbl index equals SeldIdx_Arg:</p>
+<p>IF (Calibration copy from Flash to RAM has completed <strong>AND</strong></p>
+<p>Page Access has been modified <strong>AND</strong></p>
+<p>Active Runtime equals GendCalTbl index):</p>
+<blockquote>
+<p>FOREACH Online Calibration Component:</p>
+</blockquote>
+<p>MemCopy32Bit(MngtRamTbl CalComponent Address,</p>
+<p>XCP RAM buffer Address, 1)</p>
+<p>ENDFOREACH</p>
+<p>ELSE:</p>
+<p>IF MngtRamTbl SrAddr = DestAddr:</p>
+<p>MemCopy32Bit(MngtRamTbl CalComp Addr,</p>
+<p>Flash Address, 1)</p>
+<p>ELSE</p>
+<p>MemCopy32Bit(MngtRamTbl CalComp DestAddr,</p>
+<p>MngtRamTbl CalComp SrcAddr, 1)</p>
+<p>ENDIF</p>
+<p>IndexFound equals TRUE</p>
+<p>ENDIF</p>
+<p>ENDIF</p>
+<p>ENDFOREACH</p>
+<p>IF IndexFound equals TRUE:</p>
+<p>Calculate CRC32Biton on unused MngtRamTbl</p>
+<p>ENDIF</p>
+<p>ENDIF</p>
+<h4 id="outputs-7">Outputs</h4>
+<p>None</p>
+<h3 id="sub-function-memcopy32bit-and-memcopy8bit">Sub-Function: MemCopy32Bit and MemCopy8Bit</h3>
+<h4 id="design-rationale-9">Design Rationale</h4>
+<p>In an effort to limit the amount of time while move calibrations from Flash to RAM or populating the RAM tables with the flash pointers, the memory copy functions follow the same pseudo code, but their access widths vary from 32-bit to 8-bit for atomic writes.</p>
+<h4 id="inputs-8">Inputs</h4>
+<p>IN/OUT: Dest_Arg – Destination address</p>
+<p>IN/OUT: Src_Arg – Source address of data</p>
+<p>IN: Len_Arg – Number of bytes (8 bit function) or words (32 bit function) to copy</p>
+<h4 id="operation-10">Operation</h4>
+<p>FOR 0 to Len_Arg:</p>
+<p>Dest_Arg[LoopIndex] equals Src_Arg[LoopIndex]</p>
+<p>ENDFOR</p>
+<h4 id="outputs-8">Outputs</h4>
+<p>None</p>
+<h3 id="sub-function-swtcalidx">Sub-Function: SwtCalIdx</h3>
+<h4 id="design-rationale-10">Design Rationale</h4>
+<p>This sub-function shall be used whenever a change of RAM indexes occurs. The design will switch the pointer to the new table, and replace the old table with the new values so both RAM images match. The software implementation shall implement the following pseudo code.</p>
+<h4 id="inputs-9">Inputs</h4>
+<p>None</p>
+<h4 id="operation-11">Operation</h4>
+<p>Set Swt to unused index in the management RAM table (MngtRamTbl)</p>
+<p>MemCopy32Bit(Current Index in MngtRamTbl, Unused Index in MngtRamTbl,</p>
+<p>MngtRamTblSize)</p>
+<p>Update RAM Page Access with Current Page Access</p>
+<p>Set Rte pointer to unused Index in MngtRamTbl</p>
+<p>Update PIM for new Swt value</p>
+<h4 id="outputs-9">Outputs</h4>
+<p>None</p>
+<h1 id="timing-execution-constraints">Timing / Execution Constraints</h1>
+<h2 id="rationale-comments">Rationale / Comments</h2>
+<p>The functions defined in this document are synchronous functions and are not required to be scheduled to run at a periodic rate.</p>
+<h2 id="rates-and-state-execution">Rates and State Execution</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 11%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sub-Function Name</strong></th>
+<th><strong>Rate (ms)</strong></th>
+<th><strong>Cold Init</strong></th>
+<th><strong>Warm Init</strong></th>
+<th><strong>Operate</strong></th>
+<th><strong>Disable</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TunSelnMngtInit1</td>
+<td>N/A</td>
+<td>Y*</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+</tr>
+<tr class="even">
+<td>TunSelnMngtPer1</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td>CopyCalPageReq</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>GetCalPageReq</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>GetSegInfoReq</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>OnlineTunRamAdrMpg</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>SetCalPageReq</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>Y* -- No calibration access can be performed by any software component unless this function is executed.</p>
+<h1 id="serial-communications-interfaces">Serial Communications Interfaces</h1>
+<p>None</p>
+<h1 id="additional-information">Additional Information</h1>
+<p>None</p>
+<h1 id="revision-record-change-approval"><br />
+Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>01.00.00</td>
+<td>16-Apr-16</td>
+<td>EA4#1839</td>
+<td>KJS</td>
+<td>Initial Release of this document</td>
+</tr>
+</tbody>
+</table>

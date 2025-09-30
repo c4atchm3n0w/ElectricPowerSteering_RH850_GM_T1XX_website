@@ -1,0 +1,954 @@
+---
+title: TechnicalReference_GMLANCalibrations
+linkTitle: TechnicalReference_GMLANCalibrations
+weight: 50
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-1_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>GMLAN&#160;3.1&#160;<br/></b>Technical&#160;Reference&#160;<br/>
+&#160;<br/>
+Calibration with GENy&#160;<br/>Version&#160;2.01.01&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>Authors&#160;</b><br/>
+Gunnar&#160;Meiss,&#160;Markus&#160;Schwarz,&#160;Jason&#160;Wolbers,&#160;Heiko&#160;<br/>Hübler,&#160;Frank&#160;Triem,&#160;Marco Pfalzgraf<b>&#160;</b><br/>
+<b>Versions:&#160;</b><br/>
+2.01.01&#160;<br/>
+<b>Status:&#160;</b><br/>
+Released<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-2_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-2_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>1&#160;&#160;Document&#160;Information&#160;</b><br/>
+<b>1.1&#160;&#160;History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;&#160;Remarks&#160;</b><br/>
+Gunnar&#160;Meiss&#160;<br/>
+2007-04-13&#160;<br/>
+1.0&#160;<br/>
+Creation&#160;<br/>
+Gunnar&#160;Meiss&#160;<br/>
+2008-01-16&#160;<br/>
+2.0&#160;<br/>
+Added&#160;GENy&#160;Support&#160;<br/>
+Markus&#160;Schwarz&#160;<br/>
+2009-03-26&#160;<br/>
+2.00.01&#160;&#160;Corrected&#160;generation rules&#160;for&#160;<br/>
+nmVNMFStartSendCalCnt&#160;<br/>
+Jason Wolbers&#160;<br/>
+2012-03-27&#160;<br/>
+2.00.02&#160;&#160;Added&#160;descriptions&#160;for&#160;<br/>
+IlVnRxMessageEnabled,&#160;<br/>IlVnTxMessageEnabled&#160;<br/>
+Fixed Init&#160;Message description&#160;<br/>
+Heiko Hübler,&#160;<br/>
+2012-10-27&#160;<br/>
+2.01.00&#160;&#160;Added&#160;description&#160;for&#160;Rx&#160;Timeout&#160;Time&#160;<br/>
+Marco Pfalzgraf,&#160;<br/>
+Chapter<a href="TechnicalReference_GMLANCalibrations.html#6">&#160;3&#160;</a>added&#160;<br/>
+Frank&#160;Triem&#160;<br/>
+Added descriptions&#160;for&#160;‘Sleep&#160;Transition&#160;Time’,&#160;<br/>‘Supervision&#160;Stability&#160;Time’,&#160;‘Max&#160;No Sleep&#160;<br/>Confirmation’&#160;<br/>
+Frank&#160;Triem&#160;<br/>
+2013-01-28&#160;<br/>
+2.01.01&#160;&#160;ESCAN00064578:&#160;Update GMLAN&#160;version&#160;<br/>
+from&#160;GMLAN&#160;3.0&#160;to&#160;GMLAN&#160;3.1&#160;<br/>
+Table&#160;1-1&#160;&#160;<br/>
+History&#160;of&#160;the&#160;Document&#160;<br/>
+<b>1.2&#160;&#160;Reference&#160;Documents&#160;</b><br/>
+<b>Index&#160;</b><br/>
+<b>Document&#160;</b><br/>
+[1]&#160;<br/>
+Vector’s&#160;Interaction Layer&#160;User&#160;Manual&#160;<br/>
+[2]&#160;<br/>
+Vector’s&#160;Interaction Layer&#160;Technical&#160;Reference&#160;for&#160;GENy&#160;<br/>
+[3]&#160;<br/>
+Vector’s&#160;Interaction Layer&#160;Technical&#160;Reference for&#160;GM&#160;<br/>
+[4]&#160;<br/>
+Vector’s&#160;Network&#160;Management&#160;Technical&#160;Reference&#160;<br/>
+Table&#160;1-2&#160;&#160;<br/>
+References&#160;Documents&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Please note&#160;<br/></b>We&#160;have configured&#160;the&#160;programs&#160;in&#160;accordance&#160;with your&#160;specifications&#160;in the&#160;<br/>
+&#160;<br/>
+questionnaire.&#160;Whereas&#160;the programs&#160;do&#160;support&#160;other&#160;configurations&#160;than&#160;the&#160;one&#160;<br/>specified in your&#160;questionnaire,&#160;Vector’s&#160;release&#160;of&#160;the programs&#160;delivered to&#160;your&#160;<br/>company&#160;is&#160;expressly&#160;restricted&#160;to&#160;the configuration you have specified in&#160;the&#160;<br/>questionnaire.&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+2&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-3_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">3.1.1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">What&#160;is&#160;new?...................................................................................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">3.1.2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">What&#160;has&#160;changed?&#160;........................................................................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">3.2.1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">What&#160;is&#160;new?...................................................................................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">3.2.2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#6">What&#160;has&#160;changed?&#160;........................................................................................&#160;6&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#9">5.1.1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#9">Message&#160;Delay&#160;Time&#160;.......................................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#9">5.1.2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#9">Minimum&#160;Update Time&#160;....................................................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#10">5.1.3&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#10">Periodic&#160;Rate.................................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#10">5.1.4&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#10">Fast&#160;Periodic&#160;Rate&#160;.........................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#10">5.1.5&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#10">Init&#160;Message&#160;..................................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#11">5.2.1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#11">Rx&#160;Timeout&#160;Time&#160;...........................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#12">5.3.1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#12">Initial&#160;Transmit&#160;Value&#160;.....................................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#13">5.3.1.1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#13">GENy&#160;Configuration&#160;......................................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#13">5.3.1.2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#13">Initial&#160;Default&#160;Values&#160;of&#160;Transmit&#160;Signals&#160;.......................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#14">5.3.1.3&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#14">Start&#160;and Stop&#160;Default&#160;Values&#160;of&#160;Transmit&#160;Signals&#160;.........................................&#160;14&#160;</a><br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+3&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-4_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>Illustrations&#160;</b><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#12">Figure&#160;5-1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#12">Signal&#160;layout&#160;of&#160;the&#160;example message&#160;..........................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#13">Figure&#160;5-2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#13">GENy&#160;configuration&#160;of&#160;the ‚Tx&#160;Signals’&#160;view&#160; with the example&#160;message’s&#160;<br/>signals&#160;...........................................................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#16">Figure&#160;6-1&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#16">“BusOff&#160;Recovery&#160;Time”&#160;configuration&#160;in GENy&#160;.............................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#17">Figure&#160;6-2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#17">“Init&#160;Delay&#160;Time”&#160;configuration in&#160;GENy&#160;.........................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#18">Figure&#160;6-3&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#18">&#34;Sleep&#160;Transition&#160;Time&#34;&#160;configuration in&#160;GENy&#160;..............................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#19">Figure&#160;6-4&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#19">&#34;Supervision Stability&#160;Time&#34;&#160;configuration&#160;in GENy&#160;........................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#20">Figure&#160;6-5&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#20">&#34;Max&#160;No Sleep Confirmation&#34;&#160;configuration in&#160;GENy&#160;.....................................&#160;20&#160;</a><br/>
+&#160;<br/>
+<b>Tables&#160;</b><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#2">Table 1-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#2">History&#160;of&#160;the Document&#160;..................................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#2">Table 1-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_GMLANCalibrations.html#2">References&#160;Documents&#160;...................................................................................&#160;2&#160;</a><br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+4&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-5_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-5_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>2&#160;&#160;Introduction&#160;</b><br/>
+This&#160;document&#160;describes&#160;the&#160;calibration (post&#160;build&#160;configuration)&#160;parameters&#160;of&#160;the&#160;<br/>GMLAN&#160;&#160;Handler&#160;&#160;that&#160;is&#160;configured&#160;with&#160;GENy.&#160;&#160;It&#160;does&#160;not&#160;describe&#160;the&#160;process&#160;how&#160;the&#160;<br/>calibration of&#160;the&#160;GMLAN&#160;Handler&#160;is&#160;carried&#160;out.&#160;<br/>&#160;<br/>
+<b>Please note&#160;<br/></b>This&#160;document&#160;is&#160;valid for&#160;GMLAN&#160;3.1&#160;<br/>
+&#160;<br/>
+&#160;&#160;Il_Vector_Gm&#160;version 1.01.00 and&#160;higher&#160;<br/>&#160;&#160;Nm_Gmlan_Gm&#160;version 4.03.00&#160;and higher&#160;<br/>
+Changes&#160;to&#160;previous&#160;module version can be&#160;found in chapter<a href="TechnicalReference_GMLANCalibrations.html#6">&#160;3.</a><b>&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+5&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-6_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>3&#160;&#160;Module&#160;History&#160;</b><br/>
+This&#160;chapter&#160;describes&#160;the&#160;calibration&#160;&#160;implementation&#160;of&#160;the Vector&#160;Interaction&#160;Layer&#160;and&#160;<br/>Network&#160;Management&#160;for&#160;General&#160;Motors&#160;in&#160;GENy.&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Il_Vector_Gm&#160;Version&#160;1.01.00&#160;</b><br/>
+<b>3.1.1&#160;</b><br/>
+<b>What&#160;is new?&#160;</b><br/>
+<b>&#160;&#160;</b>The Rx&#160;Timeout&#160;Time&#160;for&#160;each&#160;message is&#160;calibrated (chapter<a href="TechnicalReference_GMLANCalibrations.html#11">&#160;5.2.1)</a>.&#160;<br/>
+<b>3.1.2&#160;</b><br/>
+<b>What&#160;has&#160;changed?&#160;</b><br/>
+<b>&#160;&#160;</b>There are&#160;no&#160;changes&#160;in this&#160;version.&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Nm_Gmlan_Gm&#160;Version&#160;4.03.00&#160;</b><br/>
+<b>3.2.1&#160;</b><br/>
+<b>What&#160;is new?&#160;</b><br/>
+<b>&#160;&#160;</b>New&#160;calibrateable values&#160;for&#160;‘Sleep&#160;Transition&#160;Time’,&#160;‘Supervision Stability&#160;Time’&#160;and&#160;<br/>
+‘Max&#160;No Sleep Confirmation’&#160;(chapters<a href="TechnicalReference_GMLANCalibrations.html#17">&#160;6.5,&#160;</a><a href="TechnicalReference_GMLANCalibrations.html#19">6.6&#160;</a>and<a href="TechnicalReference_GMLANCalibrations.html#20">&#160;6.7).</a>&#160;<br/>
+<b>3.2.2&#160;</b><br/>
+<b>What&#160;has&#160;changed?&#160;</b><br/>
+<b>&#160;&#160;</b>There are&#160;no&#160;changes&#160;in this&#160;version.&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+6&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-7_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-7_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>4&#160;&#160;GMLAN Handler&#160;Calibration&#160;</b><br/>
+The calibration of&#160;the&#160;GMLAN&#160;Handler&#160;is&#160;done by&#160;modification&#160;of&#160;the post&#160;build time&#160;<br/>configuration&#160;parameters&#160;(constant&#160;variables&#160;and&#160;tables)&#160;that&#160;can&#160;be&#160;found in&#160;gmlcal.c.&#160;<br/>&#160;<br/>The&#160;following&#160;chapter&#160;describes&#160;in detail&#160;the&#160;configuration&#160;parameters&#160;(constant&#160;variables&#160;<br/>and&#160;tables)&#160;of&#160;the generated&#160;file&#160;gmlcal.c.&#160;<br/>&#160;<br/>
+<b>Info</b>&#160;<br/>If&#160;the&#160;calculated&#160;Table Values&#160;have a remainder,&#160;the value has&#160;to&#160;be&#160;rounded depending&#160;<br/>
+&#160;<br/>
+on your&#160;needs.&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+7&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-8_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>5&#160;&#160;Il_Vector_Gm&#160;:&#160;Interaction&#160;Layer&#160;</b><br/>
+This&#160;chapter&#160;describes&#160;the calibration&#160;capabilities&#160;of&#160;the&#160;Interaction Layer.&#160;<br/>
+<b>5.1&#160;&#160;Transmit&#160;Messages&#160;</b><br/>
+The GMLAN&#160;Handler&#160;provides&#160;the ability&#160;to enable and disable the transmit&#160;process&#160;for&#160;<br/>each transmitted functional&#160;message&#160;with&#160;the function&#160;IlSetTxMessageEnable(..).&#160;<br/>The default&#160;for&#160;this&#160;calibration is&#160;‘enabled’.&#160;<br/>
+This&#160;can&#160;also&#160;be calibrated&#160;directly&#160;using&#160;the table&#160;IlVnTxMessageEnabled[].&#160;Note&#160;<br/>that&#160;&#160;using&#160;&#160;the function&#160;IlSetTxMessageEnable&#160;&#160;has&#160;the same effect&#160;as&#160;modifying&#160;<br/>IlVnTxMessageEnabled[],&#160;so it&#160;is&#160;not&#160;necessary&#160;to both calibrate the table&#160;and call&#160;the&#160;<br/>function.&#160;The table is&#160;a bit-packed&#160;field where&#160;each bit&#160;represents&#160;one&#160;IL&#160;transmit&#160;<br/>message.&#160;If&#160;the bit&#160;is&#160;a&#160;1,&#160;the&#160;message is&#160;calibrated&#160;on&#160;and can be sent&#160;whenever&#160;a&#160;<br/>relevant&#160;VN&#160;is&#160;active;&#160;if&#160;the&#160;bit&#160;is&#160;a 0,&#160;the&#160;message is&#160;calibrated&#160;off&#160;and&#160;will&#160;never&#160;be sent&#160;<br/>by&#160;the IL&#160;at&#160;runtime&#160;regardless&#160;of&#160;VN&#160;activity.&#160;&#160;The IL&#160;messages&#160;are ordered least&#160;<br/>significant&#160;bit&#160;to most&#160;significant&#160;bit&#160;in each&#160;byte.&#160;The&#160;first&#160;byte contains&#160;IL messages&#160;7-0,&#160;<br/>the second byte 15-8,&#160;and so on.&#160;For&#160;example,&#160;consider&#160;a&#160;single CAN&#160;channel&#160;<br/>configuration&#160;with 10 IL messages:&#160;<br/>
+{0xFF, 0x03}&#160;–&#160;All&#160;10&#160;IL&#160;messages&#160;are&#160;calibrated on&#160;<br/>
+{0xFE, 0x03}&#160;–&#160;IL&#160;message&#160;0 is&#160;calibrated off&#160;<br/>
+{0x7F, 0x03}&#160;–&#160;IL&#160;message&#160;7 is&#160;calibrated off&#160;<br/>
+{0xFF, 0x01}&#160;–&#160;IL&#160;message&#160;9 is&#160;calibrated off&#160;<br/>
+&#160;<br/>
+When&#160;a configuration contains&#160;more than one CAN&#160;channel,&#160;a new&#160;byte in&#160;<br/>IlVnTxMessageEnabled&#160;&#160;is&#160;started&#160;to represent&#160;the IL&#160;messages&#160;for&#160;the next&#160;channel.&#160;<br/>The remaining&#160;bits&#160;in&#160;the byte&#160;for&#160;the&#160;previous&#160;channel&#160;are skipped&#160;and&#160;have no&#160;meaning.&#160;<br/>For&#160;example,&#160;consider&#160;a configuration with&#160;10 IL messages&#160;on&#160;channel&#160;0 and 12 IL&#160;<br/>messages&#160;on&#160;channel&#160;1:&#160;<br/>
+{0xFF, 0x03,&#160;0xFF, 0x0F}&#160;–&#160;All&#160;22 IL&#160;messages&#160;are calibrated&#160;on&#160;<br/>
+{0xFF, 0x03, 0xFE, 0x0F}&#160;&#160;–&#160;&#160;IL message 10 (the first&#160;&#160;IL&#160;&#160;message on channel&#160;1)&#160;is&#160;<br/>calibrated&#160;off&#160;<br/>
+{0xFF, 0x03, 0x7F, 0x0F}&#160;–&#160;IL&#160;message 17 (the eighth&#160;IL&#160;message on channel&#160;1)&#160;is&#160;<br/>calibrated&#160;off&#160;<br/>
+&#160;<br/>
+The numbering&#160;of&#160;the&#160;IL messages&#160;can be&#160;found&#160;at&#160;the top&#160;of&#160;the generated&#160;file&#160;il_par.h&#160;<br/>in the format&#160;#define IlTxMsgHnd&lt;message name&gt;&#160;&#160;&lt;number&gt;.&#160;&#160;Non-IL messages&#160;<br/>(VNMF,&#160;HLVW,&#160;diagnostics,&#160;etc.)&#160;cannot&#160;be calibrated&#160;using&#160;this&#160;method.&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+8&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-9_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>5.1.1&#160;</b><br/>
+<b>Message Delay&#160;Time&#160;</b><br/>
+The&#160;start&#160;delay&#160;time&#160;for&#160;each&#160;transmit&#160;message&#160;(Interaction Layer&#160;Tx&#160;Handle)&#160;is&#160;configured&#160;<br/>in the&#160;table&#160;IlTxStartCycles[].&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenMsgStartDelayTime&#160;<br/>
+The&#160;start&#160;delay&#160;time&#160;of&#160;a&#160;message&#160;in ms.&#160;<br/>This&#160;is&#160;also&#160;the corresponding&#160;database&#160;attribute.&#160;<br/>
+kIlTxCycleTime&#160;<br/>
+The call&#160;cycle&#160;time of&#160;the&#160;IlTxTask&#160;of&#160;the&#160;dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;corresponding&#160;IL&#160;Tx&#160;handle.&#160;<br/>
+&#160;<br/>
+The Formula&#160;for&#160;the&#160;Value Calculation is:&#160;<br/>
+<i>GenMsgSt&#160;t</i><br/>
+<i>ar&#160;DelayTime&#160;</i>&#160;+1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>kIlTxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e</i><br/>
+<br/>
+If&#160;the&#160;following&#160;condition matches,&#160;the value&#160;0&#160;has&#160;to be used&#160;for&#160;the&#160;IL&#160;Tx&#160;handle.&#160;<br/>
+<i>GenMsgSt&#160;t</i><br/>
+<i>ar&#160;DelayTime&#160;</i>&#160;=&#160;0<br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>kIlTxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e</i><br/>
+<br/>
+<b>5.1.2&#160;</b><br/>
+<b>Minimum&#160;Update&#160;Time&#160;</b><br/>
+The&#160;&#160;minimum&#160;update&#160;time&#160;for&#160;each transmit&#160;message (Interaction Layer&#160;Tx&#160;Handle)&#160;is&#160;<br/>configured in&#160;the table&#160;IlTxUpdateCycles[].&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenMsgDelayTime&#160;<br/>
+The&#160;delay&#160;time of&#160;a&#160;message&#160;in&#160;ms.&#160;<br/>This&#160;is&#160;also&#160;the corresponding&#160;database&#160;attribute.&#160;<br/>
+kIlTxCycleTime&#160;<br/>
+The&#160;call cycle&#160;time of&#160;the&#160;IlTxTask&#160;of&#160;the&#160;dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;IL&#160;Tx&#160;handle.&#160;<br/>
+&#160;<br/>
+The Formula&#160;for&#160;the&#160;Value Calculation is:&#160;<br/>
+<i>GenMsgDel&#160;yT</i><br/>
+<i>a</i><br/>
+<i>ime&#160;</i>&#160;+1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+&#160;<i>kIlTxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e&#160;</i><br/>
+If&#160;the&#160;following&#160;condition matches,&#160;the value&#160;0&#160;has&#160;to be used&#160;for&#160;the&#160;IL&#160;Tx&#160;handle.&#160;<br/>
+<i>GenMsgDel&#160;yT</i><br/>
+<i>a</i><br/>
+<i>ime&#160;</i>&#160;=&#160;0<br/>
+<br/>
+<br/>
+&#160;<br/>
+&#160;<i>kIlTxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e&#160;</i><br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+9&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-10_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-10_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>5.1.3&#160;</b><br/>
+<b>Periodic&#160;Rate&#160;</b><br/>
+The periodic&#160;rate&#160;for&#160;each transmit&#160;message&#160;(Interaction Layer&#160;Tx&#160;Handle)&#160;is&#160;configured in&#160;<br/>the&#160;table&#160;IlTxCyclicCycles[].&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenMsgCycleTime&#160;<br/>
+The&#160;cycle time&#160;of&#160;a cyclic&#160;message in&#160;ms.&#160;<br/>This&#160;is&#160;also&#160;the corresponding&#160;database&#160;attribute.&#160;<br/>
+kIlTxCycleTime&#160;<br/>
+The call&#160;cycle&#160;time of&#160;the&#160;IlTxTask&#160;of&#160;the&#160;dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The value in the&#160;table&#160;for&#160;the&#160;dependent&#160;IL&#160;Tx&#160;handle.&#160;<br/>
+&#160;<br/>
+The Formula&#160;for&#160;the&#160;Value Calculation is:&#160;<br/>
+<i>GenMsgC&#160;eT</i><br/>
+<i>ycl</i><br/>
+<i>ime&#160;</i>&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+&#160;<i>kIlTxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e&#160;</i><br/>
+&#160;<br/>
+<b>5.1.4&#160;</b><br/>
+<b>Fast&#160;Periodic Rate&#160;</b><br/>
+The&#160;fast&#160;periodic&#160;rate for&#160;each transmit&#160;message (Interaction&#160;Layer&#160;Tx&#160;Handle)&#160;is&#160;<br/>configured in&#160;the table&#160;IlTxEventCycles[].&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenMsgCycleTimeFast&#160;<br/>
+The&#160;fast&#160;cycle&#160;time of&#160;a&#160;message&#160;in ms.&#160;<br/>This&#160;is&#160;also&#160;the corresponding&#160;database&#160;attribute.&#160;<br/>
+kIlTxCycleTime&#160;<br/>
+The call&#160;cycle&#160;time of&#160;the&#160;IlTxTask&#160;of&#160;the&#160;dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;IL&#160;Tx&#160;handle.&#160;<br/>
+&#160;<br/>
+The Formula&#160;for&#160;the&#160;Value Calculation is:&#160;<br/>
+<i>GenMsgC&#160;eT</i><br/>
+<i>ycl</i><br/>
+<i>imeFast&#160;</i>&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>kIlTxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e</i><br/>
+<br/>
+&#160;<br/>
+<b>5.1.5&#160;</b><br/>
+<b>Init&#160;Message&#160;</b><br/>
+The Init&#160;Messages&#160;are enabled/disabled&#160;in&#160;the&#160;table&#160;IlVnTxSendOnInit[].&#160;The&#160;table&#160;<br/>contains&#160;one bit&#160;for&#160;each&#160;transmit&#160;message&#160;(Interaction&#160;Layer&#160;Tx&#160;Handle):&#160;<br/>
+<b>&#160;&#160;</b>0:&#160;The&#160;transmit&#160;message&#160;is&#160;not&#160;an&#160;Init&#160;Message&#160;<br/>
+<b>&#160;&#160;</b>1:&#160;The transmit&#160;message&#160;is&#160;an&#160;Init&#160;Message&#160;<br/>
+<b>&#160;&#160;</b>The layout&#160;of&#160;the&#160;table&#160;follows&#160;the same&#160;pattern as&#160;IlVnTxMessageEnabled[]&#160;for&#160;<br/>
+transmit&#160;messages.&#160;&#160;Please see section 4.1&#160;for&#160;a description&#160;and examples.&#160;<br/>
+<b>Please note&#160;<br/></b>The&#160;implementation of&#160;the&#160;table&#160;has&#160;changed between CANGen and GENy.<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+10&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-11_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+Any&#160;message that&#160;is&#160;transmitted via the&#160;Interaction&#160;Layer&#160;(usually&#160;all&#160;messages&#160;with&#160;<br/>extended&#160;IDs)&#160;can&#160;be configured&#160;as&#160;Init&#160;Messages.&#160;These&#160;messages&#160;are&#160;transmitted&#160;<br/>according&#160;to&#160;the configured transmission&#160;type ‘cyclic’,&#160;‘on event’&#160;or&#160;‘cyclic&#160;and on event’.&#160;<br/>The Init&#160;Messages&#160;are&#160;additional&#160;transmitted&#160;upon:&#160;<br/>
+<b>&#160;&#160;</b>Reception or&#160;transmission of&#160;an&#160;I-VNMF&#160;that&#160;initializes&#160;at&#160;least&#160;one VN&#160;that is&#160;<br/>
+associated to the VN&#160;<br/>
+<b>&#160;&#160;</b>Start&#160;of&#160;a Shared Local&#160;VN,&#160;which the&#160;message is&#160;associated to&#160;<br/>
+<b>&#160;&#160;</b>All&#160;Initial&#160;Messages&#160;that&#160;are associated to any&#160;Initially&#160;Active VN&#160;are transmitted&#160;upon&#160;<br/>
+reception of&#160;a HLVW.&#160;<br/>
+The transmission&#160;of&#160;the Init&#160;Message is&#160;delayed according&#160;to the calibrated&#160;message delay&#160;<br/>time.&#160;Refer&#160;t<a href="TechnicalReference_GMLANCalibrations.html#9">o&#160;5.1.1.</a>&#160;<br/>
+<b>5.2&#160;&#160;Receive Messages&#160;</b><br/>
+The GMLAN&#160;Handler&#160;provides&#160;the&#160;ability&#160;to enable and&#160;disable&#160;the receive process&#160;for&#160;<br/>each received&#160;functional&#160;message with the&#160;function&#160;IlSetRxMessageEnable(..).&#160;&#160;<br/>The&#160;default&#160;for&#160;this&#160;calibration is&#160;‘enabled’.&#160;<br/>
+This&#160;can&#160;also&#160;be calibrated&#160;directly&#160;using&#160;the table&#160;IlVnRxMessageEnabled[].&#160;&#160;Note&#160;<br/>that&#160;&#160;using&#160;&#160;the function&#160;IlSetRxMessageEnable&#160;&#160;has&#160;the same effect&#160;as&#160;modifying&#160;<br/>IlVnRxMessageEnabled[],&#160;so it&#160;is&#160;not&#160;necessary&#160;to both calibrate the table&#160;and&#160;call the&#160;<br/>function.&#160;&#160;The layout&#160;of&#160;the&#160;table&#160;follows&#160;the same&#160;pattern&#160;as&#160;IlVnTxMessageEnabled[]&#160;<br/>for&#160;transmit&#160;messages.&#160;Please&#160;see&#160;section 4.1&#160;for&#160;a&#160;description&#160;and&#160;examples.&#160;<br/>
+<b>5.2.1&#160;</b><br/>
+<b>Rx&#160;Timeout&#160;Time&#160;</b><br/>
+The&#160;Rx&#160;Timeout&#160;Time&#160;for&#160;each&#160;message is&#160;configured in the&#160;table&#160;IlRxTimeoutTbl[].&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+GenSigTimeoutTime_&lt;ECU&gt;&#160;&#160;Timeout&#160;time of&#160;a message in&#160;ms.&#160;<br/>
+This&#160;is&#160;also&#160;the corresponding&#160;database&#160;attribute.&#160;<br/>
+kIlRxCycleTime&#160;<br/>
+The call&#160;cycle&#160;time of&#160;the&#160;IlRxTask&#160;of&#160;the&#160;dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;IL&#160;Rx&#160;handle.&#160;<br/>
+&#160;<br/>
+The Formula&#160;for&#160;the&#160;Value Calculation is:&#160;<br/>
+<i>GenSigTi&#160;o</i><br/>
+<i>me&#160;utTime&#160;</i>&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+&#160;<i>kIlRxCycl&#160;Tim</i><br/>
+<i>e</i><br/>
+<i>e</i><br/>
+<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+11&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-12_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-12_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>5.3&#160;&#160;Transmit&#160;Signals&#160;</b><br/>
+<b>5.3.1&#160;</b><br/>
+<b>Initial Transmit&#160;Value&#160;</b><br/>
+This&#160;chapter&#160;describes&#160;the&#160;configuration of&#160;Tx&#160;signal&#160;default&#160;values&#160;that&#160;are set&#160;are set&#160;in&#160;<br/>the&#160;Interaction&#160;Layer&#160;state transitions&#160;IlInit&#160;/&#160;IlTxStart&#160;/&#160;IlTxStop.&#160;<br/>
+The&#160;following&#160;message&#160;layout&#160;is&#160;used as&#160;example in the&#160;following&#160;chapters.&#160;<br/>
+&#160;<br/>
+Figure&#160;5-1&#160;<br/>
+Signal&#160;layout&#160;of&#160;the example&#160;message&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+12&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-13_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-13_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-13_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-13_4.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>5.3.1.1&#160;&#160;GENy&#160;Configuration&#160;</b><br/>
+In order&#160;&#160;to&#160;have&#160;the&#160;calibration&#160;(post&#160;build)&#160;capability&#160;of&#160;default&#160;values&#160;for&#160;all&#160;transmit&#160;<br/>signals&#160;the ‘Init&#160;default’,&#160;‘Start&#160;default’&#160;and ‘Stop default’&#160;have&#160;to be activated in&#160;GENy&#160;as&#160;<br/>shown&#160;in the&#160;following&#160;figures.&#160;<br/>
+&#160;<br/>
+Figure&#160;5-2&#160;<br/>
+GENy&#160;configuration of&#160;the&#160;‚Tx&#160;Signals’&#160;view&#160;&#160;with&#160;the&#160;example&#160;message’s&#160;signals&#160;<br/>
+<b>5.3.1.2&#160;&#160;Initial&#160;Default&#160;Values&#160;of&#160;Transmit&#160;Signals&#160;</b><br/>
+The&#160;generated&#160;file&#160;gmlcal.c&#160;&#160;contains&#160;for&#160;each&#160;transmit&#160;&#160;message&#160;a table named&#160;<br/>&lt;<i>MessageName</i>&gt;IlTxDefaultInitValue&#160;with&#160;the data&#160;type&#160;vuint8 [].&#160;&#160;&#160;<br/>The size of&#160;the&#160;table depends&#160;on the&#160;length&#160;of&#160;the&#160;data&#160;of&#160;the corresponding&#160;message that&#160;<br/>is&#160;relevant&#160;for&#160;your&#160;node.&#160;The&#160;table&#160;contains&#160;the default&#160;values&#160;of&#160;the message.&#160;<br/>
+&#160;<br/>
+<b>Example</b>&#160;<br/>The&#160;SignalA&#160;is&#160;located in&#160;the&#160;first&#160;byte&#160;of&#160;the&#160;array.&#160;The signal&#160;starts&#160;in bit&#160;4&#160;and ends&#160;in&#160;<br/>
+&#160;<br/>
+bit&#160;7 as&#160;shown i<a href="TechnicalReference_GMLANCalibrations.html#12">n&#160;Figure&#160;5-1.</a>&#160;<br/>
+If&#160;for&#160;example&#160;the default&#160;value for&#160;the&#160;SignalA&#160;in&#160;the&#160;Intel&#160;format&#160;is&#160;1 and&#160;for&#160;the SignalB&#160;<br/>and SignalC&#160;is&#160;0,&#160;the&#160;table&#160;would&#160;contain&#160;the&#160;following&#160;values:&#160;<br/>
+&#160;<br/>GMLCAL_MEMROM0 GMLCAL_MEMROM1 vuint8 GMLCAL_MEMROM2&#160;<br/>MessageIlTxDefaultInitValue[] = {&#160;<br/>&#160;&#160;&#160;0x10&#160;<br/>&#160;&#160;,0x00&#160;<br/>};&#160;<br/>
+&#160;<br/>
+<b>Caution&#160;<br/></b>The&#160;byte order&#160;(Little Endian /&#160;Big&#160;Endian)&#160;has&#160;to&#160;be&#160;taken&#160;in account&#160;when setting up&#160;<br/>
+&#160;<br/>
+the default&#160;values&#160;for&#160;the&#160;signals.&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+13&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-14_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-14_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>5.3.1.3&#160;&#160;Start&#160;and&#160;Stop Default&#160;Values&#160;of&#160;Transmit&#160;Signals&#160;</b><br/>
+The&#160;generated&#160;file&#160;gmlcal.c&#160;&#160;contains&#160;for&#160;each&#160;transmit&#160;&#160;message&#160;a table named&#160;<br/>&lt;<i>MessageName</i>&gt;IlTxDefaultStartMask&#160;<br/>
+for&#160;the&#160;IlTxStart&#160;<br/>
+transition and&#160;<br/>
+&lt;<i>MessageName</i>&gt;IlTxDefaultStopMask&#160;for&#160;the&#160;IlTxStop&#160;transition&#160;with&#160;the data type&#160;<br/>vuint8 [].&#160;<br/>The&#160;size&#160;of&#160;these&#160;tables&#160;depends&#160;on&#160;the length of&#160;the&#160;data of&#160;the corresponding&#160;message&#160;<br/>that&#160;is&#160;relevant&#160;for&#160;your&#160;node.&#160;These&#160;&#160;tables&#160;&#160;contain&#160;&#160;masks&#160;that&#160;are&#160;applied on the&#160;<br/>corresponding&#160;default&#160;value of&#160;the&#160;table&#160;&lt;<i>MessageName</i>&gt;IlTxDefaultInitValue.&#160;<br/>
+The mask&#160;table&#160;contains&#160;a&#160;‘set&#160;bit’&#160;at&#160;each bit&#160;position,&#160;where the default&#160;value&#160;is&#160;applied.&#160;<br/>
+&#160;<br/>
+<b>Example</b>&#160;<br/>If&#160;for&#160;example&#160;the default&#160;value for&#160;the&#160;SignalA&#160;shall&#160;be&#160;set&#160;at&#160;IlTxStart&#160;and&#160;not&#160;for&#160;<br/>
+&#160;<br/>
+SignalB&#160;and SignalC,&#160;the&#160;table&#160;would&#160;contain&#160;the&#160;following&#160;values:&#160;<br/>
+&#160;<br/>GMLCAL_MEMROM0 GMLCAL_MEMROM1 vuint8 GMLCAL_MEMROM2&#160;<br/>MessageIlTxDefaultStartMask[] = {&#160;<br/>&#160;&#160;&#160;0xF0&#160;<br/>&#160;&#160;,0x00&#160;<br/>};&#160;<br/>
+&#160;<br/>
+<b>5.4&#160;&#160;Receive Signals&#160;</b><br/>
+Receive signal&#160;calibration is&#160;not&#160;supported&#160;by&#160;the GMLAN&#160;Handler.&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+14&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-15_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-15_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>6&#160;&#160;Nm_Gmlan_Gm :&#160;Network&#160;Management&#160;</b><br/>
+This&#160;chapter&#160;describes&#160;the calibration capabilities&#160;of&#160;the&#160;Network&#160;Management.&#160;<br/>
+<b>6.1&#160;&#160;nmVNMFStartSendCalCnt&#160;(Bus Wakeup&#160;Delay&#160;Time)&#160;</b><br/>
+This&#160;is&#160;the time&#160;between transmission of&#160;a&#160;HLVW&#160;message and&#160;a VNMF-Init&#160;message&#160;<br/>when activating&#160;a Virtual&#160;Network.&#160;Also known as&#160;the Bus&#160;Wakeup&#160;Delay&#160;Time.&#160;Time&#160;is&#160;<br/>measured&#160;in&#160;multiples&#160;of&#160;the Nm&#160;Cycle&#160;Time.&#160;Default&#160;value is&#160;100ms.&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+BusWakeupDelayTime&#160;<br/>
+Delay&#160;time&#160;in&#160;ms.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call&#160;cycle time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+&#160;<i>NmInitDel&#160;yT</i><br/>
+<i>a</i><br/>
+<i>ime&#160;</i>+&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−&#160;1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+<b>6.2&#160;&#160;nmVNMFSendTimeCalCnt&#160;(VMNMF&#160;Periodic&#160;rate)&#160;</b><br/>
+Time&#160;between sending&#160;continue VNMFs.&#160;Time is&#160;measured&#160;as&#160;multiples&#160;of&#160;the Nm&#160;Cycle&#160;<br/>Time.&#160;Default&#160;value is&#160;3000ms&#160;if&#160;the&#160;attribute&#160;GenMsgCycleTime&#160;for&#160;this&#160;VNMF&#160;message&#160;<br/>is&#160;not&#160;set&#160;to a&#160;different&#160;value in the&#160;database.&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+VNMFPeriodicRate&#160;<br/>
+Cycle of&#160;the VNMF message&#160;time&#160;in&#160;ms.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call cycle&#160;time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+<i>VNMFPerio&#160;ic</i><br/>
+<i>d&#160;Rate&#160;</i>+&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−&#160;1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+15&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-16_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-16_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-16_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-16_4.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+<b>6.3&#160;&#160;nmBusoffRecoveryTimeCalCnt&#160;(BusOff&#160;Recovery&#160;Delay&#160;Time)&#160;</b><br/>
+The ‘BusOff&#160;recovery&#160;Delay&#160;Time’&#160;is&#160;the&#160;time to&#160;wait&#160;after&#160;a&#160;BUS-OFF&#160;event&#160;to&#160;reset&#160;the&#160;<br/>CAN&#160;controller&#160;and&#160;attempt&#160;recovery.&#160;The time is&#160;measured&#160;as&#160;multiples&#160;of&#160;the Nm&#160;Cycle&#160;<br/>Time.&#160;The value&#160;corresponds&#160;to the&#160;“BusOff&#160;Recovery&#160;Time”&#160;field&#160;in&#160;the channel&#160;properties&#160;<br/>of&#160;GENy.&#160;<br/>
+&#160;<br/>
+Figure&#160;6-1&#160;<br/>
+“BusOff&#160;Recovery&#160;Time”&#160;configuration in GENy&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+BusOffRecoveryDelayTime&#160;&#160;Delay&#160;time in ms&#160;for&#160;Bus-Off&#160;recovery.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call&#160;cycle time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+&#160;<i>BusOff&#160;</i>Re&#160;cov&#160;<i>eryDelayT&#160;me</i><br/>
+<i>i</i><br/>
++&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which&#160;will have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+16&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-17_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-17_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-17_3.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>6.4&#160;&#160;nmInitDelayTimeCalCnt&#160;(Init&#160;Delay&#160;Time)&#160;</b><br/>
+For&#160;initially-active Virtual&#160;Networks,&#160;the ‘Init&#160;DelayTime’&#160;defines&#160;the time&#160;between reception&#160;<br/>of&#160;a HLVW&#160;message&#160;and transmission of&#160;Node Communication&#160;Active (NCA),&#160;periodic,&#160;<br/>and&#160;send on-init&#160;messages.&#160;The time is&#160;measured&#160;as&#160;multiples&#160;of&#160;the Nm&#160;Cycle&#160;Time.&#160;The&#160;<br/>value corresponds&#160;to the&#160;“Init&#160;Delay&#160;Time”&#160;field in the channel&#160;properties&#160;of&#160;GENy.&#160;<br/>
+&#160;<br/>
+Figure&#160;6-2&#160;<br/>
+“Init&#160;Delay&#160;Time”&#160;configuration&#160;in GENy&#160;<br/>
+&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+NmInitDelayTime&#160;<br/>
+Delay&#160;time&#160;in&#160;ms.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call cycle&#160;time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+&#160;<i>NmInitDel&#160;yT</i><br/>
+<i>a</i><br/>
+<i>ime&#160;</i>+&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−&#160;1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+<b>6.5&#160;&#160;nmSleepTransitionDelayTimeCalCnt&#160;(Sleep Transition Time)&#160;</b><br/>
+The&#160;‘Sleep&#160;Transition Time’&#160;defines&#160;an extra&#160;delay&#160;time between&#160;CAN driver&#160;initialization&#160;<br/>and&#160;setting&#160;the&#160;transceiver&#160;into sleep&#160;mode&#160;during&#160;shut&#160;down.&#160;This&#160;extra&#160;time&#160;gap between&#160;<br/>CanInit()&#160;and&#160;ApplTrcvrSleepMode()provides&#160;additional&#160;protection against&#160;missing&#160;<br/>of&#160;wake-up messages&#160;(HLVW).&#160;<br/>
+The&#160;total&#160;time is&#160;calculated&#160;by&#160;adding&#160;the 'Bus&#160;Wakeup&#160;Delay&#160;Time'&#160;(chapter<a href="TechnicalReference_GMLANCalibrations.html#15">&#160;6.1)</a>&#160;and&#160;<br/>'Sleep&#160;Transition&#160;Time'&#160;(this&#160;value).&#160;Note:&#160;The&#160;total&#160;time&#160;must&#160;not&#160;exceed&#160;4 seconds!&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+17&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-18_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-18_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-18_3.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+The value corresponds&#160;to the “Init&#160;Delay&#160;Time”&#160;field in the channel&#160;properties&#160;of&#160;GENy.&#160;The&#160;<br/>default&#160;value is&#160;50ms.&#160;<br/>
+&#160;<br/>
+Figure&#160;6-3&#160;<br/>
+&#34;Sleep Transition&#160;Time&#34;&#160;configuration&#160;in&#160;GENy&#160;<br/>
+&#160;<br/>
+Time&#160;is&#160;measured&#160;as&#160;multiples&#160;of&#160;the&#160;Nm&#160;Cycle&#160;Time.&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+NmSleepTransitionTime&#160;<br/>
+Delay&#160;time&#160;in&#160;ms.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call&#160;cycle time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+&#160;<i>NmSleepT&#160;n</i><br/>
+<i>ra&#160;sitionTime&#160;</i>+&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−&#160;1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+18&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-19_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-19_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-19_3.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>6.6&#160;&#160;nmSupervisionStabilityTimeCalCnt&#160;(Supervision Stability&#160;Time)&#160;</b><br/>
+The ‘Supervision Stability&#160;Time’&#160;defines&#160;a delay&#160;time between&#160;activation&#160;of&#160;a VN&#160;and start&#160;<br/>of&#160;Rx&#160;supervision of&#160;the corresponding&#160;signals.&#160;It&#160;is&#160;used to avoid 'Loss&#160;of&#160;Communication'&#160;<br/>DTCs&#160;due to transient&#160;conditions&#160;after&#160;VN&#160;activation.&#160;<br/>
+The value corresponds&#160;to the “Init&#160;Delay&#160;Time”&#160;field in the channel&#160;properties&#160;of&#160;GENy.&#160;It&#160;is&#160;<br/>derived by&#160;the dbc&#160;attribute 'NodeSuprvStabilityTime'.&#160;If&#160;attribute does&#160;not&#160;exist,&#160;a default&#160;<br/>value of&#160;5000ms&#160;is&#160;used.&#160;<br/>
+&#160;<br/>
+Figure&#160;6-4&#160;<br/>
+&#34;Supervision Stability&#160;Time&#34;&#160;configuration&#160;in&#160;GENy&#160;<br/>
+&#160;<br/>
+Time&#160;is&#160;measured&#160;as&#160;multiples&#160;of&#160;the&#160;Nm&#160;Cycle&#160;Time.&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+NmSuprvStabilityTime&#160;<br/>
+Delay&#160;time&#160;in&#160;ms.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call&#160;cycle time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+&#160;<i>NmSuprvSt&#160;b</i><br/>
+<i>a&#160;ilityTime&#160;</i>+&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−&#160;1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+19&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-20_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-20_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-20_3.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>6.7&#160;&#160;nmMaxApplShutDownDenyCnt&#160;(Max&#160;No Sleep Confirmation)&#160;</b><br/>
+This&#160;value&#160;is&#160;only&#160;used&#160;if&#160;‘Fault&#160;Detection and&#160;Mitigation’&#160;and ‘Sleep&#160;Confirmation’&#160;are&#160;both&#160;<br/>enabled in&#160;GENy.&#160;<br/>
+The value&#160;defines&#160;a threshold&#160;for&#160;number&#160;of&#160;times&#160;the&#160;application&#160;may&#160;deny&#160;the&#160;transition&#160;<br/>to sleep&#160;mode within&#160;ApplNwmSleepConfirmation().&#160;For&#160;detailed description&#160;of&#160;Fault&#160;<br/>Detection and Mitigation&#160;Algorithm&#160;see chapter&#160;3.11 in [4].&#160;<br/>
+The value corresponds&#160;to the “Max&#160;No Sleep Confirmation”&#160;field in&#160;the channel&#160;properties&#160;<br/>of&#160;GENy.&#160;The&#160;default&#160;value&#160;is&#160;5.&#160;<br/>
+&#160;<br/>
+Figure&#160;6-5&#160;<br/>
+&#34;Max&#160;No Sleep Confirmation&#34;&#160;configuration in GENy&#160;<br/>
+&#160;<br/>
+The value is&#160;generated&#160;directly&#160;as&#160;defined in&#160;GENy.&#160;<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+20&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-21_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-21_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>6.8&#160;&#160;GMLANNodeStatusTimeoutTimeCalCnt&#160;&#160;(Node&#160;Communication&#160;Active&#160;Frame&#160;</b><br/>
+<b>Timeout)&#160;</b><br/>
+The timeout&#160;for&#160;incoming&#160;Node Communication&#160;Active (NCA)&#160;messages&#160;is&#160;configured&#160;with&#160;<br/>kGMLANNodeStatusTimeoutTimeCalCnt.&#160;Failure to receive a&#160;NCA&#160;message in this&#160;<br/>period indicates&#160;that&#160;a&#160;node&#160;has&#160;failed.&#160;Time is&#160;measured&#160;as&#160;multiples&#160;of&#160;the Nm&#160;Cycle&#160;<br/>Time.&#160;The value corresponds&#160;to&#160;the value&#160;of&#160;the NodeStatusMsgTimeoutTime attribute in&#160;<br/>the database.&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Description&#160;</b><br/>
+NodeStatusMsgTimeoutTime&#160;&#160;Timeout&#160;time in&#160;ms.&#160;<br/>
+NM_CYCLETIME&#160;<br/>
+The&#160;call cycle&#160;time&#160;of&#160;the&#160;IlNwmTask&#160;of&#160;the&#160;dependent&#160;<br/>channel&#160;in ms.&#160;<br/>
+TableValue&#160;<br/>
+The&#160;value in the&#160;table&#160;for&#160;the&#160;dependent&#160;NM&#160;channel.&#160;<br/>
+&#160;<br/>
+&#160;<i>NoteStatusMsgTimeoutTime&#160;</i>+&#160;<i>NM&#160;</i>_&#160;<i>CYCLETIME&#160;</i>−1&#160;=&#160;<i>TableValue</i><br/>
+<br/>
+<br/>
+&#160;<br/>
+<br/>
+<i>NM&#160;</i>_&#160;<i>CYCLETIME</i><br/>
+<br/>
+&#160;<br/>
+<b>Info</b>&#160;<br/>For&#160;a single channel&#160;configuration,&#160;there is&#160;only&#160;a constant&#160;generated.&#160;<br/>
+&#160;<br/>
+For&#160;a&#160;multi&#160;channel&#160;configuration&#160;there will&#160;be an&#160;array&#160;generated&#160;which will&#160;have&#160;<br/>as&#160;much&#160;entries&#160;as&#160;CAN&#160;channels&#160;are&#160;configured.&#160;The&#160;first&#160;entry&#160;is&#160;used&#160;for&#160;the&#160;<br/>first&#160;CAN&#160;channel,&#160;the&#160;second&#160;for&#160;the second&#160;CAN&#160;channel&#160;and so on.&#160;&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+21&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-22_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-22_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>7&#160;&#160;Memory&#160;Definition file:&#160;MemDef.h&#160;</b><br/>
+In order&#160;to allow&#160;calibration&#160;of&#160;the GMLAN&#160;Handler&#160;without&#160;modification&#160;of&#160;the generated&#160;<br/>configuration&#160;files&#160;all&#160;calibration&#160;parameters&#160;are located in the same&#160;file (gmlcal.c).&#160;<br/>Since the&#160;calibration parameters&#160;are&#160;stored&#160;in&#160;non-volatile&#160;memory&#160;(flash&#160;or&#160;EEPROM) the&#160;<br/>possibility&#160;of&#160;linking/locating&#160;these&#160;parameters&#160;in a separate&#160;memory&#160;section is&#160;provided.&#160;<br/>
+There are&#160;mechanisms&#160;in order&#160;to support&#160;various&#160;compilers:&#160;<br/>
+<b>&#160;&#160;</b>Memory&#160;Mapping&#160;via pre-processor&#160;directives&#160;(#pragma)&#160;<br/>
+<b>&#160;&#160;</b>Linking&#160;of&#160;tables&#160;with memory&#160;qualifiers&#160;<br/>
+If&#160;necessary&#160;both&#160;mechanism&#160;may&#160;be combined.&#160;<br/>
+<b>7.1&#160;&#160;Memory&#160;Mapping&#160;</b><br/>
+The memory&#160;mapping&#160;with pre-processor&#160;directives&#160;is&#160;done with the&#160;definition&#160;of&#160;sections&#160;<br/>that&#160;are embraced with a start&#160;definition that&#160;is&#160;followed by&#160;MemDef.h and a stop&#160;definition&#160;<br/>that&#160;is&#160;followed by&#160;MemDef.h.&#160;By&#160;adding&#160;#pragma&#160;definitions&#160;at&#160;the beginning&#160;and&#160;end&#160;of&#160;<br/>a section the&#160;parameters&#160;(tables)&#160;&#160;in-between&#160;&#160;may&#160;&#160;be linked in&#160;to a&#160;defined&#160;memory&#160;<br/>section.&#160;<br/>
+&#160;<br/>
+<b>Example</b>&#160;<br/>The&#160;following&#160;code&#160;shows&#160;a partial&#160;extract&#160;of&#160;gmlcal.c&#160;and&#160;a&#160;the mapping&#160;of&#160;the&#160;<br/>
+&#160;<br/>
+calibration parameters&#160;to the section&#160;CALIBRATION:&#160;<br/>
+gmlcal.c:&#160;<br/>#define GMLCAL_START_SEC_CONST&#160;<br/>#include &#34;MemDef.h&#34;&#160;<br/>&#160;<br/>GMLCAL_MEMROM0&#160;GMLCAL_MEMROM1 canuint16&#160;GMLCAL_MEMROM2&#160;<br/>nmBusoffRecoverTimeCalCnt = (NM_BUSOFF_RECOVER_TIME + NM_CYCLETIME-<br/>1)/NM_CYCLETIME;&#160;<br/>&#160;<br/>#define GMLCAL_STOP_SEC_CONST&#160;<br/>#include &#34;MemDef.h&#34;&#160;<br/>
+&#160;<br/>
+MemDef.h:&#160;<br/>/* Definition of section for calibration parameters. */&#160;<br/>#if defined ( GMLCAL_START_SEC_CONST )&#160;<br/>
+#undef GMLCAL_START_SEC_CONST&#160;<br/>#pragma section .CALIBRATION&#160;<br/>
+#endif&#160;<br/>&#160;<br/>/* Definition of section for default parameters. */&#160;<br/>#if defined ( GMLCAL_STOP_SEC_CONST )&#160;<br/>
+#undef GMLCAL_STOP_SEC_CONST&#160;<br/>#pragma section .DEFAULT&#160;<br/>
+#endif&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+22&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-23_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-23_2.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>7.2&#160;&#160;Memory&#160;Qualifiers&#160;</b><br/>
+Separate memory&#160;qualifiers&#160;are&#160;used&#160;for&#160;all&#160;calibration&#160;parameters&#160;instead of&#160;the GMLAN&#160;<br/>Handler’s&#160;Standard memory&#160;qualifiers&#160;in order&#160;to support&#160;linking&#160;these parameters&#160;to a&#160;<br/>separate&#160;memory&#160;section.&#160;These&#160;memory&#160;qualifiers&#160;have to&#160;be&#160;adapted&#160;to&#160;the user’s&#160;<br/>needs.&#160;&#160;<br/>The&#160;following&#160;table&#160;provides&#160;a list&#160;of&#160;these&#160;memory&#160;qualifiers&#160;that&#160;are&#160;defined&#160;in&#160;<br/>MemDef.h.&#160;<br/>
+<b>Memory&#160;Qualifier&#160;</b><br/>
+<b>Default&#160;definition&#160;</b><br/>
+GMLCAL_MEMROM0&#160;<br/>
+V_MEMROM0&#160;<br/>
+GMLCAL_MEMROM1&#160;<br/>
+V_MEMROM1&#160;<br/>
+GMLCAL_MEMROM2&#160;<br/>
+V_MEMROM2&#160;(usually&#160;defined to&#160;const)&#160;<br/>
+GMLCAL_MEMROM3&#160;<br/>
+V_MEMROM3&#160;<br/>
+The&#160;memory&#160;qualifiers&#160;defined in MemDef.h&#160;are exclusive used in gmlcal.c&#160;and gmlcal.h&#160;<br/>
+The&#160;following&#160;example&#160;shows&#160;how&#160;the memory&#160;qualifiers&#160;are used in&#160;gmlcal.c.&#160;<br/>
+&#160;<br/>
+<b>Example</b>&#160;<br/>The&#160;following&#160;example shows&#160;how&#160;the&#160;memory&#160;qualifiers&#160;are&#160;used in&#160;gmlcal.c&#160;/&#160;gmlcal.h:&#160;<br/>
+&#160;<br/>
+<b>GMLCAL_MEMROM0</b>&#160;extern&#160;<b>GMLCAL_MEMROM1</b>&#160;canuint16&#160;<b>GMLCAL_MEMROM2</b>&#160;<br/>nmBusoffRecoverTimeCalCnt;&#160;<br/>&#160;<br/>
+&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+23&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/TechnicalReference_GMLANCalibration-24_1.png"/><br/>
+Technical&#160;Reference&#160;GMLAN&#160;3.1&#160;&#160;<br/>
+&#160;<br/>
+<b>8&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our&#160;website for&#160;more&#160;information on&#160;<br/>&#160;<br/>&gt;&#160; &#160;News&#160;<br/>&gt;&#160; &#160;Products&#160;<br/>&gt;&#160; &#160;Demo software&#160;<br/>&gt;&#160; &#160;Support&#160;<br/>&gt;&#160; &#160;Training&#160;data&#160;<br/>&gt;&#160; &#160;Addresses&#160;<br/>&#160;<br/><b>www.vector.com&#160;<br/></b>&#160;<br/>
+2013, Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.01.01&#160;<br/>
+24&#160;/&#160;24&#160;<br/>
+based on&#160;template version&#160;2.7&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#2">1 Document Information</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#2">1.1 History</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#2">1.2 Reference Documents</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#5">2 Introduction</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3 Module History</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3.1 Il_Vector_Gm Version 1.01.00</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3.1.1 What is new?</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3.1.2 What has changed?</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3.2 Nm_Gmlan_Gm Version 4.03.00</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3.2.1 What is new?</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#6">3.2.2 What has changed?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#7">4 GMLAN Handler Calibration</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#8">5 Il_Vector_Gm : Interaction Layer</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#8">5.1 Transmit Messages</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#9">5.1.1 Message Delay Time</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#9">5.1.2 Minimum Update Time</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#10">5.1.3 Periodic Rate</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#10">5.1.4 Fast Periodic Rate</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#10">5.1.5 Init Message</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#11">5.2 Receive Messages</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#11">5.2.1 Rx Timeout Time</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#12">5.3 Transmit Signals</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#12">5.3.1 Initial Transmit Value</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#13">5.3.1.1 GENy Configuration</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#13">5.3.1.2 Initial Default Values of Transmit Signals</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#14">5.3.1.3 Start and Stop Default Values of Transmit Signals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#14">5.4 Receive Signals</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#15">6 Nm_Gmlan_Gm : Network Management</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#15">6.1 nmVNMFStartSendCalCnt (Bus Wakeup Delay Time)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#15">6.2 nmVNMFSendTimeCalCnt (VMNMF Periodic rate)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#16">6.3 nmBusoffRecoveryTimeCalCnt (BusOff Recovery Delay Time)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#17">6.4 nmInitDelayTimeCalCnt (Init Delay Time)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#17">6.5 nmSleepTransitionDelayTimeCalCnt (Sleep Transition Time)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#19">6.6 nmSupervisionStabilityTimeCalCnt (Supervision Stability Time)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#20">6.7 nmMaxApplShutDownDenyCnt (Max No Sleep Confirmation)</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#21">6.8 GMLANNodeStatusTimeoutTimeCalCnt (Node Communication Active Frame Timeout)</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#22">7 Memory Definition file: MemDef.h</a>
+<ul>
+<li><a href="TechnicalReference_GMLANCalibrations.html#22">7.1 Memory Mapping</a></li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#23">7.2 Memory Qualifiers</a></li>
+</ul>
+</li>
+<li><a href="TechnicalReference_GMLANCalibrations.html#24">8 Contact</a></li>
+</ul>
+<hr/>
+</body>
+</html>

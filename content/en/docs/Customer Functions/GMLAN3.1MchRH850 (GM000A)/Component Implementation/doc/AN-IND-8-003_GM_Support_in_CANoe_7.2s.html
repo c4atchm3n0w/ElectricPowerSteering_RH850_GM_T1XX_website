@@ -1,0 +1,956 @@
+---
+title: AN-IND-8-003_GM_Support_in_CANoe_7.2s
+linkTitle: AN-IND-8-003_GM_Support_in_CANoe_7.2s
+weight: 9
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-1_1.jpg"/><br/>
+<b>&#160;</b><br/>
+<b>GM Support in CANoe 7.2&#160;</b><br/>
+<b>Version 2.1&#160;</b><br/>
+<b>2010-02-23&#160;&#160;</b><br/>
+<b>Application Note AN-IND-8-003&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+<i>&#160;<br/></i>Author(s)&#160;<br/>
+Siegfried Beeh, Friederike&#160;Gengenbach&#160;<br/>
+Restrictions&#160;<br/>
+Customer&#160;Confidential: GM&#160;worldwide&#160;and GM&#160;suppliers &#160;<br/>
+Abstract&#160;<br/>
+This application note explains the current stage of GM&#160;support in CANoe 7.2 and&#160;its&#160;<br/>component Test Feature Set.&#160;<br/>
+<i><b>&#160;<br/>Table of Contents&#160;<br/>&#160;<br/></b></i><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">1.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">Overview&#160;.......................................................................................................................</a>...................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">2</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">1.1&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">Introduction...................................................................................................................</a>.................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">2</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">1.2&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">Terms&#160;and Abbreviations&#160;........................................................................................................</a>......................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">2</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Basic Support&#160;in CANoe&#160;.........................................................................................................</a>.........................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.1&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Trace Window&#160;...................................................................................................................</a>............................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.2&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Logging........................................................................................................................</a>..................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.3&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Export&#160;.........................................................................................................................</a>...................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.4&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Interactive Generator Block....................................................................................................</a>.......................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.5&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Generator&#160;Block&#160;................................................................................................................</a>............................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.6&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">Symbol Selection Dialog&#160;........................................................................................................</a>.......................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">3</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">2.7&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">Data Window&#160;....................................................................................................................</a>.............................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">5</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">2.8&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">Graphics&#160;Window&#160;................................................................................................................</a>..........................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">6</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">2.9&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">Panels.........................................................................................................................</a>...................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">6</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#7">2.10&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#7">CAPL&#160;...........................................................................................................................</a>..................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#7">7</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">3.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">“GM Package” Modeling Package&#160;..................................................................................................</a>.................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">8</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">3.1&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">Model Generation...............................................................................................................</a>...........................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">8</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">3.2&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">Node Panels,&#160;Message Panels&#160;....................................................................................................</a>.................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">8</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">3.3&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">Interaction Layer..............................................................................................................</a>............................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">10</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">3.4&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">Network Management&#160;.............................................................................................................</a>....................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">10</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">Modeling Control Units (ECUs)&#160;in CAPL&#160;..........................................................................................</a>.............<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">11</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.1&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">Signal Access..................................................................................................................</a>............................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">11</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.2&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">Receiving Standard Messages&#160;....................................................................................................</a>...............<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">11</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.3&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">Receiving GM-Extended Messages.................................................................................................</a>...........<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">11</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.4&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">Receiving Signals&#160;Directly.....................................................................................................</a>......................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">11</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">4.5&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">Sending Standard Messages&#160;......................................................................................................</a>................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">12</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">4.6&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">Sending GM-Extended Messages&#160;...................................................................................................</a>...........<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">12</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">Test&#160;Feature Set&#160;...............................................................................................................</a>.............................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">13</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.1&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">Test&#160;Feature&#160;Set in CAPL&#160;.......................................................................................................</a>....................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">13</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#16">5.2&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#16">Test&#160;Feature&#160;Set in XML&#160;........................................................................................................</a>.....................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#16">16</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#18">5.3&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#18">Test Service&#160;Library in CAPL and XML&#160;Test&#160;Modules..............................................................................</a>..<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#18">18</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">5.4&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">Test&#160;Automation Editor.........................................................................................................</a>.......................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">19</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">5.5&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">CANdb++ Test Module Generator&#160;..................................................................................................</a>............<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">19</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">6.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">Additional Resources&#160;...........................................................................................................</a>..........................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">19</a>&#160;<br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">7.0&#160;</a><br/>
+<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">Contact........................................................................................................................</a>...................................<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">19</a>&#160;<br/>
+&#160;<br/>&#160;<br/>
+<b>&#160;1 &#160;</b><br/>
+<i>Copyright ©&#160;2010 - Vector Informatik GmbH&#160;<br/></i><b>Contact Information:&#160; &#160;www.vector.com&#160; &#160;or&#160;++49-711-80&#160;670-0&#160;</b><br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-2_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>1.0&#160;&#160;Overview&#160;</b><br/>
+<b>1.1&#160;&#160;Introduction&#160;</b><br/>
+As a simulation, analysis&#160;and testing tool&#160;for electronic control units, CANoe supports the GMLAN 3.0 protocol in a&#160;<br/>special&#160;way. This document briefly describes&#160;the support&#160;provided&#160;by CANoe specifically for GMLAN and&#160;explains&#160;<br/>the possible use&#160;cases of the “Test Feature Set” for&#160;GMLAN in detail. This document is based on CANoe&#160;version&#160;<br/>7.2. Because&#160;CANoe support for GMLAN&#160;is extended&#160;continuously, we recommend that the reader checks whether&#160;<br/>a newer version of this document is available.&#160;<br/>
+The general Test Feature&#160;Set concept is&#160;explained in&#160;a separate document; see&#160;chapter<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">&#160;6.0.&#160;</a>Familiarity with the&#160;<br/>Test Feature&#160;Set is assumed in this document.&#160;<br/>
+<b>1.2&#160;&#160;Terms and Abbreviations&#160;</b><br/>
+Term&#160;<br/>
+Meaning&#160;<br/>
+CANoe&#160;Vector&#160;<br/>
+product&#160;<br/>
+SUT&#160;<br/>
+System under Test&#160;<br/>
+TFS Test&#160;<br/>
+Feature&#160;<br/>
+Set&#160;<br/>
+ÆCANoe component&#160;<br/>
+TSL Test&#160;<br/>
+Service&#160;<br/>
+Library&#160;<br/>
+ÆTFS component&#160;<br/>
+CAPL&#160;<br/>
+CANoe Access Programming Language&#160;<br/>ÆLanguage used for programming simulation&#160;<br/>nodes, test modules&#160;etc. in&#160;CANoe.&#160;<br/>
+hsCAN&#160;<br/>
+High&#160;speed CAN Bus (GM-specific terminology)<br/>
+swCAN&#160;<br/>
+Single wire CAN Bus (GM-specific terminology)&#160;<br/>
+GM extended&#160;<br/>
+Message with&#160;a 29-bit identifier&#160;<br/>
+message&#160;<br/>Standard message&#160;&#160;Message with&#160;an 11-bit identifier&#160;<br/>Panel Designer&#160;<br/>
+Vector product for editing&#160;panels&#160;<br/>
+Panel Editor&#160;<br/>
+Vector product for editing&#160;panels&#160;<br/>
+Test&#160;Automation&#160;<br/>
+Vector product for editing&#160;XML test modules&#160;<br/>
+Editor&#160;<br/>
+Table 1: Terms and Abbreviations&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>2<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-3_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-3_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>2.0&#160;&#160;Basic Support in CANoe&#160;<br/></b>Basic&#160;support for GMLAN is&#160;activated automatically as&#160;soon as&#160;a GMLAN network file is identified. The existence&#160;<br/>and contents of the “UseGMParameterIds” network&#160;attribute are used as identification criteria.&#160;<br/>
+Details about basic&#160;support,&#160;which are available in the&#160;Online Help for CANoe, are referenced&#160;briefly in the&#160;<br/>following chapters.&#160;<br/>
+<b>2.1&#160;&#160;Trace Window&#160;</b><br/>
+Separate columns display GM-specific&#160;“SourceID”, “Prio” and “ParameterID” information. The “GMLAN” base&#160;<br/>configuration&#160;can be selected. This&#160;contains basic information along with additional GM-relevant default columns&#160;<br/>such as&#160;“Prio”, “PID”, “SourceID” and “CAN-ID”.&#160;<br/>
+<b>2.2&#160;&#160;Logging&#160;</b><br/>
+GM-extended&#160;messages are logged along with standard messages.&#160;The CAN-ID&#160;is decoded in&#160;the comment field&#160;<br/>and documented separately&#160;as “ParameterID”, “SourceID” and “Prio”.&#160;<br/>
+<b>2.3&#160;&#160;Export&#160;</b><br/>
+Signal histories for&#160;standard messages&#160;can be exported from&#160;the log block, but this is not possible for signals on&#160;<br/>GM-extended&#160;messages.&#160;<br/>
+<b>2.4&#160;&#160;Interactive Generator&#160;Block&#160;</b><br/>
+The Interactive Generator Block (IG) allows GM-extended messages to be sent. A special “GMLAN” tab is&#160;<br/>provided for this purpose, as well as the&#160;ability to modify the message priority and SourceID.&#160;<br/>
+&#160;<br/>
+Figure 1: Defining a message in the Interactive Generator Block&#160;<br/>
+<b>2.5&#160;&#160;Generator Block&#160;</b><br/>
+The Generator Block makes it possible to send&#160;GM-extended messages in&#160;symbolic entry mode.&#160;<br/>
+<b>2.6&#160;&#160;Symbol Selection Dialog&#160;</b><br/>
+The symbolic selection dialog makes it possible to&#160;select symbols from the network database (*.dbc).&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>3<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-4_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-4_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.6.1&#160;&#160;Selecting a Message&#160;</b><br/>
+Messages&#160;can be selected,&#160;for example, in filters, in&#160;the Interactive&#160;Generator Block and in the CAPL browser.&#160;<br/>
+&#160;<br/>
+Figure 2: Message selection in the symbolic selection&#160;dialog&#160;<br/>&#160;<br/>
+Only the message name is included in the&#160;<b>CAPL&#160;</b>browser, regardless of the path&#160;followed in the selection dialog.&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>4<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-5_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-5_2.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-5_3.jpg"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.6.2&#160;&#160;Selecting a signal&#160;</b><br/>
+Signals can be&#160;selected, for instance, in the CAPL browser, the Data Window and&#160;the Graphics Window.&#160;<br/>
+&#160;<br/>
+Figure 3: Signal selection in the symbolic&#160;selection dialog &#160;<br/>&#160;<br/>
+Only the signal name is&#160;included in the&#160;<b>CAPL browser</b>, regardless of how the&#160;selection dialog is navigated. If&#160;<br/>additional qualifiers are&#160;required, these can be&#160;inserted&#160;in the CAPL browser by&#160;choosing&#160;“Insert message from&#160;<br/>CANdb++…”.&#160;<br/>
+<b>2.7&#160;&#160;Data Window&#160;</b><br/>
+Application signals are fully supported in the Data Window. &#160;<br/>
+.&#160;<br/>
+&#160;<br/>
+Figure 4: Data&#160;Window&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>5<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-6_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-6_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-6_3.jpg"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>The send node&#160;of the signals can be checked in the special&#160;dialog&#160;“configuration&#160;overview” that is accessible from&#160;<br/>the context menu of the Data Window:&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure 5: Configuration overview&#160;<br/>
+<b>2.7.1&#160;&#160;Special signals in the Data window&#160;</b><br/>
+Message-specific statistical&#160;signals can be selected in&#160;the Data and Graphics&#160;windows. These&#160;are available&#160;for&#160;<br/>standard messages but not for GM-extended messages.&#160;<br/>
+<b>2.8&#160;&#160;Graphics Window&#160;</b><br/>
+The Graphics Window allows the display of signals on&#160;a timeline. The notes&#160;that&#160;apply to the&#160;Data Window apply&#160;<br/>equally to the&#160;selection of signals and&#160;special&#160;signals in the Graphics Window&#160;(see&#160;<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">2.7).&#160;</a><br/>
+<b>2.9&#160;&#160;Panels&#160;</b><br/>
+A panel may contain elements used to&#160;visualize and control signal&#160;values. The&#160;notes that apply to the Data&#160;<br/>Window apply similar to the selection of&#160;signals here&#160;(see&#160;<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">2.7). &#160;</a><br/>
+The Panel Editor selects a signal via a symbol path that&#160;contains&#160;the database name, the tx node, the tx message&#160;<br/>and the signal. For older configurations&#160;(created&#160;with older versions&#160;than CANoe 7.0), it must be ensured that the&#160;<br/>tx node is part of the symbol path (see area highlighted&#160;in red). &#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>6<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-7_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-7_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure 6: Configuration dialog for&#160;an “Input/Output Box” panel control&#160;<br/>
+The Panel&#160;Designer fully supports GM by&#160;automatically inserting the&#160;tx node.&#160;<br/>
+<b>2.10&#160;CAPL&#160;</b><br/>
+A special message type –&#160;“gmlanMessage” – is&#160;available for GM-extended messages in&#160;CAPL, the CANoe&#160;<br/>programming&#160;language. With this message type, the Prio&#160;and SourceID parameters present in addition to the&#160;<br/>ParameterID&#160;can be queried using operators and set using&#160;special functions. &#160;<br/>
+Relevant CAPL code&#160;fragments are available e.g. in&#160;chapter<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">&#160;4.3.&#160;</a><br/>
+<i><b>&#160;</b></i><br/>
+<b>7<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-8_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-8_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.0&#160;&#160;“GM Package” Modeling Package&#160;<br/></b>The “GM Package” modeling package&#160;contains&#160;the following special GM-specific components:&#160;<br/>
+•&#160;Interaction&#160;<br/>
+layer&#160;<br/>
+•&#160;Network&#160;<br/>
+management&#160;<br/>
+•&#160;Model&#160;<br/>
+generation&#160;<br/>
+•&#160;&#160;Message panels for visualizing and controlling signal&#160;values.&#160;<br/>
+&#160;<br/>
+Since the&#160;supplied manual&#160;of the GM Package provides&#160;details&#160;on&#160;the modeling&#160;package and the components&#160;<br/>included in it, the following&#160;chapter discusses the functionality of the package only briefly.&#160;<br/>
+The modeling&#160;package&#160;is not included in&#160;the default CANoe&#160;installation, but can&#160;be requested&#160;from Vector&#160;support&#160;<br/>mailto:support@de.vector.com as&#160;a separate package&#160;free of charge.&#160;<br/>
+<b>3.1&#160;&#160;Model Generation&#160;</b><br/>
+The model generation wizard included in&#160;CANoe has been&#160;extended&#160;to include a&#160;GM option. swCAN and hsCAN&#160;<br/>networks&#160;can&#160;be generated.&#160;<br/>
+&#160;<br/>
+Figure 7: Model Generation&#160;Wizard&#160;<br/>
+&#160;<br/>
+It is also possible to generate a multi-bus configuration.&#160;<br/>
+Generation produces a complete CANoe configuration;&#160;the only action required&#160;is to select a node from the&#160;<br/>alternative nodes in the GM&#160;network file&#160;and to deactivate or delete unused nodes in the simulation setup.&#160;<br/>
+<b>3.2&#160;&#160;Node Panels, Message Panels&#160;</b><br/>
+The configuration generated by the model generation&#160;wizard&#160;uses&#160;message controls developed especially for GM.&#160;<br/>These message controls&#160;make it possible, for example, to&#160;modify the signal values that are transmitted by the&#160;<br/>simulated nodes. The panels can be used to visualize signal values&#160;for concretely existing nodes.&#160;<br/>
+These controls&#160;can be created/changed in the “Panel&#160;Editor”.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>8<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-9_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-9_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-9_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure 8: Panel for changing&#160;and visualizing&#160;all send signals of a node in their messages&#160;<br/>&#160;<br/>In addition, a network management panel is generated&#160;for&#160;each node with which&#160;the virtual network status&#160;for&#160;<br/>existing simulated nodes&#160;can be visualized and modified. &#160;<br/>
+&#160;<br/>
+Figure 9: Panel for controlling and visualizing the network status&#160;for the current node&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>9<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-10_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.3&#160;&#160;Interaction Layer&#160;</b><br/>
+The interaction layer can be&#160;integrated into individual&#160;simulation nodes as&#160;a modeling DLL. It is used automatically&#160;<br/>when&#160;a model&#160;is generated&#160;using the model generation wizard. The&#160;interaction layer configures&#160;itself on the&#160;basis&#160;<br/>of the network database. Changes to the network database are therefore integrated&#160;automatically. The tasks of the&#160;<br/>individual components&#160;are:&#160;<br/>
+•&#160;&#160;To provide a&#160;signal-oriented interface, i.e. individual&#160;signal values&#160;can be&#160;set as&#160;signal stimulants from&#160;<br/>
+within in CAPL, panels and the Test Feature Set. When using the COM server, then ensure to use the&#160;<br/>signal objects that are “outputs” or “inputs” of nodes.&#160;<br/>
+•&#160;&#160;To utilize the network database’s&#160;transmission model. Cyclical transmissions, spontaneous transmissions&#160;<br/>
+in reaction to&#160;changes, etc.&#160;are sent to the&#160;bus in accordance with the transmission model.&#160;<br/>
+•&#160;&#160;For some test cases, it is also necessary to be able&#160;to send messages on request. This&#160;is supported as&#160;<br/>
+well.&#160;<br/>
+•&#160;&#160;Linkage to the network management: The “virtual&#160;networks”&#160;observed by the&#160;network management are&#160;<br/>
+known to the&#160;interaction layer. This affects whether a&#160;transmission&#160;should actually be sent or&#160;not.&#160;<br/>
+•&#160;&#160;To provide a&#160;standard fault injection interface which&#160;is suitable to&#160;control the sending&#160;of messages from&#160;<br/>
+within&#160;CAPL. For more information about these functions&#160;refer to the CANoe&#160;Online Help. These&#160;<br/>functionalities can also be&#160;used comfortable in CANoe Test Modules.&#160;<br/>
+<b>3.4&#160;&#160;Network Management&#160;</b><br/>
+Network management is also available as&#160;a special modeling DLL. This&#160;component also&#160;configures itself based&#160;on&#160;<br/>information contained in the network database.&#160;<br/>
+The individual&#160;tasks of the components&#160;are:&#160;<br/>
+•&#160;&#160;To control bus communications when waking up virtual networks and keeping them awake, insofar as the&#160;<br/>
+node‘s role is that of an activator.&#160;<br/>
+•&#160;&#160;To observe bus&#160;communications in order to detect&#160;changes in&#160;the&#160;status&#160;of the&#160;virtual networks that control&#160;<br/>
+the node.&#160;<br/>
+•&#160;&#160;Depending on the status&#160;of&#160;the virtual networks, the interaction layer&#160;is informed&#160;and its transmissions are&#160;<br/>
+suppressed&#160;completely. The virtual networks can be&#160;activated or&#160;deactivated manually in CAPL or on the&#160;<br/>panel.&#160;<br/>
+•&#160;&#160;To provide a&#160;CAPL interface that makes it possible to control virtual networks or&#160;remain informed of virtual&#160;<br/>
+network status&#160;changes from&#160;within the&#160;application.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>10<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-11_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>4.0&#160;&#160;Modeling Control Units (ECUs) in CAPL&#160;<br/></b>In principle, the following&#160;message types are available with GMLAN:&#160;<br/>
+•&#160;&#160;Standard messages (with&#160;11-bit message IDs)&#160;<br/>•&#160;&#160;GM-extended&#160;messages (with 29-bit message IDs)&#160;<br/>
+Messages&#160;of both types can be sent as&#160;well as&#160;received:&#160;<br/>
+<b>4.1&#160;&#160;Signal Access&#160;</b><br/>
+To access to signal values&#160;(set and get signal value)&#160;there is a tight&#160;way available by using the $-operator:&#160;<br/>
+dword sigValue; &#160;<br/>$ECC::A2RAlrmTime = 10; &#160; &#160; &#160; &#160; &#160; // set signal value&#160;<br/>sigValue = $ECC::A2RAlrmTime; &#160; &#160; // get signal value&#160;<br/>
+<b>4.2&#160;&#160;Receiving Standard Messages&#160;</b><br/>
+Standard messages can be received and&#160;evaluated in&#160;the usual way by defining “on message” handlers:&#160;<br/>
+on message Dynamic_Normal_Force&#160;<br/>{&#160;<br/>&#160; long val;&#160;<br/>&#160; val = this.DynNrmlFrcFrLfWhl; &#160;// signal access&#160;<br/>
+&#160; // Application code …&#160;<br/>
+}&#160;<br/>
+<b>4.3&#160;&#160;Receiving GM-Extended Messages&#160;</b><br/>
+GM-extended&#160;messages&#160;can be received&#160;and evaluated by&#160;defining “on gmlanmessage” handlers: The message&#160;<br/>handler&#160;can then be programmed&#160;specifically for one&#160;or more SourceIDs:&#160;<br/>
+on gmlanmessage Chime_Status &#160;<br/>{&#160;<br/>&#160; long val;&#160;<br/>
+&#160; if(gmLanGetSourceId(this) == AMP.SourceId)&#160;<br/>&#160; {&#160;<br/>
+&#160; &#160; val = this.ChmAct;&#160;<br/>
+&#160; &#160; // Application code …&#160;<br/>&#160; }&#160;<br/>}&#160;<br/>
+<b>4.4&#160;&#160;Receiving Signals Directly&#160;</b><br/>
+Signals can be&#160;received directly in CANoe by defining&#160;an “on signal” handler&#160;in CAPL. This is supported for&#160;signals&#160;<br/>on standard&#160;messages&#160;but not currently&#160;for signals on GM-extended messages.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>11<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-12_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+<b>4.5&#160;&#160;Sending Standard Messages&#160;</b><br/>
+Standard messages are sent according&#160;to the following general principle:&#160;<br/>
+&#160; message Dynamic_Normal_Force msg;&#160;<br/>
+&#160; msg.DynNrmlFrcFrLfWhl = 1; &#160;// example signal value&#160;<br/>&#160; output(msg);&#160;<br/>&#160;<br/>
+<b>4.6&#160;&#160;Sending GM-Extended Messages&#160;</b><br/>
+Before a GM-extended message is&#160;sent, the SourceID must&#160;be specified; whereas the Prio is&#160;added automatically:&#160;<br/>
+gmlanmessage ChimeStatus msg;&#160;<br/>gmLanSetSourceId(msg, AMP.SourceId);&#160;<br/>output(msg)&#160;<br/>
+Hint: When&#160;working&#160;signal oriented (<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.1), the messag</a>e is sent by the Interaction&#160;layer; no need to care about&#160;<br/>SourceIDs.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>12<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-13_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>5.0&#160;&#160;Test Feature Set&#160;</b><br/>
+<b>5.1&#160;&#160;Test Feature Set in CAPL&#160;</b><br/>
+A&#160;typical test&#160;sequence&#160;consists&#160;of&#160;<br/>
+•&#160;&#160;Stimulation of signals or&#160;messages&#160;(SUT input vector)&#160;<br/>•&#160;&#160;Allowance for a SUT settling time until&#160;the expected reaction is&#160;to occur, and&#160;<br/>•&#160;&#160;Evaluation of signal states&#160;or&#160;message events (SUT output vector) in&#160;response to the stimulation.&#160;<br/>
+&#160;<br/>
+The allowed settling time can be shortened by specifying a concrete&#160;event in the test sequence,&#160;e.g. receipt&#160;of a&#160;<br/>message with&#160;a specific message ID.&#160;<br/>
+Test sequences can be&#160;structured into test&#160;cases,&#160;test&#160;groups and test&#160;modules.&#160;<br/>
+The CANoe test sequence&#160;and test structure apply equally to&#160;GMLAN, regardless of whether the test modules&#160;are&#160;<br/>formulated&#160;in CAPL, XML or .NET. There&#160;are, however,&#160;a number of&#160;particularities, which are&#160;explained in the&#160;<br/>following chapters. &#160;<br/>
+<b>5.1.1&#160;&#160;Configuring the Restbus Simulation&#160;</b><br/>
+The restbus simulation is&#160;used directly by&#160;the Test Feature Set. Based on&#160;the interaction layer configured&#160;there, it&#160;<br/>takes charge&#160;of sending messages and&#160;thus of signal&#160;stimulation.&#160;Consequently, the prerequisite for the&#160;<br/>stimulation of signal values is that&#160;the restbus simulation node is present in the simulation&#160;setup and is&#160;assigned to&#160;<br/>the database&#160;node, and that&#160;the “CANoe&#160;GM Interaction&#160;Layer” modeling DLL is assigned to the simulation&#160;node.&#160;<br/>
+Note:&#160;<br/>
+The restbus simulation&#160;will be&#160;correctly and fully configured if&#160;it is created using the “model&#160;<br/>generation wizard” that comes&#160;with the modeling package. Use of this generation method is&#160;<br/>therefore recommended.&#160;<br/>
+&#160;<br/>
+<b>5.1.2&#160;&#160;Signal Abstraction – Evaluation&#160;</b><br/>
+Note:&#160;<br/>
+For signals that are mapped onto GM extended messages the signal symbol has to be prefixed&#160;by&#160;<br/>the send&#160;node, e.g. checkSignalInRange(ECC::A2RAlrmTime, 10, 20).&#160;<br/>
+A signal value can be&#160;compared directly&#160;to a specified interval using the following functions:&#160;<br/>
+long checkSignalInRange(dbSignal aSignal, &#160; &#160; &#160; &#160; &#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; float aLowLimit, &#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; float aHighLimit);&#160;<br/>
+&#160;<br/>
+Combined signal value queries, immediate comparison with a specified interval and automatic&#160;recording of the&#160;<br/>actual and target values for the comparison results&#160;are&#160;also possible&#160;by means of&#160;special functions: &#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>13<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-14_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+long testValidateSignalInRange (char aTestStep[], &#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; dbSignal aSignal, &#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; float aLowLimit, &#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; float aHighLimit)&#160;<br/>
+long testValidateSignalOutsideRange (char aTestStep[], &#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;dbSignal aSignal, &#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;float aLowLimit, &#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;float aHighLimit)&#160;<br/>
+Please refer to the CANoe&#160;Online&#160;Help for&#160;further details about these functions.&#160;<br/>
+<b>5.1.3&#160;&#160;Signal Abstraction – Stimulation&#160;</b><br/>
+Signal values&#160;can be&#160;stimulated with the&#160;$-operator&#160;(<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.1). This requi</a>res (at least for the specified Tx node) a&#160;<br/>configured restbus simulation (<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.1.1).&#160;</a><br/>
+$ECC::A2RAlrmTime = 10; &#160;<br/>
+If a signal that&#160;is already being sent by a real ECU is to&#160;be stimulated as part of a test&#160;sequence, then the real ECU&#160;<br/>should be&#160;stimulated, thereby indirectly&#160;causing the changed signal value to be sent.&#160;<br/>
+Using the signal stimulation within the Test Feature&#160;Set the stimulation is reported in the test report.&#160;<br/>
+<b>5.1.4&#160;&#160;Message Abstraction – Evaluation &#160;</b><br/>
+There are also&#160;<b>wait&#160;functions</b>&#160;available&#160;for testing message events, with which&#160;the test sequence pauses&#160;until the&#160;<br/>event condition is fulfilled. &#160;Simulation node techniques (see&#160;<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.1 a</a>nd&#160;<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.3) a</a>re available likewise. These&#160;wait&#160;<br/>functions can&#160;be used&#160;either symbolically&#160;by specifying&#160;a&#160;message&#160;symbol from the network file or numerically by&#160;<br/>specifying a&#160;message ID.&#160;<br/>
+For&#160;<b>standard&#160;messages</b>&#160;these are:&#160;<br/>
+long TestWaitForMessage(dbMessage aMsg, dword aTimeout)&#160;<br/>long TestWaitForMessage(long aMsgId, dword aTimeout)&#160;<br/>
+&#160;<br/>
+For&#160;<b>GM-extended&#160;messages</b>, only the numeric function for passing the message&#160;ID is available; alternative ways&#160;<br/>of using the&#160;wait function&#160;are described&#160;below:&#160;<br/>
+<b>a) Symbolic&#160;setup&#160;via instantiation of&#160;a message buffer&#160;</b><br/>
+The “aMsgId” expected in the function&#160;is created by means of a series&#160;of calls. The example below is&#160;<br/>constructed for the send node “AMP” that transmits&#160;the message “Chime_Status”, with a maximum wait&#160;<br/>time of 2000ms:&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>14<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-15_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+// Example signal evaluation on message level &#160;<br/>testcase a ()&#160;<br/>{&#160;<br/>&#160; gmlanmessage Chime_Status msg; &#160;&#160;<br/>&#160;<br/>&#160; if(testWaitForMessage(gmLanId(Chime_Status, AMP), 2000) == 1)&#160;<br/>
+&#160; {&#160;<br/>
+&#160; &#160; testGetWaitEventMsgData(msg);&#160;<br/>&#160;<br/>&#160; &#160; if(msg.ChmAct == 1)&#160;<br/>
+&#160; &#160; &#160; TestStepPass(&#34;A&#34;, &#34;Message received, signal matches&#34;);&#160;<br/>&#160; &#160; else&#160;<br/>
+&#160; &#160; &#160; TestStepFail(&#34;A&#34;, &#34;Message received, signal does not match&#34;);&#160;<br/>
+&#160; }&#160;<br/>&#160; else &#160;<br/>&#160; &#160; TestStepFail(&#34;A&#34;, &#34;Message missing&#34;);&#160;<br/>
+}&#160;<br/>&#160;<br/>
+Commonly, application level tests are done by using&#160;signal access and signal test functions. Message&#160;<br/>level checks&#160;are done mostly by utilizing the TSL checks (refer<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#18">&#160;5.3 for detail</a>s). &#160;&#160;<br/>
+<b>b) Numerical&#160;setup via modification of&#160;a message&#160;buffer&#160;</b><br/>
+If the name of the message&#160;or send node&#160;is not known&#160;in CAPL and&#160;the message&#160;ID is to be set&#160;up in a&#160;<br/>strictly numerical manner, the&#160;following steps are necessary:&#160;<br/>
+// initialise local variables&#160;<br/>gmlanmessage * msg1;&#160;<br/>
+&#160;<br/>// do something, e.g. stimulate the SUT&#160;<br/>&#160;<br/>
+// Set up and wait for response&#160;<br/>
+msg1.id = (0x10);&#160;<br/>gmLanSetSourceId(msg1, 0x81);&#160;<br/>
+gmLanSetPrio(msg1, 4);&#160;<br/>TestWaitForMessage(msg1.id, 2000);&#160;<br/>
+&#160;<br/>
+<b>5.1.5&#160;&#160;Message Abstraction – Stimulation &#160;</b><br/>
+GM messages&#160;are sent in the same way as in simulation nodes. Standard GM messages are&#160;handled as&#160;described&#160;<br/>in the CANoe&#160;Online Help. Only the GM-extended messages require special treatment: The “Prio” and “SourceID”&#160;<br/>parameters&#160;can be added to&#160;a CAN-ID in&#160;the following&#160;ways:&#160;<br/>
+Numerically, within the variable definition:&#160;<br/>
+testcase numericOutput()&#160;<br/>{&#160;<br/>&#160; gmlanmessage 0x10x msg1 = {SA =0x81, PRIO= 0x4};&#160;<br/>
+&#160; output(msg1);&#160;<br/>}&#160;<br/>
+Specifying PRIO (for the&#160;message priority) is optional, as&#160;this&#160;is&#160;taken from the message definition. If it is not&#160;<br/>specified, the&#160;SA selector&#160;(for the SourceID) is&#160;taken to be&#160;0. For this reason, it is absolutely&#160;necessary to add the&#160;<br/>SourceID by&#160;using, for example,&#160;the following&#160;process (see al<a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">so&#160;4.6):&#160;</a><br/>
+<i><b>&#160;</b></i><br/>
+<b>15<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-16_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+testcase symbolicOutputProgrammatic()&#160;<br/>{&#160;<br/>&#160; gmlanmessage Chime_Status msg2;&#160;<br/>&#160; gmLanSetSourceId(msg2, AMP.SourceId);&#160;<br/>&#160; output(msg2);&#160;<br/>}&#160;<br/>
+<b>5.1.6&#160;&#160;Interaction Layer Fault Injection Functions&#160;</b><br/>
+There are also&#160;<b>Fault Injection</b>&#160;functions available&#160;which are suitable to&#160;control the sending of&#160;messages, e.g. to&#160;<br/>change the&#160;cycle time, to suppress messages&#160;completely&#160;or to change the&#160;DLC of messages. For more&#160;information&#160;<br/>about these functions&#160;refer to the CANoe Online&#160;Help.&#160;<br/>
+These fault injection functions can also be&#160;used&#160;for messages with extended IDs. Therefore the&#160;ID-based&#160;functions&#160;<br/>have to be used:&#160;<br/>
+id_DDM = gmLanId(Driver_Door_Status, DDM);&#160;<br/>
+TestDisableMsg(id_DDM);&#160;<br/>
+This example&#160;disables the&#160;sending of the message “Driver_Door_Status” of node “DDM”.&#160;<br/>
+<b>5.2&#160;&#160;Test Feature Set in XML&#160;</b><br/>
+GMLAN&#160;requires&#160;no new constructs with&#160;the Test Feature&#160;Set in XML test modules. The existing qualification of&#160;<br/>signals using send nodes&#160;can be used directly here&#160;and must be used for GM-extended messages and their&#160;<br/>signals.&#160;<br/>
+The table below shows the&#160;existing test functions and&#160;their GM support:&#160;<br/>
+<b>Test function&#160;name</b>&#160;<br/>
+Usage in test modules&#160;<b>for messages&#160;with standard&#160;or GM-<br/>extended IDs</b>&#160;<br/>
+Await Value&#160;Match&#160;<br/>
+3&#160;<br/>
+CANstress Configuration&#160;<br/>
+3&#160;Trigger/disturbance definition for standard IDs&#160;<br/>:&#160;Trigger/disturbance definition for GM-extended IDs&#160;<br/>
+<a href="">CANstress State&#160;</a><br/>
+3&#160;<br/>
+Diagnostics Service&#160;<br/>
+3&#160;<br/>
+<a href="">Diagnostics Service Check&#160;</a><br/>
+3&#160;<br/>
+(replaced by&#160;Diagnostics Service)&#160;<br/><a href="">Initialize&#160;</a><br/>
+3&#160;for signal abstraction&#160;<br/>3&#160;for message abstraction&#160;<br/>
+<a href="">Replay&#160;</a><br/>
+3&#160;<br/>
+<a href="">Request Response</a>&#160;<br/>
+3&#160;<br/>
+Set&#160;<br/>
+3&#160;for signal abstraction&#160;<br/>3&#160;for message abstraction&#160;<br/>
+<a href="">State Change</a>&#160;<br/>
+3&#160;<br/>
+<a href="">State Check&#160;</a><br/>
+3&#160;<br/>
+<a href="">Stimulate Ramp&#160;</a><br/>
+3&#160;<br/>
+System Call&#160;<br/>
+3&#160;<br/>
+<a href="">Tester&#160;Confirmation&#160;</a><br/>
+3&#160;<br/>
+<a href="">Until End&#160;</a><br/>
+3&#160;<br/>
+VT System Configuration&#160;<br/>
+3&#160;<br/>
+<a href="">Wait&#160;</a><br/>
+3&#160;<br/>
+Window Capture&#160;<br/>
+3&#160;<br/>
+Table 2: XML&#160;Test Functions&#160;<br/>&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>16<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-17_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>Syntax example for GM-extended:&#160;<br/>
+&lt;testcase title=&#34;my GM test case&#34;&gt;&#160;<br/>
+&#160; &lt;statechange wait=&#34;200ms&#34;&gt;&#160;<br/>&#160; &#160; &lt;in&gt;&#160;<br/>
+&#160; &#160; &#160; &lt;cansignal id=&#34;stim_sig&#34; node=&#34;sender&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160;10&#160;<br/>&#160; &#160; &#160; &lt;/cansignal&gt;&#160;<br/>
+&#160; &#160; &lt;/in&gt;&#160;<br/>&#160; &#160; &lt;expected&gt;&#160;<br/>&#160; &#160; &#160; &lt;cansignal id=&#34;expected_sig&#34; node=&#34;sender&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;eq&gt;10&lt;/eq&gt;&#160;<br/>
+&#160; &#160; &#160; &lt;/cansignal&gt;&#160;<br/>
+&#160; &#160; &lt;/expected&gt;&#160;<br/>&#160; &lt;/statechange&gt;&#160;<br/>&lt;/testcase&gt;&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>17<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-18_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>5.3&#160;&#160;Test Service Library&#160;in&#160;CAPL and&#160;XML Test&#160;Modules&#160;</b><br/>
+The table below shows the&#160;existing check objects&#160;(“TSL&#160;checks”) and their usage for different&#160;message types:&#160;<br/>
+<b>Check base&#160;name</b>&#160;<br/>
+Usage in test modules&#160;<br/>
+Usage in test modules&#160;<b>for messages&#160;with&#160;</b><br/>
+<b>for messages&#160;with&#160;</b><br/>
+<b>GM-extended IDs</b>&#160;<br/>
+<b>standard IDs</b>&#160;<br/>
+&#160;<br/>
+&#160;<br/>CAPL &#160;<br/>
+XML&#160;<br/>
+CAPL&#160;<br/>
+XML&#160;<br/>
+Cycle Time (Abs)&#160;<br/>&#160; &#160; For message&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;(ID-based)&#160;&#160;<br/>
+3&#160;<br/>
+Cycle Time (Rel)&#160;<br/>&#160; &#160; For message&#160;<br/>
+3&#160;&#160;<br/>
+3&#160;<br/>
+3&#160;(ID-based)&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For node&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+DLC Monitoring&#160;<br/>&#160; &#160; For single&#160;message&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;(ID-based)&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For all tx messages of node&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For all rx messages of node&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+Error Frame&#160;Check&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+Fallback Observation&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+Message Distance&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;(ID-based)&#160;<br/>
+3&#160;<br/>
+Unknown Message&#160;Received&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+Signal Value&#160;Constancy&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+Node Active&#160;<br/>&#160; &#160; For message list&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For single&#160;node&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For all nodes&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+Node Inactive&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; For message list&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For single&#160;node&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For all nodes&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+Absence of Defined Message&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;(ID-based)&#160;<br/>
+3&#160;<br/>
+Occurrence of&#160;a Message&#160;<br/>&#160; &#160; For single&#160;message&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;(ID-based)&#160;<br/>
+3&#160;<br/>
+&#160; &#160; For node&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+Request Response&#160;Check&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+Value Invariant&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+--&#160;<br/>
+3&#160;<br/>
+Signal Value&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+Timeout Check&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+3&#160;<br/>
+Table 3: Test Service Library Checks&#160;<br/>&#160;<br/>
+<b>Symbols</b>&#160;<br/>
+<b>Meaning</b>&#160;<br/>
+3&#160;<br/>
+Fully supported&#160;<br/>
+--&#160;<br/>
+Generally not&#160;available (specific feature&#160;of&#160;<br/>XML test modules&#160;or&#160;CAPL test modules)&#160;<br/>
+:&#160;<br/>
+Not supported for GM-extended messages&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>18<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-IND-8-003_GM_Support_in_CANoe_7.2-19_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+GM Support in&#160;CANoe&#160;7.2&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>5.4&#160;&#160;Test Automation Editor&#160;</b><br/>
+The&#160;Test Automation Editor 1.1 supports fully the GMLAN&#160;networks and the editing of&#160;XML test modules. &#160;<br/>It provides a setting to fill in always the send&#160;node of an added symbol.&#160;<br/>&#160;<br/>For further information about the separate&#160;Vector product Test Automation&#160;<a href="http://www.vector.com/tae<br/>
+<b>5.5&#160;&#160;CANdb++ Test Module Generator&#160;</b><br/>
+The CANdb++&#160;test module generator is available&#160;as standard component&#160;within the CANoe installation. It can be accessed from&#160;<br/>the context menu of node objects, or&#160;within the “FileÆPlugIns” menu.&#160;<br/>&#160;<br/>The CANdb++&#160;Test Module Generator uses the check objects&#160;in the Test Service Library&#160;and fully&#160;supports GM. If a&#160;<br/>configuration contains multiple&#160;buses, it is important to specify&#160;the bus name for the generation.&#160;<br/>&#160;<br/>Please refer to the CANoe Online Help for more&#160;detailed information about the test module&#160;generator.&#160;<br/>
+<b>6.0&#160;&#160;Additional Resources&#160;<br/></b>VECTOR APPLICATION&#160;NOTE&#160;<br/><b>AN-IND-1-002&#160;Testing&#160;</b><br/>
+<b>with&#160;</b><br/>
+<b>CANoe&#160;</b><br/>
+<b>7.0&#160;&#160;Contact&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Germany&#160;&#160;</b><br/>
+<b>France, Belgium,&#160;Luxemburg:&#160;</b><br/>
+<b>Sweden, Denmark, Norway, &#160;</b><br/>
+<b>and all&#160;countries not named&#160;below:&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Finland, Iceland:&#160;</b><br/>
+<b>Vector Informatik&#160;GmbH&#160;</b><br/>
+<b>Vector France SAS&#160;</b><br/>
+<b>VecScan AB&#160;</b><br/>
+Ingersheimer Str.&#160;24&#160;<br/>
+168 Boulevard Camélinat&#160;<br/>
+Theres Svenssons Gata 9&#160;<br/>
+70499 Stuttgart&#160;<br/>
+92240 Malakoff&#160;&#160;<br/>
+41755 Göteborg&#160;&#160;<br/>
+GERMANY&#160;<br/>
+FRANCE&#160;<br/>
+SWEDEN&#160;<br/>
+Phone:&#160;+49&#160;711-80670-0&#160;<br/>
+Phone:&#160;+33 1 42 31 40 00&#160;<br/>
+Phone:&#160;+46 31 764 76 00&#160;<br/>
+Fax:&#160;+49&#160;<br/>
+711-80670-111&#160;<br/>
+Fax:&#160;<br/>
++33 1 42 31 40 09&#160;<br/>
+Fax:&#160;<br/>
++46 31 764 76 19 &#160;<br/>
+E-mail: info@de.vector.com&#160;<br/>
+E-mail: information@fr.vector.com&#160;<br/>
+E-mail: info@se.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;&#160;<br/>
+<b>&#160;</b><br/>
+<b>United&#160;Kingdom, Ireland:&#160;</b><br/>
+<b>China:&#160;</b><br/>
+<b>India:&#160;</b><br/>
+<b>Vector</b>&#160;<b>GB Ltd.&#160;</b><br/>
+Vector Informatik&#160;GmbH &#160;<br/>
+Vector Informatik&#160;India Private Ltd.&#160;<br/>
+Rhodium&#160;<br/>
+Shanghai Representative Office&#160;<br/>
+4/1/1/1 Sutar&#160;Icon&#160;<br/>
+Central Boulevard&#160;<br/>
+Suite 605, Tower&#160;C, &#160;<br/>
+Sus Road&#160;<br/>
+Blythe&#160;Valley&#160;Park&#160;<br/>
+Everbright Convention Center&#160;<br/>
+Pashan&#160;<br/>
+Solihull, Birmingham&#160;<br/>
+No. 70 Caobao&#160;Road&#160;<br/>
+Pune 411021&#160;<br/>
+West Midlands B90 8AS&#160;<br/>
+Xuhui District&#160;<br/>
+INDIA&#160;<br/>
+UNITED KINGDOM&#160;<br/>
+Shanghai 200235 &#160;<br/>
+&#160;<br/>
+Phone:&#160;+44 121 50681-50&#160;<br/>
+P.R. CHINA&#160;<br/>
+Phone:&#160;+91 9673 336575&#160;<br/>
+E-mail: info@uk.vector.com&#160;<br/>
+Phone:&#160;+86 21 - 6432&#160;5353 ext. 0&#160;<br/>
+E-mail: info@vector-india.com&#160;<br/>
+&#160;<br/>
+Fax:&#160;&#160;&#160;+86 21 - 6432&#160;5308&#160;<br/>E-mail: info@vector-china.com&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>USA,&#160;Canada, Mexico:&#160;</b><br/>
+<b>Japan:&#160;</b><br/>
+<b>Korea:&#160;</b><br/>
+<b>Vector CANtech, Inc.&#160;</b><br/>
+<b>Vector Japan&#160;Co. Ltd.&#160;</b><br/>
+<b>Vector Korea IT&#160;Inc.&#160;</b><br/>
+39500 Orchard&#160;Hill Pl., Ste 550&#160;<br/>
+Seafort Square&#160;Center Bld. 18F&#160;<br/>
+#1406, Mario&#160;Tower,&#160;<br/>
+Novi, MI &#160;48375&#160;<br/>
+2-3-12, Higashi-shinagawa,&#160;<br/>
+222-12&#160;Guro-dong, Guro-gu &#160;<br/>
+USA&#160;<br/>
+Shinagawa-ku&#160;<br/>
+Seoul, 152-848&#160;<br/>
+Phone:&#160;+1 248 449 9290&#160;<br/>
+Tokyo 140-0002&#160;<br/>
+REPUBLIC OF&#160;KOREA&#160;<br/>
+Fax:&#160;<br/>
++1 248 449 9704&#160;<br/>
+JAPAN&#160;<br/>
+Phone:&#160;+82 2 807 0600&#160;<br/>
+E-mail: info@us.vector.com&#160;<br/>
+Phone:&#160;+81 3 5769 7800&#160;<br/>
+Fax:&#160;<br/>
++82 2 807 0601&#160;<br/>
+&#160;<br/>
+Fax:&#160;<br/>
++81 3 5769 6975&#160;<br/>
+E-mail: info@kr.vector.com&#160;<br/>
+E-mail: info@jp.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>19<i>&#160;</i></b><br/>
+<i>Application Note&#160;AN-IND-8-003<b>&#160;<br/></b></i><b>&#160;</b><br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">1.0 Overview</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">1.1 Introduction</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#2">1.2 Terms and Abbreviations</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.0 Basic Support in CANoe</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.1 Trace Window</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.2 Logging</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.3 Export</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.4 Interactive Generator Block</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.5 Generator Block</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#3">2.6 Symbol Selection Dialog</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#4">2.6.1 Selecting a Message</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">2.6.2 Selecting a signal</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#5">2.7 Data Window</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">2.7.1 Special signals in the Data window</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">2.8 Graphics Window</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#6">2.9 Panels</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#7">2.10 CAPL</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">3.0 “GM Package” Modeling Package</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">3.1 Model Generation</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#8">3.2 Node Panels, Message Panels</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">3.3 Interaction Layer</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#10">3.4 Network Management</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.0 Modeling Control Units (ECUs) in CAPL</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.1 Signal Access</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.2 Receiving Standard Messages</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.3 Receiving GM-Extended Messages</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#11">4.4 Receiving Signals Directly</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">4.5 Sending Standard Messages</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#12">4.6 Sending GM-Extended Messages</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.0 Test Feature Set</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.1 Test Feature Set in CAPL</a>
+<ul>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.1.1 Configuring the Restbus Simulation</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#13">5.1.2 Signal Abstraction – Evaluation</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#14">5.1.3 Signal Abstraction – Stimulation</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#14">5.1.4 Message Abstraction – Evaluation&#160;</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#15">5.1.5 Message Abstraction – Stimulation&#160;</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#16">5.1.6 Interaction Layer Fault Injection Functions</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#16">5.2 Test Feature Set in XML</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#18">5.3 Test Service Library in CAPL and XML Test Modules</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">5.4 Test Automation Editor</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">5.5 CANdb++ Test Module Generator</a></li>
+</ul>
+</li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">6.0 Additional Resources</a></li>
+<li><a href="AN-IND-8-003_GM_Support_in_CANoe_7.2s.html#19">7.0 Contact</a></li>
+</ul>
+<hr/>
+</body>
+</html>

@@ -1,0 +1,1051 @@
+---
+title: CurrMeas_MDD
+linkTitle: CurrMeas_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>Current Measurement</strong></p>
+<p><strong>November 18, 2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>TATA ELXSI</strong></p>
+<p><strong>CHENNAI, INDIA</strong></p>
+<p><strong><u>Change</u></strong> History</p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 50%" />
+<col style="width: 18%" />
+<col style="width: 11%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sl. No.</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>Selva</td>
+<td>1.0</td>
+<td>4- May-2015</td>
+</tr>
+<tr class="odd">
+<td>2.0</td>
+<td>Updated to v 3.1.0 of the FDD (Merged CurrMeas_MDD and CurrMeas_MotCtrl_MDD)</td>
+<td>Selva</td>
+<td>2.0</td>
+<td>29-Sep-2015</td>
+</tr>
+<tr class="even">
+<td>3.0</td>
+<td>Updated per design rev. 4.2.0</td>
+<td>Rijvi Ahmed</td>
+<td>3.0</td>
+<td>30-Mar-2016</td>
+</tr>
+<tr class="odd">
+<td>4.0</td>
+<td>Added design limitation and unit test consideration. Design rev. 4.5.0</td>
+<td>Rijvi Ahmed</td>
+<td>4.0</td>
+<td>05-October-2016</td>
+</tr>
+<tr class="even">
+<td>5.0</td>
+<td>Updated per design rev. 4.6.0</td>
+<td>TATA</td>
+<td>5.0</td>
+<td>18-Nov-2016</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><u>Table of Contents</u></p>
+<p><a href="#introduction">1 Introduction 5</a></p>
+<p><a href="#purpose">1.1.1 Purpose 5</a></p>
+<p><a href="#current-measurement-high-level-description">2 Current Measurement &amp; High-Level Description 6</a></p>
+<p><a href="#design-details-of-software-module">3 Design details of software module 7</a></p>
+<p><a href="#data-flow-diagram">3.1.1 Data Flow Diagram 7</a></p>
+<p><a href="#component-level-dfd">3.1.2 Component level DFD 7</a></p>
+<p><a href="#function-level-dfd">3.1.3 Function level DFD 7</a></p>
+<p><a href="#constant-data-dictionary">4 Constant Data Dictionary 8</a></p>
+<p><a href="#program-fixed-constants">4.1.1 Program (fixed) Constants 8</a></p>
+<p><a href="#embedded-constants">4.1.2 Embedded Constants 8</a></p>
+<p><a href="#software-component-implementation">5 Software Component Implementation 9</a></p>
+<p><a href="#__RefHeading___Toc467524078">5.1 Sub-Module Functions 9</a></p>
+<p><a href="#__RefHeading___Toc467524079">5.2 INIT: CurrMeasInit1 9</a></p>
+<p><a href="#periodic-functions">5.3 PERIODIC FUNCTIONS 9</a></p>
+<p><a href="#per-currmeasper2">5.3.2 Per: CurrMeasPer2 10</a></p>
+<p><a href="#per-currmeasper3">5.3.3 Per: CurrMeasPer3 10</a></p>
+<p><a href="#server-runables">5.4 Server Runables 10</a></p>
+<p><a href="#serverrunnable-currmeaseolgainstsreq">5.4.1 Serverrunnable: CurrMeasEolGainSTsReq 10</a></p>
+<p><a href="#serverrunnable-currmeaseoloffsstsreq">5.4.2 Serverrunnable: CurrMeasEoloffsSTsReq 10</a></p>
+<p><a href="#serverrunnable-currmeaseoloffsreq">5.4.3 Serverrunnable: CurrMeasEoloffsReq 10</a></p>
+<p><a href="#serverrunnable-currmeaseolgainreq">5.4.4 Serverrunnable: CurrMeasEolGainReq 11</a></p>
+<p><a href="#serverrunnable-currmeasgainreadreq">5.4.5 Serverrunnable: CurrMeasGainReadReq 11</a></p>
+<p><a href="#serverrunnable-currmeasgainwrreq">5.4.6 Serverrunnable: CurrMeasGainWrReq 11</a></p>
+<p><a href="#serverrunnable-currmeasoffsreadreq">5.4.7 Serverrunnable: CurrMeasOffsReadReq 11</a></p>
+<p><a href="#serverrunnable-currmeasoffswrreq">5.4.8 Serverrunnable: CurrMeasOffsWrReq 11</a></p>
+<p><a href="#module-internal-local-functions">5.5 Module Internal (Local) Functions 12</a></p>
+<p><a href="#local-function-1-performgaincalibration">5.5.1 Local Function #1 PerformGainCalibration 12</a></p>
+<p><a href="#local-function-2-sigmaxmingain">5.5.2 Local Function #2 SigMaxMinGain 12</a></p>
+<p><a href="#local-function-3-sigmaxminoffs">5.5.3 Local Function #3 SigMaxMinOffs 12</a></p>
+<p><a href="#local-function-4-protocolchkwi">5.5.4 Local Function #4 ProtocolChkWI 12</a></p>
+<p><a href="#local-function-1-protocolchken">5.5.5 Local Function #1 ProtocolChkEn 13</a></p>
+<p><a href="#local-function-2-calcmotcurrmotagcorrd">5.5.6 Local Function #2 CalcMotCurrMotAgCorrd 13</a></p>
+<p><a href="#local-function-3-offscalcabc">5.5.7 Local Function #3 OffsCalcABC 13</a></p>
+<p><a href="#local-function-4-offscalcdef">5.5.8 Local Function #4 OffsCalcDEF 14</a></p>
+<p><a href="#local-function-5-calmotcurrcorrdabc">5.5.9 Local Function #5 CalMotCurrCorrdABC 14</a></p>
+<p><a href="#local-function-6-calmotcurrcorrddef">5.5.10 Local Function #6 CalMotCurrCorrdDEF 15</a></p>
+<p><a href="#global-functionmacro-definitions">6 GLOBAL Function/Macro Definitions 16</a></p>
+<p><a href="#known-limitations-with-design">7 Known Limitations with Design 17</a></p>
+<p><a href="#unit-test-consideration">8 UNIT TEST CONSIDERATION 18</a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms 19</a></p>
+<p><a href="#glossary">Appendix B Glossary 20</a></p>
+<p><a href="#references">Appendix C References 22</a></p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="purpose">Purpose</h2>
+<p>MDD for Current Measurement</p>
+<h1 id="current-measurement-high-level-description">Current Measurement &amp; High-Level Description</h1>
+<p><em>Refer FDD Design for Current Measurement</em></p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<p>Graphical representation of Current Measurement</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.png" style="width:3.76667in;height:5.75833in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<h2 id="component-level-dfd">Component level DFD</h2>
+<p>None</p>
+<h2 id="function-level-dfd">Function level DFD</h2>
+<p>None</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h2 id="embedded-constants">Embedded Constants</h2>
+<h4 id="local-constants">Local Constants</h4>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Constant Name</td>
+<td>Resolution</td>
+<td>Units</td>
+<td>Value</td>
+</tr>
+<tr class="even">
+<td>CALPROCNOTSTRTD_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>CALPROCSTRTD_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>CALPROCPASS_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>CALPROCPHAABCEOLOUTOFRNG_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>CALPROCPHADEFEOLOUTOFRNG_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>CALPROCPHAABCDEFEOLOUTOFRNG_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>CALPROCVEHSPDCNDNOTMET_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>CALPROCMOTVELMRFCNDNOTMET_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td>CALPROCBOTHIVTRINACTV_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td>DIFOFFSRNGCHKMAX_VOLT_F32</td>
+<td>Single precision float</td>
+<td>Ampr</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>DIFOFFSRNGCHKMIN_VOLT_F32</td>
+<td>Single precision float</td>
+<td>Ampr</td>
+<td>-1.0</td>
+</tr>
+<tr class="odd">
+<td>NANOSECTOSEC_ULS_F32</td>
+<td>float32</td>
+<td>Uls</td>
+<td>0.000000001</td>
+</tr>
+<tr class="even">
+<td>Refer DataDict.m file for other local constants</td>
+<td>Refer DataDict.m file for other local constants</td>
+<td>Refer DataDict.m file for other local constants</td>
+<td>Refer DataDict.m file for other local constants</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<ol type="1">
+<li><p><span id="__RefHeading___Toc467524078" class="anchor"></span>Sub-Module Functions</p></li>
+<li><p><span id="__RefHeading___Toc467524079" class="anchor"></span>INIT: CurrMeasInit1</p></li>
+</ol>
+<h4 id="design-rationale">Design Rationale</h4>
+<p>Init1 function is created so that it will allow a RTE model to be created in the AUTOSAR tools which allows Per-Instance Memory and calibration definition needs. The initialization function is doing nothing</p>
+<h4 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h4>
+<p>None</p>
+<h4 id="processing-of-function"> (Processing of function)………</h4>
+<p>None</p>
+<h4 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h4>
+<p>None</p>
+<h2 id="periodic-functions">PERIODIC FUNCTIONS </h2>
+<p><em>(Note: For multiple periodic functions, insert new headers at the “Header 2” level – subset of “ Periodic Functions” and follow the same sub-section design shown below). If none required, place the text “None”)&gt;</em></p>
+<h4 id="per-currmeasper1">Per: CurrMeasPer1</h4>
+<h4 id="design-rationale-1">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h4 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h4>
+<h4 id="processing-of-function-1"> (Processing of function)………</h4>
+<p>Refer the FDD</p>
+<h4 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h4>
+<blockquote>
+<p>Refer the FDD</p>
+</blockquote>
+<h2 id="per-currmeasper2">Per: CurrMeasPer2</h2>
+<h4 id="design-rationale-2">Design Rationale</h4>
+<p><em>Refer to FDD</em></p>
+<h4 id="store-module-inputs-to-local-copies-2">Store Module Inputs to Local copies</h4>
+<p><em>Refer to FDD</em></p>
+<h4 id="processing-of-function-2">(Processing of function)………</h4>
+<p><em>Refer to FDD</em></p>
+<h4 id="store-local-copy-of-outputs-into-module-outputs-2">Store Local copy of outputs into Module Outputs</h4>
+<p><em>Refer to FDD</em></p>
+<h2 id="per-currmeasper3">Per: CurrMeasPer3</h2>
+<h4 id="design-rationale-3">Design Rationale</h4>
+<p><em>Refer to FDD</em></p>
+<h4 id="store-module-inputs-to-local-copies-3">Store Module Inputs to Local copies</h4>
+<p><em>Refer to FDD</em></p>
+<h4 id="processing-of-function-3">(Processing of function)………</h4>
+<p><em>Refer to FDD</em></p>
+<h4 id="store-local-copy-of-outputs-into-module-outputs-3">Store Local copy of outputs into Module Outputs</h4>
+<p><em>Refer to FDD</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<h2 id="serverrunnable-currmeaseolgainstsreq">Serverrunnable: CurrMeasEolGainSTsReq</h2>
+<h4 id="design-rationale-4">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeaseoloffsstsreq">Serverrunnable: CurrMeasEoloffsSTsReq</h2>
+<h4 id="design-rationale-5">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeaseoloffsreq">Serverrunnable: CurrMeasEoloffsReq</h2>
+<h4 id="design-rationale-6">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeaseolgainreq">Serverrunnable: CurrMeasEolGainReq</h2>
+<h4 id="design-rationale-7">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeasgainreadreq">Serverrunnable: CurrMeasGainReadReq</h2>
+<h4 id="design-rationale-8">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeasgainwrreq">Serverrunnable: CurrMeasGainWrReq</h2>
+<h4 id="design-rationale-9">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeasoffsreadreq">Serverrunnable: CurrMeasOffsReadReq</h2>
+<h4 id="design-rationale-10">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 id="serverrunnable-currmeasoffswrreq">Serverrunnable: CurrMeasOffsWrReq</h2>
+<h4 id="design-rationale-11">Design Rationale</h4>
+<p>Refer the FDD</p>
+<h2 class="unnumbered" id="section"></h2>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-function-1-performgaincalibration">Local Function #1 PerformGainCalibration</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>PerformGainCalibration</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description">Description</h4>
+<p>Refer FDD.</p>
+<h2 id="local-function-2-sigmaxmingain">Local Function #2 SigMaxMinGain</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>SigMaxMinGain</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-1">Description</h4>
+<p>Refer FDD.</p>
+<h2 id="local-function-3-sigmaxminoffs">Local Function #3 SigMaxMinOffs</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>SigMaxMinOffs</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-2">Description</h4>
+<p>Refer FDD.</p>
+<h2 id="local-function-4-protocolchkwi">Local Function #4 ProtocolChkWI</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ProtocolChkWI</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotCurrAdcVly1_Volt_T_f32</td>
+<td>float32</td>
+<td>0.3</td>
+<td>4.8</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlMotCurrAdcVly2_Volt_T_f32</td>
+<td>float32</td>
+<td>0.3</td>
+<td>4.8</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotCurrAdcVly3_Volt_T_f32</td>
+<td>float32</td>
+<td>0.3</td>
+<td>4.8</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>ProtocolChk_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-3">Description</h4>
+<p>Refer FDD.</p>
+<h2 class="unnumbered" id="section-1"></h2>
+<h2 id="local-function-1-protocolchken">Local Function #1 ProtocolChkEn</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 42%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ProtocolChkEn</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>MotCtrlMotCurrAdcVly1AdcFaild_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlMotCurrAdcVly2AdcFaild_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotCurrAdcVly3AdcFaild_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>ProtocolChkEn_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-4">Description</h4>
+<p>Refer FDD.</p>
+<h2 id="local-function-2-calcmotcurrmotagcorrd">Local Function #2 CalcMotCurrMotAgCorrd</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CalcMotCurrMotAgCorrd</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotAgElec_Rev_T_u0p16</td>
+<td>u0p16</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlMotElecMeclPolarity_Uls_T_s08</td>
+<td>Sint8</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotVelMrf_MtrRadpS_T_f32</td>
+<td>float32</td>
+<td>-1350</td>
+<td>1350</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>MotCtrlCurrMeasMotAgCorrd_Rad_T_f32</td>
+<td>float32</td>
+<td>-6.28</td>
+<td>6.28</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-5">Description</h4>
+<p>Refer FDD.</p>
+<p>MotCtrlMotElecMeclPolarity_Uls_T_s08 takes -1 and +1 as its values</p>
+<h2 id="local-function-3-offscalcabc">Local Function #3 OffsCalcABC</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>OffsCalcABC</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments</strong></td>
+<td>MotCtrlBrdgVltg_Volt_T_f32</td>
+<td>float32</td>
+<td>6</td>
+<td>26.5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlPhaOnTiA_NanoSec_T_u32</td>
+<td>uint32</td>
+<td>0</td>
+<td>71429</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlPhaOnTiB_NanoSec_T_u32</td>
+<td>uint32</td>
+<td>0</td>
+<td>71429</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlPhaOnTiC_NanoSec_T_u32</td>
+<td>uint32</td>
+<td>0</td>
+<td>71429</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>*MotCurrOffsA_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*MotCurrOffsB_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*MotCurrOffsC_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-6">Description</h4>
+<p>Refer FDD.</p>
+<h2 id="local-function-4-offscalcdef">Local Function #4 OffsCalcDEF</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>OffsCalcDEF</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments</strong></td>
+<td>MotCtrlBrdgVltg_Volt_T_f32</td>
+<td>float32</td>
+<td>6</td>
+<td>26.5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlPhaOnTiA_NanoSec_T_u32</td>
+<td>uint32</td>
+<td>0</td>
+<td>71429</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlPhaOnTiB_NanoSec_T_u32</td>
+<td>uint32</td>
+<td>0</td>
+<td>71429</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlPhaOnTiC_NanoSec_T_u32</td>
+<td>uint32</td>
+<td>0</td>
+<td>71429</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>*MotCurrOffsD_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*MotCurrOffsE_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*MotCurrOffsF_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-7">Description</h4>
+<p>Refer FDD.</p>
+<h2 id="local-function-5-calmotcurrcorrdabc">Local Function #5 CalMotCurrCorrdABC</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CalMotCurrCorrdABC</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCurrOffsA_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCurrOffsB_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCurrOffsC_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>MotCtrlMotCurrCorrdA</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotCurrCorrdB</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlMotCurrCorrdC</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-8">Description</h4>
+<p>Refer FDD.</p>
+<p>Note: MotCtrlMotCurrCorrdA, MotCtrlMotCurrCorrdB, MotCtrlMotCurrCorrdC are not updated every runnable loop as Motor Control Manager should retain its last known good value.</p>
+<h2 id="local-function-6-calmotcurrcorrddef">Local Function #6 CalMotCurrCorrdDEF</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CalMotCurrCorrdDEF</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCurrOffsD_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCurrOffsE_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCurrOffsF_Volt_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>MotCtrlMotCurrCorrdD</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MotCtrlMotCurrCorrdE</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MotCtrlMotCurrCorrdF</td>
+<td>float32</td>
+<td>-200</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-9">Description</h4>
+<p>Note: MotCtrlMotCurrCorrdA, MotCtrlMotCurrCorrdB, MotCtrlMotCurrCorrdC are not updated every runnable loop as Motor Control Manager should retain its last known good value.</p>
+<h2 id="local-function-7-mcecsoffscmdstrtandhi">Local Function #7 McecsOffsCmdStrtandHi</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>McecsOffsCmdStrtandHi</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Inputs</strong></td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-10">Description</h4>
+<p>Note: This function corresponds to MCECS_OFFSCMDSTRT and MCECS_OFFSCMDHI cases in Per1</p>
+<h2 id="local-function-8-mcecsoffscmdendandad">Local Function #8 McecsOffsCmdEndandAd</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>McecsOffsCmdEndandAd</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Inputs</strong></td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h4 id="description-11">Description</h4>
+<p>Note: This function corresponds to MCECS_OFFSCMDEND and MCECS_GAINCMDAD cases in PerformGainCalibration()</p>
+<h1 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h1>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<ol type="1">
+<li><p>In the implementation of Simulink block “<strong>CurrMeasPer2</strong>” the source code has made a decision to implement the protocol checks first then the motor control based timing checks. This leads to a scenario where the counter <strong>PhaOnTiErrCnt</strong> will only get incremented when the ABC passes the protocol check, whereas the model will increment it regardless of protocol check status. This counter is in effect used for display purposes only. So it’s okay to keep this mismatch.</p></li>
+</ol>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<ol type="1">
+<li><p>In the function <strong>CalMotCurrCorrdABC</strong> variables MotCtrlPhaOnTiA_NanoSec_T_u32, MotCtrlPhaOnTiB_NanoSec_T_u32 and MotCtrlPhaOnTiC_NanoSec_T_u32 are a percentage of MotCtrlPwmPerd_NanoSec_T_u32, 100% is the maximum. Therefore never use a value for MotCtrlPhaOnTiA_NanoSec_T_u32, MotCtrlPhaOnTiB_NanoSec_T_u32 and MotCtrlPhaOnTiC_NanoSec_T_u32 which is greater than MotCtrlPwmPerd_NanoSec_T_u32.</p></li>
+</ol>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Current Meaurement Design ES200A_CurrMeas_Design</td>
+<td>See Synergy subversion</td>
+</tr>
+</tbody>
+</table>

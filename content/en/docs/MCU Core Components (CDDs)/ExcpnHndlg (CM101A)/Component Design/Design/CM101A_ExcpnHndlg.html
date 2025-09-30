@@ -1,0 +1,1837 @@
+---
+title: CM101A_ExcpnHndlg
+linkTitle: CM101A_ExcpnHndlg
+weight: 2
+---
+
+<p><strong>Exception Handling</strong></p>
+<p><strong>(ExcpnHndlg)</strong></p>
+<p><strong>FDD CM101A</strong></p>
+<p><a href="#high-level-description">1. High Level Description 6</a></p>
+<p><a href="#sub-functions-in-this-document">2. Sub-Functions In This Document 8</a></p>
+<p><a href="#critical-register-verification-references">3. Critical Register Verification References 9</a></p>
+<p><a href="#sub-functions">4. Sub-functions 10</a></p>
+<p><a href="#sub-function-exception-handling-configuration">4.1. Sub-Function: Exception Handling Configuration 10</a></p>
+<p><a href="#ntcs">4.1.1. NTCs 10</a></p>
+<p><a href="#san-linkage">4.1.2. SAN Linkage 10</a></p>
+<p><a href="#description">4.1.3. Description 10</a></p>
+<p><a href="#rationale">4.1.4. Rationale 10</a></p>
+<p><a href="#implementation">4.1.5. Implementation 10</a></p>
+<p><a href="#reference">4.1.6. Reference 12</a></p>
+<p><a href="#diagnostic-verification-method">4.1.7. Diagnostic Verification Method 13</a></p>
+<p><a href="#sub-function-exception-handling-routine-syserr">4.2. Sub-Function: Exception Handling Routine SYSERR 14</a></p>
+<p><a href="#ntcs-1">4.2.1. NTCs 14</a></p>
+<p><a href="#san-linkage-1">4.2.2. SAN Linkage 14</a></p>
+<p><a href="#description-1">4.2.3. Description 14</a></p>
+<p><a href="#rationale-1">4.2.4. Rationale 14</a></p>
+<p><a href="#implementation-1">4.2.5. Implementation 15</a></p>
+<p><a href="#reference-1">4.2.6. Reference 17</a></p>
+<p><a href="#verification-method">4.2.7. Verification Method 20</a></p>
+<p><a href="#sub-function-exception-handling-routine-floating-point">4.3. Sub-Function: Exception Handling Routine Floating Point 20</a></p>
+<p><a href="#ntcs-2">4.3.1. NTCs 20</a></p>
+<p><a href="#san-linkage-2">4.3.2. SAN Linkage 20</a></p>
+<p><a href="#description-2">4.3.3. Description 20</a></p>
+<p><a href="#rationale-2">4.3.4. Rationale 20</a></p>
+<p><a href="#implementation-2">4.3.5. Implementation 20</a></p>
+<p><a href="#reference-2">4.3.6. Reference 22</a></p>
+<p><a href="#verification-method-1">4.3.7. Verification Method 24</a></p>
+<p><a href="#sub-function-exception-handling-routine-misalignment">4.4. Sub-Function: Exception Handling Routine Misalignment 25</a></p>
+<p><a href="#ntcs-3">4.4.1. NTCs 25</a></p>
+<p><a href="#san-linkage-3">4.4.2. SAN Linkage 25</a></p>
+<p><a href="#description-3">4.4.3. Description 25</a></p>
+<p><a href="#rationale-3">4.4.4. Rationale 25</a></p>
+<p><a href="#implementation-3">4.4.5. Implementation 25</a></p>
+<p><a href="#reference-3">4.4.6. Reference 26</a></p>
+<p><a href="#verification-method-2">4.4.7. Verification Method 27</a></p>
+<p><a href="#sub-function-exception-handling-routine-reserved-instruction">4.5. Sub-Function: Exception Handling Routine Reserved Instruction 28</a></p>
+<p><a href="#ntcs-4">4.5.1. NTCs 28</a></p>
+<p><a href="#san-linkage-4">4.5.2. SAN Linkage 28</a></p>
+<p><a href="#description-4">4.5.3. Description 28</a></p>
+<p><a href="#rationale-4">4.5.4. Rationale 28</a></p>
+<p><a href="#implementation-4">4.5.5. Implementation 28</a></p>
+<p><a href="#verification-method-3">4.5.6. Verification Method 28</a></p>
+<p><a href="#sub-function-server-routine-fenmi-peg">4.6. Sub-Function: Server Routine FENMI PEG 29</a></p>
+<p><a href="#ntcs-5">4.6.1. NTCs 29</a></p>
+<p><a href="#san-linkage-5">4.6.2. SAN Linkage 29</a></p>
+<p><a href="#description-5">4.6.3. Description 29</a></p>
+<p><a href="#rationale-5">4.6.4. Rationale 29</a></p>
+<p><a href="#implementation-5">4.6.5. Implementation 29</a></p>
+<p><a href="#verification-method-4">4.6.6. Verification Method 29</a></p>
+<p><a href="#__RefHeading___Toc445994432">4.7. Sub-Function: Server Routine FENMI SPI 2 Bit ECC Error 30</a></p>
+<p><a href="#__RefHeading___Toc445994433">4.7.1. NTCs 30</a></p>
+<p><a href="#__RefHeading___Toc445994434">4.7.2. SAN Linkage 30</a></p>
+<p><a href="#__RefHeading___Toc445994435">4.7.3. Description 30</a></p>
+<p><a href="#__RefHeading___Toc445994436">4.7.4. Rationale 30</a></p>
+<p><a href="#__RefHeading___Toc445994437">4.7.5. Implementation 30</a></p>
+<p><a href="#__RefHeading___Toc445994438">4.7.6. Reference 32</a></p>
+<p><a href="#__RefHeading___Toc445994439">4.7.7. Verification Method 34</a></p>
+<p><a href="#sub-function-server-routine-fenmi-dma-transfer-error">4.8. Sub-Function: Server Routine FENMI DMA Transfer Error 35</a></p>
+<p><a href="#ntcs-6">4.8.1. NTCs 35</a></p>
+<p><a href="#san-linkage-6">4.8.2. SAN Linkage 35</a></p>
+<p><a href="#description-6">4.8.3. Description 35</a></p>
+<p><a href="#rationale-6">4.8.4. Rationale 35</a></p>
+<p><a href="#implementation-6">4.8.5. Implementation 35</a></p>
+<p><a href="#reference-4">4.8.6. Reference 36</a></p>
+<p><a href="#verification-method-5">4.8.7. Verification Method 36</a></p>
+<p><a href="#sub-function-server-routine-fenmi-dma-access-violation-error">4.9. Sub-Function: Server Routine FENMI DMA Access Violation Error 37</a></p>
+<p><a href="#ntcs-7">4.9.1. NTCs 37</a></p>
+<p><a href="#san-linkage-7">4.9.2. SAN Linkage 37</a></p>
+<p><a href="#description-7">4.9.3. Description 37</a></p>
+<p><a href="#rationale-7">4.9.4. Rationale 37</a></p>
+<p><a href="#implementation-7">4.9.5. Implementation 37</a></p>
+<p><a href="#reference-5">4.9.6. Reference 38</a></p>
+<p><a href="#verification-method-6">4.9.7. Verification Method 38</a></p>
+<p><a href="#sub-function-server-routine-fenmi-ecm-masterchecker-compare">4.10. Sub-Function: Server Routine FENMI ECM Master/Checker Compare 39</a></p>
+<p><a href="#ntcs-8">4.10.1. NTCs 39</a></p>
+<p><a href="#san-linkage-8">4.10.2. SAN Linkage 39</a></p>
+<p><a href="#description-8">4.10.3. Description 39</a></p>
+<p><a href="#rationale-8">4.10.4. Rationale 39</a></p>
+<p><a href="#implementation-8">4.10.5. Implementation 39</a></p>
+<p><a href="#verification-method-7">4.10.6. Verification Method 39</a></p>
+<p><a href="#sub-function-server-routine-fenmi-watchdog">4.11. Sub-Function: Server Routine FENMI Watchdog 40</a></p>
+<p><a href="#ntcs-9">4.11.1. NTCs 40</a></p>
+<p><a href="#san-linkage-9">4.11.2. SAN Linkage 40</a></p>
+<p><a href="#description-9">4.11.3. Description 40</a></p>
+<p><a href="#rationale-9">4.11.4. Rationale 40</a></p>
+<p><a href="#implementation-9">4.11.5. Implementation 40</a></p>
+<p><a href="#verification-method-8">4.11.6. Verification Method 41</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-0-runtime-lower-limit-fault">4.12. Sub-Function: FENMI Clock Monitor 0 RunTime Lower Limit Fault 42</a></p>
+<p><a href="#ntcs-10">4.12.1. NTCs 42</a></p>
+<p><a href="#san-linkage-10">4.12.2. SAN Linkage 42</a></p>
+<p><a href="#description-10">4.12.3. Description 42</a></p>
+<p><a href="#rationale-10">4.12.4. Rationale 42</a></p>
+<p><a href="#implementation-10">4.12.5. Implementation 42</a></p>
+<p><a href="#verification-method-9">4.12.1. Verification Method 42</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-0-runtime-upper-limit-fault">4.13. Sub-Function: FENMI Clock Monitor 0 RunTime Upper Limit Fault 42</a></p>
+<p><a href="#ntcs-11">4.13.1. NTCs 42</a></p>
+<p><a href="#san-linkage-11">4.13.2. SAN Linkage 42</a></p>
+<p><a href="#description-11">4.13.1. Description 43</a></p>
+<p><a href="#rationale-11">4.13.2. Rationale 43</a></p>
+<p><a href="#implementation-11">4.13.3. Implementation 43</a></p>
+<p><a href="#verification-method-10">4.13.4. Verification Method 43</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-1-runtime-lower-limit-fault">4.14. Sub-Function: FENMI Clock Monitor 1 RunTime Lower Limit Fault 43</a></p>
+<p><a href="#ntcs-12">4.14.1. NTCs 43</a></p>
+<p><a href="#san-linkage-12">4.14.2. SAN Linkage 43</a></p>
+<p><a href="#description-12">4.14.1. Description 43</a></p>
+<p><a href="#rationale-12">4.14.2. Rationale 43</a></p>
+<p><a href="#implementation-12">4.14.3. Implementation 44</a></p>
+<p><a href="#verification-method-11">4.14.4. Verification Method 44</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-1-runtime-upper-limit-fault">4.15. Sub-Function: FENMI Clock Monitor 1 RunTime Upper Limit Fault 44</a></p>
+<p><a href="#ntcs-13">4.15.1. NTCs 44</a></p>
+<p><a href="#san-linkage-13">4.15.2. SAN Linkage 44</a></p>
+<p><a href="#description-13">4.15.3. Description 44</a></p>
+<p><a href="#rationale-13">4.15.4. Rationale 44</a></p>
+<p><a href="#implementation-13">4.15.5. Implementation 44</a></p>
+<p><a href="#verification-method-12">4.15.6. Verification Method 45</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-2-runtime-lower-limit-fault">4.16. Sub-Function: FENMI Clock Monitor 2 RunTime Lower Limit Fault 45</a></p>
+<p><a href="#ntcs-14">4.16.1. NTCs 45</a></p>
+<p><a href="#san-linkage-14">4.16.2. SAN Linkage 45</a></p>
+<p><a href="#description-14">4.16.3. Description 45</a></p>
+<p><a href="#rationale-14">4.16.4. Rationale 45</a></p>
+<p><a href="#implementation-14">4.16.5. Implementation 45</a></p>
+<p><a href="#verification-method-13">4.16.6. Verification Method 45</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-2-runtime-upper-limit-fault">4.17. Sub-Function: FENMI Clock Monitor 2 RunTime Upper Limit Fault 45</a></p>
+<p><a href="#ntcs-15">4.17.1. NTCs 45</a></p>
+<p><a href="#san-linkage-15">4.17.2. SAN Linkage 45</a></p>
+<p><a href="#description-15">4.17.3. Description 46</a></p>
+<p><a href="#rationale-15">4.17.4. Rationale 46</a></p>
+<p><a href="#implementation-15">4.17.5. Implementation 46</a></p>
+<p><a href="#verification-method-14">4.17.6. Verification Method 46</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-3-runtime-lower-limit-fault">4.18. Sub-Function: FENMI Clock Monitor 3 RunTime Lower Limit Fault 46</a></p>
+<p><a href="#ntcs-16">4.18.1. NTCs 46</a></p>
+<p><a href="#san-linkage-16">4.18.2. SAN Linkage 46</a></p>
+<p><a href="#description-16">4.18.3. Description 46</a></p>
+<p><a href="#rationale-16">4.18.4. Rationale 46</a></p>
+<p><a href="#implementation-16">4.18.5. Implementation 47</a></p>
+<p><a href="#verification-method-15">4.18.6. Verification Method 47</a></p>
+<p><a href="#sub-function-fenmi-clock-monitor-3-runtime-upper-limit-fault">4.19. Sub-Function: FENMI Clock Monitor 3 RunTime Upper Limit Fault 47</a></p>
+<p><a href="#ntcs-17">4.19.1. NTCs 47</a></p>
+<p><a href="#san-linkage-17">4.19.2. SAN Linkage 47</a></p>
+<p><a href="#description-17">4.19.3. Description 47</a></p>
+<p><a href="#rationale-17">4.19.4. Rationale 47</a></p>
+<p><a href="#implementation-17">4.19.5. Implementation 47</a></p>
+<p><a href="#verification-method-16">4.19.6. Verification Method 48</a></p>
+<p><a href="#sub-function-server-routine-process-unknown-exception-error">4.20. Sub Function: Server Routine Process Unknown Exception Error 48</a></p>
+<p><a href="#ntcs-21">4.20.1. NTCs 48</a></p>
+<p><a href="#san-linkage-21">4.20.2. SAN Linkage 48</a></p>
+<p><a href="#description-21">4.20.3. Description 48</a></p>
+<p><a href="#rationale-21">4.20.4. Rationale 48</a></p>
+<p><a href="#implementation-21">4.20.5. Implementation 48</a></p>
+<p><a href="#verification-method-20">4.20.6. Verification Method 48</a></p>
+<p><a href="#sub-function-server-routine-process-memory-protection-unit-exception-error">4.21. Sub-Function: Server Routine Process Memory Protection Unit Exception Error 49</a></p>
+<p><a href="#ntcs-22">4.21.1. NTCs 49</a></p>
+<p><a href="#san-linkage-22">4.21.2. SAN Linkage 49</a></p>
+<p><a href="#description-22">4.21.3. Description 49</a></p>
+<p><a href="#rationale-22">4.21.4. Rationale 49</a></p>
+<p><a href="#implementation-22">4.21.5. Implementation 49</a></p>
+<p><a href="#verification-method-21">4.21.6. Verification Method 49</a></p>
+<p><a href="#sub-function-server-routine-process-privileged-instruction-exception-error">4.22. Sub-Function: Server Routine Process Privileged Instruction Exception Error 49</a></p>
+<p><a href="#ntcs-23">4.22.1. NTCs 49</a></p>
+<p><a href="#san-linkage-23">4.22.2. SAN Linkage 49</a></p>
+<p><a href="#description-23">4.22.3. Description 49</a></p>
+<p><a href="#rationale-23">4.22.4. Rationale 50</a></p>
+<p><a href="#implementation-23">4.22.5. Implementation 50</a></p>
+<p><a href="#verification-method-22">4.22.6. Verification Method 50</a></p>
+<p><a href="#sub-function-server-routine-process-permanent-os-error">4.23. Sub-Function: Server Routine Process Permanent Os Error 50</a></p>
+<p><a href="#ntcs-24">4.23.1. NTCs 50</a></p>
+<p><a href="#san-linkage-24">4.23.2. SAN Linkage 50</a></p>
+<p><a href="#description-24">4.23.3. Description 50</a></p>
+<p><a href="#rationale-24">4.23.4. Rationale 50</a></p>
+<p><a href="#implementation-24">4.23.5. Implementation 50</a></p>
+<p><a href="#verification-method-23">4.23.6. Verification Method 50</a></p>
+<p><a href="#sub-function-server-routine-process-non-critical-os-error">4.24. Sub-Function: Server Routine Process Non Critical Os Error 50</a></p>
+<p><a href="#ntcs-25">4.24.1. NTCs 50</a></p>
+<p><a href="#san-linkage-25">4.24.2. SAN Linkage 50</a></p>
+<p><a href="#description-25">4.24.3. Description 51</a></p>
+<p><a href="#rationale-25">4.24.4. Rationale 51</a></p>
+<p><a href="#implementation-25">4.24.5. Implementation 51</a></p>
+<p><a href="#verification-method-24">4.24.6. Verification Method 51</a></p>
+<p><a href="#periodic-excpnhndlgper1">4.24.7. Periodic (ExcpnHndlgPer1) 51</a></p>
+<p><a href="#verification-method-25">4.24.8. Verification Method 51</a></p>
+<p><a href="#sub-function-server-routine-shutdown-hook">4.25. Sub-Function: Server Routine Shutdown Hook 52</a></p>
+<p><a href="#sub-function-exception-handling-routine-eiint">4.26. Sub-Function: Exception Handling Routine EIINT 52</a></p>
+<p><a href="#sub-function-reset-source-determination">4.27. Sub-Function: Reset Source Determination 53</a></p>
+<p><a href="#ntcs-26">4.27.1. NTCs 53</a></p>
+<p><a href="#san-linkage-26">4.27.2. SAN Linkage 54</a></p>
+<p><a href="#description-26">4.27.3. Description 54</a></p>
+<p><a href="#rationale-26">4.27.4. Rationale 54</a></p>
+<p><a href="#implementation-26">4.27.5. Implementation 55</a></p>
+<p><a href="#verification-method-26">4.27.6. Verification Method 61</a></p>
+<p><a href="#special-functions">5. Special Functions 61</a></p>
+<p><a href="#revision-record-change-approval">6. Revision Record &amp; Change Approval 63</a></p>
+<h1 id="high-level-description">High Level Description</h1>
+<p>This document describes the exception handling / reset cause determination for microcontroller diagnostics. Note that the MCU handler is in place to parse / identify FE and EI exception sources (of the 43 shown). The MCU will call server functions in this FDD for FE type interrupts. EI based interrupts will call server functions directly to the FDD.</p>
+<p>Additionally, any pre-OS type failures that are detected are “saved” using backup RAM until the reset cause functionality is performed. The reset cause algorithm uses the backup RAM (modified by both Exceptions and pre-OS start up tests) to set appropriate fault codes. For this FDD, NTCs are only set in the reset cause function.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.wmf" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.wmf" /></p>
+<h1 id="sub-functions-in-this-document">Sub-Functions In This Document</h1>
+<p>Below is a linked list of all sub-functions owned by this document.</p>
+<table>
+<colgroup>
+<col style="width: 73%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sub-Function Name</strong></td>
+<td><strong>Link</strong></td>
+</tr>
+<tr class="even">
+<td>Exception Handling Configuration</td>
+<td>4.1</td>
+</tr>
+<tr class="odd">
+<td>Exception Handling Routine SYSERR</td>
+<td>4.2</td>
+</tr>
+<tr class="even">
+<td>Exception Handling Routine Floating Point</td>
+<td>4.3</td>
+</tr>
+<tr class="odd">
+<td>Exception Handling Routine Misalignment</td>
+<td>4.4</td>
+</tr>
+<tr class="even">
+<td>Exception Handling Routine Reserved Instruction</td>
+<td>4.5</td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI PEG</td>
+<td>4.6</td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI SPI 2 Bit ECC</td>
+<td>Error: Reference source not found</td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI DMA Transfer Error</td>
+<td>4.7</td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI DMA Access Violation Error</td>
+<td>4.8</td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI Master Checker Compare</td>
+<td>4.9</td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI Watchdog</td>
+<td>4.10</td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI DTS Double Bit ECC</td>
+<td>4.11</td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI Clock Monitor 0 RunTime Lower Limit Fault</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI Clock Monitor 0 RunTime Upper Limit Fault</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI Clock Monitor 1 RunTime Lower Limit Fault</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI Clock Monitor 1 RunTime Upper Limit Fault</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI Clock Monitor 2 RunTime Lower Limit Fault</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI Clock Monitor 2 RunTime Upper Limit Fault</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI Clock Monitor 3 RunTime Lower Limit Fault</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Server Routine FENMI Clock Monitor 3 RunTime Upper Limit Fault</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Server Routine FENMI Unknown</td>
+<td>Error: Reference source not found</td>
+</tr>
+<tr class="odd">
+<td>Server Routine Protection Hook</td>
+<td>Error: Reference source not found</td>
+</tr>
+<tr class="even">
+<td>Server Routine Error Hook</td>
+<td>4.23</td>
+</tr>
+<tr class="odd">
+<td>Server Routine Shutdown Hook</td>
+<td>4.27</td>
+</tr>
+<tr class="even">
+<td>Exception Handling Routine EIINT</td>
+<td>Error: Reference source not found</td>
+</tr>
+<tr class="odd">
+<td>Reset Source Determination</td>
+<td>4.29</td>
+</tr>
+</tbody>
+</table>
+<h1 id="critical-register-verification-references">Critical Register Verification References</h1>
+<p>This table contains the information needed for critical register verification as configured or used in this document.</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 10%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Register</strong></td>
+<td><p><strong>Register No.</strong></p>
+<p><strong>(regID, selID)</strong></p></td>
+<td><strong>Access Permission</strong></td>
+<td><p><strong>Init / Periodic</strong></p>
+<p><strong>Verification</strong></p></td>
+<td><strong>Masking</strong></td>
+<td><strong>Expected Value</strong></td>
+<td><strong>Protn Score From Eval Sheet</strong></td>
+</tr>
+<tr class="even">
+<td>FPCFG</td>
+<td>SR10, 0</td>
+<td>CU0</td>
+<td>Init</td>
+<td>None</td>
+<td>0x0000 001C</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h1 id="sub-functions">Sub-functions</h1>
+<h2 id="sub-function-exception-handling-configuration">Sub-Function: Exception Handling Configuration</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs">NTCs</h3>
+<p>NA</p>
+<h3 id="san-linkage">SAN Linkage</h3>
+<p><strong>SAN-49:</strong> After reset the generation of SYSERR exception request due to the errors shown in the Error notification Control Register (SEGCONT) is disabled. This notification <strong>can</strong> be enabled by setting the related bits accordingly.</p>
+<p><strong>SAN-263:</strong> Generation of SYSERR exception in case of uncorrectable error (e.g. DED, Address parity) during instruction fetch cannot be masked for instruction fetch unit in SEGCONT. However, such errors <strong>shall</strong> be always handled by ECM within DTI.</p>
+<p><strong>SAN-278:</strong> Transition to the safe state <strong>shall</strong> take place when an ECC 2-bit error, or an overflow error has occurred. For this purpose, the ECM <strong>shall</strong> be configured accordingly.</p>
+<p><strong>SAN-342:</strong> Transition the MCU and the system to the safe state <strong>shall</strong> take place when an address parity error has occurred. For this purpose, the ECM shall be configured accordingly.</p>
+<p><strong>SAN-401:</strong> Transition to the safe state <strong>shall</strong> take place when 2-bits error, an error count overflow or an address error has been detected. For this purpose, configure the appropriate response in the ECM accordingly.</p>
+<p><strong>SAN-413:</strong> Upon detection of non-correctable bit error in the local RAM, a system error exception request will be sent to SEG to generate a SYSERR (FE-level) exception (if it is enabled).</p>
+<h3 id="description">Description</h3>
+<p>This sub-function configures or identifies the exception handling characteristics for the RH850 related to microcontroller diagnostics.</p>
+<h3 id="rationale">Rationale</h3>
+<p>The Nexteer approach planned for exception handling involves two types – those serious errors that will be handled by forcing a software reset of the microcontroller and those that do not. This sub-function is intended to show the list of exceptions and highlight those that will be configured to be a system error (SYSERR) via the use of the SEGCONT register. Floating point exceptions must also be configured.</p>
+<p>Exception Handler assumes that the MCAL will configure the CVMREN register to cause a reset when the CVM Fails.</p>
+<h3 id="implementation">Implementation</h3>
+<h4 id="initialization-excpnhndlginit1">Initialization (ExcpnHndlgInit1)</h4>
+<p>Register Configuration Summary</p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 33%" />
+<col style="width: 26%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Value</strong></td>
+<td rowspan="2"><strong>Comments</strong></td>
+<td colspan="2"><strong>Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>FPCFG (Floating-point operation configuration)</td>
+<td><p>FPCFG.XE.V = 1 (Validity)</p>
+<p>FPCFG.XE.Z = 1 (Divide by Zero)</p>
+<p>FPCFG.XE.O = 1 (Overflow)</p>
+<p>FPCFG.XE.U = 0 (Underflow)</p>
+<p>FPCFG.XE.I = 0 (Imprecise)</p></td>
+<td>Only addresses configuring the exception bits</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+<tr class="even">
+<td>* SYSCVMDEW (CVM Detection Enable Register)</td>
+<td>SYSCVMDEW. CVMDIAGMEW = 0</td>
+<td><p>Enable CVM Diagnosis</p>
+<p><strong>NOTE: This is a protected register. Can only be written to once.</strong></p></td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+</tbody>
+</table>
+<p>*Denotes that no direct write is required as the default value meets the requirement.</p>
+<p>NOTE: MCU configuration has a checkbox selection for the self-test – consider this in the future design.</p>
+<p>// Configure floating point <u>exceptions</u> – note that other FPU configuration is done in the FBL</p>
+<p>FPCFG = 0x0000 001C</p>
+<h3 id="reference">Reference</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.wmf" style="width:5.99931in;height:7.65903in" /></p>
+<p>FPSR (See boot loader CM110A for configuration function):</p>
+<p><u>Bits 31 to 24:</u> Status bits – NA for configuration – initialize to zero</p>
+<p><u>Bit 23</u>: FN Flush to Nearest: recommend setting this bit to 1 – along with the FS (Flush Subnormal) bit set to 1 and the RM bits set to RN (round to nearest) , this setting will cause subnormal numbers to be flushed to either zero or +/- the smallest magnitude normal number, whichever is closer to the subnormal result – essentially rounds the subnormal result rather than flushing to zero always. (See FS setting for EA3 comparison)</p>
+<p><u>Bit 22</u>: IF: status bit – NA for configuration – initialize to zero</p>
+<p><u>Bit 21</u>: PEM: recommend setting to 0 – for imprecise floating point exceptions. This does not allow resuming execution after the exception handler, which is ok since the expected design is to cause a reset. Precise exceptions would allow resuming execution but causes slower operation (different pipelining to allow for precise exceptions).</p>
+<p><u>Bit 20</u>: Reserved: must write a 0</p>
+<p><u>Bits 19 and 18</u>: RM, rounding mode, recommend setting is 00 for RN round to nearest. This matches the setting used in EA3.</p>
+<p><u>Bit 17</u>: FS flush subnormal – recommend setting this bit to 1 to enable flush subnormal. This is the default setting of this bit. The floating point coprocessor does not have hardware processing of subnormal numbers; therefore if FS is disabled, any subnormal operand or result causes an exception so that software processing can occur; recommend flush subnormal for throughput optimization. NOTE that this differs from the EA3 setting. The EA3 processor has hardware support for subnormal number processing and we do not flush subnormal numbers; not flushing is the default setting for the EA3 processor.</p>
+<p><u>Bit 16</u>: reserved: must write a 0</p>
+<p><u>Bits 15 to 10:</u> Status bits – NA for configuration – initialize to zero</p>
+<p><u>Bits 9 to 5</u>: Exception enable bits: recommend setting as in EA3 FDD (although no EA3 program has turned these settings on yet)</p>
+<p>Bit 9 – V – invalid operation – set to 1 to enable exception</p>
+<p>Bit 8 – Z – divide by zero – set to 1 to enable exception</p>
+<p>Bit 7 – O – overflow – set to 1 to enable exception</p>
+<p>Bit 6 – U – underflow – set to 0 to disable exception</p>
+<p>Bit 5 – I – inexact – set to 0 to disable exception</p>
+<p><u>Bits 4 to 0:</u> Status bits – NA for configuration – initialize to zero</p>
+<h3 id="diagnostic-verification-method">Diagnostic Verification Method</h3>
+<p>NA as this is a configuration sub-function</p>
+<h2 id="sub-function-exception-handling-routine-syserr">Sub-Function: Exception Handling Routine SYSERR</h2>
+<p>Return to sub-function list link: <u>Sub-Functions In This Document</u></p>
+<h3 id="ntcs-1">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-1">SAN Linkage</h3>
+<p><strong>SAN-166:</strong> If SYSERR exception is generated, a reset of the device <strong>shall</strong> be issued.</p>
+<p><strong>SAN-263:</strong> Generation of SYSERR exception in case of uncorrectable error (e.g. DED, Address parity) during instruction fetch cannot be masked for instruction fetch unit in SEGCONT. However, such errors <strong>shall</strong> be always handled by ECM within DTI.</p>
+<p><strong>SAN-278:</strong> Transition to the safe state <strong>shall</strong> take place when an ECC 2-bit error, or an overflow error has occurred. For this purpose, the ECM <strong>shall</strong> be configured accordingly.</p>
+<p><strong>SAN-342:</strong> Transition the MCU and the system to the safe state shall take place when an address parity error has occurred. For this purpose, the ECM shall be configured accordingly.</p>
+<p><strong>SAN-343:</strong> In case an address parity error has occurred, a system error (SYSERR) exception will be generated. This exception is terminating and a reset from the ECM or from the pin becomes necessary.</p>
+<p><strong>SAN-401:</strong> Transition to the safe state shall take place when 2-bits error, an error count overflow or an address error has been detected. For this purpose, configure the appropriate response in the ECM accordingly.</p>
+<p><strong>SAN-413:</strong> Upon detection of non-correctable bit error in the local RAM, a system error exception request will be sent to SEG to generate a SYSERR (FE-level) exception (if it is enabled).</p>
+<p><strong>SAN-P1x-0703:</strong></p>
+<p>In case ECC 1-bit error has occurred, a CRC test [SAN-P1x-0703] shall be executed to check whether or not the error is due single bit or multi-bit corruption that is potentially caused by address decoder failure.</p>
+<p><strong>SAN-P1x-1307:</strong></p>
+<p>In case an ECC 2-bit has occurred, the related flag will set in DTSER2 register and an internal error signal will be generated towards ECM to take proper action. Moreover, the handling of the DMA transfer request is terminated without executing a DMA cycle and TI write back. In that case the MCU shall be moved into safe state unless the application has implemented further measures to allow the operation to continue.</p>
+<h3 id="description-1">Description</h3>
+<p>This sub-function handles the SYSERR exceptions (after the RBASE / EBASE Switch - refer to start up sequence).</p>
+<p>Note that some errors are configured to generate a SYSERR based on the contents of the SEGCONT register (see CM110A for details). The design stores information into back up registers, generates a software reset and then the “Reset Source Determination” sub-function identifies the source of the reset and identifies the NTC.</p>
+<p>SYSERRs occurring <u>prior</u> to the RTE initialization will result in an interrupt restarting the FBL.</p>
+<h3 id="rationale-1">Rationale</h3>
+<p>SYSERR approach was selected over ECM as it seems to be a more direct response in cases of serious failures. Note that the ECM error out pin is also configured to go the safe state as another redundant disabling mechanism; however, no EI or FE interrupts are configured as enabled.</p>
+<p>Design assumes that if none of the SEGFLAG bits are set, then the assumption is an instruction fetch failure.</p>
+<p>R7F701311 has 128KB of RAM with a Base address of 0xFEB8 0000 and the Offset starting at 0x0006 0000.</p>
+<p>If TCMF flag was set due to uncorrectable ECC error to local RAM or due to an access to RAM-unimplemented area, it can be determined which source caused the error by looking at the local RAM 1st error status register LR1STERSTR_PE1 flags. If any of the status flags are set in this register then TCMF setting was due to ECC error, otherwise TCMF setting was due to access to RAM-unimplemented area.</p>
+<p>Because VCIE is configured to trigger a SYSERR (corresponding bit in SEGCONT = 1), all peripheral data bus parity errors will cause a SYSERR.  SYSERR handling must include a software reset -- it is not possible to return from a SYSERR interrupt.  Therefore, the Nexteer design responds to all peripheral data bus parity errors, regardless of which peripheral they occur on, by pulling the ERROROUT pin low (through an ECM configuration), setting a reset cause, and performing a software reset; after the reset, the reset cause will be used to set an NTC.  Since the reset must happen due to the SYSERR handling, there is no benefit in checking the 40-some peripheral registers to determine whether the error occurred on a safety-critical or non-critical peripheral.</p>
+<p>The NTC Master List has 2 separate NTCs for safety-critical and non-critical peripheral registers. We choose to implement only the NTC for safety-critical peripheral for the reason mentioned above and not to differentiate between the peripherals.</p>
+<p>SAN states “In case ECC 1-bit error has occurred, a CRC test [SAN-P1x-0703] shall be executed to check whether or not the error is due single bit or multi-bit corruption that is potentially caused by address decoder failure.” Nexteer does not perform any CRC calculation on code flash at run time. We disable single bit ECC correction on code flash. Therefore we configure the code flash single bit ECC as a SYSERR through VCIF.</p>
+<p>Reasons:</p>
+<ul>
+<li><p>Cannot differentiate code flash ECC and address decoder failure.</p></li>
+<li><p>More work needs to be done on DTS channel usage before using DTS to calculate CRC at run time.</p></li>
+<li><p>Excessive bus load at run time</p></li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>The SYSERR exception has an offset of 0x010.</p>
+<h4 id="event-driven-syserrirq">Event Driven (SysErrIrq)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>SEGFLAG (Error Occurrence Retention Register)</td>
+<td>Contains bits to indicate the source of the system error.</td>
+<td>R/W</td>
+<td><p>Read</p>
+<p>Only</p></td>
+</tr>
+<tr class="even">
+<td>SEGADDR (Error Address)</td>
+<td>Contains the error address information that caused the system error.</td>
+<td>R/W</td>
+<td><p>Read</p>
+<p>Only</p></td>
+</tr>
+<tr class="odd">
+<td>CF1STEADR0_PE1 (Code Flash 1st Error Address Register)</td>
+<td>Register provides information on address of failure – used for debug purposes</td>
+<td>R/W</td>
+<td>R/W</td>
+</tr>
+</tbody>
+</table>
+<p><em>TmpData</em> = 0</p>
+<p>// Determine source of error from the SEGFLAG bits and indicate in BRAMDAT0</p>
+<p>If (SEGVPGF = 1) Then</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_PRPHLBUSGUARD</p>
+<p>ElseIf (SEGVCRF = 1) Then</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_INTPRPHLGUARD</p>
+<p>ElseIf (SEGTCMF = 1) Then</p>
+<p>// Identify bank that failed to get address information from the correct register</p>
+<blockquote>
+<p>If (ECCCPU1DEDF0 = 1) Then</p>
+<p>// TmpData is the Offset Address of Local RAM ‘OR’ed with Base Addr (0xFEB8 0000) and Bank Addr (0x0)</p>
+</blockquote>
+<p><em>TmpData</em> = ((ECCCPU1LR1STEADR0_PE1 &lt;&lt; 4) | 0xFEB8 0000)</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_LCLRAMDBLBIT</p>
+</blockquote>
+<p>Else If (ECCCPU1DEDF1 = 1)</p>
+<blockquote>
+<p>// TmpData is the Offset Address of Local RAM ‘OR’ed with Base Addr (0xFEB8 0000) and Bank Addr (0x4)</p>
+<p><em>TmpData</em> = ((ECCCPU1LR1STEADR1_PE1 &lt;&lt; 4) | 0xFEB8 0004)</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_LCLRAMDBLBIT</p>
+<p>Else If (ECCCPU1DEDF2 = 1)</p>
+<p>// TmpData is the Offset Address of Local RAM ‘OR’ed with Base Addr (0xFEB8 0000) and Bank Addr (0x8)</p>
+<p><em>TmpData</em> = ((ECCCPU1LR1STEADR2_PE1 &lt;&lt; 4) | 0xFEB8 0008)</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_LCLRAMDBLBIT</p>
+<p>Else If (ECCCPU1DEDF3 = 1)</p>
+<p>// TmpData is the Offset Address of Local RAM ‘OR’ed with Base Addr (0xFEB8 0000) and Bank Addr (0xC)</p>
+<p><em>TmpData</em> = ((ECCCPU1LR1STEADR3_PE1 &lt;&lt; 4) | 0xFEB8 000C)</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_LCLRAMDBLBIT</p>
+<p>Else</p>
+<p>// Else TCMF setting was due to access to RAM-unimplemented area.</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_INVLDRAMAREA</p>
+<p>EndIf</p>
+</blockquote>
+<p>ElseIf ((SEGROMF = 1) or (SEGVCIF = 1)) Then // Both bits have code flash ECC</p>
+<p>If (ECCFLICF1STERSTR_PE1 &amp; 0x0000 0004 !=0) Then</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_ADRPAR</p>
+</blockquote>
+<p><em>TmpData</em> = ECCFLICF1STEADR0_PE1</p>
+<p>Else If (ECCFLICF1STERSTR_PE1 &amp; 0x0000 0002 !=0) Then</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_CODFLSDBLBIT</p>
+</blockquote>
+<p><em>TmpData</em> = ECCFLICF1STEADR0_PE1</p>
+<p>Else If (ECCFLICF1STERSTR_PE1 &amp; 0x0000 0001 !=0) Then</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_CODFLSECCSNGBITERR</p>
+</blockquote>
+<p><em>TmpData</em> = ECCFLICF1STEADR0_PE1</p>
+<p>Else If (ECCFLICF1STERSTR_VCI &amp; 0x0000 0004 !=0) Then</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_ADRPAR</p>
+</blockquote>
+<p><em>TmpData</em> = ECCFLICF1STEADR0_VCI</p>
+<p>Else If (ECCFLICF1STERSTR_VCI &amp; 0x0000 0002 !=0) Then</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_CODFLSDBLBIT</p>
+</blockquote>
+<p><em>TmpData</em> = ECCFLICF1STEADR0_VCI</p>
+<p>Else If (ECCFLICF1STERSTR_VCI &amp; 0x0000 0001 !=0) Then</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_CODFLSECCSNGBITERR</p>
+</blockquote>
+<p><em>TmpData</em> = ECCFLICF1STEADR0_VCI Else If (ECMMESSTR0 &amp; 0x1000 0000 != 0)</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_PRPHLBUSDATAPAR</p>
+</blockquote>
+<p>Else If (DMASSDTSER2 &amp; 0x8000 0000 != 0)</p>
+<blockquote>
+<p><em>TmpSrc</em> = McuDiagc1. MCUDIAGC_DTSDBLBIT</p>
+<p><em>TmpData =</em> DMASSDTSER2</p>
+</blockquote>
+<p>Else</p>
+<blockquote>
+<p>// Other VCIE cause</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_VCIE</p>
+</blockquote>
+<p>End If</p>
+<p>Else</p>
+<p>// Assume instruction fetch error drove SYSERR</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_INSTRFETCH</p>
+<p>End If</p>
+<p>NxtrSwRstFromExcpn (<em>TmpSrc, TmpData</em>)</p>
+<h3 id="reference-1">Reference</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.wmf" style="width:5.98889in;height:4.79861in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.wmf" style="width:5.99306in;height:3.86319in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image6.wmf" style="width:5.97361in;height:6.75in" /></p>
+<h3 id="verification-method">Verification Method</h3>
+<p><strong><u>At 2ms rate:</u></strong></p>
+<p>// Invokes a double bit ECC code flash fault</p>
+<p>If ((McuDiagcTest = McuDiagcTestTyp.CODFLSDBLBIT)</p>
+<blockquote>
+<p>Temp = Read from Code Flash Test Address 0x0100 A8B0 // invokes a double bit ECC</p>
+</blockquote>
+<p>McuDiagcTest = McuDiagcTestTyp.NoTest</p>
+<p>EndIf</p>
+<p><strong>// Check on section 8.4.2 in SAN for address parity fault injection options</strong></p>
+<p><strong>// Need to find other ways to invoke a SYSERR</strong></p>
+<h2 id="sub-function-exception-handling-routine-floating-point">Sub-Function: Exception Handling Routine Floating Point</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-2">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-2">SAN Linkage</h3>
+<p>None identified</p>
+<h3 id="description-2">Description</h3>
+<p>This sub-function is used to handle the exceptions configured for the floating point unit (FPU). Based on the configurations, the handler can identify / discriminate faults for overflow, divide by zero and invalid operations.</p>
+<h3 id="rationale-2">Rationale</h3>
+<p>The FPU “E bit” functionality is a function of the FPU configuration.</p>
+<p>Page 173/174 of the software user manual (R01UH0436EJ0100 Rev.1.00) states - "If the FS bit of the FPSR register is set to 1, an unimplemented operation exception (E) <u>will not occur under any circumstances</u>."</p>
+<p>Nexteer is setting the FS bit to 1, therefore, there is no need to check for the “E Bit” failure in the FSPR register. Should it set for some reason, it will be swept into the “unknown” category.</p>
+<h3 id="implementation-2">Implementation</h3>
+<p>The Floating Point exception has an offset of 0x070.</p>
+<h4 id="event-driven-fpuerrirq">Event Driven (FpuErrIrq)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>FPSR</td>
+<td>This register is used to control and monitor the cause of floating point exceptions</td>
+<td>R/W</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FPEPC</td>
+<td>This register stores the program counter value where the exception occurs.</td>
+<td>R/W</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>// Get data relating to the fault</p>
+<p><em>TmpData</em> = FPEPC</p>
+<p>If (FPSR &amp; 0x0000 4000 != 0) Then</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_ FPUERRINVLDOPER // Invalid Operation</p>
+<p>Else If (FPSR &amp; 0x0000 2000 != 0)</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FPUERRDIVBYZERO // Divide by Zero</p>
+<p>Elseif (FPSR &amp; 0x0000 1000 != 0)</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FPUERROVF // Overflow</p>
+<p>Elseif</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FPUERRUKWN // Unknown (not expected)</p>
+<p>EndIf</p>
+<p>NxtrSwRstFromExcpn (<em>TmpSrc</em>, <em>TmpData</em>)</p>
+<h3 id="reference-2">Reference</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image7.wmf" style="width:5.99583in;height:5.78958in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image8.wmf" style="width:5.63125in;height:8.27708in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image9.wmf" style="width:5.99792in;height:3.3875in" /></p>
+<h3 id="verification-method-1">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-exception-handling-routine-misalignment">Sub-Function: Exception Handling Routine Misalignment</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-3">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-3">SAN Linkage</h3>
+<p><strong>SAN-148:</strong> When a MPU violation is detected, the access is not granted, but the related information such as access type (read, write), data size, and instruction type are stored in the memory error information register MEI. The memory error address register is used to store the address when a MAE (misaligned) or MPU exception occurs. Both registers <strong>can</strong> be accessed in the CPU supervisor mode only.</p>
+<h3 id="description-3">Description</h3>
+<p>This sub-function handles exceptions generated by a memory misalignment error.</p>
+<h3 id="rationale-3">Rationale</h3>
+<p><strong>TBD</strong></p>
+<h3 id="implementation-3">Implementation</h3>
+<p>The memory misalignment exception has an offset of 0x0C0.</p>
+<h4 id="event-driven-algnerrirq">Event Driven (AlgnErrIrq)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 35%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td rowspan="2"><strong>Register No. (regID,selID)</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>MEI</td>
+<td>Memory error information register – used to indicate if the misalignment was caused during read or write</td>
+<td>SR8, 2</td>
+<td>Yes</td>
+<td><p>No</p>
+<p>(via SAN)</p></td>
+</tr>
+<tr class="even">
+<td>MEA</td>
+<td><p>Memory error address register - These bits store an address when a MAE (misaligning) or MPU violation</p>
+<p>occurs.</p></td>
+<td>SR6, 2</td>
+<td>Yes</td>
+<td><p>No</p>
+<p>(via SAN)</p></td>
+</tr>
+</tbody>
+</table>
+<p>// Determine source of error and indicate in BRAMDAT0</p>
+<p><em>TmpData</em> = MEA</p>
+<p>If (MEI &amp; 0x0000 0001 = 0x0000 00001) Then</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_ALGNWR</p>
+<p>Else</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_ALGNREAD</p>
+<p>End If</p>
+<p>NxtrSwRstFromExcpn (<em>TmpSrc</em>, <em>TmpData</em>)</p>
+<h3 id="reference-3">Reference</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image10.wmf" style="width:5.99236in;height:7.14792in" /></p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image11.wmf" style="width:5.98889in;height:2.05764in" /></p>
+<h3 id="verification-method-2">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-exception-handling-routine-reserved-instruction">Sub-Function: Exception Handling Routine Reserved Instruction</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-4">NTCs</h3>
+<p>N/A</p>
+<h3 id="san-linkage-4">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-4">Description</h3>
+<h3 id="rationale-4">Rationale</h3>
+<p>This is basically an exception generated by processing an illegal opcode function.</p>
+<h3 id="implementation-4">Implementation</h3>
+<p>The Reserved Instruction exception has an offset of 0x060.</p>
+<h4 id="event-driven-resdoperirq">Event Driven (ResdOperIrq)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_RESDOPER, 0)</p>
+<h3 id="verification-method-3">Verification Method</h3>
+<p>N/A</p>
+<h2 id="sub-function-server-routine-fenmi-peg">Sub-Function: Server Routine FENMI PEG</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-5">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-5">SAN Linkage</h3>
+<p><strong>SAN-183:</strong> For PE guard violations, a proper error handling <strong>shall</strong> be performed. For this the ECM shall be configured accordingly.</p>
+<h3 id="description-5">Description</h3>
+<p>This server function is called by the MCU handler and is responsible for responding to a PEG (Processor Element Guard) error. The Nexteer design has this configured in the ECM to be an exception of type FENMI. The design notes the source of the error (for later use in the reset cause function), clears the ECM status registers and issues a software reset.</p>
+<h3 id="rationale-5">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function FeNmiPeg is called from the MCU handler.</p>
+<h3 id="implementation-5">Implementation</h3>
+<h4 id="event-driven-fenmipeg">Event Driven (FeNmiPeg)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn(McuDiagc1.MCUDIAGC_PROCRELMGUARD, 0)</p>
+<h3 id="verification-method-4">Verification Method</h3>
+<p>NA</p>
+<h2 id="sub-function-server-routine-fenmi-dma-transfer-error">Sub-Function: Server Routine FENMI DMA Transfer Error</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-6">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-6">SAN Linkage</h3>
+<p><strong>SAN-723:</strong> When a data parity error is detected, a flag will be set in P-Bus data parity status register APDPERRST_xx (xx stands for the module name) and an internal error signal is propagated towards ECM. In this case the MCU should move to safe state.</p>
+<p><strong>SAN-724:</strong> If a data parity error has occurred during DMA transfer, a DMA transfer error will be notified.</p>
+<h3 id="description-6">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to DMA transfer errors. The Nexteer design has this configured in the ECM to be an exception of type FENMI. The design notes the source of the error (for later use in the reset cause function), clears the ECM status registers and issues a software reset.</p>
+<h3 id="rationale-6">Rationale</h3>
+<p>N/A</p>
+<h3 id="implementation-6">Implementation</h3>
+<h4 id="event-driven-fenmidmatrf">Event Driven (FeNmiDmaTrf)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>DMASSDMACER</td>
+<td>Indicates the status of the two DMAC channels</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>// Indicate data for reset cause (Data0) and information on the responsible DMA channel (Data1)</p>
+<p>NxtrSwRstFromExcpn(McuDiagc1.MCUDIAGC_DMATRFERR, DMASSDMACER)</p>
+<h3 id="reference-4">Reference</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image12.wmf" style="width:5.99375in;height:5.28056in" /></p>
+<h3 id="verification-method-5">Verification Method</h3>
+<p>NA</p>
+<h2 id="sub-function-server-routine-fenmi-dma-access-violation-error">Sub-Function: Server Routine FENMI DMA Access Violation Error</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-7">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-7">SAN Linkage</h3>
+<p><strong>SAN-100:</strong> When the CPU makes an illegal access to the global DMA registers (e.g. access in user mode), then an access violation flag will be set in the related transfer module and an internal error signal will be propagated to the ECM to take the proper action.</p>
+<h3 id="description-7">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to DMA privileged access errors. The Nexteer design has this configured in the ECM to be an exception of type FENMI. The design notes the source of the error (for later use in the reset cause function), clears the ECM status registers and issues a software reset.</p>
+<h3 id="rationale-7">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ExcpnHndlgFeNmiDMAREGACSPROTECNERR is called from the MCU handler.</p>
+<p>In future versions of this document we may want to consider using the registers DM0CMV, DM1CMV and DTSCMV to provide more information when the fault is triggered. Note that these registers require supervisor mode to be accessed – note that the exceptions are already be in SV mode. Initial design will not include them.</p>
+<h3 id="implementation-7">Implementation</h3>
+<h4 id="event-driven-fenmidmaregacsprotnerr">Event Driven (FeNmiDmaRegAcsProtnErr)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>DMASSDMACER</td>
+<td>Indicates the status of the two DMAC channels</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>// Indicate data for reset cause (Data0) and information on the responsible DMA channel (Data1)</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_DMAREGACSPROTECNERR, DMASSDMACER)</p>
+<h3 id="reference-5">Reference</h3>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image12.wmf" style="width:5.99375in;height:5.28056in" /></p>
+<h3 id="verification-method-6">Verification Method</h3>
+<p>NA</p>
+<h2 id="sub-function-server-routine-fenmi-ecm-masterchecker-compare">Sub-Function: Server Routine FENMI ECM Master/Checker Compare</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-8">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-8">SAN Linkage</h3>
+<p><strong>SAN-656:</strong> If there is a mismatch between ECM master and checker an ECM compare error will be set in the ECMmESSTR0/1 register. In that case, the safe state shall be entered.</p>
+<p>When the compare unit has detected a comparison mismatch between the DMA Master and Checker, an error signal is propagated to the ECM to take the proper action<sup>6</sup>.</p>
+<p><sup>6</sup> User is required to set up the appropriate error response depending on the application.</p>
+<h3 id="description-8">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding errors in which the master and checker compare error. The Nexteer design has this configured in the ECM to be an exception of type FENMI. The design notes the source of the error (for later use in the reset cause function), clears the ECM status registers and issues a software reset.</p>
+<h3 id="rationale-8">Rationale</h3>
+<p>N/A</p>
+<h3 id="implementation-8">Implementation</h3>
+<h4 id="event-driven-fenmiecmmstchkrcmp">Event Driven (FeNmiEcmMstChkrCmp)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_ECMMSTCHKRERR, 0)</p>
+<h3 id="verification-method-7">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-fenmi-watchdog">Sub-Function: Server Routine FENMI Watchdog </h2>
+<h3 id="ntcs-9">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-9">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-9">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding internal watchdog failures. Note that the design is intended to use this server function to also sort to see if the timing failure can be further discriminated to a watchdog, program flow, alive monitor or a deadline monitor failure It is assumed that the MCU will provide the capability to allow Nexteer to select / direct unused features in the design to this routine.</p>
+<p>The Nexteer design has configured in the ECM to be an exception of type FENMI without a Reset. The design notes the source of the error (for later use in the reset cause function), clears the ECM status registers and issues a software reset.</p>
+<h3 id="rationale-9">Rationale</h3>
+<p>The SAN recommends a reset when using the ECM for watchdog failures. The Nexteer design will defeat the reset and replace the functionality with a software reset – this is to allow the capability to store parse the fault into watchdog, program flow, alive monitoring and deadline monitoring and provide more information for debug purposes. The ECM configuration as a reset would not allow this to be done.</p>
+<p>Note that the function FeNmiWdg is called from the MCU handler.</p>
+<h3 id="implementation-9">Implementation</h3>
+<h4 id="event-driven-fenmiwdg">Event Driven (FeNmiWdg)</h4>
+<p>Registers used</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 43%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><strong>Register</strong></td>
+<td rowspan="2"><strong>Use</strong></td>
+<td colspan="2"><strong>Register Access</strong></td>
+</tr>
+<tr class="even">
+<td><strong>SV</strong></td>
+<td><strong>UM</strong></td>
+</tr>
+<tr class="odd">
+<td>EntityStatusGRef (not a register, but key part of this design)</td>
+<td>This is a structure contained within the AutoSAR module that will provide the means to discriminate different failures that result in a watchdog timeout.</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p><u>Pseudo Code</u></p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FENMIWDG</p>
+<p><em>TmpData</em> = 0</p>
+<p>For Each SupervisedEntityID</p>
+<p>If (EntityStatusGRef🡪ProgramFlowViolationCnt != 0) Then // Program Flow</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FENMIPROGFLOW</p>
+<p><em>TmpData</em> = SupervisedEntityID</p>
+<p>End the For Loop</p>
+<p>ElseIf (EntityStatusGRef🡪FailedSupervisionRefCycles !=0) // Alive Monitor</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FENMIALVMONR</p>
+<p><em>TmpData</em> = SupervisedEntityID</p>
+<p>End the For Loop</p>
+<p>ElseIf (EntityStatusGRef🡪DeadlineViolationCnt !=0) // Deadline Monitor</p>
+<p><em>TmpSrc</em> = McuDiagc1.MCUDIAGC_FENMIDEADLINEMONR</p>
+<p><em>TmpData</em> = SupervisedEntityID</p>
+<p>End the For Loop</p>
+<p>Else</p>
+<p>End If</p>
+<p>End For</p>
+<p>// Store data for reset cause use and reset</p>
+<p>NxtrSwRstFromExcpn (<em>TmpSrc</em>, <em>TmpData</em>)</p>
+<h3 id="verification-method-8">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-0-runtime-lower-limit-fault"> Sub-Function: FENMI Clock Monitor 0 RunTime Lower Limit Fault</h2>
+<h3 id="ntcs-10">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-10">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-10">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 0 Runtime Lower Limit Failure.</p>
+<h3 id="rationale-10">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr0RtLowrLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-10">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr0rtlowrlimflt">Event Driven (FeNmiClkMonr0RtLowrLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR0RTLOWRLIMFLT, 0)</p>
+<h3 id="verification-method-9">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-0-runtime-upper-limit-fault">Sub-Function: FENMI Clock Monitor 0 RunTime Upper Limit Fault</h2>
+<h3 id="ntcs-11">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-11">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-11">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 0 Runtime Upper Limit Failure.</p>
+<h3 id="rationale-11">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr0RtUpprLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-11">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr0rtupperlimflt">Event Driven (FeNmiClkMonr0RtUpperLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR0RTUPPRLIMFLT, 0)</p>
+<h3 id="verification-method-10">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-1-runtime-lower-limit-fault">Sub-Function: FENMI Clock Monitor 1 RunTime Lower Limit Fault</h2>
+<h3 id="ntcs-12">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-12">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-12">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 1 Runtime Lower Limit Failure.</p>
+<h3 id="rationale-12">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr1RtLowrLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-12">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr1rtlowrlimflt">Event Driven (FeNmiClkMonr1RtLowrLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR1RTLOWRLIMFLT, 0)</p>
+<h3 id="verification-method-11">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-1-runtime-upper-limit-fault">Sub-Function: FENMI Clock Monitor 1 RunTime Upper Limit Fault</h2>
+<h3 id="ntcs-13">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-13">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-13">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 1 Runtime Upper Limit Failure.</p>
+<h3 id="rationale-13">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr1RtUpperLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-13">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr1rtupperlimflt">Event Driven (FeNmiClkMonr1RtUpperLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR1RTUPPRLIMFLT, 0)</p>
+<h3 id="verification-method-12">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-2-runtime-lower-limit-fault">Sub-Function: FENMI Clock Monitor 2 RunTime Lower Limit Fault</h2>
+<h3 id="ntcs-14">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-14">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-14">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 2 Runtime Lower Limit Failure.</p>
+<h3 id="rationale-14">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr2RtLowrLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-14">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr2rtlowrlimflt">Event Driven (FeNmiClkMonr2RtLowrLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR2RTLOWRLIMFLT, 0)</p>
+<h3 id="verification-method-13">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-2-runtime-upper-limit-fault">Sub-Function: FENMI Clock Monitor 2 RunTime Upper Limit Fault</h2>
+<h3 id="ntcs-15">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-15">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-15">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 2 Runtime Upper Limit Failure.</p>
+<h3 id="rationale-15">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr2RtUpperLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-15">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr2rtupperlimflt">Event Driven (FeNmiClkMonr2RtUpperLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR2RTUPPRLIMFLT, 0)</p>
+<h3 id="verification-method-14">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-3-runtime-lower-limit-fault">Sub-Function: FENMI Clock Monitor 3 RunTime Lower Limit Fault</h2>
+<h3 id="ntcs-16">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-16">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-16">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 3 Runtime Lower Limit Failure.</p>
+<h3 id="rationale-16">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr3RtLowrLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-16">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr3rtlowrlimflt">Event Driven (FeNmiClkMonr3RtLowrLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR3RTLOWRLIMFLT, 0)</p>
+<h3 id="verification-method-15">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-clock-monitor-3-runtime-upper-limit-fault">Sub-Function: FENMI Clock Monitor 3 RunTime Upper Limit Fault</h2>
+<h3 id="ntcs-17">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-17">SAN Linkage</h3>
+<p><strong>[SAN-P1x-1404]</strong></p>
+<p>In case an abnormal operation of the monitored clock is detected, an error signal will be generated to the</p>
+<p>ECM. In that case the MCU shall be entered into the safe state.</p>
+<h3 id="description-17">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Clock Monitor 3 Runtime Upper Limit Failure.</p>
+<h3 id="rationale-17">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<p>Note that the function ClkMonr3RtUpperLimFlt is called from the MCU handler.</p>
+<h3 id="implementation-17">Implementation</h3>
+<h4 id="event-driven-fenmiclkmonr3rtupperlimflt">Event Driven (FeNmiClkMonr3RtUpperLimFlt)</h4>
+<p><u>Pseudo Code</u></p>
+<p>// Identify reset cause and reset</p>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CLKMONR3RTUPPRLIMFLT, 0)</p>
+<h3 id="verification-method-16">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-operating-mode-error-single-chip-mode-inactive">Sub Function: FENMI Operating Mode Error Single Chip Mode Inactive</h2>
+<h3 id="ntcs-18">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-18">SAN Linkage</h3>
+<p><strong>[SAN-P1x-2503]</strong></p>
+<p>Unintended mode activation during run-time is notified to the ECM via a dedicated error signal. When the current operation mode is “Single Chip mode” and the internal signal which indicates Flash programming mode becomes valid, an internal error signal is propagated to the ECM becomes active (high). Similarly, when the internal signal which indicates that “Single Chip Mode” is deactivate, internal error signals are propagated to the ECM. In that case, transition to the safe state shall be performed [SAN-P1x-2503].</p>
+<h3 id="description-18">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Mode error (single-chip mode is inactive in single-chip mode)</p>
+<h3 id="rationale-18">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<h3 id="implementation-18">Implementation</h3>
+<h4 id="event-driven-fenmiopermoderrsngchipinactv">Event Driven (FeNmiOperModErrSngChipInactv)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_OPERMODERRSNGCHIPINACTV, 0)</p>
+<h3 id="verification-method-17">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-operating-mode-error-flash-programming-mode-is-started-in-single-chip-mode">Sub Function: FENMI Operating Mode Error Flash Programming Mode is Started in Single-Chip Mode</h2>
+<h3 id="ntcs-19">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-19">SAN Linkage</h3>
+<p><strong>[SAN-P1x-2503]</strong></p>
+<p>Unintended mode activation during run-time is notified to the ECM via a dedicated error signal. When the current operation mode is “Single Chip mode” and the internal signal which indicates Flash programming mode becomes valid, an internal error signal is propagated to the ECM becomes active (high). Similarly, when the internal signal which indicates that “Single Chip Mode” is deactivate, internal error signals are propagated to the ECM. In that case, transition to the safe state shall be performed [SAN-P1x-2503].</p>
+<h3 id="description-19">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Mode error (flash programming mode is started in single-chip mode)</p>
+<h3 id="rationale-19">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<h3 id="implementation-19">Implementation</h3>
+<h4 id="event-driven-fenmiopermoderrflsprogmmodstrtd">Event Driven (FeNmiOperModErrFlsProgmModStrtd)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_OPERMODERRFLSPROGMMODSTRTD, 0)</p>
+<h3 id="verification-method-18">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-fenmi-operating-mode-error-test-mode-started-in-single-chip-mode">Sub Function: FENMI Operating Mode Error Test Mode Started in Single Chip Mode</h2>
+<h3 id="ntcs-20">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-20">SAN Linkage</h3>
+<p><strong>[SAN-P1x-2503]</strong></p>
+<p>Unintended mode activation during run-time is notified to the ECM via a dedicated error signal. When the current operation mode is “Single Chip mode” and the internal signal which indicates Flash programming mode becomes valid, an internal error signal is propagated to the ECM becomes active (high). Similarly, when the internal signal which indicates that “Single Chip Mode” is deactivate, internal error signals are propagated to the ECM. In that case, transition to the safe state shall be performed [SAN-P1x-2503].</p>
+<h3 id="description-20">Description</h3>
+<p>This server routine is called from the MCU handler and is responsible for responding to Mode error (test mode is started in single-chip mode)</p>
+<h3 id="rationale-20">Rationale</h3>
+<p>FENMI Interrupts are used to represent serious failures within the microcontroller or it’s peripherals that are critical to the overall design. As a result, the Nexteer strategy is to indicate the fault type in backup memory (data retained through a software reset) and force a software reset where the reset type is then indicated and the fault is set (assuming the system can operate to that point).</p>
+<h3 id="implementation-20">Implementation</h3>
+<h4 id="event-driven-fenmiopermoderrtestmodstrtd">Event Driven (FeNmiOperModErrTestModStrtd)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_OPERMODERRTESTMODSTRTD, 0)</p>
+<h3 id="verification-method-19">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-process-unknown-exception-error">Sub Function: Server Routine Process Unknown Exception Error</h2>
+<h3 id="ntcs-21">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-21">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-21">Description</h3>
+<p>The Process Unknown Exception Error needs to be called when the OS detects an unknown exception.</p>
+<h3 id="rationale-21">Rationale</h3>
+<h3 id="implementation-21">Implementation</h3>
+<h4 id="event-driven-procukwnexcpnerr">Event Driven (ProcUkwnExcpnErr)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_UKWNEXCPN, McuDiagcData1_Arg)</p>
+<h3 id="verification-method-20">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-process-memory-protection-unit-exception-error">Sub-Function: Server Routine Process Memory Protection Unit Exception Error</h2>
+<h3 id="ntcs-22">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-22">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-22">Description</h3>
+<p>The Process Memory Protection Unit Exception Error needs to be called when the OS detects a memory protection violation.</p>
+<h3 id="rationale-22">Rationale</h3>
+<h3 id="implementation-22">Implementation</h3>
+<h4 id="event-driven-procmpuexcpnerr">Event Driven (ProcMpuExcpnErr)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_MPU, McuDiagcData1_Arg)</p>
+<h3 id="verification-method-21">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-process-privileged-instruction-exception-error">Sub-Function: Server Routine Process Privileged Instruction Exception Error</h2>
+<h3 id="ntcs-23">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-23">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-23">Description</h3>
+<p>The Process Privileged Instruction Exception Error needs to be called when the OS detects a protection violation.</p>
+<h3 id="rationale-23">Rationale</h3>
+<h3 id="implementation-23">Implementation</h3>
+<h4 id="event-driven-procprvlgdinstrexcpnerr">Event Driven (ProcPrvlgdInstrExcpnErr)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_PRVLGDINSTREXCPN, McuDiagcData1_Arg)</p>
+<h3 id="verification-method-22">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-process-permanent-os-error">Sub-Function: Server Routine Process Permanent Os Error</h2>
+<h3 id="ntcs-24">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-24">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-24">Description</h3>
+<p>The Process Permanent Os Error needs to be called when the OS detects a fatal, permanent failure.</p>
+<h3 id="rationale-24">Rationale</h3>
+<h3 id="implementation-24">Implementation</h3>
+<h4 id="event-driven-procprmntoserr">Event Driven (ProcPrmntOsErr)</h4>
+<p>// Perform software reset from exception and pass appropriate arguments</p>
+<p>NxtrSwRstFromExcpn(MCUDIAGC_PRMNTOSERR, McuDiagcData1_Arg)</p>
+<h3 id="verification-method-23">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-process-non-critical-os-error">Sub-Function: Server Routine Process Non Critical Os Error</h2>
+<h3 id="ntcs-25">NTCs</h3>
+<p>None – NTCs are addressed in section 4.29 (Reset Source)</p>
+<h3 id="san-linkage-25">SAN Linkage</h3>
+<p>None</p>
+<h3 id="description-25">Description</h3>
+<p>The Process Non Critical Os Error needs to be called when the OS detects a non-fatal failure.</p>
+<h3 id="rationale-25">Rationale</h3>
+<h3 id="implementation-25">Implementation</h3>
+<h4 id="event-driven-procnoncritoserr">Event Driven (ProcNonCritOsErr)</h4>
+<p>// Update error code variable that is polled in periodic function</p>
+<p>ExcpnHndlgOsErrCod_C = McuDiagcData1_Arg</p>
+<h3 id="verification-method-24">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h3 id="periodic-excpnhndlgper1">Periodic (ExcpnHndlgPer1)</h3>
+<p>** NOTE: variable ExcpnHndlgOsErrCod must reside in global shared memory **</p>
+<p>If (ExcpnHndlgOsErrCod != 0x0000) then</p>
+<p>// Set code for non-fatal OS error – Error Code is on the data ExcpnHndlgOsErrCod</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x031, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>End If</p>
+<h3 id="verification-method-25">Verification Method</h3>
+<p><strong>NA</strong></p>
+<h2 id="sub-function-server-routine-shutdown-hook">Sub-Function: Server Routine Shutdown Hook </h2>
+<p>Call EcuM_Shutdown()</p>
+<h2 id="sub-function-exception-handling-routine-eiint">Sub-Function: Exception Handling Routine EIINT</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<p>It is assumed that the MCU configuration will directly provide a client/server call to the necessary FDDs to accomplish their tasks. It would be redundant to place them within this document only to call out another document, so this is the chosen approach.</p>
+<p>Please refer to other microcontroller diagnostic FDDs to see their specific exception handler functionality.</p>
+<h2 id="sub-function-reset-source-determination">Sub-Function: Reset Source Determination</h2>
+<p>Return to sub-function list link: Sub-Functions In This Document</p>
+<h3 id="ntcs-26">NTCs</h3>
+<p>003.0 Code Flash ECC Single Bit (Hard Fault)</p>
+<p>003.1 Code Flash ECC Double Bit Detection</p>
+<p>003.2 Code Flash ECC Address Parity Fault</p>
+<p>010.0 MBIST Startup Test Failure</p>
+<p>013.0 Local RAM ECC Single Bit (Hard Fault)</p>
+<p>013.1 Local RAM ECC Double Bit (Hard Fault)</p>
+<p>013.2 Local RAM Address Fault</p>
+<p>016.1 DTS ECC Double Bit (Hard Fault)</p>
+<p>021.0 BIST Code ECC Failure</p>
+<p>021.2 LBIST Startup Test Failure</p>
+<p>021.4 BIST Not Complete</p>
+<p>021.5 CPU Lock Step Error Forcing Startup Test Failure</p>
+<p>021.6 DMA Lock Step Error Forcing Startup Test Failure</p>
+<p>022.0 Lock Step Compare Fault</p>
+<p>022.1 System VCIE Bit Error</p>
+<p>022.2 Reserved Instruction (Illegal Op Code) Fault</p>
+<p>022.3 Memory Misalignment - Read</p>
+<p>022.4 Memory Misalignment - Write</p>
+<p>022.5 Instruction Fetch Error</p>
+<p>022.6 FACI Reset Transfer Error</p>
+<p>023.2 CLMA 0 Runtime Lower Limit Fault</p>
+<p>023.3 CLMA 0 Runtime Upper Limit Fault</p>
+<p>023.6 CLMA 2 Runtime Lower Limit Fault</p>
+<p>023.7 CLMA 2 Runtime Upper Limit Fault</p>
+<p>024.0 Mode Error (Flash Programming Mode is Started in Single-Chip Mode)</p>
+<p>024.1 Mode Error (Test Mode Started in Single Chip Mode)</p>
+<p>024.2 Mode Error (Single Chip Mode Inactive in Single Chip Mode)</p>
+<p>025.0 MPU Violation (this convers MDP and MIP Exception)</p>
+<p>025.1 Privilege Instruction Execution</p>
+<p>026.0 ECM Status Bit Set Prior to ECM Init</p>
+<p>026.2 ECM Startup Master nERROR Output Control Fault</p>
+<p>026.3 ECM Startup Checker nERROR Output Control Fault</p>
+<p>026.7 ECM Runtime Master-Checker Compare Fault027</p>
+<p>027.2 CLMA 1 Runtime Lower Limit Fault</p>
+<p>027.3 CLMA 1 Runtime Upper Limit Fault</p>
+<p>027.6 CLMA 3 Runtime Lower Limit Fault</p>
+<p>027.7 CLMA 3 Runtime Upper Limit Fault</p>
+<p>028.1 FPU Invalid Operation (V Bit)</p>
+<p>028.2 FPU Divide by Zero (Z Bit)</p>
+<p>028.3 FPUOverflow (O Bit)</p>
+<p>028.4 FPU Unknown Error</p>
+<p>029.0 Unknown Reset Reason</p>
+<p>029.1 Unknown ECM Reset Reason</p>
+<p>029.4 Unknown Software Reset</p>
+<p>029.5 Failed Backup RAM Read Write Test</p>
+<p>029.6 FBL Pre-OS Startup Exception</p>
+<p>029.7 Corrupt Start up / Reset Information</p>
+<p>02A.0 Program Flow</p>
+<p>02A.1 Deadline Monitoring</p>
+<p>02A.2 Alive Monitoring</p>
+<p>02C.0 Watchdog Timeout</p>
+<p>02D.1 PEG Runtime Fault</p>
+<p>02D.3 IPG RunTime Fault</p>
+<p>02D.4 PBG (Peripheral Guard) Startup Test Failure</p>
+<p>02D.5 PBG Runtime Fault</p>
+<p>02F.0 External Debug Device Connected</p>
+<p>030.0 Operating System Fatal Fault</p>
+<p>030.1 Unhandled Exception</p>
+<p>031.0 Operating System Non-Fatal Fault</p>
+<p>036.0 DMA Transfer Error</p>
+<p>036.1 DMA Register Access Protection Violation</p>
+<p>037.6 P-Bus Data Parity Fault Startup Test Failure</p>
+<p>037.7 P Bus Data Parity Runtime Fault</p>
+<p>048.0 CVM Over Voltage Startup Test Failure</p>
+<p>048.1 CVM Under Voltage Startup Test Failure</p>
+<p>049.0 Internal CVM Over Voltage Monitor Fault</p>
+<p>049.1 Internal CVM Under Voltage Monitor Fault</p>
+<p>049.7 External Over Voltage Monitor Fault</p>
+<h3 id="san-linkage-26">SAN Linkage</h3>
+<p><strong>SAN-621:</strong> Upon detection of under/overvoltage of the core power supply, the signal at the CVMOUT pin changes its state to low and a dedicated flag will be set in the CVMF register. It is also possible to generate a reset if the software has enabled it. In that case, transition the MCU into the safe state <strong>shall</strong> be entered.</p>
+<p><strong>SAN-1024:</strong> As the usage of backup registers is strongly application dependents, the user should judge whether or not to apply the proposed write verify check. Moreover, if the data retained in the back-up register will be frequently used in the safety related application, then the contain should be moved to LRAM as it is protected by ECC and thus provide a high fault coverage.</p>
+<p><strong>SAN-1094:</strong> As the usage of backup registers is strongly application dependents, the user should judge whether or not to apply the proposed write verify check. Moreover, if the data retained in the back-up register will be frequently used in the safety related application, then the contain should be moved to LRAM as it is protected by ECC and thus provide a high fault coverage.</p>
+<p><strong>SAN-1096:</strong> Detected failures during the execution of the test shall be handled at application level.</p>
+<h3 id="description-26">Description</h3>
+<p>This function processes information from pre-OS tests and resets to determine the cause of anything unexpected and log the correct Nexteer Trouble Code. Backup RAM data is used to provide this information to the function.</p>
+<h3 id="rationale-26">Rationale</h3>
+<p>In order to log Nexteer Trouble Code information, the Diagnostic Manager must be initialized prior to setting or clearing NTCs.</p>
+<h3 id="implementation-26">Implementation</h3>
+<h4 id="initialization-excpnhndlginit2">Initialization (ExcpnHndlgInit2)</h4>
+<p>SetNtcSts(NtcNr1.NTCNR_0x003, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x010, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x013, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x016, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x021, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x023, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x024, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x025, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x026, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x027, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x028, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02A, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02C, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02D, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02F, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x030, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x031, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x036, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x037, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x048, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x049, 0, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>// Confirm state of backup data is valid</p>
+<p>If (((BRAMDAT0 &amp; 0xFFFF 0000) &gt;&gt; 16) XOR (BRAMDAT0 &amp; 0x0000 FFFF)) != 0x0000 FFFF) Then</p>
+<p>// Set fault – BRAMDAT0 data is corrupt and cannot be trusted</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 128, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Else If ((BRAMDAT0 = McuDiagc1.MCUDIAGC_PWRONRST) OR (BRAMDAT0 = McuDiagc1.MCUDIAGC_FLSPROGMCMPL) OR (BRAMDAT0 = McuDiagc1.MCUDIAGC_HARDRST) OR (BRAMDAT0 = McuDiagc1.MCUDIAGC_SOFTRST)) Then</p>
+<p>// No checks needed – normal power on start up or flash programming event or soft/hard reset</p>
+<p>Else If ((SYSBSEQ0ST.DEBUGMODE = 1) AND (SYSBSEQ0STB. DEBUGMODEB = 0))</p>
+<p>// No checks needed in debug mode</p>
+<p>Else If (BRAMDAT0 = McuDiagc1.MCUDIAGC_ECMRST)</p>
+<p>ProcEcmRst() // Reset from ECM</p>
+<p>ElseIf (BRAMDAT0 = McuDiagc1.MCUDIAGC_PINRST)</p>
+<p>ProcPinRst() // Reset from External Pin (Power Supply)</p>
+<p>ElseIf (BRAMDAT0 = McuDiagc1.MCUDIAGC_COREVLTGMONRHI) // Overvoltage internal to uC</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x049, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>ElseIf (BRAMDAT0 = McuDiagc1.MCUDIAGC_COREVLTGMONRLO) // Low voltage internal to uC</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x049, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Else</p>
+<p>ProcStrtUpOrSwRst() // Check for start-up, non-reset faults</p>
+<p>End If</p>
+<h4 id="functioncall-procecmrst">FunctionCall ProcEcmRst</h4>
+<p>//Check for lock step fault in either core</p>
+<p>// By design, lock step is the only ECM fault resulting in a reset - confirm</p>
+<p>If ((ECMMSSE001 = 1) or (ECMCSSE001 = 1)) Then</p>
+<p>// Set lock step fault</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Else</p>
+<p>// Set unknown ECM reset fault</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>End If</p>
+<p>// Clear all the bits of ECMmESSTR0</p>
+<p>ECMESSTC0_Desired = 0xFDFF DFF3;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC0_Desired, Address of ECMESSTC0);</p>
+<p>// Clear all the bits of ECMmESSTR1</p>
+<p>ECMESSTC1_Desired = 0x6000 07F7;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC1_Desired, Address of ECMESSTC1);</p>
+<h4 id="functioncall-procstrtuporswrst">FunctionCall ProcStrtUpOrSwRst</h4>
+<p>Switch: BRAMDAT0</p>
+<p>// Pre-OS failures, (non-sw reset)</p>
+<blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_MEMBISTERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x010, 1, NtcSts1.NTCSTS_FAILD, 0) // MBIST Proof</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_BISTECCERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x021, 1, NtcSts1.NTCSTS_FAILD, 0) //BIST 2 bit ECC</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_LOGLBISTERR</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x021, 4, NtcSts1.NTCSTS_FAILD, 0) //LBIST Proof</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_BISTNOTCMPLERR</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x021, 16, NtcSts1.NTCSTS_FAILD, 0) //BIST not complete</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CPULOCKSTEPERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x021, 32, NtcSts1.NTCSTS_FAILD, 0) //CPU Lock Step Proof</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_DMALOCKSTEPERR</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x021, 64, NtcSts1.NTCSTS_FAILD, 0) //DMA Lock Step Proof</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1. MCUDIAGC_ECMSTSSTRTUPFLT</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x026, 1, NtcSts1.NTCSTS_FAILD, 0) // ECM Status Prob</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_MSTERROUTPCTRLFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x026, 4, NtcSts1.NTCSTS_FAILD, 0) //Master Control Proof</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_CHKRERROUTPCTRLFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x026, 8, NtcSts1.NTCSTS_FAILD, 0) //Checker Control Proof</p>
+<p>Break</p>
+<p>Case: McuDiagc1. MCUDIAGC_BACKUPRAMTSTFAILR</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 32, NtcSts1.NTCSTS_FAILD, 0) //Back-Up Test Fail</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_PREOSEXCPN</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 64, NtcSts1.NTCSTS_FAILD, 0) //Pre-OS Exception</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_STRTUPCOREVLTGMONROVER</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x048, 1, NtcSts1.NTCSTS_FAILD, 0) //CVM OV Proof</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_STRTUPCOREVLTGMONRUNDER</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x048, 2, NtcSts1.NTCSTS_FAILD, 0) //CVM UV Proof</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_PBGSTRTUPTST</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02D, 16, NtcSts1.NTCSTS_FAILD, 0) //PBG (Peripheral Guard) Startup Test Failure</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_PRPHLBUSDATAPARSTRTUPFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x037, 64, NtcSts1.NTCSTS_FAILD, 0) // P-Bus Data Parity Fault Startup Test Failure</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_RSTUKWN</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 1, NtcSts1.NTCSTS_FAILD, 0) // Unknown Rst to FBL</p>
+<p>Break</p>
+<p>// Software Resets</p>
+<p>Case: McuDiagc1.MCUDIAGC_DBGRST</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02F, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_CODFLSSNGBITHARDFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x003, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_CODFLSDBLBIT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x003, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: MCUDIAGC_PRPHLBUSDATAPAR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x037, 128, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_ADRPAR</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x003, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1. MCUDIAGC_LCLRAMECCSNGBITHARDFAILR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x013, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_LCLRAMDBLBIT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x013, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_INVLDRAMAREA</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x013, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_DTSDBLBIT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x016, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_SPIRAMDBLBIT0</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x017, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_SPIRAMDBLBIT1</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x018, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_SPIRAMDBLBIT2</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x019, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_SPIRAMDBLBIT3</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x01A, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_VCIE</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_RESDOPER</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_ALGNREAD</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 8, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_ALGNWR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 16, NtcSts1.NTCSTS_FAILD, 0)</p>
+<blockquote>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_INSTRFETCH</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 32, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_FACIRSTTRFERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x022, 64, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_OPERMODERRFLSPROGMMODSTRTD</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x024, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_OPERMODERRTESTMODSTRTD</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x024, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_OPERMODERRSNGCHIPINACTV</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x024, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_ MPU</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x025, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_ PRVLGDINSTREXCPN</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x025, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_ ECMMSTCHKRERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x026, 128, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_FPUERRINVLDOPER</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x028, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_FPUERRDIVBYZERO</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x028, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_FPUERROVF</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x028, 8, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_FPUERRUKWN</p>
+<blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x028, 16, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+</blockquote>
+<p>Case: McuDiagc1.MCUDIAGC_FENMIPROGFLOW</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02A, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_FENMIDEADLINEMONR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02A, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_FENMIALVMONR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02A, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_FENMIWDG</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02C, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR0RTLOWRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x023, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR0RTUPPRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x023, 8, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR1RTLOWRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x027, 4, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR1RTUPPRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x027, 8, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR2RTLOWRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x023, 64, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR2RTUPPRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x023, 128, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR3RTLOWRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x027, 64, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_CLKMONR3RTUPPRLIMFLT</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x027, 128, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_PROCRELMGUARD</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02D, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_INTPRPHLGUARD</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02D, 8, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_PRPHLBUSGUARD</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x02D, 32, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_PRMNTOSERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x030, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_UKWNEXCPN</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x030, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_DMATRFERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x036, 1, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Case: McuDiagc1.MCUDIAGC_DMAREGACSPROTECNERR</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x036, 2, NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>Break</p>
+<p>Default:</p>
+<p>SetNtcSts(NtcNr1.NTCNR_0x029, 16, NtcSts1.NTCSTS_FAILD, 0) // unknown SW Reset</p>
+<p>Break</p>
+<p>End Switch</p>
+<h4 id="functioncall-procpinrst">FunctionCall ProcPinRst</h4>
+<p>SetNtcSts(NtcNr1.NTCNR_0x049, 128, NtcSts1.NTCSTS_FAILD, 0) // External Pin Reset</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image13.wmf" style="width:5.99722in;height:3.4125in" /></p>
+<h3 id="verification-method-26">Verification Method</h3>
+<p>NA</p>
+<h1 id="special-functions">Special Functions</h1>
+<p>For this design, some special functions are used to identify the first failure of data and respond. Once data is changed from its known, good states (power on reset or flash programming complete) the BRAMDAT0 will not be updated until a valid power up process occurs or a flash program event is requested.</p>
+<p>Data 1 is ONLY updated by the reset cause in the case of a back-up register corruption. This is done to not “lose” data following an NTC event.</p>
+<p>// SetMcuDiagcIdnData(Microcontroller Diagnostic Identification Data)</p>
+<p>SetMcuDiagcIdnData (McuDiagcData0, McuDiagcData1)</p>
+<blockquote>
+<p>// Update data if different from PwrOnRst or FlsProgmCmpl – OR if flash prog is requested</p>
+<p>If ((BRAMDAT0 = McuDiagc1.MCUDIAGC_FLSPROGMREQ) OR</p>
+<p>(BRAMDAT0 = McuDiagc1.MCUDIAGC_PWRONRST) OR</p>
+<p>(BRAMDAT0 = McuDiagc1.MCUDIAGC_DBGRST) OR</p>
+<p>(BRAMDAT0 = McuDiagc1.MCUDIAGC_FLSPROGMCMPL) OR (BRAMDAT0 = McuDiagc1.MCUDIAGC_HARDRST) OR (BRAMDAT0 = McuDiagc1.MCUDIAGC_SOFTRST)) Then</p>
+<p>BRAMDAT0 = McuDiagcData0</p>
+<p>BRAMDAT1 = McuDiagcData1</p>
+<p>End If</p>
+</blockquote>
+<p>Done</p>
+<p>‘ChkForStrtUpTest’ function is used to check if a startup test has to be performed or not.</p>
+<p>The point of this test is to avoid getting into continuous reset loops due to some faults getting set. We perform start up tests on only those kinds of resets which are not a result of faults being set. When a reset causing fault occurs, we’d only want to reset the controller and move to a safe state. Therefore, we only run start up tests only when we come out of a Power On Reset, or when the Flash Programming is Complete or when we received reset commands from Serial Communication such as Soft Reset and Hard Reset.</p>
+<p>ChkForStrtUpTest (P2VAR ExecStrtUpTest)</p>
+<p>{</p>
+<p>If ((BRAMDAT0 = McuDiagc1.MCUDIAGC_PWRONRST) OR </p>
+<p>(BRAMDAT0 = McuDiagc1.MCUDIAGC_FLSPROGMCMPL) OR </p>
+<p>(BRAMDAT0 = McuDiagc1.MCUDIAGC_HARDRST) OR </p>
+<p>(BRAMDAT0 = McuDiagc1.MCUDIAGC_SOFTRST))</p>
+<p>{</p>
+<blockquote>
+<p>*ExecStrtUpTest = TRUE;</p>
+</blockquote>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<blockquote>
+<p>*ExecStrtUpTest = FALSE;</p>
+</blockquote>
+<p>}</p>
+<p>}</p>
+<h1 id="revision-record-change-approval">Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 57%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>1.0.0</td>
+<td>10/20/2015</td>
+<td>EA4#1831</td>
+<td>MK</td>
+<td>Initial Release</td>
+</tr>
+<tr class="odd">
+<td>1.1.0</td>
+<td>11/19/2015</td>
+<td>EA4#2536</td>
+<td>SK</td>
+<td>Removed CVMREN Initialization. Refer Anomaly EA4#2522</td>
+</tr>
+<tr class="even">
+<td>1.2.0</td>
+<td>01/08/16</td>
+<td>EA4#3186</td>
+<td>LWW</td>
+<td>Replaced Os Protection and Error Hook</td>
+</tr>
+<tr class="odd">
+<td>2.0.0</td>
+<td>01/21/2016</td>
+<td>EA4#3413</td>
+<td>SK</td>
+<td>Added Clock Monitor FE, Soft Reset, Hard Reset conditions, P Bus Data Parity Check</td>
+</tr>
+<tr class="even">
+<td>2.1.0</td>
+<td>02/08/2016</td>
+<td>EA4#3729</td>
+<td>SK</td>
+<td>Updated SAN section for DTS 2Bit ECC, ECM Master/Checker Compare, Added Start Up Test for P Bus and PBG Start up test, Added function ChkForStrtUpTest </td>
+</tr>
+<tr class="odd">
+<td>2.1.1</td>
+<td>02/12/2016</td>
+<td>EA4#3847</td>
+<td>SK</td>
+<td>Corrected parameter bit for NTC of PBGSTRTUPTST, Update Clock Monitors FENMI ISR for typos.</td>
+</tr>
+<tr class="even">
+<td>2.2.0</td>
+<td>03/17/2016</td>
+<td>EA4#4519</td>
+<td>SK</td>
+<td>Removed DTS Double RAM FENMI Section and added the DTS Double RAM ECC as a part of SYSERR</td>
+</tr>
+<tr class="odd">
+<td>3.0.0</td>
+<td>03/29/2016</td>
+<td>EA4#4863</td>
+<td>GM</td>
+<td><p>Added new MCUDIAGC_INVLDRAMAREA, MCUDIAGC_FACIRSTTRFERR, MCUDIAGC_SNGCHIPINACTV, MCUDIAGC_CODFLSECCSNGBITERR, MCUDIAGC_DBGRST</p>
+<p>Added new NTC 013.2, 022.6 and 02F.0</p>
+<p>Removed SPI double bit ECC faults (added to CM103A)</p>
+<p>NTC 021.0 name changed from BIST Code 2-bit ECC Failure to 021.0 BIST Code ECC Failure</p></td>
+</tr>
+<tr class="even">
+<td>3.0.1</td>
+<td>04/07/2016</td>
+<td>EA4#5184</td>
+<td>GM</td>
+<td><p>Add NTC 13.2 to NTC list in section 4.29.1</p>
+<p>Add NTC 02F.0 to NTC list in section 4.29.1</p>
+<p>Change NTC 025.0 description to MPU Violation (this convers MDP and MIP Exception) from Data Protection Violation (MDP Exception) in section 4.29.1</p>
+<p>Change NTC 025.1 description to Privilege Instruction Execution from Execution Protection Violation (MIP Exception) in section 4.29.1</p></td>
+</tr>
+</tbody>
+</table>

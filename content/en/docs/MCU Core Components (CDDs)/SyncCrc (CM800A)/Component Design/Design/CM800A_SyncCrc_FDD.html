@@ -1,0 +1,754 @@
+---
+title: CM800A_SyncCrc_FDD
+linkTitle: CM800A_SyncCrc_FDD
+weight: 2
+---
+
+<p><strong>Synchronous Cyclic Redundancy Check</strong></p>
+<p><strong>FDD #CM-800A</strong></p>
+<p><a href="#high-level-description">1. High Level Description <span>3</span></a></p>
+<p><a href="#derived-requirements">2. Derived Requirements <span>3</span></a></p>
+<p><a href="#sub-function-data-flow">3. Sub-Function Data Flow <span>3</span></a></p>
+<p><a href="#design-rationale">4. Design Rationale <span>3</span></a></p>
+<p><a href="#sub-functions">5. Sub-Functions <span>4</span></a></p>
+<p><a href="#management-of-crc-hardware-units">5.1. Management of CRC Hardware Units <span>4</span></a></p>
+<p><a href="#initialization-of-management-ram-synccrcinit0">5.1.1. Initialization of Management RAM (SyncCrcInit0) <span>5</span></a></p>
+<p><a href="#rte-initialization-synccrcinit1">5.1.2. RTE Initialization (SyncCrcInit1) <span>5</span></a></p>
+<p><a href="#sub-function-relscrchwunit">5.1.3. Sub-Function: RelsCrcHwUnit <span>5</span></a></p>
+<p><a href="#sub-function-getavlcrchwunit">5.1.4. Sub-Function: GetAvlCrcHwUnit <span>6</span></a></p>
+<p><a href="#sub-function-resvcrchwunit">5.1.5. Sub-Function: ResvCrcHwUnit <span>7</span></a></p>
+<p><a href="#synccrc-api-functions">5.2. SyncCrc API Functions <span>9</span></a></p>
+<p><a href="#sub-function-32-bit-ethernet-crc">5.2.1. Sub-Function: 32-Bit Ethernet CRC <span>10</span></a></p>
+<p><a href="#hardware-related-design">5.2.1.1. Hardware Related Design <span>10</span></a></p>
+<p><a href="#software-related-design">5.2.1.2. Software Related Design <span>10</span></a></p>
+<p><a href="#calc32bitcrc_u08">5.2.1.2.1. Calc32BitCrc_u08 <span>10</span></a></p>
+<p><a href="#calc32bitcrc_u16">5.2.1.2.2. Calc32BitCrc_u16 <span>11</span></a></p>
+<p><a href="#calc32bitcrc_u32">5.2.1.2.3. Calc32BitCrc_u32 <span>11</span></a></p>
+<p><a href="#sub-function-16-bit-crc">5.2.2. Sub-Function: 16-Bit CRC <span>12</span></a></p>
+<p><a href="#hardware-related-design-1">5.2.2.1. Hardware Related Design <span>12</span></a></p>
+<p><a href="#software-related-design-1">5.2.2.2. Software Related Design <span>12</span></a></p>
+<p><a href="#calc16bitcrc_u08">5.2.2.2.1. Calc16BitCrc_u08 <span>12</span></a></p>
+<p><a href="#calc16bitcrc_u16">5.2.2.2.2. Calc16BitCrc_u16 <span>12</span></a></p>
+<p><a href="#sub-function-8-bit-sae-j1850-crc">5.2.3. Sub-Function: 8-Bit SAE-J1850 CRC <span>13</span></a></p>
+<p><a href="#hardware-related-design-2">5.2.3.1. Hardware Related Design <span>13</span></a></p>
+<p><a href="#software-related-design-2">5.2.3.2. Software Related Design <span>13</span></a></p>
+<p><a href="#calc8bitcrc">5.2.3.2.1. Calc8BitCrc <span>13</span></a></p>
+<p><a href="#sub-function-8-bit-0x2f-crc">5.2.4. Sub-Function: 8-Bit 0x2F CRC <span>14</span></a></p>
+<p><a href="#hardware-related-design-3">5.2.4.1. Hardware Related Design <span>14</span></a></p>
+<p><a href="#software-related-design-3">5.2.4.2. Software Related Design <span>14</span></a></p>
+<p><a href="#calc8bitcrc0x2f">5.2.4.2.1. Calc8BitCrc0X2F <span>14</span></a></p>
+<p><a href="#sub-function-autosar-api-wrapper">5.3. Sub-Function: AUTOSAR API Wrapper <span>15</span></a></p>
+<p><a href="#sub-function-crc_calculatecrc32">5.3.1. Sub-Function: Crc_CalculateCRC32 <span>15</span></a></p>
+<p><a href="#sub-function-crc_calculatecrc16">5.3.2. Sub-Function: Crc_CalculateCRC16 <span>15</span></a></p>
+<p><a href="#sub-function-crc_calculatecrc8">5.3.3. Sub-Function: Crc_CalculateCRC8 <span>15</span></a></p>
+<p><a href="#sub-function-crc_calculatecrc8h2f">5.3.4. Sub-Function: Crc_CalculateCRC8H2F <span>15</span></a></p>
+<p><a href="#timing-execution-constraints">6. Timing / Execution Constraints <span>16</span></a></p>
+<p><a href="#rationale-comments">6.1. Rationale / Comments <span>16</span></a></p>
+<p><a href="#rates-and-state-execution">6.2. Rates and State Execution <span>16</span></a></p>
+<p><a href="#serial-communications-interfaces">7. Serial Communications Interfaces <span>16</span></a></p>
+<p><a href="#additional-information">8. Additional Information <span>16</span></a></p>
+<p><a href="#revision-record-change-approval">9. Revision Record &amp; Change Approval <span>17</span></a></p>
+<h1 id="high-level-description"><br />
+High Level Description</h1>
+<p>This document describes the design of the application programming interface (API) to allow application software components (SWCs) to interact with the cyclic redundancy check (CRC) hardware peripheral included in the microcontroller in EA4 hardware.</p>
+<h1 id="derived-requirements">Derived Requirements</h1>
+<p>N/A</p>
+<h1 id="sub-function-data-flow"> Sub-Function Data Flow</h1>
+<p>The follow block diagram depicts how the data flow inside the microcontroller CRC peripheral.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.png" style="width:6in;height:3.52743in" /></p>
+<h1 id="design-rationale"> Design Rationale</h1>
+<p>The design of the API was intended to meet the AUTOSAR CRC API definition as closely as possible. This allows the software configuration to utilize the hardware instead of using software libraries to save on throughput for software calculations. While the direct API does not match the AUTOSAR API definitions, wrapper functions are included to interface with components using the AUTOSAR API with the SyncCRC API.</p>
+<h1 id="sub-functions">Sub-Functions</h1>
+<h2 id="management-of-crc-hardware-units">Management of CRC Hardware Units</h2>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_48, CM800A_49, CM800A_50, CM800A_67, CM800A_68, CM800A_69, CM800A_70, CM800A_81</strong></em></p>
+<p>The software implementation shall provide a mechanism to utilize one of the CRC hardware units for a synchronous CRC calculation from a software component calling one of the API functions. Upon completion of the job, the software shall release the hardware unit to be available by another software component. This management shall be implemented by a RAM table that has holds the task ID and the of the CRC hardware index. No periodic function is required to manage the RAM since the calculations are synchronous, released at the end of the API call, or permanently reserved. Furthermore, each API function will update the RAM after the job has been completed.</p>
+<p>The implementation shall also provide a way to reserve one or more units to dedicate to a particular function if a program requires. The reservation shall be done by the pre-compile configuration or by a function call. The pre-compile configuration shall provide a permanent reservation of the CRC hardware unit. The reservation shall start from the highest hardware index. Any hardware CRC unit that is permanently reserved shall not be used by the SyncCRC API or a temporary reservation of a hardware CRC unit and should be considered as not enabled or available.</p>
+<p>The function call shall provide a temporary allocation of one of the available, non-permanently reserved, CRC hardware units. This CRC hardware unit shall be reserved until the calling function releases it. The details of this function are described later in this document.</p>
+<p>The management shall also provide protection from preemption of higher priority tasks by utilizing the OS task ID of the calling function as an authority to use that CRC hardware unit.</p>
+<p>An example of the RAM table is shown below. Hardware index 0 is temporarily reserved. Hardware index 1 is assigned to task ID 2 until the calculation has completed. Index 2 is available for the next caller. Hardware index 3 is permanently reserved and not available to software applications invoking the API, but is be available to a dedicated source if required by the program.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.emf" /></p>
+<h3 id="initialization-of-management-ram-synccrcinit0"><br />
+Initialization of Management RAM (SyncCrcInit0)</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_71, CM800A_50</strong></em></p>
+<p>The RAM shall be initialized according to the following pseudo code. This allows the pre-compile configuration to block access to the CRC hardware units that are not available to the application software components. In order for this to be effective, the initialization is required to be scheduled before any software components invoke the API. This function shall be called from outside of the RTE during “cold init.”</p>
+<p>For each CRC Hardware Unit:</p>
+<p>CrcHwSts[HwUnit].TaskId = Invalid Task ID</p>
+<p>If HwIdx &lt; Number of Active Hardware Units:</p>
+<p>CrcHwSts[HwUnit].CrcHwSts = Available</p>
+<p>Else:</p>
+<p>CrcHwSts[HwUnit].CrcHwSts = Crc Not Enabled</p>
+<p>End If</p>
+<p>End For Loop</p>
+<h3 id="rte-initialization-synccrcinit1">RTE Initialization (SyncCrcInit1)</h3>
+<p>This function stub is required to properly place the SyncCrc component within the correct application within a program. This function is called by the RTE during initialization.</p>
+<h3 id="sub-function-relscrchwunit">Sub-Function: RelsCrcHwUnit</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_48</strong></em></p>
+<p>This sub-function shall be used by the API to release a CRC hardware unit. This shall be called after the CRC calculation is complete for any of the API functions calls. The operation of the function shall meet the following pseudo code.</p>
+<p>Function Inputs:</p>
+<p>CrcHwIdx := This value represents which hardware index the action should go against.</p>
+<p>Function Outputs:</p>
+<p>Void</p>
+<p>Function:</p>
+<p>CrcHwSts[CrcHwIdx].TaskId = Invalid Task ID</p>
+<p>CrcHwSts[CrcHwIdx].CrcHwSts = Available</p>
+<h3 id="sub-function-getavlcrchwunit">Sub-Function: GetAvlCrcHwUnit</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_48, CM800A_67, CM800A_81</strong></em></p>
+<p>This sub-function shall be used by the API to allocate a CRC hardware unit for the caller. This shall be called at the start of any of the CRC API functions calls. The operation of the function shall meet the following pseudo code. The ReserveTaskId is a set of four (4) known values that will be used for the task ID of a hardware unit that is temporarily reserved.</p>
+<p>Function Inputs:</p>
+<p>ResvCrcCall := Input to decide if the call is for a Crc unit reservation or a standard synchronous</p>
+<p>calculation.</p>
+<p>Function Outputs:</p>
+<p>Void</p>
+<p>Function:</p>
+<p>GetTaskId(TaskId)</p>
+<p>EnterExclusiveArea()</p>
+<p>For each Active CRC Hardware Unit:</p>
+<p>If CrcHwIdxSts == Available:</p>
+<p>If ResvCrcCall == False:</p>
+<blockquote>
+<p>CrcHwSts[CrcHwIdx].CrcHwSts = Busy</p>
+</blockquote>
+<p>CrcHwSts[CrcHwIdx].TaskId = TaskId</p>
+<blockquote>
+<p>Else:</p>
+<p>CrcHwSts[CrcHwIdx].CrcHwSts = Reserve</p>
+</blockquote>
+<p>CrcHwSts[CrcHwIdx].TaskId = ReserveTaskId[CrcHwIdx]</p>
+<blockquote>
+<p>End If</p>
+<p>Break For Loop</p>
+</blockquote>
+<p>End If</p>
+<p>End For Loop</p>
+<p>ExitExclusiveArea()</p>
+<h3 id="sub-function-resvcrchwunit">Sub-Function: ResvCrcHwUnit</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_48, CM800A_67, CM800A_68, CM800A_70</strong></em></p>
+<p>This function shall allow components to reserve a single hardware unit to compute a larger CRC utilizing hardware features, such as DMA. The function shall temporarily reserve the hardware unit until released by the component. A reservation key will be provided when an index is reserved. This key will need to be stored in the caller’s RAM as it is used to determine which hardware index to release when called.</p>
+<p>Pseudo code notes:</p>
+<ul>
+<li><p>The function CrcRegConfig() is not a function</p>
+<ul>
+<li><p>It represents setting the DCRA register sections ISZ and POL, and setting COUT to the StartValue to meet the desired CRC calculation as desired by CrcConfg.</p></li>
+</ul></li>
+<li><p>LoopCrcHwIdxInReg and LoopCrcHwIdxOutReg are the CIN and COUT for each of the CRC hardware units.</p></li>
+</ul>
+<p>Function Inputs:</p>
+<p>In: Mode := 1= CRCHWRESVMOD_RESV, 0= CRCHWRESVMOD_RELS</p>
+<p>In: CrcConfig := See table below</p>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 12%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Enumeration</th>
+<th>CrcConfig (Enum Value)</th>
+<th>DCRAnISZ</th>
+<th>DCRAnPOL</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CRCHWRESVCFG_32BITCRC32BITWIDTH</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>32-Bit CRC / 32-Bit Access Width</td>
+</tr>
+<tr class="even">
+<td>CRCHWRESVCFG_32BITCRC16BITWIDTH</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>32-Bit CRC / 16-Bit Access Width</td>
+</tr>
+<tr class="odd">
+<td>CRCHWRESVCFG_32BITCRC8BITWIDTH</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>32-Bit CRC / 8-Bit Access Width</td>
+</tr>
+<tr class="even">
+<td>CRCHWRESVCFG_16BITCRC16BITWIDTH</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>16-Bit CRC / 16-Bit Access Width</td>
+</tr>
+<tr class="odd">
+<td>CRCHWRESVCFG_16BITCRC8BITWIDTH</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>16-Bit CRC / 8-Bit Access Width</td>
+</tr>
+<tr class="even">
+<td>CRCHWRESVCFG_8BITCRC</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>8-Bit CRC / 8-Bit Access Width (SAE-J 1850)</td>
+</tr>
+<tr class="odd">
+<td>CRCHWRESVCFG_8BITCRCH2F</td>
+<td>6</td>
+<td>3</td>
+<td>2</td>
+<td>8-Bit CRC / 8-Bit Access Width (Polynomial 0x2F)</td>
+</tr>
+</tbody>
+</table>
+<p>Out: CrcHwIdxInReg</p>
+<p>Out: CrcHwIdxOutReg</p>
+<p>In: StartValue</p>
+<p>In/Out: ResvKey</p>
+<p>Function Outputs:</p>
+<p>Standard Return</p>
+<ul>
+<li><p>OK = Successful reservation.</p></li>
+<li><p>NOT_OK = Reservation failed, CRC not configured.</p></li>
+</ul>
+<p>Function:</p>
+<p>FuncReturn = NOT_OK</p>
+<p>If Mode == Reserve and CrcConfig &lt; 7:</p>
+<blockquote>
+<p>For each Active CRC Hardware Unit:</p>
+<p>If CrcHwIdxSts == Available:</p>
+<p>GetAvlCrcHwUnit(TRUE)</p>
+<p>ResvKey = ReserveTaskId[CrcHwLoopIdx]</p>
+<p>CrcResvd = TRUE</p>
+<p>CrcHwIdx = CrcHwLoopIdx</p>
+<p>Break For Loop</p>
+<p>End If</p>
+<p>End For Loop</p>
+<p>If (CrcResvd == TRUE):</p>
+<p>CrcRegConfig(CrcConfig, StartValue)</p>
+<p>CrcHwIdxInReg = Address of Selected Index Input Register</p>
+<p>CrcHwIdxOutReg = Address of Selected Output Register</p>
+<p>FuncReturn = OK</p>
+</blockquote>
+<p>End If</p>
+<p>If(FuncReturn == NOT_OK):</p>
+<blockquote>
+<p>CrcHwIdxInReg = 0</p>
+<p>CrcHwIdxOutReg = 0</p>
+<p>ResvKey = 0</p>
+</blockquote>
+<p>End If</p>
+<p>Else If Mode == Release:</p>
+<p>/* Release path */</p>
+<blockquote>
+<p>For each Active CRC Hardware Unit:</p>
+<p>If ((CrcHwIdxSts == Reserved) and</p>
+<p>(ResvKey = CrcHwSts[CrcHwIdx].Taskid)):</p>
+<p>RelsCrcHwUnit(CrcHwIdx)</p>
+<p>FuncReturn = OK</p>
+<p>Break For Loop</p>
+</blockquote>
+<p>End If</p>
+<p>End For Loop</p>
+<p>If(FuncReturn == NOT_OK):</p>
+<blockquote>
+<p>CrcHwIdxInReg = 0</p>
+<p>CrcHwIdxOutReg = 0</p>
+<p>ResvKey = 0</p>
+</blockquote>
+<p>End If</p>
+<p>Else:</p>
+<p>FuncReturn = NOT_OK</p>
+<p>CrcHwIdxInReg = 0</p>
+<p>CrcHwIdxOutReg = 0</p>
+<p>ResvKey = 0</p>
+<p>End If</p>
+<h2 id="synccrc-api-functions">SyncCrc API Functions</h2>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_64, CM800A_66</strong></em></p>
+<p>The functions defined in the following sub sections shall follow the following format and functionally meet the pseudo code.</p>
+<p>Function Inputs:</p>
+<p>In/Out: DataPtr_Arg†</p>
+<p>In: Len_Arg</p>
+<p>In: StrtVal_Arg†</p>
+<p>In: FirstCall_Arg</p>
+<p>In/Out: CalcCrcRes_Arg†</p>
+<p>† - Argument data type depends on the API function (choices are 8, 16, or 32-bit).</p>
+<p>Function Outputs:</p>
+<p>Standard Return</p>
+<ul>
+<li><p>OK = Successful CRC calculation.</p></li>
+<li><p>NOT_OK = CRC Hardware unit could not be reserved, no calculation performed. CalcCrcRes_Arg shall be set to 0.</p></li>
+</ul>
+<p>Function:</p>
+<p>ErrRtn = OK</p>
+<p>GetTaskId(TaskId)</p>
+<p>GetAvlCrcHwUnit()</p>
+<p>For each Active CRC Hardware Unit:</p>
+<p>If TaskId == RAMTable.TaskId:</p>
+<p>CrcHwIdx = LoopIdx</p>
+<p>Break For Loop</p>
+<p>End If</p>
+<p>End For Loop</p>
+<p>If CrcHwIdx != Invalid CRC Index:</p>
+<p>CrcRegConfig() /* Configure Registers for the function type */</p>
+<p>If FirstCall_Arg == True:</p>
+<p>COUT = Default CRC Init Value</p>
+<p>Else:</p>
+<p>COUT = StrtVal_Arg</p>
+<p>End If</p>
+<p>For 0 to Len_Arg:</p>
+<p>CIN = DataPtr[LenIdx]</p>
+<p>End For</p>
+<p>CalcCrcRes_Arg = COUT</p>
+<p>RelsCrcHwUnit(CrcHwIdx)</p>
+<p>Else:</p>
+<p>CalcCrcRes_Arg = 0</p>
+<p>ErrRtn = NOT_OK</p>
+<p>End If</p>
+<h3 id="sub-function-32-bit-ethernet-crc">Sub-Function: 32-Bit Ethernet CRC</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_52, CM800A_64</strong></em></p>
+<p>The CRC module shall implement the CRC32 routine based on the IEEE-802.3 CRC32 Ethernet Standard. In the event a CRC cannot be calculated the function shall return a CRC result of 0 and notify the calling software component that the CRC result was not calculated.</p>
+<h4 id="hardware-related-design">Hardware Related Design</h4>
+<p>N/A</p>
+<h4 id="software-related-design">Software Related Design</h4>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_53, CM800A_54</strong></em></p>
+<p>The following table defines the parameters used to define the 32-Bit Ethernet functions.</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CRC Result Width</th>
+<th>32 Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polynomial</td>
+<td><p>0x04C11DB7</p>
+<p>or</p>
+<p>X<sup>32</sup> + X<sup>26</sup> + X<sup>23</sup> + X<sup>22</sup> + X<sup>16</sup> + X<sup>12</sup> + X<sup>11</sup> + X<sup>10</sup> + X<sup>8</sup> + X<sup>7</sup> + X<sup>5</sup> + X<sup>4</sup> + X<sup>2</sup> + X<sup>1</sup> + 1</p>
+<p>or</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image3.png" style="width:4.432in;height:1.24342in" /></p></td>
+</tr>
+<tr class="even">
+<td>Initial Value</td>
+<td>0xFFFFFFFF</td>
+</tr>
+<tr class="odd">
+<td>Input Data Width</td>
+<td>8-Bit / 16-Bit / 32-Bit</td>
+</tr>
+<tr class="even">
+<td>Input Data Reflected</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Result Data Reflected</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>XOR Value</td>
+<td>0xFFFFFFFF</td>
+</tr>
+<tr class="odd">
+<td>Check</td>
+<td>0xCBF43926</td>
+</tr>
+<tr class="even">
+<td>Magic Check</td>
+<td>0xDEBB20E3</td>
+</tr>
+</tbody>
+</table>
+<h5 id="calc32bitcrc_u08">Calc32BitCrc_u08</h5>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_55</strong></em></p>
+<p>This function shall implement the algorithm defined in Section 5.2.1.2. The input data shall be accessed in 8-Bit segments. This function shall be used in place of the AUTOSAR Crc_CalculateCRC32 function and described in section 5.3.</p>
+<h5 id="calc32bitcrc_u16">Calc32BitCrc_u16</h5>
+<p>This function shall implement the algorithm defined in Section 5.2.1.2. The input data shall be accessed in 16-Bit segments. This requires that the input data be aligned for 16-Bit access.</p>
+<h5 id="calc32bitcrc_u32">Calc32BitCrc_u32</h5>
+<p>This function shall implement the algorithm defined in Section 5.2.1.2. The input data shall be accessed in 32-Bit segments. This requires that the input data be aligned for 32-Bit access.</p>
+<h3 id="sub-function-16-bit-crc">Sub-Function: 16-Bit CRC</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_56, CM800A_64</strong></em></p>
+<p>The CRC module shall implement the CRC16 routine based on the CCITT CRC16 Standard. In the event a CRC cannot be calculated the function shall return a CRC result of 0 and notify the calling software component that the CRC result was not calculated.</p>
+<h4 id="hardware-related-design-1">Hardware Related Design</h4>
+<p>N/A</p>
+<h4 id="software-related-design-1">Software Related Design</h4>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_57, CM800A_58</strong></em></p>
+<p>The following table defines the parameters used to define the 16-Bit functions.</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CRC Result Width</th>
+<th>16 Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polynomial</td>
+<td><p>0x1021</p>
+<p>or</p>
+<p>X<sup>16</sup> + X<sup>12</sup> + X<sup>5</sup> + 1</p>
+<p>or</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image4.png" style="width:4.3209in;height:1.00867in" /></p></td>
+</tr>
+<tr class="even">
+<td>Initial Value</td>
+<td>0xFFFF</td>
+</tr>
+<tr class="odd">
+<td>Input Data Width</td>
+<td>8-Bit / 16-Bit</td>
+</tr>
+<tr class="even">
+<td>Input Data Reflected</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Result Data Reflected</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>XOR Value</td>
+<td>0x0000</td>
+</tr>
+<tr class="odd">
+<td>Check</td>
+<td>0x29B1</td>
+</tr>
+<tr class="even">
+<td>Magic Check</td>
+<td>0x0000</td>
+</tr>
+</tbody>
+</table>
+<h5 id="calc16bitcrc_u08">Calc16BitCrc_u08</h5>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_59</strong></em></p>
+<p>This function shall implement the algorithm defined in Section 5.2.2.2. The input data shall be accessed in 8-Bit segments. This function shall be used in place of the AUTOSAR Crc_CalculateCRC16() function and described in section 5.3.</p>
+<h5 id="calc16bitcrc_u16">Calc16BitCrc_u16</h5>
+<p>This function shall implement the algorithm defined in Section 5.2.2.2. The input data shall be accessed in 16-Bit segments. This requires that the input data be aligned for 16-Bit access.</p>
+<h3 id="sub-function-8-bit-sae-j1850-crc">Sub-Function: 8-Bit SAE-J1850 CRC</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_60, CM800A_64</strong></em></p>
+<p>The CRC module shall implement the CRC8 routine based on the SAE-J1850 CRC8 Standard. In the event a CRC cannot be calculated the function shall return a CRC result of 0 and notify the calling software component that the CRC result was not calculated.</p>
+<h4 id="hardware-related-design-2">Hardware Related Design</h4>
+<p>N/A</p>
+<h4 id="software-related-design-2">Software Related Design</h4>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_61, CM800A_62</strong></em></p>
+<p>The following table defines the parameters used to define the 8-Bit functions.</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CRC Result Width</th>
+<th>8 Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polynomial</td>
+<td><p>0x1D</p>
+<p>or</p>
+<p>X<sup>8</sup> + X<sup>4</sup> + X<sup>3</sup> + X<sup>2</sup> + 1</p>
+<p>or</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image5.png" style="width:3.88422in;height:1.17854in" /></p></td>
+</tr>
+<tr class="even">
+<td>Initial Value</td>
+<td>0xFF</td>
+</tr>
+<tr class="odd">
+<td>Input Data Width</td>
+<td>8-Bits</td>
+</tr>
+<tr class="even">
+<td>Input Data Reflected</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Result Data Reflected</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>XOR Value</td>
+<td>0xFF</td>
+</tr>
+<tr class="odd">
+<td>Check</td>
+<td>0x4B</td>
+</tr>
+<tr class="even">
+<td>Magic Check</td>
+<td>0xC4</td>
+</tr>
+</tbody>
+</table>
+<h5 id="calc8bitcrc">Calc8BitCrc</h5>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_63</strong></em></p>
+<p>This function shall implement the algorithm defined in Section 5.2.3.2. The input data shall be accessed in 8-Bit segments. This function shall be used in place of the AUTOSAR Crc_CalculateCRC8() function and described in section 5.3.</p>
+<h3 id="sub-function-8-bit-0x2f-crc">Sub-Function: 8-Bit 0x2F CRC</h3>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_60, CM800A_64</strong></em></p>
+<p>The CRC module shall implement the CRC8 routine based with a 0x2F polynomial. In the event a CRC cannot be calculated the function shall return a CRC result of 0 and notify the calling software component that the CRC result was not calculated.</p>
+<h4 id="hardware-related-design-3">Hardware Related Design</h4>
+<p>N/A</p>
+<h4 id="software-related-design-3">Software Related Design</h4>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_61, CM800A_62</strong></em></p>
+<p>The following table defines the parameters used to define the 8-Bit functions.</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CRC Result Width</th>
+<th>8 Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polynomial</td>
+<td><p>0x2F</p>
+<p>or</p>
+<p>X<sup>8</sup> + X<sup>5</sup> + X<sup>3</sup> + X<sup>2</sup> + X<sup>1</sup> + 1</p>
+<p>or</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image6.png" style="width:4.15672in;height:1.11023in" /></p></td>
+</tr>
+<tr class="even">
+<td>Initial Value</td>
+<td>0xFF</td>
+</tr>
+<tr class="odd">
+<td>Input Data Width</td>
+<td>8-Bit</td>
+</tr>
+<tr class="even">
+<td>Input Data Reflected</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Result Data Reflected</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>XOR Value</td>
+<td>0xFF</td>
+</tr>
+<tr class="odd">
+<td>Check</td>
+<td>0xDF</td>
+</tr>
+<tr class="even">
+<td>Magic Check</td>
+<td>0x42</td>
+</tr>
+</tbody>
+</table>
+<h5 id="calc8bitcrc0x2f">Calc8BitCrc0X2F</h5>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_63</strong></em></p>
+<p>This function shall implement the algorithm defined in Section 5.2.4.2. The input data shall be accessed in 8-Bit segments. This function shall be used in place of the AUTOSAR Crc_CalculateCRC8H2F() function and described in section 5.3.</p>
+<h2 id="sub-function-autosar-api-wrapper">Sub-Function: AUTOSAR API Wrapper</h2>
+<p><em><strong>#REQ: The following requirement(s) are met by the design feature below: Requirement ID: CM800A_51</strong></em></p>
+<p>The following API wrapper functions shall be to replace the AUTOSAR CRC API libraries for software CRC calculations. The return value of OK/NOT_OK from the SyncCrc functions are ignored as AUTOSAR does not provide this error handling in their requirements.</p>
+<p>Function Inputs:</p>
+<p>In/Out: DataPtr_Arg</p>
+<p>In: Len_Arg</p>
+<p>In: StrtVal_Arg†</p>
+<p>In: FirstCall_Arg</p>
+<p>† - Argument data type depends on the API function (8, 16, or 32-bit).</p>
+<p>Function Outputs:</p>
+<p>CrcRes†: Result of the CRC calculation.</p>
+<p>† - Argument data type depends on the API function.</p>
+<h3 id="sub-function-crc_calculatecrc32">Sub-Function: Crc_CalculateCRC32</h3>
+<p>Function:</p>
+<p>Calc32BitCrc_u08_Oper( DataPtr_Arg, Len_Arg, StrtVal_Arg,</p>
+<p>FirstCall_Arg, &amp;CrcRes)</p>
+<p>Return CrcRes</p>
+<h3 id="sub-function-crc_calculatecrc16">Sub-Function: Crc_CalculateCRC16</h3>
+<p>Function:</p>
+<p>Calc16BitCrc_u08_Oper( DataPtr_Arg, Len_Arg, StrtVal_Arg,</p>
+<p>FirstCall_Arg, &amp;CrcRes)</p>
+<p>Return CrcRes</p>
+<h3 id="sub-function-crc_calculatecrc8">Sub-Function: Crc_CalculateCRC8</h3>
+<p>Function:</p>
+<p>Calc8BitCrc_Oper ( DataPtr_Arg, Len_Arg, StrtVal_Arg,</p>
+<p>FirstCall_Arg, &amp;CrcRes)</p>
+<p>Return CrcRes</p>
+<h3 id="sub-function-crc_calculatecrc8h2f">Sub-Function: Crc_CalculateCRC8H2F</h3>
+<p>Function:</p>
+<p>Calc8BitCrc0X2F_Oper ( DataPtr_Arg, Len_Arg, StrtVal_Arg,</p>
+<p>FirstCall_Arg, &amp;CrcRes)</p>
+<p>Return CrcRes</p>
+<h1 id="timing-execution-constraints">Timing / Execution Constraints</h1>
+<h2 id="rationale-comments">Rationale / Comments</h2>
+<p>The functions defined in this document are synchronous functions and are not required to be scheduled to run at a periodic rate.</p>
+<h2 id="rates-and-state-execution">Rates and State Execution</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 11%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sub-Function Name</strong></th>
+<th><strong>Rate (ms)</strong></th>
+<th><strong>Cold Init</strong></th>
+<th><strong>Warm Init</strong></th>
+<th><strong>Operate</strong></th>
+<th><strong>Disable</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SyncCrcInit0</td>
+<td>N/A</td>
+<td>Y*</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+</tr>
+<tr class="even">
+<td>SyncCrcInit1</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>Y</td>
+<td>Do Not Execute</td>
+<td>Do Not Execute</td>
+</tr>
+<tr class="odd">
+<td>Calc32BitCrc_u08</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Calc32BitCrc_u16</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>Calc32BitCrc_u32</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Calc16BitCrc_u08</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>Calc16BitCrc_u16</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Calc8BitCrc0X2F</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>Calc8BitCrc</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Crc_CalculateCRC32</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>Crc_CalculateCRC16</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Crc_CalculateCRC8</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>Crc_CalculateCRC8H2F</td>
+<td>N/A</td>
+<td>Do Not Execute</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>Y* -- No CRC calculations can be performed with this component before this function is executed.</p>
+<h1 id="serial-communications-interfaces">Serial Communications Interfaces</h1>
+<p>N/A</p>
+<h1 id="additional-information">Additional Information</h1>
+<p>N/A</p>
+<h1 id="revision-record-change-approval"><br />
+Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>01.00.00</td>
+<td>12-Jan-16</td>
+<td>EA4#1843</td>
+<td>KJS</td>
+<td>Initial Release of this document</td>
+</tr>
+</tbody>
+</table>

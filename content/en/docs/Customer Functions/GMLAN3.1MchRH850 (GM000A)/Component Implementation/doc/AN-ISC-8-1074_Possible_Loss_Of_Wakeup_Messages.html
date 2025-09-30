@@ -1,0 +1,253 @@
+---
+title: AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages
+linkTitle: AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages
+weight: 26
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Message-1_1.jpg"/><br/>
+<b>&#160;</b><br/>
+<b>Possible Loss Of Wakeup Message&#160;</b><br/>
+<b>Version 1.0&#160;</b><br/>
+<b>2008-02-26&#160;</b><br/>
+<b>Application Note &#160;AN-ISC-8-1074&#160;</b><br/>
+&#160;<br/>&#160;<br/>
+<i>&#160;<br/></i>Author(s) Ralf&#160;<br/>
+Fritz&#160;<br/>
+Restrictions&#160;<br/>
+Customer&#160;confidential - GM&#160;only&#160;<br/>
+Abstract&#160;<br/>
+This application note describes the possibility of loosing a wake-up request in a GMLAN&#160;<br/>Single Wire environment and the&#160;possibility to minimize the possibility of occurrence. For&#160;<br/>GM customer&#160;only. &#160;<br/>
+&#160;<br/>&#160;<br/><i><b>&#160;<br/>Table of Contents&#160;<br/>&#160;<br/></b></i><a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#1">1.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#1">Overview&#160;.......................................................................................................................</a>...................................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#1">1</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">Initialization Of&#160;CAN controller...............................................................................................</a>..........................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2.1&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">During Startup&#160;.................................................................................................................</a>..............................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2.2&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">Switching&#160;Baud Rate&#160;............................................................................................................</a>.........................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2.3&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">Bus-Off Event&#160;..................................................................................................................</a>..............................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2.4&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">Before Sleep Mode..............................................................................................................</a>..........................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#3">3.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#3">Switching Transceiver to Sleep mode&#160;............................................................................................</a>.................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#3">3</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#3">3.1&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#3">Check&#160;For&#160;Messages&#160;.............................................................................................................</a>.......................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#3">3</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#4">3.2&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#4">Use Transceiver Wake&#160;Pin.......................................................................................................</a>.....................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#4">4</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#4">4.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#4">Switching CAN cell&#160;into sleep&#160;mode&#160;.............................................................................................</a>...................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#4">4</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">5.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">Polling versus&#160;Interrupt&#160;.......................................................................................................</a>.............................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">5</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">6.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">Additional Resources&#160;...........................................................................................................</a>............................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">5</a>&#160;<br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">7.0&#160;</a><br/>
+<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">Contacts.......................................................................................................................</a>....................................<a href="AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Messages.html#5">5</a>&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>1.0 Overview&#160;<br/></b>GMLAN uses&#160;special messages, so called High Voltage Wake-Up Messages (HVWU), to wake-up sleeping&#160;<br/>modules&#160;on the Single Wire CAN bus. Under&#160;certain conditions it is possible that these messages are discarded&#160;<br/>and do not cause a&#160;wake-up of the ECU&#160;like expected.&#160;This&#160;document describes these possible&#160;situations&#160;and&#160;<br/>methods of reducing the time period where a HVWU message can&#160;be lost.&#160;<br/>
+&#160;<br/>
+Note:&#160;<br/>
+This document applies to the Single-Wire&#160;CAN bus only, because&#160;of its special&#160;physical&#160;<br/>implementation. The wake-up behavior on a non&#160;Single-Wire CAN bus will differ since every&#160;<br/>receive message will&#160;cause a CAN&#160;cell wake-up if the CAN&#160;cell supports&#160;sleep&#160;wake-up.&#160;<br/>
+&#160;<br/>
+Note:&#160;<br/>
+The occurrence of this behavior depends on the hardware platform, the compiler, hardware layout&#160;<br/>and many more parameters. Because of&#160;this, this&#160;application note cannot specify specific time&#160;<br/>durations.&#160;<br/>
+&#160;<br/>
+Note:&#160;<br/>
+<b>Any&#160;code samples are only&#160;examples of implementation proposals. Because these&#160;<br/>functions are meant for demonstration purposes only,&#160;Vector’s liability&#160;shall be expressly&#160;<br/>excluded in cases of ordinary&#160;negligence to the extent&#160;admissible by&#160;law&#160;or statute.</b>&#160;<br/>
+<b>&#160;1 &#160;</b><br/>
+<i>Copyright ©&#160;2008 - Vector CANtech, Inc.&#160;<br/></i><b>Contact Information:&#160; &#160;www.vector-informatik.com &#160; or&#160;++49-711-80&#160;670-0&#160;</b><br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Message-2_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Possible Loss&#160;Of Wakeup Message&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.0&#160;&#160;Initialization Of CAN controller&#160;<br/></b>The GMLAN&#160;handler will initialize the CAN controller at&#160;different times during&#160;runtime. The CAN controller is&#160;<br/>initialized in the following situations:&#160;<br/>
+•&#160;&#160;During startup of the handler&#160;<br/>•&#160;&#160;Switching baud-rate during&#160;flash programming&#160;<br/>•&#160;&#160;After a Bus-Off event&#160;<br/>•&#160;&#160;Before the handler tries to&#160;enter the&#160;sleep mode&#160;<br/>•&#160;&#160;In case the High Voltage Wake-Up&#160;message cannot be sent onto&#160;CAN bus&#160;<br/>
+&#160;<br/>
+If the CAN cell is initialized,&#160;all currently received&#160;and&#160;not handled receive-messages will be discarded. This&#160;means&#160;<br/>that also pending HVWU&#160;messages&#160;will&#160;be discarded and can cause the module not to switch back to&#160;<br/>Communication Enable or&#160;Communication Active state as expected.&#160;<br/>
+The chapters&#160;below&#160;include&#160;a more detailed description of these situations.&#160;<br/>
+<b>2.1 During&#160;</b><br/>
+<b>Startup&#160;</b><br/>
+Vectors GMLAN handler&#160;can be configured to initialize the CAN&#160;controller during&#160;the call of&#160;IlInitPowerOn().&#160;<br/>
+During this&#160;time it is&#160;not likely to lose any HVWU message, because this function&#160;is only called&#160;if the system&#160;<br/>performs a&#160;cold start. Please see [1] and&#160;[2] for further&#160;information when this function needs to&#160;be called by the&#160;<br/>application.&#160;<br/>
+After the call of&#160;IlInitPowerOn(), the handler will&#160;enter at least the Communication Enable&#160;state for 8 seconds,&#160;<br/>
+this means bus activity can be detected&#160;and a lost HVWU frame&#160;will not cause&#160;the module not to participate in the&#160;<br/>CAN communication.&#160;<br/>
+<b>2.2 Switching&#160;</b><br/>
+<b>Baud&#160;</b><br/>
+<b>Rate&#160;</b><br/>
+To be able to&#160;switch the current baud rate to a higher&#160;or lower one, the CAN&#160;controller needs to be re-initialized&#160;<br/>with the different baud rate&#160;settings. During this period, the handler is&#160;in the Normal Communication Halted&#160;state.&#160;<br/>This means that the module is already awake during this time and&#160;will stay awake for at least&#160;4 more&#160;seconds. This&#160;<br/>means that if a HVWU frame is lost at this point in&#160;time, the handler will still be&#160;able to participate in an ongoing&#160;<br/>CAN communication.&#160;<br/>
+<b>2.3 Bus-Off&#160;</b><br/>
+<b>Event&#160;</b><br/>
+To start the CAN cell bus-off recovery sequence and to remove any pending&#160;transmit request from the CAN&#160;<br/>controller, the GMLAN handler is&#160;calling two CAN&#160;Driver interface&#160;functions. These functions are&#160;<br/>CanResetBusOffStart()&#160;and&#160;CanResetBusOffEnd(). One of these functions is usually mapped to a function&#160;<br/>
+which will re-initialize the&#160;CAN cell. In such situations,&#160;the handler shall ignore any receive messages, which also&#160;<br/>includes&#160;HVWU&#160;messages.&#160;<br/>
+Note:&#160;<br/>
+The implementation of the functions&#160;CanResetBusOffStart()&#160;and&#160;CanResetBusOffEnd()&#160;<br/>
+are depending&#160;on the hardware. Please check&#160;the related hardware manual [3] for more&#160;<br/>information.&#160;<br/>
+<b>2.4&#160;&#160;Before Sleep Mode &#160;</b><br/>
+Vectors GMLAN handler&#160;will call&#160;CanResetBusSleep()&#160;before the CAN&#160;controller is put into&#160;sleep mode to&#160;<br/>
+remove any pending&#160;transmit request from the CAN&#160;hardware.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>2<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1074<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Message-3_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Possible Loss&#160;Of Wakeup Message&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>Note:&#160;<br/>
+The implementation of the function&#160;CanResetBusSleep() is depending on the hardware. Please&#160;<br/>
+check the related hardware manual [3] for more information.&#160;<br/>
+This function&#160;is usually mapped to a function which will initialize the CAN&#160;controller. The call of this function&#160;<br/>happens when the remainder of the Communication Enable timer reaches a value of 100 ms&#160;+ 2 times the task&#160;<br/>cycle of the network management task (IlNwmTask()) and the application accepts the sleep&#160;request&#160;<br/>(ApplNwmSleepConfirmation&#160;returns&#160;NmSleepOk).&#160;<br/>
+Note:&#160;<br/>
+100 ms is&#160;the&#160;default provided by the generation tool. This value&#160;can be calibrated&#160;later to a&#160;<br/>different value. Please check your&#160;usage.&#160;<br/>
+If now the delay between&#160;the related I-VNMF to the discarded HVWU message&#160;is longer then the time set-up, the&#160;<br/>transceivers will be switched into sleep&#160;mode before&#160;the I-VNMF is sent to the CAN bus. This&#160;will prevent the CAN&#160;<br/>controller from&#160;receiving the message&#160;and the system&#160;will&#160;stay in sleep mode.&#160;This behavior cannot be changed by&#160;<br/>a software or&#160;hardware&#160;change.&#160;<br/>
+<b>3.0&#160;&#160;Switching Transceiver to Sleep mode&#160;<br/></b>On a Single&#160;Wire bus it is&#160;quite normal, that a single&#160;ECU will enter the CAN&#160;sleep mode and&#160;other modules&#160;<br/>continue to communicate&#160;on the same&#160;physical CAN bus. To&#160;be able to do this,&#160;the transceivers of these&#160;modules&#160;<br/>are switched into sleep mode before the&#160;CAN cell is put&#160;into sleep&#160;mode. This&#160;will prevent any normal message&#160;<br/>communication from being&#160;passed to the controller and allows it to enter the CAN sleep mode. Vectors GMLAN&#160;<br/>handler does&#160;not check, if there is&#160;an ongoing&#160;CAN message&#160;reception while it requests the application to switch&#160;<br/>the transceiver into sleep&#160;mode by calling the function&#160;ApplTrcvrSleepMode(). If a normal receive message is&#160;<br/>
+interrupted, this causes&#160;no&#160;functional issue, since the&#160;module already decided that normal message reception must&#160;<br/>be ignored.&#160;<br/>
+If during this time a HVWU&#160;message is&#160;received, the message is&#160;most likely lost. This is because only parts of the&#160;<br/>physical CAN message are&#160;received by the CAN&#160;controller. The&#160;transceiver&#160;will act like a filter after it is put into&#160;<br/>sleep mode and will not pass all bits&#160;of the message to&#160;the CAN&#160;controller (Please check your&#160;transceiver&#160;manual&#160;<br/>for the exact&#160;behavior of your transceiver). Because&#160;the message is not received&#160;by the CAN cell, the system will&#160;<br/>not switch back into the&#160;Communication&#160;Enable or&#160;Active state as expected.&#160;<br/>
+Depending&#160;on&#160;the used&#160;hardware there&#160;are maybe some possibilities to minimize the window&#160;in which this issue&#160;<br/>can happen. Below two&#160;current know&#160;methods.&#160;<br/>
+<b>3.1&#160;&#160;Check For Messages&#160;</b><br/>
+The goal of this implementation is to minimize the possibility that the HVWU message is&#160;cut off by switching the&#160;<br/>transceiver&#160;into sleep mode. This requires the CAN hardware&#160;to be&#160;able to provide the information that there is&#160;<br/>currently ongoing message reception.&#160;Vectors GMLAN handler does not provide this information!&#160;<br/>
+Note:&#160;<br/>
+Not all hardware platforms&#160;provide the needed&#160;hardware feature for this implementation. Please&#160;<br/>check your device manual&#160;for further information.&#160;<br/>
+The idea is&#160;to check for CAN bus-idle before the transceiver is&#160;switched into sleep mode. This&#160;would reduce the&#160;<br/>window of losing a HVWU&#160;message from&#160;the message length&#160;of this message&#160;to the time it takes to switch the&#160;<br/>transceiver&#160;and CAN into&#160;sleep mode after an idle CAN bus&#160;was detected.&#160;<br/>
+The flow&#160;chart below shows a possible implementation&#160;strategy.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>3<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1074<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Message-4_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Possible Loss&#160;Of Wakeup Message&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Start<br/>
+No<br/>
+Bus Idle?&#160;<br/>
+Yes<br/>
+Put TRV&#160;&#160;<br/>To&#160;sleep&#160;<br/>
+End<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Note:&#160;<br/>
+Waiting for bus idle&#160;can take a longer period of time. Please make sure that the loop has a timeout&#160;<br/>criteria which will allow the&#160;software to continue in&#160;case there will be&#160;no bus-idle&#160;detected after a&#160;<br/>certain time!&#160;<br/>
+The code which implements this flow&#160;chart needs to be placed into&#160;the application callback function&#160;<br/>ApplTrcvrSleepMode()&#160;of the Single Wire&#160;CAN. This function is&#160;called by Vectors GMLAN handler&#160;to switch&#160;<br/>
+the transceiver into sleep&#160;mode. After this call,&#160;the handler&#160;will try and put the CAN cell into sleep mode.&#160;<br/>
+<b>3.2&#160;&#160;Use Transceiver Wake Pin&#160;</b><br/>
+If the hardware allows, it is preferable to use the&#160;wake-up notification pin of the transceiver. For most of the&#160;<br/>transceivers they provide a&#160;dedicated hardware output, which is&#160;set&#160;high, if&#160;the transceiver detects a wakeup&#160;frame&#160;<br/>on the CAN bus. If the controller detects&#160;that this pin was set, the software&#160;should&#160;call the GMLAN handler API&#160;<br/>function&#160;NmCanWakeUp()&#160;to notify&#160;the GMLAN handler about this event.&#160;<br/>
+Note:&#160;<br/>
+Not all hardware provides&#160;the needed feature for this&#160;implementation. Please check your&#160;device /&#160;<br/>transceiver&#160;manual for further information.&#160;<br/>
+&#160;<br/>
+<b>4.0&#160;&#160;Switching CAN cell into sleep mode&#160;<br/></b>After the transceiver is put into&#160;sleep mode the CAN&#160;cell will be put&#160;into&#160;sleep mode as&#160;well by the GMLAN&#160;<br/>handler. Depending on the&#160;hardware and the related&#160;software implementation of&#160;the GMLAN&#160;handler there&#160;is a&#160;<br/>chance that a pending&#160;HVWU message&#160;will be lost.&#160;<br/>
+This&#160;can happen if the reception of a HVWU message is&#160;finished during or&#160;delayed until the time when&#160;the GMLAN&#160;<br/>handler switches the transceiver and the CAN&#160;cell into&#160;sleep mode&#160;(The GMLAN handler&#160;will&#160;disable interrupts&#160;<br/>while it is putting the CAN&#160;bus into&#160;sleep mode). In&#160;such a&#160;situation the handler&#160;will call the&#160;CAN Driver&#160;API&#160;<br/>function&#160;CanSleep()&#160;while a not handled receive message is pending in the&#160;CAN cell. Depending on the used&#160;<br/>CAN cell and&#160;the implementation of the handler&#160;function&#160;CanSleep(), this message reception&#160;is discarded&#160;or&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>4<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1074<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_000A_GMLAN3.1MchRH850_Impl/doc/AN-ISC-8-1074_Possible_Loss_Of_Wakeup_Message-5_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Possible Loss&#160;Of Wakeup Message&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>suppressed and will not lead to a wake-up. Please check&#160;the&#160;related&#160;CAN Driver&#160;manual [3] for more information&#160;<br/>about the behavior of&#160;CanSleep().&#160;<br/>
+<b>5.0&#160;&#160;Polling versus Interrupt&#160;<br/></b>The GMLAN&#160;handler allows receiving message either on interrupt or polling basis. It is more likely, that a HVWU&#160;<br/>message will&#160;be lost, if the handler is&#160;configured to receive this message in polling mode. This&#160;is because usually a&#160;<br/>receive notification interrupt&#160;can happen right after the&#160;reception of the physical message and is&#160;not delayed&#160;until&#160;<br/>the next call of the receive polling task. Interrupt handling of the HVWU frame does not guarantee that the&#160;<br/>message will&#160;be received and processed&#160;all the time,&#160;since the GMLAN handler&#160;and the application potentially&#160;<br/>disable the CAN interrupts&#160;during certain&#160;periods&#160;of times for example to guarantee data consistency which&#160;will&#160;<br/>also&#160;cause a&#160;delay of the receive message handling.&#160;<br/>
+&#160;<br/>
+<b>6.0 Additional&#160;Resources&#160;<br/></b>[1] GMLAN&#160;Technical Reference documentation.&#160;<br/>[2] IL&#160;Technical&#160;Reference documentation.&#160;<br/>[3] CAN Driver Technical Reference documentation of the used hardware platform.&#160;<br/>&#160;<br/>
+<b>7.0 Contacts&#160;<br/></b>&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+<b>Vector Informatik&#160;GmbH&#160;</b><br/>
+<b>Vector CANtech, Inc.&#160;</b><br/>
+<b>VecScan AB&#160;</b><br/>
+Ingersheimer Straße 24&#160;<br/>
+39500&#160;Orchard&#160;Hill Pl., Ste 550&#160;<br/>
+Lindholmspiren 5&#160;<br/>
+70499 Stuttgart&#160;<br/>
+Novi, MI &#160;48375&#160;<br/>
+402 78&#160;Göteborg&#160;&#160;<br/>
+Germany&#160;<br/>
+USA&#160;<br/>
+Sweden&#160;<br/>
+Tel.: +49 711-80670-0&#160;<br/>
+Tel: &#160;+1-248-449-9290&#160;<br/>
+Tel: &#160;+46 (0)31 764 76 00&#160;<br/>
+Fax: +49 711-80670-111&#160;<br/>
+Fax: +1-248-449-9704&#160;<br/>
+Fax: +46 (0)31 764 76 19 &#160;<br/>
+Email: info@vector-informatik.de&#160;<br/>
+Email: info@vector-cantech.com&#160;<br/>
+Email: info@vecscan.com&#160;<br/>
+&#160;<br/><b>Vector France SAS&#160;</b><br/>
+<b>Vector Japan&#160;Co. Ltd.&#160;</b><br/>
+<b>Vector Korea IT&#160;Inc.&#160;</b><br/>
+168 Boulevard Camélinat&#160;<br/>
+Seafort Square&#160;Center Bld. 18F&#160;<br/>
+Daerung Post Tower III, 508&#160;<br/>
+92240 Malakoff &#160;<br/>
+2-3-12, Higashi-shinagawa,&#160;<br/>
+Guro-gu, Guro-dong,&#160;182-4&#160;<br/>
+France&#160;<br/>
+Shinagawa-ku&#160;<br/>
+Seoul, 152-790&#160;<br/>
+Tel: &#160;+33 (0)1 42&#160;31 40 00&#160;<br/>
+J-140-0002 Tokyo&#160;<br/>
+Republic of Korea&#160;<br/>
+Fax: +33 (0)1 42&#160;31 40 09&#160;<br/>
+Tel.: +81 3 5769&#160;6970 &#160; &#160;<br/>
+Tel.: +82-2-2028-0600&#160;<br/>
+Email: information@vector-france.fr&#160;<br/>
+Fax: +81 3 5769&#160;6975&#160;<br/>
+Fax: &#160; +82-2-2028-0604&#160;<br/>
+&#160;<br/>
+Email: info@vector-japan.co.jp&#160;<br/>
+Email: info@vector-korea.com&#160;<br/>
+&#160;<br/>&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>5<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1074<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+</body>
+</html>

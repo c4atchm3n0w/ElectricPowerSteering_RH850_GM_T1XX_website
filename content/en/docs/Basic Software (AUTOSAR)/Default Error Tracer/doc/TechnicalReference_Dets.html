@@ -1,0 +1,1090 @@
+---
+title: TechnicalReference_Dets
+linkTitle: TechnicalReference_Dets
+weight: 6
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-1_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/><b>MICROSAR DET&#160;<br/></b>Technical Reference&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>Version&#160;2.4.0&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Authors&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+Version:&#160;<br/>
+2.4.0&#160;<br/>
+Status:&#160;<br/>
+Released&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;&#160;<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-2_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>1&#160;&#160;Document&#160;Information&#160;</b><br/>
+<b>1.1&#160;</b><br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Hartmut&#160;Hörner&#160;<br/>
+2007-11-29&#160;<br/>
+1.0&#160;<br/>
+Initial&#160;version&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2008-01-03&#160;<br/>
+1.1&#160;<br/>
+Update&#160;to&#160;AUTOSAR&#160;3&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2008-04-14&#160;<br/>
+1.2&#160;<br/>
+Naming changed&#160;to&#160;<br/>AUTOSAR&#160;short&#160;name,&#160;<br/>screen&#160;shots&#160;updated.&#160;<br/>(ESCAN00025687)&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2008-09-16&#160;<br/>
+1.3&#160;<br/>
+Added&#160;DET&#160;extension&#160;<br/>mechanism&#160;based&#160;on&#160;callout&#160;<br/><a href="TechnicalReference_Dets.html#15">(4.7,&#160;</a><a href="TechnicalReference_Dets.html#22">6.3.1).</a>&#160;<br/>Added&#160;chapter<a href="TechnicalReference_Dets.html#16">&#160;5.3.</a>&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2010-01-13&#160;<br/>
+2.0&#160;<br/>
+Update&#160;to&#160;AUTOSAR&#160;4&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2012-04-20&#160;<br/>
+2.1&#160;<br/>
+Added&#160;usage hints&#160;related to&#160;<br/>silent&#160;BSW&#160;concept&#160;i<a href="TechnicalReference_Dets.html#17">n&#160;5.4&#160;<br/></a>(ESCAN00058419)&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2013-04-09&#160;<br/>
+2.2&#160;<br/>
+Added&#160;Configurator&#160;5 and&#160;<br/>service port&#160;interface&#160;<br/>(ESCAN00066511)&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2013-09-13&#160;<br/>
+2.3&#160;<br/>
+Added&#160;DLT&#160;forwarding&#160;<br/>support&#160;for&#160;Configurator&#160;5&#160;<br/>(ESCAN00068394,&#160;<br/>ESCAN00069807)&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2014-12-10&#160;<br/>
+2.3.1&#160;<br/>
+Added&#160;description&#160;of&#160;&#160;<br/>BCD-coded&#160;return&#160;value&#160;of&#160;<br/>Det_GetVersionInfo()&#160;<br/>(ESCAN00079310)&#160;<br/>
+Hartmut&#160;Hörner&#160;<br/>
+2015-06-12&#160;<br/>
+2.4.0&#160;<br/>
+File name changed&#160;<br/>(ESCAN00081049)&#160;<br/>Added&#160;chapter<a href="TechnicalReference_Dets.html#17">&#160;5.4.</a>&#160;<br/>
+Table&#160;1-1&#160;&#160;&#160;History&#160;of&#160;the&#160;Document&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+2&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-3_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-3_2.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>1.2&#160;</b><br/>
+<b>Reference&#160;Documents&#160;</b><br/>
+<b>Index&#160;</b><br/>
+<b>Document&#160;</b><br/>
+[1]&#160;<br/>
+AUTOSAR_SWS_DET.pdf,&#160;Version 2.2.0&#160;<br/>
+[2]&#160;<br/>
+AUTOSAR_SWS_DET.pdf,&#160;Version&#160;3.0.0&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Table&#160;1-2&#160;&#160;&#160;Referenced&#160;documents&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Please&#160;note</b>&#160;<br/>We&#160;have configured&#160;the&#160;programs&#160;in&#160;accordance&#160;with your&#160;specifications&#160;in the&#160;<br/>
+&#160;<br/>
+questionnaire.&#160;Whereas&#160;the&#160;programs&#160;do&#160;support&#160;other&#160;configurations&#160;than&#160;the&#160;one&#160;<br/>specified&#160;in your&#160;questionnaire,&#160;Vector´s&#160;release&#160;of&#160;the&#160;programs&#160;delivered to&#160;your&#160;<br/>company&#160;is&#160;expressly&#160;restricted&#160;to&#160;the&#160;configuration&#160;you&#160;have specified&#160;in&#160;the&#160;<br/>questionnaire.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+3&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-4_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="TechnicalReference_Dets.html#2"><b>1</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#2"><b>Document&#160;Information&#160;.................................................................................................&#160;2</b>&#160;<br/>1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#2">History&#160;...............................................................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#3">1.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#3">Reference&#160;Documents&#160;.......................................................................................&#160;3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#7"><b>2</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#7"><b>Component&#160;History&#160;......................................................................................................&#160;7</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#8"><b>3</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#8"><b>Introduction...................................................................................................................&#160;8</b>&#160;<br/>3.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#8">Architecture&#160;Overview&#160;........................................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10"><b>4</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10"><b>Functional&#160;Description&#160;...............................................................................................&#160;10</b>&#160;<br/>4.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Features&#160;..........................................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">4.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Initialization&#160;......................................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">4.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">States&#160;..............................................................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">4.4&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">Main Functions&#160;................................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">4.5&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">Error&#160;Handling&#160;..................................................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">4.6&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">Debugging&#160;with the&#160;DET&#160;..................................................................................&#160;11&#160;<br/>4.6.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">Extended Debug Features&#160;...............................................................&#160;11&#160;<br/>4.6.1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#11">Filters&#160;.............................................................................&#160;11&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#12">4.6.1.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#12">Logging&#160;..........................................................................&#160;12&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#13">4.6.1.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#13">Break&#160;handler&#160;................................................................&#160;13&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#15">4.7&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#15">Extension&#160;of&#160;the&#160;DET&#160;.......................................................................................&#160;15&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16"><b>5</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16"><b>Integration&#160;...................................................................................................................&#160;16</b>&#160;<br/>5.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Scope of&#160;Delivery&#160;.............................................................................................&#160;16&#160;<br/>5.1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Static Files&#160;.......................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">5.1.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Generated&#160;Files&#160;...............................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">5.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Include Structure&#160;..............................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">5.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Handling&#160;of&#160;Recursions&#160;....................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#17">5.4&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#17">Critical&#160;Sections&#160;...............................................................................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#17">5.5&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#17">Usage&#160;Hints&#160;for&#160;Operation in&#160;Safety&#160;Related&#160;ECUs&#160;..........................................&#160;17&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18"><b>6</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18"><b>API&#160;Description&#160;...........................................................................................................&#160;18</b>&#160;<br/>6.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18">Interfaces&#160;Overview&#160;.........................................................................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18">6.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18">Services Provided by&#160;MICROSAR&#160;DET&#160;...........................................................&#160;18&#160;<br/>6.2.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18">Det_Init&#160;............................................................................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">6.2.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">Det_InitMemory&#160;................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">6.2.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">Det_Start&#160;..........................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#20">6.2.4&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#20">Det_ReportError&#160;...............................................................................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#21">6.2.5&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#21">Det_GetVersionInfo&#160;..........................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">6.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Services used by&#160;MICROSAR&#160;DET&#160;.................................................................&#160;22&#160;</a><br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+4&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-5_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<a href="TechnicalReference_Dets.html#22">6.3.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Appl_DetEntryCallout&#160;.......................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">6.4&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Callback&#160;Functions&#160;...........................................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#23">6.5&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#23">Configurable Interfaces&#160;....................................................................................&#160;23&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">6.6&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">Service Ports&#160;...................................................................................................&#160;24&#160;<br/>6.6.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">Client&#160;Server&#160;Interface&#160;.....................................................................&#160;24&#160;<br/>6.6.1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">Provide&#160;Ports&#160;on&#160;DET&#160;Side&#160;............................................&#160;24&#160;<br/>6.6.1.1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">DETService................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25"><b>7</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25"><b>Configuration&#160;..............................................................................................................&#160;25</b>&#160;<br/>7.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">Configuration with GENy&#160;..................................................................................&#160;25&#160;<br/>7.1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">System&#160;Configuration&#160;.......................................................................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">7.1.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">Component&#160;Configuration&#160;................................................................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27"><b>8</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27"><b>AUTOSAR&#160;Standard&#160;Compliance...............................................................................&#160;27</b>&#160;<br/>8.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Deviations&#160;........................................................................................................&#160;27&#160;<br/>8.1.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Support&#160;of&#160;Service Port&#160;Interface&#160;.....................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">8.1.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Support&#160;of&#160;AUTOSAR&#160;Debugging&#160;Concept&#160;(AUTOSAR&#160;4)&#160;...............&#160;27&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">8.1.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Support&#160;of&#160;Configurable&#160;List&#160;of&#160;Error&#160;Hooks&#160;(AUTOSAR&#160;4)&#160;..............&#160;27&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">8.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Additions/&#160;Extensions&#160;.......................................................................................&#160;27&#160;<br/>8.2.1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Extended Debug Features&#160;...............................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">8.2.2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">DET&#160;Extension&#160;Mechanism&#160;..............................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">8.3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#27">Limitations........................................................................................................&#160;27&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#28"><b>9</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#28"><b>Abbreviations&#160;..............................................................................................................&#160;28</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#29"><b>10</b>&#160;&#160;<b>Glossary&#160;......................................................................................................................&#160;29</b>&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#30"><b>11</b>&#160;&#160;<b>Contact&#160;........................................................................................................................&#160;30</b>&#160;<br/></a>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+5&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-6_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>Illustrations&#160;</b><br/>
+<a href="TechnicalReference_Dets.html#8">Figure&#160;3-1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#8">AUTOSAR&#160;architecture&#160;...............................................................................&#160;8&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#9">Figure&#160;3-2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#9">Interfaces&#160;to adjacent&#160;modules of&#160;the&#160;DET&#160;.................................................&#160;9&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">Figure&#160;7-1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">Enabling&#160;the&#160;DET&#160;in the&#160;GENy&#160;system&#160;configuration&#160;................................&#160;25&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">Figure&#160;7-2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#25">Component&#160;configuration of&#160;the&#160;DET&#160;........................................................&#160;25&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+<b>Tables&#160;<br/></b><a href="TechnicalReference_Dets.html#2">Table&#160;1-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#2">History&#160;of&#160;the&#160;Document&#160;.............................................................................&#160;2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#3">Table&#160;1-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#3">Referenced&#160;documents&#160;...............................................................................&#160;3&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#7">Table&#160;2-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#7">Component&#160;History&#160;.....................................................................................&#160;7&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Table&#160;4-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Supported&#160;SWS&#160;features&#160;..........................................................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Table&#160;4-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Not&#160;supported&#160;AUTOSAR&#160;3 and 4&#160;SWS&#160;features&#160;......................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Table&#160;4-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#10">Not&#160;supported&#160;AUTOSAR&#160;4 SWS&#160;features&#160;...............................................&#160;10&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Table&#160;5-1&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Static&#160;files&#160;.................................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Table&#160;5-2&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#16">Generated&#160;files&#160;.........................................................................................&#160;16&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18">Table&#160;6-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#18">Det_Init&#160;.....................................................................................................&#160;18&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">Table&#160;6-2&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">Det_InitMemory&#160;........................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">Table&#160;6-3&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#19">Det_Start&#160;..................................................................................................&#160;19&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#20">Table&#160;6-4&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#20">Det_ReportError&#160;.......................................................................................&#160;20&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#21">Table&#160;6-5&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#21">Det_GetVersionInfo&#160;..................................................................................&#160;21&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Table&#160;6-6&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Services used by&#160;the&#160;DET&#160;........................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Table&#160;6-7&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#22">Appl_DetEntryCallout&#160;...............................................................................&#160;22&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">Table&#160;6-8&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#24">DETService&#160;..............................................................................................&#160;24&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#26">Table&#160;7-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#26">DET&#160;configuration&#160;parameters&#160;..................................................................&#160;26&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#28">Table&#160;9-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#28">Abbreviations&#160;............................................................................................&#160;28&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#29">Table&#160;10-1&#160;&#160;</a><br/>
+<a href="TechnicalReference_Dets.html#29">Glossary&#160;...................................................................................................&#160;29&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+6&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-7_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>2&#160;&#160;Component&#160;History&#160;</b><br/>
+<b>Component&#160;</b><br/>
+<b>New&#160;Features&#160;</b><br/>
+<b>Version&#160;<br/></b>0.01.00&#160;<br/>
+Creation&#160;<br/>
+2.00.00&#160;<br/>
+Update for AUTOSAR&#160;Release 2.0&#160;<br/>
+3.00.00&#160;<br/>
+Update for AUTOSAR Release 2.1&#160;<br/>
+3.01.00&#160;<br/>
+GetVersionInfo API added&#160;&#160;<br/>
+3.02.00&#160;<br/>
+Extended debug features added&#160;&#160;<br/>
+4.00.00&#160;<br/>
+Update for AUTOSAR Release 3&#160;<br/>compiler abstraction and memmap added&#160;<br/>
+4.01.00&#160;<br/>
+DET entry callout&#160;<br/>
+5.00.00&#160;<br/>
+Update for AUTOSAR Release&#160;4&#160;<br/>
+6.00.00&#160;<br/>
+Support of Configurator 5 (MSR3)&#160;<br/>
+7.00.00&#160;<br/>
+Support of Configurator 5 (MSR4)&#160;<br/>
+8.00.00&#160;<br/>
+DLT and service port interface&#160;<br/>
+9.00.00&#160;<br/>
+safeBSW&#160;<br/>
+Table&#160;2-1&#160;&#160;&#160;Component&#160;History&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+7&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-8_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-8_2.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>3&#160;&#160;Introduction&#160;</b><br/>
+This&#160;&#160;document&#160;&#160;describes&#160;&#160;the&#160;&#160;functionality,&#160;API&#160;&#160;and&#160;&#160;configuration&#160;&#160;of&#160;&#160;the&#160;AUTOSAR&#160;&#160;BSW&#160;<br/>module&#160;DET&#160;(Development&#160;Error&#160;Tracer)&#160;as&#160;specified&#160;in<a href="TechnicalReference_Dets.html#3">&#160;[1]&#160;</a>and<a href="TechnicalReference_Dets.html#3">&#160;[2].&#160;</a>&#160;<br/>
+&#160;<br/>
+<b>Supported&#160;AUTOSAR&#160;R<a href="TechnicalReference_Dets.html#8">elease*:</a></b><b>&#160;</b><br/>
+3&#160;and 4&#160;<br/>
+<b>Supported&#160;Configuration&#160;Variants:&#160;</b><br/>
+pre-compile&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Vendor&#160;ID:&#160;</b><br/>
+DET_VENDOR_ID &#160; &#160; &#160; &#160; 30&#160;<br/>
+<b>Module&#160;ID:&#160;</b><br/>
+DET_MODULE_ID &#160; &#160; &#160; &#160; 15&#160;<br/>
+&#160;<br/>*&#160;For&#160;the&#160;precise&#160;AUTOSAR Release&#160;3.x&#160;and 4.x&#160;please see&#160;the release specific&#160;documentation.&#160;&#160;<br/>&#160;<br/>The&#160;DET&#160;is&#160;the&#160;central&#160;error&#160;handler&#160;in&#160;the&#160;AUTOSAR&#160;architecture&#160;during&#160;the&#160;development&#160;<br/>phase.&#160;All&#160;other basic&#160;software modules&#160;can&#160;report development&#160;errors to&#160;the&#160;DET.&#160;<br/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br/>&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Architecture&#160;Overview&#160;</b><br/>
+The&#160;following&#160;figure&#160;shows&#160;where&#160;the&#160;DET&#160;is located&#160;in&#160;the&#160;AUTOSAR architecture.&#160;<br/>
+&#160;<br/>
+Figure&#160;3-1&#160;&#160;AUTOSAR&#160;architecture&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+8&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-9_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+The&#160;&#160;following&#160;&#160;figure&#160;&#160;shows&#160;&#160;the&#160;&#160;interfaces&#160;&#160;to&#160;&#160;modules&#160;&#160;adjacent&#160;&#160;to&#160;&#160;DET.&#160;&#160;These&#160;&#160;interfaces&#160;<br/>are described&#160;in&#160;chapte<a href="TechnicalReference_Dets.html#18">r&#160;6.&#160;</a>&#160;<br/>
+&lt;any&#160;BSW&#160;module&gt;<br/>
+EcuM<br/>
+Application<br/>
+Dlt<br/>
+COM<br/>
+IPDU<br/>
+Report&#160;<br/>
+Init&#160;/&#160;<br/>
+Callout<br/>
+Forward&#160;<br/>
+error<br/>
+Start<br/>
+error<br/>
+DET<br/>
+&#160;<br/>
+Figure&#160;3-2&#160;&#160;Interfaces&#160;to&#160;adjacent&#160;modules&#160;of&#160;the&#160;DET&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+9&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-10_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>4&#160;&#160;Functional&#160;Description&#160;</b><br/>
+<b>4.1&#160;</b><br/>
+<b>Features&#160;</b><br/>
+The&#160;features listed&#160;in&#160;this chapter cover the&#160;complete&#160;functionality&#160;specified&#160;in<a href="TechnicalReference_Dets.html#3">&#160;[1]&#160;</a>and<a href="TechnicalReference_Dets.html#3">&#160;[2].</a>&#160;<br/>The&#160;&#160;&#34;supported&#34;&#160;&#160;and&#160;&#160;&#34;not&#160;&#160;supported&#34;&#160;&#160;features&#160;&#160;are&#160;&#160;presented&#160;&#160;in&#160;&#160;the&#160;&#160;following&#160;&#160;two&#160;&#160;tables.&#160;<br/>For further information&#160;of&#160;not&#160;supported&#160;features&#160;also&#160;see&#160;to&#160;chapte<a href="TechnicalReference_Dets.html#27">r&#160;8.</a>&#160;<br/>
+&#160;<br/>
+The&#160;following&#160;features&#160;described&#160;in<a href="TechnicalReference_Dets.html#3">&#160;[1]&#160;</a>are&#160;supported:&#160;<br/>
+<b>Feature&#160;<br/></b>Initialization and start&#160;services&#160;<br/>Error&#160;reporting service&#160;<br/>
+Table&#160;4-1&#160;&#160;&#160;Supported&#160;SWS&#160;features&#160;<br/>
+&#160;<br/>The&#160;following&#160;features&#160;described&#160;in<a href="TechnicalReference_Dets.html#3">&#160;[1]&#160;and&#160;[2]&#160;</a>are not&#160;supported&#160;in&#160;GENy:&#160;<br/>
+<b>Feature&#160;<br/></b>Service port&#160;interface&#160;is&#160;only&#160;supported&#160;in Configurator&#160;5&#160;<br/>Forwarding&#160;of&#160;DET&#160;errors&#160;to&#160;the&#160;DLT&#160;module&#160;is&#160;only&#160;supported&#160;in Configurator&#160;5&#160;<br/>
+Table&#160;4-2&#160;&#160;&#160;Not&#160;supported&#160;AUTOSAR&#160;3&#160;and&#160;4&#160;SWS&#160;features&#160;<br/>
+The&#160;following&#160;features&#160;described&#160;in<a href="TechnicalReference_Dets.html#3">&#160;[2]&#160;</a>are&#160;not&#160;supported:&#160;<br/>
+<b>Feature&#160;<br/></b>Configurable list&#160;of&#160;error&#160;hooks&#160;(use&#160;the&#160;DET&#160;entry&#160;callout&#160;instead)&#160;<br/>Debugging&#160;support&#160;(AUTOSAR&#160;debugging&#160;concept)&#160;<br/>
+Table&#160;4-3&#160;&#160;&#160;Not&#160;supported&#160;AUTOSAR&#160;4&#160;SWS&#160;features&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>Initialization&#160;</b><br/>
+The&#160;DET&#160;is&#160;initialized&#160;and&#160;operational&#160;after&#160;the&#160;API&#160;Det_Init&#160;has&#160;been&#160;called.&#160;In<a href="TechnicalReference_Dets.html#3">&#160;[1]&#160;</a>and&#160;<br/><a href="TechnicalReference_Dets.html#3">[2]&#160;</a>an&#160;additional&#160;Det_Start&#160;service&#160;is&#160;specified&#160;to&#160;handle&#160;cases&#160;where&#160;it&#160;is&#160;necessary&#160;to&#160;<br/>split&#160;the&#160;initialization&#160;in&#160;two&#160;phases.&#160;Since&#160;this&#160;is&#160;not&#160;applicable&#160;the&#160;Det_Start&#160;function&#160;is&#160;<br/>empty.&#160;<br/>
+In&#160;&#160;the&#160;AUTOSAR&#160;&#160;4&#160;&#160;variant&#160;&#160;the&#160;API&#160;&#160;Det_InitMemory&#160;&#160;may&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;used&#160;&#160;in&#160;&#160;addition,&#160;<br/>please&#160;refer to&#160;the&#160;API&#160;description<a href="TechnicalReference_Dets.html#19">&#160;6.2.2&#160;</a>for details.&#160;<br/>
+<b>4.3&#160;</b><br/>
+<b>States&#160;</b><br/>
+The&#160;DET&#160;has no&#160;internal state&#160;machine,&#160;it is&#160;operational after initialization.&#160;<br/>In&#160;the&#160;AUTOSAR&#160;4&#160;variant&#160;the&#160;module&#160;uses&#160;its&#160;initialization&#160;state&#160;to&#160;perform&#160;a&#160;check&#160;if&#160;the&#160;<br/>module&#160;has&#160;been&#160;initialized.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+10&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-11_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-11_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-11_3.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>4.4&#160;</b><br/>
+<b>Main Functions&#160;</b><br/>
+The&#160;DET&#160;has no&#160;main&#160;function&#160;since&#160;it&#160;does&#160;not&#160;perform&#160;cyclic tasks.&#160;<br/>
+<b>4.5&#160;</b><br/>
+<b>Error&#160;Handling&#160;</b><br/>
+Since&#160;the&#160;DET&#160;is&#160;the&#160;centralized&#160;error&#160;handler&#160;it&#160;does&#160;not&#160;&#160;use&#160;error&#160;handling&#160;services&#160;&#160;of&#160;<br/>other&#160;BSW&#160;modules.&#160;<br/>
+<b>4.6&#160;</b><br/>
+<b>Debugging&#160;with the&#160;DET&#160;</b><br/>
+The&#160;DET&#160;is&#160;called&#160;for&#160;each&#160;development&#160;error&#160;which&#160;is&#160;reported&#160;by&#160;other&#160;BSW&#160;modules.&#160;<br/>Since&#160;&#160;it&#160;&#160;is&#160;&#160;potentially&#160;&#160;not&#160;&#160;safe&#160;&#160;to&#160;&#160;continue&#160;&#160;the&#160;&#160;program&#160;&#160;when&#160;&#160;such&#160;&#160;an&#160;&#160;error&#160;&#160;occurs,&#160;&#160;the&#160;<br/>default implementation&#160;of&#160;the&#160;DET&#160;is&#160;an&#160;endless loop.&#160;<br/>A&#160;breakpoint&#160;should&#160;always&#160;be&#160;set&#160;in&#160;this&#160;loop.&#160;When&#160;the&#160;breakpoint&#160;is&#160;hit,&#160;the&#160;parameters&#160;<br/>of&#160;the&#160;function&#160;Det_ReportError<a href="TechnicalReference_Dets.html#20">&#160;6.2.4&#160;</a>can&#160;be&#160;inspected&#160;in&#160;the&#160;debugger.&#160;By&#160;means&#160;of&#160;<br/>these&#160;parameters&#160;it&#160;is&#160;possible&#160;to&#160;find&#160;out&#160;which&#160;error&#160;occurred;&#160;it&#160;is&#160;however&#160;sometimes&#160;<br/>more convenient&#160;to&#160;use&#160;a&#160;stack trace&#160;if&#160;the&#160;debugger provides this.&#160;<br/>
+&#160;<br/>
+<b>A&#160;breakpoint&#160;should&#160;always be&#160;set&#160;in&#160;the&#160;endless loop&#160;<br/></b>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+If&#160;a&#160;simulated&#160;target&#160;based&#160;on&#160;the&#160;CANoe&#160;emulation&#160;environment&#160;is&#160;used&#160;the&#160;endless&#160;loop&#160;<br/>is replaced&#160;by&#160;an&#160;error message&#160;in&#160;the&#160;CANoe&#160;write&#160;window.&#160;&#160;<br/>
+<b>4.6.1&#160;</b><br/>
+<b>Extended&#160;Debug Features&#160;</b><br/>
+Sometimes&#160;&#160;the&#160;&#160;provision&#160;&#160;of&#160;&#160;the&#160;&#160;endless&#160;&#160;loop&#160;&#160;is&#160;&#160;not&#160;&#160;sufficient&#160;&#160;for&#160;&#160;debugging,&#160;&#160;therefore&#160;<br/>some&#160;extended&#160;debug&#160;features&#160;are&#160;provided.&#160;These&#160;features&#160;are&#160;thought&#160;as&#160;a&#160;debugging&#160;<br/>aid,&#160;thus they&#160;are accessible&#160;via&#160;the&#160;debugger and&#160;do&#160;not&#160;have&#160;special&#160;APIs.&#160;<br/>To&#160;use&#160;these&#160;features&#160;the&#160;attribute&#160;“Enable&#160;Extended&#160;Debug&#160;Support”&#160;must&#160;be&#160;enabled&#160;(s.&#160;<br/><a href="TechnicalReference_Dets.html#25">7.1.2).</a>&#160;<br/>
+<b>4.6.1.1&#160;</b><br/>
+<b>Filters&#160;</b><br/>
+Sometimes&#160;&#160;it&#160;&#160;happens&#160;&#160;that&#160;&#160;a&#160;&#160;BSW&#160;&#160;module&#160;&#160;reports&#160;&#160;DET&#160;&#160;errors&#160;&#160;which&#160;&#160;are&#160;&#160;known&#160;&#160;to&#160;&#160;be&#160;<br/>uncritical.&#160;&#160;Such&#160;&#160;errors&#160;&#160;can&#160;&#160;be&#160;&#160;ignored&#160;&#160;by&#160;&#160;discarding&#160;&#160;the&#160;&#160;related&#160;&#160;calls&#160;&#160;to&#160;<br/>Det_ReportError.&#160;<br/>
+To&#160;&#160;implement&#160;&#160;this&#160;&#160;functionality&#160;&#160;the&#160;&#160;DET&#160;&#160;provides&#160;&#160;a&#160;&#160;set&#160;&#160;of&#160;&#160;filters&#160;&#160;where&#160;&#160;the&#160;&#160;errors&#160;&#160;to&#160;&#160;be&#160;<br/>discarded&#160;can&#160;be&#160;configured.&#160;It&#160;is&#160;possible&#160;to&#160;use&#160;the&#160;patterns&#160;0xff&#160;or&#160;0xffff&#160;as&#160;wild&#160;cards&#160;<br/>(don’t care&#160;patterns).&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+11&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_7.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_8.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_9.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-12_10.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>Configuration&#160;of&#160;filters</b>&#160;<br/>
+&#160;&#160;configure&#160;the&#160;required&#160;number&#160;of&#160;filters&#160;in&#160;configuration tool&#160;with the&#160;attribute&#160;<br/>
+&#160;<br/>
+“Number&#160;of&#160;Global&#160;Filters”&#160;(s.<a href="TechnicalReference_Dets.html#25">&#160;7.1.2)</a>&#160;<br/>
+&#160;&#160;enable&#160;filtering&#160;globally&#160;in the&#160;debugger&#160;by&#160;setting&#160;<br/>
+detStatus.globalFilterActive to 1&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;&#160;configure&#160;the&#160;required&#160;filters&#160;in&#160;the&#160;debugger&#160;by&#160;setting&#160;detGlobalFilter&#160;<br/>
+elements&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Filter examples</b>&#160;<br/>
+&#160;&#160;a) ignore error 3&#160;of&#160;API7&#160;of&#160;module&#160;20&#160;in&#160;instance&#160;0&#160;<br/>
+&#160;&#160;moduleId=20&#160;<br/>&#160;&#160;instanceId=0&#160;<br/>&#160;&#160;apiId=7&#160;<br/>
+errorId=3&#160;<br/>
+b) ignore all&#160;errors of&#160;module&#160;20&#160;in&#160;instance&#160;0&#160;<br/>&#160;&#160;moduleId=20&#160;<br/>&#160;&#160;instanceId=0&#160;<br/>&#160;&#160;apiId=0xff&#160;<br/>&#160;&#160;errorId=0xff&#160;<br/>
+&#160;<br/>
+<b>4.6.1.2&#160;</b><br/>
+<b>Logging&#160;</b><br/>
+The&#160;DET&#160;provides&#160;a&#160;log&#160;buffer&#160;for&#160;incoming&#160;error&#160;messages.&#160;Error&#160;messages&#160;which&#160;have&#160;<br/>been&#160;filtered&#160;are&#160;not&#160;logged.&#160;<br/>The&#160;contents&#160;of&#160;the&#160;log&#160;buffer can&#160;be&#160;viewed&#160;with&#160;the&#160;debugger.&#160;<br/>
+&#160;<br/>
+<b>Configuration&#160;of&#160;logging</b>&#160;<br/>
+&#160;&#160;configure&#160;the&#160;required&#160;size of&#160;the&#160;log&#160;buffer&#160;in&#160;the&#160;configuration&#160;tool&#160;with the&#160;<br/>
+&#160;<br/>
+attribute&#160;“Size of&#160;Log Buffer”&#160;(s.<a href="TechnicalReference_Dets.html#25">&#160;7.1.2)</a>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+12&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-13_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-13_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-13_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-13_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-13_5.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+&#160;&#160;enable logging&#160;globally&#160;in the&#160;debugger&#160;by&#160;setting&#160;detStatus.logActive to&#160;1&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Logging example</b>&#160;<br/>
+&#160;&#160;The&#160;variable detStatus.logIndex&#160;shows&#160;the&#160;index&#160;in the&#160;log&#160;buffer&#160;with the&#160;last&#160;logged&#160;<br/>
+development&#160;error.&#160;Use&#160;the&#160;elements&#160;of&#160;detLogBuffer&#160;to&#160;view&#160;the&#160;logged&#160;errors.&#160;<br/>
+&#160;<br/>
+By&#160;default&#160;all&#160;elements&#160;of&#160;the&#160;variable (s.&#160;above)&#160;detLogBuffer&#160;are initialized&#160;with zero.&#160;<br/>
+&#160;<br/>
+By&#160;&#160;setting&#160;&#160;detStatus.breakOnLogOverrun&#160;&#160;in&#160;&#160;the&#160;&#160;debugger&#160;&#160;it&#160;&#160;is&#160;&#160;possible&#160;&#160;to&#160;&#160;enter&#160;&#160;the&#160;<br/>endless&#160;loop&#160;if&#160;the&#160;log&#160;buffer is&#160;full.&#160;<br/>
+<b>4.6.1.3&#160;</b><br/>
+<b>Break&#160;handler&#160;</b><br/>
+For&#160;some&#160;errors&#160;it&#160;is&#160;possible&#160;to&#160;continue&#160;operation.&#160;Therefore&#160;it&#160;&#160;is&#160;possible&#160;to&#160;unlock&#160;the&#160;<br/>endless&#160;loop&#160;with&#160;the&#160;debugger&#160;to&#160;continue&#160;the&#160;program.&#160;Since&#160;the&#160;same&#160;error&#160;could&#160;occur&#160;<br/>multiple&#160;times&#160;and&#160;to&#160;avoid&#160;ending&#160;up&#160;in&#160;the&#160;endless&#160;loop&#160;again&#160;it&#160;is&#160;possible&#160;to&#160;configure&#160;a&#160;<br/>special&#160;filter&#160;set&#160;for&#160;the&#160;break&#160;handler.&#160;Such&#160;errors&#160;are&#160;logged&#160;(if&#160;logging&#160;is&#160;active)&#160;but&#160;do&#160;<br/>not&#160;lead&#160;to&#160;a&#160;break.&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+13&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_7.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-14_8.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>Configuration&#160;of&#160;break&#160;handler&#160;filters</b>&#160;<br/>
+&#160;&#160;configure&#160;the&#160;required&#160;number&#160;of&#160;break&#160;handler&#160;filters&#160;in&#160;configuration&#160;tool&#160;<br/>
+&#160;<br/>
+with the&#160;attribute&#160;“Number&#160;of&#160;Break&#160;Handler&#160;Filters”&#160;(s.<a href="TechnicalReference_Dets.html#25">&#160;7.1.2)</a>&#160;<br/>
+&#160;&#160;enable break&#160;handler&#160;filtering&#160;globally&#160;in the&#160;debugger&#160;by&#160;setting&#160;<br/>
+detStatus.breakFilterActive to&#160;1&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;&#160;configure&#160;the&#160;required&#160;break&#160;handler&#160;filters&#160;in&#160;the&#160;debugger&#160;by&#160;setting&#160;<br/>
+detBreakFilter&#160;elements&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+For some&#160;filter&#160;examples please&#160;refer to<a href="TechnicalReference_Dets.html#11">&#160;4.6.1.1.</a>&#160;<br/>In&#160;&#160;the&#160;&#160;following&#160;&#160;example&#160;&#160;it&#160;&#160;is&#160;&#160;described&#160;&#160;how&#160;&#160;the&#160;&#160;endless&#160;&#160;loop&#160;&#160;can&#160;&#160;be&#160;&#160;unlocked&#160;&#160;in&#160;&#160;the&#160;<br/>debugger.&#160;<br/>
+<b>How&#160;to&#160;unlock&#160;the&#160;endless loop&#160;<br/></b>Set&#160;detStatus.unlockBreak to&#160;1&#160;to&#160;leave&#160;endless loop:&#160;<br/>
+&#160;&#160;&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+14&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-15_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-15_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-15_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-15_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-15_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-15_6.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>4.7&#160;</b><br/>
+<b>Extension of the&#160;DET&#160;</b><br/>
+Sometimes&#160;&#160;the&#160;built-in&#160;&#160;debug&#160;features&#160;of&#160;the&#160;DET&#160;may&#160;not&#160;&#160;be&#160;sufficient&#160;&#160;or&#160;some&#160;special&#160;<br/>handling&#160;of&#160;errors is required.&#160;Examples&#160;for such&#160;use&#160;cases include:&#160;<br/>
+&#160;Logging&#160;of&#160;DET&#160;errors&#160;via&#160;debug&#160;interface&#160;<br/>
+&#160;Transmission&#160;of&#160;DET&#160;errors on&#160;a&#160;serial bus system&#160;<br/>
+&#160;Error&#160;&#160;handling&#160;&#160;which&#160;&#160;requires&#160;&#160;direct&#160;&#160;access&#160;&#160;to&#160;&#160;the&#160;&#160;hardware&#160;&#160;(e.g.&#160;&#160;disabling&#160;&#160;of&#160;<br/>
+specific interrupts)&#160;<br/>
+&#160;Complex&#160;application&#160;specific error handling&#160;<br/>
+To&#160;<br/>
+support&#160;<br/>
+such&#160;<br/>
+extensions&#160;<br/>
+the&#160;<br/>
+DET&#160;<br/>
+provides&#160;<br/>
+a&#160;<br/>
+DET&#160;<br/>
+entry&#160;<br/>
+callout&#160;<br/>
+(Appl_DetEntryCallout)&#160;which&#160;is&#160;called&#160;first&#160;when&#160;the&#160;DET&#160;is&#160;entered.&#160;The&#160;callout&#160;has&#160;<br/>to&#160;&#160;be&#160;&#160;provided&#160;&#160;by&#160;&#160;the&#160;application.&#160;&#160;It&#160;&#160;receives&#160;&#160;all&#160;&#160;parameters&#160;of&#160;&#160;the&#160;&#160;DET’s&#160;error&#160;&#160;reporting&#160;<br/>function.&#160;Depending&#160;on&#160;the&#160;return code&#160;the&#160;DET&#160;continues or abandons error handling.&#160;For&#160;<br/>details&#160;&#160;please&#160;&#160;refer&#160;&#160;to&#160;&#160;API&#160;&#160;description&#160;&#160;in&#160;&#160;chapter&#160;&#160;<a href="TechnicalReference_Dets.html#22">6.3.1.</a>&#160;&#160;This&#160;&#160;feature&#160;&#160;is&#160;&#160;enabled&#160;&#160;by&#160;&#160;a&#160;<br/>configuration&#160;parameter as&#160;described&#160;in&#160;chapte<a href="TechnicalReference_Dets.html#25">r&#160;7.1.2.</a>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+15&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-16_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-16_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-16_3.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>5&#160;&#160;Integration&#160;</b><br/>
+This&#160;chapter&#160;gives&#160;necessary&#160;information&#160;for&#160;the&#160;integration&#160;of&#160;&#160;the&#160;&#160;MICROSAR&#160;&#160;DET&#160;&#160;into&#160;<br/>an&#160;application&#160;environment&#160;of&#160;an&#160;ECU.&#160;<br/>
+<b>5.1&#160;</b><br/>
+<b>Scope&#160;of&#160;Delivery&#160;</b><br/>
+In&#160;the&#160;delivery&#160;of&#160;the&#160;MICROSAR&#160;DET&#160;the&#160;files listed&#160;in<a href="TechnicalReference_Dets.html#16">&#160;5.1.1&#160;and&#160;5.1.2&#160;</a>are contained.&#160;&#160;<br/>
+<b>5.1.1&#160;</b><br/>
+<b>Static&#160;Files&#160;</b><br/>
+<b>File&#160;Name&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Det.c&#160;<br/>
+This&#160;is&#160;the&#160;source&#160;file of&#160;the&#160;DET&#160;<br/>
+Det.h&#160;<br/>
+This&#160;is&#160;the&#160;header&#160;file&#160;of&#160;the&#160;DET&#160;<br/>
+Table&#160;5-1&#160;<br/>
+Static&#160;files&#160;<br/>
+<b>5.1.2&#160;</b><br/>
+<b>Generated&#160;Files&#160;</b><br/>
+The&#160;dynamic&#160;files are&#160;generated&#160;by&#160;the&#160;configuration&#160;tool.&#160;<br/>
+<b>File&#160;Name&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Det_cfg.h&#160;<br/>
+This&#160;is&#160;configuration header&#160;file&#160;containing&#160;pre-compile parameters.&#160;<br/>
+Table&#160;5-2&#160;<br/>
+Generated&#160;files&#160;<br/>
+<b>5.2&#160;</b><br/>
+<b>Include&#160;Structure&#160;</b><br/>
+The&#160;DET&#160;includes the&#160;headers&#160;mentioned&#160;in&#160;the&#160;previous chapte<a href="TechnicalReference_Dets.html#16">rs&#160;5.1.1&#160;</a>and<a href="TechnicalReference_Dets.html#16">&#160;5.1.2.</a>&#160;<br/>In&#160;addition&#160;the&#160;file&#160;Std_Types.h&#160;is included.&#160;<br/>To&#160;support the&#160;AUTOSAR memory&#160;mapping&#160;concept&#160;the&#160;header MemMap.h&#160;is included.&#160;<br/>
+<b>5.3&#160;</b><br/>
+<b>Handling of&#160;Recursions&#160;</b><br/>
+If&#160;DET&#160;errors&#160;occur&#160;within&#160;the&#160;call&#160;context&#160;of&#160;the&#160;DET&#160;recursions&#160;could&#160;be&#160;caused.&#160;This&#160;can&#160;<br/>happen&#160;in&#160;the&#160;following&#160;cases:&#160;<br/>
+&#160;A&#160;&#160;DET&#160;&#160;error&#160;&#160;occurs&#160;&#160;in&#160;&#160;one&#160;&#160;of&#160;&#160;the&#160;&#160;interrupt&#160;&#160;enabling&#160;&#160;or&#160;&#160;disabling&#160;&#160;functions&#160;&#160;which&#160;<br/>
+are used&#160;by&#160;the&#160;DET&#160;on&#160;its&#160;own&#160;to&#160;protect&#160;critical sections of&#160;the&#160;DET.&#160;<br/>
+&#160;In&#160;an&#160;Appl_DetEntryCallout&#160;or a&#160;subroutine&#160;of&#160;Appl_DetEntryCallout&#160;if&#160;<br/>
+BSW&#160;API&#160;functions are&#160;used&#160;there.&#160;<br/>
+These&#160;cases&#160;are&#160;handled&#160;by&#160;an&#160;internal&#160;locking&#160;mechanism&#160;in&#160;the&#160;DET&#160;so&#160;the&#160;application&#160;<br/>needs&#160;not&#160;to&#160;take&#160;care&#160;of&#160;them.&#160;It&#160;should&#160;however&#160;be&#160;noted&#160;that&#160;in&#160;case&#160;of&#160;a&#160;recursion&#160;the&#160;<br/>DET&#160;might&#160;skip&#160;a&#160;callout&#160;or its internal error logging.&#160;<br/>If&#160;forwarding&#160;of&#160;errors&#160;to&#160;the&#160;DLT&#160;module&#160;is&#160;used&#160;(Configurator&#160;5&#160;only)&#160;the&#160;DLT&#160;module&#160;is&#160;<br/>responsible&#160;for&#160;preventing&#160;potential&#160;recursions&#160;which&#160;could&#160;occur&#160;if&#160;a&#160;DET&#160;error&#160;is&#160;reported&#160;<br/>by&#160;&#160;the&#160;&#160;DLT&#160;&#160;module.&#160;&#160;The&#160;&#160;MICROSAR&#160;&#160;implementation&#160;&#160;of&#160;&#160;the&#160;&#160;DLT&#160;&#160;module&#160;&#160;considers&#160;&#160;this&#160;<br/>requirement.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+16&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-17_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-17_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-17_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-17_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-17_5.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>5.4&#160;</b><br/>
+<b>Critical&#160;Sections&#160;</b><br/>
+The&#160;DET&#160;has&#160;code&#160;sections&#160;which&#160;need&#160;protection&#160;against&#160;preemption.&#160;Therefore&#160;the&#160;DET&#160;<br/>uses&#160;&#160;one&#160;&#160;exclusive&#160;&#160;area&#160;&#160;which&#160;&#160;typically&#160;&#160;requires&#160;&#160;an&#160;&#160;interrupt&#160;&#160;lock&#160;&#160;up&#160;&#160;to&#160;&#160;the&#160;&#160;highest&#160;<br/>interrupt&#160;level where DET&#160;error reports can&#160;be&#160;produced:&#160;<br/>DET_EXCLUSIVE_AREA_0&#160;<br/>This&#160;exclusive&#160;area&#160;is short and&#160;only&#160;relevant&#160;if&#160;the&#160;logging&#160;feature is activated.&#160;<br/>
+<b>5.5&#160;</b><br/>
+<b>Usage&#160;Hints&#160;for&#160;Operation in&#160;Safety&#160;Related ECUs&#160;</b><br/>
+The&#160;&#160;silent&#160;&#160;BSW&#160;&#160;concept&#160;&#160;assures&#160;&#160;that&#160;&#160;a&#160;&#160;BSW&#160;&#160;module&#160;&#160;does&#160;&#160;not&#160;&#160;corrupt&#160;&#160;memory&#160;&#160;of&#160;&#160;the&#160;<br/>application&#160;&#160;and&#160;&#160;other&#160;&#160;BSW&#160;&#160;modules.&#160;&#160;In&#160;&#160;this&#160;&#160;context&#160;&#160;the&#160;&#160;following&#160;&#160;aspects&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;<br/>considered&#160;for the&#160;DET:&#160;<br/>
+&#160;In&#160;&#160;the&#160;&#160;callout&#160;&#160;function&#160;&#160;Appl_DetEntryCallout&#160;&#160;the&#160;&#160;DET&#160;&#160;passes&#160;&#160;four&#160;<br/>
+parameters&#160;to&#160;the&#160;application&#160;which&#160;could&#160;be&#160;used&#160;as&#160;indices&#160;by&#160;the&#160;application.&#160;<br/>Please&#160;&#160;note,&#160;&#160;that&#160;&#160;the&#160;&#160;DET&#160;&#160;does&#160;&#160;not&#160;&#160;perform&#160;&#160;plausibility&#160;&#160;checks&#160;&#160;of&#160;&#160;the&#160;&#160;value&#160;<br/>ranges&#160;&#160;of&#160;&#160;those&#160;&#160;parameters&#160;&#160;because&#160;&#160;the&#160;&#160;errors&#160;&#160;reported&#160;&#160;to&#160;&#160;the&#160;&#160;DET&#160;&#160;are&#160;&#160;not&#160;<br/>known&#160;&#160;by&#160;&#160;the&#160;&#160;DET&#160;&#160;in&#160;&#160;advance.&#160;&#160;The&#160;&#160;producer&#160;&#160;and&#160;&#160;consumer&#160;&#160;(could&#160;&#160;both&#160;&#160;be&#160;<br/>application&#160;&#160;code)&#160;&#160;has&#160;&#160;to&#160;&#160;perform&#160;&#160;plausibility&#160;&#160;checks&#160;&#160;of&#160;&#160;the&#160;&#160;index&#160;&#160;parameters&#160;&#160;if&#160;<br/>necessary.&#160;<br/>
+&#160;If&#160;&#160;the&#160;&#160;extended&#160;&#160;debug&#160;&#160;feature&#160;&#160;“logging”&#160;&#160;is&#160;&#160;used&#160;&#160;depending&#160;&#160;on&#160;&#160;the&#160;&#160;scheduling&#160;<br/>
+concept&#160;of&#160;the&#160;ECU&#160;DET&#160;errors could&#160;be&#160;logged&#160;from&#160;different&#160;contexts&#160;and&#160;it&#160;has&#160;<br/>therefore&#160;&#160;to&#160;&#160;be&#160;&#160;secured&#160;&#160;that&#160;&#160;the&#160;&#160;critical&#160;&#160;section&#160;&#160;DET_EXCLUSIVE_AREA_0&#160;<br/>reaches&#160;&#160;up&#160;&#160;the&#160;&#160;highest&#160;&#160;processing&#160;&#160;level&#160;&#160;of&#160;&#160;the&#160;&#160;application&#160;&#160;which&#160;&#160;can&#160;&#160;produce&#160;<br/>DET&#160;errors.&#160;<br/>
+&#160;The&#160;application&#160;has&#160;to&#160;pass&#160;a&#160;valid&#160;pointer&#160;to&#160;the&#160;API&#160;&#160;Det_GetVersionInfo.&#160;A&#160;<br/>
+NULL&#160;&#160;pointer&#160;&#160;check&#160;&#160;of&#160;&#160;the&#160;&#160;passed&#160;&#160;pointer&#160;&#160;parameter&#160;&#160;is&#160;&#160;only&#160;&#160;available&#160;&#160;in&#160;&#160;the&#160;<br/>AUTOSAR 4&#160;variant&#160;of&#160;the&#160;DET.&#160;<br/>
+&#160;The&#160;&#160;DET&#160;&#160;is&#160;&#160;intended&#160;&#160;for&#160;&#160;the&#160;&#160;development&#160;&#160;phase&#160;&#160;of&#160;&#160;an&#160;&#160;ECU.&#160;&#160;If&#160;&#160;it&#160;&#160;is&#160;&#160;used&#160;&#160;in&#160;<br/>
+production&#160;&#160;code&#160;&#160;the&#160;&#160;extended&#160;&#160;debug&#160;&#160;features&#160;&#160;should&#160;&#160;be&#160;&#160;switched&#160;&#160;off&#160;&#160;because&#160;<br/>they&#160;are only&#160;relevant&#160;if&#160;a&#160;debugger is attached.&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+17&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-18_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-18_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-18_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-18_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-18_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-18_6.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6&#160;&#160;API&#160;Description&#160;</b><br/>
+<b>6.1&#160;</b><br/>
+<b>Interfaces&#160;Overview&#160;</b><br/>
+The&#160;DET&#160;provides the&#160;four&#160;services&#160;&#160;<br/>
+&#160;Det_Init&#160;for initialization,&#160;<br/>
+&#160;Det_InitMemory&#160;for&#160;initialization&#160;(AUTOSAR 4&#160;only),&#160;<br/>
+&#160;Det_Start&#160;for additional initialization&#160;purposes,&#160;&#160;<br/>
+&#160;Det_ReportError&#160;for&#160;reporting&#160;of&#160;development&#160;errors and&#160;<br/>
+&#160;Det_GetVersionInfo&#160;for version&#160;information.&#160;<br/>
+They&#160;are described&#160;in&#160;detail&#160;in&#160;the&#160;following&#160;sections.&#160;<br/>
+<b>6.2&#160;</b><br/>
+<b>Services&#160;Provided by&#160;MICROSAR&#160;DET&#160;</b><br/>
+The&#160;MICROSAR DET&#160;API&#160;consists of&#160;services,&#160;which&#160;are realized&#160;by&#160;function&#160;calls.&#160;<br/>
+<b>6.2.1&#160;</b><br/>
+<b>Det_Init&#160;</b><br/>
+<b>Det_Init&#160;</b><br/>
+<b>Prototype&#160;<br/></b>void&#160;<b>Det_Init</b>&#160;&#160;(&#160;void&#160;)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Initializes&#160;the DET.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Should only&#160;be&#160;called&#160;once by&#160;the&#160;EcuM&#160;when the&#160;system&#160;is&#160;started&#160;<br/>Expected&#160;Caller&#160;Context&#160;<br/>
+<b>&gt;&#160;&#160;</b>Should be&#160;called&#160;from&#160;a&#160;safe context&#160;on&#160;task&#160;level&#160;<br/>
+Table&#160;6-1&#160;&#160;&#160;Det_Init&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+18&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-19_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6.2.2&#160;</b><br/>
+<b>Det_InitMemory&#160;</b><br/>
+<b>Det_InitMemory&#160;</b><br/>
+<b>Prototype&#160;<br/></b>void&#160;<b>Det_InitMemory</b>&#160;&#160;( void&#160;)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Initializes&#160;the state variable&#160;for the&#160;un-init check&#160;of&#160;the DET. If&#160;this&#160;function&#160;is&#160;used&#160;it must be called&#160;before&#160;<br/>Det_Init.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Should only&#160;be&#160;called&#160;once by&#160;the&#160;EcuM&#160;when the&#160;system&#160;is&#160;started&#160;<br/>
+<b>&gt;&#160;&#160;</b>Only&#160;needed&#160;if&#160;the&#160;startup code does&#160;not&#160;support&#160;initialized&#160;RAM&#160;<br/>
+<b>&gt;&#160;&#160;</b>Only&#160;applicable for&#160;the&#160;AUTOSAR&#160;4&#160;variant&#160;<br/>Expected&#160;Caller&#160;Context&#160;<br/>
+<b>&gt;&#160;&#160;</b>Should be&#160;called&#160;from&#160;a&#160;safe context&#160;on&#160;task&#160;level&#160;<br/>
+Table&#160;6-2&#160;&#160;&#160;Det_InitMemory&#160;<br/>
+&#160;<br/>
+<b>6.2.3&#160;</b><br/>
+<b>Det_Start&#160;</b><br/>
+<b>Det_Start&#160;</b><br/>
+<b>Prototype&#160;<br/></b>void&#160;<b>Det_Start</b>&#160;&#160;( void&#160;)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Starts&#160;the DET.&#160;This&#160;service currently&#160;has&#160;no&#160;functionality,&#160;i.e. the&#160;API&#160;function&#160;is&#160;empty.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>Call&#160;could be&#160;omitted&#160;<br/>Expected&#160;Caller&#160;Context&#160;<br/>
+<b>&gt;&#160;&#160;</b>No restriction&#160;<br/>
+Table&#160;6-3&#160;&#160;&#160;Det_Start&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+19&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-20_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6.2.4&#160;</b><br/>
+<b>Det_ReportError&#160;</b><br/>
+<b>Det_ReportError&#160;</b><br/>
+<b>Prototype&#160;<br/></b>AUTOSAR&#160;3:&#160;<br/>void&#160;<b>Det_ReportError</b>&#160;&#160;(&#160;uint16 ModuleId, uint8 InstanceId,&#160;&#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;uint8 ApiId, uint8 ErrorId&#160;)&#160;<br/>AUTOSAR&#160;4:&#160;<br/>Std_ReturnType&#160;<b>Det_ReportError</b>&#160;&#160;(&#160;uint16 ModuleId, uint8 InstanceId,&#160;&#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;uint8 ApiId, uint8 ErrorId&#160;)&#160;<br/>&#160;<br/>
+<b>Parameter&#160;</b><br/>
+ModuleId&#160;<br/>
+Module&#160;ID of&#160;calling&#160;module&#160;<br/>
+InstanceId&#160;<br/>
+The&#160;identifier of&#160;the&#160;index&#160;based&#160;instance&#160;of&#160;a&#160;module,&#160;starting&#160;from&#160;0,&#160;If&#160;the&#160;<br/>module is&#160;a&#160;single&#160;instance&#160;module it shall&#160;pass&#160;0&#160;as&#160;the&#160;InstanceId.&#160;<br/>
+ApiId&#160;<br/>
+ID of&#160;API service&#160;in&#160;which&#160;error is&#160;detected&#160;<br/>(defined&#160;in&#160;SWS&#160;of&#160;calling&#160;module)&#160;<br/>
+ErrorId&#160;<br/>
+ID of&#160;detected&#160;development error&#160;<br/>(defined&#160;in&#160;SWS&#160;of&#160;calling&#160;module)&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+AUTOSAR 3:&#160;<br/>
+&#160;<br/>
+-&#160;<br/>
+-&#160;<br/>
+AUTOSAR 4:&#160;<br/>
+&#160;<br/>
+Std_ReturnType&#160;<br/>
+Always&#160;E_OK&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+Used&#160;to&#160;report&#160;errors&#160;from&#160;other&#160;BSW&#160;modules&#160;to&#160;the&#160;DET. If&#160;extended&#160;debug&#160;features&#160;are disabled&#160;the&#160;<br/>DET&#160;enters&#160;an&#160;endless&#160;loop in&#160;case of&#160;an&#160;embedded&#160;target or&#160;issues&#160;an&#160;error message in&#160;the&#160;CANoe&#160;write&#160;<br/>window&#160;in case&#160;of&#160;a&#160;simulated target.&#160;<br/>For details&#160;please refer to chapt<a href="TechnicalReference_Dets.html#10">er&#160;4.&#160;</a>&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>If&#160;this&#160;function&#160;is&#160;called&#160;the&#160;DET&#160;may&#160;enter&#160;an&#160;endless loop,&#160;therefore&#160;it&#160;is&#160;strongly&#160;<br/>
+recommended&#160;to&#160;put&#160;a breakpoint&#160;in&#160;the&#160;DET.&#160;<br/>
+Expected&#160;Caller&#160;Context&#160;<br/>
+<b>&gt;&#160;&#160;</b>No restriction&#160;<br/>
+Table&#160;6-4&#160;&#160;&#160;Det_ReportError&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+20&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-21_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6.2.5&#160;</b><br/>
+<b>Det_GetVersionInfo&#160;</b><br/>
+<b>Det_GetVersionInfo&#160;</b><br/>
+<b>Prototype&#160;<br/></b>void&#160;<b>Det_GetVersionInfo</b>&#160;&#160;(&#160;Std_VersionInfoType *versioninfo&#160;)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+versioninfo&#160;<br/>
+Version&#160;information&#160;of&#160;the&#160;DET&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+-&#160;<br/>
+-&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;API returns&#160;version information, vendor ID and&#160;AUTOSAR module&#160;ID of&#160;the&#160;component.&#160;<br/>The&#160;versions&#160;are BCD-coded.&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>This&#160;API&#160;is&#160;only&#160;available&#160;if&#160;enabled&#160;in&#160;configuration (s.<a href="TechnicalReference_Dets.html#25">&#160;7.1.2).</a>&#160;<br/>
+<b>&gt;&#160;&#160;</b>As&#160;an&#160;alternative the&#160;#defines&#160;described in&#160;[1]&#160;chapter&#160;10.2&#160;could be&#160;used&#160;to read&#160;this&#160;<br/>
+information.&#160;<br/>
+Expected&#160;Caller&#160;Context&#160;<br/>
+<b>&gt;&#160;&#160;</b>No restriction&#160;<br/>
+Table&#160;6-5&#160;&#160;&#160;Det_GetVersionInfo&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+21&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-22_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6.3&#160;</b><br/>
+<b>Services&#160;used&#160;by&#160;MICROSAR DET&#160;</b><br/>
+In&#160;the&#160;following&#160;table&#160;services&#160;provided&#160;by&#160;other&#160;components,&#160;which&#160;are&#160;used&#160;by&#160;the&#160;DET&#160;<br/>are&#160;&#160;listed.&#160;&#160;For&#160;details&#160;about&#160;&#160;prototype&#160;and&#160;functionality&#160;refer&#160;to&#160;the&#160;documentation&#160;of&#160;&#160;the&#160;<br/>providing&#160;component.&#160;<br/>
+<b>Component&#160;</b><br/>
+<b>API&#160;</b><br/>
+DLT&#160;<br/>
+Dlt_DetForwardErrorTrace&#160;<br/>Only&#160;if&#160;configured&#160;in Configurator&#160;5.&#160;<br/>
+Table&#160;6-6&#160;&#160;<br/>
+Services&#160;used&#160;by&#160;the&#160;DET&#160;<br/>
+&#160;<br/>
+To&#160;allow&#160;for extensions&#160;of&#160;the&#160;DET&#160;a&#160;callout&#160;to&#160;the&#160;application&#160;is&#160;used.&#160;<br/>
+<b>6.3.1&#160;</b><br/>
+<b>Appl_DetEntryCallout&#160;</b><br/>
+<b>Appl_DetEntryCallout&#160;</b><br/>
+<b>Prototype&#160;<br/></b>uint8&#160;<b>Appl_DetEntryCallout</b>&#160;&#160;(&#160;uint16 ModuleId, uint8 InstanceId,&#160;&#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;uint8 ApiId, uint8 ErrorId&#160;)&#160;<br/>
+<b>Parameter&#160;</b><br/>
+ModuleId&#160;<br/>
+Module&#160;ID of&#160;calling&#160;module&#160;<br/>
+InstanceId&#160;<br/>
+The&#160;identifier of&#160;the&#160;index&#160;based&#160;instance&#160;of&#160;a&#160;module,&#160;starting&#160;from&#160;0,&#160;If&#160;the&#160;<br/>module is&#160;a&#160;single&#160;instance&#160;module it shall&#160;pass&#160;0&#160;as&#160;the&#160;InstanceId.&#160;<br/>
+ApiId&#160;<br/>
+ID of&#160;API service&#160;in&#160;which&#160;error is&#160;detected&#160;<br/>(defined&#160;in&#160;SWS&#160;of&#160;calling&#160;module)&#160;<br/>
+ErrorId&#160;<br/>
+ID of&#160;detected&#160;development error&#160;<br/>(defined&#160;in&#160;SWS&#160;of&#160;calling&#160;module)&#160;<br/>
+<b>Return&#160;code&#160;</b><br/>
+uint8&#160;<br/>
+0 continue DET&#160;processing&#160;<br/>1 abandon&#160;DET&#160;processing&#160;<br/>
+<b>Functional&#160;Description&#160;</b><br/>
+This&#160;function&#160;is&#160;used&#160;to&#160;extend the&#160;DET.&#160;The&#160;parameters&#160;can&#160;be&#160;used&#160;for application&#160;specific&#160;error&#160;<br/>handling.&#160;By&#160;means&#160;of&#160;the return code the application&#160;can&#160;control&#160;further&#160;processing of&#160;the DET.&#160;<br/>For details&#160;please refer to chapter<a href="TechnicalReference_Dets.html#15">&#160;4.7.&#160;</a>&#160;<br/>
+<b>Particularities&#160;and&#160;Limitations&#160;</b><br/>
+<b>&gt;&#160;&#160;</b>This&#160;API&#160;is&#160;only&#160;available&#160;if&#160;enabled&#160;in&#160;configuration&#160;(s.<a href="TechnicalReference_Dets.html#25">&#160;7.1.2)</a>.&#160;<br/>
+<b>&gt;&#160;&#160;</b>This&#160;function&#160;has&#160;to&#160;be&#160;provided by&#160;the&#160;application.&#160;<br/>Expected&#160;Caller&#160;Context&#160;<br/>
+<b>&gt;&#160;&#160;</b>No restriction&#160;<br/>
+Table&#160;6-7&#160;&#160;&#160;Appl_DetEntryCallout&#160;<br/>
+<b>6.4&#160;</b><br/>
+<b>Callback&#160;Functions&#160;</b><br/>
+The&#160;DET&#160;does&#160;not&#160;provide&#160;callback&#160;functions.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+22&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-23_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6.5&#160;</b><br/>
+<b>Configurable&#160;Interfaces&#160;</b><br/>
+The&#160;DET&#160;does&#160;not&#160;provide&#160;configurable&#160;interfaces.&#160;&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+23&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-24_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>6.6&#160;</b><br/>
+<b>Service&#160;Ports&#160;</b><br/>
+Service&#160;ports are&#160;only&#160;supported&#160;in&#160;conjunction&#160;with&#160;the&#160;Configurator 5.&#160;<br/>
+<b>6.6.1&#160;</b><br/>
+<b>Client&#160;Server Interface&#160;</b><br/>
+A&#160;client&#160;server&#160;interface&#160;is&#160;related&#160;to&#160;a&#160;Provide&#160;Port&#160;at&#160;the&#160;server&#160;side&#160;and&#160;a&#160;Require&#160;Port&#160;<br/>at&#160;client&#160;side.&#160;&#160;<br/>
+<b>6.6.1.1&#160;</b><br/>
+<b>Provide&#160;Ports&#160;on&#160;DET&#160;Side&#160;</b><br/>
+At&#160;&#160;the&#160;&#160;Provide&#160;&#160;Ports&#160;&#160;of&#160;&#160;the&#160;&#160;DET&#160;&#160;the&#160;&#160;API&#160;&#160;function&#160;&#160;described&#160;&#160;in&#160;&#160;<a href="TechnicalReference_Dets.html#20">6.2.4&#160;&#160;</a>is&#160;&#160;available&#160;&#160;as&#160;<br/>Runnable&#160;Entity.&#160;Runnable&#160;Entities&#160;are&#160;invoked&#160;via&#160;Operations.&#160;The&#160;mapping&#160;from&#160;a&#160;SWC&#160;<br/>client&#160;&#160;call&#160;&#160;to&#160;&#160;an&#160;&#160;Operation&#160;&#160;is&#160;&#160;performed&#160;&#160;by&#160;&#160;the&#160;&#160;RTE.&#160;&#160;In&#160;this&#160;&#160;mapping&#160;&#160;the&#160;&#160;RTE&#160;adds&#160;&#160;Port&#160;<br/>Defined&#160;Argument&#160;Values to&#160;the&#160;client&#160;call&#160;of&#160;the&#160;SWC,&#160;if&#160;configured.&#160;<br/>The&#160;&#160;following&#160;&#160;sub-chapter&#160;&#160;presents&#160;&#160;the&#160;&#160;Provide&#160;&#160;Port&#160;&#160;defined&#160;&#160;for&#160;&#160;the&#160;&#160;DET&#160;&#160;and&#160;&#160;the&#160;<br/>Operation&#160;defined&#160;for&#160;the&#160;Provide&#160;Port,&#160;the&#160;API&#160;function&#160;related&#160;to&#160;the&#160;Operation&#160;and&#160;the&#160;<br/>Port Defined&#160;Argument&#160;Values&#160;to&#160;be&#160;added&#160;by&#160;the&#160;RTE.&#160;<br/>
+<b>6.6.1.1.1&#160;</b><br/>
+<b>DETService&#160;</b><br/>
+&#160;<br/>
+<b>Operation&#160;</b><br/>
+<b>API&#160;Function&#160;</b><br/>
+<b>Port&#160;Defined&#160;Argument&#160;Values&#160;</b><br/>
+ReportError&#160;&#160;<br/>
+Det_ReportError&#160;<br/>
+uint16&#160;ModuleId&#160;<br/>
+(&#160; IN uint8&#160;InstanceId,&#160;&#160;&#160;<br/>&#160; &#160;IN uint8&#160;ApiId,&#160;&#160;&#160;<br/>&#160; &#160;IN uint8 ErrorId &#160;)&#160;<br/>
+Table&#160;6-8&#160;&#160;&#160;DETService&#160;<br/>
+A&#160;separate&#160;&#160;DETService&#160;&#160;Port&#160;is&#160;needed&#160;for&#160;each&#160;AUTOSAR&#160;SW-C&#160;which&#160;&#160;wants&#160;&#160;to&#160;report&#160;<br/>errors&#160;&#160;to&#160;&#160;the&#160;&#160;DET&#160;&#160;module&#160;&#160;which&#160;&#160;corresponds&#160;&#160;to&#160;&#160;the&#160;&#160;service&#160;&#160;port&#160;&#160;of&#160;&#160;the&#160;&#160;SW-C.&#160;&#160;Each&#160;<br/>DETService&#160;&#160;Port&#160;&#160;needs&#160;&#160;a&#160;&#160;ModuleId&#160;&#160;as&#160;&#160;port&#160;&#160;defined&#160;&#160;argument&#160;&#160;value.&#160;&#160;This&#160;&#160;value&#160;&#160;is&#160;&#160;set&#160;<br/>automatically&#160;&#160;and&#160;&#160;symbolic&#160;&#160;name&#160;&#160;value&#160;&#160;defines&#160;&#160;for&#160;&#160;the&#160;&#160;ModuleIds&#160;&#160;are&#160;&#160;generated.&#160;&#160;The&#160;<br/>required&#160;service&#160;ports&#160;and&#160;their&#160;ModuleIds are&#160;configured&#160;in&#160;Configurator 5.&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+24&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=25></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-25_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-25_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-25_3.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>7&#160;&#160;Configuration&#160;</b><br/>
+In&#160;the&#160;MICROSAR DET&#160;the&#160;attributes&#160;can&#160;be&#160;configured&#160;with&#160;the&#160;following&#160;methods:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Configuration&#160;in&#160;GENy,&#160;for a&#160;detailed&#160;description&#160;see<a href="TechnicalReference_Dets.html#25">&#160;7.1&#160;</a><br/>
+<b>&gt;&#160;&#160;</b>Configuration&#160;in&#160;Configurator 5,&#160;for&#160;a&#160;detailed&#160;description&#160;refer to&#160;the&#160;online&#160;help&#160;<br/>
+<b>7.1&#160;</b><br/>
+<b>Configuration&#160;with GENy&#160;</b><br/>
+The&#160;MICROSAR DET&#160;is&#160;configured&#160;with&#160;the&#160;help&#160;of&#160;the&#160;configuration&#160;tool GENy.&#160;<br/>
+<b>7.1.1&#160;</b><br/>
+<b>System&#160;Configuration&#160;</b><br/>
+To&#160;use&#160;the&#160;DET&#160;it&#160;must&#160;be&#160;enabled&#160;in&#160;the&#160;system&#160;configuration&#160;in&#160;GENy.&#160;<br/>
+&#160;<br/>
+Figure&#160;7-1&#160;&#160;Enabling&#160;the&#160;DET&#160;in&#160;the&#160;GENy&#160;system&#160;configuration&#160;<br/>
+<b>7.1.2&#160;</b><br/>
+<b>Component Configuration&#160;</b><br/>
+In&#160;the&#160;following&#160;screenshot&#160;the&#160;component&#160;configuration&#160;of&#160;the&#160;DET&#160;is shown.&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;7-2&#160;&#160;Component&#160;configuration&#160;of&#160;the&#160;DET&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+25&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-26_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+Details&#160;&#160;about&#160;&#160;the&#160;&#160;configuration&#160;&#160;parameters&#160;&#160;are&#160;&#160;given&#160;&#160;in<a href="TechnicalReference_Dets.html#26">&#160;&#160;Table&#160;&#160;7-1.</a>&#160;&#160;The&#160;&#160;usage&#160;&#160;of&#160;&#160;these&#160;<br/>parameters&#160;for the&#160;extended&#160;debug&#160;support is described&#160;in&#160;chapte<a href="TechnicalReference_Dets.html#11">r&#160;4.6.1.</a>&#160;<br/>
+&#160;<br/>
+<b>Attribute Name&#160;</b><br/>
+<b>Configuration&#160;&#160;Value&#160;</b><br/>
+<b>Values&#160;</b><br/>
+<b>Description&#160;</b><br/>
+<b>Variant&#160;</b><br/>
+<b>Type&#160;</b><br/>
+The&#160;default&#160;value&#160;<br/>is&#160;written&#160;in&#160;bold&#160;<br/>
+Global&#160;settings&#160;<br/>
+Enable Development&#160;&#160;Pre-compile&#160;<br/>
+boolean&#160;<br/>
+<b>On</b>/off&#160;<br/>
+Enable reporting of&#160;development&#160;<br/>
+Error&#160;Tracer&#160;<br/>
+errors.&#160;<br/>
+Get&#160;Version&#160;Info&#160;<br/>
+Pre-compile&#160;<br/>
+boolean&#160;<br/>
+On/<b>off</b>&#160;<br/>
+Enable the function&#160;<br/>Det_GetVersionInfo()&#160;to&#160;get&#160;the&#160;<br/>major, minor&#160;and patch&#160;version&#160;<br/>information.&#160;<br/>
+Entry&#160;Callout&#160;<br/>
+Pre-compile&#160;<br/>
+boolean&#160;<br/>
+On/<b>off</b>&#160;<br/>
+Enable the function&#160;<br/>Appl_DetEntryCallout&#160;to&#160;support&#160;<br/>user specific&#160;extensions.&#160;<br/>
+Extended Debug support&#160;<br/>
+Enable Extended&#160;<br/>
+Pre-compile&#160;<br/>
+boolean&#160;<br/>
+On/<b>off</b>&#160;<br/>
+Enable extended debug&#160;support&#160;<br/>
+Debug Support&#160;<br/>
+features&#160;including&#160;filtering,&#160;logging&#160;<br/>and flexible break&#160;handling.&#160;<br/>
+Number&#160;of&#160;Global&#160;<br/>
+Pre-compile&#160;<br/>
+integer&#160;<br/>
+<b>0</b>..255&#160;<br/>
+Number&#160;of&#160;global&#160;filters&#160;which can&#160;<br/>
+Filters&#160;<br/>
+be&#160;used to&#160;discard&#160;irrelevant&#160;<br/>errors.&#160;<br/>
+Number&#160;of&#160;Break&#160;<br/>
+Pre-compile&#160;<br/>
+integer&#160;<br/>
+<b>0</b>..255&#160;<br/>
+Number&#160;of&#160;break&#160;handler filters&#160;<br/>
+Handler Filters&#160;<br/>
+which can be&#160;used&#160;to&#160;exit the&#160;DET&#160;<br/>without&#160;entering&#160;the&#160;endless&#160;loop.&#160;<br/>
+Size&#160;of&#160;Log&#160;Buffer&#160;<br/>
+Pre-compile&#160;<br/>
+integer&#160;<br/>
+<b>0</b>..255&#160;<br/>
+Size&#160;of&#160;the log&#160;buffer which&#160;can&#160;be&#160;<br/>used&#160;to&#160;log errors&#160;reported&#160;to&#160;the&#160;<br/>DET.&#160;<br/>
+Table&#160;7-1&#160;&#160;&#160;DET&#160;configuration&#160;parameters&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+26&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=27></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-27_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>8&#160;&#160;AUTOSAR&#160;Standard&#160;Compliance&#160;</b><br/>
+<b>8.1&#160;</b><br/>
+<b>Deviations&#160;</b><br/>
+<b>8.1.1&#160;</b><br/>
+<b>Support of&#160;Service&#160;Port Interface&#160;</b><br/>
+The&#160;current&#160;version&#160;supports&#160;the&#160;AUTOSAR&#160;service&#160;port&#160;interface&#160;only&#160;for&#160;the&#160;Configurator&#160;<br/>5.&#160;If&#160;the&#160;DET&#160;should&#160;be&#160;used&#160;to&#160;log&#160;application&#160;errors&#160;and&#160;the&#160;tool GENy&#160;is&#160;used&#160;the&#160;SWCs&#160;<br/>should&#160;call&#160;the&#160;DET&#160;directly.&#160;<br/>
+<b>8.1.2&#160;</b><br/>
+<b>Support of&#160;AUTOSAR Debugging Concept&#160;(AUTOSAR 4)&#160;</b><br/>
+Forwarding&#160;of&#160;DET&#160;errors to&#160;the&#160;DLT&#160;module&#160;is only&#160;supported&#160;for the&#160;Configurator 5.&#160;<br/>The&#160;AUTOSAR debugging&#160;concept&#160;is not&#160;supported.&#160;<br/>
+<b>8.1.3&#160;</b><br/>
+<b>Support of&#160;Configurable&#160;List of&#160;Error&#160;Hooks&#160;(AUTOSAR 4)&#160;</b><br/>
+This&#160;feature&#160;is&#160;not&#160;supported;&#160;the&#160;extension&#160;mechanism&#160;(DET&#160;entry&#160;callout)&#160;&#160;can&#160;be&#160;used&#160;<br/>instead.&#160;<br/>
+&#160;<br/>
+<b>8.2&#160;</b><br/>
+<b>Additions/&#160;Extensions&#160;</b><br/>
+<b>8.2.1&#160;</b><br/>
+<b>Extended Debug Features&#160;</b><br/>
+Since&#160;&#160;AUTOSAR&#160;&#160;specifies&#160;&#160;only&#160;&#160;the&#160;&#160;interface&#160;&#160;and&#160;&#160;not&#160;&#160;the&#160;&#160;functionality&#160;&#160;of&#160;&#160;the&#160;&#160;DET&#160;&#160;all&#160;<br/>provided&#160;debugging&#160;features&#160;are&#160;AUTOSAR&#160;extensions.&#160;&#160;<br/>
+<b>8.2.2&#160;</b><br/>
+<b>DET Extension Mechanism&#160;</b><br/>
+Since&#160;&#160;AUTOSAR&#160;&#160;does&#160;&#160;not&#160;&#160;specify&#160;&#160;a&#160;&#160;mechanism&#160;&#160;how&#160;&#160;the&#160;&#160;DET&#160;&#160;can&#160;&#160;be&#160;&#160;extended&#160;&#160;by&#160;<br/>application&#160;code&#160;a&#160;callout&#160;was added.&#160;<br/>
+<b>8.3&#160;</b><br/>
+<b>Limitations&#160;</b><br/>
+None&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+27&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=28></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-28_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>9&#160;&#160;Abbreviations&#160;</b><br/>
+<b>Abbreviation&#160;</b><br/>
+<b>Description&#160;</b><br/>
+API&#160;<br/>
+Application Programming Interface&#160;&#160;&#160;<br/>
+BSW&#160;<br/>
+Basis&#160;SoftWare&#160;<br/>
+DEM&#160;<br/>
+Diagnostic&#160;Event&#160;Manager&#160;<br/>
+DET&#160;<br/>
+Development&#160;Error&#160;Tracer&#160;<br/>
+DLT&#160;<br/>
+Diagnostic&#160;Log&#160;and&#160;Trace&#160;<br/>
+pPort&#160;<br/>
+Provide&#160;Port&#160;<br/>
+rPort&#160;<br/>
+Require Port&#160;<br/>
+RTE&#160;<br/>
+RunTime Environment&#160;<br/>
+SWC&#160;<br/>
+SoftWare&#160;Component&#160;<br/>
+Table&#160;9-1&#160;&#160;&#160;Abbreviations&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+28&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=29></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-29_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>10&#160;&#160;Glossary&#160;</b><br/>
+<b>Term&#160;</b><br/>
+<b>Description&#160;</b><br/>
+Stack&#160;trace&#160;<br/>
+A&#160;stack&#160;trace&#160;(also&#160;called&#160;stack&#160;backtrace or&#160;stack&#160;traceback)&#160;is&#160;a&#160;report&#160;<br/>of&#160;the&#160;active stack&#160;frames&#160;instantiated&#160;by&#160;the&#160;execution&#160;of&#160;a&#160;program.&#160;<br/>Although&#160;stack&#160;traces&#160;may&#160;be&#160;generated&#160;anywhere within a&#160;program,&#160;they&#160;<br/>are&#160;mostly&#160;used&#160;to&#160;aid debugging&#160;by&#160;showing&#160;where exactly&#160;an&#160;error&#160;<br/>occurs.&#160;The&#160;last&#160;few&#160;stack&#160;frames&#160;often&#160;indicate&#160;the&#160;origin of&#160;the bug.&#160;<br/>
+Table&#160;10-1&#160;&#160;&#160;Glossary&#160;<br/>
+&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+29&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+<a name=30></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Det/doc/TechnicalReference_Det-30_1.png"/><br/>
+Technical&#160;Reference&#160;MICROSAR DET&#160;<br/>
+&#160;<br/>
+<b>11&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our website&#160;for&#160;more information&#160;on&#160;<br/>&#160;<br/>&gt;&#160; &#160;News&#160;<br/>&gt;&#160; &#160;Products&#160;<br/>&gt;&#160; &#160;Demo&#160;software&#160;<br/>&gt;&#160; &#160;Support&#160;<br/>&gt;&#160; &#160;Training&#160;data&#160;<br/>&gt;&#160; &#160;Addresses&#160;<br/>&#160;<br/><a href="http://www.vector-informatik.com/"><b>www.vector-informatik.com&#160;<br/></b></a>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+2015,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;2.4.0&#160;<br/>
+30&#160;/&#160;30&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;2.0&#160;<br/>
+<hr/>
+</body>
+</html>

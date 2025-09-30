@@ -1,0 +1,1703 @@
+---
+title: S-WdgM_ReleaseNotess
+linkTitle: S-WdgM_ReleaseNotess
+weight: 5
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+&#160;<br/>
+<b>Safe Watchdog Manager</b>&#160;<br/>Release Notes&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Author:&#160;</b><br/>
+TTTech<b>&#160;</b><br/>
+<b>Security:&#160;</b><br/>
+Confidential&#160;<br/>
+<b>Document&#160;number:&#160;</b><br/>
+D-SAFEX-RP-70-012&#160;<br/>
+<b>Document&#160;Version:&#160;</b><br/>
+3.4.6<b>&#160;</b><br/>
+<b>Date:&#160;</b><br/>
+21.11.2014<b>&#160;</b><br/>
+<b>Status:&#160;</b><br/>
+released<b>&#160;</b><br/>
+<b>Review:&#160;</b><br/>
+JDU&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<br/>
+<b>TTTech&#160;Automotive&#160;GmbH&#160;</b><br/>
+Schoenbrunner&#160;Str.&#160;7,&#160;A-1040&#160;Vienna,&#160;Austria,&#160;Tel.&#160;+&#160;43&#160;1&#160;585&#160;34&#160;34-0,&#160;Fax&#160;+43&#160;1&#160;585&#160;34&#160;34-90,&#160;office@tttech-automotive.com&#160;<br/>
+No&#160;part&#160;of&#160;the&#160;document&#160;may be&#160;reproduced&#160;or&#160;transmitted&#160;in&#160;any from&#160;or&#160;by any means,&#160;electronic or&#160;mechanical,&#160;for&#160;any purpose,&#160;without&#160;the&#160;written&#160;permission&#160;of&#160;TTTech&#160;<br/>Automotive.&#160;Company or&#160;product&#160;names&#160;mentioned&#160;in&#160;this document&#160;may be&#160;trademarks or&#160;registered&#160;trademarks of&#160;their&#160;respective&#160;companies.&#160;TTTech&#160;Automotive&#160;undertakes&#160;no&#160;<br/>further&#160;obligation&#160;in&#160;relation&#160;to&#160;this document.&#160;<br/>
+Copyright&#160;©&#160;2009,&#160;TTTech&#160;Automotive&#160;GmbH. All&#160;rights&#160;reserved.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160; &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160;&#160; &#160;&#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;Subject&#160;to&#160;change&#160;and&#160;corrections<b>&#160;</b><br/>
+&#160;<br/>
+<hr/>
+<a name=2></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;2&#160;<br/>
+<b>Approval&#160;</b><br/>
+<b>Name&#160;&#160;</b><br/>
+<b>Function&#160;</b><br/>
+<b>Signature&#160;</b><br/>
+PPU&#160;<br/>
+Project Manager&#160;<br/>
+&#160;<br/>
+TGA&#160;<br/>
+Head&#160;of&#160;Software&#160;Department&#160;<br/>
+&#160;<br/>
+MAL&#160;<br/>
+Quality&#160;Manager&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>Revision Chart&#160;<br/></b>A&#160;revision&#160;is&#160;a&#160;new&#160;edition&#160;of&#160;the document and&#160;affects&#160;all&#160;sections&#160;of&#160;this&#160;document.&#160;<br/>
+&#160;<br/>
+<b>Document&#160;&#160;Date&#160;</b><br/>
+<b>Responsible Person&#160;&#160;Modification&#160;</b><br/>
+<b>Version&#160;&#160;</b><br/>
+0.9.0&#160;<br/>
+09.06.2011&#160;<br/>
+PPU&#160;<br/>
+Version for&#160;Series&#160;Release&#160;0.9&#160;<br/>
+0.9.1&#160;<br/>
+17.06.2011&#160;<br/>
+PPU&#160;<br/>
+Integration&#160;with&#160;DaVinci&#160;tool&#160;chain.&#160;<br/>
+1.0.0&#160;<br/>
+15.07.2011&#160;<br/>
+PPU&#160;<br/>
+Integration&#160;with&#160;DaVinci&#160;tool&#160;chain.&#160;&#160;<br/>
+1.1.0&#160;<br/>
+19.08.2011&#160;<br/>
+PPU&#160;<br/>
+Version for Series&#160;Release&#160;1.1&#160;<br/>
+1.2.0&#160;<br/>
+07.09.2011&#160;<br/>
+PPU&#160;<br/>
+Version 1.2.0, TMP570LS3xx&#160;related release&#160;<br/>
+1.3.0&#160;<br/>
+16.09.2011&#160;<br/>
+PPU&#160;<br/>
+Version 1.3.0,&#160;MPC56xx&#160;(MPC5604B)&#160;release&#160;<br/>
+1.3.1&#160;<br/>
+06.12.2011&#160;<br/>
+PPU&#160;<br/>
+Version 1.3.1,&#160;Wdg_MPC56xx_bswmd.arxml&#160;<br/>changed only&#160;<br/>
+1.4.0&#160;<br/>
+14.12.2011&#160;<br/>
+PPU&#160;<br/>
+New&#160;software&#160;release&#160;and&#160;document&#160;split.&#160;Watchdog&#160;<br/>Manager,&#160;&#160;Interface&#160;&#160;and&#160;&#160;Driver&#160;&#160;becomes&#160;&#160;own&#160;<br/>Release documents.&#160;<br/>
+1.5.0&#160;<br/>
+10.02.2012&#160;<br/>
+PPU&#160;<br/>
+Version 1.5.0&#160;<br/>
+1.6.0&#160;<br/>
+08.03.2012&#160;<br/>
+PPU&#160;<br/>
+Release&#160;1.6.0&#160;<br/>
+1.7.0&#160;<br/>
+13.04.2012&#160;<br/>
+PPU&#160;<br/>
+Release 1.7.0&#160;<br/>
+1.8.0&#160;<br/>
+21.11.2014&#160;<br/>
+PPU&#160;<br/>
+Release 1.8.0&#160;<br/>
+1.8.1&#160;<br/>
+12.06.2012&#160;<br/>
+PPU&#160;<br/>
+Release&#160;&#160;1.8.1&#160;&#160;did&#160;&#160;not&#160;&#160;contain&#160;&#160;WdgM&#160;&#160;module.&#160;&#160;It&#160;<br/>contains&#160;the&#160;MPC56xx&#160;driver only.&#160;<br/>
+1.8.2&#160;<br/>
+13.07.2012&#160;<br/>
+PPU&#160;<br/>
+Release 1.8.2,&#160;BugFixes,&#160;Manager&#160;release&#160;only&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=3></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;3&#160;<br/>
+1.9.0&#160;<br/>
+07.09.2012&#160;<br/>
+PPU&#160;<br/>
+Release 1.9.0,&#160;Code only&#160;<br/>
+1.9.1&#160;<br/>
+15.09.2012&#160;<br/>
+PPU&#160;<br/>
+Release 1.9.1,&#160;Documentation&#160;only&#160;<br/>
+1.9.2&#160;<br/>
+21.09.2012&#160;<br/>
+PPU&#160;<br/>
+Release 1.9.2,&#160;Style&#160;sheet&#160;update&#160;<br/>
+1.9.3&#160;<br/>
+02.10.2012&#160;<br/>
+PPU&#160;<br/>
+Release 1.9.3,&#160;S-WdgM&#160;Verifier&#160;-&#160;update,&#160;&#160;<br/>S-WdgM_UserManual&#160;&#160;-&#160;document update&#160;<br/>S-WdgM_Stack_SafetyCase&#160;-&#160;document new&#160;<br/>
+2.0.7&#160;<br/>
+25.10.2012&#160;<br/>
+PPU&#160;<br/>
+<b>Test&#160;&#160;release</b>&#160;&#160;2.0.7&#160;&#160;to&#160;&#160;check&#160;&#160;the&#160;&#160;delivery&#160;&#160;structure.&#160;<br/>This&#160;is&#160;NOT&#160;a&#160;customer release!&#160;&#160;<br/>
+3.0.3&#160;<br/>
+16.11.2012&#160;<br/>
+PPU&#160;<br/>
+Cumulative module&#160;update.&#160;<br/>(The&#160;major&#160;version&#160;changed&#160;to&#160;3&#160;because&#160;of&#160;the&#160;API&#160;<br/>change&#160;in&#160;function&#160; (WdgIf_GetTickCounter())&#160;<br/>
+3.1.0&#160;<br/>
+11.01.2013&#160;<br/>
+PPU&#160;<br/>
+Release 1.11.0,&#160;embedded&#160;code not&#160;changed&#160;<br/>
+3.1.1&#160;<br/>
+27.02.2013&#160;<br/>
+PPU&#160;<br/>
+Release&#160;1.13.0,&#160;Verifier update&#160;only&#160;<br/>
+3.2.0&#160;<br/>
+05.04.2013&#160;<br/>
+JDU&#160;<br/>
+Release 1.14.0,&#160;generator&#160;update&#160;only&#160;<br/>
+3.3.2&#160;<br/>
+29.11.2013&#160;<br/>
+PPU&#160;<br/>
+Release 1.21.0,&#160;generator&#160;only&#160;<br/>
+3.4.0&#160;<br/>
+19.02.2014&#160;<br/>
+PPU&#160;<br/>
+Autosar&#160;4 update&#160;and&#160;bug&#160;fixes, beta&#160;version&#160;<br/>
+3.4.1&#160;<br/>
+21.03.2014&#160;<br/>
+PPU&#160;<br/>
+Update&#160;&#160;and&#160;&#160;bug&#160;&#160;fixes&#160;&#160;for&#160;&#160;Autosar&#160;&#160;4&#160;&#160;environment&#160;<br/>compatibility.&#160;&#160;Backward&#160;&#160;compatibility&#160;&#160;to&#160;&#160;Autosar&#160;&#160;3.1&#160;<br/>environment added too.&#160;<br/>
+3.4.2&#160;<br/>
+10.04.2014&#160;<br/>
+PPU&#160;<br/>
+Generator&#160;bug&#160;fix&#160;for Autosar compatible&#160;driver&#160;<br/>
+3.4.3&#160;<br/>
+27.05.2014&#160;<br/>
+PPU&#160;<br/>
+Release&#160;&#160;for&#160;&#160;the&#160;&#160;AUTOSAR&#160;&#160;4.0&#160;&#160;and&#160;&#160;AUTOSAR&#160;&#160;3.1&#160;<br/>compatible&#160;S-WdgM&#160;module&#160;<br/>
+3.4.4&#160;<br/>
+14.08.2014&#160;<br/>
+PPU&#160;<br/>
+Safety&#160;Case document for previous&#160;version 3.4.3&#160;<br/>released only.&#160;<br/>
+3.4.5&#160;<br/>
+04.11.2014&#160;<br/>
+PPU&#160;<br/>
+S-WdgM Generator correction&#160;only&#160;<br/>
+3.4.6&#160;<br/>
+21.11.2014&#160;<br/>
+PPU&#160;<br/>
+S-WdgM Generator correction&#160;only&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=4></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;4&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="S-WdgM_ReleaseNotess.html#6"><b>1</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#6"><b>Overview&#160;..................................................................................................................................................&#160;6</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#7"><b>2</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#7"><b>Content&#160;of&#160;the&#160;Module&#160;Release&#160;.............................................................................................................&#160;7</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#9"><b>3</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#9"><b>Change history&#160;........................................................................................................................................&#160;9</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#9">3.1&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#9">Changes&#160;with&#160;version 3.4.6&#160;..............................................................................................................&#160;9&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#9">3.2&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#9">Changes&#160;with&#160;version 3.4.5&#160;..............................................................................................................&#160;9&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#10">3.3&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#10">Changes&#160;with&#160;version 3.4.4&#160;............................................................................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#10">3.4&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#10">Changes&#160;with&#160;version 3.4.3&#160;............................................................................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#10">3.5&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#10">Changes&#160;with&#160;version 3.4.2&#160;............................................................................................................&#160;10&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">3.6&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">Changes&#160;with&#160;version 3.4.1&#160;............................................................................................................&#160;11&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">3.7&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">Changes&#160;with&#160;version 3.4.0&#160;............................................................................................................&#160;11&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">3.8&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">Changes&#160;with&#160;version 3.3.2&#160;............................................................................................................&#160;11&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">3.9&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#11">Changes&#160;with&#160;version 3.2.0&#160;............................................................................................................&#160;11&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#13">3.10&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#13">Changes&#160;with&#160;version 3.1.2&#160;............................................................................................................&#160;13&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#13">3.11&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#13">Changes&#160;with&#160;version 3.1.1&#160;............................................................................................................&#160;13&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#13">3.12&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#13">Changes&#160;with&#160;version 3.1.0&#160;............................................................................................................&#160;13&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#14">3.13&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#14">Changes&#160;with&#160;version 3.0.3&#160;............................................................................................................&#160;14&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#15">3.14&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#15">Changes&#160;with&#160;version 2.0.7&#160;............................................................................................................&#160;15&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#15">3.15&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#15">Changes&#160;with&#160;TTTech Release 1.9.3:&#160;S-WdgM Subpackage 2.0.6&#160;..............................................&#160;15&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#16">3.16&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#16">Changes&#160;with&#160;TTTech Release 1.9.2:&#160;S-WdgM Subpackage 2.0.5&#160;..............................................&#160;16&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#17">3.17&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#17">Changes&#160;with&#160;Release 1.9.1:&#160;S-WdgM Subpackage 2.0.4&#160;............................................................&#160;17&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#17">3.18&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#17">Changes&#160;with&#160;Release 1.9.0:&#160;S-WdgM Subpackage 2.0.3&#160;............................................................&#160;17&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">3.19&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">Changes&#160;with&#160;Release 1.8.2:&#160;S-WdgM Subpackage 1.8.2&#160;............................................................&#160;20&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">3.20&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">Changes&#160;with&#160;Release 1.8.0:&#160;S-WdgM Subpackage 1.8.0&#160;............................................................&#160;20&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">3.21&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">Changes&#160;with&#160;Release 1.7.0:&#160;S-WdgM Subpackage 1.7.0&#160;............................................................&#160;20&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">3.22&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#20">Changes&#160;with&#160;Release 1.6.0:&#160;S-WdgM Subpackage 1.6.0&#160;............................................................&#160;20&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">3.23&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">Changes&#160;with&#160;Release 1.5.0:&#160;S-WdgM Subpackage 1.5.0&#160;............................................................&#160;21&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">3.24&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">Changes&#160;with&#160;Release 1.4.0:&#160;S-WdgM Subpackage 1.4.0&#160;............................................................&#160;21&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">3.25&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">Changes&#160;with&#160;Release 1.3.1:&#160;WdgM Subpackage 1.3.1&#160;................................................................&#160;21&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">3.26&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">Changes&#160;with&#160;Release 1.3.0&#160;..........................................................................................................&#160;21&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">3.27&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#21">Changes&#160;with&#160;Release 1.2.0:&#160;WdgM Subpackage 1.2.0&#160;................................................................&#160;21&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#22">3.28&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#22">Changes&#160;with&#160;Release 1.1.0:&#160;WdgM Subpackage 1.1.0&#160;................................................................&#160;22&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#23">3.29&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#23">Changes&#160;with&#160;Release 1.0.0:&#160;WdgM Subpackage 1.0.0&#160;................................................................&#160;23&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#24"><b>4</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#24"><b>Test&#160;status&#160;.............................................................................................................................................&#160;24</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#25"><b>5</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#25"><b>Known&#160;issues,&#160;limitations, updates&#160;....................................................................................................&#160;25</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#26"><b>6</b>&#160;</a><br/>
+<a href="S-WdgM_ReleaseNotess.html#26"><b>Abbreviation&#160;and&#160;glossary&#160;...................................................................................................................&#160;26</b>&#160;</a><br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=5></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;5&#160;<br/>
+&#160;&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=6></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;6&#160;<br/>
+<b>1&#160;</b><br/>
+<b>Overview&#160;</b><br/>
+The&#160;<b>Safe Watchdog&#160;Manager</b>&#160;(<b>S-WdgM</b>)&#160;is&#160;upper&#160;software layer&#160;of&#160;the&#160;<b>Safe Watchdog&#160;Manager&#160;Stack</b>.&#160;<br/>
+The&#160;S-WdgM Stack&#160;is&#160;part&#160;of&#160;the&#160;service layer&#160;of&#160;the&#160;AUTOSAR&#160;architecture. The&#160;S-WdgM&#160;monitors&#160;the&#160;<br/>
+program&#160;flow&#160;and&#160;timing&#160;constrains&#160;of&#160;so-called&#160;Supervised Entities.&#160;When it detects&#160;a&#160;violation&#160;of&#160;the pre-<br/>
+configured&#160;program&#160;flow&#160;and timing&#160;values,&#160;it&#160;takes&#160;a&#160;number&#160;of&#160;configurable&#160;actions&#160;to&#160;recover from&#160;this&#160;<br/>
+state.&#160;<br/>
+&#160;<br/>
+The&#160;Safe&#160;<b>Watchdog&#160;Manager&#160;Stack</b>&#160;consists&#160;of&#160;the&#160;following&#160;embedded&#160;software modules:&#160;<br/>
+&#160;&#160;<b>Safe&#160;Watchdog&#160;Manager</b>&#160;software module&#160;(hardware&#160;independent)&#160;<br/>&#160;&#160;<b>Safe Watchdog&#160;Interface</b>&#160;software module&#160;(hardware&#160;independent)&#160;<br/>&#160;&#160;<b>Safe Watchdog&#160;Driver</b>&#160;software module&#160;(hardware&#160;dependent),&#160;<br/>&#160;<br/>
+and the&#160;Safe&#160;Watchdog&#160;Manager&#160;Stack&#160;configuration&#160;generators:&#160;<br/>
+&#160;&#160;<b>Safe Watchdog&#160;Manager&#160;configuration&#160;generator</b>&#160;(hardware&#160;independent)&#160;<br/>&#160;&#160;<b>Safe Watchdog&#160;Interface&#160;configuration&#160;generator</b>&#160;(hardware&#160;independent)&#160;<br/>&#160;&#160;<b>Safe Watchdog&#160;Driver&#160;configuration&#160;generator</b>&#160;(hardware dependent)&#160;<br/>&#160;<br/>
+and the&#160;Safe&#160;Watchdog&#160;Manager&#160;Stack&#160;configuration&#160;verifier&#160;<br/>
+&#160;&#160;<b>Safe Watchdog&#160;Manager&#160;configuration&#160;verifier</b>&#160;(hardware&#160;independent)&#160;<br/>
+&#160;<br/>
+This&#160;document represents&#160;the&#160;release&#160;notes&#160;for the&#160;<b>Safe Watchdog&#160;Manager</b>&#160;module&#160;only.&#160;<br/>
+&#160;<br/>
+The<b>&#160;Safe Watchdog&#160;Manager</b>&#160;is&#160;compatible&#160;to&#160;the&#160;WdgM&#160;module&#160;as&#160;specified in the&#160;AUTOSAR 4.0 and&#160;<br/>
+AUTOSAR 3.1&#160;specifications&#160;but&#160;not fully&#160;compliant.&#160;For&#160;deviations&#160;and justifications&#160;please&#160;see&#160;the&#160;S-<br/>
+WdgM&#160;User Manual.&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=7></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;7&#160;<br/>
+<b>2&#160;</b><br/>
+<b>Content of&#160;the&#160;Module&#160;Release&#160;</b><br/>
+&#160;<br/>
+<b>Title</b>&#160;<br/>
+<b>Version*)</b>&#160;<br/>
+<b>Author&#160;</b><br/>
+<b>Description</b>&#160;<br/>
+<b>WdgM/&#160;</b><br/>
+<b>3.4.6&#160;</b><br/>
+<b>&#160;</b><br/>
+S-WdgM Module&#160;<br/>
+&#160; &#160;&#160;S-WdgM_ReleaseNotes.pdf&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160; &#160;&#160;Description/&#160;</b><br/>
+3.3.3&#160;<br/>
+TTTech<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160;&#160;WdgM_Bswmd_A4.arxml&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+For AUTOSAR&#160;4.0.x&#160;environment&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;WdgM_Bswmd.arxml<b>&#160;</b><br/>
+&#160;<br/>
+&#160;<br/>
+For&#160;AUTOSAR&#160;3.1.y&#160;environment<b>&#160;</b><br/>
+<b>&#160; &#160;&#160;Doc_SafetyManual/&#160;</b><br/>
+2.3.28&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;S-WdgM_SafetyManual.pdf&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160; &#160;&#160;Doc_SafetyCase/&#160;</b><br/>
+1.1.0&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;S-WdgM_SafetyCase.pdf&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160;&#160;<b>Doc_TechRef/</b>&#160;<br/>
+3.3.1&#160;<br/>
+TTTech&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;S-WdgM_UserManual.pdf&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+User Manual&#160;<br/>
+<b>&#160; &#160;&#160;Generator/&#160;</b><br/>
+<b>3.3.15&#160;</b><br/>
+TTTech<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160;&#160;LICENSE&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;Wdg_Mgr_Cfg_Gen.exe&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160; &#160;&#160;GenTool_Ead/&#160;</b><br/>
+2.0.12&#160;<br/>
+TTTech<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160;&#160;SWC_WdgM_A4.xsl&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+For AUTOSAR&#160;4.0.x&#160;environment&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;SWC_WdgM.xsl&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+For AUTOSAR&#160;3.1.y&#160;environment&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;Identifier.xml&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;Generation.xml&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;Generation_A4.xml&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160; &#160;&#160;Implementation/&#160;</b><br/>
+3.3.3&#160;<br/>
+TTTech<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160;&#160;WdgM.c&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Watchdog&#160;Manager&#160;-&#160;Main&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;WdgM_Checkpoint.c&#160;&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Watchdog&#160;Manager&#160;-&#160;Checkpoint&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;WdgM_Cfg.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Watchdog&#160;Manager&#160;-&#160;<br/>
+Configuration structures&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;WdgM.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Watchdog&#160;Manager&#160;-&#160;API&#160;<br/>
+declaration&#160;<br/>
+<b>&#160; &#160;&#160;Verifier/&#160;</b><br/>
+1.2.11&#160;<br/>
+TTTech<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160; &#160; &#160; &#160;&#160;wdgm_verifier.dll&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;libwdgm_verifierdll.a&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier lib&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;wdgm_verifier.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;wdgm_verifier_types.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;wdgm_verifier_version.h&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;verify_wdgm_header.xsl&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier&#160;<br/>
+&#160; &#160; &#160; &#160;&#160;verify_wdgm_source.xsl&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+S-WdgM Configuration&#160;Verifier&#160;<br/>
+<b>&#160; &#160;&#160;VerifierTools/</b>&#160;<br/>
+1.0.0&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=8></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;8&#160;<br/>
+<b>&#160; &#160; &#160; &#160;&#160;MinGW/</b>&#160;<br/>
+5.1.6&#160;<br/>
+MinGW&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;w32api-3.13-mingw32-dev.tar.gz&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;mingwrt-3.15.2-mingw32-dll.tar.gz&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;mingwrt-3.15.2-mingw32-dev.tar.gz&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;MinGW-5.1.6.exe&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;mingw.ini&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;gcc-core-3.4.5-20060117-3.tar.gz&#160;<br/>
+3.4.5&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;binutils-2.19.1-mingw32-bin.tar.gz&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>&#160; &#160; &#160; &#160;&#160;xsltproc/&#160;</b><br/>
+1.0.0&#160;<br/>
+xsltproc&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;zlib1.dll&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;xsltproc.exe&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;libxslt.dll&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;libxml2.dll&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;libexslt.dll&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160;&#160; &#160;iconv.dll&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+*)&#160;<b>Bold</b>&#160;version&#160;numbers&#160;are new artefacts&#160;in this&#160;release.&#160;The&#160;non-bold&#160;artefacts&#160;are the&#160;previously&#160;released&#160;<br/>
+compatible&#160;artifacts. All&#160;artefacts&#160;listed&#160;here&#160;are consistent.&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=9></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;9&#160;<br/>
+<b>3&#160;</b><br/>
+<b>Change&#160;history&#160;&#160;</b><br/>
+This&#160;chapter&#160;describes&#160;the&#160;changes&#160;in&#160;each released&#160;version.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.6&#160;</b><br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+69689&#160;<br/>
+G&#160;<br/>
+wk47&#160;<br/>
+`WdgM_PBcfg.h`&#160;shall&#160;#include `WdgM_Cfg.h`&#160;<br/>
+S&#160;<br/>
+The&#160;issue&#160;description&#160;(issue69689):&#160;<br/>
+The&#160;file `WdgM_PBcfg.h`&#160;uses&#160;a&#160;type `WdgM_ConfigType`&#160;but&#160;does&#160;not&#160;#include&#160;the&#160;header file&#160;where&#160;that&#160;<br/>
+type is&#160;defined.&#160;This&#160;situation&#160;causes&#160;normally&#160;no problems&#160;because the corresponding&#160;C source file&#160;<br/>
+`WdgM_PBcfg.h`&#160;has&#160;the&#160;following&#160;#include directive:&#160;<br/>
+&#160; &#160;&#160;#include&#160;&#34;WdgM.h&#34;&#160;<br/>
+&#160; &#160;&#160;#include&#160;&#34;WdgM_PBcfg.h&#34;&#160;<br/>
+Where &#34;WdgM.h&#34;&#160;includes&#160;the&#160;necessary&#160;`WdgM_Cfg.h`.&#160;<br/>
+&#160;<br/>
+The&#160;current release improved&#160;this&#160;point&#160;and the&#160;`WdgM_PBcfg.h`&#160;includes&#160;the&#160;`WdgM_Cfg.h`&#160;directly.&#160;<br/>
+&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.5&#160;</b><br/>
+S-WdgM module&#160;was&#160;not&#160;changed&#160;in this&#160;release, the&#160;Safety&#160;Case document was&#160;added&#160;only.&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+68941&#160;<br/>
+G&#160;<br/>
+44&#160;<br/>
+Safe Execution&#160;-&#160;Remove&#160;Cross&#160;Cutting Checks&#160;in&#160;<br/>
+S&#160;<br/>
+/2014&#160;<br/>
+the&#160;WdgM Config Generator&#160;<br/>
+68932&#160;<br/>
+G&#160;<br/>
+44/&#160;<br/>
+Wdg Config Generator&#160;RH850P1x_TLE4473&#160;&#160;&#160;<br/>
+S&#160;<br/>
+2014&#160;<br/>
+missing&#160;paramterers&#160;<br/>
+The&#160;change&#160;description&#160;(issue68941):&#160;<br/>
+The&#160;cross-cutting&#160;checks&#160;are removed&#160;from&#160;S-WdgM&#160;Generator. The&#160;Watchdog&#160;Manager&#160;<br/>
+Config Generator should&#160;not&#160;attempt&#160;to&#160;verify&#160;the&#160;Watchdog&#160;Driver's&#160;data&#160;because this&#160;is&#160;on&#160;this&#160;level&#160;not&#160;<br/>
+necessary.&#160;The&#160;removed&#160;cross-check&#160;parameters&#160;are the following:&#160;<br/>
+&#160;&#160;WdgGeneral/WdgInitialTimeout&#160;<br/>&#160;&#160;WdgSettingsConfig/WdgWindowStart&#160;<br/>&#160;&#160;WdgSettingsConfig/WdgSlowModeMax&#160;<br/>&#160;&#160;WdgSettingsConfig/WdgFastModeMax&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=10></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;10&#160;<br/>
+<b>&#160;</b><br/>
+<b>Release&#160;status:&#160;</b><br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C …&#160;Closed&#160;as&#160;obsolete&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;… SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;D … documentation&#160;<br/>
+&#160;<br/>
+<b>3.3&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.4&#160;</b><br/>
+S-WdgM module&#160;was&#160;not&#160;changed&#160;in this&#160;release, the&#160;Safety&#160;Case document was&#160;added&#160;only.&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+65369&#160;<br/>
+D&#160;<br/>
+&#160;<br/>
+Release Management Tasks&#160;for 1.26.1&#160;CW&#160;<br/>
+S&#160;<br/>
+31/2014&#160;<br/>
+&#160;<br/>
+<b>3.4&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.3&#160;</b><br/>
+S-WdgM module changes&#160;and corrections&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+62326&#160;<br/>
+all&#160;<br/>
+&#160;<br/>
+Safe Execution Release 1.26.0&#160;-&#160;Release&#160;<br/>
+S&#160;<br/>
+Management Tasks&#160;<br/>
+(include&#160;collection&#160;of&#160;issues&#160;for this&#160;release)&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.5&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.2&#160;</b><br/>
+S-WdgM module changes&#160;and corrections&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+61768&#160;<br/>
+G&#160;<br/>
+Wk15&#160;<br/>
+SafeExecution&#160;-&#160;Deactivate&#160;cross-cutting&#160;tests&#160;to&#160;<br/>
+S&#160;<br/>
+avoid&#160;problems&#160;with AS3-compatible&#160;Third-Party&#160;<br/>
+Drivers&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=11></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;11&#160;<br/>
+<b>3.6&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.1&#160;</b><br/>
+S-WdgM module changes&#160;and corrections&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+61023&#160;<br/>
+G+E&#160;<br/>
+&#160;<br/>
+Issue&#160;collection for Autosar4.x&#160;S-WdgM issues&#160;and&#160;<br/>
+S&#160;<br/>
+Autosar compatibility&#160;of&#160;the&#160;S-WdgIf&#160;module.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.7&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.4.0&#160;</b><br/>
+S-WdgM module changes&#160;and corrections&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+59931&#160;<br/>
+G+E&#160;<br/>
+&#160;<br/>
+API&#160;and generator points&#160;for&#160;AUTOSAR&#160;4,&#160;reported&#160;<br/>
+S&#160;<br/>
+by&#160;Vector&#160;<br/>
+&#160;<br/>
+<b>3.8&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.3.2&#160;</b><br/>
+S-WdgM module changes&#160;and corrections&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>status&#160;</b><br/>
+58478&#160;<br/>
+G&#160;<br/>
+Wk&#160;48&#160;<br/>
+MPC5643L_ATA5021 is&#160;no&#160;“third-party”&#160;driver&#160;<br/>
+S&#160;<br/>
+58479&#160;<br/>
+G&#160;<br/>
+Wk&#160;48&#160;<br/>
+Add&#160;hint&#160;re&#160;need to&#160;provide&#160;driver data&#160;in&#160;EDF&#160;<br/>
+S&#160;<br/>
+&#160;<br/>
+<b>3.9&#160;</b><br/>
+<b>Changes&#160;with&#160;version&#160;3.2.0&#160;</b><br/>
+S-WdgM module changes&#160;and corrections:&#160;<br/>
+&#160;<br/>
+<b>Issue Nr.&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Found&#160;&#160;&#160;Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>status&#160;</b><br/>
+51893&#160;<br/>
+G&#160;<br/>
+Wk&#160;6&#160;<br/>
+Different checks&#160;for third-party&#160;drivers&#160;<br/>
+S&#160;<br/>
+51859&#160;<br/>
+G&#160;<br/>
+Wk&#160;6&#160;<br/>
+Use symbolic&#160;IDs&#160;for SEs&#160;and&#160;CPs&#160;<br/>
+S&#160;<br/>
+52428&#160;<br/>
+G&#160;<br/>
+Wk&#160;10&#160;<br/>
+#define&#160;constants&#160;moved&#160;from&#160;source to header file&#160;<br/>
+S&#160;<br/>
+52577&#160;<br/>
+G&#160;<br/>
+Wk&#160;11&#160;<br/>
+Do not assume system-wide unique CP&#160;names&#160;<br/>
+S&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=12></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;12&#160;<br/>
+<b>Release&#160;status:&#160;</b><br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C … Closed&#160;as&#160;obsolete&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;… SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;D … documentation&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=13></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;13&#160;<br/>
+<b>3.10&#160;&#160;Changes&#160;with&#160;version&#160;3.1.2&#160;</b><br/>
+&#160;<br/>
+<b>Issue&#160;</b><br/>
+<b>Area&#160;&#160;Found&#160;</b><br/>
+<b>Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Nr.&#160;</b><br/>
+<b>in Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+52577&#160;&#160;G&#160;<br/>
+Wk6&#160;<br/>
+“Do not&#160;assume system-wide&#160;unique&#160;CP&#160;<br/>
+O&#160;<br/>
+names”: If&#160;there are 2 or&#160;more checkpoints&#160;<br/>
+with&#160;the&#160;same name in different Supervised&#160;<br/>
+Entities&#160;then the generator&#160;can&#160;generate&#160;<br/>
+wrong&#160;configurations.&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.11&#160;&#160;Changes&#160;with&#160;version&#160;3.1.1&#160;</b><br/>
+S-WdgM module changes&#160;and corrections:&#160;<br/>
+&#160;<br/>
+<b>Issue&#160;</b><br/>
+<b>Area&#160;&#160;Found&#160;</b><br/>
+<b>Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Nr.&#160;</b><br/>
+<b>in Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+52281&#160;&#160;V&#160;<br/>
+Wk08&#160;<br/>
+Deactivate the test&#160;36. The&#160;test is&#160;obsolete.&#160;<br/>
+S&#160;<br/>
+<b>Release&#160;status:&#160;</b><br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C … Closed&#160;as&#160;obsolete&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;… SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;D … documentation&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.12&#160;&#160;Changes&#160;with&#160;version&#160;3.1.0&#160;</b><br/>
+&#160;<br/>
+S-WdgM module changes&#160;and corrections:&#160;<br/>
+&#160;<br/>
+<b>Issue&#160;</b><br/>
+<b>Area&#160;&#160;Found&#160;</b><br/>
+<b>Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Nr.&#160;</b><br/>
+<b>in Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+50917&#160;&#160;V&#160;<br/>
+&#160;<br/>
+Test 73,&#160;The&#160;Verifier doesn’t read the&#160;<br/>
+S&#160;<br/>
+WDGM_STATE_CHANGE_NOTIFICATION&#160;&#160;<br/>Correctly.&#160;<br/>
+50131&#160;&#160;G&#160;<br/>
+Wk45&#160;<br/>
+WdgM&#160;and&#160;WdgIf&#160;config generators&#160;must&#160;<br/>
+S&#160;<br/>
+work&#160;together&#160;with&#160;unsupported&#160;Wdg&#160;Drivers&#160;<br/>
+49656&#160;&#160;V&#160;<br/>
+&#160;<br/>
+Verifier&#160;-&#160;Sorting&#160;of&#160;parameters&#160;might&#160;make&#160;<br/>
+S&#160;<br/>
+test results&#160;wrong.&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=14></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;14&#160;<br/>
+48637&#160;&#160;G&#160;<br/>
+Wk36&#160;<br/>
+CP&#160;ID&#160;is&#160;used&#160;as&#160;CFG&#160;array&#160;ID,&#160;<br/>
+S&#160;<br/>
+&#160;<br/>
+(when&#160;the&#160;CP&#160;ID’s&#160;are&#160;not sorted,&#160;then&#160;the&#160;<br/>generator&#160;stops&#160;generating)&#160;&#160;<br/>
+51164&#160;<br/>
+D&#160;<br/>
+Wk02&#160;<br/>
+Safety&#160;Manual&#160;update&#160;<br/>
+S&#160;<br/>
+51222&#160;<br/>
+D&#160;<br/>
+Wk02&#160;<br/>
+Safety&#160;Case update&#160;(version numbers)&#160;<br/>
+S&#160;<br/>
+<b>Release&#160;status:&#160;</b><br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C … Closed&#160;as&#160;obsolete&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;… SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;D … documentation&#160;<br/>
+<b>3.13&#160;&#160;Changes&#160;with&#160;version&#160;3.0.3&#160;</b><br/>
+S-WdgM module changes&#160;and&#160;corrections:&#160;<br/>
+&#160;<br/>
+<b>Issue&#160;</b><br/>
+<b>Area&#160;&#160;Found&#160;</b><br/>
+<b>Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Nr.&#160;</b><br/>
+<b>in Wk&#160;</b><br/>
+<b>status&#160;</b><br/>
+50131&#160;&#160;G&#160;<br/>
+Wk45&#160;<br/>
+WdgM&#160;and&#160;WdgIF config generators&#160;must&#160;<br/>
+S&#160;partly&#160;<br/>
+work&#160;together&#160;with&#160;unsupported&#160;Wdg&#160;Drivers&#160;<br/>
+49950&#160;&#160;E&#160;<br/>
+Wk45&#160;<br/>
+WdgM: line 792:&#160;warning&#160;(dcc:1516):&#160;<br/>
+S&#160;<br/>
+parameter&#160;CallerID&#160;is&#160;never&#160;used&#160;<br/>
+49735&#160;&#160;E&#160;<br/>
+Wk44&#160;<br/>
+WdgM: The&#160;<br/>
+S&#160;<br/>
+WdgM_GlobalSuspendInterrupts()&#160;should&#160;be&#160;<br/>
+defined&#160;&#34;extern&#34;&#160;and&#160;renamed&#160;to&#160;<br/>
+GlobalSuspendInterrupts()&#160;<br/>
+49837&#160;&#160;E&#160;<br/>
+Wk44&#160;<br/>
+Common&#160;Suspend/Restore&#160;Interrupt routines&#160;<br/>
+S&#160;<br/>
+shall&#160;be&#160;used&#160;<br/>
+48420&#160;&#160;E&#160;<br/>
+Wk44&#160;<br/>
+Deactivating an&#160;active&#160;SE&#160;should rise&#160;in&#160;some&#160;<br/>
+S&#160;<br/>
+cases&#160;DET&#160;report&#160;<br/>
+48667&#160;&#160;G&#160;<br/>
+Wk43&#160;<br/>
+Generator shall&#160;generate&#160;constants&#160;with&#160;'u'&#160;<br/>
+S&#160;<br/>
+sufix&#160;<br/>
+48637&#160;&#160;G&#160;<br/>
+Wk&#160;36&#160;<br/>
+The&#160;CP&#160;and SE&#160;IDs&#160;must be strict ordered.&#160;<br/>
+O&#160;<br/>
+Change&#160;&#160;&#160;Otherwise the&#160;Generator rises&#160;an&#160;error.&#160;<br/>
+request&#160;<br/>
+48601&#160;&#160;SWC&#160;&#160;&#160;<br/>
+Uneven&#160;implementation of&#160;port defined&#160;<br/>
+S&#160;<br/>
+argument values&#160;for port&#160;interface&#160;<br/>
+&lt;WdgM_GlobalMode&gt;&#160;<br/>
+48993&#160;&#160;E&#160;<br/>
+&#160;<br/>
+WdgIf_GetTickCounter()&#160;&#160;writes&#160;to&#160;WdgM&#160;<br/>
+S&#160;<br/>
+global&#160;memory&#160;<br/>
+48818&#160;&#160;G&#160;<br/>
+&#160;<br/>
+S-WdgM Code segment fixed&#160;in the&#160;<br/>
+S&#160;<br/>
+WdgM_MemMap.h&#160;file&#160;<br/>
+<b>Release&#160;status:&#160;</b><br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=15></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;15&#160;<br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C … Closed&#160;as&#160;obsolete&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;… SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.14&#160;&#160;Changes&#160;with&#160;version&#160;2.0.7&#160;</b><br/>
+Test release for new&#160;versioning and delivery&#160;structure.&#160;This&#160;is&#160;not a&#160;customer version.&#160;Used&#160;internally&#160;only.&#160;<br/>
+&#160;<br/>
+S-WdgM module changes&#160;and corrections:&#160;<br/>
+&#160;<br/>
+Embedded&#160;Code&#160;changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Generator changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Verifier changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>&#160;<br/>
+Documentation changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+DaVinci&#160;interface changes:&#160;<br/>
+&#160;&#160;None&#160;<br/>
+&#160;<br/>
+<b>3.15&#160;&#160;Changes&#160;with&#160;TTTech&#160;Release&#160;1.9.3: S-WdgM&#160;Subpackage 2.0.6&#160;</b><br/>
+This&#160;release contains&#160;an&#160;update&#160;of&#160;the&#160;Watchdog&#160;Manager Configuration Verifier.&#160;The&#160;release&#160;is&#160;compatible&#160;<br/>
+with&#160;the&#160;embedded&#160;code&#160;basis&#160;of&#160;the release&#160;1.9.0&#160;and documentation&#160;release 1.9.1&#160;and&#160;1.9.2&#160;<br/>
+&#160;<br/>
+Embedded&#160;Code&#160;changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Generator changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Verifier changes:&#160;<br/>
+&#160;&#160;Report file header corrected (“TTTech Internal&#160;Use only”&#160;removed).&#160;<br/>&#160;&#160;[46858]&#160;Verify&#160;all&#160;relevant&#160;WdgM&#160;global&#160;settings&#160;<br/>&#160;&#160;[48716] Detect NULL&#160;pointers&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=16></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;16&#160;<br/>
+&#160;<br/>
+Documentation changes:&#160;<br/>
+&#160;&#160;S-WdgM User Manual&#160;-&#160;update&#160;<br/>&#160;&#160;S-WdgM Stack&#160;Safety&#160;Case&#160;-&#160;new&#160;<br/>
+&#160;<br/>
+DaVinci&#160;interface changes:&#160;<br/>
+&#160;&#160;None&#160;<br/>
+&#160;<br/>
+Open&#160;issues&#160;in&#160;this&#160;release:&#160;<br/>
+<b>Issue&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Nr.&#160;</b><br/>
+<b>1.9.3&#160;</b><br/>
+48993&#160;<br/>
+E&#160;<br/>
+WdgIf_GetTickCounter()&#160;&#160;writes&#160;to&#160;WdgM global&#160;memory&#160;<br/>
+O&#160;<br/>
+48818&#160;<br/>
+G&#160;<br/>
+S-WdgM Code segment fixed&#160;in the&#160;WdgM_MemMap.h&#160;file&#160;<br/>
+O&#160;<br/>
+48601&#160;<br/>
+SWC&#160;<br/>
+Uneven&#160;implementation of&#160;port defined&#160;argument values&#160;for port&#160;<br/>
+O&#160;<br/>
+interface &lt;WdgM_GlobalMode&gt;&#160;<br/>
+<b>Release:&#160;</b><br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C … Closed&#160;as&#160;obsolete&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;…&#160;SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;<br/>
+<b>3.16&#160;&#160;Changes&#160;with&#160;TTTech&#160;Release&#160;1.9.2:&#160;S-WdgM&#160;Subpackage 2.0.5&#160;</b><br/>
+This&#160;release contains&#160;an&#160;update&#160;of&#160;the&#160;Watchdog&#160;Manager&#160;SWC_WdgM.xsl&#160;file&#160;only. The&#160;release&#160;is&#160;<br/>
+compatible&#160;with&#160;the&#160;embedded&#160;code&#160;basis&#160;of&#160;the release 1.9.0&#160;and documentation release 1.9.1&#160;<br/>
+&#160;<br/>
+Embedded&#160;Code&#160;changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Generator changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Verifier changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Documentation changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+DaVinci&#160;interface&#160;changes:&#160;<br/>
+&#160;&#160;[47956]&#160;SWC_WdgM.xsl&#160;file changed&#160;because of&#160;problem&#160;with the&#160;WdgMTimebaseSource&#160;<br/>parameter.&#160;The&#160;selection of&#160;the&#160;WDGM_INTERNAL_HARDWARE_TICK&#160;was&#160;not&#160;possible.&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=17></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;17&#160;<br/>
+<b>3.17&#160;&#160;Changes&#160;with&#160;Release&#160;1.9.1: S-WdgM&#160;Subpackage&#160;2.0.4&#160;</b><br/>
+This&#160;release contains&#160;S-WdgM&#160;documentation&#160;and&#160;S-WdgM&#160;Verifier only. The&#160;documentation&#160;in this&#160;release&#160;<br/>
+is&#160;compatible&#160;with&#160;the&#160;embedded&#160;code basis&#160;of&#160;the&#160;release 1.9.0&#160;(Subpackage 2.0.3)&#160;<br/>
+&#160;<br/>
+Embedded&#160;Code&#160;changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Generator changes:&#160;<br/>
+&#160;&#160;none&#160;<br/>
+&#160;<br/>
+Verifier&#160;issues:&#160;<br/>
+&#160;&#160;See&#160;the&#160;chapter “Known&#160;issues,&#160;limitations,&#160;updates”&#160;<br/>
+&#160;<br/>
+Documentation&#160;changes:&#160;<br/>
+&#160;&#160;[48745]&#160;S-WdgM Safety&#160;Manual&#160;Formal&#160;Review&#160;<br/>&#160;&#160;[48722]&#160;S-WdgM User Manual&#160;Review&#160;<br/>
+<b>3.18&#160;&#160;Changes&#160;with&#160;Release&#160;1.9.0: S-WdgM&#160;Subpackage&#160;2.0.3&#160;</b><br/>
+Open&#160;issues&#160;in&#160;this&#160;release:&#160;<br/>
+<b>Issue&#160;</b><br/>
+<b>Area&#160;</b><br/>
+<b>Issue title&#160;</b><br/>
+<b>Release&#160;</b><br/>
+<b>Nr.&#160;</b><br/>
+<b>1.9.0&#160;</b><br/>
+48624&#160;<br/>
+E&#160;<br/>
+MPC56xx&#160;Driver&#160;–&#160;MISRA&#160;issues.&#160;<br/>
+S&#160;<br/>
+48607&#160;<br/>
+E&#160;<br/>
+WdgIf&#160;Interface&#160;–&#160;MISRA&#160;issues.&#160;<br/>
+S&#160;<br/>
+48583&#160;<br/>
+E&#160;<br/>
+WdgM&#160;Manager&#160;–&#160;MISRA&#160;issues.&#160;<br/>
+S&#160;<br/>
+47956&#160;<br/>
+SWC&#160;&#160;Removed&#160;unused&#160;runnable&#160;entities.&#160;<br/>
+S&#160;<br/>
+47459&#160;<br/>
+E&#160;<br/>
+WdgM_MainFunction&#160;should have&#160;a reentrancy&#160;check.&#160;<br/>
+O&#160;<br/>
+47828&#160;<br/>
+E&#160;<br/>
+Service IDs&#160;of&#160;an&#160;API function&#160;differ&#160;from&#160;AUTOSAR&#160;<br/>
+S&#160;<br/>
+47832&#160;<br/>
+E&#160;<br/>
+A&#160;global&#160;transition&#160;to&#160;a deactivated&#160;SE&#160;doesn’t&#160;produce a&#160;<br/>
+O&#160;<br/>
+error response.&#160;<br/>
+48320&#160;<br/>
+E, G&#160;<br/>
+The&#160;first Supervision cycle&#160;should have&#160;definable&#160;Alive&#160;<br/>
+S&#160;<br/>
+test.&#160;<br/>
+48320]&#160;<br/>
+E&#160;<br/>
+The&#160;ProgramFlowViolationCnt is&#160;wrongly&#160;incremented&#160;<br/>
+S&#160;<br/>
+48298&#160;<br/>
+E, G&#160;<br/>
+The&#160;OS&#160;Partition&#160;Reset&#160;makes&#160;compile warning&#160;problem&#160;<br/>
+S&#160;<br/>
+46101&#160;<br/>
+T&#160;<br/>
+WdgM: Unit&#160;test for the&#160;Autosar 3.1&#160;compatibility&#160;<br/>
+S&#160;<br/>
+46382&#160;<br/>
+V&#160;<br/>
+Defines&#160;are&#160;not checked&#160;for&#160;correct value&#160;(STD_ON,&#160;<br/>
+S&#160;<br/>
+STD_OFF)&#160;<br/>
+46977&#160;<br/>
+SWC&#160;&#160;WdgM: Each&#160;Entity&#160;may&#160;have&#160;zero&#160;or more End&#160;<br/>
+S&#160;<br/>
+Checkpoints&#160;<br/>
+47905&#160;<br/>
+SWC&#160;&#160;Location&#160;of&#160;xxx_SEC_CONST_UNSPECIFIED&#160;+&#160;<br/>
+S&#160;<br/>
+xxx_SEC_CODE&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=18></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;18&#160;<br/>
+47386&#160;<br/>
+SWC&#160;&#160;Special&#160;Handling&#160;for Callback&#160;in Service&#160;Component&#160;<br/>
+O&#160;<br/>
+Description&#160;<br/>
+47990&#160;<br/>
+SWC&#160;&#160;The&#160;WdgM_SetMode()&#160;need to&#160;be&#160;added to&#160;the&#160;3.1&#160;<br/>
+S&#160;<br/>
+compatibility&#160;mode&#160;<br/>
+47956&#160;<br/>
+SWC&#160;&#160;WdgM&#160;Generator creates&#160;runnable trigger&#160;which&#160;is&#160;not&#160;<br/>
+S&#160;<br/>
+configured&#160;<br/>
+42841&#160;<br/>
+SWC&#160;&#160;Service Component&#160;always&#160;has&#160;all&#160;version's&#160;APIs&#160;<br/>
+S&#160;<br/>
+47328&#160;<br/>
+E&#160;<br/>
+S-WdgM:&#160;initialize uninitialized&#160;local&#160;variable,&#160;&#160;&#160;<br/>
+S&#160;<br/>
+47131&#160;<br/>
+E&#160;<br/>
+Cover combined X-Y-Monitoring&#160;violations&#160;in status&#160;<br/>
+S&#160;<br/>
+FAILED&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue44842">44842&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue44842">WdgM: Magic&#160;constants&#160;should not be&#160;used&#160;when not&#160;</a><br/>
+O&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue44842">necessary&#160;</a>(Disable automatically&#160;generated&#160;typedefs)&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45280">45280&#160;</a><br/>
+G&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45280">Wdgx:&#160;The&#160;RAM sections&#160;of&#160;WdgM,&#160;Wdg&#160;should be&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45280">related to&#160;an&#160;Application&#160;only&#160;</a><br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45566">45566&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45566">WdgM:&#160;Configuration checks&#160;only&#160;if&#160;</a><br/>
+O&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45566">WdgMDevErrorDetect&#160;is&#160;off&#160;</a><br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45709">45709&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45709">Safe&#160;WdgM&#160;-&#160;Alive Counter&#160;overrun&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45814">45814&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45814">WdgM: Update Copyright&#160;information&#160;in embedded codes&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45827">45827&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue45827">WdgM: Add&#160;AUTOSAR&#160;_AR_ Version&#160;macros&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46044">46044&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46044">S-WdgM:&#160;protect sensitive&#160;data&#160;accesses&#160;from&#160;interrupts&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46383">46383&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46383">ascSC is&#160;assumed&#160;to&#160;be&#160;defined but&#160;this&#160;is&#160;not&#160;checked&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46388">46388&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46388">INVALID_OSAPPLICATION is&#160;not necessarily&#160;0xFF&#160;in&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46388">Os.h&#160;</a><br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46464">46464&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46464">WdgM: remove not&#160;used&#160;code&#160;when&#160;API_3_1&#160;selected&#160;</a><br/>
+O&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46816">46816&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46816">Safe&#160;WdgM&#160;-&#160;error from&#160;WdgIf&#160;during&#160;initialization&#160;</a><br/>
+C&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46819">46819&#160;</a><br/>
+G&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46819">S-WdgM:&#160;0xFFFF&#160;tolerance values&#160;prevent from&#160;going to&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46819">EXPIRED&#160;</a><br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46820">46820&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46820">WdgM: AUTOSAR Compiler&#160;abstraction&#160;</a><br/>
+S&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46993">46993&#160;</a><br/>
+E&#160;<br/>
+<a href="https://time-tracker.vie.at.tttech.ttt/ttt/issue46993">WdgM: Fixing&#160;the&#160;external&#160;function names&#160;</a><br/>
+S&#160;<br/>
+46574&#160;<br/>
+G&#160;<br/>
+avoid&#160;division&#160;by&#160;zero if&#160;Ticks/second =&#160;0&#160;<br/>
+S&#160;<br/>
+46794&#160;<br/>
+G&#160;<br/>
+reject&#160;multiple DM elements&#160;for one&#160;transition&#160;<br/>
+S&#160;<br/>
+&#160;<br/>
+46920&#160;<br/>
+G&#160;<br/>
+checkpoint&#160;attribute &#34;startsAGlobalTransition&#34;&#160;is&#160;now&#160;<br/>
+S&#160;<br/>
+correctly&#160;computed&#160;<br/>
+44628&#160;<br/>
+G&#160;<br/>
+remove compiler&#160;warning&#160;({{0}, {1}, ..} instead of&#160;{0, 1}&#160;<br/>
+S&#160;<br/>
+&#160;<br/>
+47177&#160;<br/>
+G&#160;<br/>
+reject configurations&#160;not&#160;having&#160;a&#160;1:1:1&#160;relationship for&#160;<br/>
+S&#160;<br/>
+driver/interface/watchdog&#160;<br/>
+47058&#160;<br/>
+G&#160;<br/>
+disable OS&#160;Partition Reset&#160;in generator&#160;<br/>
+S&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Release:&#160;</b><br/>
+&#160;S&#160;… solved,&#160; O&#160;…&#160;open,&#160;&#160;C … Closed&#160;as&#160;obsolete&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=19></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;19&#160;<br/>
+&#160;<br/>
+<b>Area:&#160;</b><br/>
+&#160;E&#160;…&#160;embedded,&#160;G&#160;… generator,&#160;V&#160;…&#160;verifier, SWC&#160;… SWC/bswmd&#160;file,&#160;T&#160;… Tests&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=20></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;20&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>3.19&#160;&#160;Changes&#160;with&#160;Release&#160;1.8.2:&#160;S-WdgM&#160;Subpackage&#160;1.8.2&#160;</b><br/>
+Embedded&#160;Code&#160;BugFixies:&#160;<br/>
+&#160;&#160;[47131]&#160;-&#160;Cover combined&#160;X-Y-Monitoring&#160;violations&#160;in&#160;status&#160;FAILED&#160;<br/>&#160;&#160;[45709]&#160;-&#160;Safe&#160;WdgM&#160;-&#160;&#160;Alive Counter&#160;overrun&#160;<br/>&#160;&#160;[45827]&#160;-&#160;WdgM:&#160;Add&#160;AUTOSAR &#160;_AR_&#160;Version macros&#160;<br/>&#160;&#160;[46044]&#160;-&#160;S-WdgM:&#160;protect sensitive&#160;data accesses&#160;from&#160;interrupts&#160;<br/>&#160;&#160;[45280]&#160;-&#160;Wdgx:&#160;The&#160;RAM&#160;sections&#160;of&#160;WdgM,&#160;Wdg&#160;should be&#160;related&#160;to&#160;an&#160;Application only&#160;<br/>&#160;&#160;[47328]&#160;-&#160;S-WdgM:&#160;initialize&#160;uninitialized local&#160;variables&#160;<br/>&#160;<br/>Configuration Generator&#160;BugFixies:&#160;<br/>&#160;<br/>&#160;&#160;[46574]:&#160;avoid division by&#160;zero if&#160;Ticks/second =&#160;0&#160;<br/>&#160;&#160;[46794]: reject multiple&#160;DM&#160;elements&#160;for one&#160;transition&#160;<br/>
+&#160;&#160;[46920]: checkpoint&#160;attribute &#34;startsAGlobalTransition&#34;&#160;is&#160;now&#160;correctly&#160;computed&#160;<br/>
+&#160;&#160;[44628]: remove compiler warning&#160;({{0}, {1}, ..} instead of&#160;{0, 1}&#160;<br/>&#160;&#160;[47177]: reject configurations&#160;not&#160;having a&#160;1:1:1 relationship for driver/interface/watchdog&#160;<br/>
+&#160;&#160;[47058]:&#160;disable&#160;OS&#160;Partition Reset&#160;in&#160;generator&#160;<br/>
+&#160;<br/>
+<b>3.20&#160;&#160;Changes&#160;with&#160;Release&#160;1.8.0: S-WdgM&#160;Subpackage&#160;1.8.0&#160;</b><br/>
+&#160;&#160;The&#160;Safety&#160;Manual&#160;revorked, the not safety&#160;related&#160;informations&#160;are moved&#160;to&#160;the&#160;User Manual.&#160;<br/>&#160;&#160;[45700] Trigger&#160;Mode implemented&#160;(Simplified&#160;SetMode()&#160;function)&#160;<br/>&#160;&#160;[45927] RememberedEntityId&#160;replaced&#160;by&#160;global&#160;transition&#160;flags&#160;<br/>&#160;&#160;[45959]&#160;Periodicity&#160;of&#160;deadline&#160;and&#160;program&#160;flow&#160;&#160;tolerances&#160;repaired&#160;<br/>&#160;&#160;[46206]&#160;Minor changes&#160;to increase test coverage&#160;<br/>
+&#160;<br/>
+<b>3.21&#160;&#160;Changes&#160;with&#160;Release&#160;1.7.0: S-WdgM&#160;Subpackage&#160;1.7.0&#160;</b><br/>
+&#160;&#160;[45210] Hardware&#160;TickCounter implemented&#160;<br/>&#160;&#160;[45572]&#160;WdgM_GetLocalStatus()&#160;adapted,&#160;WdgMEnableEntityDeactivation&#160;flag&#160;was&#160;moved&#160;<br/>&#160;&#160;[45663]&#160;tick_count_diff&#160;calculation repaired&#160;<br/>&#160;&#160;[45388]&#160;Mcu_PerformReset()&#160;removed&#160;from&#160;WdgM_MainFunciton.&#160;<br/>
+<b>3.22&#160;&#160;Changes&#160;with&#160;Release&#160;1.6.0:&#160;S-WdgM&#160;Subpackage&#160;1.6.0&#160;</b><br/>
+&#160;&#160;[44418] Checksum&#160;for configuration&#160;added&#160;<br/>&#160;&#160;[44978]&#160;SE&#160;deactivation/activation&#160;variable protection&#160;in the&#160;GS&#160;memory&#160;added&#160;<br/>&#160;&#160;[45008]&#160;Partition&#160;reset&#160;partly&#160;corrected,&#160;the&#160;Entity&#160;reset&#160;was&#160;added.&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=21></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;21&#160;<br/>
+&#160;&#160;[45066]&#160;Refactoring,&#160;MISRA&#160;check&#160;corrections&#160;<br/>
+&#160;<br/>
+<b>3.23&#160;&#160;Changes&#160;with&#160;Release&#160;1.5.0:&#160;S-WdgM&#160;Subpackage&#160;1.5.0&#160;</b><br/>
+&#160;&#160;[43770] The&#160;write&#160;access&#160;of&#160;the&#160;MainFunction()&#160;to the entity&#160;memory&#160;removed.&#160;<br/>&#160;&#160;[44107] Deadline,&#160;Program&#160;flow&#160;monitoring&#160;debouncing&#160;parameters&#160;optimization&#160;<br/>&#160;&#160;[43913]&#160;MainFunction()&#160;interrupted&#160;by&#160;Checkpoint()&#160;corrections&#160;<br/>&#160;&#160;[44257] Check&#160;for Number&#160;of&#160;S-WdgM Ticks&#160;in SupervisionCycle added&#160;<br/>&#160;&#160;[43912] The&#160;direct reset&#160;(hardware reg.&#160;access)&#160;was&#160;removed&#160;from&#160;CheckpointReached()&#160;<br/>
+<b>3.24&#160;&#160;Changes&#160;with&#160;Release&#160;1.4.0:&#160;S-WdgM&#160;Subpackage&#160;1.4.0&#160;</b><br/>
+&#160;&#160;The&#160;documentation&#160;structure&#160;was&#160;changed.&#160;Each module (Manager,&#160;Interface and Driver)&#160;has&#160;now&#160;<br/>
+an&#160;own User Manual,&#160;Safety&#160;Manual&#160;and&#160;Release&#160;Notes.&#160;The&#160;changes&#160;mentioned in&#160;this&#160;chapter&#160;<br/>
+represents&#160;the S-WdgM changes&#160;only.&#160;<br/>
+&#160;&#160;&#160;[42537]&#160;WDGM_DEM_SUPERVISION_REPORT&#160;define&#160;moved&#160;to&#160;WdgM_Cfg_Feature.h file&#160;<br/>&#160;&#160;&#160;[42797]&#160;Compiler&#160;warnings&#160;removed, &#160;the SE&#160;deactivation/activation simplified&#160;<br/>&#160;&#160;&#160;[42943]&#160;SE&#160;Deactivation/Activation issue&#160;removed&#160;<br/>&#160;&#160;&#160;[43092]&#160;global&#160;transitions&#160;repaired&#160;–&#160;internal&#160;global&#160;transition&#160;flag&#160;introduced&#160;<br/>&#160;&#160;&#160;[43881]&#160;Unused variable removed&#160;<br/>
+<b>3.25&#160;&#160;Changes&#160;with&#160;Release&#160;1.3.1:&#160;WdgM&#160;Subpackage&#160;1.3.1&#160;</b><br/>
+The&#160;Wdg_MPC56xx_bswmd.arxml&#160;file was&#160;changed&#160;only. The&#160;xml&#160;element&#160;Wdg_Impl&#160;was&#160;removed&#160;from&#160;the&#160;<br/>
+file by&#160;Mr.&#160;Kalmbach at Vector. The&#160;element causes&#160;a&#160;problem&#160;in GENy.&#160;<br/>
+<b>3.26&#160;&#160;Changes&#160;with&#160;Release&#160;1.3.0&#160;</b><br/>
+<b>Embedded&#160;code:&#160;</b><br/>
+&#160;&#160;[42477]&#160;Notification&#160;in&#160;GLOBAL_STATE_STOPPED&#160;was&#160;not&#160;necessary&#160;and&#160;was&#160;removed&#160;&#160;<br/>&#160;&#160;[42503]&#160;Error message to&#160;DEM&#160;in&#160;GLOBAL_STATE_STOPPED&#160;is&#160;now reported&#160;correctly&#160;<br/>&#160;&#160;[42509] Check&#160;for a valid global&#160;transition&#160;repaired in the&#160;case of&#160;a&#160;local&#160;initial&#160;checkpoint.&#160;<br/>&#160;&#160;[42249]&#160;Added&#160;the&#160;new&#160;MPC56xx&#160;family&#160;platform, new&#160;S-Wdg&#160;driver created&#160;<br/>
+&#160;<br/>
+<b>Generators:&#160;</b><br/>
+&#160;&#160;Added&#160;new&#160;MPC56xx&#160;family&#160;platform&#160;&#160;<br/>
+<b>3.27&#160;&#160;Changes&#160;with&#160;Release&#160;1.2.0:&#160;WdgM&#160;Subpackage&#160;1.2.0&#160;</b><br/>
+<b>Embedded&#160;code:&#160;</b><br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=22></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;22&#160;<br/>
+&#160;&#160;For the&#160;global&#160;Disable/Enable&#160;interrupts&#160;the&#160;AUTOSAR Schedule Manager&#160;interface&#160;is&#160;now&#160;used&#160;<br/>
+instead of&#160;the&#160;operating&#160;system&#160;interface. (Now&#160; the&#160;SchM_WdgM.h&#160;needs&#160;to&#160;be&#160;included)&#160;<br/>
+&#160;&#160;When&#160;the RTE&#160;is&#160;used,&#160;then the&#160;S-WdgM uses&#160;the&#160;defines&#160;and&#160;typedefs&#160;generated by&#160;RTE&#160;instead&#160;<br/>
+of&#160;the S-WdgM internal&#160;typedefs&#160;and&#160;defines&#160;(switchable&#160;with&#160;WDGM_USE_RTE)&#160;<br/>
+&#160;&#160;Primary&#160;Reset&#160;path&#160;instead&#160;of&#160;Secondary&#160;reset&#160;path&#160;is&#160;used&#160;when&#160;the&#160;<br/>
+WDGM_IMMEDIATE_RESET==STD_ON&#160;is&#160;selected.&#160;This&#160;change&#160;was&#160;done&#160;to guarantee&#160;safe&#160;<br/>
+reset.&#160;(The&#160;previously&#160;used&#160;external&#160;Mcu_PerformReset()&#160;function&#160;is&#160;a&#160;QM function)&#160;<br/>
+&#160;&#160;The&#160;Timebase Tick&#160;counter&#160;check&#160;(stuck-in and&#160;negative count)&#160;was&#160;corrected in the&#160;<br/>
+WdgM_MainFunction()&#160;&#160;<br/>
+&#160;&#160;Similar to&#160;the&#160;S-WdgM the&#160;S-Wdg&#160;has&#160;now&#160;a&#160;Wdg_MemMap.h&#160;file.&#160;So&#160;it is&#160;possible to&#160;place&#160;the&#160;<br/>
+Wdg variables&#160;to a&#160;memory&#160;section&#160;predefined&#160;by&#160;DaVinci&#160;Configurator.&#160;<br/>
+<b>Generators:&#160;</b><br/>
+&#160;&#160;better&#160;error handling&#160;<br/>
+&#160;&#160;XSLT&#160;Stylesheet&#160;now&#160;includes&#160;`WdgM_MainFunction` and&#160;`WdgM_UpdateTickCount` as&#160;runnables.&#160;<br/>
+&#160;&#160;Drivers/platforms&#160;now&#160;can&#160;be&#160;identified&#160;correctly&#160;regardless&#160;of&#160;the&#160;SHORT-NAMEs&#160;chosen&#160;by&#160;users&#160;<br/>
+&#160;<br/><b>ECU description&#160;file&#160;change:&#160;</b><br/>
+Release 1.2.0&#160;uses&#160;SUB-PACKAGEs&#160;for organizing&#160;platform-related data&#160;inside&#160;ECU description&#160;file. &#160;<br/>ECU description&#160;files&#160;created&#160;for&#160;previous&#160;versions&#160;have to be adapted&#160;slightly&#160;-&#160;otherwise&#160;the&#160;code&#160;<br/>generators&#160;may&#160;not&#160;be&#160;able&#160;to&#160;find&#160;the&#160;platform&#160;data.&#160;&#160;Please follow&#160;these steps:&#160;<br/><i>&#160;<br/></i>1.&#160;&#160;Open the&#160;ECU Description&#160;file&#160;with&#160;a&#160;text editor&#160;<br/>2.&#160;&#160;Find&#160;&lt;DEFINITION-REF&gt;&#160;elements&#160;in the&#160;ECU description&#160;file containing&#160;`/TTTECH/Wdg`&#160;or&#160;<br/>
+`/TTTECH/WdgImpl`&#160;<br/>
+3.&#160;&#160;Replace the `TTTECH/Wdg`&#160;substring&#160;with&#160;`TTTech/TMS570LS3x/Wdg`&#160; and&#160; /TTTECH/WdgImpl`&#160;<br/>
+with&#160;/TTTECH/TMS570LS3x/WdgImpl`&#160;<br/>
+4.&#160;&#160;Save&#160;your&#160;changes&#160;<br/>
+&#160;<br/>
+<b>3.28&#160;&#160;Changes&#160;with&#160;Release&#160;1.1.0:&#160;WdgM&#160;Subpackage&#160;1.1.0&#160;</b><br/>
+<b>Embedded&#160;code:&#160;</b><br/>
+&#160;&#160;The&#160;AUTOSAR 3.1 functionality&#160;Deactivate&#160;/&#160;Activate&#160;entity&#160;was&#160;implemented.&#160;<br/>&#160;&#160;The&#160;Callback&#160;Notification&#160;was&#160;implemented.&#160;<br/>&#160;&#160;The&#160;entities&#160;initialization in the&#160;WdgM_Init()&#160;was&#160;corrected.&#160;<br/>&#160;&#160;The&#160;Timebase Tick&#160;overrun&#160;correction&#160;was&#160;removed&#160;on places&#160;where it&#160;wasn’t necessary&#160;<br/>&#160;&#160;The&#160;MPC5604B&#160;Safe&#160;Watchdog&#160;driver&#160;was&#160;implemented&#160;<br/>
+o&#160;&#160;Note:&#160;the&#160;MPC5604B&#160;internal&#160;watchdog’s&#160;registers&#160;(module SWT)&#160;can&#160;only&#160;be&#160;accessed&#160;in&#160;<br/>
+one&#160;of&#160;the supervisor modes. This&#160;means&#160;that&#160;the&#160;WdgM_MainFunction(),&#160;which periodically&#160;<br/>
+triggers&#160;the&#160;watchdog,&#160;must run in a&#160;supervisor mode!&#160;<br/>
+o&#160;&#160;This&#160;first version&#160;of&#160;the&#160;MPC5604B&#160;Safe&#160;Watchdog&#160;driver&#160;was&#160;developed&#160;and&#160;tested&#160;using&#160;<br/>
+the&#160;Freescale CodeWarrior&#160;Compiler 5.9.0.&#160;<br/>
+o&#160;&#160;Following&#160;configuration&#160;sets&#160;were&#160;verified:&#160;fSIRCkhz=128,&#160;interruptThenReset=false,&#160;<br/>
+hardLock=false,&#160;stopModeControl=true,&#160;debugModeControl=true,&#160;WdgDevErrorDetect=true,&#160;<br/>
+WdgDemReport=true,&#160;WdgDisableAllowed=true,&#160;WdgVersionInfoApi=true.&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=23></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;23&#160;<br/>
+&#160;<br/>
+<b>Generators:&#160;</b><br/>
+Wdg_Mgr_Cfg_Gen.exe generates&#160;code to support supervised&#160;entity&#160;activation/deactivation&#160;and&#160;<br/>
+callback&#160;notifications.&#160;<br/>
+Wdg_If_Cfg_Gen.exe generates&#160;code for the MPC5604B&#160;driver and corresponding interface.&#160;<br/>
+<b>3.29&#160;&#160;Changes&#160;with&#160;Release&#160;1.0.0:&#160;WdgM&#160;Subpackage&#160;1.0.0&#160;</b><br/>
+&#160;&#160;The&#160;Safe&#160;Watchdog&#160;Interface&#160;embedded&#160;code&#160;was&#160;split&#160;in to&#160;two modules:&#160;<br/>
+1.&#160;&#160;Safe&#160;Watchdog&#160;&#160;Interface,&#160;is&#160;now&#160;hardware&#160;independent&#160;<br/>
+2.&#160;&#160;Safe&#160;Watchdog&#160;Driver,&#160;is&#160;hardware&#160;dependent&#160;<br/>
+&#160;&#160;The&#160;Mode&#160;switch through the&#160;WdgM_Init&#160;was&#160;removed.&#160;<br/>&#160;&#160;There is&#160;now&#160;possibility&#160;to&#160;disable&#160;interrupts&#160;while the&#160;Global&#160;shared&#160;data&#160;are manipulated&#160;<br/>&#160;&#160;Some enum&#160;definitions&#160;in the&#160;S-WdgM API&#160;(like LOCAL_STATUS_OK)&#160;was&#160;changed&#160;to&#160;AUTOSAR&#160;&#160;<br/>
+specified&#160;#defines&#160;<br/>
+&#160;&#160;Changes&#160;in the generators:&#160;<br/>
+&#160;&#160;The&#160;generators&#160;generates&#160;now&#160;additionally&#160;WdgM_Cfg_Features.h,WdgIf_Cfg_Features.h,&#160;<br/>
+Wdg_TMS570LS3x_Cfg_Features.h&#160;files.&#160;<br/>
+&#160;&#160;The&#160;generators&#160;generates&#160;now&#160;additionally&#160;WdgM_MemMap.f&#160;file.&#160;<br/>
+&#160;&#160;Changes&#160;in the bswmd&#160;and&#160;swc&#160;files:&#160;<br/>
+&#160;&#160;Feature&#160;definitions&#160;are&#160;added&#160;(defined&#160;in the&#160;…Cfg_Features.h&#160;files)&#160;<br/>&#160;&#160;Software&#160;version and&#160;vendor info&#160;was&#160;added&#160;<br/>&#160;&#160;Obsolete 3.1 items&#160;was&#160;deleted&#160;<br/>&#160;&#160;DEFINITION-REF&#160;elements&#160;now&#160;contains&#160;paths&#160;beginning&#160;with&#160;TTTECH instead&#160;of&#160;AUTOSAR&#160;&#160;<br/>&#160;&#160;The&#160;bswmd files&#160;are now&#160;schema compliant.&#160;&#160;<br/>&#160;&#160;At typedefs&#160;WdgM_CheckpointIdType,&#160;&#160;WdgM_SupervisedEntityIdType&#160;was&#160;the&#160;maximum&#160;value&#160;&#160;<br/>
+changed to&#160;65535.&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=24></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;24&#160;<br/>
+<b>4&#160;</b><br/>
+<b>Test status&#160;</b><br/>
+The&#160;S-WdgM&#160;integration&#160;tests&#160;based&#160;on the issue&#160;69689&#160;were&#160;performed.&#160;No findings.&#160;<br/>
+&#160;<br/>
+All&#160;test results&#160;are&#160;positive.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=25></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;25&#160;<br/>
+<b>5&#160;</b><br/>
+<b>Known issues,&#160;limitations,&#160;updates&#160;</b><br/>
+<b>Known&#160;issues:&#160;</b><br/>
+For known&#160;issues&#160;please see&#160;the&#160;chapter&#160;“Change history”&#160;above.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Functional&#160;limitations of&#160;current&#160;version:&#160;</b><br/>
+Not known.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Updates:&#160;</b><br/>
+Current release&#160;represents&#160;a&#160;S-WdgM&#160;module&#160;for AUTOSAR&#160;4.0.x&#160;and&#160;AUTOSAR 3.1.y.&#160;<br/>
+&#160;<br/>
+Note,&#160;that&#160;the&#160;S-WdgM&#160;Configuration&#160;generator reads&#160;the&#160;AUTOSAR&#160;version from&#160;ECU description file&#160;and&#160;<br/>
+generates&#160;a&#160;define&#160;“#define&#160;WDGM_AUTOSAR_4_x STD_ON”&#160;in case&#160;of&#160;Autosar 4.x.&#160;Dependent&#160;on this&#160;<br/>
+define&#160;the&#160;embedded&#160;code&#160;uses&#160;the&#160;appropriate&#160;Autosar 4.0.x&#160;functionality.&#160;<br/>
+&#160;<br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+<a name=26></a>&#160;<br/>
+&#160;<br/>
+<b>Ensuring&#160;Reliable&#160;Networks&#160;</b><br/>
+<b>Project&#160;Name:&#160;</b><br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+Version:&#160;3.4.6&#160;<br/>
+<b>Document&#160;Title:&#160;&#160;</b>Release&#160;Notes&#160;<br/>
+Doc.No:&#160;&#160;D-SAFEX-RP-70-012&#160;<br/>
+Page&#160;&#160;26&#160;<br/>
+<b>6&#160;</b><br/>
+<b>Abbreviation and glossary&#160;</b><br/>
+<b>Acronym&#160;/&#160;<br/>Term&#160;</b><br/>
+<b>Meaning&#160;</b><br/>
+CP&#160;<br/>
+Checkpoint&#160;<br/>
+EDF&#160;<br/>
+ECU&#160;Description&#160;File&#160;(.arxml&#160;file&#160;used&#160;as&#160;input&#160;to&#160;the&#160;configuration&#160;generator)&#160;<br/>
+SE&#160;<br/>
+Supervised&#160;Entity&#160;<br/>
+OS&#160;<br/>
+Operating&#160;System&#160;<br/>
+SCx&#160;<br/>
+Scalability&#160;Class&#160;(of&#160;an&#160;Operating&#160;System)&#160;<br/>
+S-WdgM&#160;<br/>
+Safe&#160;Watchdog&#160;Manager (TTTech&#160;product,&#160;platform&#160;independent&#160;part)&#160;<br/>
+S-WdgIf&#160;<br/>
+Safe&#160;Watchdog&#160;Interface&#160;(TTTech&#160;product,&#160;is&#160;the&#160;platform&#160;independent&#160;part)&#160;<br/>
+S-Wdg&#160;<br/>
+Safe&#160;Watchdog&#160;Driver (TTTech&#160;product,&#160;is&#160;the&#160;platform&#160;dependent&#160;part)&#160;<br/>
+WdgM&#160;<br/>
+Watchdog&#160;Manager&#160;&#160;(module&#160;according&#160;AUTOSAR specification)&#160;<br/>
+[xxxxx]&#160;<br/>
+TTTech&#160;internal&#160;issue&#160;tracking&#160;number.&#160;<br/>
+<b>&#160;</b><br/>
+&#160;<b>Date:</b>&#160;&#160;&#160;21.11.2014&#160;<br/>
+<b>File&#160;name:</b>&#160;&#160;S-WdgM_ReleaseNotes.doc<b>&#160;</b><br/>
+<b>©&#160;TTTech-Automotive&#160;GmbH</b>&#160;<br/>
+Version:&#160;&#160;&#160;3.4.6&#160;<br/>
+<b>Author:</b>&#160;<br/>
+TTTech&#160;<br/>
+<hr/>
+</body>
+</html>

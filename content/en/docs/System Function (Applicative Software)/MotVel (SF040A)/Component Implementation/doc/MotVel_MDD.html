@@ -1,0 +1,377 @@
+---
+title: MotVel_MDD
+linkTitle: MotVel_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>‘MotVel’</strong></p>
+<p><strong>VERSION: 2.0</strong></p>
+<p><strong>DATE: 18-Nov-2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>TATA ELXSI</strong></p>
+<p><strong>CHENNAI, INDIA</strong></p>
+<p><strong><br />
+</strong> <strong>Location:</strong> The official version of this document is stored in the Nexteer Configuration Management System.</p>
+<p><strong>Revision History</strong></p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 44%" />
+<col style="width: 21%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sl. No.</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>Rijvi Ahmed</td>
+<td>1.0</td>
+<td>12-April-2016</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Updated per design rev. 2.0.0</td>
+<td>TATA</td>
+<td>2.0</td>
+<td>18-Nov-2016</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong><u><br />
+Table of Contents</u></strong></p>
+<p>1 Abbrevations And Acronyms 5</p>
+<p>2 References 6</p>
+<p>3 MotVel &amp; High-Level Description 7</p>
+<p>4 Design details of software module 8</p>
+<p>4.1 Graphical representation OF MotVel 8</p>
+<p>4.2 Data Flow Diagram 8</p>
+<p>4.2.1 Module level DFD 8</p>
+<p>4.2.2 Sub-Module level DFD 8</p>
+<p>4.3 COMPONENT FLOW DIAGRAM 8</p>
+<p>5 Variable Data Dictionary 9</p>
+<p>5.1 User defined typedef definition/declaration 9</p>
+<p>5.2 Variable definition for enumerated types 9</p>
+<p>6 Constant Data Dictionary 10</p>
+<p>6.1 Program(fixed) Constants 10</p>
+<p>6.1.1 Embedded Constants 10</p>
+<p>6.1.1.1 Local 10</p>
+<p>6.1.2 Module specific Lookup Tables Constants 10</p>
+<p>7 Software Module Implementation 11</p>
+<p>7.1 Sub-Module Functions 11</p>
+<p>7.1.1 Initialization Functions 11</p>
+<p>7.1.2 PERIODIC FUNCTIONS 11</p>
+<p>7.1.2.1 INIT: MotVelPER1 11</p>
+<p>7.1.2.1.1 Design Rationale 11</p>
+<p>7.1.2.2 Design Rationale 11</p>
+<p>7.1.2.3 Store Module Inputs to Local copies 11</p>
+<p>7.1.2.4 (Processing of function)……… 11</p>
+<p>7.1.2.5 Store Local copy of outputs into Module Outputs 11</p>
+<p>7.1.3 PERIODIC FUNCTIONS 11</p>
+<p>7.1.3.1 INIT: MotVelPER2 11</p>
+<p>7.1.3.1.1 Design Rationale 11</p>
+<p>7.1.3.2 Design Rationale 11</p>
+<p>7.1.3.3 Store Module Inputs to Local copies 11</p>
+<p>7.1.3.4 (Processing of function)……… 11</p>
+<p>7.1.3.5 Store Local copy of outputs into Module Outputs 11</p>
+<p>7.1.4 Interrupt Functions 12</p>
+<p>Server runnables 12</p>
+<p>7.1.4.1.1 Store Local copy of outputs into Module Outputs 12</p>
+<p>7.1.4.2 Local Function/Macro Definitions 12</p>
+<p>7.1.5 GLObAL Function/Macro Definitions 12</p>
+<p>7.1.6 Tranisition FUNCTIONS 12</p>
+<p>8 Known Limitations With Design 13</p>
+<p>9 UNIT TEST CONSIDERATION 14</p>
+<p>10 Appendix 15</p>
+<h1 id="abbrevations-and-acronyms">Abbrevations And Acronyms</h1>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Abbreviation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DFD</td>
+<td>Design functional diagram</td>
+</tr>
+<tr class="even">
+<td>MDD</td>
+<td>Module design Document</td>
+</tr>
+<tr class="odd">
+<td>FDD</td>
+<td>Functional Design Document</td>
+</tr>
+</tbody>
+</table>
+<h1 id="references">References</h1>
+<p>This section lists the title &amp; version of all the documents that are referred for development of this document</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 65%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sr. No.</th>
+<th>Title</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>MDD Guidelines</td>
+<td>Process 04.02.01</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Software Naming Conventions</td>
+<td>Process 04.02.01</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Software Design and Coding standards</td>
+<td>Process 04.02.01</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>FDD : SF40A_MotVel_Design</td>
+<td>See Synergy sub project version</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="motvel-high-level-description">MotVel &amp; High-Level Description</h1>
+<p> Please refer FDD.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-motvel">Graphical representation OF MotVel</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.png" style="width:2.9375in;height:3.14583in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="module-level-dfd">Module level DFD</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="sub-module-level-dfd">Sub-Module level DFD</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="component-flow-diagram">COMPONENT FLOW DIAGRAM</h2>
+<p><em>Refer FDD</em></p>
+<h1 id="variable-data-dictionary">Variable Data Dictionary</h1>
+<h2 id="user-defined-typedef-definitiondeclaration">User defined typedef definition/declaration </h2>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 31%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Typedef Name</th>
+<th>Element Name</th>
+<th>User Defined Type</th>
+<th><p>Legal Range</p>
+<p>(min)</p></th>
+<th><p>Legal Range</p>
+<p>(max)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>None</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="variable-definition-for-enumerated-types">Variable definition for enumerated types</h2>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 40%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th> Enum Name</th>
+<th>Element Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>None</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="programfixed-constants">Program(fixed) Constants</h2>
+<h2 id="embedded-constants">Embedded Constants</h2>
+<h2 id="local">Local </h2>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td colspan="4">Refer the m files</td>
+</tr>
+</tbody>
+</table>
+<p><strong>6.1.1.2</strong> <strong>Global</strong></p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="module-specific-lookup-tables-constants">Module specific Lookup Tables Constants</h2>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 20%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Value</th>
+<th>Software Segment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>None</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-module-implementation">Software Module Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions </h2>
+<h2 id="initialization-functions">Initialization Functions</h2>
+<p><em>None</em></p>
+<h2 id="periodic-functions">PERIODIC FUNCTIONS </h2>
+<h2 id="init-motvelper1">INIT: MotVelPER1</h2>
+<h2 id="section"></h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h2 class="unnumbered" id="section-1"></h2>
+<h2 id="periodic-functions-1">PERIODIC FUNCTIONS </h2>
+<h2 id="init-motvelper2">INIT: MotVelPER2</h2>
+<h2 id="section-2"></h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="processing-of-function-1">(Processing of function)………</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="section-3"></h2>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p><em>None</em></p>
+<h2 class="unnumbered" id="server-runnables">Server runnables</h2>
+<p><em>None</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-2">Store Local copy of outputs into Module Outputs</h2>
+<p><em>None</em></p>
+<h2 id="local-functionmacro-definitions">Local Function/Macro Definitions</h2>
+<p><em>None</em></p>
+<h2 id="global-functionmacro-definitions">GLObAL Function/Macro Definitions</h2>
+<p>None</p>
+<h2 id="tranisition-functions">Tranisition FUNCTIONS </h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations With Design</h1>
+<ol type="1">
+<li><p>In SF040A datadictionary (Ver 2.0.0), MotAgBufIdx input signal is removed. But it is used in the SF040A implementation(ver 2.0.0)’MotVelPer2’. This leads mismatch between DD and Design.</p></li>
+<li><p>MotCtrlMotAgBuf and MotCtrlMotAgTiBuf are removed in data dictionary but used in the model in MotVelPer1. This leads mismatch between DD and Design.</p></li>
+</ol>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<h1 id="appendix">Appendix</h1>
+<p><em>None</em></p>

@@ -1,0 +1,1735 @@
+---
+title: GmOvrlStMgr_MDD
+linkTitle: GmOvrlStMgr_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>GmOvrlStMgr</strong></p>
+<p><strong>Feb 02, 2017</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Jayakrishnan T,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA<br />
+<u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>Initial Version</td>
+<td>Sankardu Varadapureddi</td>
+<td>1</td>
+<td>6-Oct-2015</td>
+</tr>
+<tr class="odd">
+<td>Added HwTq based intervention for LKA, handwheel buzz based on LoA key cycles</td>
+<td>Nick Saxton</td>
+<td>2</td>
+<td>11-Feb-2016</td>
+</tr>
+<tr class="even">
+<td>Changed argument names of ESCFlt local function</td>
+<td>Nick Saxton</td>
+<td>3</td>
+<td>13-Jun-2016</td>
+</tr>
+<tr class="odd">
+<td>Updated graphical representation and edited local function section</td>
+<td>Nick Saxton</td>
+<td>4</td>
+<td>24-Jun-2016</td>
+</tr>
+<tr class="even">
+<td>Updated for FDD v4.0.0</td>
+<td>Nick Saxton</td>
+<td>5</td>
+<td>22-Aug-2016</td>
+</tr>
+<tr class="odd">
+<td>Updated to design version 4.1.0</td>
+<td>TATA</td>
+<td>6</td>
+<td>12-Dec-16</td>
+</tr>
+<tr class="even">
+<td>Anomaly fix EA4#8726, Removed local function LkaCheck</td>
+<td>JK</td>
+<td>7</td>
+<td>02-Feb-17</td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<p><u>Table of Contents</u></p>
+<p>1 GmOvrlStMgr High-Level Description 6</p>
+<p>2 Design details of software module 7</p>
+<p>2.1 Graphical representation of GmOvrlStMgr 7</p>
+<p>2.2 Data Flow Diagram 8</p>
+<p>2.2.1 Component level DFD 8</p>
+<p>2.2.2 Function level DFD 8</p>
+<p>3 Constant Data Dictionary 9</p>
+<p>3.1 Program (fixed) Constants 9</p>
+<p>3.1.1 Embedded Constants 9</p>
+<p>4 Software Component Implementation 10</p>
+<p>4.1 Sub-Module Functions 10</p>
+<p>4.1.1 Init: GmOvrlStMgrInit1 10</p>
+<p>4.1.1.1 Design Rationale 10</p>
+<p>4.1.1.2 Module Outputs 10</p>
+<p>4.1.2 Per: GmOvrlStMgrPer1 10</p>
+<p>4.1.2.1 Design Rationale 10</p>
+<p>4.1.2.2 Store Module Inputs to Local copies 10</p>
+<p>4.1.2.3 (Processing of function)……… 10</p>
+<p>4.1.2.4 Store Local copy of outputs into Module Outputs 10</p>
+<p>4.2 Server Runables 10</p>
+<p>4.2.1 GetGmLoaIgnCntr_Oper 10</p>
+<p>4.2.1.1 Design Rationale 10</p>
+<p>4.2.1.2 Store Module Inputs to Local copies 10</p>
+<p>4.2.1.3 (Processing of function)……… 10</p>
+<p>4.2.1.4 Store Local copy of outputs into Module Outputs 10</p>
+<p>4.2.2 SetGmLoaIgnCntr_Oper 11</p>
+<p>4.2.2.1 Design Rationale 11</p>
+<p>4.2.2.2 Store Module Inputs to Local copies 11</p>
+<p>4.2.2.3 (Processing of function)……… 11</p>
+<p>4.2.2.4 Store Local copy of outputs into Module Outputs 11</p>
+<p>4.3 Interrupt Functions 11</p>
+<p>4.4 Module Internal (Local) Functions 11</p>
+<p>4.4.1 Local Function #1 11</p>
+<p>4.4.1.1 Description 11</p>
+<p>4.4.2 Local Function #2 11</p>
+<p>4.4.2.1 Description 11</p>
+<p>4.4.3 Local Function #3 11</p>
+<p>4.4.3.1 Description 12</p>
+<p>4.4.4 Local Function #4 12</p>
+<p>4.4.4.1 Description 12</p>
+<p>4.4.5 Local Function #5 12</p>
+<p>4.4.5.1 Description 12</p>
+<p>4.4.6 Local Function #6 12</p>
+<p>4.4.6.1 Description 12</p>
+<p>4.4.7 Local Function #7 13</p>
+<p>4.4.7.1 Description 13</p>
+<p>4.4.8 Local Function #8 13</p>
+<p>4.4.8.1 Description 13</p>
+<p>4.4.9 Local Function #9 13</p>
+<p>4.4.9.1 Description 14</p>
+<p>4.4.10 Local Function #10 14</p>
+<p>4.4.10.1 Description 14</p>
+<p>4.4.11 Local Function #11 14</p>
+<p>4.4.11.1 Description 15</p>
+<p>4.4.12 Local Function #12 15</p>
+<p>4.4.12.1 Description 15</p>
+<p>4.4.13 Local Function #13 16</p>
+<p>4.4.13.1 Description 16</p>
+<p>4.4.14 Local Function #14 16</p>
+<p>4.4.14.1 Description 16</p>
+<p>4.4.15 Local Function #15 16</p>
+<p>4.4.15.1 Description 16</p>
+<p>4.4.16 Local Function #16 16</p>
+<p>4.4.16.1 Description 17</p>
+<p>4.4.17 Local Function #17 17</p>
+<p>4.4.17.1 Description 17</p>
+<p>4.4.18 Local Function #18 17</p>
+<p>4.4.18.1 Description 17</p>
+<p>4.4.19 Local Function #19 17</p>
+<p>4.4.19.1 Description 17</p>
+<p>4.4.20 Local Function #20 17</p>
+<p>4.4.20.1 Description 18</p>
+<p>4.4.21 Local Function #21 18</p>
+<p>4.4.21.1 Description 18</p>
+<p>4.4.22 Local Function #22 18</p>
+<p>4.4.22.1 Description 18</p>
+<p>4.4.23 Local Function #23 18</p>
+<p>4.4.23.1 Description 19</p>
+<p>4.4.24 Local Function #24 19</p>
+<p>4.4.24.1 Description 19</p>
+<p>4.5 GLOBAL Function/Macro Definitions 19</p>
+<p>5 Known Limitations with Design 20</p>
+<p>6 UNIT TEST CONSIDERATION 21</p>
+<p>Appendix A Abbreviations and Acronyms 22</p>
+<p>Appendix B Glossary 23</p>
+<p>Appendix C References 24</p>
+<h1 id="gmovrlstmgr-high-level-description">GmOvrlStMgr High-Level Description</h1>
+<p>Refer to FDD</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-gmovrlstmgr">Graphical representation of GmOvrlStMgr</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.jpeg" style="width:3.15441in;height:7.44792in" alt="C:\Component\CF009A_GmOvrlStMgr_Impl_4.1.0\MDD.JPG" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p>Refer FDD</p>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<p>Refer .m file</p>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h2 id="init-gmovrlstmgrinit1">Init: GmOvrlStMgrInit1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="module-outputs">Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="per-gmovrlstmgrper1">Per: GmOvrlStMgrPer1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p>Refer FDD for the overall functionality.</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<h3 id="getgmloaigncntr_oper"> GetGmLoaIgnCntr_Oper</h3>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p>Refer FDD for the overall functionality.</p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="processing-of-function-1">(Processing of function)………</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h3 id="setgmloaigncntr_oper">SetGmLoaIgnCntr_Oper</h3>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p>Refer FDD for the overall functionality.</p>
+<h2 id="store-module-inputs-to-local-copies-2">Store Module Inputs to Local copies</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="processing-of-function-2">(Processing of function)………</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-2">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p><em>None</em></p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-function-1">Local Function #1</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>VehStandStillTmrElpdChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VehSpdSecurMax_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>VehStandStillTiExcdd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>"Timer for VehStandStill" block implementation.</p>
+<h2 id="local-function-2">Local Function #2</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ShiftLvrRvsTmrElpdChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>ShiftLvrRvs_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>ShiftLvrRvsTiExcdd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-1">Description</h2>
+<p>"Timer for ShiftLvrRvs" block implementation.</p>
+<h2 id="local-function-3">Local Function #3</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApaIntv</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>float32</td>
+<td>-10</td>
+<td colspan="2">10</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>ApaIntv_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-2">Description</h2>
+<p>"ApaIntv" block implementation.</p>
+<h2 id="local-function-4">Local Function #4</h2>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 31%" />
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 0%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>HaptcEnaDurnElpdChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwHaptcEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>HwHaptcEnaDurnExcdd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-3">Description</h2>
+<p>"Timer for HwHaptcEna" block implementation.</p>
+<h2 id="local-function-5">Local Function #5</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LkaFltActvChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Msg17DBusHiSpdMiss_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Msg180BusHiSpdMiss_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Msg180BusHiSpdInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Msg1E9BusHiSpdMiss_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Msg214BusHiSpdInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Msg214BusHiSpdMiss_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VehSpdSecurMaxVld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpdSecurMinVld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>LkaFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-4">Description</h2>
+<p>Determination of 'LkaFlt'.</p>
+<h2 id="local-function-6">Local Function #6</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LkaInhbChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Msg17DBusHiSpdInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehStabyEnhmtActv_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>AbsActvProtd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Msg1E9BusHiSpdInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>LkaInhb_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-5">Description</h2>
+<p>Determination of ' LkaInhb'.</p>
+<h2 id="local-function-7">Local Function #7</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 0%" />
+<col style="width: 15%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApaRcvrlFltChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Msg1F5BusHiSpdInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpdSecurMaxVld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VehSpdSecurMinVld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>ApaRcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-6">Description</h2>
+<p>Determination of ‘ ApaRcvrlFlt’.</p>
+<h2 id="local-function-8">Local Function #8</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 28%" />
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApaTmpInhbExitCdnsChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>ApaNrcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LoaSt_Cnt_T_enum</td>
+<td>LoaSt1 (enum)</td>
+<td>LOAST_NORM</td>
+<td colspan="2">LOAST_IMDTSHTDWNREQD</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VehSpdSecurMax_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwHaptcEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaRcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>SysSt_Cnt_T_enum</td>
+<td>SysSt1</td>
+<td>SYSST_DI</td>
+<td colspan="2">SYSST_WRMIN</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*ApaSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-7">Description</h2>
+<p>This function validates conditions for all state transitions from ‘ APA Temporarily Inhibited’ state.</p>
+<p>‘*ApaSt_Cnt_T_u08’ is an output of this function.</p>
+<h2 id="local-function-9">Local Function #9</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 28%" />
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApaActvExitCdnsChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>ApaNrcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LoaSt_Cnt_T_enum</td>
+<td>LoaSt1 (enum)</td>
+<td>LOAST_NORM</td>
+<td colspan="2">LOAST_IMDTSHTDWNREQD</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VehSpdSecurMax_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwHaptcEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaRcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>ApaIntv_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SysSt_Cnt_T_enum</td>
+<td>SysSt1</td>
+<td>SYSST_DI</td>
+<td colspan="2">SYSST_WRMININ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*ApaSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-8">Description</h2>
+<p>This function validates conditions for all state transitions from ‘ APA Active’ state.</p>
+<p>‘*ApaSt_Cnt_T_u08’ is an output of this function.</p>
+<h2 id="local-function-10">Local Function #10</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 37%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApaCtrlAvlExitCdnsChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>VehSpdSecurMax_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaRcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwHaptcEnaDurnExcdd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehStandStillTiExcdd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>ShiftLvrRvsTiExcdd_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwHaptcEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HaptcStTranActvToWaitFlg_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>TranHaptcWaitToApaStActvFlg_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SysSt_Cnt_T_enum</td>
+<td>SysSt1</td>
+<td>SYSST_DI</td>
+<td colspan="2">SYSST_WRMININ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*HaptcSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">2</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*ApaSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-9">Description</h2>
+<p>This function validates conditions for all state transitions from and within ‘APA Availability for Control’ state.</p>
+<p>‘*ApaSt_Cnt_T_u08 and *HaptcSt_Cnt_T_u08’ are outputs of this function.</p>
+<h2 id="local-function-11">Local Function #11</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LkaStTran</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>LkaMfgEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LkaPrmntFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LoaSt_Cnt_T_enum</td>
+<td>boolean</td>
+<td>LOAST_NORM</td>
+<td colspan="2">LOAST_IMDTSHTDWNREQD</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LkaFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LkaInhb_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>EscSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LkaEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpdSecurMin_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VehSpdSecurMax_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LKAIntv_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MfgOvrlDi_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SysSt_Cnt_T_enum</td>
+<td>SysSt1</td>
+<td>SYSST_DI</td>
+<td colspan="2">SYSST_WRMININ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>* LkaSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-10">Description</h2>
+<p>Implementation of all LKA state transitions.</p>
+<p>‘*LkaSt_Cnt_T_u08’ is the output of this function.</p>
+<h2 id="local-function-12">Local Function #12</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>EscStTran</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>EscMfgEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>EscFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LoaSt_Cnt_T_enum</td>
+<td>boolean</td>
+<td>LOAST_NORM</td>
+<td colspan="2">LOAST_IMDTSHTDWNREQD</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpdSecurMax_Kph_T_f32</td>
+<td>boolean</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>EscEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>EscLimdActv_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MfgOvrlDi_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SysSt_Cnt_T_enum</td>
+<td>SysSt1</td>
+<td>SYSST_DI</td>
+<td colspan="2">SYSST_WRMININ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>* EscSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-11">Description</h2>
+<p>Implementation of all ESC state transitions.</p>
+<p>‘*EscSt_Cnt_T_u08’ is the output of this function.</p>
+<h2 id="local-function-13">Local Function #13</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>HwAgServo</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwAgTrajEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ApaSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwAgTraj_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td colspan="2">1440</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HwAgTarLimd_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td colspan="2">1440</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>* HwAgServoCmd_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td colspan="2">1440</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>HwAgServoEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-12">Description</h2>
+<p>Implementation of all ESC state transitions.</p>
+<p>‘*HwAgServoCmd_HwDeg_T_f32’ is the output of this function.</p>
+<h2 id="local-function-14">Local Function #14</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>InctIgnCntrOnce</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>IgnCntrLcl_Cnt_T_u16</td>
+<td>boolean</td>
+<td>0</td>
+<td colspan="2">65535</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-13">Description</h2>
+<p>Implementation of “InctIgnCntrOnce” block</p>
+<h2 id="local-function-15">Local Function #15</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>HwTqFildChk</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>float32</td>
+<td>-10.0</td>
+<td colspan="2">10.0</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>HwTqFildWithinIntl_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-14">Description</h2>
+<p>Implementation of”HwTqFildIntlChk” block.</p>
+<h2 id="local-function-16">Local Function #16</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LKAIntv</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>float32</td>
+<td>-10.0</td>
+<td colspan="2">10.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LkaTqCmdCdnd_HwNwtMtr_T_f32</td>
+<td>float32</td>
+<td>-3.0</td>
+<td colspan="2">3.0</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>LKAIntv_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-15">Description</h2>
+<p>Implementation of “LKAIntv” block.</p>
+<h2 id="local-function-17">Local Function #17</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LkaPrmntFlt</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>LkaFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>LkaPrmntFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-16">Description</h2>
+<p>Calculates LkaPrmntFlt to be used in state transitions.</p>
+<h2 id="local-function-18">Local Function #18</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>HaptcStTranActvToWaitFlg</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>HaptcStTranActvToWaitFlg_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-17">Description</h2>
+<p>Implementation of “HaptcStTranActvToWaitFlg” block.</p>
+<h2 id="local-function-19">Local Function #19</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 37%" />
+<col style="width: 12%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>TranHaptcWaitToApaStActvFlg</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>TranHaptcWaitToApaStActvFlg_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-18">Description</h2>
+<p>Implementation of TranHaptcWaitToApaStActvFlg_Cnt_T_logl block.</p>
+<h2 id="local-function-20">Local Function #20</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>EnHaptcFb</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>*HwOscnEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*HwOscnMotAmp_MotNwtMtr_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">1.2</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*HwOscnFrq_Hz_T_f32</td>
+<td>float32</td>
+<td>10</td>
+<td colspan="2">50</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-19">Description</h2>
+<p>Implementation of “EnHaptcFb” block.</p>
+<p>‘*HwOscnEna_Cnt_T_logl , * HwOscnMotAmp_MotNwtMtr_T_f32, *HwOscnFrq_Hz_T_f32 are the outputs of this function.</p>
+<h2 id="local-function-21">Local Function #21</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>HaptcFbPostStrtUp</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>ApaSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">4</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>HaptcSt_Cnt_T_u08</td>
+<td>uint8</td>
+<td>0</td>
+<td colspan="2">2</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwTqFildWithinIntl_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpd_Kph_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">511</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>IgnCntrLcl_Cnt_T_u16</td>
+<td>uint16</td>
+<td>0</td>
+<td colspan="2">65535</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>LoaStLimdOrSwBasdMtgtn_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*HwOscnEna_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*HwOscnMotAmp_MotNwtMtr_T_f32</td>
+<td>float32</td>
+<td>0</td>
+<td colspan="2">1.2</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*HwOscnFrq_Hz_T_f32</td>
+<td>float32</td>
+<td>10</td>
+<td colspan="2">50</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>None</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-20">Description</h2>
+<p>Implementation of "En Or Di HaptcFb After Checking At Start Up" block.</p>
+<p>‘*HwOscnEna_Cnt_T_logl , * HwOscnMotAmp_MotNwtMtr_T_f32, *HwOscnFrq_Hz_T_f32 are the outputs of this function.</p>
+<h2 id="local-function-22">Local Function #22</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ApaNrcvrlFlt</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Msg337BusChassisExpInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Msg337BusChassisExpMiss_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>ApaNrcvrlFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-21">Description</h2>
+<p>Determine ApaNrcvrlFlt status.</p>
+<h2 id="local-function-23">Local Function #23</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 0%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>EscFlt</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>Msg180BusChassisExpInvld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Msg180BusChassisExpMiss_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>EscFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-22">Description</h2>
+<p>Determine EscFlt status.</p>
+<h2 id="local-function-24">Local Function #24</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 0%" />
+<col style="width: 24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>LkaCheck</td>
+<td>Type</td>
+<td colspan="2">Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>*LkaFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>*LkaInhb_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>*LkaPrmnFlt_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td colspan="2">TRUE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-23">Description</h2>
+<p>Implements LKA Check subsystem in model. The arguments to this function are all returned as output.</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<ol type="1">
+<li><p>DataDict.m includes a default value for GmLoaIgnCntr NVM. This is redundant because the design uses the NVM GetErrorStatus function call to determine if this NVM value should be set to its default value of 0.</p></li>
+</ol>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.01</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>FDD : CF009A_ GmOvrlStMgr_Design</td>
+<td>See Synergy sub project version</td>
+</tr>
+</tbody>
+</table>

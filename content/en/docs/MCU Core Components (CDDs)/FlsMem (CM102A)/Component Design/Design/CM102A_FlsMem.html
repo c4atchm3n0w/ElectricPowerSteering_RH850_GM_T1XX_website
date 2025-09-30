@@ -1,0 +1,494 @@
+---
+title: CM102A_FlsMem
+linkTitle: CM102A_FlsMem
+weight: 2
+---
+
+<p><strong>Flash Memory RH850</strong></p>
+<p><strong>(FlsMem)</strong></p>
+<p><strong>FDD CM102A</strong></p>
+<p><a href="#high-level-description">1. High Level Description <span>3</span></a></p>
+<p><a href="#sub-function-in-this-document">2. Sub-Function In This Document <span>3</span></a></p>
+<p><a href="#critical-register-verification-references">3. Critical Register Verification References <span>3</span></a></p>
+<p><a href="#sub-functions">4. Sub-functions <span>4</span></a></p>
+<p><a href="#sub-function-code-flash-init-flsmeminit1">4.1. Sub-Function: Code Flash Init (FlsMemInit1) <span>4</span></a></p>
+<p><a href="#sub-function-code-flash-2-bit-and-address-parity">4.2. Sub-Function: Code Flash 2-Bit and Address Parity <span>5</span></a></p>
+<p><a href="#sub-function-code-flash-crc">4.3. Sub-Function: Code Flash CRC <span>5</span></a></p>
+<p><a href="#ntcs">4.3.1. NTCs <span>5</span></a></p>
+<p><a href="#san-linkage">4.3.2. SAN Linkage <span>5</span></a></p>
+<p><a href="#description">4.3.3. Description <span>5</span></a></p>
+<p><a href="#rationale">4.3.4. Rationale <span>5</span></a></p>
+<p><a href="#implementation">4.3.5. Implementation <span>5</span></a></p>
+<p><a href="#reference">4.3.6. Reference <span>10</span></a></p>
+<p><a href="#ntc-verification-method-special-code">4.3.7. NTC Verification Method (Special Code) <span>10</span></a></p>
+<p><a href="#sub-function-code-flash-single-bit-ecc">4.4. Sub-Function: Code Flash Single Bit ECC <span>10</span></a></p>
+<p><a href="#ntcs-1">4.4.1. NTCs <span>10</span></a></p>
+<p><a href="#san-linkage-1">4.4.2. SAN Linkage <span>10</span></a></p>
+<p><a href="#description-1">4.4.3. Description <span>10</span></a></p>
+<p><a href="#rationale-1">4.4.4. Rationale <span>10</span></a></p>
+<p><a href="#implementation-1">4.4.5. Implementation <span>11</span></a></p>
+<p><a href="#reference-1">4.4.6. Reference <span>13</span></a></p>
+<p><a href="#ntc-verification-method-special-code-1">4.4.7. NTC Verification Method (Special Code) <span>13</span></a></p>
+<p><a href="#revision-record-change-approval">5. Revision Record &amp; Change Approval <span>14</span></a></p>
+<h1 id="high-level-description">High Level Description</h1>
+<p>This document describes the microcontroller configuration for flash memory diagnostics for the RH850. It includes ECC, address parity and CRC confirmations. It also includes logic to look for frequent corrections on a given address to predict failures.</p>
+<h1 id="sub-function-in-this-document">Sub-Function In This Document</h1>
+<p>Below is a linked list of all sub-functions owned by this document.</p>
+<table>
+<colgroup>
+<col style="width: 73%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sub-Function Name</strong></th>
+<th><strong>Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code Flash Init</td>
+<td><a href="#sub-function-code-flash-init-flsmeminit1">4.1</a></td>
+</tr>
+<tr class="even">
+<td>Code Flash 2-Bit and Address Parity</td>
+<td><a href="#sub-function-code-flash-2-bit-and-address-parity">4.2</a></td>
+</tr>
+<tr class="odd">
+<td>Code Flash CRC</td>
+<td><a href="#sub-function-code-flash-crc">4.3</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="critical-register-verification-references">Critical Register Verification References</h1>
+<p>This table contains the information needed for critical register verification as configured or used in this document.</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Register</strong></th>
+<th><p><strong>Init / Periodic</strong></p>
+<p><strong>Verification</strong></p></th>
+<th><strong>Masking</strong></th>
+<th><strong>Expected Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>None – Flash ECC registers will be covered in CM110A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="sub-functions">Sub-functions</h1>
+<h2 id="sub-function-code-flash-init-flsmeminit1">Sub-Function: Code Flash Init (FlsMemInit1)</h2>
+<p>Return to sub-function list link: <u>Sub-Function In This Document</u></p>
+<p>This is an empty Initialization function that contains no logic. <br />
+FlsMemInit1 is an RTE function which is required for memory mapping PIM and Calibration definitions</p>
+<h2 id="sub-function-code-flash-2-bit-and-address-parity">Sub-Function: Code Flash 2-Bit and Address Parity  </h2>
+<p>Return to sub-function list link: <u>Sub-Function In This Document</u></p>
+<p>Refer to FDD CM101A_ExcpnHndling for information on 2-Bit code flash ECC / Address Parity faults.</p>
+<h2 id="sub-function-code-flash-crc">Sub-Function: Code Flash CRC</h2>
+<p>Return to sub-function list link: <u>Sub-Function In This Document</u></p>
+<h3 id="ntcs">NTCs</h3>
+<p>002.0 Code Flash Single Bit ECC</p>
+<p>004.0 Flash Memory Code Flash Crc Fault</p>
+<h3 id="san-linkage">SAN Linkage</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Requirement #</th>
+<th>DOORs Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>234</td>
+<td>http://usmisag-ap40.nexteer.com:8080/dwa/rm/urn:rational::1-399d8406295f0f5f-O-234-0000e801</td>
+</tr>
+<tr class="even">
+<td>242</td>
+<td>http://usmisag-ap40.nexteer.com:8080/dwa/rm/urn:rational::1-399d8406295f0f5f-O-242-0000e801</td>
+</tr>
+<tr class="odd">
+<td>248</td>
+<td>http://usmisag-ap40.nexteer.com:8080/dwa/rm/urn:rational::1-399d8406295f0f5f-O-248-0000e801</td>
+</tr>
+</tbody>
+</table>
+<h3 id="description">Description</h3>
+<p>This sub-function handles code flash Crc Check using RH850 Crc Hardware.</p>
+<h3 id="rationale">Rationale</h3>
+<p>32-bit Crc Ethernet algorithm is used considering Crc Hardware supports max 32-bit width Crc Check.</p>
+<p>Crc Check Only tested if ECU is Power On Reset, because In the scenario of other than Power Reset, it might get into continuous reset loop.</p>
+<h3 id="implementation">Implementation</h3>
+<p>The Code Flash CRC Check shall use <strong>32-Bit CRC / 32-bit Access</strong> width schema for computing CRC.</p>
+<p>The Header per Crc Region shall exclude in Crc Calculation.</p>
+<p>Note: The Prescence patterns per Crc Region shall exclude in Crc Calculation for GM customer.</p>
+<h4 id="sub-function-code-flash-crc-check-init-flsmeminit2">Sub-Function: Code Flash CRC Check Init (FlsMemInit2)</h4>
+<p>This function will setup the CRC hardware and the DTS Channel initialize.</p>
+<p>In order to setup CRC hardware, first need to reserve one of the CRC hardware out of 4 the CRC hardware by calling “ResCrcHwUnit” client call.</p>
+<p>Considering current estimation of DTS channels 32 max shall be used, so 0 to 31 the DTS channels are reserved for CRC operation.</p>
+<p>DTS channels shall configure dynamically using configurator tool. The DTS channel shall allow 0xFFFF max block size for data transfer. If the transfer count is more than 65535, the DTS channel configuration shall break transfer into multiple the DTS channel(s).</p>
+<h5 id="execution">Execution</h5>
+<p>“FlsMemInit2” shall schedule after OS Start – Refer CM100A Start up sequence.</p>
+<p>“DtsInin” function shall run in supervisor mode.</p>
+<p>PEG shall need to configure before “FlsMemInit2”.</p>
+<p>CrcHw Init shall schedule before “FlsMemInit2”.</p>
+<h5 id="software">Software</h5>
+<p>Refer below pseudo code for implementation.</p>
+<p>//Power on Reset</p>
+<p>{</p>
+<p>ChkForStrtUpTest (&amp;ExecStrtUpTest);<br />
+If (ExecStrtUpTest ) // True Perform the start up test.</p>
+<blockquote>
+<p>{</p>
+<p>// ResvCrcHwUnit is Client call for reserve Crc Hw</p>
+<p>CrcHwIdxKey = 0;</p>
+<p>Call_ResvCrcHwUnit(CRCHWRESVMOD_RESV, CRCHWRESVCFG_32BITCRC32BITWIDTH,</p>
+<p>CrcHwIdxInReg, CrcHwIdxOutReg, 0, CrcHwIdxKey)</p>
+<p>if (ResvCrcHwUnit Return == E_OK)</p>
+<p>{</p>
+<p>//Dynamic DTS channel configuration setup</p>
+<p>Call_DTSInit (CrcHwIdxInReg, CrcHwIdxOutReg)</p>
+<p>}</p>
+<p>//capture the system time and store to PIM</p>
+<p>Call_ GetRefTmr100MicroSec32bit (CodFlsCrcChkStrtTi )</p>
+<p>} else</p>
+<p>{</p>
+<p>PwrOnRstCrcChkCmpl =TRUE;</p>
+<p>}</p>
+</blockquote>
+<p>}</p>
+<p>DtsInin()</p>
+<p>{</p>
+<blockquote>
+<p>While (Number of Crc Region)</p>
+<p>{</p>
+<p>Calculate the number of channel(s) per Crc Region required.</p>
+<p>// The DTS Channels (Required only), transfer request register should Clear prior to configure the rest of the register in the channel</p>
+</blockquote>
+<p>DMASSDTFSCnnn. DRQC = 1</p>
+<blockquote>
+<p>Configure the DTS channel as per the Refer “CM102A_FlsMem_DTSPeripheralCfg.xlsx” for transfer code flash data to Crc hardware.</p>
+<p>Configure the DTS channel for transfer result to PIM (HwCrcCalcdRes)</p>
+<p>Configure the next DTS channel for Crc hardware start clear for next operation</p>
+<p>}</p>
+<p>Configure the last DTS channel in chain for the interrupt, when Crc Complete. Interrupt flag shall be monitored in FlsMemPer2 function</p>
+</blockquote>
+<p>Clear the DTS Interrupt flag (“RegOutINTIFPINTCLR0”).</p>
+<p>Start DTS Operation (0th DTS Channel start transfer enables).</p>
+<p>}</p>
+<p>Constant value 0 shall use for clear Hardware Crc (clearing Hardware Crc output register).</p>
+<p>Software Crc Memory table (CodFlsSwCrc ) shall generate using the configurator tool. It shall contain at least Crc Start Address, Crc region size and Software Crc Calculated result (SwCrcCalRes) for that Crc region.</p>
+<h4 id="sub-function-code-flash-crc-check-periodic-flsmemper2">Sub-Function: Code Flash CRC Check Periodic (FlsMemPer2)</h4>
+<p>This function intent to Compare Software Crc calculated Result Vs Hardware Crc calculated result, perform diagnostic, Milestone Flag update and release Crc hardware.</p>
+<p>The HwCrcCalcdRes shall reside in DTS writable local RAM area.</p>
+<p>The Software Crc Calculated Result shall reside in their respective Crc Region.</p>
+<p>After completion of the CRC check, the DTS registers for the source and destination addresses are re-initialized with the reset value and transfer request flag if any pending is also cleared to ensure no unintended transfers happen. The cleanup of the registers should happen in supervisor mode as the registers are protected by the channel master settings to be modifiable only in supervisor mode. Hence we make use of a trusted function to do the cleanup.</p>
+<h5 id="execution-1">Execution</h5>
+<p>FlsMemPer2 shall schedule at 100ms rate.</p>
+<p>“DtsClnUp” function shall run in supervisor mode.</p>
+<h5 id="software-1">Software</h5>
+<p>Refer below pseudo code for implementation.</p>
+<p>FlsMemPer2(Void)</p>
+<p>{ // Check the Crc Check Complete Status, If complete then don’t execute logic</p>
+<p>if (CrcChkCmpl != TRUE) then</p>
+<p>{</p>
+<p>// power On Reset flag is true</p>
+<p>if (PwrOnRstCrcChkCmpl ==TRUE) then</p>
+<p>{ SetNtcSts(NtcNr1.NTCNR_0x004, 0x00, NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>CrcChkCmpl = TRUE;</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>// Check if Crc Complete Interrupt flag set by DTS</p>
+<p>if (RegInpINTIFPINT0 != 0) then</p>
+<p>{ Call_ResvCrcHwUnit(CRCHWRESVMOD_RELS, 0, 0, 0, 0, CrcHwIdxKey)</p>
+<p>for(i=0; i&lt;Number of Crc Region; i++)</p>
+<p>{ if (CodFlsSwCrc[i].SwCrcCalRes != HwCrcCalcdRes[i]) then</p>
+<p>{CrcChkCompFail =| ((uint8)1U &lt;&lt; [i]U);</p>
+<p>}</p>
+<p>}</p>
+<p>if (CrcChkCompFail == TRUE) then</p>
+<p>{ SetNtcSts(NtcNr1.NTCNR_0x004, CrcChkCompFail,</p>
+<blockquote>
+<p>NtcSts1.NTCSTS_FAILD, 0);</p>
+</blockquote>
+<p>}</p>
+<p>else</p>
+<p>{ SetNtcSts(NtcNr1.NTCNR_0x004, 0x00,</p>
+<p>NtcSts1.NTCSTS_PASSD, 0)</p>
+<p>CrcChkCmpl = TRUE;</p>
+<p>}</p>
+<p>}</p>
+<p>else</p>
+<p>{ // If Crc Complete interrupt flag is not set. check Crc Check Allowed</p>
+<blockquote>
+<p>// time expired</p>
+</blockquote>
+<p>Call_ GetTiSpan100MicroSec32bit(CodFlsCrcChkStrtTi,</p>
+<p>CodFlsCrcElpdTi)</p>
+<p>if (CodFlsCrcElpdTi &gt;= CRCCHKMAXALLWDTI_CNT_U32)</p>
+<p>{ Call_ResvCrcHwUnit(CRCHWRESVMOD_RELS, 0, 0, 0, 0,</p>
+<blockquote>
+<p>CrcHwIdxKey)</p>
+</blockquote>
+<p>SetNtcSts(NtcNr1.NTCNR_0x004, 0xFF,</p>
+<p>NtcSts1.NTCSTS_FAILD, 0)</p>
+<p>CrcChkCmpl = TRUE;</p>
+<p>}</p>
+<blockquote>
+<p>}</p>
+</blockquote>
+<p>If (CrcChkCmpl)</p>
+<p>{</p>
+<blockquote>
+<p>// Perform the DTS Clean Up – Disable the DTS Channels</p>
+<p>// Trusted Function call to DTS cleanup</p>
+<p>DtsClnUp ()</p>
+</blockquote>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<blockquote>
+<p>// CodFlsCrcChkCmpl output signal is used for Milepost indicator.</p>
+</blockquote>
+<p>CodFlsCrcChkCmpl = CrcChkCmpl;</p>
+<p>}</p>
+<p>DtsClnUp()</p>
+<p>for(i=0; i&lt;=31; i++)</p>
+<p>{</p>
+<blockquote>
+<p>// Source Address to 0</p>
+<p>// Destination Address to 0</p>
+<p>// Clear the DTSFSL transfer request enable bit</p>
+<p>// Disable the DTS Channel; DTFSL[i].REQEN = 0</p>
+</blockquote>
+<p>}</p>
+<p>If (CodFlsSngBitErr == TRUE)</p>
+<p>{</p>
+<p>SetNtcSts (NtcNr1.NTCNR_0x002, 0x01, NtcSts1.NTCSTS_FAILD, 0);</p>
+<p>CodFlsSngBitErr = FALSE;</p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<p>SetNtcSts (NtcNr1.NTCNR_0x002, 0x01, NtcSts1.NTCSTS_PASSD, 0);</p>
+<p>}</p>
+<h3 id="reference">Reference</h3>
+<p>RH850 Hardware manual.</p>
+<h3 id="ntc-verification-method-special-code">NTC Verification Method (Special Code)</h3>
+<p>Test Case 1:</p>
+<p>Perform the Crc Check see NTC004</p>
+<p>Verify NTC004 should indicate pass.</p>
+<p>Test Case 2:</p>
+<p>Inject Crc Initial start value (Constant Value) 0xFFFF FFFF instead of 0 and calculate Crc.</p>
+<p>Verify NTC004 should indicate fail.</p>
+<blockquote>
+<p>Start value can be change for individual Crc Region for verify each failure (depends on Test Scope)</p>
+</blockquote>
+<p>Test Case 3: Time Out Test</p>
+<p>Do not configure last DTS Channel Interrupt, which would lead time out condition check.</p>
+<p>Verify NTC004 should indicate fail.</p>
+<p>Test Case 4: Power On Reset Condition Test.</p>
+<p>PwrOnRstCrcChkCmpl, Flag should be set, when Power On Reset Occur.</p>
+<p>Verify NTC004 should indicate pass.</p>
+<h2 id="sub-function-code-flash-single-bit-ecc">Sub-Function: Code Flash Single Bit ECC</h2>
+<p>Return to sub-function list link: <u>Sub-Function In This Document</u></p>
+<h3 id="ntcs-1">NTCs</h3>
+<p>NA</p>
+<h3 id="san-linkage-1">SAN Linkage</h3>
+<p>The error flag <strong>shall</strong> be cleared soon after the error occurrence <strong>[SAN-P1x-0707]</strong>. Otherwise, the error event continues to be active and the error status is not updated if a second ECC 1-bit error occurs. In that case an error count overflow will occur.</p>
+<p>In case ECC 1-bit error has occurred, a CRC test <strong>[SAN-P1x-0703]</strong> <strong>shall</strong> be executed to check whether or not the error is due single bit or multi-bit corruption that is potentially caused by address decoder failure.</p>
+<h3 id="description-1">Description</h3>
+<p>This sub-function does a SW Test to provide greater than 99% coverage on Code Flash Single Bit ECC Error.</p>
+<h3 id="rationale-1">Rationale</h3>
+<p>See the document attached.</p>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image1.wmf" /></p>
+<h3 id="implementation-1">Implementation</h3>
+<h4 id="sub-function-code-flash-single-bit-ecc-test-codflssngbitecc">Sub-Function: Code Flash Single Bit ECC Test (CodFlsSngBitEcc)</h4>
+<h5 id="software-2">Software</h5>
+<p><u>Pseudo code:</u></p>
+<p>SuspendAllInterrupts();</p>
+<p>CodFlsSngBitErr = TRUE;</p>
+<p>// Clear the Error from ECM Status Register</p>
+<p>ECMESSTC1_Desired = 0x0000 0010;</p>
+<p>WrProtdRegEcm_u32 (ECMESSTC1_Desired, Address of ECMESSTC1);</p>
+<p>// Check for Overflow</p>
+<p>If (ECCFLICFOVFSTR_PE1 != 0)</p>
+<p>{</p>
+<p>// Save Address for debug purpose</p>
+<p>CodFlsErrAdr = ECCFLICF1STEADR0_PE1;</p>
+<p>// Overflow detected</p>
+<p>// API Call for Software Reset</p>
+<blockquote>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CODFLSSNGBITHARDFLT, CodFlsErrAdr);</p>
+</blockquote>
+<p>}</p>
+<p>// Single Bit ECC Fault</p>
+<p>Else If (ECCFLICF1STERSTR_PE1 &amp; 0x0000 0001 !=0)</p>
+<p>{</p>
+<blockquote>
+<p>CodFlsErrAdr <em>=</em> ECCFLICF1STEADR0_PE1;</p>
+<p>// Read from 4 other locations to make sure it’s not an address decoder fault</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE1F));</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE2F));</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE4F));</p>
+</blockquote>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE8F));</p>
+<blockquote>
+<p>// Clear the Error from CF Status Register</p>
+</blockquote>
+<p>ECCFLICFSTCLR_PE1 = 0x0000 0001; </p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<blockquote>
+<p>// Do Nothing</p>
+</blockquote>
+<p>}</p>
+<p>// Check for Overflow</p>
+<p>If (ECCFLICFOVFSTR_VCI != 0)</p>
+<p>{</p>
+<p>// Save Address for debug purpose</p>
+<p>CodFlsErrAdr = ECCFLICF1STEADR0_VCI;</p>
+<p>// Overflow detected</p>
+<p>// API Call for Software Reset</p>
+<blockquote>
+<p>NxtrSwRstFromExcpn (McuDiagc1.MCUDIAGC_CODFLSSNGBITHARDFLT, CodFlsErrAdr);</p>
+</blockquote>
+<p>}</p>
+<p>// Single Bit ECC Fault</p>
+<p>Else If (ECCFLICF1STERSTR_VCI &amp; 0x0000 0001 !=0)</p>
+<p>{</p>
+<blockquote>
+<p>CodFlsErrAdr = ECCFLICF1STEADR0_VCI;</p>
+<p>// Read from 4 other locations to make sure it’s not an address decoder fault</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE1F));</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE2F));</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE4F));</p>
+<p>DummyRead = *(CodFlsErrAdr &amp; (0xFFFF FE8F)); </p>
+<p>// Clear the Error from CF Status Register</p>
+</blockquote>
+<p>ECCFLICFSTCLR_VCI = 0x0000 0001; </p>
+<p>}</p>
+<p>Else</p>
+<p>{</p>
+<blockquote>
+<p>// Do Nothing</p>
+</blockquote>
+<p>}</p>
+<p>ResumeAllInterrupts();</p>
+<h3 id="reference-1">Reference</h3>
+<p>RH850 Hardware manual.</p>
+<h3 id="ntc-verification-method-special-code-1">NTC Verification Method (Special Code)</h3>
+<p>NA</p>
+<h1 id="revision-record-change-approval">Revision Record &amp; Change Approval</h1>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Rev</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Change Control #</strong></td>
+<td><strong>Drw</strong></td>
+<td><strong>Change Description</strong></td>
+</tr>
+<tr class="even">
+<td>1.0.0</td>
+<td>21OC15</td>
+<td>EA4#1829</td>
+<td>MK</td>
+<td>Initial release for implementation</td>
+</tr>
+<tr class="odd">
+<td>2.0.0</td>
+<td>06JAN16</td>
+<td>EA4#2942</td>
+<td>KP</td>
+<td>Crc Check Function added</td>
+</tr>
+<tr class="even">
+<td>2.1.0</td>
+<td>15JAN16</td>
+<td>EA4#2942</td>
+<td>KP</td>
+<td>Crc Check – DTS Channel Interrupt On Second Last Channel Correction</td>
+</tr>
+<tr class="odd">
+<td>2.2.0</td>
+<td>15FEB16</td>
+<td>EA4#3859</td>
+<td>KP</td>
+<td>Crc Check for the Startup Test Client Call added in FlsMemInit2</td>
+</tr>
+<tr class="even">
+<td>3.0.0</td>
+<td>29MAR16</td>
+<td>EA4#5004</td>
+<td>KP</td>
+<td>DTS Transfer Request Clear prior to configure</td>
+</tr>
+<tr class="odd">
+<td>4.0.0</td>
+<td>30MAR16</td>
+<td>EA4#4959</td>
+<td>KP</td>
+<td>Remove 1 Bit ECC &amp; DTS Clean Up Added</td>
+</tr>
+<tr class="even">
+<td>4.0.1</td>
+<td>12APR16</td>
+<td>EA4#5257</td>
+<td>KP</td>
+<td>Remove PIM “CodFlsFailrAdr” from m file</td>
+</tr>
+<tr class="odd">
+<td>4.1.0</td>
+<td>19APR16</td>
+<td>EA4#5421</td>
+<td>SK</td>
+<td>Added trusted function call DTSCleanup() in 4.3.5.2</td>
+</tr>
+<tr class="even">
+<td>4.2.0</td>
+<td>03MAY16</td>
+<td>EA4#5619</td>
+<td>SK</td>
+<td>Disable the DTS Channel at the end of DTSCleanup</td>
+</tr>
+<tr class="odd">
+<td>5.0.0</td>
+<td>27JUL16</td>
+<td>EA4#6649</td>
+<td>SK</td>
+<td><p>Added SW Test for Single Bit ECC Correction</p>
+<p>DTSCleanup -&gt; DtsClnUp</p>
+<p>DTSInit -&gt; DtsInin</p></td>
+</tr>
+<tr class="even">
+<td>5.1.0</td>
+<td>31AUG16</td>
+<td>EA4#7339</td>
+<td>SK</td>
+<td>Added logic for Code Flash Single Bit Hard Fault – Overflow Error</td>
+</tr>
+</tbody>
+</table>

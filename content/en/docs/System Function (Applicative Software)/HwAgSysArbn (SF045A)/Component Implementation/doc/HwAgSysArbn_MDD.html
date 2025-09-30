@@ -1,0 +1,336 @@
+---
+title: HwAgSysArbn_MDD
+linkTitle: HwAgSysArbn_MDD
+weight: 4
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>HwAgSysArbn</strong></p>
+<p><strong>DEC 07, 2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>TATA ELXSI,</strong></p>
+<p><strong>CHENNAI, INDIA</strong></p>
+<p><strong><u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 48%" />
+<col style="width: 14%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Sl. No.</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Initial Version</td>
+<td>Sarika Natu(KPIT Technologies)</td>
+<td>1.0</td>
+<td>07-Sept-2015</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>SF045A_HwAgSysArbn_Design version 2 implementation</td>
+<td>SB</td>
+<td>2.0</td>
+<td>20-Jun-2016</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Updated to design version 2.2.0</td>
+<td>TATA</td>
+<td>3.0</td>
+<td>07-Dec-16</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<p><u>Table of Contents</u></p>
+<p>1 HwAgSysArbn &amp; High-Level Description 5</p>
+<p>2 Design details of software module 6</p>
+<p>2.1 Graphical representation of HwAgSysArbn 6</p>
+<p>2.2 Data Flow Diagram 6</p>
+<p>2.2.1 Component level DFD 6</p>
+<p>2.2.2 Function level DFD 6</p>
+<p>3 Constant Data Dictionary 7</p>
+<p>3.1 Program (fixed) Constants 7</p>
+<p>3.1.1 Embedded Constants 7</p>
+<p>4 Software Component Implementation 8</p>
+<p>4.1 Sub-Module Functions 8</p>
+<p>4.1.1 Init: HwAgSysArbn_Init1 8</p>
+<p>4.1.1.1 Design Rationale 8</p>
+<p>4.1.1.2 Module Outputs 8</p>
+<p>4.1.2 Per: HwAgSysArbn_Per1 8</p>
+<p>4.1.2.1 Design Rationale 8</p>
+<p>4.1.2.2 Store Module Inputs to Local copies 8</p>
+<p>4.1.2.3 (Processing of function)……… 8</p>
+<p>4.1.2.4 Store Local copy of outputs into Module Outputs 8</p>
+<p>4.2 Server Runables 8</p>
+<p>4.3 Interrupt Functions 8</p>
+<p>4.4 Module Internal (Local) Functions 8</p>
+<p>4.4.1 Local Function #1 8</p>
+<p>4.4.1.1 Design Rationale 9</p>
+<p>4.4.1.2 Processing 9</p>
+<p>4.4.2 Local Function #2 9</p>
+<p>4.4.2.1 Design Rationale 9</p>
+<p>4.4.2.2 Processing 9</p>
+<p>4.5 GLOBAL Function/Macro Definitions 9</p>
+<p>5 Known Limitations with Design 10</p>
+<p>6 UNIT TEST CONSIDERATION 11</p>
+<p>Appendix A References 12</p>
+<p><strong>HwAgSysArbn &amp; High-Level Description</strong></p>
+<p>The Handwheel angle system arbitration function accepts inputs from the various angle sources available in the EPS system and selects the angle source to be used for the system handwheel angle value. It also provides for compliance compensation of the angle value and determines the angle value and angle validity to be output on the vehicle data bus.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-hwagsysarbn">Graphical representation of HwAgSysArbn</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.jpeg" style="width:4.55208in;height:5.86458in" alt="C:\Component\SF045A_HwAgSysArbn_Impl_2.2.0\MDD_Image.JPG" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p>See FDD.</p>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<p>See FDD.</p>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<p>See FDD.</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<p>Refer .m file</p>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h2 id="init-hwagsysarbn_init1">Init: HwAgSysArbn_Init1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="module-outputs">Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="per-hwagsysarbn_per1">Per: HwAgSysArbn_Per1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="processing-of-function"> (Processing of function)………</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer FDD</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<p>None</p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p>None</p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+
+<h2 id="local-function-1">Local Function #1</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>HwAgVelSeriCom</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td rowspan="8">Arguments Passed</td>
+<td>HwAgCorrdConf_Uls_T_f32</td>
+<td>uint8</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>HwAgSnsrlsConf_Uls_T_f32</td>
+<td>uint8</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>HwAgCorrd_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td>1440</td>
+</tr>
+<tr class="odd">
+<td>HwAgSnsrls_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td>1440</td>
+</tr>
+<tr class="even">
+<td>HwVel_HwRadPerSec_T_f32</td>
+<td>float32</td>
+<td>-42.0F</td>
+<td>42.0F</td>
+</tr>
+<tr class="odd">
+<td>PinionVelConf_Uls_T_f32</td>
+<td>float32</td>
+<td>0.0F</td>
+<td>1.0F</td>
+</tr>
+<tr class="even">
+<td>*HwAgStsToSerlCom_Cnt_T_lgc</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>*HwVelToSerlCom_HwRadPerSec_T_f32</td>
+<td>float32</td>
+<td>-42.0F</td>
+<td>42.0F</td>
+</tr>
+<tr class="even">
+<td><strong>Return Value</strong></td>
+<td>HwAgToSerlCom_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440</td>
+<td>1440</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p>None</p>
+<h2 id="processing">Processing</h2>
+<p>Refer to the Handwheel signal serial communication arbitration functionality of “HwAgVelSeriCom” subsystem in the Simulink model.</p>
+<h2 id="local-function-2">Local Function #2</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>CalcPinionVel</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td rowspan="7">Arguments Passed</td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>float32</td>
+<td>-10.0F</td>
+<td>10.0F</td>
+</tr>
+<tr class="odd">
+<td>MotVelCrf_MotRadPerSec_T_f32</td>
+<td>float32</td>
+<td>-1350.0F</td>
+<td>1350.0F</td>
+</tr>
+<tr class="even">
+<td>MotVelVld_Cnt_T_logl</td>
+<td>boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>PinionAgConf_Uls_T_f32</td>
+<td>float32</td>
+<td>0.0F</td>
+<td>1.0F</td>
+</tr>
+<tr class="even">
+<td>HwAg_HwDeg_T_f32</td>
+<td>float32</td>
+<td>-1440.0F</td>
+<td>1440.0F</td>
+</tr>
+<tr class="odd">
+<td>* PinionVel_HwRadPerSec_T_f32</td>
+<td>float32</td>
+<td>-42.0F</td>
+<td>42.0F</td>
+</tr>
+<tr class="even">
+<td>* PinionVelConf_Uls_T_f32</td>
+<td>float32</td>
+<td>0.0F</td>
+<td>1.0F</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>HwVel_HwRadPerSec_T_f32</td>
+<td>float32</td>
+<td>-42.0F</td>
+<td>42.0F</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p>None</p>
+<h2 id="processing-1">Processing</h2>
+<p>Refer to the functionality of “CalcPinionVel” subsystem in the Simulink model.</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>None</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>Process Release 04.02.01</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>Process Release 04.02.01</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>SF045A_HwAgSysArbn_Design</td>
+<td>See Synergy subproject version</td>
+</tr>
+</tbody>
+</table>

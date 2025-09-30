@@ -1,0 +1,1149 @@
+---
+title: MICROSAR_Safety_Guides
+linkTitle: MICROSAR_Safety_Guides
+weight: 341
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>MICROSAR&#160;<br/></b>Safety&#160;Guide&#160;<br/>&#160;<br/>&#160;<br/>Version&#160;1.2.2&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+Authors&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+Status&#160;<br/>
+Released&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+<hr/>
+<a name=2></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Document&#160;Information&#160;</b><br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-01-08&#160;<br/>
+0.1.0&#160;<br/>
+Initial&#160;structure&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-01-27&#160;<br/>
+0.2.0&#160;<br/>
+Ready&#160;for&#160;review&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-01-31&#160;<br/>
+0.2.1&#160;<br/>
+First&#160;comments&#160;included&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-02-06&#160;<br/>
+0.2.2&#160;<br/>
+Review&#160;comments&#160;from&#160;visml&#160;included&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-02-07&#160;<br/>
+0.2.3&#160;<br/>
+Added&#160;additional&#160;AUTOSAR&#160;components&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-02-17&#160;<br/>
+0.2.4&#160;<br/>
+Rework&#160;after&#160;review&#160;sessions&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-03-10&#160;<br/>
+0.3.0&#160;<br/>
+Rework&#160;after&#160;review&#160;with&#160;visrn&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-03-28&#160;<br/>
+1.0.0&#160;<br/>
+Final&#160;rework&#160;and&#160;release&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-05-27&#160;<br/>
+1.1.0&#160;<br/>
+Improvements&#160;from&#160;workshop with&#160;<br/>customer&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-06-03&#160;<br/>
+1.2.0&#160;<br/>
+Rework&#160;after&#160;review&#160;with&#160;visml&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-10-14&#160;<br/>
+1.2.1&#160;<br/>
+Clarifications&#160;on&#160;section&#160;2.3&#160;<br/>
+Jonas&#160;Wolf&#160;<br/>
+2014-10-20&#160;<br/>
+1.2.2&#160;<br/>
+More&#160;information&#160;on&#160;securing non-volatile&#160;<br/>data&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+2&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=3></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Reference&#160;Documents&#160;</b><br/>
+<b>No.&#160;</b><br/>
+<b>Source&#160;</b><br/>
+<b>Title&#160;</b><br/>
+<b>Version&#160;</b><br/>
+[1]&#160;&#160;&#160;AUTOSAR&#160;<br/>
+AUTOSAR_TR_SafetyConceptStatusReport.pdf&#160;<br/>
+V1.2.0&#160;<br/>
+[2]&#160;&#160;&#160;AUTOSAR&#160;<br/>
+AUTOSAR_SWS_CRCLibrary.pdf&#160;<br/>
+V4.4.0&#160;<br/>
+[3]&#160;&#160;&#160;AUTOSAR&#160;<br/>
+AUTOSAR_SWS_ECUStateManager.pdf&#160;<br/>
+V4.1.0&#160;<br/>
+[4]&#160;&#160;&#160;AUTOSAR&#160;<br/>
+AUTOSAR_SWS_E2ELibrary.pdf&#160;<br/>
+V3.1.0&#160;<br/>
+[5]&#160;&#160;&#160;Vector&#160;<br/>
+MICROSAR&#160;RTE&#160;<br/>
+V4.2.0&#160;<br/>
+Safety&#160;Guide&#160;<br/>SafetyGuide_Rte.pdf&#160;<br/>
+[6]&#160;&#160;&#160;Boeing&#160;<br/>
+Single Event&#160;Upset&#160;at&#160;Ground&#160;Level&#160;<br/>
+2004&#160;<br/>
+Eugene Normand,&#160;<br/>Boeing&#160;Defense &amp;&#160;Space Group,&#160;Seattle,&#160;WA&#160;98124-2499&#160;<br/>
+[7]&#160;&#160;&#160;ISO&#160;<br/>
+ISO&#160;26262-4:2011&#160;<br/>
+2011&#160;<br/>
+Road vehicles&#160;—&#160;Functional&#160;safety&#160;—&#160;Product&#160;development&#160;at&#160;<br/>the&#160;system&#160;level&#160;<br/>
+[8]&#160;&#160;&#160;ISO&#160;<br/>
+ISO&#160;26262-5:2011&#160;<br/>
+2011&#160;<br/>
+Road vehicles&#160;—&#160;Functional&#160;safety&#160;—&#160;Product&#160;development&#160;at&#160;<br/>the&#160;hardware&#160;level&#160;<br/>
+[9]&#160;&#160;&#160;ISO&#160;<br/>
+ISO&#160;26262-6:2011&#160;<br/>
+2011&#160;<br/>
+Road vehicles&#160;—&#160;Functional&#160;safety&#160;—&#160;Product&#160;development&#160;at&#160;<br/>the&#160;software&#160;level&#160;<br/>
+[10]&#160;&#160;Koopman&#160;<br/>
+32-Bit&#160;Cyclic&#160;Redundancy&#160;Codes&#160;for&#160;Internet&#160;Applications&#160;<br/>
+2002&#160;<br/>
+Philip Koopman,&#160;<br/>ECE&#160;Department&#160;&amp;&#160;ICES,&#160;Carnegie&#160;Mellon&#160;University,&#160;<br/>Pittsburgh,&#160;PA,&#160;USA&#160;<br/>
+[11]&#160;&#160;IEEE&#160;<br/>
+IEEE&#160;Std&#160;802.3™-2012&#160;<br/>
+2012&#160;<br/>
+[12]&#160;&#160;TTTech&#160;<br/>
+Safe&#160;Watchdog&#160;Manager&#160;<br/>
+2.3.9&#160;<br/>
+Safety&#160;Manual&#160;<br/>D-SAFEX-S-70-001&#160;<br/>
+[13]&#160;&#160;TTTech&#160;<br/>
+Safe&#160;Watchdog&#160;Interface&#160;<br/>
+1.8.3&#160;<br/>
+Safety&#160;Manual&#160;<br/>D-SAFEX-S-70-005&#160;<br/>
+[14]&#160;&#160;TTTech&#160;<br/>
+E2E&#160;Protection&#160;Wrapper&#160;<br/>
+1.2.9&#160;<br/>
+Safety&#160;Manual&#160;<br/>D-MSP-M-70-002&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+3&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=4></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Contents&#160;</b><br/>
+<a href="MICROSAR_Safety_Guides.html#7"><b>1</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7"><b>Introduction...................................................................................................................&#160;7</b>&#160;<br/>1.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7">Purpose&#160;.............................................................................................................&#160;7&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7">1.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7">Scope&#160;................................................................................................................&#160;7&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7">1.3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7">Definitions&#160;..........................................................................................................&#160;7&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#8">1.4&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#8">Overview&#160;............................................................................................................&#160;8&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#9"><b>2</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#9"><b>Functional&#160;safety&#160;on&#160;system&#160;level&#160;...............................................................................&#160;9</b>&#160;<br/>2.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#9">Prevention&#160;of&#160;unintended&#160;behavior&#160;.....................................................................&#160;9&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#10">2.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#10">Mitigation of&#160;risk&#160;associated&#160;with a&#160;failure&#160;........................................................&#160;10&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#11">2.3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#11">Fail-safe&#160;and&#160;fail-operational&#160;systems&#160;..............................................................&#160;11&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12"><b>3</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12"><b>Recommendations on&#160;safety&#160;mechanisms&#160;...............................................................&#160;12</b>&#160;<br/>3.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12">Integrity&#160;of&#160;the&#160;microcontroller&#160;..........................................................................&#160;12&#160;<br/>3.1.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12">Operation&#160;in lock-step&#160;mode&#160;............................................................&#160;12&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12">3.1.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12">Monitoring the&#160;temperature of&#160;the&#160;microcontrollers&#160;..........................&#160;12&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12">3.1.3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#12">Self-test&#160;of&#160;the&#160;microcontroller&#160;components&#160;.....................................&#160;12&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#13">3.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#13">Integrity&#160;of&#160;volatile data&#160;....................................................................................&#160;13&#160;<br/>3.2.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#13">Static&#160;tests&#160;of&#160;volatile memory&#160;..........................................................&#160;13&#160;<br/>3.2.1.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#13">Initial&#160;test&#160;of&#160;volatile memory&#160;..........................................&#160;13&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#14">3.2.1.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#14">Periodic&#160;tests&#160;of&#160;volatile&#160;memory&#160;....................................&#160;14&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#14">3.2.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#14">Protection&#160;of&#160;volatile memory&#160;through error&#160;correcting&#160;codes&#160;(ECC)&#160;14&#160;<br/>3.2.2.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#14">Redundant&#160;storage&#160;of&#160;data&#160;.............................................&#160;14&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#15">3.3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#15">Integrity&#160;of&#160;non-volatile data&#160;.............................................................................&#160;15&#160;<br/>3.3.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#15">Consistency&#160;of&#160;configuration&#160;and calibration&#160;data&#160;............................&#160;15&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#16">3.3.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#16">Securing&#160;non-volatile data with use&#160;of&#160;NVRAM&#160;Manager&#160;.................&#160;16&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#17">3.4&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#17">Initialization of&#160;the&#160;microcontroller&#160;....................................................................&#160;17&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#18">3.5&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#18">Separation&#160;in&#160;memory&#160;......................................................................................&#160;18&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#19">3.6&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#19">Separation&#160;in&#160;time&#160;............................................................................................&#160;19&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#20">3.7&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#20">Scheduling&#160;.......................................................................................................&#160;20&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#21">3.8&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#21">Communication&#160;................................................................................................&#160;21&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#21">3.9&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#21">Input&#160;and output&#160;...............................................................................................&#160;21&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#22"><b>4</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#22"><b>Example use-cases&#160;.....................................................................................................&#160;22</b>&#160;<br/>4.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#22">ECU&#160;with direct&#160;I/O&#160;..........................................................................................&#160;22&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#24">4.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#24">ECU&#160;with direct&#160;I/O&#160;and&#160;safety-related&#160;bus&#160;communication&#160;..............................&#160;24&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#25">4.3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#25">Mixed&#160;ASIL&#160;SWCs&#160;with safety-related&#160;bus&#160;communication&#160;...............................&#160;25&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27"><b>5</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27"><b>Recommendations&#160;for&#160;the&#160;MICROSAR&#160;stack&#160;...........................................................&#160;27</b>&#160;<br/>5.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27">Initialization&#160;......................................................................................................&#160;27&#160;</a><br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+4&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=5></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<a href="MICROSAR_Safety_Guides.html#27">5.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27">ECU&#160;State&#160;Manager&#160;(EcuM)&#160;............................................................................&#160;27&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27">5.3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27">Basic&#160;Software&#160;Mode Manager&#160;(BswM)&#160;...........................................................&#160;27&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27">5.4&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#27">Development&#160;Error&#160;Tracer&#160;(Det)&#160;.......................................................................&#160;27&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">5.5&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">Diagnostic&#160;Event&#160;Manager&#160;(Dem)&#160;....................................................................&#160;28&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">5.6&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">NVRAM&#160;Manager&#160;.............................................................................................&#160;28&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">5.7&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">Run-Time&#160;Environment&#160;(RTE)&#160;..........................................................................&#160;28&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">5.8&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">End-to-End&#160;Protection&#160;(E2E)&#160;............................................................................&#160;28&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">5.9&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">Operating&#160;System&#160;(OS)&#160;....................................................................................&#160;28&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">5.10&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#28">Interrupt&#160;service routines&#160;(ISRs)&#160;.......................................................................&#160;28&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#29">5.11&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#29">Microcontroller&#160;Abstraction&#160;Layer&#160;(MCAL)&#160;........................................................&#160;29&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#30"><b>6</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#30"><b>Procedural&#160;requirements&#160;...........................................................................................&#160;30</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#31"><b>7</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#31"><b>Assumptions&#160;of&#160;Vector’s safety&#160;solution&#160;..................................................................&#160;31</b>&#160;<br/>7.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#31">Assumptions&#160;of&#160;RTE&#160;........................................................................................&#160;31&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#34">7.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#34">Assumptions&#160;of&#160;SafeWatchdog&#160;........................................................................&#160;34&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36"><b>8</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36"><b>Glossary&#160;and&#160;Abbreviations&#160;......................................................................................&#160;36</b>&#160;<br/>8.1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36">Glossary&#160;..........................................................................................................&#160;36&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36">8.2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36">Abbreviations&#160;...................................................................................................&#160;36&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#37"><b>9</b>&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#37"><b>Contact&#160;........................................................................................................................&#160;37</b>&#160;</a><br/>
+&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+5&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=6></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Illustrations&#160;</b><br/>
+<a href="MICROSAR_Safety_Guides.html#9">Figure&#160;2-1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#9">Relation between test&#160;depth,&#160;system&#160;functionality&#160;and residual&#160;faults&#160;.........&#160;9&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#15">Figure&#160;3-1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#15">Example for&#160;protecting&#160;non-volatile memory&#160;with two CRCs&#160;.....................&#160;15&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#16">Figure&#160;3-2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#16">Establishing&#160;consistency&#160;of&#160;multiple data block&#160;groups&#160;.............................&#160;16&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#17">Figure&#160;3-3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#17">Example for&#160;failure&#160;reaction&#160;time&#160;and initialization time&#160;(Reset&#160;state&#160;is&#160;<br/>not&#160;safe&#160;state)&#160;...........................................................................................&#160;17&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#18">Figure&#160;3-4&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#18">Memory&#160;partitioning&#160;for&#160;mixed-ASIL&#160;systems&#160;............................................&#160;18&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#20">Figure&#160;3-5&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#20">Example for&#160;the&#160;use&#160;of&#160;schedule tables and&#160;different&#160;modes&#160;....................&#160;20&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#22">Figure&#160;4-1&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#22">Example software&#160;architecture&#160;for&#160;an&#160;ECU&#160;with direct&#160;I/O&#160;.........................&#160;22&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#24">Figure&#160;4-2&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#24">Example software&#160;architecture&#160;for&#160;an&#160;ECU&#160;with direct&#160;I/O&#160;and&#160;safety-<br/>related&#160;bus&#160;communication&#160;.......................................................................&#160;24&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#26">Figure&#160;4-3&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#26">Example software&#160;architecture&#160;for&#160;an&#160;ECU&#160;with mixed&#160;ASIL&#160;SWCs&#160;and&#160;<br/>safety-related&#160;bus&#160;communication&#160;............................................................&#160;26&#160;</a><br/>
+<b>&#160;</b><br/>
+<b>Tables&#160;<br/></b><a href="MICROSAR_Safety_Guides.html#7">Table&#160;1-1&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#7">Definitions&#160;from&#160;ISO&#160;26262&#160;.........................................................................&#160;7&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#23">Table&#160;4-1&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#23">Properties&#160;of&#160;ECU&#160;with direct&#160;I/O&#160;use-case&#160;...............................................&#160;23&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#25">Table&#160;4-2&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#25">Properties&#160;of&#160;ECU&#160;with direct&#160;I/O&#160;and safety-related&#160;bus&#160;communication&#160;<br/>use-case&#160;...................................................................................................&#160;25&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#26">Table&#160;4-3&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#26">Properties&#160;of&#160;Mixed&#160;ASIL&#160;SWCs&#160;with safety-related&#160;bus&#160;communication&#160;<br/>use-case&#160;...................................................................................................&#160;26&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#33">Table&#160;7-1&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#33">Assumptions&#160;of&#160;RTE&#160;.................................................................................&#160;33&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#35">Table&#160;7-2&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#35">Assumptions&#160;of&#160;SafeWatchdog&#160;.................................................................&#160;35&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36">Table&#160;8-1&#160;&#160;</a><br/>
+<a href="MICROSAR_Safety_Guides.html#36">Abbreviations&#160;............................................................................................&#160;36&#160;</a><br/>
+&#160;<br/>&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+6&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=7></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>1&#160;&#160;Introduction&#160;</b><br/>
+<b>1.1&#160;</b><br/>
+<b>Purpose&#160;</b><br/>
+This&#160;&#160;document&#160;&#160;provides&#160;&#160;guidance&#160;&#160;for&#160;&#160;designing&#160;&#160;and&#160;&#160;implementing&#160;&#160;software&#160;&#160;of&#160;&#160;safety-<br/>related&#160;systems using&#160;Vector’s&#160;AUTOSAR&#160;implementation.&#160;<br/>This&#160;&#160;document&#160;&#160;does&#160;&#160;not&#160;&#160;impose&#160;&#160;any&#160;&#160;requirements&#160;&#160;on&#160;&#160;your&#160;&#160;development&#160;&#160;process&#160;&#160;when&#160;<br/>using&#160;&#160;Vector&#160;&#160;products.&#160;&#160;All&#160;&#160;necessary&#160;&#160;requirements&#160;&#160;are&#160;&#160;given&#160;&#160;in&#160;&#160;the&#160;&#160;respective&#160;&#160;Safety&#160;<br/>Manuals.&#160;<br/>Its&#160;&#160;intended&#160;&#160;audience&#160;&#160;is&#160;&#160;system&#160;&#160;and&#160;&#160;software&#160;&#160;engineers&#160;&#160;and&#160;&#160;deciders&#160;&#160;who&#160;&#160;consider&#160;&#160;the&#160;<br/>use&#160;of&#160;AUTOSAR&#160;for&#160;their&#160;safety-related&#160;development.&#160;<br/>
+<b>1.2&#160;</b><br/>
+<b>Scope&#160;</b><br/>
+This&#160;document&#160;focusses&#160;on&#160;the&#160;architecture,&#160;design&#160;and&#160;implementation&#160;of&#160;software&#160;using&#160;<br/>AUTOSAR&#160;V4.1R2&#160;in&#160;safety-related&#160;systems&#160;in&#160;the&#160;automotive&#160;industry.&#160;<br/>Only&#160;the&#160;Vector&#160;AUTOSAR implementation&#160;MICROSAR&#160;is considered.&#160;<br/>The&#160;design&#160;of&#160;software without&#160;AUTOSAR&#160;is&#160;not&#160;considered.&#160;<br/>Knowledge&#160;&#160;and&#160;&#160;understanding&#160;&#160;of&#160;&#160;functional&#160;&#160;safety,&#160;&#160;the&#160;&#160;ISO&#160;&#160;26262&#160;&#160;and&#160;&#160;AUTOSAR&#160;&#160;is&#160;<br/>required&#160;to&#160;understand&#160;the&#160;contents&#160;of&#160;this document.&#160;<br/>
+<b>1.3&#160;</b><br/>
+<b>Definitions&#160;</b><br/>
+<b>No.&#160;</b><br/>
+<b>Term&#160;</b><br/>
+<b>Description&#160;</b><br/>
+1.51&#160;&#160;functional&#160;safety&#160;<br/>
+absence of&#160;unreasonable risk&#160;(1.136)&#160;due&#160;to hazards&#160;(1.57)&#160;caused&#160;by&#160;<br/>malfunctioning&#160;behavior&#160;(1.73)&#160;of&#160;E/E&#160;systems&#160;(1.31)&#160;<br/>
+1.73&#160;&#160;malfunctioning&#160;<br/>
+failure&#160;(1.39)&#160;or&#160;unintended&#160;behavior&#160;of&#160;an&#160;item&#160;(1.69)&#160;with respect&#160;to its&#160;<br/>
+behavior&#160;<br/>
+design intent&#160;<br/>
+1.39&#160;&#160;failure&#160;<br/>
+termination&#160;of&#160;the&#160;ability&#160;of&#160;an&#160;element&#160;(1.32),&#160;to&#160;perform&#160;a&#160;function&#160;as&#160;<br/>required&#160;<br/>Note:&#160;Incorrect&#160;specification&#160;is&#160;a source of&#160;failure&#160;<br/>
+1.57&#160;&#160;hazard&#160;<br/>
+potential&#160;source of&#160;harm&#160;(1.56)&#160;caused&#160;by&#160;malfunctioning&#160;behavior&#160;<br/>(1.73)&#160;of&#160;the&#160;item&#160;(1.69)&#160;<br/>
+1.42&#160;&#160;fault&#160;<br/>
+abnormal&#160;condition&#160;that&#160;can&#160;cause&#160;an&#160;element&#160;(1.32)&#160;or&#160;an&#160;item&#160;(1.69)&#160;to&#160;<br/>fail&#160;<br/>
+1.102&#160;&#160;safe state&#160;<br/>
+operating&#160;mode&#160;(1.81)&#160;of&#160;an&#160;item&#160;(1.69)&#160;without&#160;an unreasonable level&#160;of&#160;<br/>risk&#160;(1.99)&#160;<br/>
+1.92&#160;&#160;random&#160;hardware&#160;&#160;failure&#160;(1.39)&#160;that&#160;can&#160;occur&#160;unpredictably&#160;during&#160;the&#160;lifetime of&#160;a&#160;<br/>
+failure&#160;<br/>
+hardware&#160;element&#160;(1.32)&#160;and&#160;that&#160;follows&#160;a probability&#160;distribution&#160;<br/>
+1.49&#160;&#160;freedom&#160;from&#160;<br/>
+absence of&#160;cascading&#160;failures&#160;(1.13)&#160;between&#160;two or&#160;more elements&#160;<br/>
+interference&#160;<br/>
+(1.32)&#160;that&#160;could lead&#160;to&#160;the&#160;violation of&#160;a&#160;safety&#160;requirement&#160;<br/>
+1.44&#160;&#160;fault&#160;reaction&#160;time&#160;&#160;time-span&#160;from&#160;the&#160;detection&#160;of&#160;a&#160;fault&#160;(1.42)&#160;to&#160;reaching&#160;the&#160;safe&#160;state&#160;<br/>
+(1.102)&#160;<br/>
+Table&#160;1-1&#160;&#160;&#160;Definitions&#160;from&#160;ISO&#160;26262&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+7&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=8></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>1.4&#160;</b><br/>
+<b>Overview&#160;</b><br/>
+In&#160;section<a href="MICROSAR_Safety_Guides.html#9">&#160;2&#160;</a>considerations and&#160;assumptions&#160;for the&#160;system&#160;level are&#160;summarized.&#160;<br/>In&#160;section<a href="MICROSAR_Safety_Guides.html#12">&#160;3&#160;</a>recommendations&#160;and&#160;best-practices&#160;for&#160;safety&#160;mechanisms&#160;are&#160;given&#160;based&#160;<br/>on&#160;the&#160;definitions and&#160;assumptions of&#160;section<a href="MICROSAR_Safety_Guides.html#9">&#160;2.</a>&#160;<br/>In&#160;&#160;section<a href="MICROSAR_Safety_Guides.html#22">&#160;&#160;4&#160;&#160;</a>example&#160;&#160;use-cases&#160;&#160;for&#160;&#160;software&#160;&#160;architectures&#160;&#160;using&#160;AUTOSAR&#160;&#160;for&#160;&#160;different&#160;<br/>kinds of&#160;systems are&#160;given.&#160;<br/>In&#160;&#160;section&#160;&#160;<a href="MICROSAR_Safety_Guides.html#27">5&#160;&#160;</a>additional&#160;&#160;recommendations&#160;&#160;for&#160;&#160;the&#160;&#160;use&#160;&#160;of&#160;&#160;Vector’s&#160;&#160;AUTOSAR&#160;&#160;stack&#160;&#160;are&#160;<br/>given.&#160;<br/>In&#160;&#160;section&#160;&#160;<a href="MICROSAR_Safety_Guides.html#30">6&#160;&#160;</a>procedural&#160;&#160;requirements&#160;&#160;for&#160;&#160;implementing&#160;&#160;functional&#160;&#160;safety&#160;&#160;using&#160;&#160;Vector’s&#160;<br/>safety&#160;solution&#160;are&#160;stated.&#160;<br/>In&#160;&#160;section<a href="MICROSAR_Safety_Guides.html#31">&#160;&#160;7&#160;&#160;</a>some&#160;&#160;of&#160;&#160;the&#160;&#160;assumptions&#160;&#160;made&#160;&#160;by&#160;&#160;different&#160;&#160;components&#160;&#160;of&#160;&#160;Vector’s&#160;&#160;safety&#160;<br/>solution&#160;are resolved.&#160;<br/>
+&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+8&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/SafetyManuals/MICROSAR_Safety_Guide-9_1.png"/><br/>
+Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>2&#160;&#160;Functional&#160;safety&#160;on&#160;system&#160;level&#160;</b><br/>
+Some&#160;&#160;functions&#160;&#160;provided&#160;&#160;by&#160;&#160;E/E&#160;&#160;systems&#160;&#160;in&#160;&#160;cars&#160;&#160;bear&#160;&#160;an&#160;&#160;inherent&#160;&#160;risk&#160;&#160;of&#160;&#160;harm&#160;&#160;to&#160;&#160;the&#160;<br/>driver,&#160;&#160;passengers&#160;&#160;and&#160;&#160;pedestrians.&#160;&#160;Examples&#160;&#160;for&#160;&#160;such&#160;&#160;systems&#160;&#160;are&#160;&#160;an&#160;&#160;active&#160;&#160;front&#160;<br/>steering&#160;or breaking&#160;system.&#160;<br/>To&#160;&#160;have&#160;&#160;a&#160;&#160;low&#160;&#160;level&#160;&#160;of&#160;&#160;residual&#160;&#160;risk&#160;&#160;for&#160;&#160;harm&#160;&#160;to&#160;&#160;persons&#160;&#160;and&#160;&#160;damage&#160;&#160;to&#160;&#160;cars,&#160;&#160;the&#160;<br/>ISO&#160;26262&#160;was defined&#160;to&#160;address&#160;the&#160;development&#160;of&#160;such&#160;safety-related&#160;E/E&#160;systems.&#160;<br/>The&#160;&#160;ISO&#160;26262&#160;&#160;defines&#160;&#160;<i>functional&#160;&#160;safety</i>&#160;&#160;as&#160;&#160;the&#160;&#160;<i>absence&#160;&#160;of&#160;&#160;unreasonable&#160;&#160;risk&#160;&#160;due&#160;&#160;to&#160;<br/>hazards&#160;caused&#160;by malfunctioning&#160;behavior of&#160;E/E&#160;systems</i>.&#160;<br/><i>Malfunctioning&#160;behavior</i>&#160;is&#160;assumed&#160;when&#160;a&#160;<i>failure&#160;or&#160;unintended&#160;behavior&#160;of&#160;an&#160;item&#160;with&#160;<br/>respect&#160;to&#160;its&#160;design&#160;intent</i>&#160;occurs.&#160;<br/><b>Thus,&#160;&#160;a&#160;&#160;functionally&#160;&#160;safe&#160;&#160;system&#160;&#160;has&#160;&#160;to&#160;&#160;mitigate&#160;&#160;the&#160;&#160;risk&#160;&#160;associated&#160;&#160;with&#160;&#160;a&#160;&#160;failure&#160;<br/>and prevent&#160;unintended behavior.&#160;</b><br/>
+<b>2.1&#160;</b><br/>
+<b>Prevention of unintended&#160;behavior&#160;</b><br/>
+Prevention&#160;of&#160;unintended&#160;behavior&#160;requires&#160;a&#160;sufficiently&#160;detailed&#160;and&#160;precise&#160;specification&#160;<br/>to&#160;&#160;identify&#160;&#160;unintended&#160;&#160;behavior&#160;&#160;as&#160;&#160;such.&#160;A&#160;&#160;sufficiently&#160;&#160;detailed&#160;&#160;and&#160;&#160;precise&#160;&#160;specification&#160;<br/>can&#160;be&#160;assured&#160;by&#160;reviews required&#160;by&#160;the&#160;development&#160;process.&#160;<br/>Additionally,&#160;unintended&#160;behavior&#160;can&#160;accidentally&#160;be&#160;implemented&#160;into&#160;the&#160;system&#160;by&#160;e.g.&#160;<br/>programming&#160;&#160;faults.&#160;&#160;All&#160;&#160;faults&#160;&#160;designed&#160;&#160;or&#160;&#160;implemented&#160;&#160;into&#160;&#160;the&#160;&#160;system&#160;&#160;are&#160;&#160;systematic&#160;<br/>faults.&#160;&#160;Systematic&#160;&#160;faults&#160;&#160;are&#160;&#160;prevented&#160;&#160;by&#160;&#160;the&#160;&#160;development&#160;&#160;process&#160;&#160;through,&#160;&#160;e.g.&#160;&#160;coding&#160;<br/>standards,&#160;&#160;reviews&#160;&#160;and&#160;&#160;static&#160;&#160;analysis&#160;&#160;tools.&#160;&#160;As&#160;&#160;these&#160;&#160;verification&#160;&#160;methods&#160;&#160;are&#160;&#160;limited,&#160;<br/>testing&#160;is&#160;also&#160;applied.&#160;<br/>Testing&#160;can&#160;only&#160;show&#160;the&#160;presence&#160;of&#160;faults,&#160;but&#160;never&#160;their&#160;absence.&#160;Thus,&#160;a&#160;certain&#160;test&#160;<br/>depth&#160;&#160;is&#160;&#160;required&#160;by&#160;&#160;the&#160;ISO&#160;26262.&#160;&#160;For&#160;example&#160;a&#160;&#160;software&#160;&#160;unit&#160;&#160;may&#160;&#160;be&#160;&#160;required&#160;&#160;to&#160;be&#160;<br/>tested&#160;based&#160;on&#160;the&#160;requirements&#160;so&#160;that&#160;branch&#160;coverage&#160;is&#160;achieved.&#160;The&#160;assumption&#160;is&#160;<br/>that&#160;&#160;if&#160;&#160;the&#160;&#160;complete&#160;&#160;system&#160;&#160;functionality&#160;&#160;is&#160;&#160;tested&#160;&#160;and&#160;&#160;no&#160;&#160;faults&#160;&#160;occurred,&#160;&#160;the&#160;&#160;probability&#160;<br/>that&#160;the&#160;complete&#160;system&#160;has&#160;residual&#160;faults&#160;is very&#160;low.&#160;<br/>
+&#160;<br/>
+Figure&#160;2-1&#160;&#160;Relation&#160;between&#160;test&#160;depth,&#160;system&#160;functionality&#160;and&#160;residual&#160;faults&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+9&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=10></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+To&#160;&#160;facilitate&#160;&#160;testing&#160;&#160;the&#160;&#160;system&#160;&#160;needs&#160;&#160;to&#160;&#160;provide&#160;&#160;interfaces&#160;&#160;for&#160;&#160;stimulation&#160;&#160;and&#160;&#160;tracing&#160;&#160;of&#160;<br/>outputs&#160;and&#160;internal&#160;states.&#160;To&#160;achieve&#160;a&#160;very&#160;high&#160;test&#160;depth,&#160;the&#160;system&#160;needs&#160;to&#160;have&#160;a&#160;<br/>reasonable&#160;complexity.&#160;<br/>On&#160;system&#160;level,&#160;complexity&#160;is&#160;most&#160;dominantly&#160;influenced&#160;by:&#160;<br/>
+<b>&gt;&#160;&#160;</b>the&#160;number&#160;of&#160;distinct&#160;functions&#160;of&#160;the&#160;system,&#160;<br/>
+<b>&gt;&#160;&#160;</b>the&#160;number&#160;of&#160;states&#160;and&#160;transitions&#160;of&#160;the&#160;system,&#160;and&#160;<br/>
+<b>&gt;&#160;&#160;</b>the&#160;number&#160;of&#160;elements performing&#160;computations in&#160;parallel.&#160;<br/>
+<b>Thus,&#160;the&#160;system&#160;should be&#160;as&#160;simple&#160;as&#160;possible&#160;to&#160;keep it testable.&#160;<br/></b>Additionally,&#160;&#160;non-deterministic&#160;&#160;behavior&#160;&#160;also&#160;&#160;increases&#160;&#160;complexity&#160;&#160;of&#160;&#160;the&#160;&#160;system&#160;<br/>verification.&#160;<br/><b>Thus,&#160;the&#160;system&#160;should be&#160;as&#160;deterministic&#160;as&#160;possible&#160;to&#160;ease&#160;verification.&#160;<br/></b>The&#160;&#160;combination&#160;&#160;of&#160;&#160;development&#160;&#160;process&#160;&#160;measures&#160;&#160;and&#160;&#160;testing&#160;&#160;prevents&#160;&#160;unintended&#160;<br/>behavior of&#160;the&#160;system.&#160;<br/>
+<b>2.2&#160;</b><br/>
+<b>Mitigation of&#160;risk&#160;associated&#160;with&#160;a&#160;failure&#160;</b><br/>
+The&#160;&#160;risk&#160;&#160;associated&#160;&#160;with&#160;&#160;a&#160;&#160;failure&#160;&#160;can&#160;&#160;be&#160;&#160;mitigated&#160;&#160;by&#160;&#160;reducing&#160;&#160;the&#160;&#160;probability&#160;&#160;of&#160;<br/>occurrence&#160;&#160;of&#160;&#160;the&#160;&#160;failure&#160;&#160;or&#160;&#160;the&#160;&#160;severity&#160;&#160;of&#160;&#160;the&#160;&#160;failure.&#160;&#160;The&#160;&#160;<i>failure</i>&#160;&#160;of&#160;&#160;the&#160;&#160;system&#160;&#160;is&#160;&#160;a&#160;<br/>consequence&#160;of&#160;a&#160;<i>fault</i>.<i>&#160;Faults</i>&#160;considered&#160;in&#160;this section&#160;are&#160;<i>random&#160;hardware&#160;faults</i>.&#160;<br/>Additional&#160;<i>technical&#160;safety&#160;requirements&#160;</i>have&#160;to&#160;be&#160;introduced&#160;to&#160;mitigate&#160;the&#160;severity&#160;of&#160;a&#160;<br/><i>fault</i>.&#160;The&#160;system&#160;needs&#160;to&#160;be&#160;able&#160;to&#160;<b>detect</b>&#160;<i>random&#160;hardware&#160;faults</i>&#160;and&#160;then&#160;to&#160;<b>act</b>&#160;on&#160;<br/>them&#160;to&#160;achieve&#160;a&#160;<i>safe&#160;state</i>.&#160;<br/><i>Random&#160;hardware&#160;faults</i>&#160;can&#160;result&#160;either&#160;from&#160;<i>permanent&#160;faults</i>&#160;or&#160;<i>transient&#160;faults</i>.&#160;There&#160;<br/>are&#160;different&#160;methods&#160;to&#160;detect&#160;these&#160;two&#160;types&#160;of&#160;faults.&#160;Depending&#160;on&#160;the&#160;ASIL,&#160;there are&#160;<br/>different&#160;&#160;requirements&#160;&#160;on&#160;&#160;the&#160;&#160;probabilities&#160;&#160;of&#160;&#160;<i>random&#160;&#160;hardware&#160;&#160;faults&#160;&#160;</i>(e.g.&#160;&#160;for&#160;&#160;the&#160;<br/>probabilistic metric&#160;for&#160;random&#160;hardware&#160;faults PMHF).&#160;<br/>The&#160;probabilities,&#160;i.e.&#160;failure&#160;rate,&#160;for&#160;<i>permanent&#160;faults</i>&#160;can&#160;be&#160;estimated&#160;using&#160;standards,&#160;<br/>e.g.&#160;IEC&#160;TR&#160;62380,&#160;or&#160;is&#160;provided&#160;by&#160;the&#160;manufacturer&#160;of&#160;the&#160;<i>hardware&#160;components</i>.&#160;The&#160;<br/>probabilities&#160;&#160;of&#160;&#160;some&#160;&#160;<i>transient&#160;&#160;faults</i>,&#160;&#160;especially&#160;&#160;Single&#160;&#160;Event&#160;&#160;Upsets&#160;&#160;(SEUs)&#160;&#160;cannot&#160;&#160;be&#160;<br/>estimated&#160;&#160;that&#160;&#160;easily.&#160;&#160;Several&#160;&#160;scientific&#160;&#160;papers&#160;&#160;(e.g<a href="MICROSAR_Safety_Guides.html#3">.&#160;&#160;[6])&#160;&#160;</a>suggest&#160;&#160;that&#160;&#160;the&#160;&#160;probability&#160;&#160;of&#160;a&#160;<br/>transient&#160;fault&#160;can&#160;be&#160;in&#160;the&#160;order&#160;of&#160;magnitude&#160;of&#160;10-8&#160;to&#160;-7&#160;1/h.&#160;We&#160;assume&#160;that&#160;the&#160;Single&#160;<br/>Event&#160;&#160;Upset&#160;&#160;may&#160;&#160;directly&#160;&#160;lead&#160;&#160;to&#160;&#160;a&#160;&#160;violation&#160;&#160;of&#160;&#160;a&#160;&#160;safety&#160;&#160;goal&#160;&#160;and&#160;&#160;is,&#160;&#160;thus,&#160;&#160;a&#160;&#160;single-point&#160;<br/>fault.&#160;The&#160;&#160;probability&#160;of&#160;&#160;a&#160;single-point&#160;fault&#160;&#160;has&#160;to&#160;be&#160;less&#160;than&#160;10-7&#160;1/h&#160;for&#160;ASIL&#160;B&#160;or&#160;&#160;10-<br/>
+8&#160;1/h&#160;for&#160;ASIL&#160;C&#160;respectively.&#160;<br/><b>Thus,&#160;we&#160;recommend&#160;the&#160;consideration&#160;of&#160;transient&#160;faults&#160;starting&#160;from&#160;ASIL&#160;B.&#160;For&#160;<br/>ASIL&#160;C systems&#160;transient&#160;faults must be&#160;handled appropriately.&#160;<br/></b>There are&#160;different&#160;methods&#160;to&#160;detect&#160;a&#160;<i>fault</i>&#160;in&#160;a&#160;<i>hardware component</i>.&#160;Among&#160;them&#160;are:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Use&#160;of&#160;error detection&#160;codes,&#160;e.g.&#160;a&#160;CRC&#160;<br/>
+<b>&gt;&#160;&#160;</b>Comparison&#160;of&#160;redundant&#160;data&#160;<br/>
+<b>&gt;&#160;&#160;</b>Use&#160;of&#160;a&#160;time&#160;limit&#160;supervisor,&#160;e.g.&#160;a&#160;watchdog&#160;<br/>
+There are&#160;also&#160;different&#160;methods&#160;for a&#160;system&#160;to&#160;act&#160;upon&#160;a&#160;fault.&#160;Among&#160;them&#160;are:&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+10&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=11></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>&gt;&#160;&#160;</b>Reset&#160;of&#160;the&#160;component&#160;where the&#160;fault occurred&#160;<br/>
+<b>&gt;&#160;&#160;</b>Depowering&#160;of&#160;the&#160;component&#160;where the&#160;fault occurred&#160;<br/>
+<b>&gt;&#160;&#160;</b>Exclusion&#160;of&#160;inputs&#160;that&#160;are known&#160;to&#160;be&#160;incorrect&#160;<br/>
+Best&#160;practices&#160;for some&#160;of&#160;these&#160;mechanisms in&#160;relation&#160;to&#160;AUTOSAR are presented&#160;in&#160;<br/>section&#160;3.&#160;<br/>
+<b>2.3&#160;</b><br/>
+<b>Fail-safe&#160;and fail-operational&#160;systems&#160;</b><br/>
+Most&#160;systems&#160;in&#160;the&#160;automotive&#160;today&#160;have&#160;a&#160;fail-safe&#160;behavior,&#160;i.e.&#160;in&#160;case&#160;of&#160;a&#160;<i>random&#160;<br/>hardware&#160;&#160;fault</i>&#160;&#160;the&#160;&#160;system&#160;&#160;tries&#160;&#160;to&#160;&#160;achieve&#160;&#160;a&#160;&#160;<i>safe&#160;&#160;state</i>.&#160;&#160;This&#160;&#160;is&#160;&#160;the&#160;&#160;implicitly&#160;&#160;assumed&#160;<br/>mechanism&#160;by&#160;ISO&#160;26262&#160;to&#160;mitigate&#160;<i>random&#160;hardware&#160;faults</i>.&#160;<br/>Mitigation&#160;of&#160;faults&#160;for&#160;a&#160;system,&#160;thus,&#160;only&#160;means&#160;to&#160;detect&#160;the&#160;fault&#160;and&#160;enter a&#160;safe&#160;state.&#160;<br/>For&#160;&#160;example,&#160;&#160;in&#160;&#160;case&#160;&#160;of&#160;&#160;an&#160;&#160;active&#160;&#160;front&#160;&#160;steering&#160;&#160;system,&#160;&#160;the&#160;&#160;actuator&#160;&#160;of&#160;&#160;the&#160;&#160;system&#160;&#160;is&#160;<br/>disabled&#160;(=&#160;<i>safe&#160;state</i>) when&#160;a&#160;<i>failure</i>&#160;is detected.&#160;<br/><b>Thus,&#160;only&#160;fail-safe&#160;systems&#160;are&#160;considered in&#160;this&#160;guide.&#160;<br/></b>There&#160;are&#160;other&#160;systems&#160;where&#160;the&#160;correct&#160;operation&#160;is&#160;required&#160;even&#160;in&#160;the&#160;presence&#160;of&#160;<br/>one&#160;or more&#160;<i>faults</i>.&#160;These&#160;systems&#160;are called&#160;<i>fail-operational</i>.&#160;<br/>For&#160;example,&#160;a&#160;steer-by-wire&#160;system&#160;may&#160;be&#160;required&#160;to&#160;operate&#160;correctly&#160;even&#160;if,&#160;e.g.&#160;the&#160;<br/>microcontroller&#160;is broken.&#160;<br/>Since&#160;&#160;support&#160;&#160;by&#160;&#160;the&#160;&#160;ISO&#160;26262&#160;&#160;of&#160;&#160;fail-operational&#160;&#160;systems&#160;&#160;through&#160;&#160;definitions&#160;&#160;of&#160;&#160;terms,&#160;<br/>methods&#160;and&#160;requirements&#160;is&#160;poor,&#160;we&#160;only&#160;consider&#160;fail-safe&#160;systems in&#160;this guide.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+11&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=12></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3&#160;&#160;Recommendations&#160;on&#160;safety&#160;mechanisms&#160;</b><br/>
+A&#160;&#160;logical&#160;&#160;prerequisite&#160;&#160;for&#160;&#160;a&#160;&#160;functionally&#160;&#160;safe&#160;&#160;system&#160;&#160;is&#160;&#160;the&#160;&#160;integrity&#160;&#160;of&#160;&#160;all&#160;&#160;comprising&#160;<br/>elements.&#160;&#160;<br/>For this document&#160;we&#160;define&#160;integrity&#160;as intended&#160;behavior with&#160;respect&#160;to&#160;its&#160;design&#160;intent.&#160;<br/>
+<b>3.1&#160;</b><br/>
+<b>Integrity&#160;of the&#160;microcontroller&#160;</b><br/>
+Since&#160;&#160;this&#160;&#160;document&#160;&#160;focuses&#160;&#160;on&#160;&#160;software,&#160;&#160;the&#160;&#160;executing&#160;&#160;microcontroller&#160;&#160;needs&#160;&#160;to&#160;&#160;be&#160;<br/>integer.&#160;<br/>Usually,&#160;there&#160;are the&#160;following&#160;techniques to&#160;achieve&#160;integrity&#160;of&#160;a&#160;microcontroller:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Operation&#160;in&#160;lock-step&#160;mode&#160;<br/>
+<b>&gt;&#160;&#160;</b>Self-tests&#160;of&#160;the&#160;microcontroller components&#160;(incl. plausibility&#160;tests)&#160;<br/>
+<b>&gt;&#160;&#160;</b>Monitoring&#160;the&#160;temperature&#160;of&#160;the&#160;microcontroller&#160;<br/>
+The&#160;following&#160;sections&#160;provide&#160;details about&#160;these&#160;techniques.&#160;<br/>
+<b>3.1.1&#160;</b><br/>
+<b>Operation in lock-step mode&#160;</b><br/>
+Microcontrollers&#160;&#160;with&#160;&#160;lock-step&#160;&#160;mode&#160;&#160;assure&#160;&#160;the&#160;&#160;integrity&#160;&#160;of&#160;&#160;calculations&#160;&#160;and&#160;&#160;register&#160;<br/>contents&#160;with&#160;respect&#160;to&#160;transient&#160;random&#160;hardware&#160;failures&#160;(e.g.&#160;bit&#160;flips).&#160;Details&#160;on&#160;what&#160;<br/>exactly&#160;is protected&#160;depend&#160;on&#160;the&#160;selected&#160;hardware architecture.&#160;<br/>Enabling&#160;&#160;lock-step&#160;&#160;depends&#160;&#160;on&#160;&#160;the&#160;&#160;selected&#160;&#160;hardware&#160;&#160;architecture.&#160;&#160;We&#160;&#160;recommend&#160;<br/><b>enabling&#160;lock-step&#160;as&#160;early&#160;as&#160;possible&#160;in the&#160;boot&#160;process</b>&#160;(e.g.&#160;in&#160;start-up&#160;code).&#160;<br/>An&#160;additional&#160;self-test&#160;of&#160;the&#160;lock-step&#160;mechanism&#160;has&#160;to&#160;be&#160;implemented,&#160;depending&#160;on&#160;<br/>the&#160;required&#160;<i>diagnostic&#160;coverage</i>&#160;and&#160;the&#160;selected&#160;hardware architecture.&#160;<br/>A&#160;fault in&#160;the&#160;lock-step&#160;mechanism&#160;is a&#160;<i>latent&#160;fault</i>.&#160;<br/>
+<b>3.1.2&#160;</b><br/>
+<b>Monitoring&#160;the&#160;temperature&#160;of the&#160;microcontrollers&#160;</b><br/>
+High&#160;&#160;temperature&#160;&#160;strongly&#160;&#160;increases&#160;&#160;the&#160;&#160;probability&#160;&#160;of&#160;&#160;transient&#160;&#160;random&#160;&#160;hardware&#160;&#160;faults.&#160;<br/>Thus,&#160;keeping&#160;the&#160;microcontroller within&#160;its operating&#160;limits is necessary&#160;for its integrity.&#160;<br/>Some&#160;microcontrollers support measuring&#160;and&#160;monitoring&#160;the&#160;die&#160;temperature.&#160;<br/>Monitoring&#160;&#160;the&#160;&#160;die&#160;&#160;temperature&#160;&#160;is&#160;&#160;a&#160;&#160;measure&#160;&#160;to&#160;&#160;increase&#160;&#160;the&#160;&#160;robustness&#160;&#160;of&#160;&#160;the&#160;&#160;system.&#160;<br/>Usually,&#160;the&#160;monitoring&#160;can&#160;be&#160;implemented&#160;in&#160;analogy&#160;to&#160;self-tests.&#160;<br/>
+<b>3.1.3&#160;</b><br/>
+<b>Self-test of&#160;the&#160;microcontroller components&#160;</b><br/>
+Additional&#160;&#160;self-tests&#160;&#160;of&#160;&#160;individual&#160;&#160;microcontroller&#160;&#160;components&#160;&#160;may&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;<br/>implemented,&#160;depending&#160;on&#160;the&#160;required&#160;diagnostic&#160;coverage&#160;of&#160;the&#160;application.&#160;Self-tests&#160;<br/>can&#160;&#160;be&#160;&#160;used&#160;&#160;to&#160;&#160;increase&#160;&#160;diagnostic&#160;&#160;coverage&#160;&#160;for&#160;&#160;single-point&#160;&#160;faults&#160;&#160;(integrity&#160;&#160;at&#160;&#160;start-up)&#160;<br/>and&#160;latent&#160;faults (integrity&#160;in&#160;continuous operation).&#160;<br/><b>Thus,&#160;the&#160;requirements on self-tests are&#160;defined&#160;by&#160;the&#160;required&#160;ASIL.&#160;<br/></b>Especially,&#160;&#160;the&#160;&#160;self-test&#160;&#160;of&#160;&#160;the&#160;&#160;used&#160;&#160;watchdog&#160;&#160;is&#160;&#160;often&#160;&#160;assumed&#160;&#160;to&#160;&#160;be&#160;&#160;mandatory&#160;&#160;by&#160;&#160;the&#160;<br/>microcontroller manufacturer.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+12&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/SafetyManuals/MICROSAR_Safety_Guide-13_1.png"/><br/>
+Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+Other&#160;examples&#160;for&#160;such&#160;a&#160;self-test&#160;are&#160;&#160;the&#160;Logic&#160;built-in&#160;&#160;self-test&#160;(LBIST)&#160;of&#160;&#160;the&#160;TriCore&#160;<br/>architecture.&#160;<br/>The&#160;safety&#160;manual&#160;of&#160;the&#160;respective&#160;microcontroller has&#160;to&#160;be&#160;applied.&#160;<br/>
+<b>3.2&#160;</b><br/>
+<b>Integrity&#160;of&#160;volatile&#160;data&#160;</b><br/>
+Since&#160;&#160;this&#160;document&#160;&#160;focuses&#160;&#160;on&#160;&#160;software,&#160;&#160;also&#160;&#160;the&#160;&#160;used&#160;&#160;volatile&#160;memory&#160;&#160;(e.g.&#160;&#160;SRAM&#160;&#160;or&#160;<br/>DRAM)&#160;needs to&#160;be&#160;integer.&#160;<br/>Usually,&#160;there&#160;are the&#160;following&#160;techniques to&#160;achieve&#160;integrity&#160;of&#160;volatile&#160;memory:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Tests&#160;of&#160;volatile&#160;memory&#160;<br/>
+<b>&gt;&#160;&#160;</b>Protection&#160;of&#160;volatile&#160;memory&#160;through&#160;error correcting&#160;codes (ECC)&#160;<br/>
+The&#160;following&#160;sections&#160;provide&#160;details about&#160;these&#160;techniques.&#160;<br/>
+<b>3.2.1&#160;</b><br/>
+<b>Static&#160;tests&#160;of volatile&#160;memory&#160;</b><br/>
+Tests&#160;of&#160;volatile&#160;memory&#160;can&#160;detect&#160;several&#160;failure&#160;modes&#160;of&#160;memory&#160;cells&#160;and&#160;addressing&#160;<br/>logic.&#160;<br/>Tests&#160;&#160;of&#160;&#160;volatile&#160;&#160;memory&#160;&#160;need&#160;&#160;to&#160;&#160;be&#160;&#160;implemented&#160;&#160;depending&#160;&#160;on&#160;&#160;the&#160;&#160;failure&#160;&#160;rate&#160;&#160;of&#160;&#160;the&#160;<br/>selected&#160;&#160;memory.&#160;&#160;The&#160;&#160;failure&#160;&#160;rate&#160;&#160;is&#160;&#160;most&#160;&#160;dominated&#160;&#160;by&#160;&#160;the&#160;&#160;selected&#160;&#160;technology&#160;&#160;(e.g.&#160;<br/>SRAM, DRAM)&#160;and&#160;the&#160;manufacturing&#160;process&#160;quality.&#160;<br/>Tests&#160;of&#160;volatile&#160;memory&#160;can&#160;be&#160;used&#160;to&#160;increase&#160;the&#160;diagnostic&#160;coverage&#160;of&#160;the&#160;system.&#160;<br/>Tests&#160;of&#160;volatile&#160;memory&#160;may&#160;be&#160;required&#160;at&#160;start-up&#160;and&#160;periodically.&#160;<br/>A&#160;fault&#160;in&#160;the&#160;implementation&#160;of&#160;the&#160;test&#160;of&#160;volatile&#160;memory&#160;is a&#160;<i>latent&#160;fault</i>.&#160;<br/>
+<b>3.2.1.1&#160;</b><br/>
+<b>Initial&#160;test of&#160;volatile&#160;memory&#160;</b><br/>
+An&#160;&#160;initial&#160;&#160;test&#160;&#160;of&#160;&#160;volatile&#160;&#160;memory&#160;&#160;can&#160;&#160;be&#160;&#160;implemented&#160;&#160;in&#160;&#160;the&#160;&#160;start-up&#160;&#160;code&#160;&#160;before&#160;&#160;the&#160;<br/>memory&#160;is used&#160;initially.&#160;<br/>Testing&#160;&#160;memory&#160;&#160;initially&#160;&#160;at&#160;&#160;start-up&#160;&#160;assures&#160;&#160;integrity&#160;&#160;of&#160;&#160;the&#160;&#160;data&#160;&#160;and&#160;&#160;code&#160;&#160;that&#160;&#160;is&#160;&#160;loaded&#160;<br/>into&#160;&#160;the&#160;&#160;memory.&#160;Additionally,&#160;&#160;the&#160;&#160;data&#160;&#160;cache&#160;&#160;can&#160;&#160;be&#160;&#160;disabled&#160;&#160;at&#160;&#160;start-up&#160;&#160;to&#160;&#160;easily&#160;&#160;allow&#160;<br/>testing&#160;of&#160;the&#160;volatile&#160;memory.&#160;<br/>Some&#160;&#160;microcontrollers&#160;&#160;provide&#160;&#160;built-in&#160;&#160;self-tests&#160;&#160;to&#160;&#160;check&#160;&#160;the&#160;&#160;volatile&#160;&#160;memory,&#160;&#160;e.g.&#160;<br/>Infineon&#160;TC27x.&#160;<br/>If&#160;the&#160;test&#160;of&#160;volatile&#160;memory&#160;has&#160;to&#160;be&#160;implemented&#160;in&#160;software,&#160;we&#160;recommend&#160;using&#160;the&#160;<br/>March&#160;&#160;test&#160;&#160;algorithm.&#160;&#160;The&#160;&#160;March&#160;&#160;test&#160;&#160;algorithm&#160;&#160;provides&#160;&#160;the&#160;&#160;least&#160;&#160;time&#160;&#160;complex&#160;&#160;(O(n))&#160;<br/>behavior and&#160;detects&#160;the&#160;most&#160;failure&#160;modes.&#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Caution&#160;<br/></b>Consider&#160;disabling&#160;the&#160;data&#160;cache&#160;for&#160;tests&#160;of&#160;volatile&#160;memory.&#160;The&#160;data&#160;cache may&#160;<br/>
+<b>&#160;&#160;</b>render&#160;the&#160;implemented&#160;test&#160;ineffective,&#160;because&#160;test&#160;patterns&#160;are&#160;not&#160;written&#160;to&#160;nor&#160;<br/>
+read&#160;from&#160;the&#160;memory&#160;chip.&#160;<br/>
+<b>&#160;</b><br/>
+<b>&#160;</b><br/>
+&#160;<br/>A&#160;test&#160;of&#160;volatile&#160;memory&#160;at&#160;start-up&#160;has&#160;to&#160;be&#160;implemented&#160;by&#160;the&#160;user&#160;of&#160;the&#160;MICROSAR&#160;<br/>stack.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+13&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=14></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+We&#160;assume&#160;that&#160;&#160;the&#160;flash&#160;bootloader&#160;has&#160;no&#160;influence&#160;on&#160;the&#160;application&#160;software&#160;and&#160;it&#160;<br/>does&#160;&#160;not&#160;&#160;prevent&#160;&#160;an&#160;&#160;intended&#160;&#160;application&#160;&#160;start.&#160;&#160;Thus,&#160;&#160;the&#160;&#160;flash&#160;&#160;bootloader&#160;&#160;is&#160;&#160;not&#160;<br/>considered&#160;here.&#160;<br/>
+<b>3.2.1.2&#160;</b><br/>
+<b>Periodic&#160;tests of volatile&#160;memory&#160;</b><br/>
+Depending&#160;on&#160;how&#160;often&#160;the&#160;ECU&#160;is&#160;powered&#160;on&#160;and&#160;a&#160;&#160;self-test&#160;at&#160;start-up&#160;is&#160;performed&#160;<br/>and&#160;the&#160;failure rate&#160;of&#160;the&#160;memory&#160;chip,&#160;a&#160;periodic memory&#160;tests&#160;is not&#160;necessary.&#160;<br/>The&#160;AUTOSAR RAM&#160;Test&#160;component&#160;could&#160;be&#160;used&#160;to&#160;test&#160;volatile&#160;memory&#160;periodically.&#160;<br/>The&#160;periodic&#160;memory&#160;tests&#160;could&#160;also&#160;be&#160;implemented&#160;as&#160;Complex&#160;Driver.&#160;<br/>The&#160;&#160;Vector&#160;&#160;AUTOSAR&#160;&#160;RAM&#160;&#160;Test&#160;&#160;component&#160;&#160;is&#160;&#160;currently&#160;&#160;not&#160;&#160;developed&#160;&#160;according&#160;&#160;to&#160;<br/>ISO&#160;26262.&#160;<br/>
+<b>3.2.2&#160;</b><br/>
+<b>Protection of&#160;volatile&#160;memory&#160;through error&#160;correcting codes&#160;(ECC)&#160;</b><br/>
+The&#160;volatile&#160;memory&#160;should&#160;be&#160;protected&#160;by&#160;error&#160;correcting&#160;codes&#160;(ECC),&#160;to&#160;protect&#160;the&#160;<br/>system&#160;against&#160;transient&#160;faults in&#160;volatile&#160;memory&#160;from&#160;radiation&#160;or&#160;strong&#160;electric&#160;fields.&#160;<br/>ECC-mechanisms&#160;&#160;do&#160;&#160;not&#160;&#160;protect&#160;&#160;against&#160;&#160;most&#160;&#160;failure&#160;&#160;modes&#160;&#160;mentioned&#160;&#160;in&#160;&#160;the&#160;&#160;previous&#160;<br/>section,&#160;but&#160;they&#160;are&#160;the&#160;most&#160;efficient&#160;way&#160;(from&#160;a&#160;software&#160;perspective)&#160;to&#160;protect&#160;against&#160;<br/>Single&#160;Event&#160;Upsets&#160;(SEUs).&#160;<br/>Enabling&#160;the&#160;use&#160;of&#160;ECC-mechanisms depends&#160;on&#160;the&#160;selected&#160;hardware&#160;architecture.&#160;We&#160;<br/>recommend&#160;&#160;<b>enabling&#160;&#160;the&#160;&#160;use&#160;&#160;of&#160;&#160;ECC-mechanisms&#160;&#160;as&#160;&#160;early&#160;&#160;as&#160;&#160;possible&#160;&#160;in&#160;&#160;the&#160;&#160;boot&#160;<br/>process</b>&#160;(e.g.&#160;in&#160;start-up&#160;code).&#160;<br/>
+<b>3.2.2.1&#160;</b><br/>
+<b>Redundant storage&#160;of data&#160;</b><br/>
+If&#160;no&#160;ECC-mechanism&#160;is&#160;available&#160;for&#160;the&#160;selected&#160;hardware&#160;architecture,&#160;storing&#160;the&#160;data&#160;<br/>redundantly&#160;&#160;at&#160;&#160;two&#160;&#160;separate&#160;&#160;memory&#160;&#160;locations&#160;&#160;(and&#160;&#160;at&#160;&#160;best&#160;&#160;inverted),&#160;&#160;may&#160;&#160;be&#160;&#160;an&#160;<br/>alternative&#160;under&#160;some&#160;circumstances.&#160;Special&#160;care&#160;has&#160;to&#160;be&#160;taken&#160;that&#160;all&#160;safety-related&#160;<br/>data&#160;is stored&#160;redundantly.&#160;<br/>The&#160;&#160;redundantly&#160;&#160;stored&#160;&#160;values&#160;&#160;have&#160;&#160;to&#160;&#160;be&#160;&#160;compared&#160;&#160;at&#160;&#160;every&#160;&#160;read.&#160;&#160;The&#160;&#160;write&#160;&#160;and&#160;&#160;read&#160;<br/>operations&#160;are&#160;at&#160;best&#160;&#160;wrapped&#160;by&#160;functions&#160;performing&#160;the&#160;inversion,&#160;redundant&#160;storage&#160;<br/>and&#160;comparison.&#160;<br/>Thus,&#160;&#160;it&#160;&#160;is&#160;&#160;usually&#160;&#160;easier&#160;&#160;to&#160;&#160;use&#160;&#160;ECC-mechanisms,&#160;&#160;because&#160;&#160;they&#160;&#160;do&#160;&#160;not&#160;&#160;introduce&#160;&#160;new&#160;<br/>functions and&#160;are an&#160;effective&#160;and&#160;transparent&#160;protection.&#160;<br/>Redundant&#160;&#160;storage&#160;&#160;of&#160;&#160;data&#160;&#160;does&#160;&#160;not&#160;&#160;cover&#160;&#160;transient&#160;&#160;faults&#160;&#160;in&#160;&#160;registers.&#160;&#160;A&#160;&#160;hardware&#160;<br/>architecture&#160;with&#160;lock-step&#160;is&#160;suggested&#160;to&#160;protect&#160;against&#160;these&#160;kinds of&#160;faults.&#160;<br/><b>Redundant&#160;storage&#160;of data&#160;is&#160;not supported by&#160;the&#160;Vector&#160;MICROSAR stack.&#160;</b><br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+14&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=15></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3.3&#160;</b><br/>
+<b>Integrity&#160;of non-volatile&#160;data&#160;</b><br/>
+Non-volatile&#160;&#160;data&#160;&#160;must&#160;&#160;be&#160;&#160;protected&#160;&#160;against&#160;&#160;random&#160;&#160;corruption&#160;&#160;to&#160;&#160;show&#160;&#160;the&#160;&#160;required&#160;<br/><i>diagnostic coverage&#160;</i>for an&#160;ASIL.&#160;<br/>Non-volatile&#160;&#160;data&#160;&#160;comprises&#160;&#160;interrupt&#160;&#160;vector&#160;&#160;table,&#160;&#160;executable&#160;&#160;code,&#160;&#160;and&#160;&#160;initialized&#160;<br/>variables.&#160;Non-volatile&#160;data&#160;stored&#160;using&#160;NVRAM&#160;Manager is addressed&#160;in&#160;section<a href="MICROSAR_Safety_Guides.html#16">&#160;3.3.2.</a>&#160;<br/>A&#160;hamming&#160;distance&#160;of&#160;four&#160;is&#160;required&#160;to&#160;claim&#160;a&#160;high&#160;<i>diagnostic&#160;coverage</i>&#160;with&#160;respect&#160;to&#160;<br/>random&#160;corruption&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[8],&#160;</a>D.2.4.1).&#160;<br/>We&#160;recommended&#160;protecting&#160;the&#160;complete&#160;flashed&#160;binary&#160;using&#160;a&#160;CRC&#160;to&#160;ensure&#160;that&#160;the&#160;<br/>binaries on&#160;host&#160;and&#160;target&#160;are identical.&#160;<br/>We&#160;&#160;recommend&#160;&#160;using&#160;&#160;the&#160;&#160;CRC-32&#160;&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;&#160;[2])&#160;&#160;</a>to&#160;&#160;protect&#160;&#160;the&#160;&#160;complete&#160;&#160;flashed&#160;&#160;binary&#160;&#160;file.&#160;<br/>CRC-32&#160;offers&#160;a&#160;sufficient&#160;hamming&#160;distance&#160;for quite&#160;large&#160;data&#160;sizes.&#160;<br/>CRC-32&#160;has&#160;a&#160;hamming&#160;distance&#160;of&#160;at&#160;least&#160;four&#160;for&#160;data&#160;sizes&#160;of&#160;up&#160;to&#160;11450&#160;byte&#160;(see&#160;<br/><a href="MICROSAR_Safety_Guides.html#3">[10]).</a>&#160;&#160;If&#160;&#160;the&#160;&#160;complete&#160;&#160;flashed&#160;&#160;binary&#160;&#160;file&#160;&#160;is&#160;&#160;larger&#160;&#160;than&#160;&#160;11450&#160;&#160;bytes,&#160;&#160;then&#160;&#160;more&#160;&#160;than&#160;&#160;one&#160;<br/>CRC-32&#160;has to&#160;be&#160;calculated&#160;to&#160;adequately&#160;protect&#160;that&#160;file.&#160;<br/>Depending&#160;on&#160;the&#160;type&#160;of&#160;binary&#160;flashed&#160;(e.g.&#160;SREC,&#160;ELF,&#160;Raw-Binary)&#160;not&#160;the&#160;complete&#160;<br/>non-volatile&#160;memory&#160;has to&#160;be&#160;checked,&#160;but&#160;only&#160;distinct&#160;sections.&#160;&#160;<br/>
+Vector-Table,&#160;ISRs,&#160;Executable&#160;Code&#160;(.text&#160;<br/>
+section)<br/>
+Non-<br/>
+volatile&#160;&#160;<br/>
+memory&#160;Initialized&#160;variables<br/>
+CRC-32&#160;for&#160;Vector-Table,&#160;ISRs&#160;and&#160;Executable&#160;Code<br/>
+CRC-32&#160;for&#160;initialized&#160;variables<br/>
+&#160;<br/>
+Figure&#160;3-1&#160;&#160;Example&#160;for&#160;protecting&#160;non-volatile&#160;memory&#160;with&#160;two&#160;CRCs&#160;<br/>
+<b>3.3.1&#160;</b><br/>
+<b>Consistency&#160;of&#160;configuration and calibration data&#160;</b><br/>
+Configuration&#160;&#160;and&#160;&#160;calibration&#160;&#160;data&#160;&#160;must&#160;&#160;be&#160;&#160;verified&#160;&#160;together&#160;&#160;with&#160;&#160;the&#160;&#160;configured&#160;&#160;and&#160;<br/>calibrated&#160;software&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[9],&#160;</a>Appendix&#160;C).&#160;<br/>One&#160;method&#160;to&#160;&#160;assure&#160;&#160;that&#160;&#160;only&#160;&#160;verified&#160;&#160;packages&#160;&#160;of&#160;&#160;configuration&#160;&#160;data,&#160;&#160;calibration&#160;&#160;data&#160;<br/>and&#160;software are&#160;used&#160;is to&#160;only&#160;distribute&#160;the&#160;verified&#160;packages as&#160;one&#160;flashable&#160;entity.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+15&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/SafetyManuals/MICROSAR_Safety_Guide-16_1.png"/><br/>
+Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+There&#160;may&#160;be&#160;other&#160;organizational&#160;means&#160;to&#160;assure&#160;the&#160;consistency&#160;of&#160;configuration&#160;data,&#160;<br/>calibration&#160;data&#160;and&#160;software.&#160;However,&#160;we&#160;recommend&#160;disabling&#160;post-build&#160;configuration.&#160;<br/>This in&#160;turn&#160;reduces complexity&#160;of&#160;the&#160;system.&#160;<br/>
+<b>3.3.2&#160;</b><br/>
+<b>Securing non-volatile&#160;data&#160;with use&#160;of&#160;NVRAM&#160;Manager&#160;</b><br/>
+The&#160;&#160;NVRAM&#160;&#160;Manager&#160;&#160;component&#160;&#160;could&#160;&#160;be&#160;&#160;used&#160;&#160;to&#160;&#160;safely&#160;&#160;store&#160;&#160;and&#160;&#160;retrieve&#160;&#160;data&#160;&#160;from&#160;<br/>non-volatile&#160;&#160;memory.&#160;&#160;Data&#160;&#160;stored&#160;&#160;and&#160;&#160;retrieved&#160;&#160;using&#160;&#160;the&#160;&#160;NVRAM&#160;&#160;Manager&#160;&#160;is&#160;<br/>automatically&#160;secured&#160;using&#160;a&#160;CRC&#160;if&#160;configured.&#160;<br/>The&#160;&#160;Vector&#160;&#160;NVRAM&#160;&#160;Manager&#160;&#160;component&#160;&#160;is&#160;&#160;currently&#160;&#160;not&#160;&#160;developed&#160;&#160;according&#160;&#160;to&#160;<br/>ISO&#160;26262.&#160;<br/>Thus,&#160;&#160;we&#160;&#160;recommend&#160;&#160;protecting&#160;&#160;the&#160;&#160;safety-related&#160;&#160;data,&#160;&#160;which&#160;&#160;would&#160;&#160;be&#160;&#160;stored&#160;&#160;using&#160;<br/>NVRAM&#160;Manager,&#160;with&#160;an&#160;additional&#160;CRC&#160;and&#160;unique&#160;ID&#160;that&#160;is&#160;generated&#160;and&#160;checked&#160;by&#160;<br/>your&#160;application.&#160;The&#160;CRC&#160;protects&#160;against&#160;corruption&#160;in&#160;non-volatile&#160;memory&#160;and&#160;by&#160;the&#160;<br/>NVRAM&#160;Manager.&#160;The&#160;unique&#160;ID&#160;protects&#160;&#160;against&#160;the&#160;swap&#160;of&#160;&#160;equally&#160;sized&#160;data&#160;by&#160;the&#160;<br/>NVRAM Manager.&#160;See&#160;also&#160;section<a href="MICROSAR_Safety_Guides.html#28">&#160;5.8.</a>&#160;<br/>The&#160;&#160;consistency&#160;&#160;between&#160;&#160;different&#160;&#160;data&#160;&#160;blocks&#160;&#160;can&#160;&#160;be&#160;&#160;established,&#160;&#160;if&#160;&#160;an&#160;&#160;additional&#160;&#160;write&#160;<br/>cycle&#160;counter&#160;is&#160;stored&#160;with&#160;each&#160;data&#160;block.&#160;The&#160;cycle&#160;counter&#160;can&#160;be&#160;saved&#160;on&#160;its&#160;own&#160;in&#160;<br/>the&#160;last&#160;block&#160;of&#160;a&#160;writing&#160;sequence&#160;to&#160;later&#160;identify&#160;if&#160;all&#160;blocks&#160;contain&#160;data&#160;from&#160;the&#160;same&#160;<br/>writing&#160;sequence.&#160;The&#160;data&#160;is&#160;consistent&#160;if&#160;all&#160;blocks&#160;contain&#160;the&#160;same&#160;cycle&#160;counter.&#160;This&#160;<br/>mechanism&#160;can&#160;be&#160;applied&#160;multiple&#160;times&#160;for&#160;different&#160;groups of&#160;blocks.&#160;<br/>
+&#160;<br/>
+Figure&#160;3-2&#160;&#160;Establishing&#160;consistency&#160;of&#160;multiple&#160;data&#160;block&#160;groups&#160;<br/>
+The&#160;NVRAM&#160;Manager&#160;can,&#160;however,&#160;never&#160;guarantee&#160;that&#160;always the&#160;last&#160;saved&#160;block&#160;of&#160;a&#160;<br/>dataset&#160;&#160;NVRAM&#160;&#160;block&#160;&#160;is&#160;&#160;retrieved.&#160;&#160;A&#160;&#160;reset&#160;&#160;may&#160;&#160;occur&#160;&#160;any&#160;&#160;time&#160;&#160;before&#160;&#160;critical&#160;&#160;data&#160;&#160;is&#160;<br/>written&#160;to&#160;the&#160;non-volatile&#160;memory.&#160;Thus,&#160;the&#160;system&#160;should&#160;have&#160;safe&#160;default&#160;values&#160;if&#160;no,&#160;<br/>corrupt&#160;or inconsistent&#160;data&#160;is detected&#160;in&#160;non-volatile&#160;memory.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+16&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=17></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3.4&#160;</b><br/>
+<b>Initialization&#160;of&#160;the&#160;microcontroller&#160;</b><br/>
+The&#160;system&#160;should&#160;always be&#160;in&#160;the&#160;safe&#160;state&#160;during&#160;initialization.&#160;<br/>Thus,&#160;&#160;all&#160;&#160;code&#160;&#160;for&#160;&#160;initialization&#160;&#160;prior&#160;&#160;to&#160;&#160;executing&#160;&#160;the&#160;&#160;safety-related&#160;&#160;functions&#160;&#160;(e.g.&#160;<br/>mechanisms)&#160;&#160;usually&#160;&#160;has&#160;&#160;to&#160;be&#160;&#160;developed&#160;according&#160;&#160;to&#160;&#160;the&#160;&#160;required&#160;ASIL.&#160;&#160;Faults&#160;&#160;during&#160;<br/>initialization&#160;may&#160;prevent&#160;safety&#160;mechanisms to&#160;be&#160;executed.&#160;<br/>
+Faults&#160;during&#160;initialization&#160;may&#160;especially&#160;occur&#160;before&#160;calling&#160;StartOS()&#160;and&#160;before&#160;the&#160;<br/>watchdog&#160;is initialized.&#160;<br/>Initialization&#160;of&#160;the&#160;microcontroller&#160;may&#160;also&#160;happen&#160;on&#160;an&#160;unexpected&#160;reset&#160;during&#160;normal&#160;<br/>operation.&#160;<br/>Consider&#160;the&#160;time&#160;necessary&#160;for&#160;&#160;initialization&#160;&#160;of&#160;the&#160;microcontroller&#160;for&#160;your&#160;&#160;<i>fault&#160;reaction&#160;<br/>time</i>.&#160;For&#160;example,&#160;a&#160;system&#160;may&#160;need&#160;additional&#160;actions&#160;in&#160;software&#160;to&#160;achieve&#160;the&#160;safe&#160;<br/>state&#160;after&#160;a&#160;watchdog-initiated&#160;reset.&#160;This&#160;software&#160;&#160;is&#160;only&#160;executed&#160;after&#160;initialization&#160;of&#160;<br/>the&#160;microcontroller.&#160;<br/>
+Software&#160;failure&#160;reaction&#160;time<br/>
+time<br/>
+Software&#160;<br/>
+Watchdog<br/>
+Boot&#160;and&#160;initialization<br/>
+Reaction&#160;in&#160;<br/>
+failure,&#160;e.g.&#160;<br/>
+resets&#160;the<br/>
+of&#160;microcontroller<br/>
+software&#160;to&#160;achieve<br/>
+endless&#160;loop<br/>
+microcontroller<br/>
+finished<br/>
+safe&#160;state<br/>
+&#160;<br/>
+Figure&#160;3-3&#160;&#160;Example&#160;for&#160;failure&#160;reaction&#160;time&#160;and&#160;initialization&#160;time&#160;(Reset&#160;state&#160;is&#160;not&#160;safe&#160;state)&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+17&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=18></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3.5&#160;</b><br/>
+<b>Separation&#160;in&#160;memory&#160;</b><br/>
+One&#160;&#160;measure&#160;&#160;to&#160;&#160;increase&#160;&#160;robustness&#160;&#160;of&#160;&#160;software&#160;&#160;is&#160;&#160;to&#160;&#160;separate&#160;&#160;different&#160;&#160;software&#160;<br/>components&#160;&#160;in&#160;&#160;memory.&#160;&#160;For&#160;&#160;mixed-ASIL&#160;&#160;systems&#160;&#160;or&#160;&#160;systems&#160;&#160;addressing&#160;&#160;multiple&#160;&#160;safety&#160;<br/>goals,&#160;separation&#160;in&#160;software is&#160;also&#160;necessary&#160;to&#160;show&#160;<i>freedom&#160;from&#160;interference</i>.&#160;<br/>Separation&#160;&#160;in&#160;&#160;memory&#160;&#160;of&#160;&#160;different&#160;&#160;software&#160;&#160;components&#160;&#160;can&#160;&#160;be&#160;&#160;achieved&#160;&#160;by&#160;&#160;using&#160;&#160;a&#160;<br/>Scalability&#160;Class&#160;3&#160;(SC3) SafeContext&#160;operating&#160;system.&#160;<br/>The&#160;&#160;software&#160;&#160;components&#160;&#160;with&#160;&#160;the&#160;&#160;same&#160;&#160;assigned&#160;ASIL&#160;&#160;and&#160;&#160;the&#160;&#160;same&#160;&#160;assigned&#160;&#160;safety&#160;<br/>goal can&#160;then&#160;be&#160;grouped&#160;into&#160;one&#160;application&#160;(see<a href="MICROSAR_Safety_Guides.html#18">&#160;Figure&#160;3-4)</a>.&#160;<br/>
+Safety&#160;Goal 1&#160;<br/>
+Safety&#160;Goal 2&#160;<br/>
+ASIL&#160;B<br/>
+ASIL&#160;B<br/>
+SWC&#160;1&#160;–&#160;ASIL&#160;B<br/>
+SWC&#160;2&#160;–&#160;ASIL&#160;B<br/>
+SWC&#160;3&#160;–&#160;ASIL&#160;B<br/>
+SWC&#160;4&#160;–&#160;ASIL&#160;B<br/>
+Memory&#160;Partition&#160;1<br/>
+Memory&#160;Partition&#160;2<br/>
+&#160;<br/>
+Figure&#160;3-4&#160;&#160;Memory&#160;partitioning&#160;for&#160;mixed-ASIL&#160;systems&#160;<br/>
+The&#160;SC3&#160;SafeContext&#160;operating&#160;system&#160;with&#160;the&#160;highest&#160;ASIL&#160;of&#160;the&#160;software&#160;components&#160;<br/>has&#160;to&#160;be&#160;used.&#160;For&#160;example,&#160;if&#160;the&#160;highest&#160;ASIL&#160;of&#160;all&#160;software&#160;components&#160;is&#160;ASIL&#160;D,&#160;the&#160;<br/>operating&#160;system&#160;has&#160;to&#160;have&#160;an&#160;ASIL&#160;D as well.&#160;<br/>The&#160;&#160;SC3&#160;&#160;SafeContext&#160;&#160;operating&#160;&#160;system&#160;&#160;has&#160;&#160;to&#160;&#160;run&#160;&#160;in&#160;&#160;supervisor&#160;&#160;mode&#160;&#160;and,&#160;&#160;thus,&#160;&#160;its&#160;<br/>malfunction&#160;may&#160;lead&#160;to&#160;a&#160;violation&#160;of&#160;a&#160;safety&#160;goal&#160;of&#160;any&#160;software&#160;component&#160;running&#160;on&#160;<br/>the&#160;same&#160;processor.&#160;In&#160;multi-core&#160;systems&#160;the&#160;software&#160;components&#160;of&#160;all&#160;cores&#160;need&#160;to&#160;<br/>be&#160;considered&#160;for the&#160;ASIL&#160;of&#160;the&#160;operating&#160;system.&#160;<br/>Memory&#160;&#160;partitioning&#160;&#160;is&#160;&#160;the&#160;&#160;most&#160;&#160;effective&#160;&#160;way&#160;&#160;to&#160;&#160;ensure&#160;&#160;<i>freedom&#160;&#160;from&#160;&#160;interference</i>&#160;<br/>between&#160;the&#160;partitions.&#160;If&#160;accepted&#160;by&#160;the&#160;OEM,&#160;other&#160;means,&#160;like&#160;static&#160;analysis&#160;may&#160;be&#160;<br/>applied&#160;to&#160;prevent&#160;cascading&#160;failures.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+18&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=19></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3.6&#160;</b><br/>
+<b>Separation&#160;in time&#160;</b><br/>
+The&#160;&#160;use&#160;&#160;of&#160;SafeWatchdog&#160;&#160;or&#160;&#160;an&#160;&#160;SC4&#160;&#160;operating&#160;&#160;system&#160;&#160;may&#160;&#160;be&#160;&#160;adequate&#160;&#160;depending&#160;&#160;on&#160;<br/>the&#160;safety&#160;requirements.&#160;<br/>The&#160;&#160;use&#160;&#160;of&#160;&#160;SafeWatchdog&#160;&#160;is&#160;&#160;always&#160;&#160;recommended.&#160;&#160;It&#160;&#160;may&#160;&#160;be&#160;&#160;supported&#160;&#160;by&#160;&#160;an&#160;&#160;SC4&#160;<br/>operating&#160;system.&#160;<br/>The&#160;use&#160;of&#160;SafeWatchdog&#160;is&#160;recommended,&#160;if&#160;the&#160;system&#160;is&#160;always&#160;in&#160;a&#160;safe&#160;state&#160;during&#160;<br/>reset&#160;and&#160;there&#160;is&#160;only&#160;one&#160;safety-related&#160;function&#160;implemented&#160;on&#160;the&#160;microcontroller.&#160;In&#160;<br/>case&#160;&#160;of&#160;&#160;a&#160;&#160;fault,&#160;&#160;the&#160;&#160;SafeWatchdog&#160;&#160;can&#160;&#160;reset&#160;&#160;the&#160;&#160;system&#160;&#160;to&#160;&#160;bring&#160;&#160;up&#160;&#160;the&#160;&#160;microcontroller&#160;<br/>again.&#160;<br/>The&#160;use&#160;of&#160;an&#160;SC4&#160;operating&#160;system&#160;is&#160;recommended,&#160;if&#160;either&#160;the&#160;system&#160;is&#160;not&#160;always&#160;in&#160;<br/>a&#160;safe&#160;state&#160;during&#160;reset&#160;or&#160;there&#160;is&#160;more&#160;than&#160;one&#160;safety-related&#160;function&#160;implemented&#160;on&#160;<br/>the&#160;&#160;microcontroller.&#160;&#160;In&#160;&#160;case&#160;&#160;of&#160;&#160;a&#160;&#160;software&#160;&#160;fault&#160;&#160;in&#160;&#160;one&#160;&#160;of&#160;&#160;the&#160;&#160;SWCs,&#160;&#160;the&#160;&#160;SC4&#160;&#160;operating&#160;<br/>system&#160;&#160;can&#160;&#160;still&#160;&#160;schedule&#160;&#160;another&#160;&#160;SWC&#160;&#160;that&#160;&#160;transforms&#160;&#160;the&#160;&#160;system&#160;&#160;into&#160;&#160;a&#160;&#160;safe&#160;&#160;state&#160;&#160;or&#160;<br/>implements&#160;&#160;another&#160;&#160;safety-related&#160;&#160;function.&#160;&#160;In&#160;&#160;case&#160;&#160;of&#160;&#160;a&#160;&#160;hardware&#160;&#160;fault,&#160;&#160;there&#160;&#160;is&#160;&#160;no&#160;<br/>advantage&#160;with&#160;respect&#160;to&#160;the&#160;use&#160;of&#160;SafeWatchdog.&#160;<br/>For further information&#160;refer to&#160;the&#160;Safety&#160;Manuals&#160;of&#160;the&#160;SafeWatchdog&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[12],&#160;[13]&#160;</a>and&#160;<br/>Safety&#160;Manual&#160;for respective&#160;Watchdog&#160;Driver).&#160;<br/>The&#160;&#160;Vector&#160;&#160;SC4&#160;&#160;SafeContext&#160;&#160;operating&#160;&#160;system&#160;&#160;is&#160;&#160;currently&#160;&#160;developed&#160;&#160;according&#160;&#160;to&#160;<br/>ISO&#160;26262,&#160;&#160;but&#160;&#160;the&#160;&#160;timing&#160;&#160;protection&#160;&#160;mechanisms&#160;&#160;are&#160;&#160;not&#160;&#160;considered&#160;&#160;a&#160;&#160;safety&#160;&#160;goal&#160;<br/>currently.&#160;&#160;Especially,&#160;&#160;the&#160;&#160;order&#160;&#160;and&#160;&#160;time&#160;&#160;of&#160;&#160;scheduled&#160;&#160;tasks&#160;&#160;is&#160;&#160;not&#160;&#160;guaranteed&#160;&#160;by&#160;&#160;any&#160;<br/>Vector OS&#160;at&#160;the&#160;moment.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+19&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=20></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3.7&#160;</b><br/>
+<b>Scheduling&#160;</b><br/>
+Most&#160;safety-related&#160;functions&#160;require&#160;a&#160;hard&#160;real-time&#160;behavior&#160;of&#160;the&#160;software,&#160;since&#160;the&#160;<br/>safe&#160;state&#160;must&#160;always&#160;be&#160;reached&#160;in&#160;a&#160;certain&#160;period&#160;of&#160;time.&#160;<br/>A&#160;deterministic behavior increases&#160;the&#160;achievable&#160;test&#160;depth&#160;with&#160;respect&#160;to&#160;timing.&#160;<br/>We,&#160;&#160;thus,&#160;&#160;recommend&#160;&#160;implement&#160;&#160;high&#160;&#160;ASIL&#160;&#160;applications&#160;&#160;with&#160;&#160;schedule&#160;&#160;tables&#160;&#160;(see&#160;&#160;<a href="MICROSAR_Safety_Guides.html#3">[9],&#160;<br/></a>Table&#160;3,&#160;1f)&#160;and&#160;with&#160;a&#160;restricted&#160;use&#160;of&#160;interrupts&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[9],</a>&#160;Table&#160;3,&#160;1g).&#160;<br/>Of&#160;&#160;course,&#160;&#160;a&#160;&#160;safe&#160;&#160;system&#160;&#160;can&#160;&#160;also&#160;&#160;be&#160;&#160;implemented&#160;&#160;using&#160;&#160;interrupts,&#160;&#160;cyclic&#160;&#160;tasks&#160;&#160;and&#160;<br/>priority&#160;&#160;based&#160;&#160;scheduling.&#160;The&#160;&#160;effort&#160;for&#160;&#160;verification&#160;&#160;of&#160;&#160;such&#160;&#160;systems&#160;&#160;is&#160;&#160;in&#160;&#160;general&#160;&#160;higher&#160;<br/>than&#160;for time-triggered&#160;systems.&#160;<br/>Additionally,&#160;time-triggered&#160;bus&#160;systems&#160;allow&#160;easy&#160;(implicit)&#160;synchronization&#160;of&#160;more&#160;than&#160;<br/>one&#160;ECU.&#160;<br/>We&#160;further recommend:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Using&#160;one&#160;schedule&#160;table&#160;for initialization&#160;and&#160;shutdown&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>Using&#160;one&#160;schedule&#160;table&#160;for cyclic tasks&#160;per mode&#160;<br/>
+<b>&gt;&#160;&#160;</b>Using&#160;only&#160;basic tasks&#160;to&#160;keep&#160;the&#160;system&#160;even&#160;more simple&#160;<br/>
+AUTOSAR&#160;&#160;allows&#160;&#160;the&#160;&#160;parallel&#160;&#160;use&#160;&#160;of&#160;&#160;more&#160;&#160;than&#160;&#160;one&#160;&#160;schedule&#160;&#160;table.&#160;&#160;We&#160;&#160;definitely&#160;<br/>recommend&#160;just&#160;using&#160;one&#160;schedule&#160;table&#160;at&#160;a&#160;time.&#160;<br/>
+Schedule&#160;table&#160;for&#160;<br/>
+initialization<br/>
+Mode&#160;1<br/>
+Mode&#160;2<br/>
+Schedule&#160;table&#160;for&#160;<br/>
+Schedule&#160;table&#160;for&#160;<br/>
+cyclic processing&#160;<br/>
+cyclic processing&#160;<br/>
+of&#160;tasks<br/>
+of&#160;tasks<br/>
+Schedule&#160;table&#160;for&#160;<br/>
+shutdown<br/>
+&#160;<br/>
+Figure&#160;3-5&#160;&#160;Example&#160;for&#160;the&#160;use&#160;of&#160;schedule&#160;tables&#160;and&#160;different&#160;modes&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+20&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=21></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>3.8&#160;</b><br/>
+<b>Communication&#160;</b><br/>
+As&#160;&#160;described&#160;&#160;in&#160;&#160;section&#160;&#160;<a href="MICROSAR_Safety_Guides.html#9">2.1,&#160;&#160;</a>the&#160;&#160;system&#160;&#160;should&#160;&#160;be&#160;&#160;as&#160;&#160;deterministic&#160;&#160;as&#160;&#160;possible.&#160;&#160;A&#160;<br/>deterministic behavior is supported&#160;by&#160;avoiding&#160;queues in&#160;communication.&#160;<br/>Thus,&#160;&#160;we&#160;&#160;recommend&#160;&#160;using&#160;&#160;only&#160;&#160;explicit&#160;&#160;sender/receiver&#160;&#160;communication&#160;&#160;with&#160;&#160;last-is-best&#160;<br/>behavior.&#160;<br/>Using&#160;&#160;explicit&#160;&#160;sender/receiver&#160;&#160;communication&#160;&#160;brings&#160;&#160;two&#160;&#160;additional&#160;&#160;advantages.&#160;&#160;First,&#160;<br/>unnecessary&#160;copy&#160;operations&#160;are&#160;avoided.&#160;Second,&#160;the&#160;integrator&#160;has&#160;full&#160;control&#160;over&#160;the&#160;<br/>communication&#160;(when&#160;time-triggered&#160;scheduling&#160;is introduced&#160;in&#160;parallel).&#160;<br/>We&#160;&#160;recommend&#160;&#160;using&#160;&#160;the&#160;&#160;end-to-end&#160;&#160;(E2E)&#160;&#160;protection&#160;&#160;mechanisms&#160;&#160;of&#160;&#160;AUTOSAR&#160;&#160;to&#160;<br/>protect&#160;communication&#160;between&#160;different&#160;ECUs.&#160;<br/>Please&#160;&#160;refer&#160;&#160;to&#160;&#160;the&#160;&#160;Safety&#160;&#160;Guide&#160;&#160;of&#160;&#160;the&#160;&#160;RTE&#160;&#160;(see&#160;&#160;<a href="MICROSAR_Safety_Guides.html#3">[5])&#160;&#160;</a>on&#160;&#160;how&#160;&#160;to&#160;&#160;protect&#160;&#160;intra-ECU&#160;<br/>communication.&#160;<br/>Currently&#160;Vector does&#160;not&#160;provide&#160;an&#160;IOC mechanism&#160;developed&#160;according&#160;to&#160;ISO&#160;26262.&#160;<br/>For further information&#160;refer to&#160;the&#160;Safety&#160;Guide&#160;of&#160;the&#160;RTE&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[5]).</a>&#160;<br/>
+<b>3.9&#160;</b><br/>
+<b>Input&#160;and output&#160;</b><br/>
+The&#160;current&#160;Vector&#160;MICROSAR&#160;stack&#160;is&#160;developed&#160;according&#160;to&#160;a&#160;standard&#160;development&#160;<br/>process&#160;&#160;(QM).&#160;&#160;Only&#160;&#160;SafeContext,&#160;&#160;SafeWatchdog&#160;&#160;and&#160;&#160;SafeCOM&#160;&#160;(End-to-end&#160;&#160;protection&#160;<br/>library)&#160;are developed&#160;using&#160;a&#160;safety&#160;development&#160;process.&#160;<br/>For&#160;most&#160;safety-related&#160;systems&#160;the&#160;software&#160;needs&#160;to&#160;assure&#160;input&#160;or&#160;output&#160;operations&#160;<br/>with&#160;&#160;certain&#160;&#160;integrity&#160;&#160;(ASIL).&#160;&#160;For&#160;&#160;example,&#160;&#160;the&#160;&#160;software&#160;&#160;needs&#160;&#160;to&#160;&#160;disable&#160;&#160;the&#160;&#160;actuator&#160;&#160;by&#160;<br/>toggling&#160;a&#160;digital output&#160;line&#160;of&#160;the&#160;ECU.&#160;<br/>Thus,&#160;at&#160;least&#160;the&#160;MCAL&#160;has to&#160;be&#160;developed&#160;according&#160;to&#160;a&#160;safety&#160;development&#160;process.&#160;<br/>Currently,&#160;there&#160;are&#160;two&#160;different&#160;methods&#160;to&#160;safely&#160;access&#160;the&#160;I/O.&#160;One&#160;way&#160;is&#160;to&#160;establish&#160;<br/>confidence&#160;in&#160;the&#160;I/O&#160;Hardware&#160;Abstraction.&#160;The&#160;other&#160;way&#160;is&#160;to&#160;develop&#160;a&#160;Complex&#160;Driver&#160;<br/>according&#160;to&#160;a&#160;safety&#160;development&#160;process.&#160;<br/>The&#160;I/O&#160;&#160;Hardware&#160;Abstraction&#160;&#160;(IoHwAb)&#160;&#160;provided&#160;&#160;by&#160;&#160;Vector&#160;&#160;is&#160;a&#160;&#160;template.&#160;&#160;The&#160;&#160;customer&#160;<br/>has&#160;to&#160;apply&#160;its&#160;safety&#160;development&#160;process&#160;on&#160;the&#160;I/O&#160;Hardware&#160;Abstraction.&#160;Additionally,&#160;<br/>the&#160;RTE&#160;functions&#160;that&#160;are&#160;used&#160;to&#160;interact&#160;with&#160;the&#160;I/O&#160;Hardware&#160;Abstraction&#160;need&#160;to&#160;be&#160;<br/>tested&#160;by&#160;the&#160;customer.&#160;<br/>If&#160;a&#160;Complex&#160;Driver&#160;is&#160;used&#160;for&#160;accessing&#160;the&#160;I/O,&#160;the&#160;Complex&#160;Driver&#160;has&#160;to&#160;be&#160;developed&#160;<br/>according&#160;to&#160;the&#160;customer’s&#160;safety&#160;development&#160;process.&#160;The&#160;Complex&#160;Driver&#160;can&#160;then&#160;be&#160;<br/>assigned&#160;&#160;the&#160;&#160;same&#160;&#160;ASIL&#160;&#160;as&#160;&#160;the&#160;&#160;application&#160;&#160;implementing&#160;&#160;the&#160;&#160;safety&#160;&#160;mechanisms.&#160;&#160;The&#160;<br/>Complex&#160;Driver and&#160;the&#160;application&#160;can&#160;then&#160;be&#160;put&#160;into&#160;the&#160;same&#160;memory&#160;partition.&#160;<br/>We&#160;recommend&#160;not&#160;modelling&#160;the&#160;Complex&#160;Driver&#160;in&#160;the&#160;RTE&#160;and&#160;directly&#160;call&#160;functions&#160;of&#160;<br/>the&#160;&#160;Complex&#160;&#160;Driver.&#160;&#160;The&#160;&#160;RTE&#160;&#160;is&#160;&#160;then&#160;&#160;excluded&#160;&#160;from&#160;&#160;the&#160;&#160;communication&#160;&#160;between&#160;&#160;the&#160;<br/>application&#160;and&#160;the&#160;Complex&#160;Driver.&#160;Excluding&#160;the&#160;RTE&#160;decreases&#160;test&#160;efforts.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+21&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/SafetyManuals/MICROSAR_Safety_Guide-22_1.png"/><br/>
+Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>4&#160;&#160;Example&#160;use-cases&#160;</b><br/>
+In&#160;this section&#160;three&#160;example&#160;use-cases are described&#160;to&#160;show&#160;different&#160;possible&#160;setups&#160;for&#160;<br/>MICROSAR.&#160;<br/>
+<b>4.1&#160;</b><br/>
+<b>ECU&#160;with direct&#160;I/O&#160;</b><br/>
+This use-case&#160;includes&#160;a&#160;system&#160;with&#160;a&#160;single&#160;ECU&#160;that&#160;performs&#160;a&#160;safety-related&#160;function.&#160;<br/>The&#160;ECU&#160;does&#160;not&#160;need&#160;any&#160;safety-related&#160;information&#160;through&#160;a&#160;communication&#160;bus.&#160;<br/>An&#160;&#160;example&#160;&#160;of&#160;&#160;this&#160;&#160;use-case&#160;&#160;could&#160;&#160;be&#160;&#160;an&#160;&#160;ECU&#160;&#160;executing&#160;&#160;a&#160;&#160;control&#160;&#160;loop&#160;&#160;(analog&#160;&#160;input,&#160;<br/>control&#160;&#160;algorithm,&#160;&#160;analog&#160;&#160;output).&#160;&#160;For&#160;&#160;safety&#160;&#160;reasons&#160;&#160;the&#160;&#160;controlling&#160;&#160;actuator&#160;&#160;has&#160;&#160;to&#160;&#160;be&#160;<br/>additionally&#160;enabled&#160;by&#160;the&#160;application&#160;using&#160;digital&#160;outputs.&#160;The&#160;LIN&#160;communication&#160;is&#160;not&#160;<br/>safety-related&#160;in&#160;this&#160;example&#160;use-case.&#160;<br/>The&#160;Complex&#160;Drivers&#160;are&#160;necessary,&#160;because&#160;the&#160;current&#160;Vector&#160;MICROSAR&#160;stack&#160;is&#160;not&#160;<br/>developed&#160;according&#160;to&#160;ISO&#160;26262.&#160;<br/>This&#160;use-case&#160;covers the&#160;simplest&#160;systems.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-1&#160;&#160;Example&#160;software&#160;architecture&#160;for&#160;an&#160;ECU&#160;with&#160;direct&#160;I/O&#160;<br/>
+&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+22&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=23></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Property&#160;</b><br/>
+<b>Value&#160;</b><br/>
+Number&#160;of&#160;cores&#160;of&#160;microcontroller&#160;<br/>
+1&#160;<br/>
+Safety-related&#160;I/O&#160;<br/>
+Analog&#160;and&#160;digital&#160;<br/>
+Safety-related&#160;communication bus&#160;<br/>
+None&#160;<br/>
+Highest&#160;ASIL&#160;<br/>
+ASIL&#160;B&#160;<br/>
+SC&#160;of&#160;operating system&#160;<br/>
+SC3&#160;<br/>
+MICROSAR&#160;BSW&#160;<br/>
+Non-trusted&#160;<br/>
+OS&#160;Applications&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;SWC1,&#160;SWC2,&#160;CD&#160;for&#160;ADC&#160;and&#160;<br/>
+CD&#160;for DIO&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;MICROSAR BSW&#160;<br/>
+Applied&#160;Vector&#160;products&#160;<br/>
+SafeContext,&#160;SafeWatchdog,&#160;SafeCOM&#160;<br/>
+Table&#160;4-1&#160;&#160;&#160;Properties&#160;of&#160;ECU&#160;with&#160;direct&#160;I/O&#160;use-case&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+23&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/SafetyManuals/MICROSAR_Safety_Guide-24_1.png"/><br/>
+Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>4.2&#160;</b><br/>
+<b>ECU&#160;with direct I/O&#160;and safety-related&#160;bus&#160;communication&#160;</b><br/>
+This&#160;use-case&#160;includes&#160;a&#160;system&#160;with&#160;multiple&#160;ECUs&#160;that&#160;perform&#160;a&#160;safety-related&#160;function.&#160;<br/>The&#160;&#160;ECUs&#160;&#160;are&#160;&#160;connected&#160;&#160;by&#160;&#160;a&#160;&#160;FlexRay&#160;&#160;bus.&#160;&#160;The&#160;&#160;FlexRay&#160;&#160;bus&#160;&#160;is&#160;&#160;used&#160;&#160;to&#160;&#160;communicate&#160;<br/>safety-related&#160;information.&#160;<br/>An&#160;example&#160;of&#160;this&#160;use-case&#160;could&#160;be&#160;two&#160;ECUs&#160;for&#160;battery&#160;management&#160;of&#160;hybrid&#160;cars.&#160;<br/>One&#160;ECU&#160;is&#160;responsible&#160;for&#160;protecting&#160;and&#160;wear-leveling&#160;the&#160;cells.&#160;The&#160;other&#160;ECU&#160;controls&#160;<br/>the&#160;charger.&#160;The&#160;communication&#160;between&#160;them&#160;is&#160;safety-related&#160;and&#160;protected&#160;by&#160;the&#160;end-<br/>to-end&#160;protection&#160;library,&#160;i.e.&#160;SafeCOM.&#160;<br/>The&#160;&#160;shown&#160;&#160;ECU&#160;&#160;also&#160;&#160;has&#160;&#160;safety-related&#160;&#160;direct&#160;&#160;I/O,&#160;&#160;e.g.&#160;&#160;for&#160;&#160;measuring&#160;&#160;cell&#160;&#160;voltage.&#160;&#160;This&#160;<br/>safety-related&#160;direct&#160;I/O&#160;is&#160;implemented&#160;using&#160;Complex&#160;Drivers.&#160;The&#160;Complex&#160;Drivers&#160;are&#160;<br/>necessary,&#160;&#160;because&#160;&#160;the&#160;&#160;current&#160;&#160;Vector&#160;&#160;MICROSAR&#160;&#160;stack&#160;&#160;is&#160;&#160;not&#160;&#160;developed&#160;&#160;according&#160;&#160;to&#160;<br/>ISO&#160;26262.&#160;<br/>The&#160;time&#160;synchronization&#160;using&#160;schedule&#160;tables may&#160;be&#160;helpful in&#160;such&#160;a&#160;scenario.&#160;<br/>This&#160;use-case&#160;covers the&#160;more&#160;advanced&#160;systems.&#160;<br/>
+&#160;<br/>
+Figure&#160;4-2&#160;&#160;Example&#160;software&#160;architecture&#160;for&#160;an&#160;ECU&#160;with&#160;direct&#160;I/O&#160;and&#160;safety-related&#160;bus&#160;communication&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+24&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=25></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Property&#160;</b><br/>
+<b>Value&#160;</b><br/>
+Number&#160;of&#160;cores&#160;of&#160;microcontroller&#160;<br/>
+1&#160;<br/>
+Safety-related&#160;I/O&#160;<br/>
+Analog&#160;and&#160;digital&#160;<br/>
+Safety-related&#160;communication bus&#160;<br/>
+FlexRay&#160;<br/>
+Highest&#160;ASIL&#160;<br/>
+ASIL&#160;B&#160;<br/>
+SC&#160;of&#160;operating system&#160;<br/>
+SC3&#160;<br/>
+MICROSAR&#160;BSW&#160;<br/>
+Non-trusted&#160;<br/>
+OS&#160;Applications&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;SWC1,&#160;SWC2,&#160;CD&#160;for&#160;ADC&#160;and&#160;<br/>
+CD&#160;for DIO&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;MICROSAR BSW&#160;<br/>
+Applied&#160;Vector&#160;products&#160;<br/>
+SafeContext,&#160;SafeWatchdog,&#160;SafeCOM&#160;<br/>
+Table&#160;4-2&#160;&#160;&#160;Properties&#160;of&#160;ECU&#160;with&#160;direct&#160;I/O&#160;and&#160;safety-related&#160;bus&#160;communication&#160;use-case&#160;<br/>
+<b>4.3&#160;</b><br/>
+<b>Mixed&#160;ASIL SWCs&#160;with safety-related&#160;bus&#160;communication&#160;</b><br/>
+This&#160;use-case&#160;includes&#160;a&#160;system&#160;with&#160;multiple&#160;ECUs&#160;that&#160;perform&#160;a&#160;safety-related&#160;function.&#160;<br/>The&#160;&#160;ECUs&#160;&#160;are&#160;&#160;connected&#160;&#160;by&#160;&#160;a&#160;&#160;FlexRay&#160;&#160;bus&#160;&#160;and&#160;&#160;a&#160;&#160;CAN&#160;&#160;bus.&#160;&#160;Both&#160;&#160;buses&#160;&#160;are&#160;&#160;used&#160;&#160;to&#160;<br/>communicate&#160;safety-related&#160;information.&#160;<br/>An&#160;example&#160;of&#160;this&#160;use-case&#160;could&#160;be&#160;a&#160;gateway&#160;ECU&#160;that&#160;&#160;on&#160;the&#160;one&#160;hand&#160;controls&#160;the&#160;<br/>head&#160;lights&#160;via&#160;CAN&#160;bus,&#160;on&#160;the&#160;other hand&#160;controls&#160;the&#160;display&#160;information&#160;from&#160;the&#160;airbag&#160;<br/>system,&#160;&#160;which&#160;&#160;is&#160;&#160;received&#160;&#160;from&#160;&#160;the&#160;&#160;FlexRay&#160;&#160;bus.&#160;&#160;Each&#160;&#160;safety-related&#160;&#160;communication&#160;&#160;is&#160;<br/>protected&#160;by&#160;the&#160;end-to-end&#160;protection&#160;library,&#160;i.e.&#160;SafeCOM.&#160;<br/>The&#160;shown&#160;ECU&#160;does&#160;not&#160;have&#160;safety-related&#160;direct&#160;I/O,&#160;e.g.&#160;does&#160;not&#160;make&#160;use&#160;of&#160;digital&#160;<br/>I/O&#160;to&#160;enter&#160;the&#160;safe&#160;state.&#160;Thus,&#160;no&#160;Complex&#160;Drivers&#160;are necessary.&#160;<br/>The&#160;&#160;time&#160;&#160;synchronization&#160;&#160;using&#160;&#160;schedule&#160;&#160;tables&#160;&#160;may&#160;&#160;be&#160;&#160;helpful&#160;&#160;in&#160;&#160;such&#160;&#160;a&#160;&#160;scenario.&#160;&#160;In&#160;<br/>either&#160;&#160;case&#160;&#160;it&#160;&#160;is&#160;&#160;sensible&#160;&#160;to&#160;&#160;use&#160;&#160;an&#160;&#160;SC4&#160;&#160;operating&#160;&#160;system,&#160;&#160;to&#160;&#160;guarantee&#160;&#160;freedom&#160;&#160;of&#160;<br/>interference&#160;between&#160;the&#160;different&#160;safety-related&#160;functions.&#160;<br/>This&#160;use-case&#160;covers the&#160;more&#160;advanced&#160;systems.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+25&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/GM_T1XX_EPS_RH850/tools/SIP/Doc/SafetyManuals/MICROSAR_Safety_Guide-26_1.png"/><br/>
+Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+&#160;<br/>
+Figure&#160;4-3&#160;&#160;Example&#160;software&#160;architecture&#160;for&#160;an&#160;ECU&#160;with&#160;mixed&#160;ASIL&#160;SWCs&#160;and&#160;safety-related&#160;bus&#160;communication&#160;<br/>
+<b>Property&#160;</b><br/>
+<b>Value&#160;</b><br/>
+Number&#160;of&#160;cores&#160;of&#160;microcontroller&#160;<br/>
+1&#160;<br/>
+Safety-related&#160;I/O&#160;<br/>
+None&#160;<br/>
+Safety-related&#160;communication bus&#160;<br/>
+FlexRay,&#160;CAN&#160;<br/>
+Highest&#160;ASIL&#160;<br/>
+ASIL&#160;B&#160;<br/>
+SC&#160;of&#160;operating system&#160;<br/>
+SC4&#160;<br/>
+MICROSAR&#160;BSW&#160;<br/>
+Non-trusted&#160;<br/>
+OS&#160;Applications&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;SWC1&#160;incl.&#160;end-to-end&#160;<br/>
+protection&#160;library&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;SWC2&#160;incl.&#160;end-to-end&#160;<br/>
+protection&#160;library&#160;<br/>
+<b>&gt;&#160;&#160;</b>Application&#160;with&#160;MICROSAR BSW&#160;<br/>
+Applied&#160;Vector&#160;products&#160;<br/>
+SafeContext,&#160;SafeWatchdog,&#160;SafeCOM&#160;<br/>
+Table&#160;4-3&#160;&#160;&#160;Properties&#160;of&#160;Mixed&#160;ASIL&#160;SWCs&#160;with&#160;safety-related&#160;bus&#160;communication&#160;use-case&#160;<br/>
+&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+26&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=27></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>5&#160;&#160;Recommendations&#160;for&#160;the&#160;MICROSAR&#160;stack&#160;</b><br/>
+<b>5.1&#160;</b><br/>
+<b>Initialization&#160;</b><br/>
+We&#160;recommend&#160;creating&#160;your own&#160;start-up&#160;code&#160;that&#160;(if&#160;applicable):&#160;&#160;<br/>
+1.&#160;&#160;Enables&#160;the&#160;lock-step&#160;<br/>
+2.&#160;&#160;Tests&#160;the&#160;volatile&#160;memory&#160;<br/>
+3.&#160;&#160;Tests the&#160;non-volatile&#160;memory&#160;for&#160;integrity&#160;when&#160;loading&#160;it&#160;into&#160;the&#160;volatile&#160;memory&#160;<br/>
+<b>5.2&#160;</b><br/>
+<b>ECU&#160;State&#160;Manager&#160;(EcuM)&#160;</b><br/>
+The&#160;&#160;ECU&#160;&#160;State&#160;&#160;Manager&#160;&#160;(EcuM)&#160;&#160;component&#160;&#160;has&#160;&#160;to&#160;&#160;be&#160;&#160;developed&#160;&#160;in&#160;&#160;accordance&#160;&#160;to&#160;<br/>ISO&#160;26262,&#160;since&#160;it&#160;usually&#160;has an&#160;effect&#160;on&#160;the&#160;functional safety&#160;of&#160;the&#160;system.&#160;<br/>The&#160;customer&#160;has&#160;the&#160;chance&#160;to&#160;use&#160;Vector’s&#160;EcuM&#160;code&#160;(generated&#160;and&#160;manually&#160;coded)&#160;<br/>to&#160;achieve&#160;the&#160;desired&#160;ASIL.&#160;&#160;<br/>The&#160;customer&#160;may&#160;also&#160;ask Vector&#160;for verification&#160;support of&#160;the&#160;EcuM&#160;component.&#160;<br/>We&#160;recommend&#160;keeping&#160;the&#160;EcuM&#160;as simple&#160;as possible&#160;by&#160;the&#160;following&#160;measures:&#160;<br/>
+<b>&gt;&#160;&#160;</b>Move&#160;the&#160;initialization&#160;of&#160;drivers into&#160;the&#160;StartPostOS&#160;Sequence&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[3])</a>,&#160;i.e.&#160;<br/>
+BswM_Init().&#160;Initializing&#160;drivers in&#160;StartPostOS&#160;is especially&#160;necessary&#160;for drivers with&#160;<br/>lower&#160;ASIL&#160;than&#160;highest&#160;ASIL&#160;of&#160;all&#160;software components.&#160;<br/>
+<b>&gt;&#160;&#160;</b>Do&#160;not&#160;use&#160;post-build&#160;loadable&#160;configuration&#160;<br/>
+<b>&gt;&#160;&#160;</b>Only&#160;initialize&#160;and&#160;configure drivers that&#160;have&#160;the&#160;same&#160;ASIL&#160;as the&#160;EcuM&#160;<br/>
+If&#160;SafeWatchdog&#160;is activated&#160;during&#160;initialization,&#160;the&#160;time&#160;for StartPostOS&#160;Sequence&#160;<br/>(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[3])&#160;</a>needs to&#160;be&#160;considered&#160;for dimensioning&#160;the&#160;window&#160;of&#160;the&#160;SafeWatchdog.&#160;<br/>
+<b>5.3&#160;</b><br/>
+<b>Basic&#160;Software&#160;Mode&#160;Manager&#160;(BswM)&#160;</b><br/>
+The&#160;Basic&#160;Software&#160;Mode&#160;Manager&#160;(BswM)&#160;component&#160;has&#160;to&#160;be&#160;developed&#160;according&#160;to&#160;<br/>ISO&#160;26262,&#160;&#160;since&#160;&#160;it&#160;&#160;usually&#160;&#160;has&#160;&#160;an&#160;&#160;effect&#160;&#160;on&#160;&#160;the&#160;&#160;functional&#160;&#160;safety&#160;&#160;of&#160;&#160;the&#160;&#160;system&#160;&#160;as&#160;&#160;it&#160;<br/>influences the&#160;scheduling&#160;of&#160;the&#160;system.&#160;<br/>The&#160;customer has&#160;the&#160;chance&#160;to&#160;use&#160;Vector’s&#160;BswM&#160;code&#160;(generated&#160;and&#160;manually&#160;coded)&#160;<br/>to&#160;achieve&#160;the&#160;desired&#160;ASIL.&#160;&#160;<br/>The&#160;customer&#160;may&#160;also&#160;ask Vector&#160;for verification&#160;support of&#160;the&#160;BswM&#160;component.&#160;<br/>We&#160;recommend&#160;keeping&#160;the&#160;BswM&#160;component&#160;as simple&#160;as&#160;possible.&#160;<br/>The&#160;BswM&#160;does&#160;not&#160;have&#160;to&#160;be&#160;developed&#160;according&#160;to&#160;ISO&#160;26262,&#160;if&#160;SafeWatchdog&#160;also&#160;<br/>monitors&#160;&#160;control&#160;&#160;flow&#160;&#160;on&#160;&#160;a&#160;&#160;global&#160;&#160;level.&#160;&#160;A&#160;&#160;safety&#160;&#160;analysis&#160;&#160;has&#160;&#160;to&#160;&#160;show&#160;&#160;if&#160;&#160;using&#160;<br/>SafeWatchdog&#160;is appropriate.&#160;<br/>
+<b>5.4&#160;</b><br/>
+<b>Development&#160;Error&#160;Tracer&#160;(Det)&#160;</b><br/>
+The&#160;Development&#160;Error Tracer&#160;(Det)&#160;component&#160;is&#160;not&#160;recommended&#160;for&#160;series&#160;production&#160;<br/>usage.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+27&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=28></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+The&#160;&#160;Det&#160;&#160;component&#160;&#160;has&#160;&#160;to&#160;&#160;be&#160;&#160;developed&#160;&#160;according&#160;&#160;to&#160;&#160;ISO&#160;26262&#160;&#160;if&#160;&#160;used&#160;&#160;in&#160;&#160;series&#160;<br/>production,&#160;since&#160;it&#160;usually&#160;has an&#160;effect&#160;on&#160;the&#160;functional safety&#160;of&#160;the&#160;system.&#160;<br/>The&#160;Det&#160;component&#160;usually&#160;runs&#160;in&#160;the&#160;OS&#160;application&#160;that&#160;also&#160;contains&#160;the&#160;safety-related&#160;<br/>SWCs.&#160;If&#160;the&#160;Det&#160;is not&#160;used,&#160;it&#160;does&#160;not&#160;have&#160;to&#160;be&#160;developed&#160;according&#160;to&#160;ISO&#160;26262.&#160;<br/>The&#160;customer has the&#160;chance&#160;to&#160;use&#160;Vector’s Det&#160;code&#160;(generated&#160;and&#160;manually&#160;coded) to&#160;<br/>achieve&#160;&#160;the&#160;&#160;desired&#160;&#160;ASIL.&#160;&#160;Qualifying&#160;&#160;the&#160;&#160;Det&#160;&#160;code&#160;&#160;may&#160;&#160;especially&#160;&#160;be&#160;&#160;sensible&#160;&#160;if&#160;&#160;no&#160;<br/>difference&#160;between&#160;tested&#160;and&#160;production&#160;code&#160;is desired.&#160;<br/>The&#160;customer&#160;may&#160;also&#160;ask Vector&#160;for verification&#160;support of&#160;the&#160;Det&#160;component.&#160;<br/>We&#160;recommend&#160;keeping&#160;the&#160;Det&#160;component&#160;as simple&#160;as&#160;possible.&#160;<br/>
+<b>5.5&#160;</b><br/>
+<b>Diagnostic&#160;Event&#160;Manager&#160;(Dem)&#160;</b><br/>
+The&#160;Diagnostic&#160;Event&#160;Manager&#160;(Dem)&#160;may&#160;be&#160;part&#160;of&#160;the&#160;degradation&#160;concept.&#160;The&#160;Dem&#160;<br/>can&#160;be&#160;used&#160;to&#160;store&#160;the&#160;degraded&#160;state&#160;of&#160;e.g.&#160;the&#160;ECU.&#160;A&#160;degraded&#160;state&#160;may&#160;be&#160;a&#160;safe&#160;<br/>state.&#160;In&#160;this case&#160;the&#160;Dem&#160;needs to&#160;be&#160;developed&#160;according&#160;to&#160;ISO&#160;26262.&#160;<br/>The&#160;customer&#160;has&#160;the&#160;chance&#160;to&#160;use&#160;Vector’s&#160;Dem&#160;code&#160;(generated&#160;and&#160;manually&#160;coded)&#160;<br/>to&#160;achieve&#160;the&#160;desired&#160;ASIL.&#160;&#160;<br/>The&#160;customer&#160;may&#160;also&#160;ask Vector&#160;for verification&#160;support of&#160;the&#160;Dem&#160;component.&#160;<br/>
+<b>5.6&#160;</b><br/>
+<b>NVRAM&#160;Manager&#160;</b><br/>
+For the&#160;NVRAM&#160;Manager&#160;the&#160;recommendations of&#160;section<a href="MICROSAR_Safety_Guides.html#16">&#160;3.3.2&#160;</a>apply.&#160;&#160;<br/>
+<b>5.7&#160;</b><br/>
+<b>Run-Time&#160;Environment&#160;(RTE)&#160;</b><br/>
+For further information&#160;refer to&#160;the&#160;Safety&#160;Guide&#160;of&#160;the&#160;RTE&#160;(see<a href="MICROSAR_Safety_Guides.html#3">&#160;[5])</a>.&#160;<br/>
+<b>5.8&#160;</b><br/>
+<b>End-to-End Protection (E2E)&#160;</b><br/>
+We&#160;recommend&#160;using&#160;the&#160;E2E&#160;Protection&#160;Wrapper&#160;as&#160;described&#160;in&#160;section&#160;12.1&#160;of<a href="MICROSAR_Safety_Guides.html#3">&#160;[4].</a>&#160;The&#160;<br/>E2E&#160;Protection&#160;Wrapper provided&#160;by&#160;Vector is developed&#160;according&#160;to&#160;ISO&#160;26262.&#160;<br/>
+<b>5.9&#160;</b><br/>
+<b>Operating System&#160;(OS)&#160;</b><br/>
+We&#160;&#160;recommend&#160;&#160;enabling&#160;&#160;the&#160;&#160;stack&#160;&#160;monitoring&#160;&#160;facility&#160;&#160;if&#160;&#160;the&#160;&#160;<i>diagnostic&#160;&#160;coverage</i>&#160;&#160;is&#160;&#160;not&#160;<br/>sufficient&#160;for the&#160;requirements&#160;of&#160;the&#160;system.&#160;<br/>For further information&#160;refer to&#160;the&#160;Safety&#160;Manual&#160;of&#160;the&#160;SafeContext&#160;operating&#160;system.&#160;<br/>
+<b>5.10&#160;&#160;Interrupt&#160;service&#160;routines&#160;(ISRs)&#160;</b><br/>
+We&#160;recommend&#160;avoiding&#160;category&#160;1&#160;ISRs.&#160;<br/>All&#160;&#160;category&#160;&#160;1&#160;&#160;ISRs&#160;&#160;must&#160;&#160;be&#160;developed&#160;&#160;according&#160;&#160;to&#160;ISO&#160;26262,&#160;&#160;since&#160;&#160;ISRs&#160;&#160;can&#160;&#160;corrupt&#160;<br/>the&#160;system&#160;state&#160;in&#160;e.g.&#160;either&#160;memory&#160;or&#160;timing&#160;behavior.&#160;It&#160;is&#160;assumed&#160;that&#160;for&#160;category&#160;2&#160;<br/>ISRs memory&#160;protection&#160;is activated.&#160;<br/>For further information&#160;refer to&#160;the&#160;Safety&#160;Manual of&#160;the&#160;SafeContext&#160;operating&#160;system.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+28&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=29></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>5.11&#160;&#160;Microcontroller&#160;Abstraction Layer (MCAL)&#160;</b><br/>
+Microcontroller&#160;&#160;Abstraction&#160;&#160;Layer&#160;&#160;initialization&#160;&#160;is&#160;&#160;usually&#160;&#160;done&#160;&#160;by&#160;&#160;EcuM.&#160;&#160;Especially,&#160;&#160;the&#160;<br/>MCU&#160;and&#160;Port&#160;Drivers&#160;are usually&#160;initialized&#160;in&#160;a&#160;very&#160;early&#160;stage&#160;during&#160;start-up.&#160;<br/>The&#160;DIO&#160;Driver&#160;is&#160;accessed&#160;by&#160;the&#160;CAN&#160;interface&#160;if&#160;the&#160;CAN&#160;transceiver&#160;has&#160;an&#160;additional&#160;<br/>port to&#160;separately&#160;enable&#160;the&#160;CAN&#160;transceiver.&#160;<br/>If&#160;e.g.&#160;the&#160;DIO&#160;Driver&#160;is&#160;necessary&#160;for&#160;a&#160;safety&#160;mechanism,&#160;the&#160;DIO&#160;Driver&#160;cannot&#160;be&#160;used&#160;<br/>by&#160;ASIL&#160;software.&#160;&#160;<br/>A&#160;solution&#160;using&#160;Complex&#160;Drivers and&#160;an&#160;appropriate&#160;MPU setup&#160;may&#160;be&#160;found.&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+29&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=30></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>6&#160;&#160;Procedural&#160;requirements&#160;</b><br/>
+Vector&#160;&#160;does&#160;&#160;not&#160;&#160;provide&#160;&#160;supporting&#160;&#160;material&#160;&#160;for&#160;&#160;a&#160;&#160;tool&#160;&#160;qualification&#160;&#160;of&#160;&#160;the&#160;&#160;compiler&#160;&#160;and&#160;<br/>debugger&#160;&#160;according&#160;&#160;to&#160;&#160;ISO&#160;26262&#160;&#160;Part&#160;&#160;8.&#160;&#160;The&#160;&#160;customer&#160;&#160;is&#160;&#160;responsible&#160;&#160;to&#160;&#160;perform&#160;&#160;the&#160;<br/>necessary&#160;qualification&#160;activities.&#160;&#160;<br/>Vector&#160;&#160;assumes&#160;&#160;that&#160;&#160;both&#160;&#160;compiler&#160;&#160;and&#160;&#160;debugger&#160;&#160;will&#160;&#160;be&#160;&#160;classified&#160;&#160;with&#160;&#160;a&#160;&#160;TCL&#160;&#160;2.&#160;&#160;The&#160;<br/>debugger&#160;does&#160;not&#160;necessarily&#160;have&#160;to&#160;be&#160;taken&#160;into&#160;account,&#160;only&#160;if&#160;it&#160;is&#160;used&#160;for&#160;testing&#160;<br/>purposes.&#160;Otherwise,&#160;it&#160;does&#160;not&#160;matter how&#160;the&#160;debugger is classified.&#160;&#160;<br/>If&#160;&#160;not&#160;&#160;stated&#160;&#160;otherwise&#160;&#160;the&#160;&#160;source&#160;&#160;code&#160;&#160;of&#160;&#160;software&#160;&#160;delivered&#160;&#160;by&#160;&#160;Vector&#160;&#160;must&#160;&#160;not&#160;&#160;be&#160;<br/>modified&#160;by&#160;the&#160;customer.&#160;It&#160;is&#160;recommended&#160;that&#160;the&#160;customer&#160;checks&#160;if&#160;the&#160;source&#160;code&#160;<br/>has been&#160;modified,&#160;e.g.&#160;by&#160;comparing&#160;it&#160;to&#160;the&#160;original delivery.&#160;<br/>The&#160;customer&#160;has&#160;to&#160;assure&#160;that&#160;sufficient&#160;resources&#160;are&#160;available&#160;to&#160;operate&#160;the&#160;software&#160;<br/>delivered&#160;by&#160;Vector.&#160;This includes:&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>selection&#160;of&#160;a&#160;microcontroller&#160;with&#160;sufficient&#160;RAM,&#160;ROM&#160;and&#160;calculation&#160;performance&#160;<br/>
+<b>&gt;&#160;&#160;</b>dimensioning&#160;of&#160;sufficient&#160;stack size&#160;<br/>
+<b>&gt;&#160;&#160;</b>selection&#160;of&#160;appropriate&#160;scheduling&#160;properties&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+30&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=31></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>7&#160;&#160;Assumptions&#160;of&#160;Vector’s&#160;safety&#160;solution&#160;</b><br/>
+This&#160;section&#160;resolves&#160;some&#160;of&#160;the&#160;assumptions&#160;made&#160;by&#160;different&#160;components&#160;of&#160;Vector’s&#160;<br/>safety&#160;solution.&#160;<br/>
+<b>7.1&#160;</b><br/>
+<b>Assumptions&#160;of RTE&#160;</b><br/>
+The&#160;following&#160;assumptions are&#160;extracted&#160;from<a href="MICROSAR_Safety_Guides.html#3">&#160;[5].</a>&#160;<br/>
+<b>Assumption&#160;&#160;Description&#160;</b><br/>
+<b>Can&#160;be&#160;shown by&#160;</b><br/>
+ASS_RTE_1&#160;<br/>
+The&#160;OS&#160;provides&#160;freedom&#160;from&#160;interference&#160;for&#160;different&#160;OS&#160;<br/>
+Using&#160;SafeContext&#160;<br/>
+Applications with regards&#160;to&#160;memory.&#160;This&#160;means&#160;that&#160;code in&#160;<br/>
+OS&#160;with SC3.&#160;<br/>
+one OS&#160;Application cannot&#160;destroy&#160;memory&#160;in another&#160;OS&#160;<br/>Application.&#160;<br/>
+ASS_RTE_2&#160;<br/>
+The&#160;AUTOSAR&#160;Memory&#160;Abstraction&#160;for&#160;the&#160;target&#160;platform&#160;and&#160;<br/>
+Using&#160;a&#160;<br/>
+the&#160;OS&#160;make&#160;it&#160;possible to assign RTE/BSW&#160;variables to&#160;specific&#160;&#160;microcontroller&#160;with&#160;<br/>OS&#160;Applications&#160;so&#160;that&#160;they&#160;can&#160;only&#160;be&#160;written&#160;by&#160;code that&#160;is&#160;<br/>
+an&#160;MPU&#160;and&#160;<br/>
+executed&#160;within this&#160;OS&#160;Application.&#160;<br/>
+SafeContext&#160;OS&#160;<br/>
+Moreover&#160;in case&#160;of&#160;Multicore,&#160;the&#160;RTE&#160;variables&#160;are&#160;mapped&#160;to&#160;&#160;with SC3.&#160;<br/>noncacheable RAM&#160;so that&#160;they&#160;can&#160;be&#160;accessed by&#160;all&#160;cores.&#160;<br/>
+ASS_RTE_3&#160;<br/>
+The&#160;tool&#160;chain&#160;initializes&#160;global&#160;variables or&#160;the&#160;API&#160;<br/>
+Qualification&#160;for&#160;<br/>
+Rte_InitMemory&#160;is&#160;called&#160;before&#160;the&#160;OS&#160;is&#160;started.&#160;<br/>
+customer&#160;<br/>
+Rte_InitMemory&#160;initializes&#160;variables&#160;from&#160;different&#160;OS&#160;<br/>
+configuration&#160;of&#160;<br/>
+Applications.&#160;Therefore it&#160;needs&#160;to be&#160;started&#160;without&#160;memory&#160;<br/>
+Rte_InitMemory&#160;and&#160;<br/>
+protection.&#160;<br/>
+calling&#160;<br/>Rte_InitMemory&#160;<br/>prior&#160;to&#160;StartOS.&#160;<br/>
+ASS_RTE_4&#160;<br/>
+The&#160;OS&#160;allows&#160;non protected&#160;reads&#160;to&#160;RTE/BSW&#160;variables&#160;within&#160;&#160;Using&#160;SafeContext&#160;<br/>the&#160;same and&#160;foreign&#160;OS&#160;Applications.&#160;<br/>
+OS&#160;with SC3 allows&#160;<br/>read access&#160;to&#160;<br/>every&#160;memory&#160;<br/>location.&#160;<br/>
+ASS_RTE_5&#160;<br/>
+Freedom&#160;from&#160;interference with regards&#160;to&#160;CPU&#160;runtime is&#160;<br/>
+Using&#160;<br/>
+provided through external&#160;means,&#160;for&#160;example with the&#160;help of&#160;a&#160;<br/>
+SafeWatchdog to&#160;<br/>
+control&#160;flow&#160;monitor.&#160;The&#160;mechanisms&#160;for&#160;it&#160;are either&#160;<br/>
+implement&#160;timing&#160;<br/>
+implemented&#160;in a&#160;way&#160;that&#160;the&#160;RTE&#160;cannot&#160;deactivate&#160;them&#160;or&#160;a&#160;<br/>
+protection&#160;<br/>
+review&#160;is&#160;performed&#160;that&#160;checks&#160;that&#160;the&#160;RTE&#160;does&#160;not&#160;impact&#160;<br/>
+mechanisms.&#160;<br/>
+their&#160;operation.&#160;<br/>
+ASS_RTE_6&#160;<br/>
+The&#160;OS&#160;APIs&#160;that&#160;are used&#160;by&#160;the&#160;RTE&#160;in&#160;ASIL&#160;parts&#160;of&#160;the&#160;code&#160;&#160;Using&#160;SafeContext&#160;<br/>can&#160;be&#160;called&#160;from&#160;different&#160;contexts&#160;without&#160;interference:&#160;<br/>
+OS&#160;with SC3.&#160;<br/>
+<b>&gt;&#160;&#160;</b>TerminateTask&#160;<br/>
+<b>&gt;&#160;&#160;</b>SuspendOSInterrupts&#160;or&#160;osRteDisableLevel&#160;(MICROSAR&#160;OS)&#160;<br/>
+<b>&gt;&#160;&#160;</b>ResumeOSInterrupts&#160;or&#160;osRteEnableLevel&#160;(MICROSAR&#160;OS)&#160;<br/>
+<b>&gt;&#160;&#160;</b>GetSpinlock&#160;(Multicore&#160;Systems)&#160;<br/>
+<b>&gt;&#160;&#160;</b>ReleaseSpinlock&#160;(Multicore&#160;Systems)&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+31&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=32></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Assumption&#160;&#160;Description&#160;</b><br/>
+<b>Can&#160;be&#160;shown by&#160;</b><br/>
+&#160;<br/>
+ASS_RTE_7&#160;<br/>
+The&#160;OS&#160;provides&#160;at&#160;least&#160;the&#160;APIs&#160;&#160;<br/>
+Using&#160;SafeContext&#160;<br/>
+<b>&gt;&#160;&#160;</b>SuspendOSInterrupts&#160;or&#160;osRteDisableLevel&#160;(MICROSAR&#160;OS)&#160;&#160;OS&#160;with SC3.&#160;<br/>
+<b>&gt;&#160;&#160;</b>ResumeOSInterrupts&#160;or&#160;osRteEnableLevel&#160;(MICROSAR&#160;OS)&#160;<br/>
+with the&#160;same&#160;or&#160;higher&#160;ASIL&#160;than&#160;the&#160;SWCs&#160;<br/>In Multicore&#160;Systems,&#160;the OS&#160;also needs&#160;to&#160;provide&#160;the&#160;APIs&#160;<br/><b>&gt;&#160;&#160;</b>GetSpinlock&#160;<br/>
+<b>&gt;&#160;&#160;</b>ReleaseSpinlock&#160;<br/>
+with the&#160;same&#160;or&#160;higher&#160;ASIL&#160;than&#160;the&#160;SWCs&#160;<br/>
+ASS_RTE_8&#160;<br/>
+The&#160;RTE&#160;configuration&#160;is&#160;chosen&#160;in&#160;such&#160;a way&#160;that&#160;the&#160;&#160;<br/>
+Appropriate&#160;<br/>
+OS/System&#160;mechanisms&#160;for&#160;freedom&#160;from&#160;interference (memory&#160;&#160;configuration.&#160;<br/>and runtime)&#160;can&#160;also be&#160;used&#160;to implement&#160;freedom&#160;from&#160;<br/>
+Coaching&#160;by&#160;Vector&#160;<br/>
+interference&#160;for&#160;SWCs&#160;with different&#160;ASIL.&#160;This&#160;makes&#160;it&#160;<br/>
+on&#160;configuring a&#160;<br/>
+necessary&#160;to&#160;map&#160;SWCs&#160;with different&#160;ASIL&#160;to different&#160;OS&#160;<br/>
+safe system&#160;may&#160;be&#160;<br/>
+Applications.&#160;All&#160;OS&#160;Applications with SWCs&#160;that&#160;do&#160;not&#160;have the&#160;&#160;ordered&#160;separately.&#160;<br/>highest&#160;ASIL&#160;need&#160;to&#160;be&#160;non-trusted.&#160;This&#160;includes&#160;the&#160;OS&#160;<br/>Application of&#160;the&#160;BSW.&#160;&#160;<br/>
+ASS_RTE_9&#160;<br/>
+The&#160;RTE&#160;configuration&#160;is&#160;chosen&#160;in&#160;such&#160;a way&#160;that&#160;no&#160;OS&#160;APIs&#160;<br/>
+Using&#160;SafeContext&#160;<br/>
+need&#160;to&#160;be&#160;called&#160;in&#160;the&#160;RTE&#160;APIs&#160;or&#160;the&#160;TASK&#160;bodies that&#160;violate&#160;&#160;OS&#160;with SC3.&#160;<br/>the&#160;safety&#160;requirements&#160;of&#160;the&#160;ASIL&#160;SWCs.&#160;&#160;<br/>The&#160;RTE&#160;code calls&#160;the&#160;following&#160;OS&#160;APIs:&#160;<br/><b>&gt;&#160;&#160;</b>SetRelAlarm&#160;&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>CancelAlarm&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>SetEvent&#160;<br/>
+<b>&gt;&#160;&#160;</b>GetEvent&#160;<br/>
+<b>&gt;&#160;&#160;</b>ClearEvent&#160;<br/>
+<b>&gt;&#160;&#160;</b>WaitEvent&#160;<br/>
+<b>&gt;&#160;&#160;</b>GetTaskID&#160;<br/>
+<b>&gt;&#160;&#160;</b>ActivateTask&#160;<br/>
+<b>&gt;&#160;&#160;</b>TerminateTask&#160;<br/>
+<b>&gt;&#160;&#160;</b>Schedule&#160;<br/>
+<b>&gt;&#160;&#160;</b>ChainTask&#160;<br/>
+<b>&gt;&#160;&#160;</b>GetResource&#160;<br/>
+<b>&gt;&#160;&#160;</b>ReleaseResource&#160;<br/>
+In case&#160;of&#160;multicore&#160;systems&#160;also&#160;the&#160;API&#160;<br/>
+<b>&gt;&#160;&#160;</b>GetCoreID&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+32&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=33></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Assumption&#160;&#160;Description&#160;</b><br/>
+<b>Can&#160;be&#160;shown by&#160;</b><br/>
+is&#160;called.&#160;<br/>
+ASS_RTE_10&#160;&#160;The&#160;RTE&#160;configuration&#160;is&#160;chosen&#160;in&#160;such&#160;a way&#160;that&#160;no&#160;SWC&#160;<br/>
+Appropriate&#160;<br/>
+needs&#160;to&#160;directly&#160;call&#160;methods in&#160;(Service-)&#160;SWCs&#160;with lower&#160;<br/>
+configuration.&#160;<br/>
+ASIL&#160;and&#160;no&#160;(Service-)&#160;SWCs&#160;with lower&#160;ASIL&#160;needs&#160;to&#160;call&#160;<br/>
+Coaching&#160;by&#160;Vector&#160;<br/>
+methods&#160;in&#160;ASIL&#160;SWCs&#160;except&#160;for&#160;the&#160;case&#160;when the&#160;SWCs&#160;<br/>
+on&#160;configuring a&#160;<br/>
+explicitly&#160;allow&#160;this&#160;kind&#160;of&#160;usage.&#160;If&#160;necessary,&#160;this&#160;work&#160;is&#160;<br/>
+safe system&#160;may&#160;be&#160;<br/>
+delegated&#160;to&#160;wrapper&#160;SWCs&#160;in&#160;the&#160;same&#160;OS&#160;Application as&#160;the&#160;<br/>
+ordered&#160;separately.&#160;<br/>
+called/calling&#160;SWC.&#160;Direct&#160;calls&#160;can&#160;moreover&#160;be&#160;avoided&#160;when&#160;<br/>the&#160;server&#160;runnables&#160;are&#160;mapped&#160;to&#160;tasks.&#160;<br/>
+ASS_RTE_11&#160;&#160;The&#160;RTE&#160;configuration&#160;is&#160;chosen&#160;in&#160;such&#160;a way&#160;that&#160;the&#160;RTE&#160;<br/>
+Appropriate&#160;<br/>
+APIs&#160;or&#160;TASKS&#160;for&#160;a SWC&#160;do&#160;not&#160;contain calls&#160;to&#160;BSW&#160;modules&#160;<br/>
+configuration.&#160;<br/>
+with lower&#160;ASIL&#160;than&#160;the&#160;SWC&#160;itself&#160;that&#160;might&#160;cause&#160;<br/>
+Coaching&#160;by&#160;Vector&#160;<br/>
+interference.&#160;If&#160;necessary,&#160;this&#160;work&#160;is&#160;delegated&#160;to wrapper&#160;<br/>
+on&#160;configuring a&#160;<br/>
+SWCs&#160;in&#160;the&#160;same&#160;OS&#160;Application as&#160;the&#160;BSW&#160;modules.&#160;For&#160;<br/>
+safe system&#160;may&#160;be&#160;<br/>
+external&#160;communication,&#160;the&#160;RTE&#160;proxies the&#160;calls&#160;to&#160;the&#160;Com&#160;<br/>
+ordered&#160;separately.&#160;<br/>
+module.&#160;<br/>
+ASS_RTE_12&#160;&#160;The&#160;RTE&#160;does&#160;not&#160;need&#160;to provide&#160;freedom&#160;from&#160;interference&#160;for&#160;&#160;Using&#160;SafeCOM.&#160;<br/>
+communication.&#160;In&#160;an&#160;AUTOSAR&#160;system,&#160;the&#160;E2ELibrary&#160;that&#160;is&#160;<br/>directly&#160;called&#160;by&#160;the&#160;SWCs&#160;is&#160;responsible&#160;for&#160;Safe&#160;<br/>communication.&#160;Nevertheless,&#160;the&#160;RTE&#160;provides&#160;APIs&#160;that&#160;can&#160;be&#160;<br/>called&#160;by&#160;the&#160;E2ELibrary.&#160;<br/>
+ASS_RTE_13&#160;&#160;The&#160;Generated&#160;RTE&#160;code&#160;for&#160;ASIL&#160;SWCs&#160;is&#160;qualified&#160;according&#160;<br/>
+Qualifying&#160;the&#160;<br/>
+to&#160;the&#160;requirements&#160;of&#160;ISO&#160;26262 by&#160;the&#160;integrator&#160;so&#160;that&#160;it&#160;<br/>
+generated&#160;code&#160;<br/>
+reaches&#160;the&#160;same&#160;ASIL&#160;as&#160;the&#160;SWCs&#160;themselves.&#160;This&#160;is&#160;<br/>
+according&#160;to&#160;<br/>
+necessary&#160;because&#160;the&#160;RTE&#160;Generator&#160;was only&#160;developed&#160;with&#160;&#160;ISO&#160;26262 Part&#160;8.&#160;<br/>Vectors&#160;standard&#160;quality&#160;management&#160;(QM).&#160;<br/>
+ASS_RTE_14&#160;&#160;The&#160;hardware&#160;is&#160;suited&#160;for&#160;safety&#160;relevant&#160;software according&#160;to&#160;&#160;Development&#160;<br/>
+the&#160;requirements&#160;of&#160;ISO&#160;26262.&#160;The&#160;hardware&#160;requirements&#160;are&#160;<br/>
+according&#160;to&#160;<br/>
+mostly&#160;determined&#160;by&#160;the SWCs&#160;that&#160;shall&#160;be&#160;supported&#160;by&#160;the&#160;<br/>
+ISO&#160;26262&#160;for&#160;the&#160;<br/>
+RTE.&#160;The&#160;MICROSAR&#160;RTE&#160;does&#160;not&#160;impose&#160;other&#160;hardware&#160;<br/>
+whole item.&#160;<br/>
+safety&#160;requirements&#160;as&#160;those that&#160;are already&#160;required&#160;by&#160;the&#160;<br/>SWCs&#160;and&#160;the&#160;OS.&#160;<br/>
+ASS_RTE_15&#160;&#160;The&#160;development&#160;tool&#160;chain (for&#160;example editors,&#160;compilers,&#160;<br/>
+Tool&#160;evaluation.&#160;<br/>
+linkers,&#160;make&#160;environment,&#160;flash&#160;utilities)&#160;is&#160;suited&#160;for&#160;the&#160;<br/>
+Vector&#160;can&#160;provide&#160;<br/>
+development&#160;of&#160;safety&#160;relevant&#160;software&#160;according&#160;to&#160;the&#160;<br/>
+assistance on&#160;<br/>
+requirements&#160;of&#160;ISO&#160;26262.&#160;All&#160;tools&#160;need&#160;to&#160;reach the&#160;<br/>
+evaluation&#160;Vector&#160;<br/>
+appropriate&#160;Tool&#160;Confidence&#160;Level&#160;(TCL).&#160;<br/>
+tools.&#160;<br/>
+Table&#160;7-1&#160;&#160;&#160;Assumptions&#160;of&#160;RTE&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+33&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=34></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>7.2&#160;</b><br/>
+<b>Assumptions&#160;of SafeWatchdog&#160;</b><br/>
+The&#160;following&#160;assumptions are&#160;extracted&#160;from<a href="MICROSAR_Safety_Guides.html#3">&#160;[12].</a>&#160;<br/>
+<b>Assumption&#160;&#160;Description&#160;</b><br/>
+<b>Can&#160;be&#160;shown by&#160;</b><br/>
+282785&#160;<br/>
+The&#160;software&#160;execution&#160;environment&#160;shall&#160;be&#160;able to&#160;run&#160;software&#160;&#160;Using&#160;appropriate&#160;<br/>according&#160;to&#160;requirements&#160;of&#160;up&#160;to&#160;the&#160;system's&#160;required&#160;ASIL.&#160;&#160;<br/>
+hardware&#160;<br/>
+This&#160;also&#160;includes:&#160;&#160;<br/>
+architecture&#160;and&#160;<br/>components,&#160;using&#160;<br/>
+<b>&gt;&#160;&#160;</b>free&#160;from&#160;interference among&#160;the&#160;SW&#160;components&#160;(see&#160;<br/>
+282807)&#160;<br/>
+SafeContext&#160;OS&#160;<br/>
+&#160;<br/>
+with SC3 and&#160;<br/>
+<b>&gt;&#160;&#160;</b>supervision&#160;by&#160;an&#160;extern&#160;measures&#160;(see&#160;282795)&#160;&#160;<br/>
+hardware&#160;watchdog&#160;<br/>with at&#160;least&#160;a&#160;<br/>
+<b>&gt;&#160;&#160;</b>the&#160;hardware&#160;shall&#160;consist&#160;of&#160;an&#160;MCU&#160;with all&#160;required&#160;<br/>
+different&#160;time base&#160;<br/>
+hardware&#160;to&#160;run&#160;according to&#160;system&#160;specifications&#160;(i.e.&#160;safe&#160;&#160;(depending&#160;on&#160;the&#160;<br/>
+HW&#160;to&#160;detect/avoid e.g.&#160;bit-flips by&#160;means of&#160;start-up&#160;checks,&#160;&#160;required&#160;ASIL).&#160;<br/>
+cyclical&#160;checks,&#160;ECC&#160;check,&#160;....).&#160;<br/>
+<b>&gt;&#160;&#160;</b>the&#160;hardware&#160;shall&#160;be&#160;composed of&#160;components&#160;that&#160;are&#160;<br/>
+qualifiable up&#160;to&#160;the&#160;desired&#160;ASIL&#160;of&#160;the&#160;system.&#160;<br/>
+297946&#160;<br/>
+The&#160;software&#160;execution&#160;environment&#160;shall&#160;provide methods&#160;for&#160;<br/>
+Using&#160;SafeContext&#160;<br/>
+mutual&#160;exclusion.&#160;<br/>
+OS&#160;with SC3.&#160;<br/>
+297948&#160;<br/>
+Such&#160;methods&#160;are&#160;disabling&#160;of&#160;interrupts,&#160;locks,&#160;semaphores&#160;etc.&#160;&#160;&#160;Using&#160;SafeContext&#160;<br/>Especially&#160;disabling&#160;of&#160;interrupts&#160;is&#160;often&#160;used&#160;to&#160;gain exclusive&#160;<br/>
+OS&#160;with SC3.&#160;<br/>
+access&#160;to&#160;resources or&#160;perform&#160;multiple operations&#160;atomically.&#160;<br/>
+282807&#160;<br/>
+The&#160;software&#160;platform&#160;shall&#160;provide&#160;an&#160;execution&#160;environment&#160;<br/>
+Using&#160;SafeContext&#160;<br/>
+that&#160;is&#160;capable of&#160;running multiple software&#160;components&#160;with&#160;<br/>
+OS&#160;with SC3.&#160;<br/>
+freedom&#160;from&#160;interference&#160;from&#160;each other.&#160;<br/>
+282809&#160;<br/>
+The&#160;S-WdgM&#160;and&#160;the&#160;supervised&#160;application are&#160;considered&#160;as&#160;<br/>
+Using&#160;SafeContext&#160;<br/>
+separate&#160;SW&#160;components&#160;with&#160;freedom&#160;from&#160;(unintended)&#160;<br/>
+OS&#160;with SC3 and&#160;<br/>
+interference.&#160;Freedom&#160;from&#160;interference&#160;can&#160;be&#160;achieved&#160;by&#160;e.g.&#160;&#160;assigning&#160;different&#160;<br/>microcontroller&#160;with MPU.&#160;<br/>
+OS&#160;Applications&#160;to&#160;<br/>the&#160;SafeWatchdog&#160;<br/>and the&#160;application.&#160;<br/>
+282795&#160;<br/>
+The&#160;system&#160;shall&#160;provide&#160;measures&#160;to&#160;detect&#160;timing&#160;violations of&#160;&#160;Appropriate&#160;system&#160;<br/>the&#160;MCU&#160;itself&#160;and&#160;trigger&#160;a&#160;corresponding&#160;fault&#160;reaction,&#160;if&#160;<br/>
+architecture.&#160;<br/>
+necessary:&#160;&#160;<br/><b>&gt;&#160;&#160;</b>There shall&#160;be&#160;an&#160;external&#160;safety&#160;measure&#160;that&#160;can&#160;handle a&#160;<br/>
+failure&#160;of&#160;the&#160;MCU.&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>It&#160;must&#160;be&#160;possible&#160;for&#160;the MCU&#160;to trigger&#160;the&#160;external&#160;safety&#160;<br/>
+measure&#160;if&#160;the&#160;MCU&#160;detects&#160;a&#160;fault&#160;within itself.&#160;<br/>
+282797&#160;<br/>
+MCU&#160;faults&#160;need&#160;to&#160;be&#160;detected&#160;by&#160;external&#160;measures.&#160;An extern&#160;&#160;Depending&#160;on&#160;the&#160;<br/>WD&#160;can&#160;detect&#160;MCU&#160;and S-WdgM&#160;fault.&#160;<br/>
+required&#160;ASIL,&#160;an&#160;<br/>external&#160;watchdog&#160;<br/>is&#160;necessary.&#160;<br/>
+282789&#160;<br/>
+The&#160;MCU&#160;shall&#160;be&#160;able to perform&#160;a&#160;safe&#160;startup&#160;to&#160;the&#160;point&#160;of&#160;<br/>
+See&#160;secti<a href="MICROSAR_Safety_Guides.html#27">on&#160;5.1.</a>&#160;<br/>
+where the&#160;S-WdgM&#160;is&#160;safely&#160;initialized.&#160;<br/>
+265876&#160;<br/>
+The&#160;FLASH&#160;memory&#160;correctness&#160;shall&#160;be&#160;checked at&#160;ECU&#160;<br/>
+See&#160;sectio<a href="MICROSAR_Safety_Guides.html#27">n&#160;5.1.</a>&#160;<br/>
+startup&#160;time.&#160;An&#160;ECC&#160;or&#160;comparable&#160;check&#160;shall&#160;be&#160;used at&#160;run-<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+34&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=35></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>Assumption&#160;&#160;Description&#160;</b><br/>
+<b>Can&#160;be&#160;shown by&#160;</b><br/>
+time.&#160;<br/>
+263975&#160;<br/>
+The&#160;generated&#160;code&#160;holds&#160;a checksum&#160;over&#160;some&#160;significant&#160;<br/>
+See&#160;sectio<a href="MICROSAR_Safety_Guides.html#27">n&#160;5.1.</a>&#160;<br/>
+fields&#160;(e.g.&#160;version)&#160;to check that:&#160;&#160;<br/><b>&gt;&#160;&#160;</b>the&#160;generated&#160;code belongs&#160;to&#160;the&#160;S-WdgM&#160;code&#160;according&#160;<br/>
+to version information&#160;and&#160;&#160;<br/>
+<b>&gt;&#160;&#160;</b>the&#160;generated&#160;code is&#160;not&#160;overwritten&#160;by&#160;other&#160;code&#160;at&#160;the&#160;<br/>
+flashing process.&#160;&#160;<br/>
+The&#160;checksum&#160;is&#160;checked with every&#160;run&#160;of&#160;the&#160;function&#160;<br/>WdgM_Init&#160;().&#160;A&#160;failed&#160;check yields&#160;&#160;<br/>WDGM_E_PARAM_CONFIG.&#160;&#160;<br/>Note&#160;that&#160;the&#160;checksum&#160;does not&#160;cover&#160;the&#160;complete&#160;<br/>configuration&#160;and cannot&#160;thoroughly&#160;detect&#160;when the&#160;<br/>configuration&#160;memory&#160;is&#160;corrupted&#160;(like&#160;bit&#160;flips).&#160;<br/>
+Table&#160;7-2&#160;&#160;&#160;Assumptions&#160;of&#160;SafeWatchdog&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+35&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=36></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>8&#160;&#160;Glossary&#160;and&#160;Abbreviations&#160;</b><br/>
+<b>8.1&#160;</b><br/>
+<b>Glossary&#160;</b><br/>
+For&#160;definitions&#160;see&#160;section<a href="MICROSAR_Safety_Guides.html#7">&#160;1.3.</a>&#160;<br/>
+<b>8.2&#160;</b><br/>
+<b>Abbreviations&#160;</b><br/>
+<b>Abbreviation&#160;</b><br/>
+<b>Description&#160;</b><br/>
+API&#160;<br/>
+Application Programming Interface&#160;&#160;&#160;<br/>
+ASIL&#160;<br/>
+Automotive Safety&#160;Integrity&#160;Level&#160;<br/>
+AUTOSAR&#160;<br/>
+Automotive Open System&#160;Architecture&#160;<br/>
+BSW&#160;<br/>
+Basis&#160;Software&#160;<br/>
+CD&#160;<br/>
+Complex&#160;Driver&#160;<br/>
+DEM&#160;<br/>
+Diagnostic&#160;Event&#160;Manager&#160;<br/>
+DET&#160;<br/>
+Development&#160;Error&#160;Tracer&#160;<br/>
+E2E&#160;<br/>
+End-to-end protection&#160;<br/>
+EAD&#160;<br/>
+Embedded&#160;Architecture&#160;Designer&#160;<br/>
+ECU&#160;<br/>
+Electronic&#160;Control&#160;Unit&#160;<br/>
+HIS&#160;<br/>
+Hersteller&#160;Initiative Software&#160;<br/>
+ISR&#160;<br/>
+Interrupt&#160;Service Routine&#160;<br/>
+MICROSAR&#160;<br/>
+Microcontroller&#160;Open&#160;System&#160;Architecture&#160;(the&#160;Vector&#160;AUTOSAR&#160;<br/>solution)&#160;<br/>
+OEM&#160;<br/>
+Original&#160;Equipment&#160;Manufacturer&#160;<br/>
+PPORT&#160;<br/>
+Provide&#160;Port&#160;<br/>
+QM&#160;<br/>
+Quality&#160;measures&#160;<br/>
+RPORT&#160;<br/>
+Require Port&#160;<br/>
+RTE&#160;<br/>
+Runtime Environment&#160;<br/>
+SRS&#160;<br/>
+Software&#160;Requirement&#160;Specification&#160;<br/>
+SWC&#160;<br/>
+Software&#160;Component&#160;<br/>
+SWS&#160;<br/>
+Software&#160;Specification&#160;<br/>
+Table&#160;8-1&#160;&#160;&#160;Abbreviations&#160;<br/>
+&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+36&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+<a name=37></a>Safety&#160;Guide&#160;MICROSAR&#160;<br/>
+<b>9&#160;&#160;Contact&#160;</b><br/>
+Visit&#160;our website&#160;for&#160;more information&#160;on&#160;<br/>&#160;<br/><b>&gt;&#160;&#160;</b>News&#160;<br/>
+<b>&gt;&#160;&#160;</b>Products&#160;<br/>
+<b>&gt;&#160;&#160;</b>Demo&#160;software&#160;<br/>
+<b>&gt;&#160;&#160;</b>Support&#160;<br/>
+<b>&gt;&#160;&#160;</b>Training&#160;data&#160;<br/>
+<b>&gt;&#160;&#160;</b>Addresses&#160;<br/>
+&#160;<br/>www.vector.com&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>
+2014,&#160;Vector&#160;Informatik&#160;GmbH&#160;<br/>
+Version:&#160;1.2.2&#160;<br/>
+37&#160;/&#160;37&#160;<br/>
+based&#160;on&#160;template&#160;version&#160;5.7.1&#160;<br/>
+<hr/>
+</body>
+</html>

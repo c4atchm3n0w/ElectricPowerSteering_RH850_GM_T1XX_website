@@ -1,0 +1,391 @@
+---
+title: ES208A FR v1.1s
+linkTitle: ES208A FR v1.1s
+weight: 5
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><b>/ESG&#160;Group/FDD&#160;Module&#160;Requirements/EA4&#160;Specific</b><br/>
+<b>ES208A&#160;CurrMeasArbn</b><br/>
+Baselined&#160;v1.1&#160;and&#160;Released<br/>
+Version:&#160;1.1<br/>Printed&#160;by:&#160;Nayeem&#160;Mahmud<br/>Printed&#160;on:&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+Generated&#160;from&#160;DOORS&#160;9.3.0.7<br/>
+<hr/>
+<a name=2></a><b>Contents</b><br/>
+<b>1</b><br/>
+<b>Purpose</b><br/>
+<b>1</b><br/>
+<b>2</b><br/>
+<b>Interface&#160;Requirements</b><br/>
+<b>2</b><br/>
+2.1<br/>
+Definitions<br/>
+2<br/>
+2.1.1<br/>
+Inputs<br/>
+2<br/>
+2.1.2<br/>
+Outputs<br/>
+2<br/>
+2.1.3<br/>
+Internally&#160;Defined&#160;Terms<br/>
+3<br/>
+<b>3</b><br/>
+<b>Requirements</b><br/>
+<b>4</b><br/>
+3.1<br/>
+Primary&#160;Functional&#160;Requirements<br/>
+4<br/>
+3.2<br/>
+Hardware&#160;Requirements<br/>
+4<br/>
+3.3<br/>
+Software&#160;/&#160;Algorithm&#160;Requirements<br/>
+4<br/>
+3.3.1<br/>
+Special&#160;Execution&#160;Requirements<br/>
+4<br/>
+3.3.2<br/>
+Software&#160;Algorithm&#160;Decomoposition<br/>
+4<br/>
+3.4<br/>
+Diagnostic&#160;Requirements<br/>
+5<br/>
+3.5<br/>
+Manufacturing&#160;Requirements<br/>
+5<br/>
+Contents<br/>
+ii<br/>
+<hr/>
+<a name=3></a><b>ID</b><br/>
+ES208A_1<br/>
+ES208A_9<br/>
+Page&#160;1A&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=4></a><b>Baselined&#160;v1.1&#160;and&#160;Released</b><br/>
+<b>1&#160;Purpose</b><br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;is&#160;responsible&#160;to&#160;calculate&#160;the&#160;direct&#160;(D)&#160;and&#160;quadrature&#160;(Q)&#160;axes&#160;<br/>motor&#160;currents&#160;using&#160;the&#160;combined&#160;Clarke/Park&#160;transformation.<br/>
+Page&#160;1B&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=5></a><b>Is&#160;</b><br/>
+<b>.ASIL</b><br/>
+<b>.ReqCat</b><br/>
+<b>Review&#160;</b><br/>
+<b>Review&#160;Action</b><br/>
+<b>Review&#160;</b><br/>
+<b>Requir</b><br/>
+<b>Date</b><br/>
+<b>Action&#160;</b><br/>
+<b>ement</b><br/>
+<b>Status</b><br/>
+<b>?</b><br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+Page&#160;1C&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=6></a><b>ID</b><br/>
+ES208A_2<br/>
+ES208A_11<br/>
+ES208A_12<br/>
+ES208A_200<br/>
+ES208A_205<br/>
+ES208A_202<br/>
+ES208A_104<br/>
+ES208A_103<br/>
+ES208A_102<br/>
+ES208A_101<br/>
+ES208A_100<br/>
+ES208A_99<br/>
+ES208A_215<br/>
+ES208A_214<br/>
+ES208A_213<br/>
+ES208A_212<br/>
+ES208A_13<br/>
+ES208A_204<br/>
+Page&#160;2A&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=7></a><b>Baselined&#160;v1.1&#160;and&#160;Released</b><br/>
+<b>2&#160;Interface&#160;Requirements</b><br/>
+<b>2.1&#160;Definitions</b><br/>
+<b>2.1.1&#160;Inputs</b><br/>
+<b>MotCtrlMotElecMeclPolarity:&#160;</b>Motor&#160;electro&#160;mechanical&#160;polarity&#160;to&#160;determine&#160;the&#160;orientation&#160;of&#160;the&#160;three&#160;phases.&#160;<br/>
+<b>MotCtrlCurrMeasCorrlnSts</b>:&#160;Current&#160;Measurement&#160;Correlation&#160;Status&#160;which&#160;indicates&#160;if&#160;there&#160;is&#160;any&#160;correlation&#160;<br/>fault&#160;exists&#160;between&#160;channels.<br/>
+<b>MotCtrlCurrMeasMotAgCorrd</b>:&#160;Corrected&#160;motor&#160;position&#160;used&#160;to&#160;calculate&#160;Q&#160;and&#160;D&#160;axis&#160;motor&#160;current.<br/>
+<b>MotCtrlMotCurrCorrdA</b>:&#160;Phase&#160;A&#160;motor&#160;current&#160;in&#160;amps.<br/>
+<b>MotCtrlMotCurrCorrdB</b>:&#160;Phase&#160;B&#160;motor&#160;current&#160;in&#160;amps.<br/>
+<b>MotCtrlMotCurrCorrdC</b>:&#160;Phase&#160;C&#160;motor&#160;current&#160;in&#160;amps.<br/>
+<b>MotCtrlMotCurrCorrdD</b>:&#160;Phase&#160;D&#160;motor&#160;current&#160;in&#160;amps.<br/>
+<b>MotCtrlMotCurrCorrdE</b>:&#160;Phase&#160;E&#160;motor&#160;current&#160;in&#160;amps.<br/>
+<b>MotCtrlMotCurrCorrdF</b>:&#160;Phase&#160;F&#160;motor&#160;current&#160;in&#160;amps.<br/>
+<b>MotCtrlMotCurrQlfr1</b>:&#160;Qualifier&#160;to&#160;indicate&#160;the&#160;status&#160;of&#160;the&#160;current&#160;sense&#160;amplifiers&#160;of&#160;Gate&#160;Drive&#160;1.<br/>
+<b>MotCtrlMotCurrQlfr2</b>:&#160;Qualifier&#160;to&#160;indicate&#160;the&#160;status&#160;of&#160;the&#160;current&#160;sense&#160;amplifiers&#160;of&#160;Gate&#160;Drive&#160;2.<br/>
+<b>MotCtrlMotCurrRollgCntr1</b>:&#160;Rolling&#160;Counter&#160;will&#160;be&#160;incremented&#160;when&#160;&#160;a&#160;new&#160;set&#160;of&#160;valid&#160;phase&#160;current&#160;<br/>measurement&#160;of&#160;Inverter&#160;1&#160;is&#160;performed.<br/>
+<b>MotCtrlMotCurrRollgCntr2</b>:&#160;Rolling&#160;Conuter&#160;will&#160;be&#160;incremented&#160;when&#160;&#160;a&#160;new&#160;set&#160;of&#160;valid&#160;phase&#160;current&#160;<br/>measurement&#160;of&#160;Inverter&#160;2&#160;is&#160;performed.<br/>
+<b>2.1.2&#160;Outputs</b><br/>
+<b>MotCtrlMotCurrDax:</b>&#160;D-Axis&#160;Motor&#160;Current.<br/>
+Page&#160;2B&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=8></a><b>Is&#160;</b><br/>
+<b>.ASIL</b><br/>
+<b>.ReqCat</b><br/>
+<b>Review&#160;</b><br/>
+<b>Review&#160;Action</b><br/>
+<b>Review&#160;</b><br/>
+<b>Requir</b><br/>
+<b>Date</b><br/>
+<b>Action&#160;</b><br/>
+<b>ement</b><br/>
+<b>Status</b><br/>
+<b>?</b><br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+Page&#160;2C&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=9></a><b>ID</b><br/>
+ES208A_206<br/>
+ES208A_41<br/>
+ES208A_207<br/>
+Page&#160;3A&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=10></a><b>Baselined&#160;v1.1&#160;and&#160;Released</b><br/>
+<b>MotCtrlMotCurrQax:</b>&#160;Q-Axis&#160;Motor&#160;Current.<br/>
+<b>2.1.3&#160;Internally&#160;Defined&#160;Terms</b><br/>
+None.<br/>
+Page&#160;3B&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=11></a><b>Is&#160;</b><br/>
+<b>.ASIL</b><br/>
+<b>.ReqCat</b><br/>
+<b>Review&#160;</b><br/>
+<b>Review&#160;Action</b><br/>
+<b>Review&#160;</b><br/>
+<b>Requir</b><br/>
+<b>Date</b><br/>
+<b>Action&#160;</b><br/>
+<b>ement</b><br/>
+<b>Status</b><br/>
+<b>?</b><br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+Page&#160;3C&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=12></a><b>ID</b><br/>
+ES208A_3<br/>
+ES208A_4<br/>
+ES208A_15<br/>
+ES208A_5<br/>
+ES208A_114<br/>
+ES208A_6<br/>
+ES208A_44<br/>
+ES208A_216<br/>
+ES208A_45<br/>
+ES208A_135<br/>
+ES208A_219<br/>
+ES208A_217<br/>
+ES208A_218<br/>
+Page&#160;4A&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=13></a><b>Baselined&#160;v1.1&#160;and&#160;Released</b><br/>
+<b>3&#160;Requirements</b><br/>
+<b>3.1&#160;Primary&#160;Functional&#160;Requirements</b><br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;is&#160;responsible&#160;to&#160;calculate&#160;the&#160;direct&#160;(D)&#160;and&#160;quadrature&#160;(Q)&#160;axes&#160;<br/>motor&#160;currents&#160;using&#160;the&#160;combined&#160;Clarke/Park&#160;transformation.<br/>
+<b>3.2&#160;Hardware&#160;Requirements</b><br/>
+None.<br/>
+<b>3.3&#160;Software&#160;/&#160;Algorithm&#160;Requirements</b><br/>
+<b>3.3.1&#160;Special&#160;Execution&#160;Requirements</b><br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;be&#160;executed&#160;every&#160;other&#160;motor&#160;control&#160;loop&#160;(125us).<br/>
+<b>3.3.2&#160;Software&#160;Algorithm&#160;Decomoposition</b><br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;indicate&#160;the&#160;signal&#160;availability&#160;1&#160;is&#160;TRUE&#160;when&#160;all&#160;the&#160;<br/>following&#160;conditions&#160;are&#160;satisfied&#160;<br/><b>MotCurrRollgCntr1</b>&#160;is&#160;NOT&#160;equal&#160;to&#160;the&#160;previous&#160;value&#160;or&#160;<b>MotCurrRollgCntr1</b>&#160;is&#160;equal&#160;to&#160;the&#160;previous&#160;value&#160;for&#160;<br/>the&#160;duration&#160;less&#160;than&#160;a&#160;field&#160;configurable&#160;value,<br/><b>MotCurrQlfr1</b>&#160;is&#160;NOT&#160;equal&#160;to&#160;<b>Failed</b>,<br/><b>CurrMeasCorrlnSts</b>&#160;of&#160;Phase&#160;A,&#160;B,&#160;C&#160;is&#160;TRUE&#160;or&#160;<b>CurrMeasCorrlnSts</b>&#160;bits&#160;for&#160;Phase&#160;A,&#160;B,&#160;C&#160;is&#160;equal&#160;to&#160;<br/><b>CORRLNSTSCOMPCON1_ULS_U08</b>.<br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;indicate&#160;the&#160;signal&#160;availability&#160;2&#160;is&#160;TRUE&#160;when&#160;all&#160;the&#160;<br/>following&#160;conditions&#160;are&#160;satisfied<br/><b>MotCurrRollgCntr2</b>&#160;is&#160;NOT&#160;equal&#160;to&#160;the&#160;previous&#160;value&#160;or&#160;<b>MotCurrRollgCntr2</b>&#160;is&#160;equal&#160;to&#160;the&#160;previous&#160;value&#160;for&#160;<br/>the&#160;duration&#160;less&#160;than&#160;a&#160;field&#160;configurable&#160;value,<br/><b>MotCurrQlfr2</b>&#160;&#160;is&#160;NOT&#160;equal&#160;to&#160;<b>Failed</b>,<br/><b>CurrMeasCorrlnSts</b>&#160;of&#160;Phase&#160;D,&#160;E,&#160;F&#160;is&#160;TRUE&#160;or&#160;<b>CurrMeasCorrlnSts</b>&#160;bits&#160;for&#160;Phase&#160;D,&#160;E,&#160;F&#160;is&#160;equal&#160;to&#160;<br/><b>CORRLNSTSCOMPCON2_ULS_U08</b>.<br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;only&#160;use<b>&#160;MotCtrlMotCurrCorrdA,&#160;<br/>MotCtrlMotCurrCorrdB,&#160;MotCtrlMotCurrCorrdC</b>&#160;in&#160;Q&#160;and&#160;D&#160;axes&#160;current&#160;calculation,&#160;if&#160;signal&#160;availability&#160;1&#160;<br/>is&#160;TRUE&#160;and&#160;signal&#160;availability&#160;2&#160;is&#160;FALSE.<br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;only&#160;use&#160;<b>MotCtrlMotCurrCorrdD,&#160;<br/>MotCtrlMotCurrCorrdE,&#160;MotCtrlMotCurrCorrdF</b>&#160;in&#160;Q&#160;and&#160;D&#160;axes&#160;current&#160;calculation,&#160;if&#160;signal&#160;availability&#160;2&#160;<br/>is&#160;TRUE&#160;and&#160;signal&#160;availability&#160;1&#160;is&#160;FALSE.<br/>
+Page&#160;4B&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=14></a><b>Is&#160;</b><br/>
+<b>.ASIL</b><br/>
+<b>.ReqCat</b><br/>
+<b>Review&#160;</b><br/>
+<b>Review&#160;Action</b><br/>
+<b>Review&#160;</b><br/>
+<b>Requir</b><br/>
+<b>Date</b><br/>
+<b>Action&#160;</b><br/>
+<b>ement</b><br/>
+<b>Status</b><br/>
+<b>?</b><br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+False<br/>
+NA<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+Page&#160;4C&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=15></a><b>ID</b><br/>
+ES208A_211<br/>
+ES208A_220<br/>
+ES208A_221<br/>
+ES208A_222<br/>
+ES208A_7<br/>
+ES208A_181<br/>
+ES208A_8<br/>
+ES208A_32<br/>
+Page&#160;5A&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=16></a><b>Baselined&#160;v1.1&#160;and&#160;Released</b><br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;use&#160;average&#160;of&#160;<b>MotCtrlMotCurrCorrdA&#160;</b>and&#160;<br/><b>MotCtrlMotCurrCorrdD,&#160;</b>average&#160;of&#160;<b>MotCtrlMotCurrCorrdB&#160;</b>and&#160;<b>MotCtrlMotCurrCorrdE,&#160;</b>average&#160;of&#160;<br/><b>MotCtrlMotCurrCorrdC&#160;</b>and&#160;<b>MotCtrlMotCurrCorrdF</b>&#160;in&#160;Q&#160;and&#160;D&#160;axes&#160;current&#160;calculation,&#160;if&#160;both&#160;signal&#160;<br/>availability&#160;1&#160;and&#160;2&#160;are&#160;TRUE.<br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;set&#160;the&#160;average&#160;of&#160;<b>MotCtrlMotCurrCorrdA&#160;</b>and&#160;<br/><b>MotCtrlMotCurrCorrdD&#160;</b>to&#160;zero<b>,&#160;</b>average&#160;of&#160;<b>MotCtrlMotCurrCorrdB&#160;</b>and&#160;<b>MotCtrlMotCurrCorrdE&#160;</b>to&#160;zero&#160;<br/>and&#160;the&#160;average&#160;of&#160;<b>MotCtrlMotCurrCorrdC&#160;</b>and&#160;<b>MotCtrlMotCurrCorrdF</b>&#160;to&#160;zero&#160;in&#160;Q&#160;and&#160;D&#160;axes&#160;current&#160;<br/>calculation,&#160;if&#160;both&#160;signal&#160;availability&#160;1&#160;and&#160;2&#160;are&#160;FALSE.<br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;use&#160;Park/Clark&#160;Transformation&#160;equations&#160;to&#160;calculate&#160;the&#160;direct&#160;<br/>(D)&#160;and&#160;quadrature&#160;(Q)&#160;axes&#160;motor&#160;currents&#160;using&#160;three&#160;phase&#160;currents&#160;and&#160;<b>MotCtrlMotElecMeclPolarity</b>.<br/>
+The&#160;Current&#160;Measurement&#160;Arbitration&#160;function&#160;shall&#160;range&#160;limit&#160;the&#160;direct&#160;(D)&#160;and&#160;quadrature&#160;(Q)&#160;axes&#160;motor&#160;<br/>current&#160;outputs&#160;within&#160;<b>MOTCURRDAXQAXLIM_AMPR_F32&#160;</b>and&#160;-<br/>(<b>MOTCURRDAXQAXLIM_AMPR_F32</b>)&#160;constant.<br/>
+<b>3.4&#160;Diagnostic&#160;Requirements</b><br/>
+None<br/>
+<b>3.5&#160;Manufacturing&#160;Requirements</b><br/>
+None<br/>
+Page&#160;5B&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+<a name=17></a><b>Is&#160;</b><br/>
+<b>.ASIL</b><br/>
+<b>.ReqCat</b><br/>
+<b>Review&#160;</b><br/>
+<b>Review&#160;Action</b><br/>
+<b>Review&#160;</b><br/>
+<b>Requir</b><br/>
+<b>Date</b><br/>
+<b>Action&#160;</b><br/>
+<b>ement</b><br/>
+<b>Status</b><br/>
+<b>?</b><br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+True<br/>
+D<br/>
+Monday,&#160;<br/>March&#160;16,&#160;<br/>2015<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+False<br/>
+NA<br/>
+Page&#160;5C&#160;of&#160;5<br/>
+Printed&#160;Friday,&#160;October&#160;16,&#160;2015<br/>
+<hr/>
+</body>
+</html>

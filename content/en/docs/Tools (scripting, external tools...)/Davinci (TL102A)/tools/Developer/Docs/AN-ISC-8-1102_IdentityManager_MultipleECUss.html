@@ -1,0 +1,928 @@
+---
+title: AN-ISC-8-1102_IdentityManager_MultipleECUss
+linkTitle: AN-ISC-8-1102_IdentityManager_MultipleECUss
+weight: 10
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-1_1.jpg"/><br/>
+&#160;<br/>
+<b>Identity&#160;Manager - Multiple ECUs&#160;</b><br/>
+<b>Version 1.6&#160;</b><br/>
+<b>2010-09-09&#160;</b><br/>
+<b>Application Note &#160;AN-ISC-8-1102&#160;</b><br/>
+&#160;<br/>&#160;<br/><i><b>&#160;<br/></b></i>Author(s)&#160;<br/>
+Christian&#160;Weber, Hannes&#160;Futter, Marco&#160;Wierer&#160;<br/>
+Restrictions Customer&#160;<br/>
+confidential - Vector decides&#160;<br/>
+Abstract&#160;<br/>
+Configuration&#160;of Multiple ECUs&#160;with Vector's&#160;AUTOSAR BSW stack.&#160;<br/>
+&#160;<br/>&#160;<br/><i><b>Table of Contents&#160;<br/></b></i>&#160;<br/><a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#1">1.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#1">Overview&#160;.......................................................................................................................</a>...................................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#1">1</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">1.1&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">What is the&#160;“Identity Manager” about?&#160;..........................................................................................</a>................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">1.1.1&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">Physical Multiple ECU&#160;..........................................................................................................</a>......................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">2</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">1.1.2&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">Multiple Configurations&#160;ECU....................................................................................................</a>...................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">3</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">1.1.3&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">(Virtual Multiple ECU)&#160;.........................................................................................................</a>........................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">3</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">1.2&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">Operation principle of Physical Multiple&#160;ECUs..................................................................................</a>............<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">3</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">2.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">Configuring a Multiple ECU&#160;.....................................................................................................</a>........................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">4</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">2.1&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">ECUC creation (without overlay)................................................................................................</a>...................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">4</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#5">2.1.1&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#5">What happens&#160;in&#160;the ECUC?......................................................................................................</a>................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#5">5</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#6">2.2&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#6">ECUC Creation (with overlay)&#160;...................................................................................................</a>....................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#6">6</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#7">2.3&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#7">Overlay Control File...........................................................................................................</a>............................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#7">7</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#8">2.3.4&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#8">Signal overlay&#160;.................................................................................................................</a>............................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#8">8</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#9">2.3.5&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#9">Splitting the direction of PDUs&#160;................................................................................................</a>....................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#9">9</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#9">2.3.6&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#9">Example&#160;........................................................................................................................</a>..............................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#9">9</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">2.4&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">ECUC creation using DaVinci Project Assistant&#160;..................................................................................</a>.......<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">11</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">2.5&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">Generating the RTE of&#160;a Multiple ECU&#160;...........................................................................................</a>............<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">11</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">3.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">Initialization&#160;of the BSW&#160;......................................................................................................</a>...........................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#11">11</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#12">3.1&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#12">Creation of the logic&#160;for identity selection&#160;...................................................................................</a>................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#12">12</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#13">3.2&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#13">Prepare the&#160;ECUM&#160;configuration&#160;.................................................................................................</a>...............<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#13">13</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#13">3.3&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#13">Provide an user defined ECUM&#160;initialization function&#160;...........................................................................</a>......<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#13">13</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#15">3.4&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#15">Where do I find the initialization structures?&#160;.................................................................................</a>..............<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#15">15</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#15">3.5&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#15">Overview of&#160;BSW module initialization..........................................................................................</a>..............<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#15">15</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">4.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">Diagnostics&#160;and Multiple ECU&#160;Support...........................................................................................</a>...............<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">16</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">5.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">Supported use cases&#160;............................................................................................................</a>.........................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">16</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">6.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">Restrictions&#160;and limitations&#160;...................................................................................................</a>.........................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#16">16</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#17">7.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#17">Additional resources&#160;...........................................................................................................</a>...........................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#17">17</a>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#18">8.0&#160;</a><br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#18">Contacts.......................................................................................................................</a>..................................<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#18">18</a>&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>1.0 Overview&#160;<br/></b>This application note explains how to configure and use&#160;the “Multiple ECUs” feature in Vector&#160;AUTOSAR&#160;stacks.&#160;<br/>
+<b>&#160;1 &#160;</b><br/>
+<i>Copyright ©&#160;2010 - Vector Informatik GmbH&#160;<br/></i><b>Contact Information:&#160; &#160;www.vector.com&#160; or&#160;+49-711-80&#160;670-0&#160;</b><br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-2_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>1.1&#160;&#160;What is the “Identity&#160;Manager” about?&#160;</b><br/>
+With the Identity Manager&#160;ECUs can be&#160;configured to&#160;run in different scenarios&#160;without major changes<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#2">1&#160;in the&#160;<br/></a>software. The&#160;functionality provided&#160;by the Identity Manager&#160;is not covered by AUTOSAR explicitly. The use cases&#160;<br/>are: &#160;<br/>
+•&#160;&#160;Physical Multiple ECU&#160;<br/>•&#160;&#160;Multiple Configurations ECU&#160;<br/>•&#160;&#160;(Virtual Multiple ECU)&#160;<br/>
+&#160;<br/>
+This document explains about how to use the Physical Multiple ECU feature.&#160;<br/>
+<b>1.1.1 Physical&#160;</b><br/>
+<b>Multiple&#160;</b><br/>
+<b>ECU&#160;</b><br/>
+This aspect covers an ECU within a&#160;specific&#160;car line of an&#160;OEM. If there are several (&gt;1)&#160;almost identical instances&#160;<br/>of this ECU&#160;which are connected to the same vehicle network&#160;at the same time,&#160;they are called&#160;“Physical Multiple”&#160;<br/>ECUs or&#160;“Multiple ECUs” in&#160;short.&#160;<br/>
+Examples: Door Module (DM), Seat Module&#160;(SEAT), Adaptive Damping System (ADS) …&#160;<br/>
+In this application note, we’ll use the Door&#160;Modules&#160;with the following&#160;instances as&#160;an example:&#160;<br/>
+•&#160;&#160;Front Right DM_FR&#160;<br/>•&#160;&#160;Front Left DM_FL&#160;<br/>•&#160;&#160;Rear&#160;Right DM_RR&#160;<br/>•&#160;&#160;Rear&#160;Left DM_RL&#160;<br/>
+&#160;<br/>
+The physical&#160;control units&#160;are derived from a common class&#160;with respect to the functionality.&#160;Hence, all control unit&#160;<br/>instances derived from this class potentially support the same&#160;superset of&#160;the functional scope. The actual ECU&#160;<br/>instances will&#160;be configured according to&#160;the position they will have in the&#160;network topology&#160;when they are built into&#160;<br/>the car.&#160;<br/>
+&#160;According to the configuration there may be &#160;<br/>
+•&#160;&#160;A different functional scope&#160;<br/>
+o&#160;&#160;E.g. different&#160;MMI (man&#160;machine interface) for each ECU instance: Mirror&#160;control or&#160;special window&#160;<br/>
+control for all&#160;windows&#160;only on the Front Left Door&#160;Module, not on&#160;the other modules&#160;(application&#160;<br/>dependent, not covered by this application note)&#160;<br/>
+•&#160;&#160;Different&#160;communication properties&#160;of the instances:&#160;<br/>
+o&#160;&#160;Own&#160;NM message to transmit&#160;<br/>o&#160;&#160;Own&#160;signals to&#160;transmit and to receive&#160;<br/>o&#160;&#160;Own messages to receive&#160;and to transmit&#160;<br/>
+&#160;<br/>
+The System&#160;Description of&#160;the OEM contains the instances of such Physical&#160;Multiple ECU.&#160;For each instance, the&#160;<br/>OEM creates&#160;a separate ECU Extract of System Description. This&#160;set of ECU Extracts is&#160;the configuration input of&#160;<br/>the Physical&#160;Multiple ECU.&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160;<br/>
+1&#160;no major&#160;changes means: No changes in the application,&#160;but there&#160;are changes in the initialization sequence of&#160;<br/>the basic&#160;software which are not covered by AUTOSAR&#160;<br/><i><b>&#160;</b></i><br/>
+<b>2<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-3_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>1.1.2&#160;&#160;Multiple Configurations ECU&#160;</b><br/>
+Across multiple car lines of&#160;an OEM, the communication behavior considerably differs. However, the Multiple&#160;<br/>Configurations&#160;ECU is&#160;shared among an&#160;OEM’s car lines.&#160;Therefore&#160;there must be a mechanism for the adaptation&#160;<br/>of this ECU to&#160;different environments, i.e. different car lines.&#160;<br/>
+Note:&#160;<br/>
+Multiple Configurations ECUs are&#160;currently not supported.&#160;<br/>
+<b>1.1.3&#160;&#160;(Virtual Multiple ECU)&#160;</b><br/>
+Virtual Multiple&#160;ECUs are control units&#160;which are only&#160;virtually separate ECUs from a logical point of view but&#160;<br/>residing inside one ECU hardware board. An example&#160;for this is a&#160;combined&#160;radio / gateway control unit.&#160;<br/>
+Note:&#160;<br/>
+Virtual Multiple&#160;ECUs&#160;are currently not supported.&#160;<br/>
+<b>1.2&#160;&#160;Operation&#160;principle of Physical&#160;Multiple ECUs&#160;</b><br/>
+DataEl<br/>
+taE&#160;ements&#160;= Sy<br/>
+= S&#160;stem&#160;<br/>
+em&#160;Signals<br/>
+PDU overlay<br/>
+rla<br/>
+RTE&#160;fan&#160;out<br/>
+Rte<br/>
+Superset&#160;DataElements<br/>
+Merged&#160;D<br/>
+ed&#160;ataEl<br/>
+taE&#160;ements<br/>
+e<br/>
+DataElemen<br/>
+em<br/>
+ts<br/>
+Merged&#160;<br/>
+ISIGs<br/>
+ISIGs<br/>
+Com<br/>
+IPDU<br/>
+IPDU<br/>
+IPDU<br/>
+IPDU<br/>
+IPDU<br/>
+PduR<br/>
+Decision:&#160;<br/>
+sion<br/>
+IPDU&#160;Æ<br/>
+DU&#160;<br/>
+LPDU<br/>
+CanI<br/>
+Can&#160;f<br/>
+Can<br/>
+id1<br/>
+id2<br/>
+id1<br/>
+id2<br/>
+id1<br/>
+id2<br/>
+identity1<br/>
+identity2<br/>
+identity1<br/>
+identity2<br/>
+identity1<br/>
+identity2<br/>
+&#160;<br/>
+Figure 1 – Overview of the&#160;Multiple&#160;ECU feature, Tx path shown only.&#160;<br/>&#160;<br/>
+<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">In&#160;Figure 1, you se</a>e an example of the operation principle of a Multiple ECU.&#160;Here, the Tx path is shown. The&#160;<br/>leftmost column displays&#160;what happens&#160;if you have to&#160;configure a&#160;Multiple ECU sending out&#160;different CAN&#160;<br/>messages and&#160;cannot use any kind of optimization because the signals for each identity are different. For&#160;each set&#160;<br/>of signals which have to be&#160;sent, a separate PDU is&#160;created and mapped to a corresponding&#160;CAN frame&#160;which is&#160;<br/>actually sent out. This situation also applies if you have&#160;a PDU which is transmitted in one identity and received via&#160;<br/>a different identity. Then, despite having&#160;the same&#160;signals on&#160;application level, two PDUs are created, one for&#160;<br/>transmission in identity1, a second&#160;PDU&#160;for reception in identity2.&#160;<br/>
+However, if you have semantically equivalent signals&#160;sent in different CAN messages, there is room&#160;for&#160;<br/>optimization. This is&#160;shown&#160;in the middle&#160;column. Semantically equivalent signals can be merged into one&#160;common&#160;<br/>PDU, the transmission&#160;is done in different&#160;CAN frames, but their content is equal. &#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>3<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-4_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>If the signal layout is not equivalent over&#160;the identities,&#160;this optimization is not possible (right column&#160;of&#160;<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">Figure&#160;1)</a>.&#160;<br/>Therefore&#160;separate PDUs&#160;have to be used. Additionally: There may&#160;be only one&#160;signal on system level which is&#160;<br/>sent in different PDUs as&#160;shown in the rightmost&#160;column.&#160;In this case the RTE provides&#160;the fan-out to the Com.&#160;<br/>
+Vectors implementation of the Multiple&#160;ECU feature incorporates&#160;overlaying of PDUs as&#160;well as&#160;RTE fan in/out&#160;<br/>(signal overlay).&#160;<br/>
+<b>2.0&#160;&#160;Configuring a Multiple ECU&#160;<br/></b>Before you start with the BSW configuration, you have to&#160;create a valid initial active ECU configuration based on a&#160;<br/>collection of all required ECU Extracts&#160;of&#160;System Configuration. Additionally, the required startup mechanisms in&#160;<br/>the ECUM have to be provided. The State Manager has to recognize which identity is currently active and has to&#160;<br/>decide which&#160;initialization&#160;sequence it has to select for&#160;the current identity. Finally, the BSW can&#160;be configured&#160;<br/>based on this&#160;ECUC file.&#160;<br/>
+The PDUR&#160;controls&#160;the communication&#160;behavior in each instance&#160;of a Multiple ECU configuration. The PDUR&#160;<br/>implements the reception and transmission behavior as well&#160;as&#160;the mapping&#160;of CANIF PDUs (N-PDUs) to the COM&#160;<br/>PDUs (I-PDUs). If there is&#160;no optimization, the transmission and reception behavior is implemented over&#160;a&#160;<br/>superset of Rx and Tx messages in the&#160;CANIF. According to&#160;the active identity,&#160;the message is&#160;either transmitted&#160;<br/>or received&#160;or nothing of this. &#160;<br/>
+For the straight forward case, this can be&#160;reached by&#160;creating different PDUs for&#160;each identity. In an optimized&#160;<br/>case, the memory consumption can be&#160;reduced by merging redundant PDUs.&#160;<br/>
+<b>2.1&#160;&#160;ECUC creation (without overlay)&#160;</b><br/>
+For each ECU identity, the InitialEcuC generator reads in one ECU Extract of&#160;System description – see the figure&#160;<br/>below&#160;for an&#160;overview of the tool flow:&#160;<br/>
+&#160;<br/>
+ECU Extract<br/>
+of&#160;System<br/>
+Configuration<br/>
+Description #1<br/>
+ECU Extract<br/>
+of&#160;System<br/>
+Configuration<br/>
+Initial ECUC<br/>
+ECUC File<br/>
+Description #2<br/>
+Generator<br/>
+.<br/>.<br/>
+ECU Extract<br/>
+of&#160;System<br/>
+Configuration<br/>
+Description #n<br/>
+&#160;<br/>
+Figure 2 – Creating an ECUC file&#160;from&#160;Multiple ECU Extracts&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>4<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-5_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>In our example, we have the Door&#160;Module&#160;ECU with 4&#160;physical Multiple ECUs.&#160;<br/>
+That means the OEM will&#160;provide four different ECU&#160;Extracts of System Configuration Description:&#160;<br/>
+•&#160;DM_FL.arxml&#160;<br/>
+&#160;<br/>
+•&#160;DM_FR.arxml&#160;<br/>
+&#160;<br/>
+•&#160;DM_RL.arxml&#160;<br/>
+&#160;<br/>
+•&#160;DM_RR.arxml&#160;<br/>
+&#160;<br/>
+The InitialEcuC generator&#160;is&#160;able to merge these extracts&#160;in one ECUC file which provide the&#160;superset for the BSW&#160;<br/>configuration.&#160;<br/>
+Tool usage:&#160;<br/>
+GenTool_CsAsrInitialEcuC.exe [–p &lt;PrjName&gt;] –m &lt;EcuExtractOfSd1&gt;…&lt;EcuExtractOfSdN&gt;&#160;<br/>
+Hint:&#160;<br/>
+The optional parameter –p&#160;&lt;PrjName&gt; gives the&#160;name of the resulting configuration/project. The&#160;<br/>name of the resulting configuration and/or project is the first file name given to the generator&#160;tool if&#160;<br/>no – p &lt;PrjName&gt; option is&#160;given. In our example, the&#160;PrjName = DM_FRL.&#160;<br/>
+Open a&#160;command line prompt and enter:&#160;<br/>
+GenTool_CsAsrInitialEcuC.exe –p DM_FRL -m DM_FL.arxml DM_FR.arxml DM_RL.arxml&#160;<br/>DM_RR.arxml&#160;<br/>
+&#160;<br/>
+A result of the generator run will be:&#160;<br/>
+<b>DM_FRL.ecuc.arxml</b>&#160;(active configuration – this one will be iteratively changed&#160;during BSW configuration phase&#160;<br/>and enhanced by vendor-specific&#160;attributes)&#160;<br/>
+<b>DM_FRL.Initial.ecuc.arxml</b>&#160;(initial configuration holding the&#160;basic&#160;pre-configuration for the BSW)&#160;<br/>
+<b>DM_FRL.ecuc.vdsxml</b>&#160;(this is a file which you can load with GENy;&#160;it references initial and active configuration.&#160;<br/>
+<b>DM_FRL.Error.txt</b>&#160;(describing errors encountered during the&#160;conversion)&#160;<br/>
+&#160;<br/>
+Note:&#160;The&#160;<br/>
+GenTool_CsAsrInitialEcuCMultConfMerge.dll&#160;must reside in the&#160;same directory like&#160;<br/>
+the ECUC generator&#160;dll (GenTool_CsAsrInitialEcuCDsIf.dll).&#160;<br/>
+<b>2.1.1&#160;&#160;What happens in the ECUC?&#160;</b><br/>
+The ECUC loader&#160;creates&#160;one network&#160;node per identity. Further, it creates&#160;a message/PDU list with references&#160;to&#160;<br/>the network node.&#160;<br/>
+The used set of PDUs or signals is a superset of the&#160;used PDUs or&#160;signals (unique names&#160;without duplicates).&#160;<br/>
+For each identity it creates&#160;a so called multiple configuration container in the ECUC file below&#160;all basic&#160;software&#160;<br/>modules&#160;for&#160;which a multiple configuration container is defined&#160;in their BSWMD&#160;files. The multiple configuration&#160;<br/>container incorporates&#160;the&#160;ECU name as&#160;identification. The container for the ECUM holds references&#160;to the init&#160;<br/>structures of the modules.&#160;&#160;<br/>
+The name of the multiple configuration container is composed of &#160;<br/>
+&lt;name of the structure in the bswmd/paramdef file&gt;_&lt;EcuShortName&gt;&#160;<br/>
+The EcuShortName is&#160;taken from the ECU Extract of&#160;System Configuration. In the door module example,&#160;<br/>
+ECU short name for the respective multiple configuration containers will be&#160;DM_FL, DM_FR, DM_RR, DM_RL.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>5<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-6_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.2&#160;&#160;ECUC&#160;Creation (with overlay)&#160;</b><br/>
+Multiple ECUs typically have some messages that have&#160;the same&#160;signal layout and contain&#160;semantically equal&#160;<br/>signals (only with&#160;different&#160;names) shared&#160;at least by some&#160;of the identities&#160;(see<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">&#160;Figure 1 fo</a>r an overview&#160;of the&#160;<br/>feature).&#160;<br/>
+For this&#160;case,&#160;a separate PDU is&#160;assigned to each semantic group of signals. First, this is not efficient, because&#160;<br/>you maintain&#160;several PDUs which have the same&#160;semantic and transport the same&#160;signals. The memory&#160;<br/>consumption&#160;for these PDUs is&#160;redundant. Second,&#160;the&#160;application code or the&#160;software&#160;component should not&#160;<br/>need to distinguish between&#160;the different&#160;active&#160;identities when handling the contained&#160;signals.&#160;&#160;<br/>
+So the solution&#160;is to configure only one common PDU&#160;for all identities and use the potential for an optimization&#160;<br/>called PDU overlay (see the middle colu<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#3">mn of&#160;Figure 1).&#160;</a><br/>
+The needed&#160;PDU overlay must be&#160;configured&#160;manually. This&#160;means the user has to select the PDUs which can be&#160;<br/>merged together, and has to provide a&#160;respective control file in XML (Overlay Control File).&#160;<br/>
+In the PDUR&#160;one such PDU will result in&#160;the reception or&#160;transmission of a unique L-PDU on interface level.&#160;<br/>
+The configuration of the PDUR at startup&#160;will determine&#160;to&#160;which Rx&#160;or Tx L-PDU the&#160;I-PDU&#160;will&#160;be mapped, i.e.&#160;<br/>which CAN message will be sent with&#160;the contents of this I-PDU.&#160;<br/>
+Precondition: &#160;<br/>
+•&#160;&#160;Existence of&#160;multiple ECU Extracts, one&#160;for each identity. &#160;<br/>•&#160;&#160;An overlay control file.&#160;<br/>
+&#160;<br/>
+The figure below shows the&#160;tool flow for creating an ECUC file with&#160;an Overlay Control File:&#160;<br/>
+&#160;<br/>
+ECU Extract<br/>
+of&#160;System<br/>
+Overlay<br/>
+Configuration<br/>
+Control&#160;File<br/>
+Description&#160;#1<br/>
+ECU Extract<br/>
+of&#160;System<br/>
+Configuration<br/>
+Initial ECUC<br/>
+ECUC&#160;File<br/>
+Description&#160;#2<br/>
+Generator<br/>
+.<br/>.<br/>
+ECU Extract<br/>
+of&#160;System<br/>
+Configuration<br/>
+Description #n<br/>
+&#160;<br/>
+Figure 2 – Creating an ECUC file with Overlay Control File&#160;<br/>&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>6<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-7_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>Tool usage:&#160;<br/>
+GenTool_CsAsrInitialEcuC.exe [–p &lt;PrjName&gt;] –m [&lt;EcuExtractOfSd1&gt;…&lt;EcuExtractOfSdN&gt;]&#160;<br/>
+-o &lt;OverlayControlFile&gt;&#160;<br/>
+Hint:&#160;<br/>
+The optional parameter –p&#160;&lt;PrjName&gt; gives the&#160;name of the resulting configuration/project. The&#160;<br/>name of the resulting configuration and/or project is the first file name given to the generator&#160;tool if&#160;<br/>no – p &lt;PrjName&gt; option is&#160;given. In our example, the&#160;PrjName = DM_FRL. For the PDU overlay&#160;<br/>case, the PrjName&#160;can be&#160;given in the control file as well.&#160;<br/>
+Open a&#160;command line prompt and enter:&#160;<br/>
+GenTool_CsAsrInitialEcuC.exe -m DM_FL.arxml DM_FR.arxml DM_RL.arxml DM_RR.arxml -o&#160;<br/>
+MultiEcuExample.arxml&#160;<br/>
+You can also&#160;omit specifying the multiple&#160;ECU Extracts&#160;since the ECU Extracts&#160;are already referenced in the&#160;<br/>Overlay Control File. The following&#160;invocation is&#160;equivalent to the one above:&#160;<br/>
+GenTool_CsAsrInitialEcuC.exe -m -o MultiEcuExample.arxml&#160;<br/>
+<b>2.3&#160;&#160;Overlay&#160;Control File&#160;</b><br/>
+An example file is shown at the end of this chapter. Basically you have to define the following:&#160;<br/>
+•&#160;&#160;The source extracts from&#160;which you&#160;read-in the different identities and a master extract which defines the&#160;<br/>
+default names&#160;of the merged entities.&#160;<br/>
+•&#160;&#160;The instance name for the&#160;new ECU&#160;<br/>•&#160;&#160;The PDU overlays (must be&#160;members of&#160;different identities)&#160;<br/>•&#160;&#160;The signal overlays&#160;(for RTE fan in/out of signals with&#160;different PDU layout)&#160;<br/>•&#160;&#160;Splitting of PDUs in&#160;Rx and Tx direction&#160;to explicitly&#160;define the overlay: Rx PDUs&#160;only, Tx PDUs&#160;only or Tx&#160;<br/>
+and Rx PDU overlay&#160;<br/>
+<b>2.3.1&#160;&#160;Specifying&#160;the ECU Extracts to be merged&#160;</b><br/>
+The ECU Extracts&#160;of System Configuration Description which shall&#160;be merged are specified&#160;within the&#160;<br/>&lt;SourceECUExtracts&gt;&#160;tag. You can&#160;specify a set of&#160;ECU Extracts&#160;(instances)&#160;to be merged&#160;via the&#160;<br/>&lt;MergingExtract&gt;&#160;tag and the master&#160;ECU Extract&#160;via the&#160;&lt;MasterExtract&gt;. &#160;<br/>
+Note:&#160;<br/>
+If an element (signal/PDU)&#160;is not present in the master extract, the default name of&#160;the element is&#160;<br/>defined by the order of the&#160;ECU Extracts&#160;in the&#160;&lt;SourceECUExtracts&gt;&#160;tag.&#160;<br/>
+&#160;<br/>
+See example&#160;below&#160;for specifying a set of&#160;ECU Extracts&#160;to be merged: &#160;<br/>
+&lt;SourceECUExtracts&gt;&#160;<br/>
+&lt;MasterExtract&gt; EcuExtractOfSd &lt;/MasterExtract&gt;&#160;<br/>
+&lt;MergingExtract&gt; EcuExtractOfSd1 &lt;/MergingExtract&gt;&#160;<br/>
+&lt;MergingExtract&gt; EcuExtractOfSd2 &lt;/MergingExtract&gt;&#160;<br/>
+&lt;MergingExtract&gt; … &lt;/MergingExtract&gt;&#160;<br/>
+&lt;/SourceECUExtracts&gt;&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>7<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-8_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>2.3.2&#160;&#160;Specifying&#160;the merged ECU instance name&#160;</b><br/>
+The ECU instance name of&#160;the merged ECU is&#160;specified using the&#160;&lt;NewECUInstanceName&gt;&#160;tag:&#160;<br/>&lt;NewECUInstanceName&gt; MultiIdEcu &lt;/NewECUInstanceName&gt;&#160;<br/>
+<b>2.3.3&#160;&#160;PDU overlay&#160;</b><br/>
+The PDU overlays are defined inside the&#160;&lt;OverlayPDUs&gt;&#160;tag, which&#160;contains&#160;all definitions&#160;for the overlays. The&#160;<br/>
+overlays&#160;consist of equivalent PDU names. The definition which PDUs&#160;shall be overlaid (“Rx”, “Tx” or&#160;“TxRx”) is&#160;<br/>specified by the&#160;direction&#160;parameter within the&#160;&lt;OverlayingPDUs&gt;&#160;tag.&#160;<br/>&lt;OverlayPDUs&gt;&#160;<br/>
+&lt;OverlayingPDUs direction=”Tx”&gt;&#160;<br/>
+&lt;PDU&gt;PDU1_FL&lt;/PDU&gt;&#160;<br/>
+&lt;PDU&gt;PDU1_FR&lt;/PDU&gt;&#160;<br/>
+&lt;PDU&gt; … &lt;/PDU&gt;&#160;<br/>
+&lt;/OverlayingPDUs&gt;&#160;<br/>
+&lt;/OverlayPDUs&gt;&#160;<br/>
+Note:&#160;<br/>
+For overlaying&#160;PDUs, you also have to specify a corresponding signal overlay section in the&#160;<br/>overlay control file (see description below).&#160;<br/>
+<b>2.3.4 Signal&#160;</b><br/>
+<b>overlay&#160;</b><br/>
+The signal overlays for specifying the RTE&#160;fan in/out are defined&#160;inside the tag named&#160;&lt;MatchingSignals&gt;&#160;<br/>
+which contains&#160;all signals which shall be overlaid. Like&#160;the PDU overlay, the definition which&#160;signals&#160;shall&#160;be&#160;<br/>overlaid&#160;(“Rx”, “Tx” or&#160;“TxRx”) is given in&#160;the&#160;direction&#160;parameter of the&#160;&lt;MatchingSignals&gt;&#160;tag.&#160;<br/>
+The name of the overlaid&#160;signal is&#160;specified by the&#160;&lt;NewSignalName&gt;&#160;tag – see example below:&#160;<br/>&lt;MatchingSignals direction=”Rx”&gt;&#160;<br/>
+&#160;&lt;Signal&gt;Signal1_FL&#160;<br/>
+&lt;/Signal&gt;&#160;<br/>
+&#160;&lt;Signal&gt;Signal1_FR&lt;/Signal&gt;&#160;<br/>
+&#160;<br/>
+&lt;Signal&gt; … &lt;/Signal&gt;&#160;<br/>
+&#160;&lt;NewSignalName&gt;Signal1_XX&lt;/NewSignalName&gt;&#160;<br/>
+&lt;/MatchingSignals&gt;&#160;<br/>
+&#160;<br/>Please&#160;consider the following constraints when specifying signal overlays:&#160;<br/>
+•&#160;&#160;For overlaying&#160;signal groups, you have&#160;to specify both the signal&#160;group and&#160;each group&#160;signal in the&#160;<br/>
+&lt;Signal&gt;&#160;tag.&#160;<br/>
+•&#160;The&#160;<br/>
+&lt;MatchingSignals&gt;&#160;tag is only evaluated by&#160;DaVinci Developer. The InitialEcuC&#160;Generator doesn’t&#160;<br/>
+verify the &lt;MatchingSignals&gt;&#160;section.&#160;<br/>
+•&#160;&#160;The name&#160;of the resulting&#160;signal, specified by the&#160;&lt;NewSignalName&gt;&#160;tag shall&#160;correspond&#160;to the name&#160;of&#160;<br/>
+the port prototype in the&#160;System Description&#160;to&#160;enable&#160;DaVinci&#160;Developer to&#160;automatically map these&#160;<br/>signals.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>8<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-9_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>2.3.5&#160;&#160;Splitting the direction of PDUs&#160;</b><br/>
+Within the&#160;&lt;SplitTxRxPDUs&gt;&#160;tag, you&#160;have to provide the PDUs&#160;which&#160;cannot be overlaid&#160;in&#160;both communication&#160;<br/>
+directions:&#160;<br/>
+&lt;SplitTxRxPDUs&gt;&#160;<br/>
+&#160;&lt;PDU&gt;PDU1_FR&lt;/PDU&gt;&#160;<br/>
+&#160;&lt;PDU&gt;PDU1_FL&lt;/PDU&gt;&#160;<br/>
+&lt;/SplitTxRxPDUs&gt;&#160;<br/>
+<b>2.3.6 Example&#160;</b><br/>
+&lt;DVMultiECUConfiguration xmlns=&#34;http://www.vector-informatik.de/MultiECUSupport&#34;&#160;<br/>
+xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&#160;<br/>
+xsi:schemaLocation=&#34;http://www.vector-informatik.de/MultiECUSupport&#160;<br/>
+MultiEcuConfig.xsd&#34; version=&#34;1.0&#34;&gt;&#160;<br/>
+&#160; &#160; &lt;SourceECUExtracts&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;MasterExtract&gt;DoorECU_FL&lt;/MasterExtract&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;MergingExtract&gt;DoorECU_FR&lt;/MergingExtract&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;MergingExtract&gt;DoorECU_RL&lt;/MergingExtract&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;MergingExtract&gt;DoorECU_RR&lt;/MergingExtract&gt;&#160;<br/>
+&#160; &#160; &lt;/SourceECUExtracts&gt;&#160;<br/>
+&#160; &#160; &lt;NewECUInstanceName&gt;MyMultiDoorECU&lt;/NewECUInstanceName&gt;&#160;<br/>
+&#160; &#160; &lt;OverlayPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU1_FL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU1_FR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU1_RL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU1_RR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;OverlayingPDUs direction=&#34;TxRx&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU2_FL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU2_FR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;OverlayingPDUs direction=&#34;Tx&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_FL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_FR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;OverlayingPDUs direction=&#34;Tx&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_RL&lt;/PDU&gt;&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>9<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-10_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_RR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;OverlayingPDUs direction=&#34;Rx&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_FR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_RR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;OverlayingPDUs direction=&#34;Rx&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_FL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_RL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/OverlayingPDUs&gt;&#160;<br/>
+&#160; &#160; &lt;/OverlayPDUs&gt;&#160;<br/>
+&#160; &#160; &lt;MatchingSignals&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;MatchingSignals direction=&#34;TxRx&#34;&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;Signal&gt;Signal1_FL&lt;/Signal&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;Signal&gt;Signal1_FR&lt;/Signal&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;Signal&gt;Signal1_RL&lt;/Signal&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;Signal&gt;Signal1_RR&lt;/Signal&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;NewSignalName&gt;Signal1&lt;/NewSignalName&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/MatchingSignals&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;MatchingSignals&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;Signal&gt;Signal2_FL&lt;/Signal&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &lt;NewSignalName&gt;Signal2&lt;/NewSignalName&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;/MatchingSignals&gt;&#160;<br/>
+&#160; &#160; &lt;/MatchingSignals&gt;&#160;<br/>
+&#160; &#160; &lt;SplitTxRxPDUs&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_FL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_FR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_RL&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;PDU&gt;PDU3_RR&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &#160; &#160; &lt;PDU&gt;PDU4&lt;/PDU&gt;&#160;<br/>
+&#160; &#160; &lt;/SplitTxRxPDUs&gt;&#160;<br/>
+&lt;/DVMultiECUConfiguration&gt;&#160;<br/>
+&#160;<br/>
+Note:&#160;<br/>
+There is an XML schema file (MultiEcuConfig.xsd)&#160;which is part of the SLP10 delivery that helps&#160;<br/>you to create&#160;a valid PDU overlay control&#160;file.&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>10<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-11_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-11_2.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/><b>2.4&#160;&#160;ECUC creation using DaVinci Project Assistant&#160;</b><br/>
+DaVinci Project Assistant supports you in&#160;setting&#160;up a&#160;project based&#160;on an existing control file&#160;(see&#160;<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#7">&#160;2.3) o</a>r&#160;on the&#160;<br/>ECU extracts of the different identities. It automatically&#160;creates&#160;the&#160;initial active ECU&#160;configuration.&#160;<br/>
+When&#160;specifying the input files for the project, you may select&#160;<b>Multiple ECU</b>. You may now either provide the&#160;<br/>existing control file or the ECU extracts&#160;and a location&#160;for an automatically created&#160;control file. This automatically&#160;<br/>created control file will contain the specified ECU extract references.&#160;<br/>
+Note:&#160;<br/>
+To define the&#160;PDU overlay (see&#160;<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#6">&#160;2.2) you&#160;</a>need to manually edit the control file.&#160;<br/>
+&#160;<br/>
+Figure 2 – DaVinci Project Assistant Input Files Specification&#160;<br/>&#160;<br/>
+If you change&#160;the control file after having&#160;created&#160;the project, you may use the update function&#160;of the DaVinci&#160;<br/>Project Assistant to reflect&#160;your changes.&#160;<br/>
+Note:&#160;<br/>
+DaVinci Project Assistant resolves&#160;the references&#160;to the identities’ extracts&#160;given in the control file&#160;<br/>relative to the control file’s&#160;location.&#160;<br/>
+<b>2.5&#160;&#160;Generating&#160;the RTE of a Multiple ECU&#160;</b><br/>
+To generate the RTE of a Multiple ECU, the different ECU extracts – each&#160;containing the description of a single&#160;<br/>identity – need to be merged into a single ECU project representing all identities of the Multiple ECU. The&#160;merged&#160;<br/>ECU project (resp. an ECU Extract of System Description created by&#160;DaVinci Developer) is&#160;compatible to the&#160;<br/>ECUC (see&#160;<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#4">&#160;2.0) and&#160;</a>can be&#160;used&#160;as input for the MICROSAR&#160;RTE generator.&#160;<br/>
+The merged&#160;ECU project is created by the DaVinci Project Assistant. Alternatively, you may import an existing&#160;<br/>control file (see&#160;<a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#7">&#160;2.3) into a&#160;</a>DaVinci Developer&#160;workspace using the&#160;standard XML import mechanism. This&#160;will&#160;<br/>automatically create the merged ECU project.&#160;<br/>
+Note:&#160;<br/>
+DaVinci Developer&#160;resolves&#160;the references to the identities’ extracts&#160;given in the control file relative&#160;<br/>to the control file’s location.&#160;<br/>
+<b>3.0&#160;&#160;Initialization of the BSW&#160;<br/></b>The ECU State Manager (ECUM) implements&#160;the&#160;support for Multiple ECUs. The scope of this&#160;chapter is&#160;restricted&#160;<br/>to the characteristic&#160;settings for Multiple&#160;ECUs in&#160;the ECU State Manager only.&#160;Further initialization&#160;steps&#160;<br/>necessary for AUTOSAR systems are not described&#160;here and are&#160;assumed to be known.&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>11<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-12_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>The BSW initialization procedure in AUTOSAR works&#160;the following&#160;way:&#160;<br/>
+•&#160;&#160;µC startup code execution&#160;(out of AUTOSAR scope).&#160;<br/>•&#160;&#160;Call of the&#160;main()&#160;function&#160;Æ&#160;EcuM_Init()&#160;<br/>•&#160;&#160;EcuM_Init()&#160;allows for initialization of&#160;the BSW modules&#160;on low level&#160;<br/>•&#160;&#160;EcuM_Init()&#160;starts&#160;the OS,&#160;EcuM_Init()&#160;does never return.&#160;<br/>•&#160;&#160;Schedule Manager Task&#160;starts and calls the&#160;EcuM_StartupTwo()&#160;in its task body&#160;<br/>•&#160;&#160;EcuM_StartupTwo(): calls&#160;SchM_Init()&#160;and calls&#160;DriverInitListTwo&#160;<br/>•&#160;&#160;The initialization for Multiple&#160;ECUs takes place in&#160;DriverInitListTwo…&#160;<br/>
+&#160;<br/>
+The ECU State Manager (ECUM) itself&#160;does not allow different initializations&#160;in&#160;the&#160;EcuM_Init()&#160;function. The&#160;<br/>
+following&#160;ECUM properties will be defined only once&#160;and are commonly valid for all identities&#160;inside an ECUC for&#160;a&#160;<br/>Multiple ECU:&#160;<br/>
+•&#160;Sleep&#160;<br/>
+modes&#160;<br/>
+•&#160;Wake-up&#160;<br/>
+Sources&#160;<br/>
+•&#160;ECUM&#160;<br/>
+Users&#160;<br/>
+•&#160;COMM&#160;<br/>
+channels&#160;<br/>
+•&#160;&#160;TTII successors&#160;and divisors&#160;<br/>•&#160;DriverInitLists&#160;<br/>
+&#160;<br/>
+The ECU firmware (more precisely: a user defined&#160;equivalent to an&#160;ECU State Manager initialization list) has to&#160;<br/>decide which&#160;identity is presently active&#160;and has to call&#160;the proper initialization&#160;routines for the&#160;basic&#160;software&#160;<br/>modules. &#160;<br/>
+This initialization approach&#160;will&#160;<br/>
+•&#160;&#160;<b>Not</b>&#160;adjust the application&#160;logic accordingly. The application implements&#160;a superset of all functions and is&#160;<br/>
+not necessarily aware of&#160;different identities.&#160;<br/>
+•&#160;&#160;Set up the corresponding&#160;BSW modules&#160;correctly.&#160;<br/>
+&#160;<br/>
+There is no tool-guided&#160;way to configure&#160;the ECUM for multiple ECU support. Only a manual&#160;solution&#160;is possible.&#160;<br/>For this purpose, an initialization function&#160;has to be added to the STARTUP II phase of the ECUM. (This is&#160;<br/>because the&#160;communication modules implement this feature. Communication&#160;modules&#160;are typically initialized&#160;<br/>during STARTUP II). This&#160;can be&#160;accomplished by adding&#160;a function call to&#160;EcuM_Pbcfg.c&#160;for the ECUM inside&#160;<br/>
+the configuration tool (for the SLP10, this can be done&#160;inside&#160;GENy, for other&#160;stacks this&#160;is DaVinci Configurator&#160;<br/>Pro). The necessary&#160;steps&#160;are described&#160;below.&#160;<br/>
+<b>3.1&#160;&#160;Creation of the logic for identity&#160;selection&#160;</b><br/>
+The Multiple&#160;ECU support&#160;requires a user defined function&#160;which determines for&#160;which identity the ECU shall start&#160;<br/>up. As described in the paragraph before, this extension has to&#160;be built into the STARTUP II.&#160;<br/>
+Further, we assume that you provide this&#160;function in the files&#160;&#160;<br/>
+EcuM_MultiIdentitySupport.h &#160;<br/>
+EcuM_MultiIdentitySupport.c&#160;<br/>
+&#160;<br/>
+The function which has to be called in STARTUP II itself may be called &#160;<br/>
+EcuM_MultiConfigSelection()&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>12<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-13_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-13_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-13_3.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>Note: &#160;<br/>
+The name of the header and C file are&#160;only&#160;examples, as well as the signature and function&#160;name&#160;<br/>EcuM_MultiConfigSelection(). The actual implementation is&#160;up to the supplier.&#160;<br/>
+<b>3.2&#160;&#160;Prepare the&#160;ECUM configuration&#160;</b><br/>
+Before you can use the Multiple&#160;ECU feature, you have to add&#160;EcuM_MultiIdentitySuport.h&#160; to the &#160;<br/>
+<b>Additional Includes</b>&#160;section in the ECUM.&#160;<br/>
+&#160;<br/>
+Figure 3 – GENy Configuration for Multiple ECU Feature&#160;<br/>
+&#160;<br/>
+Further, you have to create a new entry in the&#160;<b>ECUM Driver Init List Two</b>, where&#160;<br/>EcuM_MultiConfigSelection()&#160;is called.&#160;<br/>
+&#160;<br/>
+Figure 4 - GENy Configuration for Init List Two&#160;<br/>&#160;<br/>
+<b>3.3&#160;&#160;Provide an user defined ECUM initialization function&#160;</b><br/>
+An implementation for the&#160;MultiConfigSelection&#160;initialization function&#160;could look&#160;like that:&#160;<br/>
+…&#160;<br/>
+#include &lt;EcuM_MultiIdentitySupport.h&gt;&#160;<br/>
+…&#160;<br/>
+void EcuM_AL_DriverInitTwo () /* &#160;<br/>
+{&#160;<br/>&#160; Dio_Init();&#160;<br/>&#160; EcuM_MultiConfigSelection();&#160;<br/>
+}&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>13<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-14_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>You will need to provide a similar implementation in&#160;EcuM_MultiIdentitySupport.c:&#160;<br/>FUNC(void, ECUM_CODE) EcuM_MultiConfigSelection(void)&#160;<br/>
+{&#160;<br/>&#160; channelGroupIdType dioDipSwitch;&#160;<br/>&#160;<br/>&#160;&#160;switch&#160;(Dio_ReadChannelGroup(&amp;dioDipSwitch)) &#160;/* read in DIP switch */&#160;<br/>
+&#160; {&#160;<br/>
+&#160; &#160;&#160;case&#160;MULTI_CONFIG_FL:&#160;/* initialization variant for door front left */&#160;<br/>
+&#160; &#160; &#160; Can_Init(NULL_PTR); &#160;<br/>
+&#160; &#160; &#160; CanIf_Init(NULL_PTR);&#160;<br/>
+&#160; &#160; &#160; CanSM_Init();&#160;<br/>
+&#160; &#160; &#160; PduR_Init(&amp;PduRGlobalConfig_DM_FL);&#160;<br/>
+&#160; &#160; &#160; Com_Init(NULL_PTR);&#160;<br/>
+&#160; &#160; &#160; Nm_Init(NULL_PTR);&#160;<br/>
+&#160; &#160; &#160; CanNm_Init(&amp;CanNmGlobalConfig_DM_FL);&#160;<br/>
+&#160; &#160; &#160; ComM_Init();&#160;<br/>
+&#160; &#160; &#160; CanTp_Init(&amp;CanTpConfigSet_DM_FL);&#160;<br/>
+&#160; &#160; &#160; Dcm_Init(&amp;DcmConfigSet_DM_FL);&#160;<br/>
+&#160; &#160; &#160; Vmm_Init();&#160;<br/>
+&#160; &#160; &#160; Dem_Init();&#160;<br/>
+&#160; &#160;&#160;break;&#160;<br/>
+&#160; &#160;&#160;case&#160;MULTI_CONFIG_FR:&#160;/* initialization variant for door front right */&#160;<br/>
+&#160; &#160; &#160; Can_Init(NULL_PTR); &#160;<br/>
+&#160; &#160; &#160; CanIf_Init(NULL_PTR);&#160;<br/>
+&#160; &#160; &#160; CanSM_Init();&#160;<br/>
+&#160; &#160; &#160; PduR_Init(&amp;PduRGlobalConfig_DM_FR);&#160;<br/>
+&#160; &#160; &#160; Com_Init(NULL_PTR);&#160;<br/>
+&#160; &#160; &#160; Nm_Init(NULL_PTR);&#160;<br/>
+&#160; &#160; &#160; CanNm_Init(&amp;CanNmGlobalConfig_DM_FR);&#160;<br/>
+&#160; &#160; &#160; ComM_Init();&#160;<br/>
+&#160; &#160; &#160; CanTp_Init(&amp;CanTpConfigSet_DM_FR);&#160;<br/>
+&#160; &#160; &#160; Dcm_Init(&amp;DcmConfigSet_DM_FR);&#160;<br/>
+&#160; &#160; &#160; Vmm_Init();&#160;<br/>
+&#160; &#160; &#160; Dem_Init();&#160;<br/>
+&#160; &#160;&#160;break;&#160;<br/>
+&#160; &#160;&#160;default: &#160;<br/>
+&#160; &#160;&#160;break;&#160;<br/>&#160; }&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>14<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-15_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160; return;&#160;<br/>
+} &#160;<br/>
+&#160;<br/>
+Inside each initialization&#160;sequence, there have to be instance-specific calls into&#160;the basic&#160;software init functions like&#160;<br/>
+&#160;&lt;BSWM&gt;_Init(&amp;&lt;configSetPtrName&gt;_&lt;EcuShortName&gt;)&#160;<br/>
+Each module&#160;has to provide the instance-specific&#160;&lt;configSetPtrName&gt;_&lt;EcuShortName&gt;&#160;in its actual&#160;<br/>
+configuration obtained by the BSW configuration step&#160;performed in&#160;GENy.&#160;<br/>
+The name of the parameter&#160;used&#160;for the&#160;init functions&#160;is&#160;formed according to the following rule:&#160;<br/>
+&lt;configSetPtrName&gt; comes from the structure name from bswmd/paramdef file.&#160;<br/>
+&lt;EcuShortName&gt; is derived of the Ecu Names used in the ECU Extract of System&#160;<br/>Description&#160;<br/>
+Note:&#160;<br/>
+You do not have the same&#160;scheme for the init functions of all BSW modules, some take no&#160;<br/>arguments some take a mandatory pointer. The following section provides an&#160;overview.&#160;<br/>
+<b>3.4&#160;&#160;Where do I find the initialization structures?&#160;</b><br/>
+For each BSW module, you can find the&#160;init structures&#160;in&#160;the generated code. Simply have a look at the following&#160;<br/>files in the \gendata folder:&#160;<br/>
+&lt;ModuleName&gt;_lcfg.c, &lt;ModuleName&gt;_pbcfg.c, &lt;ModuleName&gt;_cfg.c&#160;<br/>
+<b>3.5&#160;&#160;Overview&#160;of BSW module initialization&#160;</b><br/>
+Considering the Multiple ECU feature, the AUTOSAR selectable&#160;post build&#160;approach is&#160;not fully supported. &#160;The&#160;<br/>AUTOSAR&#160;selectable post build approach is based on&#160;different unique initialization structures&#160;which are passed to&#160;<br/>the BSW via an initialization pointer in order to configure it.&#160;<br/>
+Resource optimization&#160;would not be possible if unique&#160;initialization&#160;structures for each&#160;identity were provided. For&#160;<br/>this reason, the AUTOSAR selectable&#160;post build&#160;initialization mechanism is not&#160;applied for all modules.&#160;<br/>
+For the majority of&#160;the modules, only one merged post build configuration/superset of initialization data will&#160;be&#160;<br/>created in order to save resources. For the remaining&#160;modules&#160;<b>DCM, CANTP, CANNM, IPDUM, PDUR,</b>&#160;individual&#160;<br/>initialization data sets are&#160;supported.&#160;<br/>
+The following&#160;table gives an&#160;overview of&#160;the configuration pointer usage.&#160;<br/>
+&#160;<br/>
+Used init pointer&#160;<br/>
+BSW&#160;<br/>
+Not instance specific&#160;<br/>
+Instance specific&#160;<br/>
+module&#160;<br/>COMM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+ECUM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+VMM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+COM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+IPDUM &#160;<br/>
+;&#160;<br/>
+PDUR &#160;<br/>
+;&#160;<br/>
+NM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+CANNM &#160;<br/>
+;&#160;<br/>
+CANSM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>15<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-16_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>CANIF&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+CANDRV&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+CANTP &#160;<br/>
+;&#160;<br/>
+DCM &#160;<br/>
+;&#160;<br/>
+DEM&#160;<br/>
+;&#160;<br/>
+&#160;<br/>
+Table 1 &#160;– Overview of the&#160;module&#160;configuration for&#160;multiple identities&#160;<br/>&#160;<br/>
+<b>4.0&#160;&#160;Diagnostics and Multiple ECU Support&#160;<br/></b>The DCM/DEM module, developed by Vector, implements two dynamic configuration modes that allow&#160;switching&#160;<br/>among the available&#160;configuration&#160;sets at&#160;runtime (without&#160;need to reprogram the ECU). This&#160;requires that the&#160;<br/>superset of all variants must be pre-enabled during the software&#160;compilation and&#160;link process. &#160;<br/>
+&#160;<br/>
+In Multiple ECU mode, DCM allows you to use:&#160;<br/>
+•&#160;&#160;Multiple diagnostic configuration&#160;sets&#160;– a use case&#160;where the ECU always&#160;communicates over the same&#160;<br/>
+connection, but shall implement different&#160;functionality depending on&#160;some hardware (jumper)&#160;setting.&#160;<br/>
+•&#160;&#160;Multiple&#160;communication configuration sets –&#160;typical use&#160;case&#160;where the&#160;ECU&#160;shall have the same&#160;<br/>
+functionality, but depending&#160;on&#160;its location on&#160;the&#160;network uses&#160;different&#160;communication parameters&#160;<br/>(communication message IDs i.e. door ECUs).&#160;<br/>
+•&#160;&#160;Both multiple diagnostic and communication sets.&#160;<br/>
+&#160;<br/>
+The combination of diagnostic and communication configuration is&#160;configured&#160;statically in GENy. &#160;<br/>
+The details&#160;of Multiple ECUs and diagnostics are described in the Technical Reference for the&#160;DCM,&#160;chapter&#160;7.6&#160;<br/>and in the Technical&#160;Reference&#160;for the&#160;DEM, chapter 7.1.&#160;<br/>
+<b>5.0&#160;&#160;Supported&#160;use cases&#160;<br/></b>Based on&#160;the&#160;PDU overlay and RTE fan&#160;in/out approach, the&#160;current implementation of the Multiple ECU supports&#160;<br/>the following use&#160;cases:&#160;<br/>
+•&#160;&#160;Overlaying&#160;of&#160;RX/TX PDUs&#160;with identical signal layout, respective PDUs&#160;with&#160;gaps in&#160;the&#160;signal layout.&#160;<br/>
+Each&#160;signal&#160;within the PDU has to have the same&#160;length and has to be of the&#160;same type:&#160;Single signals&#160;<br/>can only be overlaid by single signals, signal&#160;groups can only be overlaid by signal groups.&#160;<br/>
+•&#160;&#160;RTE fan in/out&#160;of signals&#160;which are located in different&#160;PDUs.&#160;<br/>
+<b>6.0&#160;&#160;Restrictions and limitations&#160;<br/></b>LIN is invariant to the Multiple ECU feature that means&#160;it is not actively supported.&#160;As a consequence, the same&#160;<br/>LIN network exists in all identities. Multiple ECU&#160;support for FlexRay is planned&#160;for future releases.&#160;<br/>
+Please also note the for RTE fan in, the signals to&#160;be overlaid have to&#160;be located in&#160;different PDUs&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>16<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-17_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>If a PDU contains&#160;signals for different identities, a wrapper software component needs to be implemented to select&#160;<br/>the according&#160;signal based&#160;on the current identity – see example below:&#160;<br/>&#160;<br/>
+Wrapper&#160;SWC<br/>
+SWC<br/>
+Signal_XX<br/>
+Identity<br/>
+al_FL<br/>
+al_FR<br/>
+al_RL<br/>
+al_RR<br/>
+gn<br/>
+gn<br/>
+gn<br/>
+gn<br/>
+Si<br/>
+Si<br/>
+Si<br/>
+Si<br/>
+&#160;<br/>
+Figure 4 – Wrapper software component for&#160;switching identity specific signals&#160;<br/>&#160;<br/>
+&#160;<br/>
+<b>7.0 Additional&#160;resources&#160;<br/></b>VECTOR TECHNICAL&#160;REFERENCES&#160;<br/>MICROSAR&#160;DCM Technical Reference&#160;(based on&#160;ASR 3.0) Version 3.14&#160;<br/>
+MICROSAR&#160;Diagnostic Event Manager&#160;(DEM)&#160;Technical Reference Daimler Version 2.2&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>17<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/TL102A_Davinci/tools/Developer/Docs/AN-ISC-8-1102_IdentityManager_MultipleECUs-18_1.png"/><br/>
+&#160;<br/>
+&#160;<br/>
+Identity&#160;Manager - Multiple&#160;ECUs&#160;<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+<b>8.0 Contacts&#160;<br/></b>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>Germany&#160;&#160;</b><br/>
+<b>France, Belgium,&#160;Luxemburg:&#160;</b><br/>
+<b>Sweden, Denmark, Norway, &#160;</b><br/>
+<b>and all&#160;countries not&#160;named&#160;below:&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>Finland, Iceland:&#160;</b><br/>
+<b>Vector Informatik&#160;GmbH&#160;</b><br/>
+<b>Vector France SAS&#160;</b><br/>
+<b>VecScan AB&#160;</b><br/>
+Ingersheimer Str.&#160;24&#160;<br/>
+168 Boulevard Camélinat&#160;<br/>
+Theres Svenssons Gata 9&#160;<br/>
+70499 Stuttgart&#160;<br/>
+92240 Malakoff&#160;&#160;<br/>
+41755 Göteborg &#160;<br/>
+GERMANY&#160;<br/>
+FRANCE&#160;<br/>
+SWEDEN&#160;<br/>
+Phone:&#160;+49&#160;711-80670-0&#160;<br/>
+Phone:&#160;+33 1 42 31 40&#160;00&#160;<br/>
+Phone:&#160;+46 31 764 76&#160;00&#160;<br/>
+Fax:&#160;+49&#160;<br/>
+711-80670-111&#160;<br/>
+Fax:&#160;<br/>
++33 1 42 31 40&#160;09&#160;<br/>
+Fax:&#160;<br/>
++46 31 764 76&#160;19 &#160;<br/>
+E-mail: info@de.vector.com&#160;<br/>
+E-mail: information@fr.vector.com&#160;<br/>
+E-mail: info@se.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;&#160;<br/>
+<b>&#160;</b><br/>
+<b>United&#160;Kingdom, Ireland:&#160;</b><br/>
+<b>China:&#160;</b><br/>
+<b>India:&#160;</b><br/>
+<b>Vector</b>&#160;<b>GB Ltd.&#160;</b><br/>
+Vector Informatik&#160;GmbH &#160;<br/>
+Vector Informatik&#160;India Private Ltd.&#160;<br/>
+Rhodium&#160;<br/>
+Shanghai Representative Office&#160;<br/>
+4/1/1/1 Sutar&#160;Icon&#160;<br/>
+Central Boulevard&#160;<br/>
+Suite 605, Tower&#160;C, &#160;<br/>
+Sus Road&#160;<br/>
+Blythe&#160;Valley&#160;Park&#160;<br/>
+Everbright Convention Center&#160;<br/>
+Pashan&#160;<br/>
+Solihull, Birmingham&#160;<br/>
+No. 70 Caobao&#160;Road&#160;<br/>
+Pune 411021&#160;<br/>
+West Midlands B90 8AS&#160;<br/>
+Xuhui District&#160;<br/>
+INDIA&#160;<br/>
+UNITED KINGDOM&#160;<br/>
+Shanghai 200235 &#160;<br/>
+&#160;<br/>
+Phone:&#160;+44 121 50681-50&#160;<br/>
+P.R. CHINA&#160;<br/>
+Phone:&#160;+91 9673 336575&#160;<br/>
+E-mail: info@uk.vector.com&#160;<br/>
+Phone:&#160;+86 21 - 6432 5353 ext. 0&#160;<br/>
+E-mail: info@vector-india.com&#160;<br/>
+&#160;<br/>
+Fax:&#160;&#160;&#160;+86 21 - 6432 5308&#160;<br/>E-mail: info@vector-china.com&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+<b>USA,&#160;Canada, Mexico:&#160;</b><br/>
+<b>Japan:&#160;</b><br/>
+<b>Korea:&#160;</b><br/>
+<b>Vector CANtech, Inc.&#160;</b><br/>
+<b>Vector Japan&#160;Co. Ltd.&#160;</b><br/>
+<b>Vector Korea IT&#160;Inc.&#160;</b><br/>
+39500&#160;Orchard&#160;Hill Pl., Ste 550&#160;<br/>
+Seafort Square&#160;Center Bld. 18F&#160;<br/>
+#1406, Mario&#160;Tower,&#160;<br/>
+Novi, MI &#160;48375&#160;<br/>
+2-3-12, Higashi-shinagawa,&#160;<br/>
+222-12&#160;Guro-dong, Guro-gu &#160;<br/>
+USA&#160;<br/>
+Shinagawa-ku&#160;<br/>
+Seoul, 152-848&#160;<br/>
+Phone:&#160;+1 248 449 9290&#160;<br/>
+Tokyo 140-0002&#160;<br/>
+REPUBLIC OF&#160;KOREA&#160;<br/>
+Fax:&#160;<br/>
++1 248 449 9704&#160;<br/>
+JAPAN&#160;<br/>
+Phone:&#160;+82 2 807 0600&#160;<br/>
+E-mail: info@us.vector.com&#160;<br/>
+Phone:&#160;+81 3 5769 7800&#160;<br/>
+Fax:&#160;<br/>
++82 2 807 0601&#160;<br/>
+&#160;<br/>
+Fax:&#160;<br/>
++81 3 5769 6975&#160;<br/>
+E-mail: info@kr.vector.com&#160;<br/>
+E-mail: info@jp.vector.com&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>
+<i><b>&#160;</b></i><br/>
+<b>18<i>&#160;</i></b><br/>
+<i>Application Note&#160; AN-ISC-8-1102<b>&#160;<br/></b></i>&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#7">2.3.1 Specifying the ECU Extracts to be merged</a></li>
+<li><a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#8">2.3.2 Specifying the merged ECU instance name</a></li>
+<li><a href="AN-ISC-8-1102_IdentityManager_MultipleECUss.html#8">2.3.3 PDU overlay</a></li>
+</ul>
+<hr/>
+</body>
+</html>

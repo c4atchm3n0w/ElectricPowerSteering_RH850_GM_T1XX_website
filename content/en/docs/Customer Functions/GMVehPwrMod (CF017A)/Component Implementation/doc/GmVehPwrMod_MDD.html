@@ -1,0 +1,444 @@
+---
+title: GmVehPwrMod_MDD
+linkTitle: GmVehPwrMod_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>GmVehPwrMod</strong></p>
+<p><strong>VERSION:6.0</strong></p>
+<p><strong>Dec 13, 2016</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Matthew Leser</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong><u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 21%" />
+<col style="width: 13%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>Initial Version</td>
+<td>N. Saxton</td>
+<td>1.0</td>
+<td>28-Sep-2015</td>
+</tr>
+<tr class="odd">
+<td>Updated with new graphical representation and local function</td>
+<td>N. Saxton</td>
+<td>2.0</td>
+<td>01-Oct-2015</td>
+</tr>
+<tr class="even">
+<td>New graphical representation</td>
+<td>N. Saxton</td>
+<td>3.0</td>
+<td>12-Nov-2015</td>
+</tr>
+<tr class="odd">
+<td>Changes to local constants and functions</td>
+<td>N. Saxton</td>
+<td>4.0</td>
+<td>15-Apr-2016</td>
+</tr>
+<tr class="even">
+<td>Updated as per design rev. 2.1.0</td>
+<td>TATA</td>
+<td>5.0</td>
+<td>22-Nov-2016</td>
+</tr>
+<tr class="odd">
+<td>Updated as per design rev. 2.2.0/2.3.0 and to fix Anomaly EA4#8982</td>
+<td>M. Leser</td>
+<td>6.0</td>
+<td>13-Dec-2016</td>
+</tr>
+</tbody>
+</table>
+<p><u>Table of Contents</u></p>
+<p><a href="#gmvehpwrmod-high-level-description">1 GmVehPwrMod &amp; High-Level Description <span>5</span></a></p>
+<p><a href="#design-details-of-software-module">2 Design details of software module <span>6</span></a></p>
+<p><a href="#graphical-representation-of-gmvehpwrmod">2.1 Graphical representation of GmVehPwrMod <span>6</span></a></p>
+<p><a href="#data-flow-diagram">2.2 Data Flow Diagram <span>6</span></a></p>
+<p><a href="#component-level-dfd">2.2.1 Component level DFD <span>6</span></a></p>
+<p><a href="#function-level-dfd">2.2.2 Function level DFD <span>6</span></a></p>
+<p><a href="#constant-data-dictionary">3 Constant Data Dictionary <span>7</span></a></p>
+<p><a href="#program-fixed-constants">3.1 Program (fixed) Constants <span>7</span></a></p>
+<p><a href="#embedded-constants">3.1.1 Embedded Constants <span>7</span></a></p>
+<p><a href="#software-component-implementation">4 Software Component Implementation <span>8</span></a></p>
+<p><a href="#sub-module-functions">4.1 Sub-Module Functions <span>8</span></a></p>
+<p><a href="#per-gmvehpwrmodper1">4.1.1 Per: GmVehPwrModPer1 <span>8</span></a></p>
+<p><a href="#design-rationale">4.1.1.1 Design Rationale <span>8</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies">4.1.1.2 Store Module Inputs to Local copies <span>8</span></a></p>
+<p><a href="#processing-of-function">4.1.1.3 (Processing of function)……… <span>8</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">4.1.1.4 Store Local copy of outputs into Module Outputs <span>8</span></a></p>
+<p><a href="#server-runables">4.2 Server Runables <span>8</span></a></p>
+<p><a href="#interrupt-functions">4.3 Interrupt Functions <span>8</span></a></p>
+<p><a href="#module-internal-local-functions">4.4 Module Internal (Local) Functions <span>8</span></a></p>
+<p><a href="#local-function-1">4.4.1 Local Function #1 <span>8</span></a></p>
+<p><a href="#design-rationale-1">4.4.1.1 Design Rationale <span>9</span></a></p>
+<p><a href="#_Toc467580596">4.4.1.2 Created to reduce static path count and cyclomatic complexity of periodic function. Processing <span>9</span></a></p>
+<p><a href="#local-function-2">4.4.2 Local Function #2 <span>9</span></a></p>
+<p><a href="#design-rationale-2">4.4.2.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing">4.4.2.2 Processing <span>9</span></a></p>
+<p><a href="#local-function-3">4.4.3 Local Function #3 <span>9</span></a></p>
+<p><a href="#design-rationale-3">4.4.3.1 Design Rationale <span>9</span></a></p>
+<p><a href="#processing-1">4.4.3.2 Processing <span>9</span></a></p>
+<p><a href="#global-functionmacro-definitions">4.5 GLOBAL Function/Macro Definitions <span>9</span></a></p>
+<p><a href="#known-limitations-with-design">5 Known Limitations with Design <span>10</span></a></p>
+<p><a href="#unit-test-consideration">6 UNIT TEST CONSIDERATION <span>11</span></a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms <span>12</span></a></p>
+<p><a href="#glossary">Appendix B Glossary <span>13</span></a></p>
+<p><a href="#references">Appendix C References <span>14</span></a></p>
+<h1 id="gmvehpwrmod-high-level-description">GmVehPwrMod &amp; High-Level Description</h1>
+<p><em>This GM specific function runs periodically to determine whether to enable assist (if not previously enabled) or to disable assist based on the inputs provided to the function.</em></p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-gmvehpwrmod">Graphical representation of GmVehPwrMod</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:4.3021in;height:4.427in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<p>Refer FDD</p>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<p>Refer FDD</p>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<p>Refer FDD</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 59%" />
+<col style="width: 18%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LOOKUPTBLSIZE_CNT_U16</td>
+<td>CNT</td>
+<td>512</td>
+</tr>
+<tr class="even">
+<td>Refer .m file for other constants</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h2 id="per-gmvehpwrmodper1">Per: GmVehPwrModPer1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>None</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="processing-of-function"> (Processing of function)………</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<p>None</p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p>None</p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-function-1">Local Function #1</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>GetTblIdx</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>GetGpioMcuEna_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SysPwrModRun_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>EngRunActv_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpdAssiKeepMin_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>PrpnSysActvMsgInvld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>VehSpdSnsrVld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>SysPwrModMsgInvld_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BusOffHiSpd_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-10</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Output</strong></td>
+<td>TblIdxNr_Cnt_T_u16</td>
+<td>Uint16</td>
+<td>0</td>
+<td>511</td>
+</tr>
+</tbody>
+</table>
+<p><em><br />
+</em></p>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p><span id="_Toc467580596" class="anchor"></span>Created to reduce static path count and cyclomatic complexity of periodic function. Processing</p>
+<p>Refer FDD</p>
+<h2 id="local-function-2">Local Function #2</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>GetMotTqCmdSca</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>AssiEna_Cnt_T_logl</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td><strong>Output</strong></td>
+<td>MotTqCmdSca_Cnt_T_f32</td>
+<td>Boolean</td>
+<td>0.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p>Created to reduce static path count and cyclomatic complexity of periodic function.</p>
+<h2 id="processing">Processing</h2>
+<p>Sets MotTqCmdSca to 1.0 if AssiEna is TRUE and sets it to 0.0 otherwise.</p>
+<h2 id="local-function-3">Local Function #3</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>KeepAssiHwTqTmr</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>HwTq_HwNwtMtr_T_f32</td>
+<td>Float32</td>
+<td>-10</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>* TblIdxNr_Cnt_T_u16</td>
+<td>Uint16</td>
+<td>0</td>
+<td>511</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p>Created to reduce static path count and cyclomatic complexity of local function #2.</p>
+<p>*TblIdxNr_Cnt_T_u16 is an output of this function.</p>
+<h2 id="processing-1">Processing</h2>
+<p>Refer ‘KeepAssi_HwTqTmr’ block in model.</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>None</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 04.02.01</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>EA4 <a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>04.02.01</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>FDD: CF017A_GmVehPwrMod_Design</td>
+<td>See Synergy subproject version</td>
+</tr>
+</tbody>
+</table>

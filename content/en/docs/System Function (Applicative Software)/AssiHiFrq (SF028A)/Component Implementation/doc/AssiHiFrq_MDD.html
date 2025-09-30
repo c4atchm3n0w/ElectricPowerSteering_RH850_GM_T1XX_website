@@ -1,0 +1,256 @@
+---
+title: AssiHiFrq_MDD
+linkTitle: AssiHiFrq_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>AssiHiFrq</strong></p>
+<p><strong>February 9, 2017</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Matthew Leser,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong><u>Change History</u></strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>Initial Version</td>
+<td>Kathleen Creager</td>
+<td>01.00.00</td>
+<td>04-Aug-2015</td>
+</tr>
+<tr class="odd">
+<td>Updated per design vers. 1.1.0</td>
+<td>Matthew Leser</td>
+<td>2.0</td>
+<td>09-Feb-2017</td>
+</tr>
+</tbody>
+</table>
+<p><strong><u>Table of Contents</u></strong></p>
+<p><a href="#assihifrq-high-level-description">1 AssiHiFrq High-Level Description <span>4</span></a></p>
+<p><a href="#design-details-of-software-module">2 Design details of software module <span>5</span></a></p>
+<p><a href="#graphical-representation-of-assihifrq">2.1 Graphical representation of AssiHiFrq <span>5</span></a></p>
+<p><a href="#data-flow-diagram">2.2 Data Flow Diagram <span>5</span></a></p>
+<p><a href="#component-level-dfd">2.2.1 Component level DFD <span>5</span></a></p>
+<p><a href="#function-level-dfd">2.2.2 Function level DFD <span>5</span></a></p>
+<p><a href="#constant-data-dictionary">3 Constant Data Dictionary <span>6</span></a></p>
+<p><a href="#program-fixed-constants">3.1 Program (fixed) Constants <span>6</span></a></p>
+<p><a href="#embedded-constants">3.1.1 Embedded Constants <span>6</span></a></p>
+<p><a href="#software-component-implementation">4 Software Component Implementation <span>7</span></a></p>
+<p><a href="#sub-module-functions">4.1 Sub-Module Functions <span>7</span></a></p>
+<p><a href="#init-assihifrqinit1">4.1.1 Init: AssiHiFrqInit1 <span>7</span></a></p>
+<p><a href="#design-rationale">4.1.1.1 Design Rationale <span>7</span></a></p>
+<p><a href="#module-outputs">4.1.1.2 Module Outputs <span>7</span></a></p>
+<p><a href="#per-assihifrqper1">4.1.2 Per: AssiHiFrqPer1 <span>7</span></a></p>
+<p><a href="#design-rationale-1">4.1.2.1 Design Rationale <span>7</span></a></p>
+<p><a href="#store-module-inputs-to-local-copies">4.1.2.2 Store Module Inputs to Local copies <span>7</span></a></p>
+<p><a href="#processing-of-function">4.1.2.3 (Processing of function)……… <span>7</span></a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">4.1.2.4 Store Local copy of outputs into Module Outputs <span>7</span></a></p>
+<p><a href="#server-runables">4.2 Server Runables <span>7</span></a></p>
+<p><a href="#interrupt-functions">4.3 Interrupt Functions <span>8</span></a></p>
+<p><a href="#module-internal-local-functions">4.4 Module Internal (Local) Functions <span>8</span></a></p>
+<p><a href="#global-functionmacro-definitions">4.5 GLOBAL Function/Macro Definitions <span>8</span></a></p>
+<p><a href="#known-limitations-with-design">5 Known Limitations with Design <span>9</span></a></p>
+<p><a href="#unit-test-consideration">6 UNIT TEST CONSIDERATION <span>10</span></a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms <span>11</span></a></p>
+<p><a href="#glossary">Appendix B Glossary <span>12</span></a></p>
+<p><a href="#references">Appendix C References <span>13</span></a></p>
+<h1 id="assihifrq-high-level-description">AssiHiFrq High-Level Description</h1>
+<p>Implements the SF028A_AssiHiFrq_Design FDD. This function provides a means of compensating for system</p>
+<p>inertia and road feedback. It is tunable over both vehicle speed and handwheel torque to obtain the desired</p>
+<p>level of disturbance rejection under various operating conditions. It passes handwheel torque through a high-pass</p>
+<p>filter and multiplies the resulting signal by a tunable gain factor. The output is known as high-frequency assist</p>
+<p>and is simply added to the usual assist calculated elsewhere</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-assihifrq">Graphical representation of AssiHiFrq</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:3.60842in;height:2.44509in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constant Name</th>
+<th>Resolution</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>None</td>
+<td>&lt;Refer MDD guidelines [1]&gt;</td>
+<td>&lt;Refer MDD guidelines [1]&gt;</td>
+<td>&lt;Refer MDD guidelines [1]&gt;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<h2 id="init-assihifrqinit1">Init: AssiHiFrqInit1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>Init function is present in DataDict.m file but not shown in FDD model, and no initialization logic is needed. This is implemented as an empty function.</p>
+<h2 id="module-outputs">Module Outputs</h2>
+<p>None</p>
+<h3 class="unnumbered" id="section"></h3>
+<h2 id="per-assihifrqper1">Per: AssiHiFrqPer1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p>FDD model does not contain a block named AssiHiFrqPer1; this function implements the AssiHiFrq block.</p>
+<p>BilnrIntrpnWithRound_u16_u16MplXu16MplY function from NxtrIntrpn library used to implement the 2-D Lookup tables in the SF028A_AssiHiFrq/AssiHiFrq/AssiHiFrq/Determine Gain model block.</p>
+<p>Blnd_f32 function from NxtrMath library used to implement the part of the model that computes GainVal_MtrNmpHwNm from the outputs of the three bilinear interpolation functions in the SF028A_AssiHiFrq/AssiHiFrq/AssiHiFrq/Determine Gain model block.</p>
+<p>FilHpUpdGain and FilHpUpdOutp_f32 functions from the NxtrFil library used to implement HP-CF Filter block in the SF028A_AssiHiFrq/AssiHiFrq/AssiHiFrq model block.</p>
+<p>A note in the model mentions that the frequency lookup table for the high pass filter cutoff frequency could be converted to the filter gain values at initialization. This was not done because the DataDict.m file did not contain the necessary IRV for the converted table, and the FilHpUpdGain library function expects frequency in Hz; if this throughput improvement (converting the frequency table once in initialization) is made in the future, a new version of FilHpUpdGain will be needed.</p>
+<p>LnrIntrpn_u16_u16VariXu16VariY function from NxtrIntrpn library used to implement the “freq lookup” block in the SF028A_AssiHiFrq/AssiHiFrq/AssiHiFrq model block.</p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p>See FDD</p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p>See FDD, and design rationale noted above.</p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p>See FDD</p>
+<h2 id="server-runables">Server Runables </h2>
+<p>None</p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p>None</p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<p>None</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>None</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>None</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>EA4 <a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>01.00.00</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>SF028A_AssiHiFrq_Design</td>
+<td>See Synergy subproject version</td>
+</tr>
+</tbody>
+</table>

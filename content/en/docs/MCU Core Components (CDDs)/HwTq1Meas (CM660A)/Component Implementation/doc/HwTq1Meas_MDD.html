@@ -1,0 +1,502 @@
+---
+title: HwTq1Meas_MDD
+linkTitle: HwTq1Meas_MDD
+weight: 3
+---
+
+<p><strong>Module Design Document</strong></p>
+<p><strong>For</strong></p>
+<p><strong>HandWheel Torque 1 Measurement</strong></p>
+<p><strong>Dec 21 2015</strong></p>
+<p><strong>Prepared For:</strong></p>
+<p><strong>Software Engineering</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong>Saginaw, MI, USA</strong></p>
+<p><strong>Prepared By:</strong></p>
+<p><strong>Software Group,</strong></p>
+<p><strong>Nexteer Automotive,</strong></p>
+<p><strong><u>Saginaw, MI, USAChange</u></strong> History</p>
+<table>
+<colgroup>
+<col style="width: 52%" />
+<col style="width: 20%" />
+<col style="width: 11%" />
+<col style="width: 14%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Description</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+</tr>
+<tr class="even">
+<td>Initial Version</td>
+<td>Rijvi Ahmed</td>
+<td>1.0</td>
+<td>11-Aug-2015</td>
+</tr>
+<tr class="odd">
+<td>Inplement Rack Limiter EOT</td>
+<td>Rijvi Ahmed</td>
+<td>2.0</td>
+<td>18-Sep-2015</td>
+</tr>
+<tr class="even">
+<td>Updated for CM660A_HwTq1Meas_Design_1.4.0</td>
+<td>Selva</td>
+<td>3.0</td>
+<td>14-Oct-2015</td>
+</tr>
+<tr class="odd">
+<td>Updated for CM660A_HwTq1Meas_Design_1.6.0</td>
+<td>Selva</td>
+<td>4.0</td>
+<td>21-Dec-15</td>
+</tr>
+</tbody>
+</table>
+<p><u>Table of Contents</u></p>
+<p><a href="#introduction">1 Introduction 5</a></p>
+<p><a href="#purpose">1.1 Purpose 5</a></p>
+<p><a href="#hwtq1meas-high-level-description">2 HwTq1Meas &amp; High-Level Description 6</a></p>
+<p><a href="#design-details-of-software-module">3 Design details of software module 7</a></p>
+<p><a href="#graphical-representation-of-hwtq1meas">3.1 Graphical representation of HwTq1Meas 7</a></p>
+<p><a href="#data-flow-diagram">3.2 Data Flow Diagram 7</a></p>
+<p><a href="#component-level-dfd">3.2.1 Component level DFD 7</a></p>
+<p><a href="#function-level-dfd">3.2.2 Function level DFD 7</a></p>
+<p><a href="#constant-data-dictionary">4 Constant Data Dictionary 8</a></p>
+<p><a href="#program-fixed-constants">4.1 Program (fixed) Constants 8</a></p>
+<p><a href="#embedded-constants">4.1.1 Embedded Constants 8</a></p>
+<p><a href="#software-component-implementation">5 Software Component Implementation 9</a></p>
+<p><a href="#sub-module-functions">5.1 Sub-Module Functions 9</a></p>
+<p><a href="#init-hwtq1measinit1">5.1.1 Init: HwTq1MeasInit1 9</a></p>
+<p><a href="#design-rationale">5.1.1.1 Design Rationale 9</a></p>
+<p><a href="#module-outputs">5.1.1.2 Module Outputs 9</a></p>
+<p><a href="#per-hwtq1measper1">5.1.2 Per: HwTq1MeasPer1 9</a></p>
+<p><a href="#design-rationale-1">5.1.2.1 Design Rationale 9</a></p>
+<p><a href="#store-module-inputs-to-local-copies">5.1.2.2 Store Module Inputs to Local copies 9</a></p>
+<p><a href="#processing-of-function">5.1.2.3 (Processing of function)……… 9</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs">5.1.2.4 Store Local copy of outputs into Module Outputs 9</a></p>
+<p><a href="#per-hwtq1measper2">5.1.3 Per: HwTq1MeasPer2 9</a></p>
+<p><a href="#design-rationale-2">5.1.3.1 Design Rationale 9</a></p>
+<p><a href="#store-module-inputs-to-local-copies-1">5.1.3.2 Store Module Inputs to Local copies 10</a></p>
+<p><a href="#processing-of-function-1">5.1.3.3 (Processing of function)……… 10</a></p>
+<p><a href="#store-local-copy-of-outputs-into-module-outputs-1">5.1.3.4 Store Local copy of outputs into Module Outputs 10</a></p>
+<p><a href="#server-runables">5.2 Server Runables 10</a></p>
+<p><a href="#hwtq1meashwtq1auttrim_oper">5.2.1 HwTq1MeasHwTq1AutTrim_oper 10</a></p>
+<p><a href="#design-rationale-3">5.2.1.1 Design Rationale 10</a></p>
+<p><a href="#processing-of-function-2">5.2.1.2 (Processing of function)……… 10</a></p>
+<p><a href="#hwtq1meashwtq1clrtrim_oper">5.2.2 HwTq1MeasHwTq1ClrTrim_Oper 10</a></p>
+<p><a href="#design-rationale-4">5.2.2.1 Design Rationale 10</a></p>
+<p><a href="#processing-of-function-3">5.2.2.2 (Processing of function)……… 10</a></p>
+<p><a href="#hwtq1meashwtq1readtrim_oper">5.2.3 HwTq1MeasHwTq1ReadTrim_Oper 10</a></p>
+<p><a href="#design-rationale-5">5.2.3.1 Design Rationale 10</a></p>
+<p><a href="#processing-of-function-4">5.2.3.2 (Processing of function)……… 10</a></p>
+<p><a href="#hwtq1meashwtq1trimprfmdsts_oper">5.2.4 HwTq1MeasHwTq1TrimPrfmdSts_Oper 10</a></p>
+<p><a href="#design-rationale-6">5.2.4.1 Design Rationale 10</a></p>
+<p><a href="#processing-of-function-5">5.2.4.2 (Processing of function)……… 11</a></p>
+<p><a href="#hwtq1meashwtq1wrtrim_oper">5.2.5 HwTq1MeasHwTq1WrTrim_Oper 11</a></p>
+<p><a href="#design-rationale-7">5.2.5.1 Design Rationale 11</a></p>
+<p><a href="#processing-of-function-6">5.2.5.2 (Processing of function)……… 11</a></p>
+<p><a href="#hwtq1meastrigstrt_oper">5.2.6 HwTq1MeasTrigStrt_Oper 11</a></p>
+<p><a href="#design-rationale-8">5.2.6.1 Design Rationale 11</a></p>
+<p><a href="#processing-of-function-7">5.2.6.2 (Processing of function)……… 11</a></p>
+<p><a href="#interrupt-functions">5.3 Interrupt Functions 11</a></p>
+<p><a href="#module-internal-local-functions">5.4 Module Internal (Local) Functions 11</a></p>
+<p><a href="#local-function-1">5.4.1 Local Function #1 11</a></p>
+<p><a href="#design-rationale-9">5.4.1.1 Design Rationale 11</a></p>
+<p><a href="#local-function-2">5.4.2 Local Function #2 11</a></p>
+<p><a href="#design-rationale-10">5.4.2.1 Design Rationale 12</a></p>
+<p><a href="#global-functionmacro-definitions">5.5 GLOBAL Function/Macro Definitions 12</a></p>
+<p><a href="#known-limitations-with-design">6 Known Limitations with Design 13</a></p>
+<p><a href="#unit-test-consideration">7 UNIT TEST CONSIDERATION 14</a></p>
+<p><a href="#abbreviations-and-acronyms">Appendix A Abbreviations and Acronyms 15</a></p>
+<p><a href="#glossary">Appendix B Glossary 16</a></p>
+<p><a href="#references">Appendix C References 18</a></p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="purpose">Purpose</h2>
+<p>Module design document for Hand Wheel Torque 1 Measurement Function.</p>
+<h1 id="hwtq1meas-high-level-description"> HwTq1Meas &amp; High-Level Description</h1>
+<p>This module configures and processes the RSENT1 peripheral, which is connected to the handwheel torque 1 sensor. The module configures the peripheral, triggers transfers, and processes the received data.</p>
+<p>This module also reads and provides the rack limiter EOT information which is stored in torque sensor 1 scratchpad.</p>
+<h1 id="design-details-of-software-module">Design details of software module</h1>
+<h2 id="graphical-representation-of-hwtq1meas">Graphical representation of HwTq1Meas</h2>
+<p><img src="ElectricPowerSteering_RH850_GM_T1XX_website/static/media/image2.png" style="width:5.99167in;height:4.26667in" /></p>
+<h2 id="data-flow-diagram">Data Flow Diagram</h2>
+<h3 id="component-level-dfd">Component level DFD</h3>
+<p>N/A</p>
+<h3 id="function-level-dfd">Function level DFD</h3>
+<p>N/A</p>
+<h1 id="constant-data-dictionary">Constant Data Dictionary</h1>
+<h2 id="program-fixed-constants">Program (fixed) Constants</h2>
+<h3 id="embedded-constants">Embedded Constants</h3>
+<h4 id="local-constants">Local Constants</h4>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Constant Name</td>
+<td>Resolution</td>
+<td>Units</td>
+<td>Value</td>
+</tr>
+<tr class="even">
+<td>STSFLTMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x000000FEUL</td>
+</tr>
+<tr class="odd">
+<td>TQDATAMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x00000FFFUL</td>
+</tr>
+<tr class="even">
+<td>SENTSYNCTRIG_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>16UL</td>
+</tr>
+<tr class="odd">
+<td>REGCFGWAITTI_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>2UL</td>
+</tr>
+<tr class="even">
+<td>RACKLIMREOTSIGHILIM_HWDEG_F32</td>
+<td>Single point precision</td>
+<td>HwDeg</td>
+<td>(800.0F)</td>
+</tr>
+<tr class="odd">
+<td>RACKLIMREOTSIGLOLIM_HWDEG_F32</td>
+<td>Single point precision</td>
+<td>HwDeg</td>
+<td>(-800.0F)</td>
+</tr>
+<tr class="even">
+<td>RACKLIMRCCWEOTSCA_ULS_F32</td>
+<td>Single point precision</td>
+<td>Uls</td>
+<td>(-0.1953F)</td>
+</tr>
+<tr class="odd">
+<td>RACKLIMRCWEOTSCA_ULS_F32</td>
+<td>Single point precision</td>
+<td>Uls</td>
+<td>(0.1953F)</td>
+</tr>
+<tr class="even">
+<td>EOTCSMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x00000700UL</td>
+</tr>
+<tr class="odd">
+<td>EOTIDTWO_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>2U</td>
+</tr>
+<tr class="even">
+<td>EOTIDTHREE_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>3U</td>
+</tr>
+<tr class="odd">
+<td>EOTIDFOUR_CNT_U08</td>
+<td>1</td>
+<td>Cnt</td>
+<td>4U</td>
+</tr>
+<tr class="even">
+<td>EOTDATAMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x00000FF0UL</td>
+</tr>
+<tr class="odd">
+<td>EOTIDMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x0000000FUL</td>
+</tr>
+<tr class="even">
+<td>FRSMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x00000001UL</td>
+</tr>
+<tr class="odd">
+<td>CSMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x000000FEUL</td>
+</tr>
+<tr class="even">
+<td>FCCNMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x30000000UL</td>
+</tr>
+<tr class="odd">
+<td>SLOWMSGDATAMASK_CNT_U32</td>
+<td>1</td>
+<td>Cnt</td>
+<td>0x80000000UL</td>
+</tr>
+</tbody>
+</table>
+<h1 id="software-component-implementation">Software Component Implementation</h1>
+<h2 id="sub-module-functions">Sub-Module Functions</h2>
+<p>The sub-module functions are grouped based on similar functionality that needs to be executed in a given “State” of the system (refer States and Modes). For a given module, the MDD will identify the type and number of sub-modules required. The sub-module types are described below.</p>
+<h2 id="init-hwtq1measinit1">Init: HwTq1MeasInit1</h2>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>Magic numbers are used due to the large number of numeric values (for peripheral register configuration), it is more readable and easier to maintain without using embedded constants for these values. The values are shown in code comments, and line up exactly with the definitions given in the design module (a special spreadsheet was included in the design for this purpose).</p>
+<p>See CM660A_HwTq1Meas_RSENTPeripheralCfg.xlsx in design module.</p>
+<h2 id="module-outputs">Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h3 class="unnumbered" id="section"></h3>
+<h2 id="per-hwtq1measper1">Per: HwTq1MeasPer1</h2>
+<h2 id="design-rationale-1">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="store-module-inputs-to-local-copies">Store Module Inputs to Local copies</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="processing-of-function">(Processing of function)………</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="per-hwtq1measper2">Per: HwTq1MeasPer2</h2>
+<h2 id="design-rationale-2">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="store-module-inputs-to-local-copies-1">Store Module Inputs to Local copies</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="processing-of-function-1">(Processing of function)………</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="store-local-copy-of-outputs-into-module-outputs-1">Store Local copy of outputs into Module Outputs</h2>
+<p><em>Refer to FDD</em></p>
+<h2 id="server-runables">Server Runables </h2>
+<h2 id="hwtq1meashwtq1auttrim_oper">HwTq1MeasHwTq1AutTrim_oper</h2>
+<h2 id="design-rationale-3">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-2"> (Processing of function)………</h2>
+<p><em>See block “</em>HwTq1MeasHwTq1AutTrim<em>” in the Simulink model of the design.</em></p>
+<h2 id="hwtq1meashwtq1clrtrim_oper">HwTq1MeasHwTq1ClrTrim_Oper</h2>
+<h2 id="design-rationale-4">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-3"> (Processing of function)………</h2>
+<p><em>See block “</em>HwTq1MeasHwTq1ClrTrim<em>” in the Simulink model of the design.</em></p>
+<h2 id="hwtq1meashwtq1readtrim_oper">HwTq1MeasHwTq1ReadTrim_Oper</h2>
+<h2 id="design-rationale-5">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-4"> (Processing of function)………</h2>
+<p><em>See block “HwTq1MeasHwTq1ReadTrim” in the Simulink model of the design.</em></p>
+<h2 id="hwtq1meashwtq1trimprfmdsts_oper">HwTq1MeasHwTq1TrimPrfmdSts_Oper</h2>
+<h2 id="design-rationale-6">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-5"> (Processing of function)………</h2>
+<p><em>See block “HwTq1MeasHwTq1TrimPrfmdSts” in the Simulink model of the design.</em></p>
+<h2 id="hwtq1meashwtq1wrtrim_oper">HwTq1MeasHwTq1WrTrim_Oper</h2>
+<h2 id="design-rationale-7">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-6"> (Processing of function)………</h2>
+<p><em>See block “HwTq1MeasHwTq1WrTrim” in the Simulink model of the design.</em></p>
+<h3 id="hwtq1meastrigstrt_oper">HwTq1MeasTrigStrt_Oper</h3>
+<h2 id="design-rationale-8">Design Rationale</h2>
+<p><em>None</em></p>
+<h2 id="processing-of-function-7"> (Processing of function)………</h2>
+<p><em>See block “HwTq1MeasTrigStrt” in the Simulink model of the design.</em></p>
+<h2 id="interrupt-functions">Interrupt Functions</h2>
+<p><em>None</em></p>
+<h2 id="module-internal-local-functions">Module Internal (Local) Functions</h2>
+<h2 id="local-function-1">Local Function #1</h2>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>RackLimrEotSigRead</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>None</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-9">Design Rationale</h2>
+<p>See RackLimrEot/RackLimrEotSigRead block in the Simulink model of the design.</p>
+<h2 id="local-function-2">Local Function #2</h2>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Function Name</strong></td>
+<td>ReadRegister</td>
+<td>Type</td>
+<td>Min</td>
+<td>Max</td>
+</tr>
+<tr class="even">
+<td><strong>Arguments Passed</strong></td>
+<td>RegisterDummyRead_Cnt_T_u32</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td><strong>Return Value</strong></td>
+<td>RegisterDummyRead_Cnt_T_u32</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="design-rationale-10">Design Rationale</h2>
+<p>This function can be used both for read-and-use and for read-and-discard</p>
+<h2 id="global-functionmacro-definitions">GLOBAL Function/Macro Definitions</h2>
+<p>None</p>
+<h1 id="known-limitations-with-design">Known Limitations with Design</h1>
+<p>None</p>
+<h1 id="unit-test-consideration">UNIT TEST CONSIDERATION</h1>
+<p>Overflow for the variables <strong>Rte_Pim_HwTq1MeasPrevRollgCntr, Rte_Pim_HwTq1MsgMissRxCnt, Rte_Pim_HwTq1ComStsErrCntr, Rte_Pim_HwTq1IntSnsrErrCntr</strong> are intentional as these are used as rolling counters.</p>
+<p class="heading" id="abbreviations-and-acronyms">Abbreviations and Acronyms</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Abbreviation or Acronym</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DFD</td>
+<td>Design functional diagram</td>
+</tr>
+<tr class="even">
+<td>MDD</td>
+<td>Module design Document</td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="glossary">Glossary</p>
+<p><strong>Note</strong>: Terms and definitions from the source “Nexteer Automotive” take precedence over all other definitions of the same term. Terms and definitions from the source “Nexteer Automotive” are formulated from multiple sources, including the following:</p>
+<ul>
+<li><p>ISO 9000</p></li>
+<li><p>ISO/IEC 12207</p></li>
+<li><p>ISO/IEC 15504</p></li>
+<li><p>Automotive SPICE® Process Reference Model (PRM)</p></li>
+<li><p>Automotive SPICE® Process Assessment Model (PAM)</p></li>
+<li><p>ISO/IEC 15288</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>IEEE Standards</p></li>
+<li><p>SWEBOK</p></li>
+<li><p>PMBOK</p></li>
+<li><p>Existing Nexteer Automotive documentation</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 53%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Source</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MDD</td>
+<td>Module Design Document</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DFD</td>
+<td>Data Flow Diagram</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="heading" id="references">References</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 69%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Ref. #</strong></th>
+<th><strong>Title</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>AUTOSAR Specification of Memory Mapping (Link:<a href="http://www.autosar.org/download/R4.0/AUTOSAR_SWS_MemoryMapping.pdf">AUTOSAR_SWS_MemoryMapping.pdf</a>)</td>
+<td>v1.3.0 R4.0 Rev 2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>MDD Guideline</td>
+<td>EA4 01.00.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="http://misagweb01.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_fc55f/Software%20Naming%20Conventions%2003x(In%20Work).doc">Software Naming Conventions.doc</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><a href="http://eroom1.nexteer.com/eRoomReq/Files/erooms8/NextGeneration/0_1a67a9/Software%20Design%20and%20Coding%20Standards.doc">Software Design and Coding Standards.doc</a></td>
+<td>2.0</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>FDD – CM660A HwTq1Meas</td>
+<td>See Synergy subproject version</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,1873 @@
+---
+title: UserManual_CanDrivers
+linkTitle: UserManual_CanDrivers
+weight: 13
+---
+
+<!DOCTYPE html><html>
+<head>
+<title></title>
+<style type="text/css">
+<!--
+.xflip {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph;
+}
+.yflip {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv;
+}
+.xyflip {
+    -moz-transform: scaleX(-1) scaleY(-1);
+    -webkit-transform: scaleX(-1) scaleY(-1);
+    -o-transform: scaleX(-1) scaleY(-1);
+    transform: scaleX(-1) scaleY(-1);
+    filter: fliph + flipv;
+}
+-->
+</style>
+</head>
+<body>
+<a name=1></a>&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>Vector CAN Driver&#160;</b><br/>
+User Manual&#160;<br/>
+(Your First Steps)&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Version 2.4&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Vector Informatik GmbH, Ingersheimer Str. 24, 70499 Stuttgart&#160;<br/>
+Tel. 0711/80670-0, Fax 0711/80670-399, Email can@vector-informatik.de&#160;<br/>
+Internet http:\\www.vector-informatik.de&#160;<br/>
+<hr/>
+<a name=2></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-2_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+2&#160;/&#160;&#160;56<br/>
+&#160;<br/>&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>Higher&#160;layer&#160;components</b><br/>
+CAN Driver<br/>
+CAN Controller<br/>
+Transceiver<br/>
+<b>CAN</b><br/>
+<b>Message&#160;Transmission&#160;-&#160;Reception</b><br/>
+&#160;<br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>Authors:&#160;&#160;</b>Klaus Emmert&#160;<br/>
+<b>Version:&#160;</b><br/>
+2.4&#160;<br/>
+<b>Status:&#160;</b><br/>
+released&#160;(in preparation/completed/inspected/released)&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=3></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-3_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+3&#160;/&#160;&#160;56<br/>
+<b>History&#160;</b><br/>
+<b>Author&#160;</b><br/>
+<b>Date&#160;</b><br/>
+<b>Version&#160;</b><br/>
+<b>Remarks&#160;</b><br/>
+Klaus Emmert&#160;<br/>
+2001-05-11&#160;<br/>
+0.1&#160;<br/>
+First version&#160;of the User&#160;Manual&#160;<br/>
+Klaus Emmert&#160;<br/>
+2001-08-11&#160;<br/>
+0.4&#160;<br/>
+Technical and linguistic revision&#160;<br/>
+Klaus Emmert&#160;<br/>
+2001-09.21&#160;<br/>
+0.6&#160;<br/>
+Revision (pretransmit)&#160;<br/>
+Klaus Emmert&#160;<br/>
+2001-10-10&#160;<br/>
+0.6a&#160;<br/>
+Error in description of a mes-<br/>sage, how to&#160;enter the manufac-<br/>turer type to the example data&#160;<br/>base.&#160;<br/>
+Klaus Emmert&#160;<br/>
+2001-12-14&#160;<br/>
+1.0&#160;<br/>
+Linguistic revision&#160;<br/>
+Klaus Emmert&#160;<br/>
+2002-09-25&#160;<br/>
+1.4&#160;<br/>
+Linguistic&#160;corrections and little&#160;<br/>adaptations&#160;<br/>
+Klaus Emmert&#160;<br/>
+2003-07-16&#160;<br/>
+1.5&#160;<br/>
+Warning added for example code&#160;<br/>usage&#160;<br/>
+Klaus Emmert&#160;<br/>
+2004-10-26&#160;<br/>
+1.6&#160;<br/>
+New Layout, example dbc&#160;file&#160;<br/>deleted and description modified,&#160;<br/>description for CANgen and&#160;the&#160;<br/>new Generation Tool GENy, new&#160;<br/>Symbols&#160;<br/>
+Klaus Emmert&#160;<br/>
+2006-05-30&#160;<br/>
+1.7&#160;<br/>
+Updated dialog for bus timing&#160;<br/>register setup&#160;<br/>
+Klaus Emmert&#160;<br/>
+2006-09-08&#160;<br/>
+1.8&#160;<br/>
+Page number of Index, headline&#160;<br/>numbering&#160;<br/>
+Klaus Emmert&#160;<br/>
+2007-02-20&#160;<br/>
+1.9&#160;<br/>
+Issues in&#160;Word Hyperlinks&#160;<br/>
+Klaus Emmert&#160;<br/>
+2007-07-26&#160;<br/>
+2.0&#160;<br/>
+Issues in&#160;steps introduction,&#160;<br/>some typos.&#160;<br/>
+Klaus Emmert&#160;<br/>
+2007-09-06&#160;<br/>
+2.1&#160;<br/>
+Typos and reference in TOC&#160;<br/>
+Klaus Emmert&#160;<br/>
+2007-10-29&#160;<br/>
+2.2&#160;<br/>
+Baudrate setting description&#160;<br/>
+Klaus Emmert&#160;<br/>
+2008-09-04&#160;<br/>
+2.3&#160;<br/>
+Include file for CAN&#160;Driver&#160;and &#160;<br/>GENy&#160;<br/>
+Klaus Emmert&#160;<br/>
+2009-08-26&#160;<br/>
+2.4&#160;<br/>
+Fix: v_inc.h must not be&#160;changed&#160;<br/>manually. &#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=4></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-4_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-4_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+4&#160;/&#160;&#160;56<br/>
+<b>Motivation For This Work&#160;<br/></b>The CAN Driver is the only component&#160;among the CANbedded Software Compo-<br/>nents that is directly connected with the CAN Controller&#160;hardware. It is the founda-<br/>tion for all other CANbedded Software Components.&#160;<br/>The first target for you is to get the CAN&#160;Driver running, to see receive and transmit&#160;<br/>messages on the bus. &#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>WARNING&#160;</b><br/>
+<b>All application code in any of&#160;the Vector User Manuals is for training pur-<br/>poses only.&#160;They&#160;are slightly&#160;tested&#160;and designed to understand the basic&#160;<br/>idea of using a certain component or a set of components.&#160;</b><br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=5></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-5_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+5&#160;/&#160;&#160;56<br/>
+<b>Contents</b>&#160;<br/>
+<a href="UserManual_CanDrivers.html#8"><b>1</b>&#160;&#160;<b>Welcome to the CAN&#160;Driver User&#160;Manual&#160;.......................................................&#160;8</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">1.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">Beginners with the CAN Driver start here ?&#160;........................................&#160;8&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">1.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">For Advanced Users&#160;...........................................................................&#160;8&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">1.3&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">Special topics&#160;......................................................................................&#160;8&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">1.4&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#8">Documents this one refers to…...........................................................&#160;8&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#9"><b>2</b>&#160;&#160;<b>About This Document&#160;.......................................................................................&#160;9</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#9">2.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#9">How This Documentation Is Set-Up&#160;....................................................&#160;9&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#10">2.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#10">Legend and&#160;Explanation of Symbols.................................................&#160;10&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#11"><b>3</b>&#160;&#160;<b>ECUs and&#160;Vector CANbedded Components – An Overall View..................&#160;11</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#11">3.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#11">Network Data Base File&#160;(DBC)&#160;.........................................................&#160;11&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#12"><b>4</b>&#160;&#160;<b>CANbedded Software&#160;Components...............................................................&#160;</b></a><a href="UserManual_CanDrivers.html#13"><b>12</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#13">4.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#13">Generation Tool&#160;................................................................................&#160;13&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">4.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">The Vector CAN Driver&#160;.....................................................................&#160;14&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">4.2.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">Tasks of The Vector CAN Driver.......................................................&#160;14&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">4.2.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">Vector CAN&#160;Driver Files&#160;....................................................................&#160;14&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#14">4.2.2.1&#160;&#160;Component Files&#160;...............................................................................&#160;14&#160;<br/>4.2.2.2&#160;&#160;Generated Files.................................................................................&#160;14&#160;<br/></a><a href="UserManual_CanDrivers.html#15">4.2.2.3&#160;&#160;Configurable files&#160;..............................................................................&#160;15&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#15">4.2.3&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#15">Include The&#160;CAN Driver&#160;Into Your Application&#160;..................................&#160;15&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#16"><b>5</b>&#160;&#160;<b>Vector CAN Driver– A&#160;More Detailed View....................................................&#160;16</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#16">5.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#16">Information Package on&#160;the CAN Bus&#160;..............................................&#160;16&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#17">5.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#17">Storing Information Packages&#160;...........................................................&#160;17&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#18">5.2.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#18">The Registers of the CAN Controller.................................................&#160;18&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#18">5.2.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#18">The Data Structure Generated by the Generation Tool for&#160;<br/>Storing Message Data.......................................................................&#160;18&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#19">5.2.3&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#19">Memory the&#160;Application&#160;Reserved for Signals.&#160;.................................&#160;19&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#20"><b>6</b>&#160;&#160;<b>CAN&#160;Driver in 9 Steps&#160;.....................................................................................&#160;20</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#21">6.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#21">STEP 1 &#160;Unpack the Delivery............................................................&#160;21&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#22">6.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#22">STEP 2 &#160;Generation Tool and dbc File&#160;.............................................&#160;22&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#22">6.2.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#22">Using CANgen as Generation Tool...................................................&#160;22&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#30">6.2.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#30">Using GENy, the new Generation Tool&#160;.............................................&#160;30&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#33">6.3&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#33">STEP 3 &#160;Generate Files&#160;....................................................................&#160;33&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#33">6.3.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#33">Using CANgen Generation Tool........................................................&#160;33&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#33">6.3.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#33">Using GENy&#160;......................................................................................&#160;33&#160;</a><br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=6></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-6_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+6&#160;/&#160;&#160;56<br/>
+<a href="UserManual_CanDrivers.html#35">6.4&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#35">STEP 4 &#160;Add Files to your Application&#160;..............................................&#160;35&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#36">6.5&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#36">STEP 5 Adaptations for&#160;your Application&#160;..........................................&#160;36&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#40">6.6&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#40">STEP 6 Compile, Link&#160;and Download&#160;...............................................&#160;40&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#40">6.7&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#40">STEP 7 Receiving A Message&#160;..........................................................&#160;40&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#43">6.8&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#43">STEP 8 Sending a Message&#160;.............................................................&#160;43&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#45">6.9&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#45">STEP 9 Further Actions&#160;....................................................................&#160;45&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#45">6.9.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#45">Strategies for Receiving a CAN&#160;Message.........................................&#160;45&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#45">6.9.1.1&#160;&#160;Hardware Filter (HW Filter)&#160;...............................................................&#160;45&#160;<br/></a><a href="UserManual_CanDrivers.html#46">6.9.1.2&#160;&#160;ApplCanMsgReceived.......................................................................&#160;46&#160;<br/>6.9.1.3&#160;&#160;Ranges..............................................................................................&#160;46&#160;<br/>6.9.1.4&#160;&#160;Search Algorithm...............................................................................&#160;46&#160;<br/>6.9.1.5&#160;&#160;Precopy&#160;.............................................................................................&#160;46&#160;<br/></a><a href="UserManual_CanDrivers.html#47">6.9.1.6&#160;&#160;Indication Flag / Indication Function..................................................&#160;47&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#48">6.9.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#48">Strategies for Sending a CAN&#160;Message&#160;...........................................&#160;48&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#48">6.9.2.1&#160;&#160;Update RAM buffer&#160;...........................................................................&#160;48&#160;<br/></a><a href="UserManual_CanDrivers.html#49">6.9.2.2&#160;&#160;CanTransmit......................................................................................&#160;49&#160;<br/>6.9.2.3&#160;&#160;The Queue&#160;........................................................................................&#160;49&#160;<br/>6.9.2.4&#160;&#160;Pretransmit Function&#160;.........................................................................&#160;49&#160;<br/>6.9.2.5&#160;&#160;Confirmation Function and Confirmation Flag...................................&#160;49&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#51"><b>7</b>&#160;&#160;<b>Further Information&#160;.........................................................................................&#160;51</b>&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#51">7.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#51">An Exercise For Practice...................................................................&#160;51&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">7.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">The Solution To The Exercise...........................................................&#160;54&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">7.2.1&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">After the first reception and transmission of a new value:.................&#160;54&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">7.2.2&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">After the reception of the&#160;same value as before:&#160;..............................&#160;54&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">7.2.3&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#54">The solution, step by step&#160;.................................................................&#160;54&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#56"><b>8</b>&#160;&#160;<b>Index&#160;.................................................................................................................&#160;56</b>&#160;</a><br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=7></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-7_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+7&#160;/&#160;&#160;56<br/>
+<b>Illustrations&#160;<br/></b><a href="UserManual_CanDrivers.html#11">Figure&#160;&#160;3-1&#160;&#160;A Modern Vehicle With&#160;Body CAN&#160;And PowerTrain Bus...........................&#160;11&#160;<br/></a><a href="UserManual_CanDrivers.html#12">Figure&#160;&#160;4-1&#160;&#160;CANbedded&#160;Software Components&#160;...........................................................&#160;12&#160;<br/></a><a href="UserManual_CanDrivers.html#15">Figure&#160;&#160;4-2&#160;&#160;Order For Including Files............................................................................&#160;15&#160;<br/></a><a href="UserManual_CanDrivers.html#16">Figure&#160;&#160;5-1&#160;&#160;Message and Signal...................................................................................&#160;16&#160;<br/></a><a href="UserManual_CanDrivers.html#17">Figure&#160;&#160;5-2&#160;&#160;Rx Register,&#160;Data Structure and Notification&#160;.............................................&#160;17&#160;<br/></a><a href="UserManual_CanDrivers.html#18">Figure&#160;&#160;5-3&#160;&#160;Tx Register, Data Structure and CanTransmit&#160;...........................................&#160;18&#160;<br/></a><a href="UserManual_CanDrivers.html#19">Figure&#160;&#160;5-4&#160;&#160;Memory optimization by the Generation Tool&#160;............................................&#160;19&#160;<br/></a><a href="UserManual_CanDrivers.html#22">Figure&#160;&#160;6-1&#160;&#160;Add a dbc file&#160;.............................................................................................&#160;22&#160;<br/>Figure&#160;&#160;6-2&#160;&#160;Warning – do not bother.............................................................................&#160;22&#160;<br/></a><a href="UserManual_CanDrivers.html#23">Figure&#160;&#160;6-3&#160;&#160;Channel properties.....................................................................................&#160;23&#160;<br/>Figure&#160;&#160;6-4&#160;&#160;Save Setting For The First Time&#160;................................................................&#160;23&#160;<br/></a><a href="UserManual_CanDrivers.html#25">Figure&#160;&#160;6-5&#160;&#160;Overview of&#160;Signals and&#160;Directories&#160;..........................................................&#160;24&#160;<br/>Figure&#160;&#160;6-6&#160;&#160;CAN Driver&#160;Dialog (for HC12)&#160;....................................................................&#160;25&#160;<br/></a><a href="UserManual_CanDrivers.html#26">Figure&#160;&#160;6-7&#160;&#160;Init Registers For The CAN Controller (for HC12)......................................&#160;26&#160;<br/></a><a href="UserManual_CanDrivers.html#27">Figure&#160;&#160;6-8&#160;&#160;Acceptance&#160;Filters For The CAN Controller (for&#160;HC12)&#160;.............................&#160;27&#160;<br/></a><a href="UserManual_CanDrivers.html#28">Figure&#160;&#160;6-9&#160;&#160;Bus Timing Register Settings.....................................................................&#160;28&#160;<br/></a><a href="UserManual_CanDrivers.html#29">Figure&#160;&#160;6-10&#160;&#160;TP Options&#160;.................................................................................................&#160;29&#160;<br/></a><a href="UserManual_CanDrivers.html#30">Figure&#160;&#160;6-11&#160;&#160;Setup Dialog Window and Channel Setup Window to Create a New&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#30">Configuration..............................................................................................&#160;30&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#30">Figure&#160;&#160;6-12&#160;&#160;Component Selection.................................................................................&#160;30&#160;<br/></a><a href="UserManual_CanDrivers.html#31">Figure&#160;&#160;6-13&#160;&#160;The Register&#160;Block Address is a&#160;General Setting&#160;for the CPU&#160;..................&#160;31&#160;<br/>Figure&#160;&#160;6-14&#160;&#160;Register Block Offset, Acceptance Filters and Bus Timing are&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#31">Channel-Specific Settings for the CPU&#160;......................................................&#160;31&#160;</a><br/>
+<a href="UserManual_CanDrivers.html#32">Figure&#160;&#160;6-15&#160;&#160;Acceptance&#160;Filter Settings Window of GENy&#160;.............................................&#160;32&#160;<br/></a><a href="UserManual_CanDrivers.html#33">Figure&#160;&#160;6-16&#160;&#160;Generation Process&#160;...................................................................................&#160;33&#160;<br/>Figure&#160;&#160;6-17&#160;&#160;Information About the Generated Files and the&#160;Generation Process&#160;........&#160;33&#160;<br/></a><a href="UserManual_CanDrivers.html#37">Figure&#160;&#160;6-18&#160;&#160;The Transceiver&#160;.........................................................................................&#160;37&#160;<br/></a><a href="UserManual_CanDrivers.html#40">Figure&#160;&#160;6-19&#160;&#160;Simple Test Environment&#160;...........................................................................&#160;40&#160;<br/></a><a href="UserManual_CanDrivers.html#41">Figure&#160;&#160;6-20&#160;&#160;Check button for indication flag..................................................................&#160;41&#160;<br/></a><a href="UserManual_CanDrivers.html#45">Figure&#160;&#160;6-21&#160;&#160;Calling Order Of Functions When A CAN&#160;Message Is Received...............&#160;45&#160;<br/></a><a href="UserManual_CanDrivers.html#48">Figure&#160;&#160;6-22&#160;&#160;States Before Transmitting A CAN&#160;Message&#160;.............................................&#160;48&#160;<br/></a><a href="UserManual_CanDrivers.html#50">Figure&#160;&#160;6-23&#160;&#160;Confirmation Interrupt After Transmission Of CAN Message&#160;....................&#160;50&#160;<br/></a>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=8></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-8_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+8&#160;/&#160;&#160;56<br/>
+<b>1&#160;&#160;Welcome to the CAN Driver User Manual&#160;</b><br/>
+<b>1.1&#160;</b><br/>
+<b>Beginners with the CAN&#160;Driver start here ? &#160;</b><br/>
+You need s<a href="UserManual_CanDrivers.html#9">ome&#160;information</a>&#160;about&#160;this&#160;document?&#160;<br/>
+&#160; &#160; &#160;&#160;Æ<a href="UserManual_CanDrivers.html#9">&#160;see Chapter 2</a>&#160;<br/>
+<a href="UserManual_CanDrivers.html#11">Getting&#160;started&#160;</a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Æ<a href="UserManual_CanDrivers.html#11">&#160;see Chapter 3</a>&#160;<br/><a href="UserManual_CanDrivers.html#20">9 Steps for the&#160;CAN Driver</a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Æ<a href="UserManual_CanDrivers.html#20">&#160;see Chapter 6</a>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>1.2&#160;</b><br/>
+<b>For Advanced Users &#160;</b><br/>
+<a href="UserManual_CanDrivers.html#16">Start reading&#160;here</a>.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Æ<a href="UserManual_CanDrivers.html#16">&#160;see Chapter 5</a>&#160;<br/>&#160;<br/>&#160;<br/>&#160;&#160;&#160;<br/>
+<b>1.3&#160;</b><br/>
+<b>Special topics &#160;</b><br/>
+<a href="UserManual_CanDrivers.html#45">Strategies for&#160;receiving a CAN message</a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Æ<a href="UserManual_CanDrivers.html#45">&#160;see Chapter 6.9.1&#160;<br/></a><a href="UserManual_CanDrivers.html#47">Strategies for&#160;sending a CAN message</a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Æ<a href="UserManual_CanDrivers.html#47">&#160;see Chapter 6.9.2&#160;<br/></a><a href="UserManual_CanDrivers.html#51">An&#160;exercise</a>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Æ<a href="UserManual_CanDrivers.html#51">&#160;see Chapter 7.1&#160;<br/></a>&#160;<br/>&#160;<br/>&#160;<br/>
+<b>1.4&#160;</b><br/>
+<b>Documents this one refers to…&#160;</b><br/>
+TechnicalReference_CANDriver.pdf&#160;<br/>TechnicalReference_CAN_xxx.pdf&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=9></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-9_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+9&#160;/&#160;&#160;56<br/>
+<b>2&#160;&#160;About This Document&#160;</b><br/>
+This document gives you an understanding of&#160;the CAN Driver. You will receive&#160;<br/>general information, a step-by-step tutorial&#160;on how to include and use the function-<br/>alities of the CAN Driver. &#160;<br/>
+For more detailed information about the CAN Driver and its&#160;API refer to the&#160;Technical&#160;<br/>Reference (TechnicalReference_CANDriver.pdf) and the&#160;hardware specific refer-<br/>ences TechnicalReference_CAN_xxx.pdf&#160;(e.g.&#160;TechnicalReference_CAN_HC12.pdf).&#160;<br/>
+<b>2.1&#160;</b><br/>
+<b>How&#160;This&#160;Documentation Is Set-Up&#160;</b><br/>
+<b>Chapter&#160;</b><br/>
+<b>Content&#160;</b><br/>
+<b>Chapter 1&#160;</b><br/>
+The welcome&#160;page is&#160;to navigate in the&#160;document. The main parts of the document&#160;<br/>can be accessed from&#160;here via hyperlinks.<b>&#160;</b><br/>
+<b>Chapter 2</b>&#160;<br/>
+It contains&#160;some formal information about this document, an explanation of legends&#160;<br/>and symbols.&#160;<br/>
+<b>Chapter 3</b>&#160;<br/>
+An introduction to the files, the tools&#160;and information necessary&#160;to understand the&#160;<br/>descriptions&#160;in the following chapters.&#160;<br/>
+<b>Chapter 4</b>&#160;<br/>
+Here you find&#160;some more insight in the&#160;CAN Driver about receiving and transmitting&#160;<br/>messages, the CAN&#160;controllers and the&#160;data structure.&#160;<br/>
+<b>Chapter 5</b>&#160;<br/>
+A step-by-step guide to establish CAN&#160;communication on an ECU for the first&#160;time.&#160;<br/>Follow the 9&#160;steps to get the answer to&#160;most of your&#160;questions&#160;and problems..&#160;<br/>
+<b>Chapter 6</b>&#160;<br/>
+Here you find a problem to&#160;solve to check your&#160;understanding of the CAN Driver and&#160;<br/>its functions.&#160;<br/>
+<b>Chapter 7</b>&#160;<br/>
+In this&#160;last&#160;chapter there is&#160;a list&#160;of experiences&#160;with the CAN Driver.&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=10></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_6.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_7.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_8.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_9.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-10_10.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+10&#160;/ 56<br/>
+<b>2.2&#160;</b><br/>
+<b>Legend and Explanation of Symbols&#160;</b><br/>
+You find these symbols at the&#160;right side of the document. They indicate special ar-<br/>eas in the text. Here is a list of their meaning.&#160;<br/>
+These areas&#160;<br/>to&#160;the&#160;right of&#160;<br/>
+<b>Symbol&#160;</b><br/>
+<b>Meaning&#160;</b><br/>
+the text&#160;<br/>contain brief&#160;<br/>items of&#160;<br/>
+The building&#160;bricks mark examples.&#160;<br/>
+information&#160;<br/>that will&#160;<br/>
+&#160;<br/>
+facilitate&#160;your&#160;<br/>search for&#160;<br/>
+Comm&#160;&#160;<br/>
+ents&#160;<br/>
+You will find key words and information in&#160;short sentences in the margin. This&#160;will&#160;<br/>
+and&#160;<br/>
+specific&#160;<br/>
+explanati-<br/>
+greatly simplify your search&#160;for topics.&#160;<br/>
+topics.&#160;<br/>
+The footprints will lead you&#160;through the steps&#160;until you can use the described Vector&#160;<br/>CAN Driver.&#160;<br/>
+&#160;<br/>
+There is something you should take care about.&#160;<br/>
+&#160;<br/>
+Useful and additional information is displayed in areas&#160;with this&#160;symbol.&#160;<br/>
+&#160;<br/>
+This file you are allowed to edit on demand.&#160;<br/>
+&#160;<br/>
+This file you must not edit&#160;at all. &#160;<br/>
+&#160;<br/>
+This indicates an area dealing with frequently asked questions (FAQ).&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=11></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-11_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-11_2.jpg"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+11&#160;/ 56<br/>
+<b>3&#160;&#160;ECUs and Vector CANbedded Components&#160;–&#160;An Overall View&#160;</b><br/>
+<b>3.1&#160;</b><br/>
+<b>Network Data Base File (DBC)&#160;</b><br/>
+Normally the different ECUs&#160;in a modern vehicle are developed by different suppli-<br/>ers (SUPPLIER X). All ECUs within the&#160;same bus system (&#160;n&#160;or&#160;o) use the same&#160;<br/>data base (dbc file) to guarantee that the ECUs will work&#160;together later on in the&#160;<br/>vehicle.&#160;<br/>
+<b>SUPPLIER 1</b><br/>
+<b>SUPPLIER&#160;6</b><br/>
+<b>SUPPLIER&#160;2</b><br/>
+<b>SUPPLIER&#160;5</b><br/>
+Network Database<br/>
+n&#160;<b>All_ECUs_highspeed.dbc</b><br/>
+n&#160;<b>Powertrain</b><br/>
+o&#160;<b>All_ECUs_midspeed.dbc</b><br/>
+o&#160;<b>BodyCAN</b><br/>
+<b>SUPPLIER&#160;4</b><br/>
+<b>SUPPLIER&#160;3</b><br/>
+&#160;<br/>
+Figure&#160;&#160;3-1&#160;&#160;A Modern Vehicle With Body&#160;CAN And PowerTrain Bus&#160;<br/>
+The dbc file is designed by the vehicle manufacturer and distributed to all suppliers&#160;<br/>
+There is&#160;the&#160;same&#160;<br/>dbc&#160;file&#160;per&#160;bus&#160;<br/>
+that develop an ECU. Thus&#160;every&#160;supplier uses the SAME dbc file for one vehicle&#160;<br/>
+system (high&#160;<br/>speed, low&#160;<br/>
+platform and one bus system (powertrain,&#160;body CAN etc.) to guarantee a common&#160;<br/>
+speed, etc)&#160;for&#160;all&#160;<br/>
+basis for development.&#160;<br/>
+suppliers&#160;to&#160;<br/>guarantee&#160;a&#160;<br/>common basis&#160;for&#160;<br/>
+The dbc file contains e.g. information about&#160;every node in the network, the mes-<br/>
+development<i>.&#160;</i><br/>
+sages/signals each node has to send or to&#160;receive. The distribution of the signals&#160;<br/>among the messages is stored&#160;in the DBC file, too.&#160;<br/>For example: every ECU has&#160;to know that a 1 in bit 7 in the 4th&#160;byte of the message&#160;<br/>0x305 means “Ignition Key” on/off. &#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=12></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-12_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-12_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+12&#160;/ 56<br/>
+<b>4&#160;&#160;CANbedded Software Components&#160;</b><br/>
+The vector CANbedded&#160;environment consists of a number of adaptive source code&#160;<br/>components that cover the basic&#160;communication and diagnostics&#160;requirements in&#160;<br/>automotive applications. &#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;4-1&#160;&#160;CANbedded Software Components&#160;<br/>
+<b>CAN Driver&#160;<br/></b>The CAN Driver&#160;handles&#160;the&#160;hardware specific CAN chip&#160;characters and&#160;provides a standardized&#160;<br/>application interface.&#160;<br/>
+<b>Interaction Layer&#160;<br/></b>The Interaction Layer&#160;(IL&#160;for short)&#160;is&#160;responsible for the transmission of messages&#160;according to&#160;<br/>specified&#160;rules, monitoring&#160;receive messages, timeout&#160;monitoring,&#160;etc. It provides&#160;a&#160;signal&#160;oriented&#160;<br/>application interface for the&#160;application.&#160;<br/>
+<b>Transport Protocol&#160;<br/></b>The&#160;CAN protocol is&#160;restricted to&#160;8&#160;data bytes per&#160;message. But in some&#160;cases&#160;(e.g. diagnostics)&#160;<br/>you need to&#160;exchange&#160;much&#160;more than&#160;8 data&#160;bytes.&#160;The&#160;segmentation of the&#160;data, the&#160;monitoring&#160;<br/>of the messages and the timeouts is&#160;done by the Transport Protocol (TP for short).&#160;<br/>
+<b>Diagnostics&#160;<br/></b>Diagnostics Layer according to ISO14229&#160;/ ISO14230&#160;(Keyword Protocol 2000).&#160;<br/>
+<b>Network Management&#160;<br/></b>The&#160;Network Management&#160;(NM for&#160;short) is&#160;the&#160;component to control the&#160;bus,&#160;to synchronize the&#160;<br/>transition to bus sleep, error&#160;recovery after bus-off, etc.&#160;<br/>
+<b>Communication Control Layer (CCL)</b>&#160;<br/>The CCL provides an integration&#160;environment&#160;for the CANbedded Software&#160;Components,&#160;an ab-<br/>straction for different vehicle manufacturers,&#160;microcontrollers, CAN Controllers and&#160;compil-<br/>ers/linkers. It&#160;also provides&#160;a global debug mechanism.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=13></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-13_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-13_2.jpg"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+13&#160;/ 56<br/>
+<b>Universal Measurement&#160;and Calibration Protocol&#160;(XCP)</b>&#160;<br/>This is&#160;the Software&#160;Component for measurement and&#160;calibration&#160;on&#160;several bus&#160;systems.&#160;To men-<br/>tion some feature: read&#160;and write access to various&#160;memory locations or&#160;flash&#160;programming.&#160;<br/>
+<b>Generation Tool&#160;<br/></b>This is&#160;a PC&#160;tool for configuring the above listed components. The Generation&#160;Tool is driven by a&#160;<br/>network&#160;database file, DBC file for short.&#160;<br/>
+&#160;<br/>
+The CANbedded Software Components are configurable and can be adapted to&#160;<br/>your specific needs via the Generation Tool.&#160;<br/>&#160;&#160;<br/>
+<b>4.1&#160;</b><br/>
+<b>Generation Tool&#160;</b><br/>
+The Generation Tool displays the complete&#160;set of ECUs in the network. In general&#160;<br/>you pick&#160;out the one you develop the software for. In special cases when you de-<br/>velop ECUs that are almost identical (e.g. door ECUs) you select&#160;more than one&#160;<br/>(so-called multiple ECUs). &#160;<br/>For&#160;&#160;<b>your</b>&#160;ECU there are special requirements concerning the hardware and the&#160;<br/>functionality. I.e. the driver&#160;must be suitable for your&#160;hardware and the standard&#160;<br/>components must be adaptable for your project-specific needs. The means to do&#160;<br/>this is the Generation Tool.&#160;<br/>The Generation Tool is a PC-Tool. It reads&#160;in the Network Data Base file (DBC)&#160;<br/>and offers you to select the node you are going to develop and has therefore all&#160;<br/>information about your ECU, the receive&#160;and transmit messages, the signals etc.&#160;<br/>The Generation Tool generates&#160;files that contain this&#160;information (DBC, hardware&#160;<br/>and specific settings) and so complete the components core files and have to be&#160;<br/>
+Include the&#160;<br/>generated&#160;<br/>
+included in the compile and link process.&#160;<br/>
+files in&#160;your&#160;<br/>system&#160;as&#160;<br/>shown. &#160;<br/>
+You must not&#160;<br/>
+Your&#160;Hardware&#160;Platform-<br/>
+change the&#160;<br/>
+and&#160;Compiler&#160;information&#160;<br/>
+Application&#160;<br/>
+generated&#160;<br/>files by&#160;hand&#160;<br/>
+Project specific&#160;&#160;component&#160;settings<br/>
+Specific Data<br/>
+– the&#160;&#160;next&#160;<br/>generation&#160;<br/>process will&#160;<br/>
+&#160;<br/>
+delete these&#160;<br/>changes.&#160;<br/>
+Right now there are two Generation&#160;Tools available, CANgen and the&#160;new Genera-<br/>tion&#160;Tool&#160;called GENy. Which tool&#160;you&#160;have to use depends on you delivery and the&#160;<br/>project. &#160;<br/>
+&#160;<br/>
+<b>&#160;</b><br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=14></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-14_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-14_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-14_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+14&#160;/ 56<br/>
+<b>4.2&#160;</b><br/>
+<b>The Vector&#160;CAN Driver&#160;</b><br/>
+A driver is a program to control a piece of hardware. In&#160;this case the Vector CAN&#160;<br/>Driver controls the CAN Controller and its registers.&#160;<br/>
+<b>4.2.1&#160;&#160;Tasks of The Vector CAN Driver&#160;&#160;<br/></b>The CAN Driver basically handles the reception and transmission of information via&#160;<br/>the CAN Bus and recognizes bus failure (bus off). The CAN Driver provides a&#160;<br/>standard application interface for the application.&#160;<br/>Your application only has to use a set&#160;of predefined functions&#160;to control the CAN&#160;<br/>Driver and will be notified via interrupt about incoming information (messages). To&#160;<br/>control the incoming and outgoing data and&#160;to be notified of important events you&#160;<br/><a href="UserManual_CanDrivers.html#36">have to add some service- and call-back-functions to your application (see&#160;&#160;6.5).&#160;<br/></a>For more detailed information about the CAN&#160;Driver please refer to the Vector CAN&#160;<br/>Driver Technical Reference (TechnicalReference_CANDriver.pdf and TechnicalRe-<br/>ferfence_CAN_&lt;hardwareplatform&gt;.pdf, e.g. TechnicalReference_CAN_HC12.pdf).&#160;<br/>&#160;<br/>
+<b>4.2.2&#160;&#160;Vector CAN Driver Files&#160;<br/></b>The Vector CAN Driver consists&#160;of 3 sets&#160;of files, component&#160;files, generated files&#160;<br/>and configurable files&#160;<br/>
+<b>4.2.2.1&#160;</b><br/>
+<b>Component Files&#160;</b><br/>
+Independent of the used Generation Tool&#160;<br/><b>can_drv.c - can_def.h - v_def.h&#160;</b><br/>
+You must not change these files&#160;at all. &#160;<br/>
+&#160;<br/>
+<b>4.2.2.2&#160;</b><br/>
+<b>Generated Files&#160;</b><br/>
+Independent of the used Generation Tool&#160;<br/><b>can_cfg.h - v_cfg.h&#160;</b><br/>
+Only for CANgen&#160;<br/><b>YourECU.c - YourECU.h&#160;</b><br/>
+Only for GENy&#160;<br/><b>can_par.c - can_par.h - drv_par.c - drv_par.h - v_par.h - v_par.c - v_inc.h</b>&#160;&#160;<br/>
+&#160;<br/>
+Do not change these files.&#160;You will lose the changes after the next generation proc-<br/>ess.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=15></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-15_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-15_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-15_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+15&#160;/ 56<br/>
+&#160;<br/><b>4.2.2.3&#160;</b><br/>
+<b>Configurable files&#160;</b><br/>
+Independent of the used Generation Tool&#160;<br/><b>can_inc.h &#160;<br/></b>INC stands&#160;for include. Here you can add&#160;includes you need.. You have to include&#160;<br/>can_inc.h in every application C file where you need CAN&#160;functionality, followed by&#160;<br/>the include of YourECU.h.<b>&#160;<br/></b>The Generation Tool CANgen generates the signal and message access macros&#160;<br/>as well as the indication or confirmation flags to the file&#160;<b>YourECU.h</b>. GENy gener-<br/>ates this to the file&#160;<b>can_par.h</b>.&#160;<br/>&#160;<br/>
+<b>4.2.3&#160;&#160;Include The CAN Driver Into Your Application&#160;<br/></b><a href="UserManual_CanDrivers.html#15">Use the illustration in &#160;Figure&#160;&#160;4-2 to include the files for&#160;</a>the CAN Driver into your&#160;<br/>application correctly. Please keep to the including order&#160;to avoid errors while com-<br/>piling or linking.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;4-2&#160;&#160;Order For Including Files&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=16></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-16_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+16&#160;/ 56<br/>
+<b>5&#160;&#160;Vector CAN Driver–&#160;A&#160;More Detailed View&#160;</b><br/>
+You access &#160;the&#160;<br/>signals &#160;&#160;relevant&#160;<br/>for your ECU&#160;with&#160;<br/>the macros&#160;<br/>
+<b>5.1&#160;</b><br/>
+<b>Information Package&#160;on the CAN Bus&#160;</b><br/>
+generated&#160;by&#160;the&#160;<br/>Generation Tool.&#160;<br/>&#160;<br/>
+As mentioned before, the&#160;information is exchanged&#160;between ECUs via the CAN&#160;<br/>
+The generated&#160;<br/>
+bus. The maximum amount of data which&#160;can be exchanged is&#160;8 data bytes and&#160;<br/>
+file sig_test.c&#160;<br/>
+they are transmitted via a so-called&#160;<b>message</b>. &#160;<br/>
+contains a&#160;list of&#160;<br/>all access&#160;macros&#160;<br/>to the&#160;signals.&#160;<br/>
+A message contains the ID (the “name” or&#160;number of the message), the DLC (data&#160;<br/>length code, i.e., the&#160;number of data bytes)&#160;and the data bytes .&#160;<br/>
+A&#160;message on the CAN&#160;Bus can contain from 0 to 8 data bytes.&#160;<br/>
+Every message is divided up into&#160;<b>signals</b>. A&#160;signal consists of 1 up to 64 bits. A&#160;<br/>signal cannot exceed the&#160;<b>message</b>&#160;boundary.&#160;&#160;<br/>
+We do not consider signals here which are greater than 64 bits, as this involves the&#160;<br/>Transport Protocol.&#160;<br/>
+&#160;<br/>
+<b>Message</b><br/>
+ID&#160;DLC<br/>
+DL<br/>
+0x01&#160;0x12<br/>
+<b>Signal</b><br/>
+<b>(1 Bit to 8 Bytes)&#160;</b>0x01&#160;0x12<br/>
+<b>e.g.&#160;Temperature,&#160;</b><br/>
+<b>(hi, low</b><br/>
+<b>(hi, lo&#160;)</b><br/>
+<b>A&#160;signal &#160;can</b><br/>
+<b>l &#160;ca&#160;&#160;exceed</b><br/>
+<b>&#160;exce</b><br/>
+<b>byte&#160;boundaries</b><br/>
+<b>rie</b><br/>
+&#160;<br/>
+Figure&#160;&#160;5-1&#160;&#160;Message and Signal&#160;<br/>
+Signals are assigned to messages by the vehicle manufacturer database engineer.&#160;<br/>This assignment is stored&#160;in the database (dbc file).&#160;<br/>
+Normally&#160;you must not change the database (dbc file).&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=17></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-17_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-17_2.jpg"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+17&#160;/ 56<br/>
+<b>5.2&#160;</b><br/>
+<b>Storing Information Packages&#160;</b><br/>
+The more you understand about&#160;data handling in the CAN Driver the better you are&#160;<br/>able to design your application.&#160;You have to&#160;know where the data is stored at a&#160;<br/>specific point in time to be able to access this data correctly.&#160;<br/>
+Notification&#160;for&#160;<br/>
+Application<br/>
+RAM buffer<br/>
+Temp<br/>
+Ignition<br/>
+Copy&#160;to RAM&#160;buffer depending on ID.&#160;<br/>
+Door_S<br/>
+or_&#160;tate<br/>
+Keep&#160;data&#160;consistent!<br/>
+CAN Driver<br/>
+Rx&#160;register<br/>
+ID&#160;DLC<br/>
+Transceiver<br/>
+CAN messages<br/>
+CAN messages<br/>
+&#160;<br/>
+Figure&#160;&#160;5-2&#160;&#160;Rx Register, Data Structure and&#160;Notification&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=18></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-18_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-18_2.jpg"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+18&#160;/ 56<br/>
+Updated by Application<br/>
+RAM&#160;buffer<br/>
+Temp<br/>
+Ignit<br/>
+Igni&#160;ion<br/>
+Door_<br/>
+Door&#160;State<br/>
+CanTransmit&#160;(TxHandle)<br/>
+CAN Driver<br/>
+Copy&#160;data&#160;to&#160;Tx&#160;register.&#160;<br/>
+Tx register<br/>
+Keep data consistent!<br/>
+ID&#160;DLC<br/>
+Transceiver<br/>
+CAN&#160;messages<br/>
+CAN&#160;messages<br/>
+&#160;<br/>
+Figure&#160;&#160;5-3&#160;&#160;Tx Register, Data Structure and&#160;CanTransmit&#160;<br/>
+There are 3 elements involved in storing information packages:&#160;<br/>
+<b>5.2.1&#160;&#160;The Registers of the CAN Controller&#160;<br/></b>Your CAN Controller has a receive register (Rx Register) and a transmit register&#160;<br/>(Tx&#160;Register).&#160;<br/>
+Later&#160;on&#160;you will&#160;<br/>
+Data is&#160;always received in the Rx Register&#160;of the controller. The data is&#160;written to&#160;<br/>
+see, that this&#160;<br/>special access&#160;to&#160;<br/>
+the Tx Register immediately before a transmission.&#160;<br/>
+the hardware&#160;is&#160;<br/>possible&#160;only&#160;in&#160;<br/>the functions&#160;<br/>
+You can access these two registers via the signal access macros containing the&#160;&#160;<br/>
+ApplCanMsgRe-<br/>
+_CAN_ &#160;in the name (see YourECU.h if you use CANgen and can_par.h if you use&#160;<br/>
+ceived and in&#160;the&#160;<br/>Precopy&#160;Func-<br/>
+GENy).&#160;<br/>
+tions for&#160;reception&#160;<br/>and in&#160;the Pre-<br/>transmit Function&#160;<br/>for transmission.<br/>
+The&#160;<b>signal</b>&#160;access to the&#160;Tx Register is dependent on the&#160;hardware, not all drivers&#160;<br/>support this&#160;feature.&#160;<br/>
+<b>5.2.2&#160;&#160;The Data Structure Generated by&#160;the Generation Tool for Storing Mes-<br/>sage Data.&#160;<br/></b>The Generation Tool defines variables to&#160;allocate memory for&#160;the data of the re-<br/>ceive messages and the transmit messages (The data allocation is optional and&#160;<br/>can be switched off). In the receive procedure, the data will be&#160;copied from the Rx&#160;<br/>Register to the message-specific&#160;memory&#160;area (RAM). In the transmit procedure,&#160;<br/>you have to enter the current values in&#160;the variables and the driver will copy the&#160;<br/><a href="UserManual_CanDrivers.html#17">data to the Tx Register as shown in&#160;Figure&#160;&#160;5-2 and&#160;</a><a href="UserManual_CanDrivers.html#18">Figure&#160;&#160;5-3.&#160;</a><br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=19></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-19_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+19&#160;/ 56<br/>
+The decision, whether to copy the data to or from&#160;the registers (receive&#160;and transmit)&#160;<br/>with&#160;<b>your&#160;own</b>&#160;function&#160;or whether you let the&#160;driver do the copying&#160;action is up&#160;to&#160;<br/>you and is&#160;decided by&#160;the return value of specific&#160;functions (precopy function, pre-<br/>transmit function, see&#160;<a href="UserManual_CanDrivers.html#45">&#160;6.9).&#160;</a><br/>
+The Generation Tool optimizes the memory consumption. The highest byte con-<br/>taining relevant signals determines the&#160;amount of bytes to be reserved for this&#160;<br/>message. In the picture below, the red areas and lines in the bytes show where&#160;<br/>relevant signal information is&#160;stored within the message. &#160;<br/>&#160;<br/>
+<b>4 bytes</b><br/>
+The Generation&#160;<br/>Tool minimizes&#160;<br/>
+<b>8 bytes</b><br/>
+the amount&#160;of&#160;<br/>
+&#160;<br/>
+memory&#160;reserved&#160;<br/>for a&#160;message.&#160;<br/>
+Figure&#160;&#160;5-4&#160;&#160;Memory&#160;optimization by&#160;the&#160;Generation Tool&#160;<br/>
+&#160;<br/>In the first message the 3rd&#160;byte contains&#160;the last signal (counting started with 0).&#160;<br/>Byte 4, 5, 6 and 7 have no relevant information for your ECU. In this case the Gen-<br/>eration Tool only reserves 4&#160;(0-3) bytes for this message.&#160;<br/>The second message has information in the 7th&#160;byte, so the number of byte to be&#160;<br/>reserved is 8 (0-7).&#160;<br/>
+<b>5.2.3&#160;&#160;Memory&#160;the Application Reserved for Signals.&#160;<br/></b>Sometimes you only need one byte or even only one bit signal&#160;out&#160;of a message.&#160;<br/>To save RAM memory do not use a generated data structure.&#160;Use the precopy&#160;<br/>function (see&#160;<a href="UserManual_CanDrivers.html#46">&#160;6.9.1.5) to copy the byte or t</a>he bit of the received message to the&#160;<br/>byte or the bit field you reserved in your&#160;application to hold this specific information.&#160;<br/>&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=20></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-20_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+20&#160;/ 56<br/>
+<b>6&#160;&#160;CAN Driver in 9 Steps&#160;</b><br/>
+<b>STEP 1 :</b>&#160;&#160;&#160;<a href="UserManual_CanDrivers.html#21"><b>UNPACK THE DELIVERY</b></a>&#160;&#160;<br/>
+Follow the install shield, unpack the&#160;delivery and install the generation tool.&#160;<br/>
+&#160;<br/>
+<b>STEP 2: &#160;&#160;<a href="UserManual_CanDrivers.html#22">GENERATION TOOL AND DBC FILE</a></b>&#160;<b>&#160;</b><br/>
+Configure the&#160;CAN Driver&#160;using the generation tool&#160;and an appropriate data&#160;base file&#160;<br/>(DBC)..&#160;<br/>
+&#160;<br/>
+<b>STEP 3:</b>&#160;&#160;<a href="UserManual_CanDrivers.html#33"><b>GENERATE FILES</b></a><b>&#160;&#160;</b><br/>
+The generation tool generates all necessary&#160;files for the CAN&#160;Driver.&#160;<br/>
+&#160;<br/>
+<b>STEP 4: &#160;&#160;<a href="UserManual_CanDrivers.html#35">ADD FILES TO YOUR APPLICATION PROJECT</a></b><b>&#160;</b><br/>
+To use the CAN Driver&#160;you have to add&#160;the CAN Driver files to your&#160;application&#160;project.&#160;<br/>
+&#160;<br/>
+<b>STEP 5: &#160;&#160;<a href="UserManual_CanDrivers.html#36">ADAPTATIONS FOR YOUR APPLICATION</a></b><b>&#160;</b><br/>
+Also adapt your application&#160;files to be able&#160;to use the functionality of the CAN Driver.&#160;<br/>
+&#160;<br/>
+<b>STEP 6: &#160;&#160;<a href="UserManual_CanDrivers.html#40">COMPILE AND LINK</a></b><b>&#160;</b><br/>
+Compile and&#160;Link your&#160;application project including&#160;the CAN Driver.&#160;<br/>
+&#160;<br/>
+<b>STEP 7: &#160;&#160;<a href="UserManual_CanDrivers.html#40">RECEPTION OF A CAN MESSAGE</a></b><b>&#160;</b><br/>
+Test the receiving path of the CAN&#160;Driver&#160;by sending&#160;a message to your ECU.&#160;<br/>
+&#160;<br/>
+<b>STEP 8: &#160;&#160;<a href="UserManual_CanDrivers.html#43">TRANSMISSION OF A CAN MESSAGE&#160;</a></b><br/>
+Transmit your first CAN message using the CAN&#160;Driver&#160;service functions.&#160;<br/>
+&#160;<br/>
+<b>STEP 9: &#160;&#160;<a href="UserManual_CanDrivers.html#45">FURTHER ACTIONS AND SETTINGS</a></b><b>&#160;</b><br/>
+Topics above&#160;the very easy beginning.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=21></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-21_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-21_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+21&#160;/ 56<br/>
+<b>6.1&#160;</b><br/>
+<b>STEP 1 &#160;Unpack the Delivery&#160;</b><br/>
+The delivery of CANbedded Software Components normally comprises a Genera-<br/>tion Tool and the source code&#160;of the software components. &#160;<br/>
+The Generation&#160;<br/>Tool generates&#160;<br/>
+You only have to start the &#160;<br/>
+files&#160;for&#160; your&#160;<br/>application.&#160;It&#160;is&#160;<br/>
+<b>…_Setup.exe &#160;</b><br/>
+the connection&#160;<br/>between your&#160;<br/>hardware and&#160;<br/>
+and to follow the install shield wizard.&#160;<br/>
+settings, the&#160;<br/>requirements of&#160;<br/>your vehicle&#160;<br/>manufacturer and&#160;<br/>
+We recommend creating&#160;a shortcut to the Generation&#160;Tool. &#160;<br/>
+the other&#160;ECUs,&#160;<br/>your ECU has&#160;to&#160;<br/>communicate&#160;<br/>
+&#160;<br/>
+with.<br/>
+&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=22></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-22_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-22_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-22_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-22_4.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+22&#160;/ 56<br/>
+<b>6.2&#160;</b><br/>
+<b>STEP 2 &#160;Generation Tool and dbc File&#160;</b><br/>
+<a href="UserManual_CanDrivers.html#30">Use new Generation Tool GENy, look there &gt;&gt;</a>&#160;<br/>
+<b>6.2.1&#160;&#160;Using CANgen as Generation Tool&#160;<br/></b>When you start the Generation Tool you will see a window like&#160;<a href="UserManual_CanDrivers.html#22">Figure&#160;&#160;&#160;6-1. This</a>&#160;<br/>starting window is the main window of the Generation Tool.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-1&#160;&#160;Add a dbc file&#160;<br/>
+A click&#160;on the green plus (<b>+</b>) will open a new window to&#160;add your database&#160;(dbc&#160;<br/>
+file).&#160;<br/>
+When you use&#160;<br/>the browse-button&#160;<br/>you&#160;will get an&#160;<br/>absolute path&#160;to&#160;<br/>the&#160;dbc file. &#160;<br/>
+It&#160;is&#160;suggested &#160;&#160;<br/>that you use&#160;<br/>relative&#160;paths&#160;in&#160;<br/>order&#160;to&#160;be able&#160;<br/>to move&#160;your&#160;<br/>project &#160;more&#160;<br/>easily&#160;from&#160;one&#160;<br/>directory&#160;to&#160;<br/>another<i>.&#160;</i><br/>
+This warning&#160;<br/>occurs only&#160;if you&#160;<br/>
+&#160;<br/>
+open the dbc.file&#160;<br/>
+Figure&#160;<br/>
+for&#160;the&#160;first&#160;time&#160;<br/>
+&#160;6-2&#160;&#160;Warning – do not&#160;bother&#160;<br/>
+because&#160;of the&#160;<br/>extension file&#160;has&#160;<br/>
+Browse for your dbc file and select it.&#160;When you do this&#160;for the first time, the&#160;<b>Warn-</b><br/>
+still not&#160;been&#160;<br/>created. The&#160;<br/>
+<b>ing</b>&#160;above will occur. Ignore it, and just confirm with&#160;<b>OK</b>..&#160;<br/>
+extension file&#160;will&#160;<br/>contain your&#160;<br/>
+Select your node; choose your target system&#160;and compiler.&#160;<br/>
+settings&#160;you do in&#160;<br/>the following.&#160;<br/>
+Since we are using a CAN Driver with just&#160;one&#160;channel, the&#160;channel index has to be&#160;<br/>left empty.&#160;When you have two or more channels, they will be distinguished via this&#160;<br/>index.&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=23></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-23_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-23_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-23_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+23&#160;/ 56<br/>
+The Name&#160;field&#160;is&#160;<br/>set to the&#160;name of&#160;<br/>the&#160;dbc file. You&#160;<br/>can change the&#160;<br/>name .&#160;It is only&#160;<br/>used&#160;in&#160;the&#160;list of&#160;<br/>your channels in&#160;<br/>figure&#160;2-5.&#160;&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-3&#160;Channel&#160;properties&#160;<br/>
+Confirm with OK and you will see your setting as text in the field&#160;of the starting win-<br/>dow of the Generation Tool. When we save&#160;the configuration for the first time, we&#160;<br/>have to use the menu command&#160;<b>File/Save as</b>.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-4&#160;&#160;Save Setting For&#160;The First Time&#160;<br/>
+Take a look at the directory where you&#160;stored the settings of the Generation Tool.&#160;<br/>There is your dbc file and new files (see note) only used by the Tool. &#160;<br/>
+The following files belong to the Generation&#160;Tool:&#160;<br/>
+&#160;<br/>&lt;databasename&gt;.dbc &#160;<br/>
+(exampleDRV.dbc)&#160;<br/>
+&lt;databasename&gt;.ext &#160;<br/>
+(exampleDRV.ext)&#160;<br/>
+&#160;&lt;databasename_nodename&gt;.msg&#160;<br/>
+(exampleDRV_YourECU.msg)&#160;<br/>
+&lt;databasename_nodename&gt;.sig (exampleDRV_YourECU.sig)&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=24></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-24_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-24_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-24_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+24&#160;/ 56<br/>
+(&lt;databasename_nodename&gt;.fms&#160;(exampleDRV_YourECU.fms))&#160;<br/>
+fms only when using a full CAN controller.&#160;<br/>
+yourECU.ccf&#160;<br/>
+this is&#160;the project file&#160;for&#160;the Generation &#160; &#160; &#160; &#160; &#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160; &#160; &#160; &#160;&#160;Tool.&#160;<br/>
+&#160;<br/>Now you can open your settings in the normal&#160;way (not via the dbc file) by opening&#160;<br/>the file YourECU.ccf.&#160;<br/>
+When your&#160;vehicle manufacturer changes the dbc file, just&#160;copy all files important for&#160;<br/>the Generation&#160;Tool into&#160;a new directory, delete the old dbc file and copy the new dbc&#160;<br/>file in this new directory. Rename the old ext file with the&#160;name of the new dbc file.&#160;<br/>This preserves your application-specific settings.&#160;<br/>
+The checkbox&#160;<br/>Generate only&#160;bit&#160;<br/>and byte&#160;signal&#160;<br/>
+This does not work when the target system has changed!!!&#160;<br/>
+macros&#160;is&#160;only&#160;<br/>used&#160;for&#160;very&#160;<br/>special applica-<br/>tions. If you have&#160;<br/>
+&#160;<br/>
+any&#160;doubt, do&#160;not&#160;<br/>choose this.&#160;<br/>
+Now we shall make additional settings for the component CAN Driver. Use this but-<br/>ton[<br/>
+] to open the Generation Options and&#160;to enter the following dialog.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-5&#160;&#160;Overview&#160;of Signals and Directories&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=25></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-25_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-25_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+25&#160;/ 56<br/>
+In the overview tab page (<a href="UserManual_CanDrivers.html#25">Figure&#160;&#160;6-5) you see all receive and s</a>end messages for&#160;<br/>your node. &#160;<br/>Just choose the path where&#160;the header and the C file are to be generated and the&#160;<br/>path for the configuration file can_cfg.h.&#160;<br/>Select the tab&#160;<b>CAN Driver</b>.&#160;<br/>In the following dialog you can make settings that are the same for all CAN drivers&#160;<br/>regardless of the hardware platform. For the first attempt&#160;we do not select anything.&#160;<br/>
+Here you see&#160;the&#160;<br/>variety of&#160;setting&#160;<br/>you can make&#160;to&#160;<br/>configure&#160;a CAN&#160;<br/>Driver. Take a&#160;<br/>look at it&#160;but do&#160;<br/>not enter&#160;anything&#160;<br/>for this&#160;first&#160;<br/>attempt.&#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Refer to&#160;the&#160;<br/>document&#160;<br/>CANdrv.doc&#160;to&#160;<br/>get further&#160;infor-<br/>mation about&#160;<br/>these settings<i>.</i>&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-6&#160;&#160;CAN Driver Dialog (for&#160;HC12)&#160;<br/>
+The next tab,&#160;<b>CAN driver (advanced)</b>&#160;is very special for the&#160;specific vehicle manufac-<br/>turer and the hardware platform. Please refer&#160;to the description of&#160;your CAN Driver&#160;<br/>Technical Reference for the advanced settings (TechnicalRefer-<br/>ence_CAN_<b>hardwareplatform</b>.pdf).&#160;<br/>Finally we have to set the&#160;<b>Init registers</b><a href="UserManual_CanDrivers.html#26">. Please select this tab (Figure&#160;&#160;6-7). &#160;</a><br/>
+Some of the&#160;following information might be hardware dependent but the fundamental&#160;<br/>mechanisms are the same. &#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=26></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-26_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-26_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+26&#160;/ 56<br/>
+Every&#160;two col-<br/>umns belong&#160;to&#160;<br/>one so-called&#160;init&#160;<br/>structure&#160;consist-<br/>ing of&#160;baud rate,&#160;<br/>acceptance&#160;<br/>filters…&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-7&#160;&#160;Init Registers For&#160;The CAN&#160;Controller (for HC12)&#160;<br/>
+This is a&#160;very important&#160;dialog. Please pay special attention to these settings.&#160;<br/>
+Here is&#160;where you can make the settings&#160;for the hardware acceptance filters and&#160;<br/>the bus timing of your&#160;CAN Controller. &#160;<br/>First we look at the&#160;<b>Acceptance&#160;filters</b>, second at the&#160;<b>Bustiming registers</b>.&#160;<br/>In order to minimize the number&#160;of messages that should not be received by your&#160;<br/>ECU, you can set a hardware filter by means of the acceptance register (<b>1</b>) (see&#160;<br/><a href="UserManual_CanDrivers.html#27">Figure&#160;&#160;6-8).&#160;</a><br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=27></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-27_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-27_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+27&#160;/ 56<br/>
+The reception of any message normally causes an interrupt. To minimize the inter-<br/>rupt load you set the filters, so only relevant message will pass and cause an inter-<br/>rupt.&#160;<br/>&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-8&#160;&#160;Acceptance Filters For&#160;The CAN&#160;Controller (for HC12)&#160;<br/>
+For the first attempt it&#160;is your choice whether&#160;to open all filter via the&#160;<b>Open filters&#160;</b>or&#160;<br/>you use the&#160;<b>Optimize filters</b>&#160;button. Confirm with OK.&#160;<br/>
+The setting&#160;of the filters&#160;is described&#160;in detail in the help document for the Generation&#160;<br/>Tool. (just&#160;use the HELP&#160;button).&#160;<br/>
+Next we will&#160;look at the&#160;<b>bus timing</b>. &#160;To do&#160;this, while&#160;still on the&#160;<b>Init registers</b>&#160;tab&#160;<br/>page, click on the&#160;<b>Bustiming registers</b>&#160;button. &#160;<br/>
+Incorrect Bus&#160;Timing settings are common&#160;mistakes that cause errors while transmis-<br/>sion and reception. Please pay special attention to all settings in this dialog.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=28></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-28_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-28_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-28_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+28&#160;/ 56<br/>
+&#160;<br/>
+Figure&#160;&#160;6-9&#160;&#160;Bus Timing Register Settings&#160;<br/>
+&#160;<br/><b>Caution&#160;<br/></b>Before SOP it is&#160;duty of the OEM / Tier1 supplier to recalculate and validate these&#160;<br/>automatically calculated values&#160;for the bus timing registers.&#160;<br/>&#160;<br/>First you have to enter the clock signal frequency. This&#160;is the base for further calcu-<br/>lating the timing registers. Make sure&#160;to select the correct frequency.&#160;<br/>The Bus Timing Registers of any CAN controller contain information about the bus&#160;<br/>rate, the synchronization jump width&#160;(SJW) and the BTL cycles. There are two&#160;<br/>ways to make these setting:&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=29></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-29_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-29_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+29&#160;/ 56<br/>
+1.&#160;&#160;<b>Do you know&#160;the baud rate ?</b>&#160;<br/>
+Enter the baud rate and click on&#160;<b>Calculate bustiming registers</b>. You will get a&#160;<br/>list of possible register setting. Choose your setting by a click in the list.&#160;<br/>
+Between 60&#160;and 80% is a good value for the Sample Rate&#160;and the SJW for your se-<br/>lection.&#160;All vehicle manufacturers have strict guidelines for these settings.&#160;<br/>
+2.&#160;&#160;You can also simply enter values&#160;for the two bus timing&#160;registers (CBT0 and&#160;<br/>
+CBT1) and let the software calculate the baud rate.&#160;<br/>
+Return to the&#160;<b>Init registers</b>&#160;dialog via&#160;<b>OK</b>&#160;and see the changed values.&#160;<br/>With a further&#160;<b>OK</b>&#160;you return to the main window of the Generation Tool.&#160;<br/>&#160;<br/>Make sure that the checkboxes&#160;<b>Use TP, Use diagnosis, Use Can Calibration&#160;<br/>Protocol, Use MCNet …</b>&#160;are NOT selected (as we&#160;are working with the CAN&#160;<br/>Driver only for this example).&#160;<br/>
+The variety of these&#160;buttons is dependent on the manufacturer. Deactivate any com-<br/>ponent but the CAN Driver.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-10&#160;TP&#160;Options&#160;<br/>
+The figure is only&#160;an example. The screenshot&#160;may look very different in your case.&#160;<br/>But you see the checkbox which must not be selected.&#160;<br/>&#160;<br/>Read the following chapter&#160;if you use GENy.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=30></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-30_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-30_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-30_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-30_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-30_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-30_6.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+30&#160;/ 56<br/>
+<b>6.2.2&#160;&#160;Using GENy, the new&#160;Generation Tool&#160;</b><br/>
+The following first steps with the Generation&#160;Tool&#160;are described in details in the online&#160;<br/>help of the&#160;Generation&#160;Tool GENy, too.&#160;<br/>
+Start the Generation Tool and setup a new&#160;configuration. Via&#160;<b>File/New</b>&#160;you open&#160;<br/>the Setup Dialog Window. Select&#160;License,&#160;Compiler, Micro and Derivative (if avail-<br/>able) and confirm via&#160;<b>[OK]</b>. Then open the Channel Setup Window via the green&#160;<br/>plus &#160;and the selection of the underlying bus system (CAN or LIN).&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-11&#160;Setup Dialog Window&#160;and&#160;Channel Setup Window to Create&#160;a New Configuration&#160;<br/>
+The channel name is Channel&#160;X per default (X is starting with 1). Use the browse&#160;<br/>functionality to enter the location&#160;of the data base (dbc file). &#160;<br/>Select your node out of the field&#160;<b>Database Nodes</b>&#160;and confirm the settings with&#160;<br/><b>[OK]</b>.&#160;<br/>Now save the configuration via&#160;<b>File/Save</b>&#160;or&#160;<b>File/Save as</b>.&#160;<br/>First at all you should switch on/off the components you need, in this case we only&#160;<br/>use the CAN Driver.&#160;<br/>Use the component selection at&#160;the bottom of the main&#160;window of the Generation&#160;<br/>Tool and select the suitable Driver (in this example application we use the&#160;<br/>CPUHC12 and the Driver HC12).&#160;<br/>&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-12&#160;Component&#160;Selection&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=31></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-31_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-31_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-31_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-31_4.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+31&#160;/ 56<br/>
+Now you should set the path where the Generation Tool generated the files to. To&#160;<br/>do this, open the Generation&#160;Directories Window via&#160;<b>Configuration/Generation&#160;<br/>Paths</b>. Enter the root path and select additionally individual paths for the compo-<br/>nents, if the Generation Tool should generated the files to&#160;different folders. This is&#160;<br/>also described very detailed in the GENy online help.&#160;<br/>For the HC12 there are some&#160;hardware-specific settings that you have&#160;to make,&#160;<br/>the register block address and the register block offset. It depends on you hard-<br/>ware whether you have to do such kind of&#160;settings or not. Refer to the Technical-<br/>Reference_CAN_YourHardware.pdf for more&#160;information.&#160;<br/>&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-13&#160;The Register Block Address is a&#160;General Setting for the CPU&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-14&#160;Register Block Offset, Acceptance Filters and Bus Timing are Channel-Specific Settings for the CPU&#160;<br/>
+What is missing now is the settings for&#160;the acceptance filters and the bus timing.&#160;<br/>
+Acceptance&#160;filter configuration and bus timing&#160;configuration are very important set-<br/>tings. Please pay special attention to them.&#160;<br/>
+As you see in the navigation tree above you can open the configuration windows&#160;<br/>for these two settings via the channels&#160;of the hardware (e.g. CPUHC12). &#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=32></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-32_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-32_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+32&#160;/ 56<br/>
+First we take a look at the&#160;<b>Acceptance filters</b>, second at the&#160;<b>Bustiming registers</b>.&#160;<br/>In order to minimize the number&#160;of messages that should not be received by your&#160;<br/>ECU, you can set a hardware filter by&#160;means of the acceptance register.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-15&#160;Acceptance Filter Settings Window&#160;of GENy&#160;<br/>
+The reception of any message normally causes an interrupt. To minimize the inter-<br/>rupt load you set the filters, so only relevant message will pass and cause an inter-<br/>rupt.&#160;<br/>For the first attempt it is your choice whether to open all filter via the&#160;<b>Open filters&#160;<br/></b>or you use the&#160;<b>Optimize filters</b>&#160;button. Confirm with&#160;<b>[OK]</b>.&#160;<br/>The window for the bus timing registers is&#160;the same as for the CANgen Generation&#160;<br/>Tool. Refer to the lines&#160;above for this explanation.&#160;<br/>To make the settings for the component CAN Driver itself use the lists below&#160;<b>Driv-<br/>erHC12</b>&#160;and&#160;<b>DriverHC12/Channels/Channel 1</b>. But for the this first attempt leave&#160;<br/>these driver settings on their default values.&#160;<br/>&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=33></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-33_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-33_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-33_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-33_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-33_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-33_6.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+33&#160;/ 56<br/>
+<b>6.3&#160;</b><br/>
+<b>STEP 3 &#160;Generate Files&#160;</b><br/>
+<b>6.3.1&#160;&#160;Using CANgen Generation Tool&#160;<br/></b>Click on the button&#160;<br/>
+and&#160;start&#160;the generation process. &#160;<br/>
+&#160;<br/>
+Remember to&#160;<br/>start the genera-<br/>tion process&#160;after&#160;<br/>any&#160;change in&#160;the&#160;<br/>dialog windows of&#160;<br/>the Generation&#160;<br/>Tool.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-16&#160;Generation&#160;Process&#160;<br/>
+&#160;<br/>
+The double&#160;arrow is only available if you&#160;have a multi-channel CAN Driver distin-<br/>guished via&#160;the Channel index.&#160;<br/>
+Now we have generated for the first time. Check the directory and see the new&#160;<br/>files. There should be at least the files&#160;YourECU.c and YourECU.h, and in the path&#160;<br/>for the configuration file there should be can_cfg.h and v_cfg.h.&#160;<br/>
+If you do not find the generated files&#160;check your&#160;path in the&#160;<b>Overview</b>&#160;dialog.&#160;<br/>
+&#160;<br/>
+<b>6.3.2&#160;&#160;Using GENy&#160;</b><br/>
+Click on the button&#160;<br/>
+&#160;and start the generation process.&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-17&#160;Information About the Generated&#160;Files and the Generation Process&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=34></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-34_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+34&#160;/ 56<br/>
+The Generation Tool provides&#160;you with information about the&#160;<b>Generated Files</b>&#160;and&#160;<br/><b>Generation</b>&#160;information. In this example shown above the acceptance filters are&#160;<br/>not set correctly, Message_2 will not pass the filter. Open or optimize the filters. &#160;<br/>
+If a message will not pass the acceptance filters, the Generation&#160;Tool&#160;will not create&#160;<br/>signal access macros for the hardware (_CAN_ see in chapter<a href="UserManual_CanDrivers.html#18">&#160;&#160;5.2.1). Ma</a>ke sure that&#160;<br/>the generation process runs without&#160;error messages.&#160;<br/>
+Now we have generated for the first time. Check the directory and see the new&#160;<br/>files: can_par.c, can_par.h, drv_par.c, drv_par.h, can_cfg.h, v_par.c, v_par.h,&#160;<br/>v_cfg.h, v_inc.h.&#160;<br/>
+If you do not find the files check the&#160;paths in the&#160;<b>Generation Paths…</b>&#160;dialog.&#160;<br/>
+&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=35></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-35_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-35_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-35_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+35&#160;/ 56<br/>
+<b>6.4&#160;</b><br/>
+<b>STEP 4 &#160;Add Files to your Application&#160;</b><br/>
+In this step you have to add all files&#160;of the CANbedded Software Components (In&#160;<br/>this example these files are only the ones&#160;for the CAN Driver) and the generated&#160;<br/>ones to your project (or makefile). &#160;<br/>Rename the file _can_inc.h to can_inc.h (remove the underscore prefix) and open&#160;<br/>it with an appropriate editor. As you do&#160;not use any other component but the CAN&#160;<br/>Driver you should delete the #include of&#160;the Network Management (nm_cfg.h) at&#160;<br/>the end of this file.&#160;<br/>
+If you want to use functions of the CAN Driver or you want to access signals or mes-<br/>sages, you only have to&#160;include the&#160;can_inc.h&#160;and then the&#160;YourECU.h&#160;for&#160;<b>CANgen</b>&#160;<br/>and&#160;v_inc.h&#160;for using&#160;<b>GENy</b>.&#160;<br/>
+Now add the driver files to your source&#160;list for your compiler or your makefile.&#160;<br/>
+If you want to apply changes you have made in&#160;the Generation&#160;Tool, you must start&#160;<br/>the generation process&#160;again. Remember compiling afterwards.&#160;<br/>
+!!! &#160; &#160; We are&#160;still not&#160;able&#160;to compile&#160;and link. &#160; &#160;&#160;!!!&#160;<br/>
+The starting point for this&#160;example is&#160;a very simple&#160;application consisting of only&#160;<br/>one file (here applmain) and an interrupt vector&#160;table (vectors.c). It should give you&#160;<br/>an idea of how to handle the service- and callback functions of the CAN Driver. &#160;<br/>In the following chapters we complete this example step by step.&#160;<br/>This example was created for using CANgen. For the usage of GENy you just have&#160;<br/>to include the v_inc.h.&#160;<br/>&#160;<br/>
+<b>Example for&#160;HC12:&#160;</b><br/>
+|-------------------------------------------------------------------&#160;<br/>
+| &#160; &#160; &#160; &#160; &#160; &#160; &#160; A U T H O R &#160; I D E N T I T Y&#160;<br/>|-------------------------------------------------------------------&#160;<br/>| Initials &#160; &#160; Name &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;Company&#160;<br/>
+| -------- &#160; &#160; --------------------- &#160; &#160; ---------------------------&#160;<br/>| em &#160; &#160; &#160; &#160; &#160; Emmert Klaus &#160; &#160; &#160; &#160; &#160; &#160; &#160;Vector Informatik GmbH&#160;<br/>|-------------------------------------------------------------------&#160;<br/>&#160;<br/>/*Includes &#160;********************************************************/&#160;<br/>#include &#34;can_inc.h&#34;&#160;<br/>
+#include &#34;yourecu.h&#34;&#160;<br/>&#160;<br/>
+void main (void )&#160;<br/>{&#160;<br/>}&#160;<br/>
+&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=36></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-36_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-36_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-36_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-36_4.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+36&#160;/ 56<br/>
+<b>6.5&#160;</b><br/>
+<b>STEP 5 Adaptations for your Application&#160;</b><br/>
+To be able to compile and link, you have to&#160;adapt a few things in&#160;your application. &#160;<br/>&#160;<br/><b>Example for&#160;the&#160;HC12:&#160;<br/>&#160;<br/></b>/* Includes*********************************************************/&#160;<br/>
+#include &#34;can_inc.h&#34;&#160;&#160;/*using CANgen*/&#160;<br/>
+#include &#34;yourecu.h&#34;&#160;&#160;/*using CANgen*/&#160;<br/>
+#include &#34;can_par.h&#34;&#160;&#160;/*is also included for GENy via include of v_inc.h*/&#160;<br/>
+&#160;<br/>
+/*Function prototypes **********************************************/&#160;<br/>
+void enableInterrupts( void );&#160;<br/>
+void hardwareInit( void );&#160;<br/>
+&#160;<br/>
+/*Main Function **********************************************/&#160;<br/>void main(void)&#160;<br/>{&#160;<br/>
+/*&#160;<b>make sure that the interrupts are disabled to initialize the &#160;<br/>&#160; &#160;modules</b>.*/&#160;<br/>&#160;<br/>
+DO&#160;&#160;<b>NOT</b>&#160;USE any CAN API function&#160;<b>before calling CanInitPowerOn</b>. &#160;<br/><b>It is&#160;forbidden&#160;to use CanInterruptDisable here</b>&#160;<br/>
+&#160;<br/>&#160; hardwareInit();&#160;<br/>
+&#160;<br/>
+<b>It is&#160;forbidden&#160;to&#160;</b><br/>
+&#160;<br/>
+<b>use any&#160;CAN&#160;<br/>functionality&#160;</b><br/>
+&#160;&#160;<b>CanInitPowerOn</b>(kCanInitObj1); &#160;<br/>
+<b>before&#160;CanInit-</b><br/>
+&#160;<br/>
+<b>PowerOn !!!</b>&#160;<br/>
+&#160; enableInterrupts();&#160;<br/>&#160;<br/>
+&#160; for(;;)&#160;<br/>&#160; { &#160;&#160;&#160;&#160;<br/>&#160; &#160; ;&#160;<br/>&#160; } &#160; &#160; &#160; &#160; &#160;<br/>}&#160;<br/>
+&#160;<br/>void ApplCanBusOff( void )&#160;<br/>{&#160;<br/>&#160; ; /*Callback function for notification of BusOff*/&#160;<br/>}&#160;<br/>
+&#160;<br/>void ApplCanWakeUp( void )&#160;<br/>{&#160;<br/>&#160;<br/>
+&#160;<br/>
+; /*Callback function at the transition from SleepMode to&#160;sleep&#160;<br/>
+indication recommended*/&#160;<br/>
+}&#160;<br/>&#160;<br/>void hardwareInit( void )&#160;<br/>{&#160;<br/>&#160; /*&#160;<br/>
+&#160; Do your hardware specific initializations here.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=37></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-37_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+37&#160;/ 56<br/>
+&#160; Remember your TRANSCEIVER&#160;<br/>&#160; */&#160;<br/>&#160; ;&#160;<br/>}&#160;<br/>&#160;<br/>
+@interrupt void irq_dummy0(void)&#160;<br/>{&#160;<br/>
+&#160;&#160;for( ;;&#160;); /*all&#160;other interrupts except the&#160;CAN Interrupts are&#160;routed&#160;<br/>to this function.*/&#160;<br/>}&#160;<br/>
+<b>&#160;<br/></b>&#160;<br/><b>Now&#160;the description of&#160;the above code:&#160;<br/></b>First, we have to include the&#160;<b>can_inc.h</b>&#160;and then the generated header, here&#160;<br/><b>yourecu.h</b>.&#160;<br/>The following define is&#160;to enable the interrupts and is hardware dependent.&#160;<br/>In the main() function you have to&#160;do initializations first. &#160;<br/>In the&#160;<b>hardwareInit</b>&#160;you can turn on timers or&#160;PWM or something else. &#160;<br/>
+When&#160;you use&#160;a&#160;<br/>
+As you see, the transceiver connects&#160;directly&#160;to the CAN Bus, so:&#160;<br/>
+high speed&#160;<br/>transceiver, you &#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160;!!!&#160;&#160;<b>PLEASE THINK&#160;OF SWITCHING&#160;YOUR&#160;TRANSCEIVER&#160;ON</b>&#160;!!!&#160;<br/>
+have to take&#160;care&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160;<b>THE CAN&#160;DRIVER DOES&#160;NOT HANDLE THE TRANSCEIVER</b>&#160;<br/>
+of your&#160;terminat-<br/>ing resistor&#160;of&#160;<br/>120Ω<br/>
+Normally this is only necessary when using a low-speed-transceiver. Refer to&#160;your&#160;<br/>hardware guide.&#160;<br/>
+<b>CAN Driver</b><br/>
+<b>CAN Controller</b><br/>
+can_rx<br/>can_tx<br/>(standby<br/>enable)<br/>
+<b>Transceiver</b><br/>
+CAN_H<br/>CAN_L<br/>GND<br/>
+&#160;<br/>
+Figure&#160;&#160;6-18&#160;The&#160;Transceiver&#160;<br/>
+To start the CAN Controller and the CAN&#160;Driver, you have to call the function:&#160;<br/><b>CanInitPowerOn( kCanInitObj1 )&#160;</b><br/>
+Make sure&#160;that&#160;<br/>the interrupts are&#160;<br/>disabled&#160;when&#160;<br/>calling&#160;the&#160;func-<br/>
+Make sure that you use functions of&#160;the CAN Driver&#160;API&#160;<b>after</b>&#160;CanInitPowerOn. &#160;<br/>
+tion CanInitPow-<br/>erOn. Normally&#160;<br/>the interrupts are&#160;<br/>disabled&#160;by&#160;<br/>default at&#160;startup.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=38></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-38_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-38_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+38&#160;/ 56<br/>
+The parameter passed in determines the init&#160;structure you made the settings for via&#160;<br/>the Generation Tool.&#160;You will find the macro&#160;<b>kCanInitObj1</b>&#160;in the generated&#160;<br/><b>yourecu.h</b>&#160;(can_par.h&#160;for GENy) normally at the end of the file. (On some hard-<br/>ware platforms, this parameter is not necessary (e.g. V850). Refer to your hard-<br/>ware specific documentation for this information.&#160;<br/>Now you can enable interrupts.&#160;<br/>The main-function is an endless-loop. Perhaps you can turn on some LEDs, to see&#160;<br/>the application running. &#160;<br/>You also&#160;have to provide the CAN Driver with two application functions,&#160;<b>applCan-<br/>BusOff</b>&#160;and&#160;<b>applCanWakeUp</b>. For the first start, you can leave these functions&#160;<br/>empty to avoid linker errors.&#160;<br/>
+Think of&#160;adding&#160;<br/>
+&#160;<br/>
+this or&#160;a&#160;similar&#160;<br/>file&#160;to&#160;your sys-<br/>
+Since the CAN Driver uses interrupts&#160;for notifying the application when a CAN&#160;<br/>
+tem,&#160;i.e.&#160;your&#160;<br/>makefile&#160;or&#160;&#160;your&#160;<br/>
+message has been received, you have to map the interrupts on the corresponding&#160;<br/>
+project.&#160;<br/>
+interrupt service routines. Refer to your compiler manual how to do this in your&#160;<br/>case.&#160;<br/>For the HC12 CAN Drivers this is done in the file vectors.c. Let’s have a look at this&#160;<br/>file. &#160;<br/>
+Interrupts and interrupt&#160;tables are&#160;highly dependent on the hardware. Just&#160;use&#160;this&#160;<br/>example as a guide. &#160;<br/>
+&#160;<br/>
+<b>Example for&#160;HC12:&#160;<br/></b>&#160;<br/>const functptr vectab[] = { &#160; &#160; &#160; &#160;// @0xFFC4 start address of table&#160;<br/>
+&#160; &#160;&#160;<b>CanTxInterrupt, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;// $FFC4 &#160; &#160;CAN transmit&#160;<br/>&#160; &#160; CanRxInterrupt, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;// $FFC6 &#160; &#160;CAN receive&#160;<br/>&#160; &#160; CanErrorInterrupt, &#160; &#160; &#160; &#160; &#160; &#160; // $FFC8 &#160; &#160;CAN error</b>&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;// reserved&#160;<br/>
+&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//&#160;<br/>
+&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//&#160;<br/>
+&#160; &#160;&#160;<b>CanWakeUpInterrupt, &#160; &#160; &#160; &#160; &#160; &#160;// $FFD0 CAN wake-up&#160;<br/></b>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//ATD&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//SCI 2&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//SPI&#160;<br/>
+&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//SPI&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Pulse acc input&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Pulse acc overf&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer overf&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 7&#160;<br/>
+&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 6&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 5&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 4&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 3&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 2&#160;<br/>
+&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 1&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Timer channel 0&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//Real time&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//IRQ&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=39></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-39_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+39&#160;/ 56<br/>
+&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//XIRQ&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//SWI&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//illegal&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//cop fail&#160;<br/>&#160; &#160; irq_dummy0, &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;//clock fail&#160;<br/>
+&#160; &#160;&#160;<b>_stext</b>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;<b>//RESET</b>&#160;<br/>&#160; &#160; };&#160;<br/>&#160;<br/>&#160;<br/>As you see in the example, we only use&#160;CAN-specific interrupts and the reset vec-<br/>tor. All other interrupts result in a dummy interrupt. &#160;<br/>
+You also have to provide the function&#160;irq_dummy0( ) in your application.&#160;Refer to your&#160;<br/>hardware description to figure out the&#160;solution for&#160;your situation.&#160;<br/>
+&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=40></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-40_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-40_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-40_3.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-40_4.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-40_5.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-40_6.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+40&#160;/ 56<br/>
+<b>6.6&#160;</b><br/>
+<b>STEP 6 Compile, Link&#160;and Download&#160;</b><br/>
+Now start your compiler by calling the&#160;<b>makefile</b>&#160;or just clicking the start button. What&#160;<br/>you do is depends on your development tool chain.&#160;<br/>&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+<b>6.7&#160;</b><br/>
+<b>STEP 7 Receiving A Message&#160;</b><br/>
+&#160;<br/><b>Congratulations !!&#160;<br/></b>&#160;<br/>You have now arrived at &#160;<b>Step 7</b>, i.e. you can compile and&#160;link. You are very close&#160;<br/>to your first CAN communication.&#160;<br/>
+In every project you normally have to spend a lot of the time starting up the hardware&#160;<br/>and the development environment.&#160;&#160;<br/>&#160;<br/><b>Make sure that:</b>&#160;<br/><b>Y</b>ou have the correct clock frequency (important&#160;for baud rate).&#160;<br/><b>Y</b>ou have entered this clock in the dialog box of the Generation&#160;Tool.&#160;<br/><b>T</b>he memory mapping is correct.&#160;<br/><b>T</b>he physical CAN connection is there and has no damage.&#160;<br/><b>Y</b>ou have a terminating resistor (120Ω) if you use high-speed CAN (powertrain).&#160;<br/><b>Y</b>our transceiver is initialized properly&#160;<br/>
+After the download of your Application,&#160;set a breakpoint in&#160;your debugger on the&#160;<br/>main (void) function and start. Did it stop at main?&#160;<br/>If so,<b>&#160;Congratulations</b>&#160;again. &#160;<br/>Remove the breakpoint and restart. Now your&#160;application is running in the endless&#160;<br/>loop. Please&#160;check this!&#160;<br/>
+CANoe is very&#160;<br/>convenient for&#160;<br/>testing a CAN&#160;<br/>communication. &#160;<br/>
+&#160;As&#160;soon&#160;as you&#160;<br/>see the&#160;message&#160;<br/>Id or&#160;the&#160;Name&#160;in&#160;<br/>the&#160;&#160;Trace win-<br/>dow&#160;after&#160;sending&#160;<br/>
+&#160;<br/>
+a message, you&#160;<br/>know&#160;that&#160;your&#160;<br/>
+Figure&#160;&#160;6-19&#160;Simple Test Environment&#160;<br/>
+hardware settings&#160;<br/>are correct.&#160;<br/>
+Now send a CAN message on the bus. It is best to use an ID your ECU normally&#160;<br/>has to receive.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=41></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-41_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-41_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-41_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+41&#160;/ 56<br/>
+A&#160;very easy way to send a message&#160;is by using the CANoe (or CANalyzer), a PC-tool&#160;<br/>from Vector Informatik. Use the generator block&#160;and send the message.&#160;<br/>
+Send the message and observe&#160;the Trace window. &#160;<br/>Do you see the name of the message or the ID? &#160;<br/><b>Great</b>, your ECU has&#160;acknowledged the CAN&#160;message, i.e. all hardware settings&#160;<br/>are correct. &#160;&#160;<br/>
+If you see Error frames, check the&#160;list above.&#160;The main mistakes are hardware set-<br/>tings (transceiver), the baud rate (clock of CAN Controller), wiring problems and&#160;<br/>ground offsets.&#160;<br/>
+Now we are ready to modify our application.&#160;Please check in the Generation Tool&#160;<br/>on the tab&#160;<b>Receive messages</b>, if the&#160;<b>Indication flag</b>&#160;for the message is switched on.&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+Figure&#160;&#160;6-20&#160;Check button for&#160;indication flag&#160;<br/>
+There are&#160;many&#160;<br/>
+If not,&#160;switch it on,&#160;start&#160;a new generation process,&#160;compile&#160;and link the&#160;system again&#160;<br/>
+more&#160;ways&#160;to&#160;<br/>react&#160;&#160;when a&#160;<br/>
+and download it to the target.&#160;<br/>
+CAN message&#160;&#160;is&#160;<br/>received. Refer&#160;to&#160;<br/>Step&#160;9 in&#160;this&#160;<br/>
+Now we use the so-called&#160;<b>Indication flag</b>&#160;to poll the reception of the CAN message.&#160;<br/>
+manual.&#160;<br/>
+When an interrupt is triggered by the reception of a CAN message, the indication&#160;<br/>flag will be set (if chosen in the Generation Tool). &#160;<br/>
+When you use another dbc file, your&#160;message&#160;will have a different name.&#160;You will find&#160;<br/>the correct macro for&#160;your indication&#160;flag in the file yourecu.h (can_par.h). Just search&#160;<br/>for&#160;<b>indication</b>.&#160;<br/>
+<b>Example for&#160;the&#160;HC12:&#160;</b><br/>
+void main(void)&#160;<br/>{&#160;<br/>&#160; hardwareInit();&#160;<br/>
+&#160;<br/>&#160; CanInitPowerOn(kCanInitObj1); &#160;<br/>&#160;<br/>&#160; enableInterrupts();&#160;<br/>&#160;<br/>
+&#160; for(;;)&#160;<br/>&#160; { &#160;<br/>
+&#160; &#160;&#160;<b>/* First Test modification*/&#160;<br/>&#160; &#160; if( Message_2_ind_b )&#160;<br/>&#160; &#160; {&#160;&#160;&#160;&#160;&#160;</b><br/>
+<b>&#160; &#160; &#160; Message_2_ind_b = 0;&#160;Breakpoint here&#160;</b><br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=42></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-42_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+42&#160;/ 56<br/>
+<b>&#160; &#160; }</b>&#160; &#160; &#160;<br/>&#160; } &#160; &#160; &#160; &#160; &#160;<br/>}&#160;<br/>&#160;<br/>
+The names are generated out of the name of the signal and the pre- and postfixes&#160;<br/>from the “names” tab. Refer to the file&#160;YourECU.h (can_par.h) for the correct writing of&#160;<br/>messages, indication flags etc.&#160;<br/>
+Compile, link and&#160;download the application and set a&#160;breakpoint (as shown). Now&#160;<br/>send the CAN message via the Generator Block. &#160;<br/>&#160;<br/>It stopped at the breakpoint? &#160;<br/>&#160;<br/>If so, you received the message, used the&#160;correct macro for the flag and got noti-<br/>fied of the reception.&#160;<br/>&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=43></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-43_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-43_2.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-43_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+43&#160;/ 56<br/>
+<b>6.8&#160;</b><br/>
+<b>STEP 8 Sending a Message&#160;</b><br/>
+The next step is the transmission of a&#160;CAN message. This is done by calling the&#160;<br/>function &#160;<br/><b>CanTransmit( handle )</b>;&#160;<br/>The&#160;&#160;<b>handle</b>&#160;specifies&#160;the message you want to send. Open the file&#160;<b>yourecu.h&#160;<br/></b>(can_par.h&#160;for GENy)&#160;and search for “<b>handle</b>” in the section on send/transmit&#160;<br/>objects. Chose the appropriate macro for&#160;the send message and use it as shown.&#160;<br/>&#160;<br/>
+<b>Example:&#160;<br/></b>void main(void)&#160;<br/>{&#160;<br/>&#160; hardwareInit();&#160;<br/>
+&#160;<br/>&#160; CanInitPowerOn(kCanInitObj1); &#160;<br/>
+&#160;<br/>&#160; enableInterrupts();&#160;<br/>&#160;<br/>&#160; for(;;)&#160;<br/>
+<b>handle</b><br/>
+&#160; { &#160;<br/>
+&#160; &#160; /* First Test modification*/&#160;<br/>&#160; &#160; if( Message_2_ind_b )&#160;<br/>&#160; &#160; {&#160;&#160;&#160;<br/>
+&#160;&#160;<b>/*Second Test modification*/&#160;</b><br/>
+<b>&#160;</b><br/>
+<b>&#160; &#160; &#160; if( CanTransmit( CanTxMessage_1 ) == kCanTxOk )&#160;</b><br/>
+<b>&#160;{&#160;</b><br/>
+<b>&#160;&#160;&#160;&#160;&#160;</b><br/>
+&#160;&#160;&#160;&#160;Message_2_ind_b = 0;&#160;&#160;&#160;&#160;&#160;&#160;<br/>&#160;&#160;}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br/>&#160; &#160; } &#160; &#160; &#160; &#160;&#160;<br/>
+&#160; } &#160; &#160; &#160; &#160; &#160;<br/>
+}&#160;<br/>&#160;<br/>
+Refer to the file&#160;YourECU.h (can_par.h for GENy) for the message handles.&#160;<br/>
+&#160;<br/>
+<b>Meaning of the return value of CanTransmit&#160;</b><br/>
+The function CanTransmit has a return value,&#160;kCanTxOk&#160;or&#160;kCanTxFailed.&#160;&#160;The&#160;<br/>
+meaning of this value is&#160;not as simple as it looks&#160;like. &#160;<br/>
+<b>Without Software Transmit Queue&#160;</b><br/>
+<b>kCanTxOk&#160;</b>means that the data has been copied from the RAM to the&#160;Tx Register&#160;<br/>and the transmit request&#160;is&#160;set in&#160;the CAN Controller hardware.&#160;The physical trans-<br/>mission&#160;of&#160;the&#160;message&#160;depends on when the&#160;message wins the CAN bus arbitra-<br/>tion.&#160;<br/>
+<b>kCanTxFailed</b>&#160;means the hardware register is&#160;busy or CAN Driver is offline. &#160;<br/>
+<b>With Software Transmit Queue&#160;</b><br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=44></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-44_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+44&#160;/ 56<br/>
+<b>kCanTxOk</b>&#160;could mean the same as above. But it also&#160;could mean that the transmit&#160;<br/>request is&#160;set in the&#160;software queue&#160;of the CAN Driver and will be processed as&#160;soon&#160;<br/>as possible.&#160;Read more&#160;about the software queue in the chapter&#160;<a href="UserManual_CanDrivers.html#49">&#160;6.9.2.3.</a>&#160;<br/>
+<b>kCanTxFailed</b>&#160;means the CAN Driver is offline.&#160;<br/>
+&#160;<br/>
+<b>Full CAN Tx&#160;Object&#160;</b><br/>
+There is no&#160;Tx queue functionality for Full CAN&#160;Tx Objects.&#160;<br/>
+&#160;<br/>This modified application sends&#160;back&#160;a CAN message. You should&#160;see the re-<br/>sponse message in your Trace window. Refer to the TechnicalRefer-<br/>ence_CANDriver.pdf to get information about the return value. &#160;<br/>Do you see the response message in the Trace window? &#160;<br/>&#160;<br/>
+<b>CONGRATULATIONS!&#160;</b><br/>
+<b>The basic CAN communication is running.&#160;</b><br/>
+&#160;<br/>Of course this is a very simple application&#160;and far away from the complexity of your&#160;<br/>application,&#160;but as&#160;the saying goes:&#160;<br/><b>The longest way&#160;starts&#160;with the first step(s)</b>.&#160;<br/>&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=45></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-45_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-45_2.jpg"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-45_3.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+45&#160;/ 56<br/>
+<b>6.9&#160;</b><br/>
+<b>STEP 9 Further Actions&#160;</b><br/>
+The next step is to build&#160;up your application around the&#160;communication. To do this&#160;<br/>in a simple&#160;manner, read the following&#160;tips and recommendations. You will then be&#160;<br/>given an exercise that poses a problem which you will try to solve.&#160;After&#160;finding the&#160;<br/>correct answer, you will understand the order&#160;in which&#160;the functions of the CAN&#160;<br/>Driver are called.&#160;<br/>
+<b>6.9.1&#160;&#160;Strategies for Receiving a CAN Message&#160;<br/></b>The&#160;&#160;<a href="UserManual_CanDrivers.html#45">Figure&#160;&#160;&#160;6-21 shows the calling order of t</a>he functions when receiving a mes-<br/>sage. &#160;<br/>
+Indication&#160;Flag/Function<br/>
+<b>Hardware&#160;</b>Copy of data to&#160;<br/>
+<b>locked</b><br/>
+software buffer<br/>
+conditional<br/>
+Precopy&#160;Function<br/>
+exit<br/>
+Search Algorithm<br/>
+exit&#160;<br/>
+if&#160;not&#160;found<br/>
+Ranges<br/>
+exit&#160;<br/>
+if&#160;matched<br/>
+ApplCanMsgReceived<br/>
+conditional<br/>
+exit<br/>
+Hardware Filter<br/>
+<b>CAN-BUS</b><br/>
+&#160;<br/>
+Figure&#160;&#160;6-21&#160;Calling&#160;Order Of Functions&#160;When A CAN Message&#160;Is Received&#160;<br/>
+<b>6.9.1.1&#160;</b><br/>
+<b>Hardware Filter (HW Filter)&#160;</b><br/>
+As you have learned before, you can adjust the hardware filter in the Generation&#160;<br/>Tool. Every message that passes the hardware&#160;filter triggers an&#160;interrupt – if not&#160;<br/>using polling mode.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=46></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-46_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+46&#160;/ 56<br/>
+To reduce your interrupt&#160;load, optimize the filters (Generation&#160;Tool).&#160;<br/>
+<b>6.9.1.2&#160;</b><br/>
+<b>ApplCanMsgReceived&#160;</b><br/>
+In the Generation Tool you can choose to have this function called with any recep-<br/>tion of a CAN message that&#160;passes the hardware filter.&#160;<br/>Here you can filter the messages that pass&#160;the hardware filter but&#160;contain no&#160;rele-<br/>
+If you select&#160;the&#160;<br/>function&#160;<br/>
+vant information. At this point, the&#160;data is in the receive register (<b>Rx register</b>). Use&#160;<br/>
+ApplCanMsgRe-<br/>
+the hardware access macros to figure out ID, DLC and DATA&#160;of the received mes-<br/>
+ceived, the&#160;<br/>prototype will be&#160;<br/>
+sage.&#160;<br/>
+generated. You&#160;<br/>only&#160;have&#160;to&#160;enter&#160;<br/>the function.&#160;<br/>
+<b>6.9.1.3&#160;</b><br/>
+<b>Ranges&#160;</b><br/>
+Ranges&#160;are a software filter mechanism. &#160;Since the message is filtered by its ID&#160;<br/>and assigned to the categories Network Management, Diagnostics, Application,&#160;<br/>etc., you can route more messages on the same&#160;<b>Range precopy function</b>.&#160;<br/>
+<b>6.9.1.4&#160;</b><br/>
+<b>Search Algorithm&#160;</b><br/>
+To figure out whether a message is meant&#160;for your ECU and which message ID it&#160;<br/>is the CAN Driver has&#160;to compare the ID&#160;with an ID-list. This comparison can be&#160;<br/>done in different ways. The criterion is&#160;the speed for browsing the list. The Genera-<br/>tion Tool offers different search algorithms to choose. Please refer to the CAN&#160;<br/>Driver Technical Manual for the differences.&#160;<br/>
+<b>6.9.1.5&#160;</b><br/>
+<b>Precopy&#160;</b><br/>
+In the Generation Tool (<b>receive&#160;objects/functions</b>) you can enter a name for&#160;a mes-<br/>sage-specific precopy&#160;function. This function is called by the CAN Driver before&#160;<br/>copying the message data from the receive&#160;register to the RAM data structure (if&#160;<br/>
+The _CAN_&#160;<br/>
+selected). &#160;<br/>
+macros&#160;will be&#160;<br/>generated&#160;only&#160;<br/>when you&#160;have&#160;<br/>
+The&#160;&#160;<b>Precopy function</b>&#160;e.g. can be used to check to see if the data has&#160;<br/>
+chosen a&#160;precopy&#160;<br/>function&#160;or&#160;the&#160;<br/>
+changed. Use the&#160;<b>_CAN_</b>&#160;access macros to read the data out of the receive regis-<br/>
+object is&#160;a&#160;full&#160;can&#160;<br/>object.<br/>
+ter and compare it with the RAM&#160;buffer (look in &#160;<b>yourECU.h&#160;</b>for<b>&#160;</b>CANgen<b>&#160;</b>and in<b>&#160;<br/>can_par.h&#160;</b>for GENy&#160;for these access macros). &#160;<br/>
+This macro&#160;will be only generated if&#160;the message is a&#160;full&#160;can object&#160;or&#160;you have se-<br/>lected a precopy-function for this message (see&#160;later).&#160;<br/>
+As you are in interrupt context, data consistency is not in danger&#160;(refer to the tech-<br/>nical reference for you hardware). Keep your actions short in any&#160;<b>Precopy func-<br/>tion</b>.&#160;<br/>The return value of the&#160;<b>Precopy function</b>&#160;determines what happens next.&#160;<br/>
+<b>kCanCopyData</b>: The driver is to do the copying from receive register to RAM&#160;<br/>buffer.&#160;<br/>
+<b>kCanNoCopyData</b>: You did the copy of relevant&#160;data and the driver does not need&#160;<br/>to call its copying routine.&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=47></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-47_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+47&#160;/ 56<br/>
+<b>6.9.1.6&#160;</b><br/>
+<b>Indication Flag /&#160;Indication Function&#160;</b><br/>
+The application is notified by the indication flags and/or the indication functions&#160;<br/>The driver indicates the reception&#160;of a message to the application.&#160;&#160;<br/>
+<b>Indication Function&#160;<br/></b>This function runs in interrupt context&#160;and is message-specific. Keep your action&#160;<br/>very short in&#160;this function. &#160;<br/>You can enter a name for a message-specific&#160;<b>Indication function</b>&#160;in&#160;the&#160;<br/>Generation Tool (in the same way as you did it for the&#160;<b>Precopy function</b>).&#160;<br/>
+<b>Indication Flag&#160;<br/></b>This flag is&#160;message-specific. It is set by&#160;the CAN Driver and can be polled by the&#160;<br/>application.&#160;It tells the application a new message has been received.&#160;<br/>
+<b>!!! This flag must be reset&#160;by&#160;the application. !!!&#160;</b><br/>
+You can use this flag to ensure you are working on the newest contents&#160;of a mes-<br/>sage. &#160;<br/>
+If the flag is set, it means that a new message has been received. Clear the flag and&#160;<br/>access the received data. If the flag is cleared after your access, you can be sure that&#160;<br/>you have current data. If&#160;the flag is set, new data&#160;has been received in the meantime,&#160;<br/>so repeat this once again. &#160;<br/>
+<b>&#160;<br/>Remember for Data consistency&#160;<br/></b>All flags are set by the driver in an interrupt context. If your µC&#160;does not perform an&#160;<br/>atomic (i.e. uninterruptible) write access to&#160;bit data it is necessary to protect the&#160;<br/>write access via an interrupt lock to prevent unexpected change or loss&#160;of flag&#160;<br/>states. It is recommended to perform this&#160;(CAN-) interrupt lock via the API func-<br/>tions CanInterruptDisable&#160;/ CanInterruptRestore.&#160;<br/>Please refer to your controller and/or compiler manual for information about atomic&#160;<br/>write access to bit data in your system.&#160;In&#160;case of doubts, it is recommended to&#160;<br/>lock the interrupt during the access.&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=48></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-48_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-48_2.jpg"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+48&#160;/ 56<br/>
+<b>6.9.2&#160;&#160;Strategies for Sending a CAN Message&#160;<br/></b>The transmission of a CAN message is divided&#160;into two parts: the preparations&#160;until&#160;<br/>the transmission of a message and the transmit interrupt handling, which informs&#160;<br/>you about the successful sending of a message.&#160;<br/>First we look at the preparations before sending.&#160;<br/>
+Update RAM buffer<br/>
+CAN&#160;Transmit<br/>
+yes<br/>
+<b>Buffer free?</b><br/>
+Entry in&#160;Queue<br/>
+exit<br/>
+Pretransmit<br/>
+Copy&#160;of data to&#160;<br/>
+hardware buffer<br/>
+Send Message<br/>
+<b>CAN-BUS</b><br/>
+&#160;<br/>
+Figure&#160;&#160;6-22&#160;States Before Transmitting A CAN Message&#160;<br/>
+<b>6.9.2.1&#160;</b><br/>
+<b>Update RAM buffer&#160;</b><br/>
+The methods of transmission highly depend on your application. You may have to&#160;<br/>send in a fixed cycle, or you may have to send when a specific event occurs.&#160;<br/>Both cases&#160;require current data. If you use the RAM buffer, you just have to keep&#160;<br/>the data in it up-to-date.&#160;<br/>When you use your own buffer you should enter the values directly into the trans-<br/>mit register just before sending the message. Otherwise the data&#160;could be overwrit-<br/>ten by another transmit message. &#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=49></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-49_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+49&#160;/ 56<br/>
+<b>6.9.2.2&#160;</b><br/>
+<b>CanTransmit&#160;</b><br/>
+The CanTransmit function initiates the transmission of a specific message. The&#160;<br/>
+You can&#160;only&#160;be&#160;<br/>
+handle (in the file yourECU.h for CANgen and in can_par.h for GENy) specifies&#160;<br/>
+sure&#160;that&#160;the&#160;<br/>message has&#160;<br/>
+which message is sent. &#160;&#160;<br/>
+been sent&#160;when&#160;<br/>you get the&#160;<br/>confirmation&#160;<br/>
+CanTransmit has 2 possible return values, but none of them guarantee that the&#160;<br/>
+interrupt&#160;(confir-<br/>mation function or&#160;<br/>
+message has been sent yet. They just say that&#160;either the message will be sent as&#160;<br/>
+confirmation flag)<br/>
+soon as possible (with or without a queue)&#160;or the transmission request has&#160;been&#160;<br/><a href="UserManual_CanDrivers.html#43">rejected (see&#160;&#160;6.8);&#160;</a><br/>
+&#160;<br/>
+<b>6.9.2.3&#160;</b><br/>
+<b>The Queue&#160;</b><br/>
+There are two possible causes for a return&#160;value of kCanTxOk: either the message&#160;<br/>has directly entered the transmit buffer&#160;or the message has entered the queue (if&#160;<br/>chosen in the Generation Tool). &#160;<br/>An entry in the queue means, the&#160;<b>REQUEST</b>&#160;to send this message is stored, not&#160;<br/>the data. So&#160;leave the data untouched&#160;until you are sure the message has been&#160;<br/>sent, i.e. until the&#160;<b>Confirmation flag</b>&#160;is set or the&#160;<b>Confirmation function</b>&#160;<br/>is called.&#160;<br/>
+<b>6.9.2.4&#160;</b><br/>
+<b>Pretransmit Function&#160;</b><br/>
+When you do not have a RAM buffer for your&#160;message, you must copy the data to&#160;<br/>the transmit register of&#160;the CAN Controller in the&#160;<b>Pretransmit function</b>. With&#160;<br/>the call of the function you&#160;get a pointer directly to the&#160;transmit registers. In this&#160;<br/>case you have to know the&#160;distribution of the signals&#160;to&#160;the bytes,&#160;because you do&#160;<br/>not get signal access macros.&#160;<br/>
+The time between the call of CanTransmit and&#160;the confirmation interrupt is not&#160;pre-<br/>dictable.&#160;To&#160;update your data short&#160;before the transmission,&#160;use the Pretransmit func-<br/>tion too. If this function&#160;is called, you can be sure that this message is the next&#160;mes-<br/>sage to be sent.&#160;<br/>
+When the message is sent and at least one ECU receives this&#160;message, the ac-<br/>knowledge will trigger the so-called transmit interrupt. This interrupt calls the&#160;<br/>transmit interrupt service routine, which in&#160;turn might call the confirmation function&#160;<br/>or set the confirmation flag.&#160;<br/>
+<b>6.9.2.5&#160;</b><br/>
+<b>Confirmation Function and Confirmation Flag &#160;</b><br/>
+The&#160;<b>Confirmation function</b>&#160;is called in interrupt context, so keep the run time&#160;<br/>
+See the parallels&#160;<br/>
+as short as possible by not doing much in the code.&#160;<b>Now</b>&#160;you can be sure, your&#160;<br/>
+between the&#160;<br/>indication&#160;func-<br/>
+message has been sent successfully. &#160;<br/>
+tion/flag&#160;&#160;and&#160;the&#160;<br/>confirmation&#160;<br/>
+The&#160;<b>Confirmation flag</b>&#160;has the same meaning, but you have to&#160;poll this flag in&#160;<br/>
+function/flag<br/>
+your application (similar to&#160;the way it is done with the&#160;<b>Indication flag</b>). You&#160;<br/>get the macro out of the generated file&#160;<b>yourECU.h (can_par.h)</b>. &#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=50></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-50_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-50_2.jpg"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+50&#160;/ 56<br/>
+Leave Interrupt<br/>
+CanTransmitQueuedObject<br/>
+Queue Empty?<br/>
+Confirmation&#160;Flag/Function<br/>
+<b>CAN-BUS</b><br/>
+ACKNOWLEDGE&#160;&#160;<br/>
+Figure&#160;&#160;6-23&#160;Confirmation Interrupt After Transmission Of CAN Message&#160;<br/>
+After the confirmation the queue (if chosen) will be worked on.&#160;<br/>&#160;<br/>&#160;<br/>
+<a href="UserManual_CanDrivers.html#20">Back</a>&#160;to 9 Steps overview&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=51></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-51_1.png"/><br/>
+<img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-51_2.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+51&#160;/ 56<br/>
+<b>7&#160;&#160;Further Information&#160;</b><br/>
+<b>7.1&#160;</b><br/>
+<b>An Exercise For Practice&#160;</b><br/>
+The program below is&#160;a small application (<b>for the&#160;HC12</b>) using the basic service- and&#160;<br/>call-back functions of the CAN driver.&#160;Try to follow the program and answer the&#160;<br/>questions connected with.&#160;<br/>&#160;<br/>The application receives a CAN message containing a byte signal&#160;<b>b_Signal_2_c</b>. &#160;<br/>After processing the incoming message,&#160;the application sends another message&#160;<br/>containing only one byte signal, called&#160;<b>b_Signal_1_c</b>.&#160;<br/>Can you calculate the value that will be sent back with&#160;<b>b_Signal_1_c</b>&#160;depending&#160;<br/>on the value of the variable&#160;<b>a&#160;&#160;</b>and the value of the received signal&#160;<br/><b>b_Signal_2_c</b>?&#160;<br/>
+See the solution at the end of this document&#160;<br/>
+&#160;<br/>
+<b>Example for&#160;the&#160;HC12:&#160;</b><br/>
+/* Includes&#160;<br/>*******************************************************************/&#160;<br/>
+#include &#34;can_inc.h&#34;&#160;&#160;&#160;&#160;/*for CANgen*/&#160;<br/>#include &#34;yourecu.h&#34;&#160;&#160;&#160;&#160;/*for CANgen*/&#160;<br/>&#160;<br/>#include &#34;can_par.h&#34;&#160;&#160;&#160;&#160;/*only include for GENy*/&#160;<br/>&#160;<br/>
+/* Variable definition&#160;<br/>*******************************************************************/&#160;<br/>unsigned char a;&#160;<br/>
+&#160;<br/>&#160;<br/>
+/* Function prototypes&#160;<br/>********************************************************/&#160;<br/>void main_function(void);&#160;<br/>void enableInterrupts( void );&#160;<br/>void hardwareInit( void );&#160;<br/>
+&#160;<br/>/* The Main Function&#160;<br/>**********************************************************/&#160;<br/>&#160;<br/>
+<b>void main(void)&#160;<br/></b>{&#160;<br/>&#160; hardwareInit();&#160;<br/>&#160;<br/>&#160;CanInitPowerOn(kCanInitObj1);&#160;&#160;<br/>&#160;<br/>
+&#160;&#160;a = 5;&#160;<br/>&#160;&#160;b_Signal_2_c = 0;&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=52></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-52_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+52&#160;/ 56<br/>
+&#160;enableInterrupts();&#160;<br/>&#160;<br/>&#160;for(;;)&#160;<br/>&#160;{&#160;&#160;<br/>&#160;&#160;&#160;&#160;&#160;<br/>
+&#160; if(&#160;Message_2_ind_b&#160;)&#160;<br/>&#160;&#160;&#160;&#160;{&#160;<br/>
+&#160;&#160;&#160;&#160;&#160;&#160;b_Signal_1_c = b_Signal_2_c + a;&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;if( CanTransmit( CanTxMessage_1 ) == kCanTxOk )&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;{&#160;<br/>
+&#160; &#160; /*Disable&#160;Interrupt*/&#160;<br/>&#160; &#160; Message_2_ind_b&#160;=&#160;0;&#160;&#160; &#160;<br/>&#160; &#160; /*Enable&#160;Interrupt*/&#160;<br/>
+&#160;&#160;&#160;&#160;&#160;&#160;}&#160;<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br/>
+&#160;&#160;&#160;&#160;}&#160;<br/>&#160; if(&#160;Message_1_conf_b&#160;)&#160;<br/>&#160;&#160;&#160;&#160;{&#160;<br/>
+&#160; &#160;a=1;&#160;<br/>
+/*Disable Interrupt*/&#160;<br/>
+&#160; &#160;Message_1_conf_b&#160;=&#160;0;&#160;<br/>
+/*Enable Interrupt*/&#160;<br/>
+&#160;&#160;&#160;&#160;}&#160;<br/>&#160;<br/>&#160;&#160;} &#160; &#160; &#160; &#160; &#160;<br/>
+}&#160;<br/>&#160;<br/>/* Other Functions&#160;<br/>**********************************************************/&#160;<br/>&#160;<br/>
+<b>void enableInterrupts( void )&#160;<br/></b>{&#160;<br/>&#160; /*Enable interrupts*/&#160;<br/>
+}&#160;<br/>
+<b>void ApplCanBusOff( void )&#160;</b>/*later uesd for bus off treatment*/<b>&#160;<br/></b>{&#160;<br/>&#160; ;&#160;<br/>
+}&#160;<br/>
+<b>void ApplCanWakeUp( void )&#160;</b>/*later used for wakeup functionality*/<b>&#160;<br/></b>{&#160;<br/>
+&#160; ;&#160;<br/>}&#160;<br/>/* new function added in the Generation Tool and application */&#160;<br/>
+<b>canuint8 ApplCanMsgReceived( void )&#160;<br/></b>{&#160;<br/>
+&#160;a=a+2;&#160;<br/>
+&#160;<br/>
+&#160;&#160;return( kCanCopyData );&#160;<br/>}&#160;<br/>
+<b>canuint8 M1_PretransmitFunction(CanChipDataPtr dat)&#160;<br/></b>{&#160;<br/>
+&#160;&#160;b_Signal_1_c = b_Signal_1_c +1;&#160;<br/>
+&#160;&#160;return( kCanCopyData );&#160;<br/>}&#160;<br/>
+<b>void M1_ConfirmationFunction(CanTransmitHandle tmtObject)&#160;<br/></b>{&#160;<br/>
+&#160;a=a+23;&#160;<br/>}&#160;<br/>
+<b>canuint8 M2_Precopy(CanReceiveHandle rcvObject)&#160;<br/></b>{&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=53></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-53_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+53&#160;/ 56<br/>
+rcvObject = rcvObject;&#160;&#160;/*to&#160;&#160;avoid&#160;&#160;compiler&#160;&#160;warning.&#160;&#160;You&#160;&#160;only&#160; &#160; &#160; &#160;&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+use this handle if you have one&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+precopy function for&#160;two or more&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160; messages*/&#160;<br/>
+&#160;a=2;&#160;<br/>
+&#160;&#160;if( b_CAN_Signal_2_c == b_Signal_2_c )&#160;<br/>&#160;{&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+&#160;<br/>
+return(&#160;<br/>
+kCanNoCopyData&#160;<br/>
+);&#160;<br/>
+/*same value as before, no need to&#160;<br/>
+&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;copy data, leave interrupt*/&#160;<br/>&#160;}&#160;<br/>
+&#160;else&#160;<br/>&#160;{&#160;<br/>&#160; a&#160;=&#160;b_CAN_Signal_2_c;&#160;<br/>
+&#160; return(&#160;kCanCopyData&#160;);&#160;<br/>&#160;}&#160;<br/>
+}&#160;<br/>&#160;<br/>
+<b>void M2_IndicationFunction(CanReceiveHandle rcvObject)&#160;<br/></b>{&#160;<br/>&#160;&#160;rcvObject = rcvObject;&#160;/*to&#160;<br/>
+avoid&#160;<br/>
+compiler&#160;<br/>
+warning.&#160;<br/>
+You&#160;<br/>
+only&#160; &#160; &#160; &#160;&#160;<br/>
+&#160;&#160;&#160;&#160; &#160; &#160;&#160;use this handle if you&#160;have&#160;<br/>
+one &#160;&#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;precopy&#160;<br/>
+function&#160;<br/>
+for&#160;<br/>
+two&#160;<br/>
+or&#160;<br/>
+more&#160; &#160;<br/>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;messages*/&#160;<br/>&#160;a=a+1;&#160;<br/>}&#160;<br/>
+/****************************************************/&#160;<br/>
+<b>void hardwareInit( void )&#160;<br/></b>{&#160;<br/>&#160;/*&#160;<br/>&#160;&#160;Do your hardware specific initializations here.&#160;<br/>
+&#160;&#160;Don’t forget to initialize your TRANSCEIVER, if necessary*/&#160;<br/>
+&#160;;&#160;<br/>}&#160;<br/>
+<b>@interrupt void irq_dummy0(void)&#160;<br/></b>{&#160;<br/>
+&#160;&#160;for( ;; );&#160;<br/>}&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=54></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-54_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+54&#160;/ 56<br/>
+<b>7.2&#160;</b><br/>
+<b>The Solution To The Exercise&#160;</b><br/>
+<b>7.2.1&#160;&#160;After the first reception and transmission of a&#160;</b>new<b>&#160;value:&#160;<br/>a = 1&#160;<br/>b_Signal_1_c</b>&#160;=&#160;<b>b_Signal_2_c*2+2</b>&#160;<br/>&#160;<br/>
+<b>7.2.2&#160;&#160;After the reception of the same value as before:&#160;<br/>a = 2&#160;<br/>no return message&#160;<br/></b>&#160;<br/>Did you get&#160;it? &#160;<br/>&#160;<br/>
+<b>7.2.3&#160;&#160;The solution, step by step&#160;<br/></b>At the beginning, &#160;<br/>a=5 and b_Signal_2_c&#160;= 0&#160;<br/>The Main loop is waiting on an Indication&#160;Flag for Message 2 and a Confirmation&#160;<br/>Flag for Message 1.&#160;<br/>The first function that&#160;is called after the reception of Message 2 is &#160;<b>ApplCan-<br/>MsgReceived</b>. There the&#160;<b>2</b>&#160;is added to&#160;<b>a</b>&#160;and returned with&#160;<b>kCanCopyData</b>, so&#160;<br/>the reception process continues.&#160;<br/>
+At this point&#160;a=7 and b_Signal_2_c&#160;= b_Signal_2_c&#160;<br/>
+The next function executed is&#160;<b>M2_Precopy</b>. The variable&#160;<b>a</b>&#160;is set to&#160;<b>2</b>&#160;and the re-<br/>ceived signal b_CAN_Signal_2_c&#160;(the data in the Rx register, i.e. in the CAN Con-<br/>troller) is compared with&#160;the signal b_Signal_2_c.&#160;<br/>If there is no change, the return value kCanNoCopyData stops the receive process&#160;<br/>the receive interrupt is exited.&#160;<br/>
+Now a=2 and no response message&#160;will be sent.&#160;<br/>
+If there is a difference,&#160;<b>a</b>&#160;is set to b_CAN_Signal_2_c&#160;and the return value keeps&#160;<br/>the receive interrupt going on.&#160;<br/>
+At this point&#160;a= b_CAN_Signal_2_c&#160;and b_Signal_2_c= b_Signal_2_c&#160;<br/>
+Now the&#160;<b>Indication function</b>&#160;<b>M2_IndicatinoFunction</b>&#160;is called, where&#160;<b>a</b>&#160;<br/>is increased by 1.&#160;<br/>
+Now a= b_Signal_2_c+1&#160;and b_Signal_2_c= b_Signal_2_c&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=55></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-55_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+55&#160;/ 56<br/>
+Since the&#160;<b>Indication flag</b>&#160;is set, now the main loop put&#160;b_Signal_1_c =&#160;<br/>b_Signal_2_c+a, i.e. b_Signal_1_c= 2* b_Signal_2_c+1. &#160;<br/>Now the message is requested to be sent&#160;(CanTransmit). If the request is an-<br/>swered with a kCanTxOk, the Indication flag&#160;is cleared&#160;to avoid sending the mes-<br/>sage again and again. Otherwise&#160;the flags stay set until the request of sending this&#160;<br/>message is successful.&#160;<br/>
+At this point a = b_Signal_2_c+1 and b_Signal_2_c = b_Signal_2_c and&#160;<br/>b_Signal_1_c = 2* b_Signal_2_c +1&#160;<br/>
+Before the message is on its way, the function&#160;<b>M1_PretransmitFunction</b>&#160;is&#160;<br/>called. This function increments the send signal by 1 and the return value lets&#160;the&#160;<br/>driver copy the data from the&#160;RAM buffer to the Tx register.&#160;<br/>
+At this point a = b_Signal_2_c+1 and b_Signal_2_c = b_Signal_2_c and&#160;<br/>b_Signal_1_c = 2* b_Signal_2_c +2&#160;<br/>
+Now the message is on its way via CAN. The first node to receive this message (in&#160;<br/>this test case, CANoe) gives an acknowledge that triggers a transmit interrupt. &#160;<br/>In the function&#160;<b>M1_ConfirmationFunction</b>&#160;23 is added to&#160;<b>a</b>.&#160;<br/>
+Now a = b_Signal_2_c+24 and b_Signal_2_c =&#160;b_Signal_2_c and b_Signal_1_c = 2*&#160;<br/>b_Signal_2_c +2&#160;<br/>
+Then the&#160;<b>Confirmation flag</b>&#160;is set and recognized by the main loop. There the&#160;<br/>variable a is set to 1 and the&#160;<b>Confirmation flag</b>&#160;is reset to 0 to&#160;prevent setting&#160;<br/><b>a</b>&#160;over and over again.&#160;<br/>So the result is:&#160;<br/>
+<b>a = 1 &#160;</b><br/>
+<b>b_Signal_1_c = 2* b_Signal_2_c +2&#160;</b><br/>
+&#160;<br/>&#160;<br/>&#160;<br/>&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name=56></a><img src="ElectricPowerSteering_RH850_GM_T1XX_website/content/en/docs/Can/doc/UserManual_CanDriver-56_1.png"/><br/>
+User Manual &#160;Vector CAN Driver&#160;<br/>
+&#160;<br/>
+56&#160;/ 56<br/>
+<b>8 &#160;</b><br/>
+<b>Index&#160;</b><br/>
+Acceptance&#160;filters&#160;.................................&#160;26, 32&#160;<br/>
+Hardware.....................................................&#160;45&#160;<br/>
+applCanBusOff&#160;...........................................&#160;38&#160;<br/>
+Including Order............................................&#160;15&#160;<br/>
+ApplCanMsgReceived&#160;....................&#160;46, 52, 54&#160;<br/>
+Indication flag&#160;..................................&#160;41,&#160;49, 55&#160;<br/>
+applCanWakeUp.........................................&#160;38&#160;<br/>
+Indication Flag.............................................&#160;47&#160;<br/>
+baud rate...............................................&#160;29, 41&#160;<br/>
+Indication&#160;Function......................................&#160;47&#160;<br/>
+Bootloader&#160;..................................................&#160;10&#160;<br/>
+Init registers...........................................&#160;25, 29&#160;<br/>
+Bustiming&#160;........................................&#160;26, 27, 32&#160;<br/>
+Interaction Layer&#160;...................................&#160;12, 13&#160;<br/>
+Bustiming registers&#160;...............................&#160;26, 32&#160;<br/>
+interrupt&#160;.......................................................&#160;47&#160;<br/>
+CAN Driver.&#160;12, 14, 15, 17, 22, 25, 33, 35, 45,&#160;<br/>
+link.......................................35, 36,&#160;40, 41, 42&#160;<br/>
+46&#160;<br/>
+makefile.................................................&#160;35, 40&#160;<br/>
+can_cfg.h&#160;..............................................&#160;25, 33&#160;<br/>
+memory requirement...................................&#160;19&#160;<br/>
+can_inc.h&#160;....................................................&#160;35&#160;<br/>
+message......................................................&#160;16&#160;<br/>
+CANalyzer...................................................&#160;41&#160;<br/>
+Motivation......................................................&#160;4&#160;<br/>
+CANdesc&#160;IN&#160;8 STEPS&#160;................................&#160;53&#160;<br/>
+Network Management.................................&#160;12&#160;<br/>
+CANdesc&#160;tab...............................................&#160;15&#160;<br/>
+Open<b>&#160;</b>filters............................................&#160;27, 32&#160;<br/>
+CanInitPowerOn&#160;.........................................&#160;37&#160;<br/>
+Optimze<b>&#160;</b>filters&#160;.......................................&#160;27, 32&#160;<br/>
+CanInterruptDisable....................................&#160;47&#160;<br/>
+Precopy&#160;...............................19,&#160;46, 47, 52, 54&#160;<br/>
+CanInterruptRestore&#160;...................................&#160;47&#160;<br/>
+Pretransmit............................................&#160;19, 49&#160;<br/>
+CANoe&#160;..................................................&#160;41, 55&#160;<br/>
+Queue&#160;.........................................................&#160;49&#160;<br/>
+Channel properties&#160;.....................................&#160;23&#160;<br/>
+Ranges........................................................&#160;46&#160;<br/>
+clock..........................................&#160;28, 39, 40, 41&#160;<br/>
+receive register............................................&#160;18&#160;<br/>
+compile&#160;.....................................&#160;35, 36, 40, 41&#160;<br/>
+Registers&#160;.....................................................&#160;18&#160;<br/>
+Confirmation&#160;...............................................&#160;49&#160;<br/>
+Search&#160;Algorithm.........................................&#160;46&#160;<br/>
+Data consistency&#160;........................................&#160;47&#160;<br/>
+signals&#160;.........................................................&#160;16&#160;<br/>
+dbc&#160;file&#160;............................................&#160;11, 22, 41&#160;<br/>
+Strategies&#160;..............................................&#160;45, 48&#160;<br/>
+dbc-file&#160;............................................&#160;22, 23, 24&#160;<br/>
+transmit register&#160;..........................................&#160;18&#160;<br/>
+Diagnostics&#160;.................................................&#160;12&#160;<br/>
+Transport Protocol.......................................&#160;12&#160;<br/>
+example&#160;..........................................&#160;35, 38, 39&#160;<br/>
+Universal Measurement and Calibration&#160;<br/>
+Example........................&#160;35, 36, 38, 41, 43, 51&#160;<br/>
+Protocol (XCP)..................................&#160;12, 13&#160;<br/>
+generation process&#160;...................&#160;14, 33, 35, 41&#160;<br/>
+yourecu.h&#160;................35, 36, 37, 38, 41, 43, 51&#160;<br/>
+&#160;<br/>
+©2009, Vector Informatik GmbH&#160;<br/>
+&#160;<br/>
+Version: 2.4&#160;<br/>
+&#160;<br/>
+based of template&#160;version 1.7&#160;<br/>
+<hr/>
+<a name="outline"></a><h1>Document Outline</h1>
+<ul>
+<li><a href="UserManual_CanDrivers.html#8">1 Welcome to the CAN Driver User Manual</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#8">1.1 Beginners with the CAN Driver start here ?&#160;</a></li>
+<li><a href="UserManual_CanDrivers.html#8">1.2 For Advanced Users&#160;</a></li>
+<li><a href="UserManual_CanDrivers.html#8">1.3 Special topics&#160;</a></li>
+<li><a href="UserManual_CanDrivers.html#8">1.4 Documents this one refers to…</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#9">2 About This Document</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#9">2.1 How This Documentation Is Set-Up</a></li>
+<li><a href="UserManual_CanDrivers.html#10">Legend and Explanation of Symbols</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#11">3 ECUs and Vector CANbedded Components – An Overall View</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#11">Network Data Base File (DBC)</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#12">CANbedded Software Components</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#13">Generation Tool</a></li>
+<li><a href="UserManual_CanDrivers.html#14">4.2 The Vector CAN Driver</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#14">4.2.1 Tasks of The Vector CAN Driver&#160;</a></li>
+<li><a href="UserManual_CanDrivers.html#14">4.2.2 Vector CAN Driver Files</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#14">4.2.2.1 Component Files</a></li>
+<li><a href="UserManual_CanDrivers.html#14">4.2.2.2 Generated Files</a></li>
+<li><a href="UserManual_CanDrivers.html#15">4.2.2.3 Configurable files</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#15">4.2.3 Include The CAN Driver Into Your Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#16">Vector CAN Driver– A More Detailed View</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#16">5.1 Information Package on the CAN Bus</a></li>
+<li><a href="UserManual_CanDrivers.html#17">5.2 Storing Information Packages</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#18">5.2.1 The Registers of the CAN Controller</a></li>
+<li><a href="UserManual_CanDrivers.html#18">5.2.2 The Data Structure Generated by the Generation Tool for Storing Message Data.</a></li>
+<li><a href="UserManual_CanDrivers.html#19">5.2.3 Memory the Application Reserved for Signals.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#20">6 CAN Driver in 9 Steps</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#21">STEP 1 &#160;Unpack the Delivery</a></li>
+<li><a href="UserManual_CanDrivers.html#22">STEP 2 &#160;Generation Tool and dbc File</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#22">6.2.1 Using CANgen as Generation Tool</a></li>
+<li><a href="UserManual_CanDrivers.html#30">6.2.2 Using GENy, the new Generation Tool</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#33">STEP 3 &#160;Generate Files</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#33">6.3.1 Using CANgen Generation Tool</a></li>
+<li><a href="UserManual_CanDrivers.html#33">6.3.2 Using GENy</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#35">STEP 4 &#160;Add Files to your Application</a></li>
+<li><a href="UserManual_CanDrivers.html#36">STEP 5 Adaptations for your Application</a></li>
+<li><a href="UserManual_CanDrivers.html#40">STEP 6 Compile, Link and Download</a></li>
+<li><a href="UserManual_CanDrivers.html#40">STEP 7 Receiving A Message</a></li>
+<li><a href="UserManual_CanDrivers.html#43">STEP 8 Sending a Message</a></li>
+<li><a href="UserManual_CanDrivers.html#45">STEP 9 Further Actions</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#45">6.9.1 Strategies for Receiving a CAN Message</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#45">6.9.1.1 Hardware Filter (HW Filter)</a></li>
+<li><a href="UserManual_CanDrivers.html#46">6.9.1.2 ApplCanMsgReceived</a></li>
+<li><a href="UserManual_CanDrivers.html#46">6.9.1.3 Ranges</a></li>
+<li><a href="UserManual_CanDrivers.html#46">6.9.1.4 Search Algorithm</a></li>
+<li><a href="UserManual_CanDrivers.html#46">6.9.1.5 Precopy</a></li>
+<li><a href="UserManual_CanDrivers.html#47">6.9.1.6 Indication Flag / Indication Function</a></li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#48">6.9.2 Strategies for Sending a CAN Message</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#48">6.9.2.1 Update RAM buffer</a></li>
+<li><a href="UserManual_CanDrivers.html#49">6.9.2.2 CanTransmit</a></li>
+<li><a href="UserManual_CanDrivers.html#49">6.9.2.3 The Queue</a></li>
+<li><a href="UserManual_CanDrivers.html#49">6.9.2.4 Pretransmit Function</a></li>
+<li><a href="UserManual_CanDrivers.html#49">6.9.2.5 Confirmation Function and Confirmation Flag&#160;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#51">7 Further Information</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#51">7.1 An Exercise For Practice</a></li>
+<li><a href="UserManual_CanDrivers.html#54">7.2 The Solution To The Exercise</a>
+<ul>
+<li><a href="UserManual_CanDrivers.html#54">7.2.1 After the first reception and transmission of a new value:</a></li>
+<li><a href="UserManual_CanDrivers.html#54">7.2.2 After the reception of the same value as before:</a></li>
+<li><a href="UserManual_CanDrivers.html#54">7.2.3 The solution, step by step</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="UserManual_CanDrivers.html#56">8 &#160;Index</a></li>
+</ul>
+<hr/>
+</body>
+</html>
